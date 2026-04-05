@@ -31,6 +31,7 @@ const TYPE_OPTIONS: { label: string; value: FilterState['schoolType'] }[] = [
   { label: '全部', value: 'all' },
   { label: '小学', value: 'Primary' },
   { label: '综合', value: 'Combined' },
+  { label: '中学', value: 'Secondary' },
 ];
 
 export default function SchoolsPage() {
@@ -198,11 +199,11 @@ export default function SchoolsPage() {
                   <span className="text-gray-300">试试缩小地图或调整筛选条件</span>
                 </p>
               ) : (
-                displayedSchools.map((school, idx) => {
+                displayedSchools.map((school) => {
                   const isSelected = school === selectedSchool;
                   return (
                     <div
-                      key={idx}
+                      key={school.school_name}
                       ref={isSelected ? selectedCardRef : null}
                       onClick={() => handleSchoolClick(school)}
                       className={`p-2.5 rounded-lg cursor-pointer transition-all ${

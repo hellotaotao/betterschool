@@ -3,7 +3,7 @@ import { School } from '@/types/school';
 export interface FilterState {
   sector: 'all' | 'Government' | 'Non-government';
   minScore: 'all' | '80' | '90' | '95';
-  schoolType: 'all' | 'Primary' | 'Combined';
+  schoolType: 'all' | 'Primary' | 'Combined' | 'Secondary';
 }
 
 /**
