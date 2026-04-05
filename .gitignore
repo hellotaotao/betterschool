@@ -43,3 +43,6 @@ scripts/analyze_school_location_2023.js
 scripts/analyze_top_primary_2022.js
 scripts/inspect_acara.py
 scripts/process_school_data.py
+
+# superpowers
+.superpowers/
