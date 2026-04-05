@@ -1,36 +1,39 @@
 "use client";
 
-import { useEffect, useMemo } from 'react';
+import { useEffect, useState } from 'react';
 import { MapContainer, TileLayer, CircleMarker, Popup, useMap } from 'react-leaflet';
 import { School } from '@/types/school';
-
-// Fix for default marker icons in Next.js if we were using standard markers
-// But we will use CircleMarkers which are easier and look cleaner for data points.
 
 interface SchoolMapProps {
   schools: School[];
 }
 
-// Component to handle map view updates
-function MapUpdater({ center }: { center: [number, number] }) {
+function MapUpdater({ center, zoom }: { center: [number, number]; zoom: number }) {
   const map = useMap();
   useEffect(() => {
-    map.setView(center, map.getZoom());
-  }, [center, map]);
+    map.setView(center, zoom);
+  }, [center, zoom, map]);
   return null;
 }
 
 export default function SchoolMap({ schools }: SchoolMapProps) {
-  // Default center (Australia)
   const defaultCenter: [number, number] = [-25.2744, 133.7751];
   const defaultZoom = 4;
 
-  const center = useMemo((): [number, number] => {
-    if (schools.length > 0 && schools.length < 50) {
-      return [schools[0].lat, schools[0].lng];
-    }
-    return defaultCenter;
-  }, [schools]); // eslint-disable-line react-hooks/exhaustive-deps
+  const [mapCenter, setMapCenter] = useState<[number, number]>(defaultCenter);
+  const [mapZoom, setMapZoom] = useState(defaultZoom);
+
+  useEffect(() => {
+    fetch('https://ipapi.co/json/')
+      .then(res => res.json())
+      .then(data => {
+        if (data.latitude && data.longitude) {
+          setMapCenter([data.latitude, data.longitude]);
+          setMapZoom(10);
+        }
+      })
+      .catch(() => {}); // fallback to default Australia view
+  }, []);
 
   return (
     <div className="w-full h-full z-0">
@@ -45,7 +48,7 @@ export default function SchoolMap({ schools }: SchoolMapProps) {
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
         
-        <MapUpdater center={center} />
+        <MapUpdater center={mapCenter} zoom={mapZoom} />
 
         {schools.map((school, index) => {
           if (school.lat === null || school.lng === null || school.lat === undefined || school.lng === undefined) return null;

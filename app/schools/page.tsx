@@ -25,7 +25,7 @@ export default function SchoolsPage() {
 
   useEffect(() => {
     console.log("Starting fetch...");
-    fetch('/api/locations')
+    fetch('/data/schools.json')
       .then(res => {
         console.log("Fetch response:", res.status);
         return res.json();

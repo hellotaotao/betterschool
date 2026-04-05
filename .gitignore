@@ -36,6 +36,7 @@ yarn-error.log*
 next-env.d.ts
 
 # data folder
+db/locations.sqlite
 ACARA/
 scripts/analyze_acara.js
 scripts/analyze_school_location_2023.js
