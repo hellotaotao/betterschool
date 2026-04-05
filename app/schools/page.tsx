@@ -140,7 +140,13 @@ export default function SchoolsPage() {
 
         {/* Map View */}
         <div className="flex-1 relative">
-           <SchoolMap schools={filteredSchools} />
+           <SchoolMap
+             schools={filteredSchools}
+             selectedSchool={null}
+             onSchoolClick={() => {}}
+             onBoundsChange={() => {}}
+             onMapClick={() => {}}
+           />
         </div>
       </main>
     </div>
