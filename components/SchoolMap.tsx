@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { MapContainer, TileLayer, CircleMarker, useMap, useMapEvents } from 'react-leaflet';
 import { School } from '@/types/school';
 import { getMarkerRadius } from '@/utils/schoolFilters';
@@ -11,6 +11,7 @@ interface SchoolMapProps {
   onSchoolClick: (school: School) => void;
   onBoundsChange: (visibleSchools: School[]) => void;
   onMapClick: () => void;
+  flyToSchool?: School | null;
 }
 
 /** 监听地图背景点击（非圆点），通知父组件取消选中。 */
@@ -65,14 +66,28 @@ function IpLocator() {
   return null;
 }
 
+/** 选中学校时将地图飞跳到该学校位置。 */
+function FlyToTracker({ school }: { school: School | null | undefined }) {
+  const map = useMap();
+  useEffect(() => {
+    if (school?.lat && school?.lng) {
+      map.flyTo([school.lat, school.lng], Math.max(map.getZoom(), 13), { duration: 0.8 });
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [school]);
+  return null;
+}
+
 export default function SchoolMap({
   schools,
   selectedSchool,
   onSchoolClick,
   onBoundsChange,
   onMapClick,
+  flyToSchool,
 }: SchoolMapProps) {
   const defaultCenter: [number, number] = [-25.2744, 133.7751];
+  const [hoveredSchool, setHoveredSchool] = useState<School | null>(null);
 
   return (
     <div className="w-full h-full">
@@ -89,6 +104,7 @@ export default function SchoolMap({
         />
 
         <IpLocator />
+        <FlyToTracker school={flyToSchool} />
         <MapClickTracker onMapClick={onMapClick} />
         <BoundsTracker schools={schools} onBoundsChange={onBoundsChange} />
 
@@ -103,14 +119,18 @@ export default function SchoolMap({
               <CircleMarker
                 key={`${school.school_name}-${index}`}
                 center={[school.lat, school.lng]}
-                radius={radius}
+                radius={hoveredSchool === school ? radius * 1.3 : radius}
                 pathOptions={{
                   color: 'white',
                   weight: 1.5,
                   fillColor,
                   fillOpacity: 0.85,
                 }}
-                eventHandlers={{ click: () => onSchoolClick(school) }}
+                eventHandlers={{
+                  click: () => onSchoolClick(school),
+                  mouseover: () => setHoveredSchool(school),
+                  mouseout: () => setHoveredSchool(null),
+                }}
               />
             );
           })}

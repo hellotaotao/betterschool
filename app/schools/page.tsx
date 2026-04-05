@@ -98,6 +98,7 @@ export default function SchoolsPage() {
             onSchoolClick={handleSchoolClick}
             onBoundsChange={setVisibleSchools}
             onMapClick={handleMapClick}
+            flyToSchool={selectedSchool}
           />
         )}
       </div>
@@ -306,7 +307,7 @@ export default function SchoolsPage() {
                   <div className="flex justify-between">
                     <span className="text-gray-500">学校类型</span>
                     <span className="font-medium text-gray-800">
-                      {selectedSchool.school_type === 'Primary' ? '小学' : selectedSchool.school_type}
+                      {{ Primary: '小学', Combined: '综合', Secondary: '中学' }[selectedSchool.school_type] ?? selectedSchool.school_type}
                     </span>
                   </div>
                 </>
