@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
+import 'leaflet/dist/leaflet.css';
 import { Inter } from "next/font/google";
 
 const geistSans = localFont({
@@ -29,10 +30,6 @@ export default function RootLayout({
     return (
         <html lang="en">
             <head>
-                <link
-                    href="https://api.mapbox.com/mapbox-gl-js/v2.9.1/mapbox-gl.css"
-                    rel="stylesheet"
-                />
             </head>
             <body
                 className={`${geistSans.variable} ${geistMono.variable} antialiased ${inter.className}`}

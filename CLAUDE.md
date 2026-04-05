@@ -11,33 +11,51 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Architecture
 
-This is a Next.js 14 application that displays schools on an interactive map using Mapbox GL JS. The project follows Next.js App Router architecture.
+This is a Next.js 14 application using the App Router that displays school locations on an interactive map. The project uses Mapbox GL JS for map rendering with OpenStreetMap tiles, and SQLite for data storage.
 
 ### Key Components
-- **SchoolMap** (`app/components/SchoolMap.tsx`) - Main map component using Mapbox GL to display school locations with markers and popups
-- **API Route** (`app/pages/api/locations.ts`) - Next.js API endpoint that queries SQLite database for school data
-- **Database Setup** (`db/database.js`) - SQLite database initialization and sample data seeding
+
+- **SchoolMap** (`app/components/SchoolMap.tsx`) - Client-side map component that fetches school data and renders an interactive Mapbox GL map with markers and popups
+- **API Route** (`app/api/locations/route.ts`) - Next.js App Router API endpoint that queries the SQLite database and returns school location data
+- **Database Setup** (`db/database.js`) - Node.js script that initializes the SQLite database and seeds it with sample location data (currently contains generic city data, not actual schools)
+
+### Data Flow
+
+1. The main page (`app/page.tsx`) renders the SchoolMap component
+2. SchoolMap fetches data from `/api/locations` on mount
+3. The API route opens the SQLite database at `db/locations.sqlite` and queries all locations
+4. SchoolMap receives the data and creates Mapbox markers for each location
+5. The map auto-fits bounds to display all markers with padding
 
 ### Database Structure
-- SQLite database located at `db/locations.sqlite`
-- Main table: `locations` with columns: id, name, latitude, longitude, type
-- Schools are filtered by `type = 'school'` in the API query
+
+- Location: `db/locations.sqlite`
+- Main table: `locations`
+  - `id` (INTEGER PRIMARY KEY)
+  - `name` (TEXT)
+  - `latitude` (REAL)
+  - `longitude` (REAL)
+- Note: Current sample data contains city locations (New York, LA, Chicago), not actual schools
 
 ### Key Dependencies
-- **Mapbox GL JS** - Interactive map rendering (requires API token configuration)
-- **SQLite3** - Local database storage
-- **Deck.GL** - Advanced geospatial visualization library (installed but not actively used)
-- **TailwindCSS** - Styling framework
-- **TypeScript** - Type safety throughout the codebase
+
+- **Mapbox GL JS** - Interactive map rendering (uses public demo token, should be replaced for production)
+- **SQLite3** - Local database for storing location data
+- **Deck.GL** - Advanced geospatial library (installed but not currently used in the codebase)
+- **React Map GL** - React wrapper for Mapbox (installed but not used; the project uses vanilla Mapbox GL JS directly)
 
 ### Configuration Notes
-- Mapbox access token needs to be set in `app/components/SchoolMap.tsx:7`
-- Custom webpack config in `next.config.js` handles Mapbox GL JS compilation
-- Database path in API handler may need adjustment based on deployment environment
-- Geist fonts are included locally in `app/fonts/`
+
+- Mapbox access token is hardcoded in `app/components/SchoolMap.tsx:7` (currently using Mapbox's public demo token)
+- The map uses OpenStreetMap tiles instead of Mapbox's default style
+- Custom webpack config in `next.config.js` transpiles Mapbox GL JS with babel-loader to ensure compatibility
+- Database path in the API route uses `process.cwd()` for proper resolution in both dev and production
+- TypeScript path alias `@/*` maps to the project root
 
 ### Architecture Patterns
-- Uses Next.js App Router with TypeScript
-- Client-side components for interactive map functionality
+
+- Uses Next.js 14 App Router with TypeScript
+- Client-side components ("use client") for interactive map functionality
 - Server-side API routes for database queries
-- Separation of database logic and presentation components
+- Separation of concerns: database initialization, API data fetching, and UI rendering are in separate files
+- Map initialization and marker rendering handled in separate useEffect hooks for better control flow

@@ -12,15 +12,16 @@
     "@deck.gl/core": "^9.0.29",
     "@deck.gl/layers": "^9.0.29",
     "@deck.gl/react": "^9.0.29",
-    "@types/mapbox-gl": "^3.4.0",
+    "@types/leaflet": "^1.9.21",
     "babel-loader": "^10.0.0",
-    "mapbox-gl": "^3.6.0",
+    "leaflet": "^1.9.4",
     "next": "14.2.8",
     "react": "^18",
     "react-dom": "^18",
-    "react-map-gl": "^7.1.7",
+    "react-leaflet": "^4.2.1",
     "sqlite": "^5.1.1",
-    "sqlite3": "^5.1.7"
+    "sqlite3": "^5.1.7",
+    "xlsx": "^0.18.5"
   },
   "devDependencies": {
     "@types/node": "^20",
