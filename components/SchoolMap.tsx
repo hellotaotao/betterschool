@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 import { MapContainer, TileLayer, Marker, useMap, useMapEvents } from 'react-leaflet';
 import L from 'leaflet';
 import { School } from '@/types/school';
@@ -46,6 +46,7 @@ interface SchoolMapProps {
   onBoundsChange: (visibleSchools: School[]) => void;
   onMapClick: () => void;
   flyToSchool?: School | null;
+  onGeoReady?: () => void;
 }
 
 /** 监听地图背景点击（非圆点），通知父组件取消选中。 */
@@ -58,27 +59,32 @@ function MapClickTracker({ onMapClick }: { onMapClick: () => void }) {
 function BoundsTracker({
   schools,
   onBoundsChange,
+  geoReady,
 }: {
   schools: School[];
   onBoundsChange: (visible: School[]) => void;
+  geoReady: boolean;
 }) {
   const map = useMapEvents({
     moveend: () => {
+      if (!geoReady) return;
       const bounds = map.getBounds();
       onBoundsChange(schools.filter(s => bounds.contains([s.lat, s.lng])));
     },
     zoomend: () => {
+      if (!geoReady) return;
       const bounds = map.getBounds();
       onBoundsChange(schools.filter(s => bounds.contains([s.lat, s.lng])));
     },
   });
 
-  // 首次加载后触发一次
+  // geoReady 或 schools 变化时触发
   useEffect(() => {
+    if (!geoReady) return;
     const bounds = map.getBounds();
     onBoundsChange(schools.filter(s => bounds.contains([s.lat, s.lng])));
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [schools]);
+  }, [schools, geoReady]);
 
   return null;
 }
@@ -86,24 +92,27 @@ function BoundsTracker({
 /** 地图初始化后跳转到用户当前位置。
  *  依次尝试：ipinfo.io → ipapi.co → freeipapi.com → 浏览器定位
  */
-function GeoLocator() {
+function GeoLocator({ onReady }: { onReady?: () => void }) {
   const map = useMap();
   useEffect(() => {
-    const setView = (lat: number, lng: number) => map.setView([lat, lng], 10);
+    const done = (lat: number, lng: number) => {
+      map.setView([lat, lng], 10);
+      onReady?.();
+    };
 
     fetch('https://ipinfo.io/json')
       .then(r => r.json())
       .then(d => {
         if (!d.loc) throw new Error();
         const [lat, lng] = d.loc.split(',').map(Number);
-        setView(lat, lng);
+        done(lat, lng);
       })
       .catch(() =>
         fetch('https://ipapi.co/json/')
           .then(r => r.json())
           .then(d => {
             if (!d.latitude || !d.longitude) throw new Error();
-            setView(d.latitude, d.longitude);
+            done(d.latitude, d.longitude);
           })
       )
       .catch(() =>
@@ -111,14 +120,18 @@ function GeoLocator() {
           .then(r => r.json())
           .then(d => {
             if (!d.latitude || !d.longitude) throw new Error();
-            setView(d.latitude, d.longitude);
+            done(d.latitude, d.longitude);
           })
       )
       .catch(() => {
-        navigator.geolocation?.getCurrentPosition(
-          pos => setView(pos.coords.latitude, pos.coords.longitude),
-          () => {},
-        );
+        if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(
+            pos => done(pos.coords.latitude, pos.coords.longitude),
+            () => onReady?.(),
+          );
+        } else {
+          onReady?.();
+        }
       });
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -144,7 +157,14 @@ export default function SchoolMap({
   onBoundsChange,
   onMapClick,
   flyToSchool,
+  onGeoReady,
 }: SchoolMapProps) {
+  const [geoReady, setGeoReady] = useState(false);
+  const handleGeoReady = useCallback(() => {
+    setGeoReady(true);
+    onGeoReady?.();
+  }, [onGeoReady]);
+
   const defaultCenter: [number, number] = [-25.2744, 133.7751];
 
   return (
@@ -161,10 +181,10 @@ export default function SchoolMap({
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
 
-        <GeoLocator />
+        <GeoLocator onReady={handleGeoReady} />
         <FlyToTracker school={flyToSchool} />
         <MapClickTracker onMapClick={onMapClick} />
-        <BoundsTracker schools={schools} onBoundsChange={onBoundsChange} />
+        <BoundsTracker schools={schools} onBoundsChange={onBoundsChange} geoReady={geoReady} />
 
         {/* 非选中学校 */}
         {schools

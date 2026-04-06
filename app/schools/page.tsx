@@ -45,6 +45,7 @@ export default function SchoolsPage() {
   const [visibleSchools, setVisibleSchools] = useState<School[]>([]);
   const [selectedSchool, setSelectedSchool] = useState<School | null>(null);
   const [sortBy, setSortBy] = useState<'rank' | 'score'>('rank');
+  const [geoReady, setGeoReady] = useState(false);
   const [leftPanelOpen, setLeftPanelOpen] = useState(true);
   const selectedCardRef = useRef<HTMLDivElement>(null);
 
@@ -99,6 +100,7 @@ export default function SchoolsPage() {
             onBoundsChange={setVisibleSchools}
             onMapClick={handleMapClick}
             flyToSchool={selectedSchool}
+            onGeoReady={() => setGeoReady(true)}
           />
         )}
       </div>
@@ -177,7 +179,7 @@ export default function SchoolsPage() {
             {/* 列表头 */}
             <div className="px-3 py-2.5 border-b border-gray-100 flex justify-between items-center shrink-0">
               <span className="text-xs font-bold text-gray-800">
-                当前区域 {displayedSchools.length} 所学校
+                {geoReady ? `当前区域 ${displayedSchools.length} 所学校` : '正在定位...'}
               </span>
               <select
                 value={sortBy}
@@ -193,6 +195,8 @@ export default function SchoolsPage() {
             <div className="flex-1 overflow-y-auto p-2 space-y-1.5">
               {loading ? (
                 <p className="text-center text-xs text-gray-400 py-8">加载中...</p>
+              ) : !geoReady ? (
+                <p className="text-center text-xs text-gray-400 py-8">正在定位...</p>
               ) : displayedSchools.length === 0 ? (
                 <p className="text-center text-xs text-gray-400 py-8">
                   当前区域无符合条件的学校
