@@ -61,6 +61,110 @@ interface SchoolMapProps {
   onGeoReady?: () => void;
 }
 
+type Coordinates = [number, number];
+
+type GeoService = {
+  url: string;
+  timeoutMs: number;
+  parse: (data: unknown) => Coordinates | null;
+};
+
+const GEO_SERVICES: GeoService[] = [
+  {
+    url: 'https://ipapi.co/json/',
+    timeoutMs: 1000,
+    parse: parseIpApiResponse,
+  },
+  {
+    url: 'https://free.freeipapi.com/api/json',
+    timeoutMs: 1200,
+    parse: parseFreeIpApiResponse,
+  },
+  {
+    url: 'https://ipinfo.io/json',
+    timeoutMs: 1000,
+    parse: parseIpInfoResponse,
+  },
+];
+
+function toCoordinate(value: unknown): number | null {
+  const parsed = typeof value === 'number' ? value : Number(value);
+  return Number.isFinite(parsed) ? parsed : null;
+}
+
+function toCoordinates(latitude: unknown, longitude: unknown): Coordinates | null {
+  const lat = toCoordinate(latitude);
+  const lng = toCoordinate(longitude);
+
+  if (lat === null || lng === null) return null;
+  return [lat, lng];
+}
+
+function parseIpApiResponse(data: unknown): Coordinates | null {
+  if (!data || typeof data !== 'object') return null;
+
+  const payload = data as { latitude?: unknown; longitude?: unknown };
+  return toCoordinates(payload.latitude, payload.longitude);
+}
+
+function parseFreeIpApiResponse(data: unknown): Coordinates | null {
+  const payload = Array.isArray(data) ? data[0] : data;
+
+  if (!payload || typeof payload !== 'object') return null;
+
+  const record = payload as { latitude?: unknown; longitude?: unknown };
+  return toCoordinates(record.latitude, record.longitude);
+}
+
+function parseIpInfoResponse(data: unknown): Coordinates | null {
+  if (!data || typeof data !== 'object') return null;
+
+  const payload = data as { loc?: unknown };
+  if (typeof payload.loc !== 'string') return null;
+
+  const [latitude, longitude] = payload.loc.split(',');
+  return toCoordinates(latitude, longitude);
+}
+
+async function fetchJsonWithTimeout(url: string, timeoutMs: number): Promise<unknown> {
+  const controller = new AbortController();
+  const timeoutId = window.setTimeout(() => controller.abort(), timeoutMs);
+
+  try {
+    const response = await fetch(url, {
+      signal: controller.signal,
+      headers: {
+        Accept: 'application/json',
+      },
+    });
+
+    if (!response.ok) {
+      throw new Error(`HTTP ${response.status}`);
+    }
+
+    return response.json();
+  } finally {
+    window.clearTimeout(timeoutId);
+  }
+}
+
+async function locateByIp(): Promise<Coordinates | null> {
+  for (const service of GEO_SERVICES) {
+    try {
+      const payload = await fetchJsonWithTimeout(service.url, service.timeoutMs);
+      const coordinates = service.parse(payload);
+
+      if (coordinates) {
+        return coordinates;
+      }
+    } catch {
+      // Try the next provider.
+    }
+  }
+
+  return null;
+}
+
 /** 监听地图背景点击（非圆点），通知父组件取消选中。 */
 function MapClickTracker({ onMapClick }: { onMapClick: () => void }) {
   useMapEvents({ click: onMapClick });
@@ -96,52 +200,61 @@ function BoundsTracker({
   return null;
 }
 
-/** 地图初始化后跳转到用户当前位置。
- *  依次尝试：ipinfo.io → ipapi.co → freeipapi.com → 浏览器定位
- */
+/** Center the map around the detected user location after mount. */
 function GeoLocator({ onReady }: { onReady?: () => void }) {
   const map = useMap();
+
   useEffect(() => {
+    let cancelled = false;
+
     const done = (lat: number, lng: number) => {
+      if (cancelled) return;
       map.setView([lat, lng], 10);
       onReady?.();
     };
 
-    fetch('https://ipinfo.io/json')
-      .then(r => r.json())
-      .then(d => {
-        if (!d.loc) throw new Error();
-        const [lat, lng] = d.loc.split(',').map(Number);
-        done(lat, lng);
-      })
-      .catch(() =>
-        fetch('https://ipapi.co/json/')
-          .then(r => r.json())
-          .then(d => {
-            if (!d.latitude || !d.longitude) throw new Error();
-            done(d.latitude, d.longitude);
-          })
-      )
-      .catch(() =>
-        fetch('https://freeipapi.com/api/json')
-          .then(r => r.json())
-          .then(d => {
-            if (!d.latitude || !d.longitude) throw new Error();
-            done(d.latitude, d.longitude);
-          })
-      )
-      .catch(() => {
-        if (navigator.geolocation) {
-          navigator.geolocation.getCurrentPosition(
-            pos => done(pos.coords.latitude, pos.coords.longitude),
-            () => onReady?.(),
-          );
-        } else {
-          onReady?.();
+    const ready = () => {
+      if (!cancelled) {
+        onReady?.();
+      }
+    };
+
+    const fallbackToBrowserGeolocation = () => {
+      if (!navigator.geolocation) {
+        ready();
+        return;
+      }
+
+      navigator.geolocation.getCurrentPosition(
+        (position) => done(position.coords.latitude, position.coords.longitude),
+        () => ready(),
+        {
+          enableHighAccuracy: false,
+          timeout: 3000,
+          maximumAge: 300000,
         }
+      );
+    };
+
+    void locateByIp()
+      .then((coordinates) => {
+        if (coordinates) {
+          done(coordinates[0], coordinates[1]);
+          return;
+        }
+
+        fallbackToBrowserGeolocation();
+      })
+      .catch(() => {
+        fallbackToBrowserGeolocation();
       });
+
+    return () => {
+      cancelled = true;
+    };
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
   return null;
 }
 
