@@ -1,9 +1,43 @@
 "use client";
 
-import { useEffect, useState } from 'react';
-import { MapContainer, TileLayer, CircleMarker, useMap, useMapEvents } from 'react-leaflet';
+import { useEffect } from 'react';
+import { MapContainer, TileLayer, Marker, useMap, useMapEvents } from 'react-leaflet';
+import L from 'leaflet';
 import { School } from '@/types/school';
-import { getMarkerRadius } from '@/utils/schoolFilters';
+import { getMarkerRadius, getMarkerColor } from '@/utils/schoolFilters';
+
+/** 根据学校数据和选中状态创建 Leaflet DivIcon。 */
+function createSchoolIcon(school: School, isSelected: boolean): L.DivIcon {
+  const radius = getMarkerRadius(school.score);
+  const size = radius * 2;
+  const bgColor = isSelected ? '#4f46e5' : getMarkerColor(school.score, school.sector);
+  const boxShadow = isSelected ? '0 0 0 6px rgba(79,70,229,0.35)' : '';
+  const showLabel = radius >= 13; // diameter ≥ 26px，约 score ≥ 83
+  const fontSize = Math.max(10, Math.min(18, Math.round(radius * 0.75)));
+
+  const html = `<div
+    class="marker-circle"
+    style="
+      width:${size}px;
+      height:${size}px;
+      border-radius:50%;
+      background:${bgColor};
+      border:2px solid white;
+      ${boxShadow ? `box-shadow:${boxShadow};` : ''}
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      cursor:pointer;
+    "
+  >${showLabel ? `<span style="color:white;font-weight:bold;font-size:${fontSize}px;line-height:1;user-select:none;">${Math.round(school.score)}</span>` : ''}</div>`;
+
+  return L.divIcon({
+    html,
+    className: 'school-marker-icon',
+    iconSize: [size, size],
+    iconAnchor: [radius, radius],
+  });
+}
 
 interface SchoolMapProps {
   schools: School[];
@@ -87,7 +121,6 @@ export default function SchoolMap({
   flyToSchool,
 }: SchoolMapProps) {
   const defaultCenter: [number, number] = [-25.2744, 133.7751];
-  const [hoveredSchool, setHoveredSchool] = useState<School | null>(null);
 
   return (
     <div className="w-full h-full">
@@ -113,56 +146,24 @@ export default function SchoolMap({
           .filter(s => s !== selectedSchool)
           .map((school, index) => {
             if (!school.lat || !school.lng) return null;
-            const radius = getMarkerRadius(school.score);
-            const fillColor = school.sector === 'Government' ? '#22c55e' : '#f97316';
             return (
-              <CircleMarker
+              <Marker
                 key={`${school.school_name}-${index}`}
-                center={[school.lat, school.lng]}
-                radius={hoveredSchool === school ? radius * 1.3 : radius}
-                pathOptions={{
-                  color: 'white',
-                  weight: 1.5,
-                  fillColor,
-                  fillOpacity: 0.85,
-                }}
-                eventHandlers={{
-                  click: () => onSchoolClick(school),
-                  mouseover: () => setHoveredSchool(school),
-                  mouseout: () => setHoveredSchool(null),
-                }}
+                position={[school.lat, school.lng]}
+                icon={createSchoolIcon(school, false)}
+                eventHandlers={{ click: () => onSchoolClick(school) }}
               />
             );
           })}
 
-        {/* 选中学校（渲染在最上层）：先画发光大圆，再画主圆 */}
+        {/* 选中学校 */}
         {selectedSchool && selectedSchool.lat && selectedSchool.lng && (
-          <>
-            <CircleMarker
-              key="selected-glow"
-              center={[selectedSchool.lat, selectedSchool.lng]}
-              radius={getMarkerRadius(selectedSchool.score) + 8}
-              pathOptions={{
-                color: 'transparent',
-                weight: 0,
-                fillColor: '#4f46e5',
-                fillOpacity: 0.25,
-              }}
-              interactive={false}
-            />
-            <CircleMarker
-              key="selected-main"
-              center={[selectedSchool.lat, selectedSchool.lng]}
-              radius={getMarkerRadius(selectedSchool.score)}
-              pathOptions={{
-                color: 'white',
-                weight: 2,
-                fillColor: '#4f46e5',
-                fillOpacity: 1,
-              }}
-              eventHandlers={{ click: () => onSchoolClick(selectedSchool) }}
-            />
-          </>
+          <Marker
+            key="selected"
+            position={[selectedSchool.lat, selectedSchool.lng]}
+            icon={createSchoolIcon(selectedSchool, true)}
+            eventHandlers={{ click: () => onSchoolClick(selectedSchool) }}
+          />
         )}
       </MapContainer>
     </div>
