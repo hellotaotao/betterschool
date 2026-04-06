@@ -7,9 +7,9 @@ export interface FilterState {
 }
 
 /**
- * 根据 score 计算地图圆点半径（px）。
- * 使用平方曲线：低分段压缩，高分段拉伸，突出高分差异。
- * score 60 → radius 4; score 100 → radius 32
+ * Compute the marker radius from score in pixels.
+ * Uses a quadratic curve so higher scores stand out more clearly.
+ * score 60 -> radius 4; score 100 -> radius 32
  */
 export function getMarkerRadius(score: number): number {
   const clamped = Math.max(60, Math.min(100, score));
@@ -17,7 +17,7 @@ export function getMarkerRadius(score: number): number {
   return 4 + t * t * 28;
 }
 
-/** 在两个 hex 颜色之间线性插值，t ∈ [0, 1]。 */
+/** Linearly interpolate between two hex colors. */
 function interpolateHex(color1: string, color2: string, t: number): string {
   const parse = (c: string) => [
     parseInt(c.slice(1, 3), 16),
@@ -33,9 +33,9 @@ function interpolateHex(color1: string, color2: string, t: number): string {
 }
 
 /**
- * 根据 score 和 sector 计算标记颜色。
- * Government: 浅绿(60分) → 深绿(100分)
- * Non-government: 浅橙(60分) → 深橙(100分)
+ * Compute the marker color from score and sector.
+ * Government: light green (60) -> dark green (100)
+ * Non-government: light orange (60) -> dark orange (100)
  */
 export function getMarkerColor(score: number, sector: string): string {
   const t = Math.max(0, Math.min(1, (score - 60) / 40));
@@ -44,9 +44,7 @@ export function getMarkerColor(score: number, sector: string): string {
     : interpolateHex('#fed7aa', '#c2410c', t);
 }
 
-/**
- * 按筛选条件过滤学校列表。
- */
+/** Filter schools by the active controls. */
 export function filterSchools(schools: School[], filters: FilterState): School[] {
   return schools.filter(school => {
     if (filters.sector !== 'all' && school.sector !== filters.sector) return false;

@@ -1,0 +1,38 @@
+{
+  "loadingMap": "Loading map...",
+  "filters": {
+    "all": "All",
+    "government": "Government",
+    "nonGovernment": "Non-government",
+    "score80": "80+",
+    "score90": "90+",
+    "score95": "95+",
+    "primary": "Primary",
+    "combined": "Combined",
+    "secondary": "Secondary"
+  },
+  "sidebar": {
+    "collapseList": "Collapse list",
+    "expandList": "Expand list",
+    "areaCount": "{count} schools in this area",
+    "sortByRank": "Sort by rank",
+    "sortByScore": "Sort by score",
+    "loading": "Loading...",
+    "locating": "Locating...",
+    "emptyTitle": "No schools match the current map view",
+    "emptyHint": "Zoom out or adjust the filters"
+  },
+  "details": {
+    "title": "School details",
+    "score": "Score",
+    "nationalRank": "National rank",
+    "sector": "Sector",
+    "schoolType": "School type",
+    "postcode": "Postcode"
+  },
+  "legend": {
+    "governmentSchools": "Government schools",
+    "nonGovernmentSchools": "Non-government schools",
+    "sizeEqualsScore": "Size = score"
+  }
+}

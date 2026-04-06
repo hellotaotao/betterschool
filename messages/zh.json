@@ -1,0 +1,38 @@
+{
+  "loadingMap": "加载地图中...",
+  "filters": {
+    "all": "全部",
+    "government": "政府",
+    "nonGovernment": "非政府",
+    "score80": "80分+",
+    "score90": "90分+",
+    "score95": "95分+",
+    "primary": "小学",
+    "combined": "综合",
+    "secondary": "中学"
+  },
+  "sidebar": {
+    "collapseList": "收起列表",
+    "expandList": "展开列表",
+    "areaCount": "当前区域 {count} 所学校",
+    "sortByRank": "按排名",
+    "sortByScore": "按评分",
+    "loading": "加载中...",
+    "locating": "正在定位...",
+    "emptyTitle": "当前区域无符合条件的学校",
+    "emptyHint": "试试缩小地图或调整筛选条件"
+  },
+  "details": {
+    "title": "学校详情",
+    "score": "分",
+    "nationalRank": "全国排名",
+    "sector": "办学性质",
+    "schoolType": "学校类型",
+    "postcode": "邮编"
+  },
+  "legend": {
+    "governmentSchools": "政府学校",
+    "nonGovernmentSchools": "非政府学校",
+    "sizeEqualsScore": "大小 = 评分"
+  }
+}

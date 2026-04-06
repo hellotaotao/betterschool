@@ -6,7 +6,7 @@ import L from 'leaflet';
 import { School } from '@/types/school';
 import { getMarkerRadius, getMarkerColor } from '@/utils/schoolFilters';
 
-/** icon 缓存：按 score+sector+selected 生成 key，避免重复创建 DivIcon */
+/** Cache marker icons by score, sector, and selection state. */
 const iconCache = new Map<string, L.DivIcon>();
 
 function getSchoolIcon(school: School, isSelected: boolean): L.DivIcon {
@@ -18,13 +18,13 @@ function getSchoolIcon(school: School, isSelected: boolean): L.DivIcon {
   return icon;
 }
 
-/** 根据学校数据和选中状态创建 Leaflet DivIcon。 */
+/** Create a Leaflet DivIcon from school data and selection state. */
 function createSchoolIcon(school: School, isSelected: boolean): L.DivIcon {
   const radius = getMarkerRadius(school.score);
   const size = radius * 2;
   const bgColor = isSelected ? '#4f46e5' : getMarkerColor(school.score, school.sector);
   const boxShadow = isSelected ? '0 0 0 6px rgba(79,70,229,0.35)' : '';
-  const showLabel = radius >= 13; // diameter ≥ 26px，约 score ≥ 83
+  const showLabel = radius >= 13; // Diameter >= 26px, roughly score >= 83.
   const fontSize = Math.max(10, Math.min(18, Math.round(radius * 0.75)));
 
   const html = `<div
@@ -165,13 +165,13 @@ async function locateByIp(): Promise<Coordinates | null> {
   return null;
 }
 
-/** 监听地图背景点击（非圆点），通知父组件取消选中。 */
+/** Track background clicks and clear the selected school. */
 function MapClickTracker({ onMapClick }: { onMapClick: () => void }) {
   useMapEvents({ click: onMapClick });
   return null;
 }
 
-/** 监听地图移动/缩放，将当前视口内的学校回调给父组件。 */
+/** Report schools visible in the current viewport. */
 function BoundsTracker({
   schools,
   onBoundsChange,
@@ -189,7 +189,7 @@ function BoundsTracker({
     },
   });
 
-  // geoReady 或 schools 变化时触发
+  // Recompute visible schools when geolocation finishes or data changes.
   useEffect(() => {
     if (!geoReady) return;
     const bounds = map.getBounds();
@@ -258,7 +258,7 @@ function GeoLocator({ onReady }: { onReady?: () => void }) {
   return null;
 }
 
-/** 选中学校时将地图飞跳到该学校位置。 */
+/** Fly to the selected school after selection changes. */
 function FlyToTracker({ school }: { school: School | null | undefined }) {
   const map = useMap();
   useEffect(() => {
@@ -322,7 +322,7 @@ export default function SchoolMap({
         <MapClickTracker onMapClick={onMapClick} />
         <BoundsTracker schools={schools} onBoundsChange={handleBoundsChange} geoReady={geoReady} />
 
-        {/* 非选中学校 — 只渲染视口内的 */}
+        {/* Render unselected schools that are currently visible. */}
         {renderSchools
           .filter(s => !selectedSchool || `${s.school_name}-${s.postcode}` !== `${selectedSchool.school_name}-${selectedSchool.postcode}`)
           .map((school) => {
@@ -337,7 +337,7 @@ export default function SchoolMap({
             );
           })}
 
-        {/* 选中学校 */}
+        {/* Render the selected school last so it stays on top. */}
         {selectedSchool && selectedSchool.lat && selectedSchool.lng && (
           <Marker
             key="selected"
