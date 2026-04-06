@@ -167,10 +167,16 @@ export default function SchoolMap({
   onGeoReady,
 }: SchoolMapProps) {
   const [geoReady, setGeoReady] = useState(false);
+  const [renderSchools, setRenderSchools] = useState<School[]>([]);
   const handleGeoReady = useCallback(() => {
     setGeoReady(true);
     onGeoReady?.();
   }, [onGeoReady]);
+
+  const handleBoundsChange = useCallback((visible: School[]) => {
+    setRenderSchools(visible);
+    onBoundsChange(visible);
+  }, [onBoundsChange]);
 
   const defaultCenter: [number, number] = [-25.2744, 133.7751];
 
@@ -191,10 +197,10 @@ export default function SchoolMap({
         <GeoLocator onReady={handleGeoReady} />
         <FlyToTracker school={flyToSchool} />
         <MapClickTracker onMapClick={onMapClick} />
-        <BoundsTracker schools={schools} onBoundsChange={onBoundsChange} geoReady={geoReady} />
+        <BoundsTracker schools={schools} onBoundsChange={handleBoundsChange} geoReady={geoReady} />
 
-        {/* 非选中学校 */}
-        {schools
+        {/* 非选中学校 — 只渲染视口内的 */}
+        {renderSchools
           .filter(s => !selectedSchool || `${s.school_name}-${s.postcode}` !== `${selectedSchool.school_name}-${selectedSchool.postcode}`)
           .map((school) => {
             if (!school.lat || !school.lng) return null;
