@@ -25,3 +25,15 @@ body {
     text-wrap: balance;
   }
 }
+
+/* School map markers (Leaflet DivIcon) */
+.school-marker-icon {
+  background: transparent !important;
+  border: none !important;
+}
+.school-marker-icon .marker-circle {
+  transition: transform 0.15s ease;
+}
+.school-marker-icon:hover .marker-circle {
+  transform: scale(1.25);
+}
