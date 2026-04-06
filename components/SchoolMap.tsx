@@ -83,18 +83,24 @@ function BoundsTracker({
   return null;
 }
 
-/** 地图初始化后跳转到 IP 定位位置。 */
-function IpLocator() {
+/** 地图初始化后跳转到用户当前位置。优先用 IP 定位（无弹窗），失败则回退到浏览器定位。 */
+function GeoLocator() {
   const map = useMap();
   useEffect(() => {
-    fetch('https://ipapi.co/json/')
+    fetch('https://ipinfo.io/json')
       .then(res => res.json())
       .then(data => {
-        if (data.latitude && data.longitude) {
-          map.setView([data.latitude, data.longitude], 10);
+        if (data.loc) {
+          const [lat, lng] = data.loc.split(',').map(Number);
+          map.setView([lat, lng], 10);
         }
       })
-      .catch(() => {});
+      .catch(() => {
+        navigator.geolocation?.getCurrentPosition(
+          pos => map.setView([pos.coords.latitude, pos.coords.longitude], 10),
+          () => {},
+        );
+      });
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   return null;
@@ -136,7 +142,7 @@ export default function SchoolMap({
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
 
-        <IpLocator />
+        <GeoLocator />
         <FlyToTracker school={flyToSchool} />
         <MapClickTracker onMapClick={onMapClick} />
         <BoundsTracker schools={schools} onBoundsChange={onBoundsChange} />
