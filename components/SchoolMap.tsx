@@ -83,21 +83,40 @@ function BoundsTracker({
   return null;
 }
 
-/** 地图初始化后跳转到用户当前位置。优先用 IP 定位（无弹窗），失败则回退到浏览器定位。 */
+/** 地图初始化后跳转到用户当前位置。
+ *  依次尝试：ipinfo.io → ipapi.co → freeipapi.com → 浏览器定位
+ */
 function GeoLocator() {
   const map = useMap();
   useEffect(() => {
+    const setView = (lat: number, lng: number) => map.setView([lat, lng], 10);
+
     fetch('https://ipinfo.io/json')
-      .then(res => res.json())
-      .then(data => {
-        if (data.loc) {
-          const [lat, lng] = data.loc.split(',').map(Number);
-          map.setView([lat, lng], 10);
-        }
+      .then(r => r.json())
+      .then(d => {
+        if (!d.loc) throw new Error();
+        const [lat, lng] = d.loc.split(',').map(Number);
+        setView(lat, lng);
       })
+      .catch(() =>
+        fetch('https://ipapi.co/json/')
+          .then(r => r.json())
+          .then(d => {
+            if (!d.latitude || !d.longitude) throw new Error();
+            setView(d.latitude, d.longitude);
+          })
+      )
+      .catch(() =>
+        fetch('https://freeipapi.com/api/json')
+          .then(r => r.json())
+          .then(d => {
+            if (!d.latitude || !d.longitude) throw new Error();
+            setView(d.latitude, d.longitude);
+          })
+      )
       .catch(() => {
         navigator.geolocation?.getCurrentPosition(
-          pos => map.setView([pos.coords.latitude, pos.coords.longitude], 10),
+          pos => setView(pos.coords.latitude, pos.coords.longitude),
           () => {},
         );
       });
