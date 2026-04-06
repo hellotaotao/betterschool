@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useMemo, useRef } from 'react';
+import { useState, useEffect, useMemo, useRef, useCallback } from 'react';
 import dynamic from 'next/dynamic';
 import { School } from '@/types/school';
 import { FilterState, filterSchools } from '@/utils/schoolFilters';
@@ -80,8 +80,16 @@ export default function SchoolsPage() {
     }
   }, [selectedSchool]);
 
+  const handleGeoReady = useCallback(() => setGeoReady(true), []);
+
+  function schoolId(s: School) {
+    return `${s.school_name}-${s.postcode}`;
+  }
+
   function handleSchoolClick(school: School) {
-    setSelectedSchool(prev => (prev === school ? null : school));
+    setSelectedSchool(prev =>
+      prev && schoolId(prev) === schoolId(school) ? null : school
+    );
   }
 
   function handleMapClick() {
@@ -100,7 +108,7 @@ export default function SchoolsPage() {
             onBoundsChange={setVisibleSchools}
             onMapClick={handleMapClick}
             flyToSchool={selectedSchool}
-            onGeoReady={() => setGeoReady(true)}
+            onGeoReady={handleGeoReady}
           />
         )}
       </div>
@@ -205,10 +213,11 @@ export default function SchoolsPage() {
                 </p>
               ) : (
                 displayedSchools.map((school) => {
-                  const isSelected = school === selectedSchool;
+                  const sid = schoolId(school);
+                  const isSelected = !!selectedSchool && schoolId(selectedSchool) === sid;
                   return (
                     <div
-                      key={school.school_name}
+                      key={sid}
                       ref={isSelected ? selectedCardRef : null}
                       onClick={() => handleSchoolClick(school)}
                       className={`p-2.5 rounded-lg cursor-pointer transition-all ${

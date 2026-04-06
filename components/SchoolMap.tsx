@@ -6,6 +6,18 @@ import L from 'leaflet';
 import { School } from '@/types/school';
 import { getMarkerRadius, getMarkerColor } from '@/utils/schoolFilters';
 
+/** icon 缓存：按 score+sector+selected 生成 key，避免重复创建 DivIcon */
+const iconCache = new Map<string, L.DivIcon>();
+
+function getSchoolIcon(school: School, isSelected: boolean): L.DivIcon {
+  const cacheKey = `${Math.round(school.score)}-${school.sector}-${isSelected}`;
+  const cached = iconCache.get(cacheKey);
+  if (cached) return cached;
+  const icon = createSchoolIcon(school, isSelected);
+  iconCache.set(cacheKey, icon);
+  return icon;
+}
+
 /** 根据学校数据和选中状态创建 Leaflet DivIcon。 */
 function createSchoolIcon(school: School, isSelected: boolean): L.DivIcon {
   const radius = getMarkerRadius(school.score);
@@ -67,11 +79,6 @@ function BoundsTracker({
 }) {
   const map = useMapEvents({
     moveend: () => {
-      if (!geoReady) return;
-      const bounds = map.getBounds();
-      onBoundsChange(schools.filter(s => bounds.contains([s.lat, s.lng])));
-    },
-    zoomend: () => {
       if (!geoReady) return;
       const bounds = map.getBounds();
       onBoundsChange(schools.filter(s => bounds.contains([s.lat, s.lng])));
@@ -188,14 +195,14 @@ export default function SchoolMap({
 
         {/* 非选中学校 */}
         {schools
-          .filter(s => s !== selectedSchool)
-          .map((school, index) => {
+          .filter(s => !selectedSchool || `${s.school_name}-${s.postcode}` !== `${selectedSchool.school_name}-${selectedSchool.postcode}`)
+          .map((school) => {
             if (!school.lat || !school.lng) return null;
             return (
               <Marker
-                key={`${school.school_name}-${index}`}
+                key={`${school.school_name}-${school.postcode}`}
                 position={[school.lat, school.lng]}
-                icon={createSchoolIcon(school, false)}
+                icon={getSchoolIcon(school, false)}
                 eventHandlers={{ click: () => onSchoolClick(school) }}
               />
             );
@@ -206,7 +213,7 @@ export default function SchoolMap({
           <Marker
             key="selected"
             position={[selectedSchool.lat, selectedSchool.lng]}
-            icon={createSchoolIcon(selectedSchool, true)}
+            icon={getSchoolIcon(selectedSchool, true)}
             eventHandlers={{ click: () => onSchoolClick(selectedSchool) }}
           />
         )}
