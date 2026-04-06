@@ -99,7 +99,7 @@ export default function SchoolsPage() {
   return (
     <div className="relative w-screen h-screen overflow-hidden">
       {/* === 地图层（全屏底层） === */}
-      <div className="absolute inset-0 z-0">
+      <div className="absolute inset-0 z-0 bg-gray-100">
         {!loading && (
           <SchoolMap
             schools={filteredSchools}

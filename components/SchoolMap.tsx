@@ -3,7 +3,6 @@
 import { useEffect, useState, useCallback } from 'react';
 import { MapContainer, TileLayer, Marker, useMap, useMapEvents } from 'react-leaflet';
 import L from 'leaflet';
-import 'leaflet/dist/leaflet.css';
 import { School } from '@/types/school';
 import { getMarkerRadius, getMarkerColor } from '@/utils/schoolFilters';
 
@@ -167,6 +166,16 @@ export default function SchoolMap({
   flyToSchool,
   onGeoReady,
 }: SchoolMapProps) {
+  useEffect(() => {
+    if (!document.getElementById('leaflet-css')) {
+      const link = document.createElement('link');
+      link.id = 'leaflet-css';
+      link.rel = 'stylesheet';
+      link.href = '/leaflet.css';
+      document.head.appendChild(link);
+    }
+  }, []);
+
   const [geoReady, setGeoReady] = useState(false);
   const [renderSchools, setRenderSchools] = useState<School[]>([]);
   const handleGeoReady = useCallback(() => {

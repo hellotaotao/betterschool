@@ -16,10 +16,6 @@ export default function RootLayout({
 }>) {
     return (
         <html lang="en">
-            <head>
-                <link rel="preconnect" href="https://tile.openstreetmap.org" crossOrigin="anonymous" />
-                <link rel="dns-prefetch" href="https://tile.openstreetmap.org" />
-            </head>
             <body className={`antialiased ${inter.className}`}>
                 {children}
             </body>
