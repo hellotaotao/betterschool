@@ -8,11 +8,40 @@ export interface FilterState {
 
 /**
  * 根据 score 计算地图圆点半径（px）。
- * score 60 → radius 5; score 100 → radius 18
+ * 使用平方曲线：低分段压缩，高分段拉伸，突出高分差异。
+ * score 60 → radius 4; score 100 → radius 32
  */
 export function getMarkerRadius(score: number): number {
   const clamped = Math.max(60, Math.min(100, score));
-  return 5 + ((clamped - 60) / 40) * 13;
+  const t = (clamped - 60) / 40;
+  return 4 + t * t * 28;
+}
+
+/** 在两个 hex 颜色之间线性插值，t ∈ [0, 1]。 */
+function interpolateHex(color1: string, color2: string, t: number): string {
+  const parse = (c: string) => [
+    parseInt(c.slice(1, 3), 16),
+    parseInt(c.slice(3, 5), 16),
+    parseInt(c.slice(5, 7), 16),
+  ];
+  const [r1, g1, b1] = parse(color1);
+  const [r2, g2, b2] = parse(color2);
+  const r = Math.round(r1 + (r2 - r1) * t);
+  const g = Math.round(g1 + (g2 - g1) * t);
+  const b = Math.round(b1 + (b2 - b1) * t);
+  return `#${[r, g, b].map(v => v.toString(16).padStart(2, '0')).join('')}`;
+}
+
+/**
+ * 根据 score 和 sector 计算标记颜色。
+ * Government: 浅绿(60分) → 深绿(100分)
+ * Non-government: 浅橙(60分) → 深橙(100分)
+ */
+export function getMarkerColor(score: number, sector: string): string {
+  const t = Math.max(0, Math.min(1, (score - 60) / 40));
+  return sector === 'Government'
+    ? interpolateHex('#86efac', '#15803d', t)
+    : interpolateHex('#fed7aa', '#c2410c', t);
 }
 
 /**
