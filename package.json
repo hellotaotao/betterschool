@@ -7,7 +7,10 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint app components lib utils types scripts --ext .ts,.tsx,.mjs",
-    "postinstall": "cp node_modules/leaflet/dist/leaflet.css public/leaflet.css"
+    "postinstall": "cp node_modules/leaflet/dist/leaflet.css public/leaflet.css",
+    "acara:parse": "node scripts/parse-acara-2025.mjs",
+    "acara:match": "node scripts/match-betterschool-acara.mjs",
+    "acara:validate": "node scripts/validate-acara-data.mjs"
   },
   "dependencies": {
     "@types/leaflet": "^1.9.21",
@@ -15,7 +18,8 @@
     "next": "^16.2.2",
     "react": "^19.2.4",
     "react-dom": "^19.2.4",
-    "react-leaflet": "^5.0.0"
+    "react-leaflet": "^5.0.0",
+    "xlsx": "^0.18.5"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4.2.2",

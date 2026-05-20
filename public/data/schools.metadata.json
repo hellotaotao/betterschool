@@ -5,14 +5,32 @@
     "source": "Legacy imported schools.json records in this repository.",
     "rank_scope": "Unknown legacy scope; rank is within the current dataset only until a sourced ranking methodology is added.",
     "score_scope": "Unknown legacy score; score is retained as an imported reference field and is not an authoritative national score.",
-    "naplan": "Not collected in this phase.",
-    "fees": "Not collected in this phase."
+    "naplan": "Not collected in this phase. The ACARA public Data Access Program profile/location/enrolment files used here do not include NAPLAN result scores.",
+    "fees": "Not collected in this phase.",
+    "acara_public_data": {
+      "source": "ACARA Data Access Program public download files",
+      "source_url": "https://www.acara.edu.au/contact-us/acara-data-access",
+      "files": [
+        "School Profile 2025.xlsx",
+        "School Location 2025.xlsx",
+        "Enrolments by Grade 2025.xlsx"
+      ],
+      "data_year": 2025,
+      "processed_outputs": [
+        "data/acara/processed/school-profile-2025.json",
+        "data/acara/processed/school-location-2025.json",
+        "data/acara/processed/enrolments-by-grade-2025.json",
+        "data/acara/processed/betterschool-acara-matches.json"
+      ],
+      "note": "Official ACARA identity, profile, location and enrolment data is being added via conservative deterministic matching. It does not replace the current legacy score/rank methodology yet."
+    }
   },
   "fields": {
     "local_id": "Deterministic local identifier generated from school_name + postcode + state; intended to remain stable until mapped to an external identifier such as ACARA ID.",
     "sector": "Current taxonomy preserves source-supported Government / Non-government only. Future taxonomy may split Non-government into Catholic / Independent when source data supports it.",
     "rank": "Legacy imported rank; display as rank in current dataset, not national rank.",
-    "score": "Legacy imported score; display as current dataset reference value."
+    "score": "Legacy imported score; display as current dataset reference value.",
+    "acara_matching": "In progress: local_id records are mapped to ACARA public records where deterministic name/postcode/state or name/suburb/state matching is unambiguous; ambiguous candidates remain labelled as candidates."
   },
   "generated_from": {
     "input_records": 952,
