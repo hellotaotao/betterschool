@@ -6,11 +6,12 @@ import L from 'leaflet';
 import { School } from '@/types/school';
 import { getMarkerRadius, getMarkerColor } from '@/utils/schoolFilters';
 
-/** Cache marker icons by score, sector, and selection state. */
+/** Cache marker icons by legacy score, sector, and selection state. */
 const iconCache = new Map<string, L.DivIcon>();
 
 function getSchoolIcon(school: School, isSelected: boolean): L.DivIcon {
-  const cacheKey = `${Math.round(school.score)}-${school.sector}-${isSelected}`;
+  const score = school.legacy_score;
+  const cacheKey = `${Number.isFinite(score) ? Math.round(score ?? 0) : 'profile'}-${school.sector}-${isSelected}`;
   const cached = iconCache.get(cacheKey);
   if (cached) return cached;
   const icon = createSchoolIcon(school, isSelected);
@@ -20,11 +21,12 @@ function getSchoolIcon(school: School, isSelected: boolean): L.DivIcon {
 
 /** Create a Leaflet DivIcon from school data and selection state. */
 function createSchoolIcon(school: School, isSelected: boolean): L.DivIcon {
-  const radius = getMarkerRadius(school.score);
+  const score = school.legacy_score;
+  const radius = getMarkerRadius(score);
   const size = radius * 2;
-  const bgColor = isSelected ? '#4f46e5' : getMarkerColor(school.score, school.sector);
+  const bgColor = isSelected ? '#4f46e5' : getMarkerColor(score, school.sector);
   const boxShadow = isSelected ? '0 0 0 6px rgba(79,70,229,0.35)' : '';
-  const showLabel = radius >= 13; // Diameter >= 26px, roughly score >= 83.
+  const showLabel = Number.isFinite(score) && radius >= 13; // Diameter >= 26px, roughly score >= 83.
   const fontSize = Math.max(10, Math.min(18, Math.round(radius * 0.75)));
 
   const html = `<div
@@ -40,8 +42,9 @@ function createSchoolIcon(school: School, isSelected: boolean): L.DivIcon {
       align-items:center;
       justify-content:center;
       cursor:pointer;
+      opacity:${Number.isFinite(score) ? 1 : 0.75};
     "
-  >${showLabel ? `<span style="color:white;font-weight:bold;font-size:${fontSize}px;line-height:1;user-select:none;">${Math.round(school.score)}</span>` : ''}</div>`;
+  >${showLabel ? `<span style="color:white;font-weight:bold;font-size:${fontSize}px;line-height:1;user-select:none;">${Math.round(score ?? 0)}</span>` : ''}</div>`;
 
   return L.divIcon({
     html,

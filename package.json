@@ -10,7 +10,9 @@
     "postinstall": "cp node_modules/leaflet/dist/leaflet.css public/leaflet.css",
     "acara:parse": "node scripts/parse-acara-2025.mjs",
     "acara:match": "node scripts/match-betterschool-acara.mjs",
-    "acara:validate": "node scripts/validate-acara-data.mjs"
+    "acara:validate": "node scripts/validate-acara-data.mjs",
+    "canonical:build": "node scripts/build-canonical-schools.mjs",
+    "canonical:validate": "node scripts/validate-canonical-schools.mjs"
   },
   "dependencies": {
     "@types/leaflet": "^1.9.21",

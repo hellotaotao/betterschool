@@ -1,10 +1,10 @@
 {
-  "dataset_status": "foundation_incomplete",
-  "coverage_note": "This is a cleaned foundation dataset, not a complete list of Australian schools.",
+  "dataset_status": "canonical_acara_base_with_legacy_metric_layer",
+  "coverage_note": "Canonical public app dataset is ACARA 2025 official public School Location/Profile records with valid coordinates. Legacy score/rank are optional attached metrics only.",
   "provenance": {
-    "source": "Legacy imported schools.json records in this repository.",
-    "rank_scope": "Unknown legacy scope; rank is within the current dataset only until a sourced ranking methodology is added.",
-    "score_scope": "Unknown legacy score; score is retained as an imported reference field and is not an authoritative national score.",
+    "source": "ACARA Data Access Program public School Location/Profile 2025 is the canonical base/map layer.",
+    "rank_scope": "Legacy imported rank attached only for deterministic ACARA matches; unknown scope and not an official/national ACARA rank.",
+    "score_scope": "Legacy imported score attached only for deterministic ACARA matches; methodology opaque and not an authoritative ACARA measure.",
     "naplan": "Not collected in this phase. The ACARA public Data Access Program profile/location/enrolment files used here do not include NAPLAN result scores.",
     "fees": "Not collected in this phase.",
     "acara_public_data": {
@@ -22,20 +22,34 @@
         "data/acara/processed/enrolments-by-grade-2025.json",
         "data/acara/processed/betterschool-acara-matches.json"
       ],
-      "note": "Official ACARA identity, profile, location and enrolment data is being added via conservative deterministic matching. It does not replace the current legacy score/rank methodology yet."
+      "note": "Official ACARA identity, profile and location data is the canonical base table/map layer. Legacy score/rank is retained only as an optional metric layer for matched schools."
     }
   },
   "fields": {
-    "local_id": "Deterministic local identifier generated from school_name + postcode + state; intended to remain stable until mapped to an external identifier such as ACARA ID.",
-    "sector": "Current taxonomy preserves source-supported Government / Non-government only. Future taxonomy may split Non-government into Catholic / Independent when source data supports it.",
+    "local_id": "Legacy BetterSchool local_id, present only when a legacy record was deterministically matched to ACARA.",
+    "sector": "Official ACARA sector value (for example Government, Catholic, Independent).",
     "rank": "Legacy imported rank; display as rank in current dataset, not national rank.",
     "score": "Legacy imported score; display as current dataset reference value.",
-    "acara_matching": "In progress: local_id records are mapped to ACARA public records where deterministic name/postcode/state or name/suburb/state matching is unambiguous; ambiguous candidates remain labelled as candidates."
+    "acara_matching": "In progress: local_id records are mapped to ACARA public records where deterministic name/postcode/state or name/suburb/state matching is unambiguous; ambiguous candidates remain labelled as candidates.",
+    "id": "Canonical deterministic app identifier based on ACARA acara_sml_id + location_age_id + school_age_id.",
+    "legacy_rank": "Optional legacy imported rank; display as legacy/current-dataset rank, not official or national.",
+    "legacy_score": "Optional legacy imported score; display as legacy/current-dataset reference value, not official or national.",
+    "legacy_metric_status": "available when legacy score/rank are attached; unavailable for official ACARA-only schools; ambiguous_unmatched for ACARA candidates tied to an ambiguous legacy match."
   },
   "generated_from": {
-    "input_records": 952,
-    "output_records": 925,
-    "duplicate_records_removed": 27,
-    "sector_values_standardized": 2
-  }
+    "canonical_builder": "scripts/build-canonical-schools.mjs",
+    "acara_location_records": 11039,
+    "acara_profile_records": 9755,
+    "output_records": 11034,
+    "skipped_invalid_coordinates": 5,
+    "legacy_input_records": 925,
+    "legacy_matches_available": 911,
+    "legacy_ambiguous_unmatched": 2,
+    "sector_counts": {
+      "Government": 7128,
+      "Catholic": 1822,
+      "Independent": 2084
+    }
+  },
+  "generated_at": "2026-05-20T08:23:43.239Z"
 }

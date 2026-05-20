@@ -11,7 +11,7 @@ import {
   Locale,
 } from '@/lib/i18n';
 import { School } from '@/types/school';
-import { FilterState, filterSchools } from '@/utils/schoolFilters';
+import { FilterState, filterSchools, hasLegacyScore } from '@/utils/schoolFilters';
 
 const SchoolMap = dynamic(() => import('../../components/SchoolMap'), {
   ssr: false,
@@ -25,18 +25,26 @@ export default function SchoolsPage() {
     sector: 'all',
     minScore: 'all',
     schoolType: 'all',
+    dataLayer: 'all',
   });
   const [visibleSchools, setVisibleSchools] = useState<School[]>([]);
   const [selectedSchool, setSelectedSchool] = useState<School | null>(null);
-  const [sortBy, setSortBy] = useState<'rank' | 'score'>('rank');
+  const [sortBy, setSortBy] = useState<'rank' | 'score' | 'name'>('rank');
   const [geoReady, setGeoReady] = useState(false);
   const [leftPanelOpen, setLeftPanelOpen] = useState(true);
   const selectedCardRef = useRef<HTMLDivElement>(null);
   const dictionary = useMemo(() => getMessages(locale), [locale]);
 
+  const dataLayerOptions: { label: string; value: FilterState['dataLayer'] }[] = useMemo(() => [
+    { label: dictionary.filters.allOfficial, value: 'all' },
+    { label: dictionary.filters.withScoreData, value: 'scored' },
+  ], [dictionary]);
+
   const sectorOptions: { label: string; value: FilterState['sector'] }[] = useMemo(() => [
     { label: dictionary.filters.all, value: 'all' },
     { label: dictionary.filters.government, value: 'Government' },
+    { label: dictionary.filters.catholic, value: 'Catholic' },
+    { label: dictionary.filters.independent, value: 'Independent' },
     { label: dictionary.filters.nonGovernment, value: 'Non-government' },
   ], [dictionary]);
 
@@ -52,10 +60,11 @@ export default function SchoolsPage() {
     { label: dictionary.filters.primary, value: 'Primary' },
     { label: dictionary.filters.combined, value: 'Combined' },
     { label: dictionary.filters.secondary, value: 'Secondary' },
+    { label: dictionary.filters.special, value: 'Special' },
   ], [dictionary]);
 
   useEffect(() => {
-    fetch('/data/schools.json')
+    fetch('/data/schools.canonical.json')
       .then(res => res.json())
       .then((data: School[]) => {
         setAllSchools(data);
@@ -80,9 +89,17 @@ export default function SchoolsPage() {
   );
 
   const displayedSchools = useMemo(() => {
-    return [...visibleSchools].sort((a, b) =>
-      sortBy === 'rank' ? a.rank - b.rank : b.score - a.score
-    );
+    return [...visibleSchools].sort((a, b) => {
+      if (sortBy === 'name') return a.school_name.localeCompare(b.school_name);
+      if (sortBy === 'rank') {
+        const aRank = hasLegacyScore(a) ? a.legacy_rank : Number.POSITIVE_INFINITY;
+        const bRank = hasLegacyScore(b) ? b.legacy_rank : Number.POSITIVE_INFINITY;
+        return aRank - bRank || a.school_name.localeCompare(b.school_name);
+      }
+      const aScore = hasLegacyScore(a) ? a.legacy_score : Number.NEGATIVE_INFINITY;
+      const bScore = hasLegacyScore(b) ? b.legacy_score : Number.NEGATIVE_INFINITY;
+      return bScore - aScore || a.school_name.localeCompare(b.school_name);
+    });
   }, [visibleSchools, sortBy]);
 
   useEffect(() => {
@@ -94,7 +111,7 @@ export default function SchoolsPage() {
   const handleGeoReady = useCallback(() => setGeoReady(true), []);
 
   function schoolId(s: School) {
-    return s.local_id;
+    return s.id;
   }
 
   function handleSchoolClick(school: School) {
@@ -133,6 +150,21 @@ export default function SchoolsPage() {
 
       <div className="absolute top-3 left-3 right-3 z-10 flex gap-2 flex-wrap items-center pointer-events-none">
         <div className="pointer-events-auto flex gap-2 flex-wrap">
+          <div className="flex gap-1 bg-white/90 backdrop-blur-sm rounded-full px-2 py-1 shadow-md">
+            {dataLayerOptions.map(opt => (
+              <button
+                key={opt.value}
+                onClick={() => setFilters(f => ({ ...f, dataLayer: opt.value }))}
+                className={`px-3 py-1 rounded-full text-xs font-medium transition-colors ${
+                  filters.dataLayer === opt.value
+                    ? 'bg-indigo-600 text-white'
+                    : 'text-gray-600 hover:bg-gray-100'
+                }`}
+              >
+                {opt.label}
+              </button>
+            ))}
+          </div>
           <div className="flex gap-1 bg-white/90 backdrop-blur-sm rounded-full px-2 py-1 shadow-md">
             {sectorOptions.map(opt => (
               <button
@@ -202,11 +234,12 @@ export default function SchoolsPage() {
               </span>
               <select
                 value={sortBy}
-                onChange={e => setSortBy(e.target.value as 'rank' | 'score')}
+                onChange={e => setSortBy(e.target.value as 'rank' | 'score' | 'name')}
                 className="text-xs text-gray-500 border-0 bg-transparent cursor-pointer focus:outline-none"
               >
                 <option value="rank">{dictionary.sidebar.sortByRank}</option>
                 <option value="score">{dictionary.sidebar.sortByScore}</option>
+                <option value="name">{dictionary.sidebar.sortByName}</option>
               </select>
             </div>
 
@@ -252,7 +285,7 @@ export default function SchoolsPage() {
                               : 'bg-blue-50 text-blue-700'
                           }`}
                         >
-                          {school.score}
+                          {hasLegacyScore(school) ? school.legacy_score : dictionary.sidebar.profileOnly}
                         </span>
                       </div>
                       <p className="text-[10px] text-gray-400 mt-0.5">
@@ -268,7 +301,11 @@ export default function SchoolsPage() {
                         >
                           {getSectorLabel(school.sector, dictionary)}
                         </span>
-                        <span className="text-[10px] text-gray-400">#{school.rank}</span>
+                        {hasLegacyScore(school) ? (
+                          <span className="text-[10px] text-gray-400">{dictionary.sidebar.legacyRank} #{school.legacy_rank}</span>
+                        ) : (
+                          <span className="text-[10px] text-gray-400">{dictionary.sidebar.profileOnly}</span>
+                        )}
                       </div>
                     </div>
                   );
@@ -302,15 +339,15 @@ export default function SchoolsPage() {
                 </p>
               </div>
               <div className="shrink-0 bg-indigo-600 text-white text-center rounded-lg px-2 py-1">
-                <div className="text-lg font-black leading-none">{selectedSchool.score}</div>
-                <div className="text-[8px] font-normal">{dictionary.details.score}</div>
+                <div className="text-lg font-black leading-none">{hasLegacyScore(selectedSchool) ? selectedSchool.legacy_score : '—'}</div>
+                <div className="text-[8px] font-normal">{hasLegacyScore(selectedSchool) ? dictionary.details.score : dictionary.details.profileOnly}</div>
               </div>
             </div>
 
             <div className="bg-gray-50 rounded-lg p-2.5 space-y-2 text-xs">
               <div className="flex justify-between">
                 <span className="text-gray-500">{dictionary.details.datasetRank}</span>
-                <span className="font-bold text-gray-800">#{selectedSchool.rank}</span>
+                <span className="font-bold text-gray-800">{hasLegacyScore(selectedSchool) ? `#${selectedSchool.legacy_rank}` : '—'}</span>
               </div>
               <div className="border-t border-gray-100" />
               <div className="flex justify-between items-center">
@@ -336,11 +373,101 @@ export default function SchoolsPage() {
                   </div>
                 </>
               )}
+              {selectedSchool.campus_type && (
+                <>
+                  <div className="border-t border-gray-100" />
+                  <div className="flex justify-between gap-2">
+                    <span className="text-gray-500">{dictionary.details.campusType}</span>
+                    <span className="font-medium text-gray-800 text-right">{selectedSchool.campus_type}</span>
+                  </div>
+                </>
+              )}
+              {selectedSchool.year_range && (
+                <>
+                  <div className="border-t border-gray-100" />
+                  <div className="flex justify-between">
+                    <span className="text-gray-500">{dictionary.details.yearRange}</span>
+                    <span className="font-medium text-gray-800">{selectedSchool.year_range}</span>
+                  </div>
+                </>
+              )}
+              {Number.isFinite(selectedSchool.icsea) && (
+                <>
+                  <div className="border-t border-gray-100" />
+                  <div className="flex justify-between">
+                    <span className="text-gray-500">{dictionary.details.icsea}</span>
+                    <span className="font-medium text-gray-800">{selectedSchool.icsea}</span>
+                  </div>
+                </>
+              )}
+              {Number.isFinite(selectedSchool.icsea_percentile) && (
+                <>
+                  <div className="border-t border-gray-100" />
+                  <div className="flex justify-between">
+                    <span className="text-gray-500">{dictionary.details.icseaPercentile}</span>
+                    <span className="font-medium text-gray-800">{selectedSchool.icsea_percentile}</span>
+                  </div>
+                </>
+              )}
+              {Number.isFinite(selectedSchool.total_enrolments) && (
+                <>
+                  <div className="border-t border-gray-100" />
+                  <div className="flex justify-between">
+                    <span className="text-gray-500">{dictionary.details.enrolments}</span>
+                    <span className="font-medium text-gray-800">{selectedSchool.total_enrolments}</span>
+                  </div>
+                </>
+              )}
+              {Number.isFinite(selectedSchool.girls) && Number.isFinite(selectedSchool.boys) && (
+                <>
+                  <div className="border-t border-gray-100" />
+                  <div className="flex justify-between">
+                    <span className="text-gray-500">{dictionary.details.girlsBoys}</span>
+                    <span className="font-medium text-gray-800">{selectedSchool.girls} / {selectedSchool.boys}</span>
+                  </div>
+                </>
+              )}
+              {Number.isFinite(selectedSchool.lbote_yes_percent) && (
+                <>
+                  <div className="border-t border-gray-100" />
+                  <div className="flex justify-between">
+                    <span className="text-gray-500">{dictionary.details.lbote}</span>
+                    <span className="font-medium text-gray-800">{selectedSchool.lbote_yes_percent}%</span>
+                  </div>
+                </>
+              )}
+              {Number.isFinite(selectedSchool.indigenous_percent) && (
+                <>
+                  <div className="border-t border-gray-100" />
+                  <div className="flex justify-between">
+                    <span className="text-gray-500">{dictionary.details.indigenous}</span>
+                    <span className="font-medium text-gray-800">{selectedSchool.indigenous_percent}%</span>
+                  </div>
+                </>
+              )}
               <div className="border-t border-gray-100" />
               <div className="flex justify-between">
                 <span className="text-gray-500">{dictionary.details.postcode}</span>
                 <span className="font-medium text-gray-800">{selectedSchool.postcode}</span>
               </div>
+              {selectedSchool.governing_body && (
+                <>
+                  <div className="border-t border-gray-100" />
+                  <div className="flex justify-between gap-2">
+                    <span className="text-gray-500">{dictionary.details.governingBody}</span>
+                    <span className="font-medium text-gray-800 text-right">{selectedSchool.governing_body}</span>
+                  </div>
+                </>
+              )}
+              {selectedSchool.school_url && (
+                <>
+                  <div className="border-t border-gray-100" />
+                  <div className="flex justify-between">
+                    <span className="text-gray-500">{dictionary.details.website}</span>
+                    <a className="font-medium text-indigo-600 hover:underline" href={selectedSchool.school_url} target="_blank" rel="noreferrer">Open</a>
+                  </div>
+                </>
+              )}
             </div>
           </div>
         </div>
@@ -354,6 +481,10 @@ export default function SchoolsPage() {
         <div className="flex items-center gap-2">
           <span className="w-3 h-3 rounded-full bg-orange-500 border border-white inline-block shrink-0"></span>
           {dictionary.legend.nonGovernmentSchools}
+        </div>
+        <div className="flex items-center gap-2">
+          <span className="w-2.5 h-2.5 rounded-full bg-gray-400 border border-white inline-block shrink-0 opacity-75"></span>
+          {dictionary.legend.profileOnlySchools}
         </div>
         <div className="flex items-center gap-2">
           <span className="flex gap-0.5 items-center">

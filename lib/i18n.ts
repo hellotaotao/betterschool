@@ -26,14 +26,17 @@ export function formatMessage(template: string, values: Record<string, string | 
 }
 
 export function getSectorLabel(sector: string, dictionary: Messages): string {
-  return sector === 'Government'
-    ? dictionary.filters.government
-    : dictionary.filters.nonGovernment;
+  if (sector === 'Government') return dictionary.filters.government;
+  if (sector === 'Catholic') return dictionary.filters.catholic;
+  if (sector === 'Independent') return dictionary.filters.independent;
+  if (sector === 'Non-government') return dictionary.filters.nonGovernment;
+  return sector;
 }
 
 export function getSchoolTypeLabel(schoolType: string, dictionary: Messages): string {
   if (schoolType === 'Primary') return dictionary.filters.primary;
   if (schoolType === 'Combined') return dictionary.filters.combined;
   if (schoolType === 'Secondary') return dictionary.filters.secondary;
+  if (schoolType === 'Special') return dictionary.filters.special;
   return schoolType;
 }

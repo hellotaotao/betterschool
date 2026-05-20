@@ -2,41 +2,62 @@
   "loadingMap": "加载地图中...",
   "filters": {
     "all": "全部",
+    "allOfficial": "全部官方学校",
+    "withScoreData": "有评分数据",
     "government": "政府",
+    "catholic": "天主教",
+    "independent": "独立学校",
     "nonGovernment": "非政府",
-    "score80": "80分+",
-    "score90": "90分+",
-    "score95": "95分+",
+    "score80": "历史评分 80+",
+    "score90": "历史评分 90+",
+    "score95": "历史评分 95+",
     "primary": "小学",
     "combined": "综合",
-    "secondary": "中学"
+    "secondary": "中学",
+    "special": "特殊学校"
   },
   "sidebar": {
     "collapseList": "收起列表",
     "expandList": "展开列表",
     "areaCount": "当前区域 {count} 所学校",
-    "sortByRank": "按排名",
-    "sortByScore": "按评分",
+    "sortByRank": "按历史排名",
+    "sortByScore": "按历史评分",
+    "sortByName": "按名称",
     "loading": "加载中...",
     "locating": "正在定位...",
     "emptyTitle": "当前区域无符合条件的学校",
-    "emptyHint": "试试缩小地图或调整筛选条件"
+    "emptyHint": "试试缩小地图或调整筛选条件",
+    "profileOnly": "仅官方资料",
+    "legacyScore": "历史评分",
+    "legacyRank": "历史排名"
   },
   "details": {
     "title": "学校详情",
-    "score": "分",
-    "datasetRank": "当前数据集排名",
+    "score": "历史评分",
+    "datasetRank": "历史数据集排名",
+    "profileOnly": "仅官方资料",
     "sector": "办学性质",
     "schoolType": "学校类型",
-    "postcode": "邮编"
+    "campusType": "校区类型",
+    "yearRange": "年级范围",
+    "icsea": "ICSEA",
+    "icseaPercentile": "ICSEA 百分位",
+    "enrolments": "在校人数",
+    "girlsBoys": "女生 / 男生",
+    "lbote": "非英语背景",
+    "indigenous": "原住民",
+    "postcode": "邮编",
+    "governingBody": "管理机构",
+    "website": "学校网站"
   },
   "legend": {
-    "governmentSchools": "政府学校",
-    "nonGovernmentSchools": "非政府学校",
-    "sizeEqualsScore": "大小 = 评分"
+    "governmentSchools": "有历史评分的政府学校",
+    "nonGovernmentSchools": "有历史评分的非政府学校",
+    "profileOnlySchools": "仅官方资料学校",
+    "sizeEqualsScore": "大小 = 历史评分"
   },
   "dataNotice": {
-    "title": "基础数据集",
-    "body": "当前不是澳洲全量学校清单。评分/排名仅为当前数据集中的历史导入参考值；后续会补充来源、NAPLAN 和学费。"
+    "title": "ACARA 官方基础数据",
+    "body": "地图/列表使用 ACARA 2025 官方公开学校资料和位置数据。历史评分/排名只在匹配到旧数据时作为参考指标显示，不是 ACARA 官方或全国排名。"
   }
 }

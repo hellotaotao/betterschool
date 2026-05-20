@@ -2,41 +2,62 @@
   "loadingMap": "Loading map...",
   "filters": {
     "all": "All",
+    "allOfficial": "All official schools",
+    "withScoreData": "Schools with score data",
     "government": "Government",
+    "catholic": "Catholic",
+    "independent": "Independent",
     "nonGovernment": "Non-government",
-    "score80": "80+",
-    "score90": "90+",
-    "score95": "95+",
+    "score80": "Legacy score 80+",
+    "score90": "Legacy score 90+",
+    "score95": "Legacy score 95+",
     "primary": "Primary",
     "combined": "Combined",
-    "secondary": "Secondary"
+    "secondary": "Secondary",
+    "special": "Special"
   },
   "sidebar": {
     "collapseList": "Collapse list",
     "expandList": "Expand list",
     "areaCount": "{count} schools in this area",
-    "sortByRank": "Sort by rank",
-    "sortByScore": "Sort by score",
+    "sortByRank": "Sort by legacy rank",
+    "sortByScore": "Sort by legacy score",
+    "sortByName": "Sort by name",
     "loading": "Loading...",
     "locating": "Locating...",
     "emptyTitle": "No schools match the current map view",
-    "emptyHint": "Zoom out or adjust the filters"
+    "emptyHint": "Zoom out or adjust the filters",
+    "profileOnly": "Profile only",
+    "legacyScore": "Legacy score",
+    "legacyRank": "Legacy rank"
   },
   "details": {
     "title": "School details",
-    "score": "Score",
-    "datasetRank": "Rank in current dataset",
+    "score": "Legacy score",
+    "datasetRank": "Legacy dataset rank",
+    "profileOnly": "Official profile only",
     "sector": "Sector",
     "schoolType": "School type",
-    "postcode": "Postcode"
+    "campusType": "Campus",
+    "yearRange": "Year range",
+    "icsea": "ICSEA",
+    "icseaPercentile": "ICSEA percentile",
+    "enrolments": "Enrolments",
+    "girlsBoys": "Girls / boys",
+    "lbote": "LBOTE",
+    "indigenous": "Indigenous",
+    "postcode": "Postcode",
+    "governingBody": "Governing body",
+    "website": "Website"
   },
   "legend": {
-    "governmentSchools": "Government schools",
-    "nonGovernmentSchools": "Non-government schools",
-    "sizeEqualsScore": "Size = score"
+    "governmentSchools": "Government schools with legacy score",
+    "nonGovernmentSchools": "Non-government schools with legacy score",
+    "profileOnlySchools": "Official profile-only schools",
+    "sizeEqualsScore": "Size = legacy score"
   },
   "dataNotice": {
-    "title": "Foundation dataset",
-    "body": "This is not a complete list of Australian schools. Score/rank are legacy reference fields for the current dataset only; sources, NAPLAN and fees will be added later."
+    "title": "ACARA canonical base",
+    "body": "Map/list use official ACARA 2025 public school profile and location data. Legacy score/rank are optional reference metrics for matched schools only; they are not official ACARA or national rankings."
   }
 }

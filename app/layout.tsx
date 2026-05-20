@@ -6,7 +6,7 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
     title: "School Map",
-    description: "Interactive map of school rankings in Australia",
+    description: "Interactive map of official ACARA school profiles with optional legacy score metrics",
 };
 
 export default function RootLayout({
