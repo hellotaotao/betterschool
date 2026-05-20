@@ -1,10 +1,15 @@
 import { School, SchoolSector, SchoolType } from '@/types/school';
 
+export type LegacyMetricFilter = 'all' | 'scored' | 'profile';
+export type IcseaBucket = 'all' | '900' | '1000' | '1100' | '1200';
+export type EnrolmentBucket = 'all' | 'small' | 'medium' | 'large';
+
 export interface FilterState {
-  sector: 'all' | SchoolSector | 'Non-government';
-  minScore: 'all' | '80' | '90' | '95';
+  sector: 'all' | SchoolSector;
   schoolType: 'all' | SchoolType;
-  dataLayer: 'all' | 'scored';
+  legacyMetric: LegacyMetricFilter;
+  icsea: IcseaBucket;
+  enrolments: EnrolmentBucket;
 }
 
 export function hasLegacyScore(school: School): school is School & { legacy_score: number; legacy_rank: number } {
@@ -15,11 +20,12 @@ export function hasLegacyScore(school: School): school is School & { legacy_scor
 
 /**
  * Compute the marker radius from legacy score in pixels.
+ * Profile-only official ACARA schools stay deliberately small/neutral.
  * Uses a quadratic curve so higher legacy scores stand out more clearly.
  * score 60 -> radius 4; score 100 -> radius 32
  */
 export function getMarkerRadius(score: number | undefined): number {
-  if (score === undefined || !Number.isFinite(score)) return 5;
+  if (score === undefined || !Number.isFinite(score)) return 4;
   const clamped = Math.max(60, Math.min(100, score));
   const t = (clamped - 60) / 40;
   return 4 + t * t * 28;
@@ -51,17 +57,34 @@ export function getMarkerColor(score: number | undefined, sector: string): strin
 
 function matchesSector(schoolSector: string, filterSector: FilterState['sector']): boolean {
   if (filterSector === 'all') return true;
-  if (filterSector === 'Non-government') return schoolSector !== 'Government';
   return schoolSector === filterSector;
+}
+
+function matchesIcsea(school: School, bucket: IcseaBucket): boolean {
+  if (bucket === 'all') return true;
+  return Number.isFinite(school.icsea) && Number(school.icsea) >= Number(bucket);
+}
+
+function matchesEnrolmentBucket(school: School, bucket: EnrolmentBucket): boolean {
+  if (bucket === 'all') return true;
+  if (!Number.isFinite(school.total_enrolments)) return false;
+
+  const enrolments = Number(school.total_enrolments);
+  // UI bucket thresholds: small < 300, medium 300-999, large >= 1000 students.
+  if (bucket === 'small') return enrolments < 300;
+  if (bucket === 'medium') return enrolments >= 300 && enrolments < 1000;
+  return enrolments >= 1000;
 }
 
 /** Filter schools by the active controls. */
 export function filterSchools(schools: School[], filters: FilterState): School[] {
   return schools.filter(school => {
     if (!matchesSector(school.sector, filters.sector)) return false;
-    if (filters.dataLayer === 'scored' && !hasLegacyScore(school)) return false;
-    if (filters.minScore !== 'all' && (!hasLegacyScore(school) || school.legacy_score < parseInt(filters.minScore))) return false;
+    if (filters.legacyMetric === 'scored' && !hasLegacyScore(school)) return false;
+    if (filters.legacyMetric === 'profile' && hasLegacyScore(school)) return false;
     if (filters.schoolType !== 'all' && school.school_type !== filters.schoolType) return false;
+    if (!matchesIcsea(school, filters.icsea)) return false;
+    if (!matchesEnrolmentBucket(school, filters.enrolments)) return false;
     return true;
   });
 }

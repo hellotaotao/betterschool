@@ -23,21 +23,23 @@ export default function SchoolsPage() {
   const [locale, setLocale] = useState<Locale>('en');
   const [filters, setFilters] = useState<FilterState>({
     sector: 'all',
-    minScore: 'all',
     schoolType: 'all',
-    dataLayer: 'all',
+    legacyMetric: 'all',
+    icsea: 'all',
+    enrolments: 'all',
   });
   const [visibleSchools, setVisibleSchools] = useState<School[]>([]);
   const [selectedSchool, setSelectedSchool] = useState<School | null>(null);
-  const [sortBy, setSortBy] = useState<'rank' | 'score' | 'name'>('rank');
+  const [sortBy, setSortBy] = useState<'name' | 'score' | 'icsea' | 'enrolments'>('name');
   const [geoReady, setGeoReady] = useState(false);
   const [leftPanelOpen, setLeftPanelOpen] = useState(true);
   const selectedCardRef = useRef<HTMLDivElement>(null);
   const dictionary = useMemo(() => getMessages(locale), [locale]);
 
-  const dataLayerOptions: { label: string; value: FilterState['dataLayer'] }[] = useMemo(() => [
+  const legacyMetricOptions: { label: string; value: FilterState['legacyMetric'] }[] = useMemo(() => [
     { label: dictionary.filters.allOfficial, value: 'all' },
-    { label: dictionary.filters.withScoreData, value: 'scored' },
+    { label: dictionary.filters.withLegacyScore, value: 'scored' },
+    { label: dictionary.filters.profileOnly, value: 'profile' },
   ], [dictionary]);
 
   const sectorOptions: { label: string; value: FilterState['sector'] }[] = useMemo(() => [
@@ -45,14 +47,21 @@ export default function SchoolsPage() {
     { label: dictionary.filters.government, value: 'Government' },
     { label: dictionary.filters.catholic, value: 'Catholic' },
     { label: dictionary.filters.independent, value: 'Independent' },
-    { label: dictionary.filters.nonGovernment, value: 'Non-government' },
   ], [dictionary]);
 
-  const scoreOptions: { label: string; value: FilterState['minScore'] }[] = useMemo(() => [
+  const icseaOptions: { label: string; value: FilterState['icsea'] }[] = useMemo(() => [
     { label: dictionary.filters.all, value: 'all' },
-    { label: dictionary.filters.score80, value: '80' },
-    { label: dictionary.filters.score90, value: '90' },
-    { label: dictionary.filters.score95, value: '95' },
+    { label: dictionary.filters.icsea900, value: '900' },
+    { label: dictionary.filters.icsea1000, value: '1000' },
+    { label: dictionary.filters.icsea1100, value: '1100' },
+    { label: dictionary.filters.icsea1200, value: '1200' },
+  ], [dictionary]);
+
+  const enrolmentOptions: { label: string; value: FilterState['enrolments'] }[] = useMemo(() => [
+    { label: dictionary.filters.all, value: 'all' },
+    { label: dictionary.filters.enrolmentSmall, value: 'small' },
+    { label: dictionary.filters.enrolmentMedium, value: 'medium' },
+    { label: dictionary.filters.enrolmentLarge, value: 'large' },
   ], [dictionary]);
 
   const typeOptions: { label: string; value: FilterState['schoolType'] }[] = useMemo(() => [
@@ -91,14 +100,19 @@ export default function SchoolsPage() {
   const displayedSchools = useMemo(() => {
     return [...visibleSchools].sort((a, b) => {
       if (sortBy === 'name') return a.school_name.localeCompare(b.school_name);
-      if (sortBy === 'rank') {
-        const aRank = hasLegacyScore(a) ? a.legacy_rank : Number.POSITIVE_INFINITY;
-        const bRank = hasLegacyScore(b) ? b.legacy_rank : Number.POSITIVE_INFINITY;
-        return aRank - bRank || a.school_name.localeCompare(b.school_name);
+      if (sortBy === 'score') {
+        const aScore = hasLegacyScore(a) ? a.legacy_score : Number.NEGATIVE_INFINITY;
+        const bScore = hasLegacyScore(b) ? b.legacy_score : Number.NEGATIVE_INFINITY;
+        return bScore - aScore || a.school_name.localeCompare(b.school_name);
       }
-      const aScore = hasLegacyScore(a) ? a.legacy_score : Number.NEGATIVE_INFINITY;
-      const bScore = hasLegacyScore(b) ? b.legacy_score : Number.NEGATIVE_INFINITY;
-      return bScore - aScore || a.school_name.localeCompare(b.school_name);
+      if (sortBy === 'icsea') {
+        const aIcsea = Number.isFinite(a.icsea) ? Number(a.icsea) : Number.NEGATIVE_INFINITY;
+        const bIcsea = Number.isFinite(b.icsea) ? Number(b.icsea) : Number.NEGATIVE_INFINITY;
+        return bIcsea - aIcsea || a.school_name.localeCompare(b.school_name);
+      }
+      const aEnrolments = Number.isFinite(a.total_enrolments) ? Number(a.total_enrolments) : Number.NEGATIVE_INFINITY;
+      const bEnrolments = Number.isFinite(b.total_enrolments) ? Number(b.total_enrolments) : Number.NEGATIVE_INFINITY;
+      return bEnrolments - aEnrolments || a.school_name.localeCompare(b.school_name);
     });
   }, [visibleSchools, sortBy]);
 
@@ -123,6 +137,21 @@ export default function SchoolsPage() {
   function handleMapClick() {
     setSelectedSchool(null);
   }
+
+  const areaSummary = useMemo(() => {
+    const scored = visibleSchools.filter(hasLegacyScore).length;
+    const government = visibleSchools.filter(school => school.sector === 'Government').length;
+    const catholic = visibleSchools.filter(school => school.sector === 'Catholic').length;
+    const independent = visibleSchools.filter(school => school.sector === 'Independent').length;
+    const icseaValues = visibleSchools
+      .map(school => school.icsea)
+      .filter((value): value is number => Number.isFinite(value));
+    const averageIcsea = icseaValues.length > 0
+      ? Math.round(icseaValues.reduce((sum, value) => sum + value, 0) / icseaValues.length)
+      : null;
+
+    return { scored, government, catholic, independent, averageIcsea };
+  }, [visibleSchools]);
 
   const areaLabel = geoReady
     ? formatMessage(dictionary.sidebar.areaCount, { count: displayedSchools.length })
@@ -151,12 +180,12 @@ export default function SchoolsPage() {
       <div className="absolute top-3 left-3 right-3 z-10 flex gap-2 flex-wrap items-center pointer-events-none">
         <div className="pointer-events-auto flex gap-2 flex-wrap">
           <div className="flex gap-1 bg-white/90 backdrop-blur-sm rounded-full px-2 py-1 shadow-md">
-            {dataLayerOptions.map(opt => (
+            {legacyMetricOptions.map(opt => (
               <button
                 key={opt.value}
-                onClick={() => setFilters(f => ({ ...f, dataLayer: opt.value }))}
+                onClick={() => setFilters(f => ({ ...f, legacyMetric: opt.value }))}
                 className={`px-3 py-1 rounded-full text-xs font-medium transition-colors ${
-                  filters.dataLayer === opt.value
+                  filters.legacyMetric === opt.value
                     ? 'bg-indigo-600 text-white'
                     : 'text-gray-600 hover:bg-gray-100'
                 }`}
@@ -181,12 +210,12 @@ export default function SchoolsPage() {
             ))}
           </div>
           <div className="flex gap-1 bg-white/90 backdrop-blur-sm rounded-full px-2 py-1 shadow-md">
-            {scoreOptions.map(opt => (
+            {icseaOptions.map(opt => (
               <button
                 key={opt.value}
-                onClick={() => setFilters(f => ({ ...f, minScore: opt.value }))}
+                onClick={() => setFilters(f => ({ ...f, icsea: opt.value }))}
                 className={`px-3 py-1 rounded-full text-xs font-medium transition-colors ${
-                  filters.minScore === opt.value
+                  filters.icsea === opt.value
                     ? 'bg-indigo-600 text-white'
                     : 'text-gray-600 hover:bg-gray-100'
                 }`}
@@ -202,6 +231,22 @@ export default function SchoolsPage() {
                 onClick={() => setFilters(f => ({ ...f, schoolType: opt.value }))}
                 className={`px-3 py-1 rounded-full text-xs font-medium transition-colors ${
                   filters.schoolType === opt.value
+                    ? 'bg-indigo-600 text-white'
+                    : 'text-gray-600 hover:bg-gray-100'
+                }`}
+              >
+                {opt.label}
+              </button>
+            ))}
+          </div>
+          <div className="flex gap-1 bg-white/90 backdrop-blur-sm rounded-full px-2 py-1 shadow-md">
+            {enrolmentOptions.map(opt => (
+              <button
+                key={opt.value}
+                onClick={() => setFilters(f => ({ ...f, enrolments: opt.value }))}
+                title={opt.value === 'small' ? dictionary.filters.enrolmentSmallHint : opt.value === 'medium' ? dictionary.filters.enrolmentMediumHint : opt.value === 'large' ? dictionary.filters.enrolmentLargeHint : undefined}
+                className={`px-3 py-1 rounded-full text-xs font-medium transition-colors ${
+                  filters.enrolments === opt.value
                     ? 'bg-indigo-600 text-white'
                     : 'text-gray-600 hover:bg-gray-100'
                 }`}
@@ -234,13 +279,21 @@ export default function SchoolsPage() {
               </span>
               <select
                 value={sortBy}
-                onChange={e => setSortBy(e.target.value as 'rank' | 'score' | 'name')}
+                onChange={e => setSortBy(e.target.value as 'name' | 'score' | 'icsea' | 'enrolments')}
                 className="text-xs text-gray-500 border-0 bg-transparent cursor-pointer focus:outline-none"
               >
-                <option value="rank">{dictionary.sidebar.sortByRank}</option>
-                <option value="score">{dictionary.sidebar.sortByScore}</option>
                 <option value="name">{dictionary.sidebar.sortByName}</option>
+                <option value="score">{dictionary.sidebar.sortByScore}</option>
+                <option value="icsea">{dictionary.sidebar.sortByIcsea}</option>
+                <option value="enrolments">{dictionary.sidebar.sortByEnrolments}</option>
               </select>
+            </div>
+
+            <div className="px-3 py-2 border-b border-gray-100 bg-indigo-50/70 text-[10px] text-indigo-950 leading-snug shrink-0 grid grid-cols-2 gap-x-3 gap-y-1">
+              <div>{formatMessage(dictionary.sidebar.visibleCount, { count: displayedSchools.length })}</div>
+              <div>{formatMessage(dictionary.sidebar.scoredCount, { count: areaSummary.scored })}</div>
+              <div>{formatMessage(dictionary.sidebar.sectorCounts, { government: areaSummary.government, catholic: areaSummary.catholic, independent: areaSummary.independent })}</div>
+              <div>{formatMessage(dictionary.sidebar.averageIcsea, { value: areaSummary.averageIcsea ?? '—' })}</div>
             </div>
 
             <div className="px-3 py-2 border-b border-gray-100 bg-amber-50/70 text-[10px] text-amber-900 leading-snug shrink-0">
@@ -340,11 +393,16 @@ export default function SchoolsPage() {
               </div>
               <div className="shrink-0 bg-indigo-600 text-white text-center rounded-lg px-2 py-1">
                 <div className="text-lg font-black leading-none">{hasLegacyScore(selectedSchool) ? selectedSchool.legacy_score : '—'}</div>
-                <div className="text-[8px] font-normal">{hasLegacyScore(selectedSchool) ? dictionary.details.score : dictionary.details.profileOnly}</div>
+                <div className="text-[8px] font-normal">{hasLegacyScore(selectedSchool) ? dictionary.details.legacyScore : dictionary.details.profileOnly}</div>
               </div>
             </div>
 
             <div className="bg-gray-50 rounded-lg p-2.5 space-y-2 text-xs">
+              <div className="flex justify-between">
+                <span className="text-gray-500">{dictionary.details.legacyScore}</span>
+                <span className="font-bold text-gray-800">{hasLegacyScore(selectedSchool) ? selectedSchool.legacy_score : '—'}</span>
+              </div>
+              <div className="border-t border-gray-100" />
               <div className="flex justify-between">
                 <span className="text-gray-500">{dictionary.details.datasetRank}</span>
                 <span className="font-bold text-gray-800">{hasLegacyScore(selectedSchool) ? `#${selectedSchool.legacy_rank}` : '—'}</span>

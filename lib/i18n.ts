@@ -29,7 +29,6 @@ export function getSectorLabel(sector: string, dictionary: Messages): string {
   if (sector === 'Government') return dictionary.filters.government;
   if (sector === 'Catholic') return dictionary.filters.catholic;
   if (sector === 'Independent') return dictionary.filters.independent;
-  if (sector === 'Non-government') return dictionary.filters.nonGovernment;
   return sector;
 }
 
