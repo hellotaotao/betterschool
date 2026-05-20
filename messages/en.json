@@ -25,7 +25,7 @@
   "details": {
     "title": "School details",
     "score": "Score",
-    "nationalRank": "National rank",
+    "datasetRank": "Rank in current dataset",
     "sector": "Sector",
     "schoolType": "School type",
     "postcode": "Postcode"
@@ -34,5 +34,9 @@
     "governmentSchools": "Government schools",
     "nonGovernmentSchools": "Non-government schools",
     "sizeEqualsScore": "Size = score"
+  },
+  "dataNotice": {
+    "title": "Foundation dataset",
+    "body": "This is not a complete list of Australian schools. Score/rank are legacy reference fields for the current dataset only; sources, NAPLAN and fees will be added later."
   }
 }

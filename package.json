@@ -6,7 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
+    "lint": "eslint app components lib utils types scripts --ext .ts,.tsx,.mjs",
     "postinstall": "cp node_modules/leaflet/dist/leaflet.css public/leaflet.css"
   },
   "dependencies": {

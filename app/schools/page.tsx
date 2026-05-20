@@ -71,7 +71,7 @@ export default function SchoolsPage() {
         ? [navigator.language]
         : [];
 
-    setLocale(detectBrowserLocale(languages));
+    window.setTimeout(() => setLocale(detectBrowserLocale(languages)), 0);
   }, []);
 
   const filteredSchools = useMemo(
@@ -94,7 +94,7 @@ export default function SchoolsPage() {
   const handleGeoReady = useCallback(() => setGeoReady(true), []);
 
   function schoolId(s: School) {
-    return `${s.school_name}-${s.postcode}`;
+    return s.local_id;
   }
 
   function handleSchoolClick(school: School) {
@@ -210,6 +210,11 @@ export default function SchoolsPage() {
               </select>
             </div>
 
+            <div className="px-3 py-2 border-b border-gray-100 bg-amber-50/70 text-[10px] text-amber-900 leading-snug shrink-0">
+              <div className="font-semibold">{dictionary.dataNotice.title}</div>
+              <div>{dictionary.dataNotice.body}</div>
+            </div>
+
             <div className="flex-1 overflow-y-auto p-2 space-y-1.5">
               {loading ? (
                 <p className="text-center text-xs text-gray-400 py-8">{dictionary.sidebar.loading}</p>
@@ -304,7 +309,7 @@ export default function SchoolsPage() {
 
             <div className="bg-gray-50 rounded-lg p-2.5 space-y-2 text-xs">
               <div className="flex justify-between">
-                <span className="text-gray-500">{dictionary.details.nationalRank}</span>
+                <span className="text-gray-500">{dictionary.details.datasetRank}</span>
                 <span className="font-bold text-gray-800">#{selectedSchool.rank}</span>
               </div>
               <div className="border-t border-gray-100" />

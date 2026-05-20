@@ -25,7 +25,7 @@
   "details": {
     "title": "学校详情",
     "score": "分",
-    "nationalRank": "全国排名",
+    "datasetRank": "当前数据集排名",
     "sector": "办学性质",
     "schoolType": "学校类型",
     "postcode": "邮编"
@@ -34,5 +34,9 @@
     "governmentSchools": "政府学校",
     "nonGovernmentSchools": "非政府学校",
     "sizeEqualsScore": "大小 = 评分"
+  },
+  "dataNotice": {
+    "title": "基础数据集",
+    "body": "当前不是澳洲全量学校清单。评分/排名仅为当前数据集中的历史导入参考值；后续会补充来源、NAPLAN 和学费。"
   }
 }

@@ -1,0 +1,23 @@
+{
+  "dataset_status": "foundation_incomplete",
+  "coverage_note": "This is a cleaned foundation dataset, not a complete list of Australian schools.",
+  "provenance": {
+    "source": "Legacy imported schools.json records in this repository.",
+    "rank_scope": "Unknown legacy scope; rank is within the current dataset only until a sourced ranking methodology is added.",
+    "score_scope": "Unknown legacy score; score is retained as an imported reference field and is not an authoritative national score.",
+    "naplan": "Not collected in this phase.",
+    "fees": "Not collected in this phase."
+  },
+  "fields": {
+    "local_id": "Deterministic local identifier generated from school_name + postcode + state; intended to remain stable until mapped to an external identifier such as ACARA ID.",
+    "sector": "Current taxonomy preserves source-supported Government / Non-government only. Future taxonomy may split Non-government into Catholic / Independent when source data supports it.",
+    "rank": "Legacy imported rank; display as rank in current dataset, not national rank.",
+    "score": "Legacy imported score; display as current dataset reference value."
+  },
+  "generated_from": {
+    "input_records": 952,
+    "output_records": 925,
+    "duplicate_records_removed": 27,
+    "sector_values_standardized": 2
+  }
+}
