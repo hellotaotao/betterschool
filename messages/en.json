@@ -1,5 +1,12 @@
 {
   "loadingMap": "Loading map...",
+  "search": {
+    "placeholder": "Search school / suburb / postcode",
+    "schoolsGroup": "Schools",
+    "placesGroup": "Suburbs & postcodes",
+    "placeCount": "{count} schools",
+    "noResults": "No matches"
+  },
   "filters": {
     "all": "All",
     "allOfficial": "All official schools",

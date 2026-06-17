@@ -1,5 +1,12 @@
 {
   "loadingMap": "加载地图中...",
+  "search": {
+    "placeholder": "搜索学校 / 区 / 邮编",
+    "schoolsGroup": "学校",
+    "placesGroup": "地区与邮编",
+    "placeCount": "{count} 所学校",
+    "noResults": "无匹配结果"
+  },
   "filters": {
     "all": "全部",
     "allOfficial": "全部官方学校",
