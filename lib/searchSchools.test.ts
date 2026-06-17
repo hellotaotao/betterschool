@@ -60,4 +60,15 @@ describe('searchSchools', () => {
       make({ id: `m${i}`, school_name: `Zebra School ${i}` }));
     expect(searchSchools('zebra', many).length).toBeLessThanOrEqual(8);
   });
+
+  it('keeps a place result visible even when many schools match the name', () => {
+    const schools: School[] = [
+      ...Array.from({ length: 10 }, (_, i) =>
+        make({ id: `n${i}`, school_name: `Parra School ${i}`, suburb: 'Other' })),
+      make({ id: 'sub', school_name: 'Unrelated', suburb: 'Parra' }),
+    ];
+    const r = searchSchools('parra', schools);
+    expect(r.length).toBeLessThanOrEqual(8);
+    expect(r.some(x => x.type === 'place' && x.label === 'Parra, SA')).toBe(true);
+  });
 });

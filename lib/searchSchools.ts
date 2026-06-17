@@ -5,6 +5,7 @@ export type SearchResult =
   | { type: 'place'; label: string; state: string; postcode?: string; schools: School[] };
 
 const MAX_RESULTS = 8;
+const RESERVED_PLACE_SLOTS = 3;
 
 export function searchSchools(rawQuery: string, schools: School[]): SearchResult[] {
   const query = rawQuery.trim().toLowerCase();
@@ -67,6 +68,11 @@ export function searchSchools(rawQuery: string, schools: School[]): SearchResult
 
   const schoolResults: SearchResult[] = nameMatches.map(m => ({ type: 'school', school: m.school }));
 
-  // Schools first, then fill remaining slots with places.
-  return [...schoolResults, ...placeResults].slice(0, MAX_RESULTS);
+  // Reserve up to RESERVED_PLACE_SLOTS for places so a suburb/postcode lookup
+  // stays visible even when many schools share the query in their name
+  // (e.g. "Parramatta" matches 11 school names plus the suburb).
+  const reserved = Math.min(placeResults.length, RESERVED_PLACE_SLOTS);
+  const schoolsShown = schoolResults.slice(0, MAX_RESULTS - reserved);
+  const placesShown = placeResults.slice(0, MAX_RESULTS - schoolsShown.length);
+  return [...schoolsShown, ...placesShown];
 }

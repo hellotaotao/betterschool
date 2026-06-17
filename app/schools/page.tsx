@@ -150,6 +150,7 @@ export default function SchoolsPage() {
             onBoundsChange={setVisibleSchools}
             onMapClick={handleMapClick}
             flyToSchool={selectedSchool}
+            fitToSchools={placeFocus}
             onGeoReady={handleGeoReady}
           />
         )}
