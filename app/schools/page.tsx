@@ -10,11 +10,13 @@ import {
 } from '@/lib/i18n';
 import { School } from '@/types/school';
 import { FilterState, filterSchools, hasLegacyScore } from '@/utils/schoolFilters';
+import { useMediaQuery } from '@/lib/useMediaQuery';
 
 import SchoolDetail from '../../components/SchoolDetail';
 import SchoolList from '../../components/SchoolList';
 import FilterBar from '../../components/FilterBar';
 import SearchBox from '../../components/SearchBox';
+import BottomSheet, { SheetSnap } from '../../components/BottomSheet';
 
 const SchoolMap = dynamic(() => import('../../components/SchoolMap'), {
   ssr: false,
@@ -37,8 +39,10 @@ export default function SchoolsPage() {
   const [sortBy, setSortBy] = useState<'name' | 'score' | 'icsea' | 'enrolments'>('name');
   const [geoReady, setGeoReady] = useState(false);
   const [leftPanelOpen, setLeftPanelOpen] = useState(true);
+  const [sheetSnap, setSheetSnap] = useState<SheetSnap>('peek');
   const selectedCardRef = useRef<HTMLDivElement>(null);
   const dictionary = useMemo(() => getMessages(locale), [locale]);
+  const isMobile = useMediaQuery('(max-width: 768px)');
 
   useEffect(() => {
     fetch('/data/schools.canonical.json')
@@ -97,9 +101,9 @@ export default function SchoolsPage() {
   }
 
   function handleSchoolClick(school: School) {
-    setSelectedSchool(prev =>
-      prev && schoolId(prev) === schoolId(school) ? null : school
-    );
+    const isDeselect = !!selectedSchool && schoolId(selectedSchool) === schoolId(school);
+    setSelectedSchool(isDeselect ? null : school);
+    if (!isDeselect && isMobile) setSheetSnap('expanded');
   }
 
   function handleMapClick() {
@@ -109,7 +113,8 @@ export default function SchoolsPage() {
   const handlePickSchool = useCallback((s: School) => {
     setPlaceFocus(null);
     setSelectedSchool(s);
-  }, []);
+    if (isMobile) setSheetSnap('expanded');
+  }, [isMobile]);
 
   const handlePickPlace = useCallback((schools: School[]) => {
     setSelectedSchool(null);
@@ -156,82 +161,127 @@ export default function SchoolsPage() {
         )}
       </div>
 
-      <div className="absolute top-3 left-3 right-3 z-30 flex gap-2 flex-wrap items-center pointer-events-none">
-        <div className="pointer-events-auto w-64 shrink-0">
-          <SearchBox
-            allSchools={allSchools}
-            dictionary={dictionary}
-            onPickSchool={handlePickSchool}
-            onPickPlace={handlePickPlace}
-          />
-        </div>
-        <div className="pointer-events-auto">
-          <FilterBar filters={filters} onChange={setFilters} dictionary={dictionary} />
-        </div>
-      </div>
-
-      <div
-        className={`absolute top-14 left-3 bottom-3 z-10 flex transition-all duration-300 ${
-          leftPanelOpen ? 'w-72' : 'w-8'
-        }`}
-      >
-        <button
-          onClick={() => setLeftPanelOpen(o => !o)}
-          className="absolute -right-3 top-1/2 -translate-y-1/2 z-20 w-6 h-12 bg-white rounded-r-md shadow-md flex items-center justify-center text-gray-500 hover:text-gray-800 hover:bg-gray-50 transition-colors"
-          title={leftPanelOpen ? dictionary.sidebar.collapseList : dictionary.sidebar.expandList}
-        >
-          {leftPanelOpen ? '‹' : '›'}
-        </button>
-
-        {leftPanelOpen && (
-          <div className="w-full rounded-xl shadow-xl overflow-hidden flex">
-            <SchoolList
-              schools={displayedSchools}
-              selectedSchool={selectedSchool}
-              sortBy={sortBy}
-              onSortChange={setSortBy}
-              onSchoolClick={handleSchoolClick}
-              areaSummary={areaSummary}
-              areaLabel={areaLabel}
-              loading={loading}
-              geoReady={geoReady}
-              dictionary={dictionary}
-              selectedCardRef={selectedCardRef}
-            />
+      {isMobile ? (
+        <>
+          <div className="absolute top-2 left-2 right-2 z-30 space-y-2 pointer-events-none">
+            <div className="pointer-events-auto">
+              <SearchBox
+                allSchools={allSchools}
+                dictionary={dictionary}
+                onPickSchool={handlePickSchool}
+                onPickPlace={handlePickPlace}
+              />
+            </div>
+            <div className="pointer-events-auto">
+              <FilterBar filters={filters} onChange={setFilters} dictionary={dictionary} variant="scroll" />
+            </div>
           </div>
-        )}
-      </div>
 
-      {selectedSchool && (
-        <SchoolDetail
-          school={selectedSchool}
-          dictionary={dictionary}
-          onClose={handleMapClick}
-        />
+          <BottomSheet snap={sheetSnap} onSnapChange={setSheetSnap}>
+            {selectedSchool ? (
+              <SchoolDetail
+                school={selectedSchool}
+                dictionary={dictionary}
+                onClose={handleMapClick}
+                variant="sheet"
+              />
+            ) : (
+              <SchoolList
+                schools={displayedSchools}
+                selectedSchool={selectedSchool}
+                sortBy={sortBy}
+                onSortChange={setSortBy}
+                onSchoolClick={handleSchoolClick}
+                areaSummary={areaSummary}
+                areaLabel={areaLabel}
+                loading={loading}
+                geoReady={geoReady}
+                dictionary={dictionary}
+                selectedCardRef={selectedCardRef}
+              />
+            )}
+          </BottomSheet>
+        </>
+      ) : (
+        <>
+          <div className="absolute top-3 left-3 right-3 z-30 flex gap-2 flex-wrap items-center pointer-events-none">
+            <div className="pointer-events-auto w-64 shrink-0">
+              <SearchBox
+                allSchools={allSchools}
+                dictionary={dictionary}
+                onPickSchool={handlePickSchool}
+                onPickPlace={handlePickPlace}
+              />
+            </div>
+            <div className="pointer-events-auto">
+              <FilterBar filters={filters} onChange={setFilters} dictionary={dictionary} />
+            </div>
+          </div>
+
+          <div
+            className={`absolute top-14 left-3 bottom-3 z-10 flex transition-all duration-300 ${
+              leftPanelOpen ? 'w-72' : 'w-8'
+            }`}
+          >
+            <button
+              onClick={() => setLeftPanelOpen(o => !o)}
+              className="absolute -right-3 top-1/2 -translate-y-1/2 z-20 w-6 h-12 bg-white rounded-r-md shadow-md flex items-center justify-center text-gray-500 hover:text-gray-800 hover:bg-gray-50 transition-colors"
+              title={leftPanelOpen ? dictionary.sidebar.collapseList : dictionary.sidebar.expandList}
+            >
+              {leftPanelOpen ? '‹' : '›'}
+            </button>
+
+            {leftPanelOpen && (
+              <div className="w-full rounded-xl shadow-xl overflow-hidden flex">
+                <SchoolList
+                  schools={displayedSchools}
+                  selectedSchool={selectedSchool}
+                  sortBy={sortBy}
+                  onSortChange={setSortBy}
+                  onSchoolClick={handleSchoolClick}
+                  areaSummary={areaSummary}
+                  areaLabel={areaLabel}
+                  loading={loading}
+                  geoReady={geoReady}
+                  dictionary={dictionary}
+                  selectedCardRef={selectedCardRef}
+                />
+              </div>
+            )}
+          </div>
+
+          {selectedSchool && (
+            <SchoolDetail
+              school={selectedSchool}
+              dictionary={dictionary}
+              onClose={handleMapClick}
+            />
+          )}
+
+          <div className="absolute bottom-8 right-3 z-10 bg-white/90 backdrop-blur-sm rounded-lg px-3 py-2 shadow-md text-[10px] text-gray-600 space-y-1">
+            <div className="flex items-center gap-2">
+              <span className="w-3 h-3 rounded-full bg-green-500 border border-white inline-block shrink-0"></span>
+              {dictionary.legend.governmentSchools}
+            </div>
+            <div className="flex items-center gap-2">
+              <span className="w-3 h-3 rounded-full bg-orange-500 border border-white inline-block shrink-0"></span>
+              {dictionary.legend.nonGovernmentSchools}
+            </div>
+            <div className="flex items-center gap-2">
+              <span className="w-2.5 h-2.5 rounded-full bg-gray-400 border border-white inline-block shrink-0 opacity-75"></span>
+              {dictionary.legend.profileOnlySchools}
+            </div>
+            <div className="flex items-center gap-2">
+              <span className="flex gap-0.5 items-center">
+                <span className="w-1.5 h-1.5 rounded-full bg-gray-400 inline-block"></span>
+                <span className="w-2.5 h-2.5 rounded-full bg-gray-400 inline-block"></span>
+                <span className="w-3.5 h-3.5 rounded-full bg-gray-400 inline-block"></span>
+              </span>
+              <span>{dictionary.legend.sizeEqualsScore}</span>
+            </div>
+          </div>
+        </>
       )}
-
-      <div className="absolute bottom-8 right-3 z-10 bg-white/90 backdrop-blur-sm rounded-lg px-3 py-2 shadow-md text-[10px] text-gray-600 space-y-1">
-        <div className="flex items-center gap-2">
-          <span className="w-3 h-3 rounded-full bg-green-500 border border-white inline-block shrink-0"></span>
-          {dictionary.legend.governmentSchools}
-        </div>
-        <div className="flex items-center gap-2">
-          <span className="w-3 h-3 rounded-full bg-orange-500 border border-white inline-block shrink-0"></span>
-          {dictionary.legend.nonGovernmentSchools}
-        </div>
-        <div className="flex items-center gap-2">
-          <span className="w-2.5 h-2.5 rounded-full bg-gray-400 border border-white inline-block shrink-0 opacity-75"></span>
-          {dictionary.legend.profileOnlySchools}
-        </div>
-        <div className="flex items-center gap-2">
-          <span className="flex gap-0.5 items-center">
-            <span className="w-1.5 h-1.5 rounded-full bg-gray-400 inline-block"></span>
-            <span className="w-2.5 h-2.5 rounded-full bg-gray-400 inline-block"></span>
-            <span className="w-3.5 h-3.5 rounded-full bg-gray-400 inline-block"></span>
-          </span>
-          <span>{dictionary.legend.sizeEqualsScore}</span>
-        </div>
-      </div>
     </div>
   );
 }
