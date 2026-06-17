@@ -46,3 +46,4 @@ scripts/process_school_data.py
 
 # superpowers
 .superpowers/
+.gstack/
