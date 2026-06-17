@@ -6,12 +6,13 @@ import {
   detectBrowserLocale,
   formatMessage,
   getMessages,
-  getSchoolTypeLabel,
   getSectorLabel,
   Locale,
 } from '@/lib/i18n';
 import { School } from '@/types/school';
 import { FilterState, filterSchools, hasLegacyScore } from '@/utils/schoolFilters';
+
+import SchoolDetail from '../../components/SchoolDetail';
 
 const SchoolMap = dynamic(() => import('../../components/SchoolMap'), {
   ssr: false,
@@ -370,165 +371,11 @@ export default function SchoolsPage() {
       </div>
 
       {selectedSchool && (
-        <div className="absolute top-14 right-3 bottom-3 z-10 w-56 bg-white/95 backdrop-blur-sm rounded-xl shadow-xl flex flex-col overflow-hidden">
-          <div className="px-3 py-2.5 border-b border-gray-100 flex justify-between items-center shrink-0">
-            <span className="text-xs font-bold text-indigo-600">{dictionary.details.title}</span>
-            <button
-              onClick={handleMapClick}
-              className="text-gray-400 hover:text-gray-700 text-base leading-none"
-            >
-              ✕
-            </button>
-          </div>
-
-          <div className="flex-1 overflow-y-auto p-3">
-            <div className="flex justify-between items-start gap-2 mb-3">
-              <div>
-                <h2 className="text-sm font-bold text-gray-900 leading-tight">
-                  {selectedSchool.school_name}
-                </h2>
-                <p className="text-[10px] text-gray-400 mt-0.5">
-                  {selectedSchool.suburb}, {selectedSchool.state} {selectedSchool.postcode}
-                </p>
-              </div>
-              <div className="shrink-0 bg-indigo-600 text-white text-center rounded-lg px-2 py-1">
-                <div className="text-lg font-black leading-none">{hasLegacyScore(selectedSchool) ? selectedSchool.legacy_score : '—'}</div>
-                <div className="text-[8px] font-normal">{hasLegacyScore(selectedSchool) ? dictionary.details.legacyScore : dictionary.details.profileOnly}</div>
-              </div>
-            </div>
-
-            <div className="bg-gray-50 rounded-lg p-2.5 space-y-2 text-xs">
-              <div className="flex justify-between">
-                <span className="text-gray-500">{dictionary.details.legacyScore}</span>
-                <span className="font-bold text-gray-800">{hasLegacyScore(selectedSchool) ? selectedSchool.legacy_score : '—'}</span>
-              </div>
-              <div className="border-t border-gray-100" />
-              <div className="flex justify-between">
-                <span className="text-gray-500">{dictionary.details.datasetRank}</span>
-                <span className="font-bold text-gray-800">{hasLegacyScore(selectedSchool) ? `#${selectedSchool.legacy_rank}` : '—'}</span>
-              </div>
-              <div className="border-t border-gray-100" />
-              <div className="flex justify-between items-center">
-                <span className="text-gray-500">{dictionary.details.sector}</span>
-                <span
-                  className={`text-[10px] px-2 py-0.5 rounded-full font-medium ${
-                    selectedSchool.sector === 'Government'
-                      ? 'bg-green-100 text-green-700'
-                      : 'bg-orange-100 text-orange-700'
-                  }`}
-                >
-                  {getSectorLabel(selectedSchool.sector, dictionary)}
-                </span>
-              </div>
-              {selectedSchool.school_type && (
-                <>
-                  <div className="border-t border-gray-100" />
-                  <div className="flex justify-between">
-                    <span className="text-gray-500">{dictionary.details.schoolType}</span>
-                    <span className="font-medium text-gray-800">
-                      {getSchoolTypeLabel(selectedSchool.school_type, dictionary)}
-                    </span>
-                  </div>
-                </>
-              )}
-              {selectedSchool.campus_type && (
-                <>
-                  <div className="border-t border-gray-100" />
-                  <div className="flex justify-between gap-2">
-                    <span className="text-gray-500">{dictionary.details.campusType}</span>
-                    <span className="font-medium text-gray-800 text-right">{selectedSchool.campus_type}</span>
-                  </div>
-                </>
-              )}
-              {selectedSchool.year_range && (
-                <>
-                  <div className="border-t border-gray-100" />
-                  <div className="flex justify-between">
-                    <span className="text-gray-500">{dictionary.details.yearRange}</span>
-                    <span className="font-medium text-gray-800">{selectedSchool.year_range}</span>
-                  </div>
-                </>
-              )}
-              {Number.isFinite(selectedSchool.icsea) && (
-                <>
-                  <div className="border-t border-gray-100" />
-                  <div className="flex justify-between">
-                    <span className="text-gray-500">{dictionary.details.icsea}</span>
-                    <span className="font-medium text-gray-800">{selectedSchool.icsea}</span>
-                  </div>
-                </>
-              )}
-              {Number.isFinite(selectedSchool.icsea_percentile) && (
-                <>
-                  <div className="border-t border-gray-100" />
-                  <div className="flex justify-between">
-                    <span className="text-gray-500">{dictionary.details.icseaPercentile}</span>
-                    <span className="font-medium text-gray-800">{selectedSchool.icsea_percentile}</span>
-                  </div>
-                </>
-              )}
-              {Number.isFinite(selectedSchool.total_enrolments) && (
-                <>
-                  <div className="border-t border-gray-100" />
-                  <div className="flex justify-between">
-                    <span className="text-gray-500">{dictionary.details.enrolments}</span>
-                    <span className="font-medium text-gray-800">{selectedSchool.total_enrolments}</span>
-                  </div>
-                </>
-              )}
-              {Number.isFinite(selectedSchool.girls) && Number.isFinite(selectedSchool.boys) && (
-                <>
-                  <div className="border-t border-gray-100" />
-                  <div className="flex justify-between">
-                    <span className="text-gray-500">{dictionary.details.girlsBoys}</span>
-                    <span className="font-medium text-gray-800">{selectedSchool.girls} / {selectedSchool.boys}</span>
-                  </div>
-                </>
-              )}
-              {Number.isFinite(selectedSchool.lbote_yes_percent) && (
-                <>
-                  <div className="border-t border-gray-100" />
-                  <div className="flex justify-between">
-                    <span className="text-gray-500">{dictionary.details.lbote}</span>
-                    <span className="font-medium text-gray-800">{selectedSchool.lbote_yes_percent}%</span>
-                  </div>
-                </>
-              )}
-              {Number.isFinite(selectedSchool.indigenous_percent) && (
-                <>
-                  <div className="border-t border-gray-100" />
-                  <div className="flex justify-between">
-                    <span className="text-gray-500">{dictionary.details.indigenous}</span>
-                    <span className="font-medium text-gray-800">{selectedSchool.indigenous_percent}%</span>
-                  </div>
-                </>
-              )}
-              <div className="border-t border-gray-100" />
-              <div className="flex justify-between">
-                <span className="text-gray-500">{dictionary.details.postcode}</span>
-                <span className="font-medium text-gray-800">{selectedSchool.postcode}</span>
-              </div>
-              {selectedSchool.governing_body && (
-                <>
-                  <div className="border-t border-gray-100" />
-                  <div className="flex justify-between gap-2">
-                    <span className="text-gray-500">{dictionary.details.governingBody}</span>
-                    <span className="font-medium text-gray-800 text-right">{selectedSchool.governing_body}</span>
-                  </div>
-                </>
-              )}
-              {selectedSchool.school_url && (
-                <>
-                  <div className="border-t border-gray-100" />
-                  <div className="flex justify-between">
-                    <span className="text-gray-500">{dictionary.details.website}</span>
-                    <a className="font-medium text-indigo-600 hover:underline" href={selectedSchool.school_url} target="_blank" rel="noreferrer">Open</a>
-                  </div>
-                </>
-              )}
-            </div>
-          </div>
-        </div>
+        <SchoolDetail
+          school={selectedSchool}
+          dictionary={dictionary}
+          onClose={handleMapClick}
+        />
       )}
 
       <div className="absolute bottom-8 right-3 z-10 bg-white/90 backdrop-blur-sm rounded-lg px-3 py-2 shadow-md text-[10px] text-gray-600 space-y-1">
