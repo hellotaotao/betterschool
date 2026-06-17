@@ -7,6 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint app components lib utils types scripts --ext .ts,.tsx,.mjs",
+    "test": "vitest run",
+    "test:watch": "vitest",
     "postinstall": "cp node_modules/leaflet/dist/leaflet.css public/leaflet.css",
     "acara:parse": "node scripts/parse-acara-2025.mjs",
     "acara:match": "node scripts/match-betterschool-acara.mjs",
@@ -32,6 +34,7 @@
     "eslint-config-next": "^16.2.2",
     "postcss": "^8",
     "tailwindcss": "^4.2.2",
-    "typescript": "^5"
+    "typescript": "^5",
+    "vitest": "^4.1.9"
   }
 }

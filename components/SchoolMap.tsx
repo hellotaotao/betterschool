@@ -61,6 +61,7 @@ interface SchoolMapProps {
   onBoundsChange: (visibleSchools: School[]) => void;
   onMapClick: () => void;
   flyToSchool?: School | null;
+  fitToSchools?: School[] | null;
   onGeoReady?: () => void;
 }
 
@@ -273,6 +274,38 @@ function FlyToTracker({ school }: { school: School | null | undefined }) {
   return null;
 }
 
+/**
+ * Fit the map to a focus set of schools (a suburb/postcode search result) and
+ * report the now-visible schools directly. A programmatic fitBounds does not
+ * reliably fire the moveend that BoundsTracker listens to, so we recompute the
+ * viewport set here instead of relying on the event.
+ */
+function FitToSchools({
+  focus,
+  schools,
+  onBoundsChange,
+}: {
+  focus: School[] | null;
+  schools: School[];
+  onBoundsChange: (visible: School[]) => void;
+}) {
+  const map = useMap();
+  useEffect(() => {
+    if (!focus || focus.length === 0) return;
+    const pts = focus
+      .filter(s => s.lat && s.lng)
+      .map(s => [s.lat, s.lng] as [number, number]);
+    if (pts.length === 0) return;
+    const bounds = L.latLngBounds(pts);
+    if (!bounds.isValid()) return;
+    map.fitBounds(bounds, { padding: [50, 50], maxZoom: 14, animate: false });
+    const viewBounds = map.getBounds();
+    onBoundsChange(schools.filter(s => viewBounds.contains([s.lat, s.lng])));
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [focus]);
+  return null;
+}
+
 export default function SchoolMap({
   schools,
   selectedSchool,
@@ -280,6 +313,7 @@ export default function SchoolMap({
   onBoundsChange,
   onMapClick,
   flyToSchool,
+  fitToSchools,
   onGeoReady,
 }: SchoolMapProps) {
   useEffect(() => {
@@ -322,17 +356,18 @@ export default function SchoolMap({
 
         <GeoLocator onReady={handleGeoReady} />
         <FlyToTracker school={flyToSchool} />
+        <FitToSchools focus={fitToSchools ?? null} schools={schools} onBoundsChange={handleBoundsChange} />
         <MapClickTracker onMapClick={onMapClick} />
         <BoundsTracker schools={schools} onBoundsChange={handleBoundsChange} geoReady={geoReady} />
 
         {/* Render unselected schools that are currently visible. */}
         {renderSchools
-          .filter(s => !selectedSchool || `${s.school_name}-${s.postcode}` !== `${selectedSchool.school_name}-${selectedSchool.postcode}`)
+          .filter(s => !selectedSchool || s.id !== selectedSchool.id)
           .map((school) => {
             if (!school.lat || !school.lng) return null;
             return (
               <Marker
-                key={`${school.school_name}-${school.postcode}`}
+                key={school.id}
                 position={[school.lat, school.lng]}
                 icon={getSchoolIcon(school, false)}
                 eventHandlers={{ click: () => onSchoolClick(school) }}
