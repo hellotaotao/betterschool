@@ -14,6 +14,7 @@ import { FilterState, filterSchools, hasLegacyScore } from '@/utils/schoolFilter
 import SchoolDetail from '../../components/SchoolDetail';
 import SchoolList from '../../components/SchoolList';
 import FilterBar from '../../components/FilterBar';
+import SearchBox from '../../components/SearchBox';
 
 const SchoolMap = dynamic(() => import('../../components/SchoolMap'), {
   ssr: false,
@@ -32,6 +33,7 @@ export default function SchoolsPage() {
   });
   const [visibleSchools, setVisibleSchools] = useState<School[]>([]);
   const [selectedSchool, setSelectedSchool] = useState<School | null>(null);
+  const [placeFocus, setPlaceFocus] = useState<School[] | null>(null);
   const [sortBy, setSortBy] = useState<'name' | 'score' | 'icsea' | 'enrolments'>('name');
   const [geoReady, setGeoReady] = useState(false);
   const [leftPanelOpen, setLeftPanelOpen] = useState(true);
@@ -104,6 +106,16 @@ export default function SchoolsPage() {
     setSelectedSchool(null);
   }
 
+  const handlePickSchool = useCallback((s: School) => {
+    setPlaceFocus(null);
+    setSelectedSchool(s);
+  }, []);
+
+  const handlePickPlace = useCallback((schools: School[]) => {
+    setSelectedSchool(null);
+    setPlaceFocus(schools);
+  }, []);
+
   const areaSummary = useMemo(() => {
     const scored = visibleSchools.filter(hasLegacyScore).length;
     const government = visibleSchools.filter(school => school.sector === 'Government').length;
@@ -143,7 +155,15 @@ export default function SchoolsPage() {
         )}
       </div>
 
-      <div className="absolute top-3 left-3 right-3 z-10 flex gap-2 flex-wrap items-center pointer-events-none">
+      <div className="absolute top-3 left-3 right-3 z-30 flex gap-2 flex-wrap items-center pointer-events-none">
+        <div className="pointer-events-auto w-64 shrink-0">
+          <SearchBox
+            allSchools={allSchools}
+            dictionary={dictionary}
+            onPickSchool={handlePickSchool}
+            onPickPlace={handlePickPlace}
+          />
+        </div>
         <div className="pointer-events-auto">
           <FilterBar filters={filters} onChange={setFilters} dictionary={dictionary} />
         </div>
