@@ -13,6 +13,7 @@ import { FilterState, filterSchools, hasLegacyScore } from '@/utils/schoolFilter
 
 import SchoolDetail from '../../components/SchoolDetail';
 import SchoolList from '../../components/SchoolList';
+import FilterBar from '../../components/FilterBar';
 
 const SchoolMap = dynamic(() => import('../../components/SchoolMap'), {
   ssr: false,
@@ -36,42 +37,6 @@ export default function SchoolsPage() {
   const [leftPanelOpen, setLeftPanelOpen] = useState(true);
   const selectedCardRef = useRef<HTMLDivElement>(null);
   const dictionary = useMemo(() => getMessages(locale), [locale]);
-
-  const legacyMetricOptions: { label: string; value: FilterState['legacyMetric'] }[] = useMemo(() => [
-    { label: dictionary.filters.allOfficial, value: 'all' },
-    { label: dictionary.filters.withLegacyScore, value: 'scored' },
-    { label: dictionary.filters.profileOnly, value: 'profile' },
-  ], [dictionary]);
-
-  const sectorOptions: { label: string; value: FilterState['sector'] }[] = useMemo(() => [
-    { label: dictionary.filters.all, value: 'all' },
-    { label: dictionary.filters.government, value: 'Government' },
-    { label: dictionary.filters.catholic, value: 'Catholic' },
-    { label: dictionary.filters.independent, value: 'Independent' },
-  ], [dictionary]);
-
-  const icseaOptions: { label: string; value: FilterState['icsea'] }[] = useMemo(() => [
-    { label: dictionary.filters.all, value: 'all' },
-    { label: dictionary.filters.icsea900, value: '900' },
-    { label: dictionary.filters.icsea1000, value: '1000' },
-    { label: dictionary.filters.icsea1100, value: '1100' },
-    { label: dictionary.filters.icsea1200, value: '1200' },
-  ], [dictionary]);
-
-  const enrolmentOptions: { label: string; value: FilterState['enrolments'] }[] = useMemo(() => [
-    { label: dictionary.filters.all, value: 'all' },
-    { label: dictionary.filters.enrolmentSmall, value: 'small' },
-    { label: dictionary.filters.enrolmentMedium, value: 'medium' },
-    { label: dictionary.filters.enrolmentLarge, value: 'large' },
-  ], [dictionary]);
-
-  const typeOptions: { label: string; value: FilterState['schoolType'] }[] = useMemo(() => [
-    { label: dictionary.filters.all, value: 'all' },
-    { label: dictionary.filters.primary, value: 'Primary' },
-    { label: dictionary.filters.combined, value: 'Combined' },
-    { label: dictionary.filters.secondary, value: 'Secondary' },
-    { label: dictionary.filters.special, value: 'Special' },
-  ], [dictionary]);
 
   useEffect(() => {
     fetch('/data/schools.canonical.json')
@@ -179,83 +144,8 @@ export default function SchoolsPage() {
       </div>
 
       <div className="absolute top-3 left-3 right-3 z-10 flex gap-2 flex-wrap items-center pointer-events-none">
-        <div className="pointer-events-auto flex gap-2 flex-wrap">
-          <div className="flex gap-1 bg-white/90 backdrop-blur-sm rounded-full px-2 py-1 shadow-md">
-            {legacyMetricOptions.map(opt => (
-              <button
-                key={opt.value}
-                onClick={() => setFilters(f => ({ ...f, legacyMetric: opt.value }))}
-                className={`px-3 py-1 rounded-full text-xs font-medium transition-colors ${
-                  filters.legacyMetric === opt.value
-                    ? 'bg-indigo-600 text-white'
-                    : 'text-gray-600 hover:bg-gray-100'
-                }`}
-              >
-                {opt.label}
-              </button>
-            ))}
-          </div>
-          <div className="flex gap-1 bg-white/90 backdrop-blur-sm rounded-full px-2 py-1 shadow-md">
-            {sectorOptions.map(opt => (
-              <button
-                key={opt.value}
-                onClick={() => setFilters(f => ({ ...f, sector: opt.value }))}
-                className={`px-3 py-1 rounded-full text-xs font-medium transition-colors ${
-                  filters.sector === opt.value
-                    ? 'bg-indigo-600 text-white'
-                    : 'text-gray-600 hover:bg-gray-100'
-                }`}
-              >
-                {opt.label}
-              </button>
-            ))}
-          </div>
-          <div className="flex gap-1 bg-white/90 backdrop-blur-sm rounded-full px-2 py-1 shadow-md">
-            {icseaOptions.map(opt => (
-              <button
-                key={opt.value}
-                onClick={() => setFilters(f => ({ ...f, icsea: opt.value }))}
-                className={`px-3 py-1 rounded-full text-xs font-medium transition-colors ${
-                  filters.icsea === opt.value
-                    ? 'bg-indigo-600 text-white'
-                    : 'text-gray-600 hover:bg-gray-100'
-                }`}
-              >
-                {opt.label}
-              </button>
-            ))}
-          </div>
-          <div className="flex gap-1 bg-white/90 backdrop-blur-sm rounded-full px-2 py-1 shadow-md">
-            {typeOptions.map(opt => (
-              <button
-                key={opt.value}
-                onClick={() => setFilters(f => ({ ...f, schoolType: opt.value }))}
-                className={`px-3 py-1 rounded-full text-xs font-medium transition-colors ${
-                  filters.schoolType === opt.value
-                    ? 'bg-indigo-600 text-white'
-                    : 'text-gray-600 hover:bg-gray-100'
-                }`}
-              >
-                {opt.label}
-              </button>
-            ))}
-          </div>
-          <div className="flex gap-1 bg-white/90 backdrop-blur-sm rounded-full px-2 py-1 shadow-md">
-            {enrolmentOptions.map(opt => (
-              <button
-                key={opt.value}
-                onClick={() => setFilters(f => ({ ...f, enrolments: opt.value }))}
-                title={opt.value === 'small' ? dictionary.filters.enrolmentSmallHint : opt.value === 'medium' ? dictionary.filters.enrolmentMediumHint : opt.value === 'large' ? dictionary.filters.enrolmentLargeHint : undefined}
-                className={`px-3 py-1 rounded-full text-xs font-medium transition-colors ${
-                  filters.enrolments === opt.value
-                    ? 'bg-indigo-600 text-white'
-                    : 'text-gray-600 hover:bg-gray-100'
-                }`}
-              >
-                {opt.label}
-              </button>
-            ))}
-          </div>
+        <div className="pointer-events-auto">
+          <FilterBar filters={filters} onChange={setFilters} dictionary={dictionary} />
         </div>
       </div>
 
