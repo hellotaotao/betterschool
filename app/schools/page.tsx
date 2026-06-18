@@ -11,6 +11,7 @@ import {
 import { School } from '@/types/school';
 import { FilterState, filterSchools, hasLegacyScore } from '@/utils/schoolFilters';
 import { useMediaQuery } from '@/lib/useMediaQuery';
+import schoolsMetadata from '@/public/data/schools.metadata.json';
 
 import SchoolDetail from '../../components/SchoolDetail';
 import SchoolList from '../../components/SchoolList';
@@ -21,6 +22,11 @@ import BottomSheet, { SheetSnap } from '../../components/BottomSheet';
 const SchoolMap = dynamic(() => import('../../components/SchoolMap'), {
   ssr: false,
 });
+
+// Cache-bust the static dataset whenever it is rebuilt. /data/* is served with a
+// long max-age, so without a version query returning users would keep stale data
+// for up to a day after each data update. generated_at changes on every rebuild.
+const DATA_VERSION = String(schoolsMetadata.generated_at ?? '').replace(/\D/g, '') || 'v1';
 
 export default function SchoolsPage() {
   const [allSchools, setAllSchools] = useState<School[]>([]);
@@ -46,7 +52,7 @@ export default function SchoolsPage() {
   const isMobile = useMediaQuery('(max-width: 768px)');
 
   useEffect(() => {
-    fetch('/data/schools.canonical.json')
+    fetch(`/data/schools.canonical.json?v=${DATA_VERSION}`)
       .then(res => res.json())
       .then((data: School[]) => {
         setAllSchools(data);
