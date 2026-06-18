@@ -12,6 +12,7 @@ const statusCounts = {};
 let invalidCoordinates = 0;
 let withLegacyScore = 0;
 let withLegacyRank = 0;
+const religionCounts = {};
 
 for (const school of schools) {
   if (!school.id || typeof school.id !== 'string') throw new Error(`Missing id for ${school.school_name ?? '<unknown>'}`);
@@ -42,6 +43,17 @@ for (const school of schools) {
       throw new Error(`Legacy metric available but score/rank missing: ${school.id}`);
     }
   }
+
+  const affiliation = school.religious_affiliation;
+  if (affiliation === undefined) throw new Error(`Missing religious_affiliation: ${school.id}`);
+  const expectedIsReligious = affiliation === 'Secular' ? false : affiliation === 'Unknown' ? null : true;
+  if ((school.is_religious ?? null) !== expectedIsReligious) {
+    throw new Error(`is_religious inconsistent with affiliation for ${school.id}: ${affiliation} / ${school.is_religious}`);
+  }
+  if (school.religion_source !== undefined && !['sector', 'governing_body', 'name_explicit', 'manual'].includes(school.religion_source)) {
+    throw new Error(`Invalid religion_source for ${school.id}: ${school.religion_source}`);
+  }
+  religionCounts[affiliation] = (religionCounts[affiliation] ?? 0) + 1;
 }
 
 if (duplicateIds.length > 0) throw new Error(`Duplicate ids: ${duplicateIds.slice(0, 10).join(', ')}`);
@@ -61,4 +73,5 @@ console.log(JSON.stringify({
   uniqueIds: ids.size,
   legacyMetricStatus: statusCounts,
   sectorCounts,
+  religionCounts,
 }, null, 2));

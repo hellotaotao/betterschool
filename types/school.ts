@@ -4,6 +4,13 @@ export type SchoolType = 'Primary' | 'Combined' | 'Secondary' | 'Special' | stri
 
 export type LegacyMetricStatus = 'available' | 'unavailable' | 'ambiguous_unmatched' | string;
 
+export type ReligiousAffiliation =
+  | 'Catholic' | 'Anglican' | 'Lutheran' | 'Islamic' | 'Jewish' | 'Christian'
+  | 'Adventist' | 'Baptist' | 'Uniting' | 'Presbyterian' | 'Orthodox'
+  | 'Secular' | 'Unknown' | string;
+
+export type ReligionSource = 'sector' | 'governing_body' | 'name_explicit' | 'manual';
+
 export interface School {
   /** Canonical deterministic app ID based on ACARA IDs. */
   id: string;
@@ -38,6 +45,12 @@ export interface School {
   school_url?: string;
   governing_body?: string;
   governing_body_url?: string;
+  /** Religious affiliation (denomination), 'Secular', or 'Unknown'. Inferred — not official ACARA data. */
+  religious_affiliation?: ReligiousAffiliation;
+  /** true = faith-based, false = secular (Government), null = Unknown. */
+  is_religious?: boolean | null;
+  /** How religious_affiliation was determined. Absent when Unknown. */
+  religion_source?: ReligionSource;
   /** Optional legacy imported score; not official ACARA data. */
   legacy_score?: number;
   /** Optional legacy imported rank; not official ACARA data. */

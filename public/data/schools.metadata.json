@@ -23,7 +23,8 @@
         "data/acara/processed/betterschool-acara-matches.json"
       ],
       "note": "Official ACARA identity, profile and location data is the canonical base table/map layer. Legacy score/rank is retained only as an optional metric layer for matched schools."
-    }
+    },
+    "religion": "Religious affiliation is INFERRED, not an official ACARA field. Catholic/Government come from sector (high confidence); Independent schools are classified only from religious governing bodies or a conservative explicit-name match, and are left Unknown rather than guessed when signals are weak."
   },
   "fields": {
     "local_id": "Legacy BetterSchool local_id, present only when a legacy record was deterministically matched to ACARA.",
@@ -34,7 +35,10 @@
     "id": "Canonical deterministic app identifier based on ACARA acara_sml_id + location_age_id + school_age_id.",
     "legacy_rank": "Optional legacy imported rank; display as legacy/current-dataset rank, not official or national.",
     "legacy_score": "Optional legacy imported score; display as legacy/current-dataset reference value, not official or national.",
-    "legacy_metric_status": "available when legacy score/rank are attached; unavailable for official ACARA-only schools; ambiguous_unmatched for ACARA candidates tied to an ambiguous legacy match."
+    "legacy_metric_status": "available when legacy score/rank are attached; unavailable for official ACARA-only schools; ambiguous_unmatched for ACARA candidates tied to an ambiguous legacy match.",
+    "religious_affiliation": "Inferred denomination, or Secular (Government) / Unknown. Not official ACARA data.",
+    "is_religious": "true = faith-based, false = secular (Government), null = Unknown.",
+    "religion_source": "sector | governing_body | name_explicit | manual; absent when Unknown."
   },
   "generated_from": {
     "canonical_builder": "scripts/build-canonical-schools.mjs",
@@ -49,7 +53,27 @@
       "Government": 7128,
       "Catholic": 1822,
       "Independent": 2084
+    },
+    "religion_affiliation_counts": {
+      "Secular": 7128,
+      "Catholic": 1883,
+      "Unknown": 1414,
+      "Christian": 315,
+      "Anglican": 102,
+      "Adventist": 40,
+      "Islamic": 28,
+      "Orthodox": 6,
+      "Baptist": 25,
+      "Presbyterian": 3,
+      "Jewish": 1,
+      "Lutheran": 89
+    },
+    "religion_source_counts": {
+      "sector": 8950,
+      "none": 1414,
+      "name_explicit": 468,
+      "governing_body": 202
     }
   },
-  "generated_at": "2026-05-20T08:23:43.239Z"
+  "generated_at": "2026-06-18T05:30:45.577Z"
 }

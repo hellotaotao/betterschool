@@ -1,6 +1,8 @@
 import fs from 'node:fs';
+import { classifyReligion, deriveIsReligious } from './religion-classify.mjs';
 
 const profilePath = 'data/acara/processed/school-profile-2025.json';
+const religionOverridesPath = 'data/religion/manual-overrides.json';
 const locationPath = 'data/acara/processed/school-location-2025.json';
 const legacyPath = 'public/data/schools.json';
 const matchesPath = 'data/acara/processed/betterschool-acara-matches.json';
@@ -27,6 +29,10 @@ const profilePayload = readJson(profilePath);
 const locationPayload = readJson(locationPath);
 const legacySchools = readJson(legacyPath);
 const matchesPayload = readJson(matchesPath);
+const religionOverrides = new Map(
+  (fs.existsSync(religionOverridesPath) ? readJson(religionOverridesPath) : [])
+    .map((override) => [override.acara_sml_id, override]),
+);
 
 const profilesByLocationAgeId = new Map(profilePayload.records.map(record => [record.location_age_id, record]));
 const legacyByLocalId = new Map(legacySchools.map(record => [record.local_id, record]));
@@ -54,6 +60,20 @@ for (const location of locationPayload.records) {
   const legacy = match ? legacyByLocalId.get(match.local_id) : undefined;
   const ambiguousKey = `${location.acara_sml_id}:${location.location_age_id}:${location.school_age_id}`;
   const hasLegacyMetric = Boolean(legacy && Number.isFinite(legacy.score) && Number.isFinite(legacy.rank));
+
+  let religion = classifyReligion({
+    sector: profile?.sector ?? location.sector,
+    governingBody: profile?.governing_body,
+    schoolName: location.school_name,
+  });
+  const religionOverride = religionOverrides.get(location.acara_sml_id);
+  if (religionOverride) {
+    religion = {
+      religious_affiliation: religionOverride.religious_affiliation,
+      is_religious: religionOverride.is_religious ?? deriveIsReligious(religionOverride.religious_affiliation),
+      religion_source: 'manual',
+    };
+  }
 
   schools.push(compactObject({
     id: canonicalId(location),
@@ -87,6 +107,9 @@ for (const location of locationPayload.records) {
     school_url: profile?.school_url,
     governing_body: profile?.governing_body,
     governing_body_url: profile?.governing_body_url,
+    religious_affiliation: religion.religious_affiliation,
+    is_religious: religion.is_religious,
+    religion_source: religion.religion_source,
     legacy_score: hasLegacyMetric ? legacy.score : undefined,
     legacy_rank: hasLegacyMetric ? legacy.rank : undefined,
     legacy_metric_status: hasLegacyMetric
@@ -124,6 +147,16 @@ const legacyStatusCounts = schools.reduce((acc, school) => {
   acc[school.legacy_metric_status] = (acc[school.legacy_metric_status] ?? 0) + 1;
   return acc;
 }, {});
+const religionAffiliationCounts = schools.reduce((acc, school) => {
+  const key = school.religious_affiliation ?? 'Unknown';
+  acc[key] = (acc[key] ?? 0) + 1;
+  return acc;
+}, {});
+const religionSourceCounts = schools.reduce((acc, school) => {
+  const key = school.religion_source ?? 'none';
+  acc[key] = (acc[key] ?? 0) + 1;
+  return acc;
+}, {});
 
 const metadata = readJson(metadataPath);
 metadata.dataset_status = 'canonical_acara_base_with_legacy_metric_layer';
@@ -138,6 +171,10 @@ metadata.fields.sector = 'Official ACARA sector value (for example Government, C
 metadata.fields.legacy_rank = 'Optional legacy imported rank; display as legacy/current-dataset rank, not official or national.';
 metadata.fields.legacy_score = 'Optional legacy imported score; display as legacy/current-dataset reference value, not official or national.';
 metadata.fields.legacy_metric_status = 'available when legacy score/rank are attached; unavailable for official ACARA-only schools; ambiguous_unmatched for ACARA candidates tied to an ambiguous legacy match.';
+metadata.provenance.religion = 'Religious affiliation is INFERRED, not an official ACARA field. Catholic/Government come from sector (high confidence); Independent schools are classified only from religious governing bodies or a conservative explicit-name match, and are left Unknown rather than guessed when signals are weak.';
+metadata.fields.religious_affiliation = 'Inferred denomination, or Secular (Government) / Unknown. Not official ACARA data.';
+metadata.fields.is_religious = 'true = faith-based, false = secular (Government), null = Unknown.';
+metadata.fields.religion_source = 'sector | governing_body | name_explicit | manual; absent when Unknown.';
 metadata.generated_from = {
   canonical_builder: 'scripts/build-canonical-schools.mjs',
   acara_location_records: locationPayload.records.length,
@@ -148,6 +185,8 @@ metadata.generated_from = {
   legacy_matches_available: legacyStatusCounts.available ?? 0,
   legacy_ambiguous_unmatched: legacyStatusCounts.ambiguous_unmatched ?? 0,
   sector_counts: sectorCounts,
+  religion_affiliation_counts: religionAffiliationCounts,
+  religion_source_counts: religionSourceCounts,
 };
 metadata.generated_at = new Date().toISOString();
 
@@ -158,4 +197,6 @@ console.log(JSON.stringify({
   schools: schools.length,
   legacyMetricStatus: legacyStatusCounts,
   sectorCounts,
+  religionAffiliationCounts,
+  religionSourceCounts,
 }, null, 2));
