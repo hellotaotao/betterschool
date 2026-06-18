@@ -59,6 +59,12 @@ export default function FilterBar({ filters, onChange, dictionary, variant = 'wr
     { label: dictionary.filters.independent, value: 'Independent' },
   ];
 
+  const religionOptions: PillOption<FilterState['religion']>[] = [
+    { label: dictionary.filters.all, value: 'all' },
+    { label: dictionary.filters.religious, value: 'religious' },
+    { label: dictionary.filters.secular, value: 'secular' },
+  ];
+
   const icseaOptions: PillOption<FilterState['icsea']>[] = [
     { label: dictionary.filters.all, value: 'all' },
     { label: dictionary.filters.icsea900, value: '900' },
@@ -90,6 +96,7 @@ export default function FilterBar({ filters, onChange, dictionary, variant = 'wr
     <div className={containerClass}>
       <PillGroup options={legacyMetricOptions} value={filters.legacyMetric} onSelect={v => onChange({ ...filters, legacyMetric: v })} />
       <PillGroup options={sectorOptions} value={filters.sector} onSelect={v => onChange({ ...filters, sector: v })} />
+      <PillGroup options={religionOptions} value={filters.religion} onSelect={v => onChange({ ...filters, religion: v })} />
       <PillGroup options={icseaOptions} value={filters.icsea} onSelect={v => onChange({ ...filters, icsea: v })} />
       <PillGroup options={typeOptions} value={filters.schoolType} onSelect={v => onChange({ ...filters, schoolType: v })} />
       <PillGroup options={enrolmentOptions} value={filters.enrolments} onSelect={v => onChange({ ...filters, enrolments: v })} />

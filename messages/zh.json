@@ -15,6 +15,8 @@
     "government": "政府",
     "catholic": "天主教",
     "independent": "独立学校",
+    "religious": "宗教",
+    "secular": "世俗",
     "icsea900": "ICSEA 900+",
     "icsea1000": "ICSEA 1000+",
     "icsea1100": "ICSEA 1100+",
@@ -56,6 +58,7 @@
     "datasetRank": "历史数据集排名",
     "profileOnly": "仅官方资料",
     "sector": "办学性质",
+    "religiousAffiliation": "宗教背景",
     "schoolType": "学校类型",
     "campusType": "校区类型",
     "yearRange": "年级范围",
@@ -68,6 +71,21 @@
     "postcode": "邮编",
     "governingBody": "管理机构",
     "website": "学校网站"
+  },
+  "religions": {
+    "Catholic": "天主教",
+    "Anglican": "圣公会",
+    "Lutheran": "信义会",
+    "Islamic": "伊斯兰",
+    "Jewish": "犹太教",
+    "Christian": "基督教",
+    "Adventist": "基督复临安息日会",
+    "Baptist": "浸信会",
+    "Uniting": "联合教会",
+    "Presbyterian": "长老会",
+    "Orthodox": "东正教",
+    "Secular": "世俗 / 非宗教",
+    "Unknown": "未分类"
   },
   "legend": {
     "governmentSchools": "有历史评分的政府学校",

@@ -3,6 +3,7 @@ import { School, SchoolSector, SchoolType } from '@/types/school';
 export type LegacyMetricFilter = 'all' | 'scored' | 'profile';
 export type IcseaBucket = 'all' | '900' | '1000' | '1100' | '1200';
 export type EnrolmentBucket = 'all' | 'small' | 'medium' | 'large';
+export type ReligionFilter = 'all' | 'religious' | 'secular';
 
 export interface FilterState {
   sector: 'all' | SchoolSector;
@@ -10,6 +11,7 @@ export interface FilterState {
   legacyMetric: LegacyMetricFilter;
   icsea: IcseaBucket;
   enrolments: EnrolmentBucket;
+  religion: ReligionFilter;
 }
 
 export function hasLegacyScore(school: School): school is School & { legacy_score: number; legacy_rank: number } {
@@ -76,10 +78,17 @@ function matchesEnrolmentBucket(school: School, bucket: EnrolmentBucket): boolea
   return enrolments >= 1000;
 }
 
+function matchesReligion(school: School, filter: ReligionFilter): boolean {
+  if (filter === 'all') return true;
+  if (filter === 'religious') return school.is_religious === true;
+  return school.is_religious === false; // 'secular'
+}
+
 /** Filter schools by the active controls. */
 export function filterSchools(schools: School[], filters: FilterState): School[] {
   return schools.filter(school => {
     if (!matchesSector(school.sector, filters.sector)) return false;
+    if (!matchesReligion(school, filters.religion)) return false;
     if (filters.legacyMetric === 'scored' && !hasLegacyScore(school)) return false;
     if (filters.legacyMetric === 'profile' && hasLegacyScore(school)) return false;
     if (filters.schoolType !== 'all' && school.school_type !== filters.schoolType) return false;

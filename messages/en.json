@@ -15,6 +15,8 @@
     "government": "Government",
     "catholic": "Catholic",
     "independent": "Independent",
+    "religious": "Religious",
+    "secular": "Secular",
     "icsea900": "ICSEA 900+",
     "icsea1000": "ICSEA 1000+",
     "icsea1100": "ICSEA 1100+",
@@ -56,6 +58,7 @@
     "datasetRank": "Legacy/historical rank",
     "profileOnly": "Official profile only",
     "sector": "Sector",
+    "religiousAffiliation": "Religious affiliation",
     "schoolType": "School type",
     "campusType": "Campus",
     "yearRange": "Year range",
@@ -68,6 +71,21 @@
     "postcode": "Postcode",
     "governingBody": "Governing body",
     "website": "Website"
+  },
+  "religions": {
+    "Catholic": "Catholic",
+    "Anglican": "Anglican",
+    "Lutheran": "Lutheran",
+    "Islamic": "Islamic",
+    "Jewish": "Jewish",
+    "Christian": "Christian",
+    "Adventist": "Adventist",
+    "Baptist": "Baptist",
+    "Uniting": "Uniting Church",
+    "Presbyterian": "Presbyterian",
+    "Orthodox": "Orthodox",
+    "Secular": "Secular",
+    "Unknown": "Unknown"
   },
   "legend": {
     "governmentSchools": "Government schools with legacy score",

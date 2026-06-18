@@ -32,6 +32,7 @@ export default function SchoolsPage() {
     legacyMetric: 'all',
     icsea: 'all',
     enrolments: 'all',
+    religion: 'all',
   });
   const [visibleSchools, setVisibleSchools] = useState<School[]>([]);
   const [selectedSchool, setSelectedSchool] = useState<School | null>(null);

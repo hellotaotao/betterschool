@@ -39,3 +39,9 @@ export function getSchoolTypeLabel(schoolType: string, dictionary: Messages): st
   if (schoolType === 'Special') return dictionary.filters.special;
   return schoolType;
 }
+
+export function getReligionLabel(affiliation: string | undefined, dictionary: Messages): string {
+  const labels = dictionary.religions as Record<string, string>;
+  if (!affiliation) return labels.Unknown;
+  return labels[affiliation] ?? affiliation;
+}

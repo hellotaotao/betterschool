@@ -1,7 +1,7 @@
 "use client";
 
 import { School } from '@/types/school';
-import { getSchoolTypeLabel, getSectorLabel, Messages } from '@/lib/i18n';
+import { getReligionLabel, getSchoolTypeLabel, getSectorLabel, Messages } from '@/lib/i18n';
 import { hasLegacyScore } from '@/utils/schoolFilters';
 
 interface SchoolDetailProps {
@@ -65,6 +65,21 @@ export default function SchoolDetail({ school, dictionary, onClose, variant = 'p
               }`}
             >
               {getSectorLabel(school.sector, dictionary)}
+            </span>
+          </div>
+          <div className="border-t border-gray-100" />
+          <div className="flex justify-between items-center">
+            <span className="text-gray-500">{dictionary.details.religiousAffiliation}</span>
+            <span
+              className={`text-[10px] px-2 py-0.5 rounded-full font-medium ${
+                school.is_religious === true
+                  ? 'bg-purple-100 text-purple-700'
+                  : school.is_religious === false
+                    ? 'bg-gray-100 text-gray-600'
+                    : 'bg-gray-50 text-gray-400'
+              }`}
+            >
+              {getReligionLabel(school.religious_affiliation, dictionary)}
             </span>
           </div>
           {school.school_type && (
