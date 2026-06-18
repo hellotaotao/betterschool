@@ -5,8 +5,8 @@
     "source": "ACARA Data Access Program public School Location/Profile 2025 is the canonical base/map layer.",
     "rank_scope": "Legacy imported rank attached only for deterministic ACARA matches; unknown scope and not an official/national ACARA rank.",
     "score_scope": "Legacy imported score attached only for deterministic ACARA matches; methodology opaque and not an authoritative ACARA measure.",
-    "naplan": "Not collected in this phase. The ACARA public Data Access Program profile/location/enrolment files used here do not include NAPLAN result scores.",
-    "fees": "Not collected in this phase.",
+    "naplan": "NAPLAN scores are not stored. Each school links out to its official My School page via myschool_url for NAPLAN results.",
+    "fees": "Government schools are marked free (no tuition; voluntary contributions only). Catholic/Independent fees are not yet collected — left absent rather than guessed. Future fees carry precise amounts where available, otherwise a band, always with a source.",
     "acara_public_data": {
       "source": "ACARA Data Access Program public download files",
       "source_url": "https://www.acara.edu.au/contact-us/acara-data-access",
@@ -38,7 +38,9 @@
     "legacy_metric_status": "available when legacy score/rank are attached; unavailable for official ACARA-only schools; ambiguous_unmatched for ACARA candidates tied to an ambiguous legacy match.",
     "religious_affiliation": "Inferred denomination, or Secular (Government) / Unknown. Not official ACARA data.",
     "is_religious": "true = faith-based, false = secular (Government), null = Unknown.",
-    "religion_source": "sector | governing_body | name_explicit | manual; absent when Unknown."
+    "religion_source": "sector | governing_body | name_explicit | manual; absent when Unknown.",
+    "myschool_url": "Deep link to the school My School page, built from acara_sml_id (verified pattern).",
+    "fees": "Tuition fees: free for Government; other sectors pending collection. Precise amount preferred, else band; always with fee_source."
   },
   "generated_from": {
     "canonical_builder": "scripts/build-canonical-schools.mjs",
@@ -73,7 +75,11 @@
       "none": 1414,
       "name_explicit": 468,
       "governing_body": 202
+    },
+    "fees_band_counts": {
+      "free": 7128,
+      "not_collected": 3906
     }
   },
-  "generated_at": "2026-06-18T05:30:45.577Z"
+  "generated_at": "2026-06-18T16:27:29.576Z"
 }

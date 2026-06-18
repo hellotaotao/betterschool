@@ -11,6 +11,17 @@ export type ReligiousAffiliation =
 
 export type ReligionSource = 'sector' | 'governing_body' | 'name_explicit' | 'manual';
 
+export interface SchoolFees {
+  /** 'exact' when annual_aud_* are real figures; 'band' when only a bucket is known. */
+  fee_precision: 'exact' | 'band';
+  annual_aud_min?: number | null;
+  annual_aud_max?: number | null;
+  band: 'free' | 'low' | 'medium' | 'high' | 'premium' | 'unknown';
+  fee_year?: number;
+  fee_source: 'government_free' | 'diocese_schedule' | 'school_website' | 'manual';
+  source_url?: string;
+}
+
 export interface School {
   /** Canonical deterministic app ID based on ACARA IDs. */
   id: string;
@@ -43,6 +54,8 @@ export interface School {
   lbote_not_stated_percent?: number;
   indigenous_percent?: number;
   school_url?: string;
+  /** Deep link to the school's My School page (NAPLAN etc.); built from acara_sml_id. */
+  myschool_url?: string;
   governing_body?: string;
   governing_body_url?: string;
   /** Religious affiliation (denomination), 'Secular', or 'Unknown'. Inferred — not official ACARA data. */
@@ -51,6 +64,8 @@ export interface School {
   is_religious?: boolean | null;
   /** How religious_affiliation was determined. Absent when Unknown. */
   religion_source?: ReligionSource;
+  /** Tuition fees: precise amount preferred, else band; always carries a source. */
+  fees?: SchoolFees;
   /** Optional legacy imported score; not official ACARA data. */
   legacy_score?: number;
   /** Optional legacy imported rank; not official ACARA data. */

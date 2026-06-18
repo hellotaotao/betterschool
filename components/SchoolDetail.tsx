@@ -115,7 +115,7 @@ export default function SchoolDetail({ school, dictionary, onClose, variant = 'p
             <>
               <div className="border-t border-gray-100" />
               <div className="flex justify-between">
-                <span className="text-gray-500">{dictionary.details.icsea}</span>
+                <span className="text-gray-500" title={dictionary.details.icseaHint}>{dictionary.details.icsea}</span>
                 <span className="font-medium text-gray-800">{school.icsea}</span>
               </div>
             </>
@@ -185,6 +185,30 @@ export default function SchoolDetail({ school, dictionary, onClose, variant = 'p
               <div className="flex justify-between">
                 <span className="text-gray-500">{dictionary.details.website}</span>
                 <a className="font-medium text-indigo-600 hover:underline" href={school.school_url} target="_blank" rel="noreferrer">Open</a>
+              </div>
+            </>
+          )}
+          {school.fees && (
+            <>
+              <div className="border-t border-gray-100" />
+              <div className="flex justify-between items-center">
+                <span className="text-gray-500">{dictionary.details.fees}</span>
+                <span className="font-medium text-gray-800 text-right">
+                  {school.fees.band === 'free'
+                    ? dictionary.details.feeFree
+                    : Number.isFinite(school.fees.annual_aud_min)
+                      ? `A$${school.fees.annual_aud_min}${Number.isFinite(school.fees.annual_aud_max) && school.fees.annual_aud_max !== school.fees.annual_aud_min ? `–${school.fees.annual_aud_max}` : ''}`
+                      : dictionary.details.feeUnknown}
+                </span>
+              </div>
+            </>
+          )}
+          {school.myschool_url && (
+            <>
+              <div className="border-t border-gray-100" />
+              <div className="flex justify-between">
+                <span className="text-gray-500">{dictionary.details.naplan}</span>
+                <a className="font-medium text-indigo-600 hover:underline" href={school.myschool_url} target="_blank" rel="noreferrer">{dictionary.details.viewOnMySchool}</a>
               </div>
             </>
           )}

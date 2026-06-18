@@ -54,6 +54,13 @@ for (const school of schools) {
     throw new Error(`Invalid religion_source for ${school.id}: ${school.religion_source}`);
   }
   religionCounts[affiliation] = (religionCounts[affiliation] ?? 0) + 1;
+
+  if (school.myschool_url && !school.myschool_url.startsWith('https://www.myschool.edu.au/school/')) {
+    throw new Error(`Bad myschool_url for ${school.id}: ${school.myschool_url}`);
+  }
+  if (school.fees && !['free', 'low', 'medium', 'high', 'premium', 'unknown'].includes(school.fees.band)) {
+    throw new Error(`Bad fee band for ${school.id}: ${school.fees.band}`);
+  }
 }
 
 if (duplicateIds.length > 0) throw new Error(`Duplicate ids: ${duplicateIds.slice(0, 10).join(', ')}`);

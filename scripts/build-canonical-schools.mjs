@@ -75,6 +75,16 @@ for (const location of locationPayload.records) {
     };
   }
 
+  // Government schools charge no tuition (voluntary contributions only) — a reliable fact.
+  // Catholic/Independent fees are not collected yet (left undefined, not guessed).
+  const sectorValue = profile?.sector ?? location.sector;
+  const fees = sectorValue === 'Government'
+    ? { fee_precision: 'band', band: 'free', fee_source: 'government_free' }
+    : undefined;
+  const myschoolUrl = Number.isFinite(location.acara_sml_id)
+    ? `https://www.myschool.edu.au/school/${location.acara_sml_id}`
+    : undefined;
+
   schools.push(compactObject({
     id: canonicalId(location),
     local_id: legacy?.local_id,
@@ -105,11 +115,13 @@ for (const location of locationPayload.records) {
     lbote_not_stated_percent: profile?.enrolments?.lbote_not_stated_percent,
     indigenous_percent: profile?.enrolments?.indigenous_percent,
     school_url: profile?.school_url,
+    myschool_url: myschoolUrl,
     governing_body: profile?.governing_body,
     governing_body_url: profile?.governing_body_url,
     religious_affiliation: religion.religious_affiliation,
     is_religious: religion.is_religious,
     religion_source: religion.religion_source,
+    fees,
     legacy_score: hasLegacyMetric ? legacy.score : undefined,
     legacy_rank: hasLegacyMetric ? legacy.rank : undefined,
     legacy_metric_status: hasLegacyMetric
@@ -157,6 +169,11 @@ const religionSourceCounts = schools.reduce((acc, school) => {
   acc[key] = (acc[key] ?? 0) + 1;
   return acc;
 }, {});
+const feesBandCounts = schools.reduce((acc, school) => {
+  const key = school.fees?.band ?? 'not_collected';
+  acc[key] = (acc[key] ?? 0) + 1;
+  return acc;
+}, {});
 
 const metadata = readJson(metadataPath);
 metadata.dataset_status = 'canonical_acara_base_with_legacy_metric_layer';
@@ -175,6 +192,10 @@ metadata.provenance.religion = 'Religious affiliation is INFERRED, not an offici
 metadata.fields.religious_affiliation = 'Inferred denomination, or Secular (Government) / Unknown. Not official ACARA data.';
 metadata.fields.is_religious = 'true = faith-based, false = secular (Government), null = Unknown.';
 metadata.fields.religion_source = 'sector | governing_body | name_explicit | manual; absent when Unknown.';
+metadata.provenance.naplan = 'NAPLAN scores are not stored. Each school links out to its official My School page via myschool_url for NAPLAN results.';
+metadata.provenance.fees = 'Government schools are marked free (no tuition; voluntary contributions only). Catholic/Independent fees are not yet collected — left absent rather than guessed. Future fees carry precise amounts where available, otherwise a band, always with a source.';
+metadata.fields.myschool_url = 'Deep link to the school My School page, built from acara_sml_id (verified pattern).';
+metadata.fields.fees = 'Tuition fees: free for Government; other sectors pending collection. Precise amount preferred, else band; always with fee_source.';
 metadata.generated_from = {
   canonical_builder: 'scripts/build-canonical-schools.mjs',
   acara_location_records: locationPayload.records.length,
@@ -187,6 +208,7 @@ metadata.generated_from = {
   sector_counts: sectorCounts,
   religion_affiliation_counts: religionAffiliationCounts,
   religion_source_counts: religionSourceCounts,
+  fees_band_counts: feesBandCounts,
 };
 metadata.generated_at = new Date().toISOString();
 
@@ -199,4 +221,5 @@ console.log(JSON.stringify({
   sectorCounts,
   religionAffiliationCounts,
   religionSourceCounts,
+  feesBandCounts,
 }, null, 2));

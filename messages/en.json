@@ -70,7 +70,13 @@
     "indigenous": "Indigenous",
     "postcode": "Postcode",
     "governingBody": "Governing body",
-    "website": "Website"
+    "website": "Website",
+    "icseaHint": "Socio-educational advantage (an input), not an academic result",
+    "fees": "Fees",
+    "feeFree": "Free",
+    "feeUnknown": "—",
+    "naplan": "NAPLAN",
+    "viewOnMySchool": "View on My School"
   },
   "religions": {
     "Catholic": "Catholic",

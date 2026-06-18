@@ -70,7 +70,13 @@
     "indigenous": "原住民",
     "postcode": "邮编",
     "governingBody": "管理机构",
-    "website": "学校网站"
+    "website": "学校网站",
+    "icseaHint": "社会教育优势指数(输入指标),不是学业成绩",
+    "fees": "学费",
+    "feeFree": "免费",
+    "feeUnknown": "—",
+    "naplan": "NAPLAN",
+    "viewOnMySchool": "在 My School 查看"
   },
   "religions": {
     "Catholic": "天主教",
