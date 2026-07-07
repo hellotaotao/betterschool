@@ -1,8 +1,9 @@
 "use client";
 
-import { useEffect, useState, useCallback } from 'react';
+import { useEffect, useState, useCallback, useRef } from 'react';
 import { MapContainer, TileLayer, Marker, useMap, useMapEvents } from 'react-leaflet';
 import L from 'leaflet';
+import 'leaflet.markercluster';
 import { School } from '@/types/school';
 import { getMarkerRadius, getMarkerColor } from '@/utils/schoolFilters';
 
@@ -51,6 +52,34 @@ function createSchoolIcon(school: School, isSelected: boolean): L.DivIcon {
     className: 'school-marker-icon',
     iconSize: [size, size],
     iconAnchor: [radius, radius],
+  });
+}
+
+/** Render a cluster bubble whose size scales with the number of grouped schools. */
+function createClusterIcon(cluster: L.MarkerCluster): L.DivIcon {
+  const count = cluster.getChildCount();
+  const size = count < 10 ? 34 : count < 100 ? 40 : count < 1000 ? 48 : 56;
+  const label = count >= 1000 ? `${Math.round(count / 1000)}k` : `${count}`;
+  const html = `<div style="
+      width:${size}px;
+      height:${size}px;
+      border-radius:50%;
+      background:rgba(79,70,229,0.92);
+      border:2px solid white;
+      box-shadow:0 1px 4px rgba(0,0,0,0.3);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      color:white;
+      font-weight:700;
+      font-size:13px;
+      line-height:1;
+    ">${label}</div>`;
+
+  return L.divIcon({
+    html,
+    className: 'school-cluster-icon',
+    iconSize: [size, size],
   });
 }
 
@@ -306,6 +335,96 @@ function FitToSchools({
   return null;
 }
 
+/**
+ * Group nearby school markers into clusters so dense areas stay readable.
+ * Markers are managed imperatively via the leaflet.markercluster plugin. The
+ * currently selected school is pulled out of the cluster so the page can render
+ * it as a highlighted, always-visible marker on top.
+ */
+function ClusterLayer({
+  schools,
+  selectedId,
+  onSchoolClick,
+}: {
+  schools: School[];
+  selectedId: string | null;
+  onSchoolClick: (school: School) => void;
+}) {
+  const map = useMap();
+  const groupRef = useRef<L.MarkerClusterGroup | null>(null);
+  const markersRef = useRef<Map<string, L.Marker>>(new Map());
+  const prevSelectedRef = useRef<string | null>(null);
+  const clickRef = useRef(onSchoolClick);
+  clickRef.current = onSchoolClick;
+
+  // Create the cluster group once and attach it to the map.
+  useEffect(() => {
+    const group = L.markerClusterGroup({
+      // Insert markers synchronously: chunked (async) loading can fire a deferred
+      // chunk after the group has been removed from the map (StrictMode remount or
+      // a real unmount), dereferencing a null map. The one-time synchronous cost is
+      // negligible next to loading the dataset.
+      showCoverageOnHover: false,
+      maxClusterRadius: 48,
+      spiderfyOnMaxZoom: true,
+      iconCreateFunction: createClusterIcon,
+    });
+    group.addTo(map);
+    groupRef.current = group;
+    return () => {
+      map.removeLayer(group);
+      groupRef.current = null;
+      markersRef.current.clear();
+    };
+  }, [map]);
+
+  // Rebuild markers when the school set changes (e.g. a filter is applied).
+  useEffect(() => {
+    const group = groupRef.current;
+    if (!group) return;
+
+    group.clearLayers();
+    const markers = new Map<string, L.Marker>();
+    const layers: L.Marker[] = [];
+
+    for (const school of schools) {
+      if (!school.lat || !school.lng) continue;
+      const marker = L.marker([school.lat, school.lng], {
+        icon: getSchoolIcon(school, false),
+      });
+      marker.on('click', () => clickRef.current(school));
+      markers.set(school.id, marker);
+      if (school.id !== selectedId) layers.push(marker);
+    }
+
+    markersRef.current = markers;
+    prevSelectedRef.current = selectedId;
+    group.addLayers(layers);
+  // Rebuild only when the data changes; selection is handled below.
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [schools]);
+
+  // Pull the selected school out of the cluster; return the previous one.
+  useEffect(() => {
+    const group = groupRef.current;
+    if (!group) return;
+    const markers = markersRef.current;
+    const prev = prevSelectedRef.current;
+
+    if (prev && prev !== selectedId) {
+      const prevMarker = markers.get(prev);
+      if (prevMarker && !group.hasLayer(prevMarker)) group.addLayer(prevMarker);
+    }
+    if (selectedId) {
+      const selectedMarker = markers.get(selectedId);
+      if (selectedMarker && group.hasLayer(selectedMarker)) group.removeLayer(selectedMarker);
+    }
+    prevSelectedRef.current = selectedId;
+  }, [selectedId]);
+
+  return null;
+}
+
 export default function SchoolMap({
   schools,
   selectedSchool,
@@ -327,14 +446,12 @@ export default function SchoolMap({
   }, []);
 
   const [geoReady, setGeoReady] = useState(false);
-  const [renderSchools, setRenderSchools] = useState<School[]>([]);
   const handleGeoReady = useCallback(() => {
     setGeoReady(true);
     onGeoReady?.();
   }, [onGeoReady]);
 
   const handleBoundsChange = useCallback((visible: School[]) => {
-    setRenderSchools(visible);
     onBoundsChange(visible);
   }, [onBoundsChange]);
 
@@ -360,28 +477,21 @@ export default function SchoolMap({
         <MapClickTracker onMapClick={onMapClick} />
         <BoundsTracker schools={schools} onBoundsChange={handleBoundsChange} geoReady={geoReady} />
 
-        {/* Render unselected schools that are currently visible. */}
-        {renderSchools
-          .filter(s => !selectedSchool || s.id !== selectedSchool.id)
-          .map((school) => {
-            if (!school.lat || !school.lng) return null;
-            return (
-              <Marker
-                key={school.id}
-                position={[school.lat, school.lng]}
-                icon={getSchoolIcon(school, false)}
-                eventHandlers={{ click: () => onSchoolClick(school) }}
-              />
-            );
-          })}
+        {/* Cluster all filtered schools so dense areas stay readable. */}
+        <ClusterLayer
+          schools={schools}
+          selectedId={selectedSchool?.id ?? null}
+          onSchoolClick={onSchoolClick}
+        />
 
-        {/* Render the selected school last so it stays on top. */}
+        {/* Render the selected school on top so it stays highlighted and visible. */}
         {selectedSchool && selectedSchool.lat && selectedSchool.lng && (
           <Marker
             key="selected"
             position={[selectedSchool.lat, selectedSchool.lng]}
             icon={getSchoolIcon(selectedSchool, true)}
             eventHandlers={{ click: () => onSchoolClick(selectedSchool) }}
+            zIndexOffset={1000}
           />
         )}
       </MapContainer>

@@ -48,6 +48,8 @@ export default function SchoolsPage() {
   const [leftPanelOpen, setLeftPanelOpen] = useState(true);
   const [sheetSnap, setSheetSnap] = useState<SheetSnap>('peek');
   const selectedCardRef = useRef<HTMLDivElement>(null);
+  const topBarRef = useRef<HTMLDivElement>(null);
+  const [topBarBottom, setTopBarBottom] = useState(56);
   const dictionary = useMemo(() => getMessages(locale), [locale]);
   const isMobile = useMediaQuery('(max-width: 768px)');
 
@@ -70,6 +72,22 @@ export default function SchoolsPage() {
 
     window.setTimeout(() => setLocale(detectBrowserLocale(languages)), 0);
   }, []);
+
+  // The desktop top bar (search + filters) wraps to a variable number of rows
+  // depending on viewport width and locale, so track its bottom edge and offset
+  // the list panel below it. Otherwise wrapped filter rows overlap the panel header.
+  useEffect(() => {
+    const el = topBarRef.current;
+    if (!el) return;
+    const update = () => {
+      const bottom = Math.round(el.getBoundingClientRect().bottom);
+      setTopBarBottom(prev => (prev !== bottom ? bottom : prev));
+    };
+    update();
+    const observer = new ResizeObserver(update);
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, [isMobile]);
 
   const filteredSchools = useMemo(
     () => filterSchools(allSchools, filters),
@@ -211,7 +229,10 @@ export default function SchoolsPage() {
         </>
       ) : (
         <>
-          <div className="absolute top-3 left-3 right-3 z-30 flex gap-2 flex-wrap items-center pointer-events-none">
+          <div
+            ref={topBarRef}
+            className="absolute top-3 left-3 right-3 z-30 flex gap-2 flex-wrap items-center pointer-events-none"
+          >
             <div className="pointer-events-auto w-64 shrink-0">
               <SearchBox
                 allSchools={allSchools}
@@ -226,7 +247,8 @@ export default function SchoolsPage() {
           </div>
 
           <div
-            className={`absolute top-14 left-3 bottom-3 z-10 flex transition-all duration-300 ${
+            style={{ top: topBarBottom + 8 }}
+            className={`absolute left-3 bottom-3 z-10 flex transition-all duration-300 ${
               leftPanelOpen ? 'w-72' : 'w-8'
             }`}
           >

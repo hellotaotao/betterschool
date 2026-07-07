@@ -41,3 +41,20 @@ body {
 .school-marker-icon:hover .marker-circle {
   transform: scale(1.25);
 }
+
+/* Cluster bubbles from leaflet.markercluster (custom DivIcon) */
+.school-cluster-icon {
+  background: transparent !important;
+  border: none !important;
+}
+.school-cluster-icon > div {
+  transition: transform 0.15s ease;
+}
+.school-cluster-icon:hover > div {
+  transform: scale(1.1);
+}
+/* Smooth the cluster expand / spiderfy animation */
+.leaflet-cluster-anim .leaflet-marker-icon,
+.leaflet-cluster-anim .leaflet-marker-shadow {
+  transition: transform 0.25s ease-out, opacity 0.25s ease-in;
+}
