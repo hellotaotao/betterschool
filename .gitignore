@@ -47,3 +47,6 @@ scripts/process_school_data.py
 # superpowers
 .superpowers/
 .gstack/
+
+# claude code local settings
+.claude/settings.local.json

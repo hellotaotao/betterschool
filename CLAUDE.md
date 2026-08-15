@@ -1,61 +1,113 @@
 # CLAUDE.md
 
-This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+Guidance for Claude Code (claude.ai/code) when working in this repository.
 
-## Development Commands
+## What this project is
 
-- `npm run dev` - Start development server on localhost:3000
-- `npm run build` - Build production application
-- `npm run start` - Start production server
-- `npm run lint` - Run ESLint to check code quality
+**betterschool.au** — a map-first tool for Australian parents choosing a school.
+The product thesis is **address-first**, not school-first: the user starts from a
+place they live (or might move to) and sees what schools that location actually
+gives them. Competitors (Better Education, SchoolRank, Good Schools Guide) all
+start from a school and treat location as an attribute.
 
-## Project Architecture
+See [docs/strategy/2026-08-14-product-strategy.md](docs/strategy/2026-08-14-product-strategy.md)
+for positioning, competitor analysis, and the feature roadmap.
 
-This is a Next.js 14 application using the App Router that displays school locations on an interactive map. The project uses Mapbox GL JS for map rendering with OpenStreetMap tiles, and SQLite for data storage.
+## Commands
 
-### Key Components
+```bash
+npm run dev              # dev server on localhost:3000
+npm run build            # production build
+npm run start            # serve the production build
+npm run lint             # eslint over app components lib utils types scripts
+npm test                 # vitest run
+npm run test:watch       # vitest watch
 
-- **SchoolMap** (`app/components/SchoolMap.tsx`) - Client-side map component that fetches school data and renders an interactive Mapbox GL map with markers and popups
-- **API Route** (`app/api/locations/route.ts`) - Next.js App Router API endpoint that queries the SQLite database and returns school location data
-- **Database Setup** (`db/database.js`) - Node.js script that initializes the SQLite database and seeds it with sample location data (currently contains generic city data, not actual schools)
+# Data pipeline (run in this order after dropping new ACARA xlsx into ACARA/)
+npm run acara:parse      # ACARA xlsx -> data/acara/processed/*.json
+npm run acara:match      # match legacy BetterSchool records to ACARA records
+npm run acara:validate   # sanity-check the parsed ACARA layer
+npm run canonical:build  # merge all layers -> public/data/schools.canonical.json
+npm run canonical:validate
+```
 
-### Data Flow
+## Architecture
 
-1. The main page (`app/page.tsx`) renders the SchoolMap component
-2. SchoolMap fetches data from `/api/locations` on mount
-3. The API route opens the SQLite database at `db/locations.sqlite` and queries all locations
-4. SchoolMap receives the data and creates Mapbox markers for each location
-5. The map auto-fits bounds to display all markers with padding
+Next.js 16 App Router + React 19 + TypeScript + Tailwind 4. **No runtime
+database and no API routes** — the app is fully static and reads a prebuilt JSON
+file from `public/data/`.
 
-### Database Structure
+```
+ACARA/*.xlsx
+  └─ scripts/parse-acara-*.mjs      → data/acara/processed/*.json
+  └─ scripts/religion-classify.mjs  → religion layer
+  └─ scripts/match-betterschool-acara.mjs → legacy metric layer
+       └─ scripts/build-canonical-schools.mjs
+            → public/data/schools.canonical.json  (11,034 schools, ~15MB)
+            → public/data/schools.metadata.json   (provenance + coverage counts)
+```
 
-- Location: `db/locations.sqlite`
-- Main table: `locations`
-  - `id` (INTEGER PRIMARY KEY)
-  - `name` (TEXT)
-  - `latitude` (REAL)
-  - `longitude` (REAL)
-- Note: Current sample data contains city locations (New York, LA, Chicago), not actual schools
+### Runtime
 
-### Key Dependencies
+- `app/page.tsx` redirects to `/schools`; `app/schools/page.tsx` is the whole app.
+- It client-fetches `schools.canonical.json`, cache-busted by the metadata's
+  `generated_at` (`DATA_VERSION`).
+- `components/SchoolMap.tsx` — Leaflet via `react-leaflet` (dynamic import,
+  `ssr: false`), OpenStreetMap tiles, `L.divIcon` markers. **Not Mapbox.**
+- `components/SchoolList.tsx` — list synced to the map viewport via `BoundsTracker`.
+- `components/SchoolDetail.tsx`, `FilterBar.tsx`, `SearchBox.tsx`, `BottomSheet.tsx`
+  (mobile layout switches on `useMediaQuery('(max-width: 768px)')`).
+- `utils/schoolFilters.ts` — filter predicates + marker encoding.
+- `lib/i18n.ts` + `messages/{en,zh}.json` — locale auto-detected from
+  `navigator.languages`. **Both message files must keep identical key sets.**
 
-- **Mapbox GL JS** - Interactive map rendering (uses public demo token, should be replaced for production)
-- **SQLite3** - Local database for storing location data
-- **Deck.GL** - Advanced geospatial library (installed but not currently used in the codebase)
-- **React Map GL** - React wrapper for Mapbox (installed but not used; the project uses vanilla Mapbox GL JS directly)
+### Dead code
 
-### Configuration Notes
+`db/database.js` and `db/locations.sqlite` are leftovers from an early SQLite
+prototype. Nothing imports them. Do not extend them; delete on sight if touching
+that directory.
 
-- Mapbox access token is hardcoded in `app/components/SchoolMap.tsx:7` (currently using Mapbox's public demo token)
-- The map uses OpenStreetMap tiles instead of Mapbox's default style
-- Custom webpack config in `next.config.js` transpiles Mapbox GL JS with babel-loader to ensure compatibility
-- Database path in the API route uses `process.cwd()` for proper resolution in both dev and production
-- TypeScript path alias `@/*` maps to the project root
+## Data principles — read before touching any data field
 
-### Architecture Patterns
+These are the project's core commitments. They matter more than any feature.
 
-- Uses Next.js 14 App Router with TypeScript
-- Client-side components ("use client") for interactive map functionality
-- Server-side API routes for database queries
-- Separation of concerns: database initialization, API data fetching, and UI rendering are in separate files
-- Map initialization and marker rendering handled in separate useEffect hooks for better control flow
+1. **`Unknown` beats a wrong value.** `Unknown` is an honest, zero-cost state. A
+   bad inference becomes a permanent false truth that propagates downstream.
+2. **Three states, never blurred**: official (ACARA / exam authority), inferred
+   (name or governing-body heuristics), and not-collected. Every inferred field
+   carries a `*_source`; the UI must let a user tell them apart.
+3. **Provenance on everything**: new sources go `data/<source>/raw → processed`
+   with `parse-* / build-* / validate-*` scripts, and the build writes coverage
+   counts (including the unknown count) into `schools.metadata.json`.
+4. **NAPLAN scores are never stored.** My School's terms forbid bulk scraping and
+   league tables. Link out via `myschool_url`, built from `acara_sml_id`.
+5. **No public ranking or composite quality score.** Not a league table, and not
+   a single blended number. This is a deliberate differentiator against
+   competitors whose composite scores are unauditable.
+6. **Never invent precision.** Fees store an exact figure when a source publishes
+   one, otherwise a band — always with `fee_source` + `source_url` + `fee_year`.
+
+### Marker encoding (and why)
+
+Markers encode **sector → colour** and **enrolments → size**, both official ACARA
+fields present for ~100% / ~90% of schools. Size uses a sqrt curve so *area*
+scales with enrolments.
+
+Markers deliberately **do not** encode `legacy_score`. That imported metric has an
+opaque methodology and covers only 911 of 11,034 schools, skewed by state
+(NSW 523, VIC 175, QLD 3, WA 0, NT 0) — encoding it made entire states render as
+grey, which read to users as "there are no good schools here". It now survives
+only as a caveated block at the bottom of the detail panel.
+`utils/schoolFilters.test.ts` has a regression guard for this.
+
+## Conventions
+
+- Comments explain **why**, not what. Match the surrounding density.
+- Pure logic (filters, classifiers, parsers) gets vitest coverage; UI components
+  are not unit-tested.
+- Changing user-facing strings means editing **both** `messages/en.json` and
+  `messages/zh.json`.
+- `@/*` maps to the project root.
+- Design docs live in `docs/superpowers/specs/`, implementation plans in
+  `docs/superpowers/plans/`, strategy in `docs/strategy/`. Data work follows
+  spec → plan → implement.
