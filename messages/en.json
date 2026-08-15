@@ -87,6 +87,33 @@
     "Secular": "Secular",
     "Unknown": "Unknown"
   },
+  "catchment": {
+    "title": "Intake zone",
+    "show": "Show zone on map",
+    "hide": "Hide zone",
+    "primary": "Primary intake zone",
+    "secondary": "Secondary intake zone",
+    "future": "Future intake zone",
+    "years": "Years {levels}",
+    "dataYear": "{year} enrolment year",
+    "effectiveFrom": "Takes effect {year}",
+    "nonGovernment": "Non-government schools have no geographic intake zone. They admit on their own criteria — parish, siblings, or an entrance exam.",
+    "notPublished": "No intake zone published for this school.",
+    "nswOnly": "Intake zone data currently covers NSW government schools only.",
+    "disclaimer": "Zones change, and boundaries can split a single street. This is a guide, not a legal entitlement — the NSW Department of Education accepts no responsibility where this data informs a property decision. Confirm the address on the official School Finder.",
+    "officialLink": "Official NSW School Finder",
+    "loadError": "Could not load the zone boundary."
+  },
+  "lookup": {
+    "button": "Zoned schools",
+    "hint": "Click anywhere on the map to see the schools zoned for that location",
+    "cancel": "Cancel",
+    "title": "Zoned for this location",
+    "searching": "Looking up…",
+    "noResults": "No NSW government intake zone covers this point.",
+    "clear": "Clear",
+    "error": "Lookup failed. Please try again."
+  },
   "legend": {
     "sizeEqualsEnrolments": "Size = enrolments",
     "enrolmentsUnknown": "Enrolments not published"

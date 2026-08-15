@@ -1,0 +1,124 @@
+{
+  "generated_at": "2026-08-15T03:10:31.278Z",
+  "count": 19,
+  "note": "Catchment polygons with no deterministic route to an ACARA school. Left unmatched rather than name-matched.",
+  "records": [
+    {
+      "kind": "primary",
+      "reason": "no_school_code_in_master_dataset",
+      "nsw_school_code": "1196",
+      "source_name": "Ben Lomond PS"
+    },
+    {
+      "kind": "secondary",
+      "reason": "no_school_code_in_master_dataset",
+      "nsw_school_code": "8917",
+      "source_name": "Murrumbidgee RHS"
+    },
+    {
+      "kind": "secondary",
+      "reason": "no_school_code_in_master_dataset",
+      "nsw_school_code": "8471",
+      "source_name": "MSC Carol Ave"
+    },
+    {
+      "kind": "secondary",
+      "reason": "no_school_code_in_master_dataset",
+      "nsw_school_code": "8241",
+      "source_name": "Moorefield GHS"
+    },
+    {
+      "kind": "secondary",
+      "reason": "age_id_not_in_acara",
+      "nsw_school_code": "8933",
+      "age_id": "89905",
+      "source_name": "Bayside HS"
+    },
+    {
+      "kind": "secondary",
+      "reason": "age_id_not_in_acara",
+      "nsw_school_code": "8935",
+      "age_id": "89907",
+      "source_name": "Box Hill HS"
+    },
+    {
+      "kind": "secondary",
+      "reason": "no_school_code_in_master_dataset",
+      "nsw_school_code": "8882",
+      "source_name": "James Cook Boys Technology HS"
+    },
+    {
+      "kind": "future",
+      "reason": "no_school_code_in_master_dataset",
+      "nsw_school_code": "8928",
+      "source_name": "Googong HS (Provisional)"
+    },
+    {
+      "kind": "future",
+      "reason": "age_id_not_in_acara",
+      "nsw_school_code": "8935",
+      "age_id": "89907",
+      "source_name": "Box Hill HS"
+    },
+    {
+      "kind": "future",
+      "reason": "no_school_code_in_master_dataset",
+      "nsw_school_code": "4697",
+      "source_name": "Gables PS"
+    },
+    {
+      "kind": "future",
+      "reason": "no_school_code_in_master_dataset",
+      "nsw_school_code": "8931",
+      "source_name": "Melrose Park HS"
+    },
+    {
+      "kind": "future",
+      "reason": "no_school_code_in_master_dataset",
+      "nsw_school_code": "4692",
+      "source_name": "Macquarie Park PS"
+    },
+    {
+      "kind": "future",
+      "reason": "no_school_code_in_master_dataset",
+      "nsw_school_code": "8930",
+      "source_name": "Medowie HS (Provisional)"
+    },
+    {
+      "kind": "future",
+      "reason": "no_school_code_in_master_dataset",
+      "nsw_school_code": "8932",
+      "source_name": "Tallawong HS"
+    },
+    {
+      "kind": "future",
+      "reason": "no_school_code_in_master_dataset",
+      "nsw_school_code": "4676",
+      "source_name": "Wilton Junction PS (Provisional)"
+    },
+    {
+      "kind": "future",
+      "reason": "no_school_code_in_master_dataset",
+      "nsw_school_code": "8920",
+      "source_name": "Edmondson Park HS"
+    },
+    {
+      "kind": "future",
+      "reason": "no_school_code_in_master_dataset",
+      "nsw_school_code": "8929",
+      "source_name": "Leppington HS (Provisional)"
+    },
+    {
+      "kind": "future",
+      "reason": "no_school_code_in_master_dataset",
+      "nsw_school_code": "8934",
+      "source_name": "Jordan Springs HS (Provisional)"
+    },
+    {
+      "kind": "future",
+      "reason": "no_school_code_in_master_dataset",
+      "nsw_school_code": "8937",
+      "source_name": "Wilton HS (Provisional)"
+    }
+  ]
+}

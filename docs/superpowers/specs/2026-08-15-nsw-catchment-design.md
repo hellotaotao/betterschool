@@ -2,7 +2,7 @@
 
 - **日期**: 2026-08-15
 - **范围**: 把 NSW 政府学校的学区边界接入 canonical 数据与地图；打通「地址 → 对口学校」反查
-- **状态**: 设计待评审；**数据可行性已实测验证**（见 §3）
+- **状态**: **已实现**（2026-08-15）。实现中修正了两处设计假设，见 §5.1 与 §6.1 的「实现修正」
 - **后续**: VIC / QLD 各自单独 spec（数据形态不同，不强行统一 ingest）
 
 ## 1. 背景
@@ -156,25 +156,71 @@ public/data/catchment/nsw/
    - 无 GDAL 依赖：用 `shapefile`（mbostock）npm 包，**仅 devDependency，不进客户端 bundle**。
    - 坐标已是 GDA94 经纬度，直接输出，不重投影。
    - 年级标志位 `KINDERGART..YEAR12` → `year_levels: string[]`。
-3. **`scripts/build-nsw-catchment.mjs`** — 执行 §3.3 的 join，切分每校 GeoJSON，生成 grid 索引。
-   - **几何简化**：三层合计约 **719k 顶点**，原始 GeoJSON 约 30MB+。用保拓扑的简化（`topojson-simplify` 或预跑 mapshaper）压到可接受体积。**简化容差必须记录进 metadata**——被简化过的边界不能宣称是精确法律边界（见 §8）。
+3. **`scripts/build-nsw-catchment.mjs`** — 执行 §3.3 的 join，按 (学校, 层) 切分 GeoJSON，生成 bbox 查询索引。
 4. **`scripts/validate-nsw-catchment.mjs`** — 见 §9。
 5. `build-canonical-schools.mjs` 把 catchment 层并入 canonical（与 religion / legacy 层并列）。
+   - **依赖方向**：catchment build 读 **ACARA location 层**而非 canonical——canonical 要消费 catchment 层，反过来依赖就成环了。
 
 `package.json` 增：`nsw:catchment:fetch` / `:parse` / `:build` / `:validate`。
+
+### 5.1 实现修正：不做几何简化
+
+设计时假设 719k 顶点必须简化。实测后**推翻**：切分到每校之后，单文件大小为
+
+```
+中位数 4.9 KB · p90 18.1 KB · p99 42.2 KB · 最大 144 KB（合计 17.9 MB / 2,152 个文件）
+```
+
+按需加载一个 5KB 文件不需要任何优化。因此**不做简化**，只把坐标取整到 6 位小数（约 0.1 m，体积减半）。
+
+收益不只是省事：简化会在相邻学区之间制造缝隙与重叠，而反查正是靠 point-in-polygon 判定的。**不简化意味着反查用的就是官方发布的原始边界，没有引入我们自己的几何误差**——§8 中原本要求披露的「简化容差」因此不存在了。
+
+### 5.2 实际产物
+
+```
+data/catchment/nsw/raw/            (gitignore) catchments.zip / master_dataset.csv / 解压产物
+data/catchment/nsw/processed/
+  fetch-manifest.json              下载时间、ETag、current_enrolment_year
+  catchment-layer.json             location_age_id → 学区摘要 + join 统计，供 canonical 合并
+  unmatched.json                   19 条未 join 记录 + 原因
+public/data/catchment/nsw/
+  <location_age_id>-<kind>.json    2,152 个 GeoJSON Feature，按需加载
+  index.json                       381 KB，bbox 查询索引
+```
+
+> **`location_age_id` 不唯一。** 它标识的是*校址*而非学校实体：改名或重组会让新旧两个 ACARA 实体共用一个校址（Randwick Boys High School / Randwick High School；St Peter's Lutheran School / Wimmera Lutheran College - Dimboola Campus）。全澳 7 组，NSW 2 组。处理方式是**把学区挂给该校址上的所有实体**——边界确实覆盖那个校址，这不构成虚假陈述；而「哪个才是现行实体」是这份数据回答不了的问题，不臆造规则。几何文件按 location_age_id 命名，因此这些实体天然共享同一个文件。
 
 ## 6. 服务与反查策略
 
 现状是纯静态 + `/data/*` 长缓存（`next.config.js` 已配 `max-age=86400`）。**保持静态**，不引入运行时 API：
 
 - **显示单校学区**：用户选中学校 → fetch `public/data/catchment/nsw/<id>-<kind>.json` → Leaflet `GeoJSON` 图层。一次一个多边形，体积可忽略。
-- **地址反查（point → 学区）**：
-  1. 构建期生成 `grid-index.json`：把 NSW 切成粗网格，每格记录 bbox 与之相交的候选学区 ID（通常个位数）。
-  2. 运行时：坐标 → 网格格子 → 取回少量候选多边形 → 客户端跑 point-in-polygon（射线法，纯函数，可单测）。
-  3. 分别对 primary / secondary 各跑一次，得到「对口小学 + 对口中学」。
+- **地址反查（point → 学区）**：见 §6.1。
 - **地址 → 坐标**：本阶段不自建。先支持「在地图上点选一个位置」，geocoder 作为后续增量（届时评估 ToS 与配额）。
 
-> 注意：**简化后的几何用于渲染，反查也用它**——因此边界附近的点可能判错。UI 在结果里必须提示「靠近边界请以官方 School Finder 为准」，并给出官方链接。
+### 6.1 实现修正：bbox 索引，不用网格
+
+设计时打算切粗网格。**推翻**，原因是网格在这个数据上是净负担：乡村学区跨度可达数百公里，一个学区就要占几千个格子，索引条目会膨胀到百万级。
+
+实际实现是**扁平 bbox 索引**：2,152 条记录，每条只存 `[minLng, minLat, maxLng, maxLat]`（4 位小数，**向外取整**——向内取整会漏掉真正落在区内的点）。运行时：
+
+1. 内存中扫全部 2,152 个 bbox（亚毫秒级）→ 得到候选；
+2. 只 fetch 候选的完整几何 → 跑 point-in-polygon（射线法，纯函数，已单测）。
+
+实测：候选 4–8 个，精确命中 2–3 个。索引 381 KB，且**不在首屏加载**——只有用户首次使用学区功能时才拉。
+
+实测样例（真实坐标）：
+
+| 位置 | bbox 候选 | 精确命中 |
+|---|---|---|
+| Chatswood | 7 | Chatswood Public School（K-6）、Chatswood High School（7-12） |
+| Parramatta | 5 | Bayanami Public School、Arthur Phillip High School |
+| Bondi Beach | 4 | Bondi Beach Public School、Rose Bay Secondary College |
+| Dubbo | 8 | Dubbo South Public School、Dubbo College South Campus（**7-10**）、Dubbo College Senior Campus（**11-12**） |
+
+> Dubbo 那条印证了 §3.1 的判断：同一位置可以有两个中学学区，按年级切分。**只看 `CATCH_TYPE` 会把它们混为一谈，必须看 `year_levels`。** 悉尼 Willoughby 则会同时命中 Chatswood High（混校）与 Willoughby Girls High（女校）——重叠的单性别/混校学区是 NSW 常态，数据模型用数组天然容纳。
+
+> 边界附近：坐标本身在浮点意义上落在边线时判定不确定（这是算法固有的，与数据无关）。UI 必须提示以官方 School Finder 为准，并给出链接。
 
 ## 7. UI 行为（概要，细节另出 spec）
 
@@ -190,7 +236,7 @@ NSW 教育部在数据集说明中明确写道（转述）：学区信息会因�
 我们的核心使用场景恰恰就是买房租房，因此：
 
 - UI 上任何学区呈现处，必须带**数据年份**（`current_enrolment_year`，当前为 2026）与官方来源链接。
-- 必须注明我们的几何经过简化，**边界附近以官方 School Finder 为准**。
+- **边界附近以官方 School Finder 为准**（几何未经简化，但边线上的判定本身不确定，见 §6.1）。
 - CC-BY 要求署名：在数据说明页标注 NSW Department of Education 与许可。
 - 不得暗示我们的边界具有法律效力。
 
@@ -201,7 +247,7 @@ NSW 教育部在数据集说明中明确写道（转述）：学区信息会因�
 **纯逻辑单测（vitest）**
 - 年级标志位 → `year_levels` 映射（含 INFANTS 只有 K-2、CENTRAL 跨 K-12、future 层数字年份）
 - point-in-polygon：内部点、外部点、**边界点**、带洞多边形、跨反子午线（NSW 不涉及但守住）
-- grid 索引：每个学区的所有顶点所在格子都必须包含该学区 ID
+- bbox 索引：每个学区的**每一个顶点**都必须落在它自己的索引 bbox 内（守住「只许向外取整」）
 
 **构建期校验**
 - join 命中率不得低于基线（primary ≥ 99%，secondary ≥ 98%）——低于即构建失败，防止上游改字段悄悄劣化
@@ -218,7 +264,7 @@ NSW 教育部在数据集说明中明确写道（转述）：学区信息会因�
 |---|---|
 | 上游字段/URL 变更 | fetch 与 parse 分离；构建期校验命中率基线；失败即红，不静默降级 |
 | 边界变动导致数据过时 | 每条 catchment 带 `data_year` + `boundary_updated`；UI 展示；定期重跑 |
-| 简化导致边界附近误判 | 记录容差；UI 明示；边界附近引导至官方工具 |
+| ~~简化导致边界附近误判~~ | 已消除：不做简化（§5.1）。边线上的判定不确定性仍由 UI 明示并引导至官方工具 |
 | 用户误以为私校有学区 | 非政府学校显式说明招生逻辑不同；不显示学区入口 |
 | 几何体积拖慢首屏 | 学区**不进** canonical 主文件，永远按需加载 |
 | `location_age_id` 语义在 ACARA 侧变化 | 校验脚本盯住命中率；`unmatched.json` 是回归基线 |

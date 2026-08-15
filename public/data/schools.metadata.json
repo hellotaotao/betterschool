@@ -24,7 +24,8 @@
       ],
       "note": "Official ACARA identity, profile and location data is the canonical base table/map layer. Legacy score/rank is retained only as an optional metric layer for matched schools."
     },
-    "religion": "Religious affiliation is INFERRED, not an official ACARA field. Catholic/Government come from sector (high confidence); Independent schools are classified only from religious governing bodies or a conservative explicit-name match, and are left Unknown rather than guessed when signals are weak."
+    "religion": "Religious affiliation is INFERRED, not an official ACARA field. Catholic/Government come from sector (high confidence); Independent schools are classified only from religious governing bodies or a conservative explicit-name match, and are left Unknown rather than guessed when signals are weak.",
+    "catchment": "NSW government school intake zones from data.nsw.gov.au (CC-BY, 2026 enrolment year), joined by USE_ID -> master dataset School_code -> AgeID -> location_age_id. Deterministic ID join only; unjoined polygons are recorded in data/catchment/nsw/processed/unmatched.json rather than name-matched. Attached to Government schools only: non-government schools admit on their own criteria and have no geographic zone. Boundaries are a guide, not a legal instrument — NSW Department of Education disclaims responsibility where this data informs property decisions, and the official School Finder is authoritative."
   },
   "fields": {
     "local_id": "Legacy BetterSchool local_id, present only when a legacy record was deterministically matched to ACARA.",
@@ -40,7 +41,8 @@
     "is_religious": "true = faith-based, false = secular (Government), null = Unknown.",
     "religion_source": "sector | governing_body | name_explicit | manual; absent when Unknown.",
     "myschool_url": "Deep link to the school My School page, built from acara_sml_id (verified pattern).",
-    "fees": "Tuition fees: free for Government; other sectors pending collection. Precise amount preferred, else band; always with fee_source."
+    "fees": "Tuition fees: free for Government; other sectors pending collection. Precise amount preferred, else band; always with fee_source.",
+    "catchments": "NSW only, Government schools only. Each entry carries geometry_url (loaded on demand), the applicable year levels, data_year and source. Absent means no catchment data, not \"no catchment\"."
   },
   "generated_from": {
     "canonical_builder": "scripts/build-canonical-schools.mjs",
@@ -79,7 +81,13 @@
     "fees_band_counts": {
       "free": 7128,
       "not_collected": 3906
+    },
+    "catchment_counts": {
+      "primary": 1653,
+      "schools_with_catchment": 2029,
+      "secondary": 437,
+      "future": 61
     }
   },
-  "generated_at": "2026-06-18T16:27:29.576Z"
+  "generated_at": "2026-08-15T03:10:32.133Z"
 }

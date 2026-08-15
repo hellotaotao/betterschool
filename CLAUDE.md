@@ -29,6 +29,12 @@ npm run acara:match      # match legacy BetterSchool records to ACARA records
 npm run acara:validate   # sanity-check the parsed ACARA layer
 npm run canonical:build  # merge all layers -> public/data/schools.canonical.json
 npm run canonical:validate
+
+# NSW catchments (independent of the ACARA steps above, but run before
+# canonical:build so the layer gets merged in)
+npm run nsw:catchment:fetch     # download shapefiles + master dataset (needs 'unzip')
+npm run nsw:catchment:build     # join + emit public/data/catchment/nsw/
+npm run nsw:catchment:validate  # join-rate floors, geometry and attachment checks
 ```
 
 ## Architecture
@@ -42,10 +48,17 @@ ACARA/*.xlsx
   └─ scripts/parse-acara-*.mjs      → data/acara/processed/*.json
   └─ scripts/religion-classify.mjs  → religion layer
   └─ scripts/match-betterschool-acara.mjs → legacy metric layer
+data.nsw.gov.au
+  └─ scripts/{fetch,parse,build}-nsw-catchment.mjs → catchment layer
        └─ scripts/build-canonical-schools.mjs
             → public/data/schools.canonical.json  (11,034 schools, ~15MB)
             → public/data/schools.metadata.json   (provenance + coverage counts)
+            → public/data/catchment/nsw/*.json    (2,152 zones, loaded on demand)
 ```
+
+The catchment build reads the ACARA *location* layer rather than
+`schools.canonical.json`, because canonical consumes the catchment layer —
+depending on it there would be circular.
 
 ### Runtime
 
@@ -58,6 +71,9 @@ ACARA/*.xlsx
 - `components/SchoolDetail.tsx`, `FilterBar.tsx`, `SearchBox.tsx`, `BottomSheet.tsx`
   (mobile layout switches on `useMediaQuery('(max-width: 768px)')`).
 - `utils/schoolFilters.ts` — filter predicates + marker encoding.
+- `lib/catchmentLookup.ts` — pure geometry (point-in-polygon, bbox prefilter),
+  unit-tested; `lib/catchmentClient.ts` — the fetching/caching around it.
+- `components/CatchmentLookup.tsx` — "what is this location zoned for?" results.
 - `lib/i18n.ts` + `messages/{en,zh}.json` — locale auto-detected from
   `navigator.languages`. **Both message files must keep identical key sets.**
 
@@ -86,6 +102,12 @@ These are the project's core commitments. They matter more than any feature.
    competitors whose composite scores are unauditable.
 6. **Never invent precision.** Fees store an exact figure when a source publishes
    one, otherwise a band — always with `fee_source` + `source_url` + `fee_year`.
+   Catchment geometry is likewise stored unsimplified, so the reverse lookup runs
+   against the published boundary rather than an approximation of our own.
+7. **Absent is not the same as none.** No catchment on a Catholic school means
+   "zones do not apply to this sector"; no catchment on a NSW government school
+   means "none published"; on a Victorian school it means "not collected yet".
+   The UI says which — it never renders a bare empty state.
 
 ### Marker encoding (and why)
 

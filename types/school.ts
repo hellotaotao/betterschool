@@ -22,6 +22,32 @@ export interface SchoolFees {
   source_url?: string;
 }
 
+export type CatchmentKind = 'primary' | 'secondary' | 'future';
+
+/**
+ * A government school's intake zone. Government schools only — non-government
+ * schools admit on their own criteria (parish, siblings, entrance exam) and have
+ * no geographic zone at all.
+ */
+export interface SchoolCatchment {
+  /** Static GeoJSON Feature, fetched on demand — geometry never ships in the canonical file. */
+  geometry_url: string;
+  kind: CatchmentKind;
+  /** Official CATCH_TYPE, e.g. PRIMARY / CENTRAL_HIGH / INFANTS. '+' joined when merged rows disagree. */
+  catch_type: string;
+  /** Year levels this zone applies to, e.g. ['K','1',…,'6']. Read from the source flags, not inferred from catch_type. */
+  year_levels: string[];
+  /** Future zones only: the year the zone takes effect. */
+  effective_year?: number;
+  nsw_school_code: string;
+  /** Enrolment year the boundary applies to. */
+  data_year: number;
+  source: string;
+  source_url: string;
+  /** Source ADD_DATE (yyyymmdd) — when the boundary itself last changed. */
+  boundary_updated?: string;
+}
+
 export interface School {
   /** Canonical deterministic app ID based on ACARA IDs. */
   id: string;
@@ -66,6 +92,8 @@ export interface School {
   religion_source?: ReligionSource;
   /** Tuition fees: precise amount preferred, else band; always carries a source. */
   fees?: SchoolFees;
+  /** Intake zones. Absent means "no catchment data", not "no catchment". */
+  catchments?: SchoolCatchment[];
   /** Optional legacy imported score; not official ACARA data. */
   legacy_score?: number;
   /** Optional legacy imported rank; not official ACARA data. */

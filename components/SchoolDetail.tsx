@@ -1,17 +1,32 @@
 "use client";
 
 import { School } from '@/types/school';
-import { getReligionLabel, getSchoolTypeLabel, getSectorLabel, Messages } from '@/lib/i18n';
+import { formatMessage, getReligionLabel, getSchoolTypeLabel, getSectorLabel, Messages } from '@/lib/i18n';
 import { hasLegacyScore } from '@/utils/schoolFilters';
+
+const SCHOOL_FINDER_URL = 'https://education.nsw.gov.au/school-finder';
 
 interface SchoolDetailProps {
   school: School;
   dictionary: Messages;
   onClose: () => void;
   variant?: 'panel' | 'sheet';
+  catchmentVisible?: boolean;
+  onToggleCatchment?: () => void;
+  catchmentError?: boolean;
 }
 
-export default function SchoolDetail({ school, dictionary, onClose, variant = 'panel' }: SchoolDetailProps) {
+export default function SchoolDetail({
+  school,
+  dictionary,
+  onClose,
+  variant = 'panel',
+  catchmentVisible = false,
+  onToggleCatchment,
+  catchmentError = false,
+}: SchoolDetailProps) {
+  const catchments = school.catchments ?? [];
+  const isGovernment = school.sector === 'Government';
   const wrapClass = variant === 'panel'
     ? 'absolute top-14 right-3 bottom-3 z-10 w-56 bg-white/95 backdrop-blur-sm rounded-xl shadow-xl flex flex-col overflow-hidden'
     : 'flex flex-col h-full overflow-hidden bg-white';
@@ -197,6 +212,69 @@ export default function SchoolDetail({ school, dictionary, onClose, variant = 'p
                 <a className="font-medium text-indigo-600 hover:underline" href={school.myschool_url} target="_blank" rel="noreferrer">{dictionary.details.viewOnMySchool}</a>
               </div>
             </>
+          )}
+        </div>
+
+        {/* Catchments are a statutory feature of government enrolment only. For
+            every other sector the honest answer is not "no zone found" but
+            "zones do not apply", which is a different statement. */}
+        <div className="mt-2 rounded-lg border border-blue-100 bg-blue-50/50 p-2.5 space-y-2 text-xs">
+          <div className="text-[10px] font-semibold text-blue-900">{dictionary.catchment.title}</div>
+
+          {catchments.length > 0 ? (
+            <>
+              {catchments.map(catchment => (
+                <div key={`${catchment.kind}-${catchment.catch_type}`} className="space-y-0.5">
+                  <div className="flex justify-between gap-2">
+                    <span className="text-blue-800/70">{dictionary.catchment[catchment.kind]}</span>
+                    <span className="font-medium text-blue-900 text-right">
+                      {formatMessage(dictionary.catchment.years, { levels: catchment.year_levels.join(', ') })}
+                    </span>
+                  </div>
+                  <div className="text-[9px] text-blue-800/60">
+                    {formatMessage(dictionary.catchment.dataYear, { year: catchment.data_year })}
+                    {catchment.effective_year
+                      ? ` · ${formatMessage(dictionary.catchment.effectiveFrom, { year: catchment.effective_year })}`
+                      : ''}
+                  </div>
+                </div>
+              ))}
+
+              {onToggleCatchment && (
+                <button
+                  onClick={onToggleCatchment}
+                  className={`w-full rounded-md px-2 py-1.5 text-[11px] font-medium transition-colors ${
+                    catchmentVisible
+                      ? 'bg-blue-600 text-white hover:bg-blue-700'
+                      : 'bg-white text-blue-700 border border-blue-200 hover:bg-blue-50'
+                  }`}
+                >
+                  {catchmentVisible ? dictionary.catchment.hide : dictionary.catchment.show}
+                </button>
+              )}
+
+              {catchmentError && (
+                <p className="text-[9px] text-red-600">{dictionary.catchment.loadError}</p>
+              )}
+
+              <p className="text-[9px] text-blue-800/80 leading-snug">{dictionary.catchment.disclaimer}</p>
+              <a
+                href={SCHOOL_FINDER_URL}
+                target="_blank"
+                rel="noreferrer"
+                className="block text-[10px] font-medium text-blue-700 hover:underline"
+              >
+                {dictionary.catchment.officialLink} →
+              </a>
+            </>
+          ) : (
+            <p className="text-[9px] text-blue-800/70 leading-snug">
+              {!isGovernment
+                ? dictionary.catchment.nonGovernment
+                : school.state === 'NSW'
+                  ? dictionary.catchment.notPublished
+                  : dictionary.catchment.nswOnly}
+            </p>
           )}
         </div>
 

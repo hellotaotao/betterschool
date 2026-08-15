@@ -1,0 +1,20 @@
+{
+  "fetched_at": "2026-08-15T03:05:51.951Z",
+  "current_enrolment_year": 2026,
+  "sources": {
+    "catchments": {
+      "url": "https://data.nsw.gov.au/data/dataset/8b1e8161-7252-43d9-81ed-6311569cb1d7/resource/32d6f502-ddb1-45d9-b114-5e34ddfd33ac/download/catchments.zip",
+      "bytes": 8440695,
+      "etag": "\"1785720559.9987347-8440695-1222449590\"",
+      "last_modified": "Mon, 03 Aug 2026 01:29:19 GMT",
+      "dataset_page": "https://data.nsw.gov.au/data/dataset/nsw-education-school-intake-zones-catchment-areas-for-nsw-government-schools"
+    },
+    "master_dataset": {
+      "url": "https://data.nsw.gov.au/data/dataset/78c10ea3-8d04-4c9c-b255-bbf8547e37e7/resource/3e6d5f6a-055c-440d-a690-fc0537c31095/download/master_dataset.csv",
+      "bytes": 1277226,
+      "etag": "\"1785714882.4184802-1277226-1225922814\"",
+      "last_modified": "Sun, 02 Aug 2026 23:54:42 GMT",
+      "dataset_page": "https://data.nsw.gov.au/data/dataset/nsw-education-nsw-public-schools-master-dataset"
+    }
+  }
+}

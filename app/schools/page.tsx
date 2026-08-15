@@ -13,10 +13,14 @@ import { FilterState, filterSchools, SECTOR_COLORS } from '@/utils/schoolFilters
 import { useMediaQuery } from '@/lib/useMediaQuery';
 import schoolsMetadata from '@/public/data/schools.metadata.json';
 
+import type { CatchmentFeature } from '@/lib/catchmentLookup';
+import { loadCatchmentsForSchool, lookupCatchmentsAt } from '@/lib/catchmentClient';
+
 import SchoolDetail from '../../components/SchoolDetail';
 import SchoolList from '../../components/SchoolList';
 import FilterBar from '../../components/FilterBar';
 import SearchBox from '../../components/SearchBox';
+import CatchmentLookup from '../../components/CatchmentLookup';
 import BottomSheet, { SheetSnap } from '../../components/BottomSheet';
 
 const SchoolMap = dynamic(() => import('../../components/SchoolMap'), {
@@ -27,6 +31,28 @@ const SchoolMap = dynamic(() => import('../../components/SchoolMap'), {
 // long max-age, so without a version query returning users would keep stale data
 // for up to a day after each data update. generated_at changes on every rebuild.
 const DATA_VERSION = String(schoolsMetadata.generated_at ?? '').replace(/\D/g, '') || 'v1';
+
+/** Toolbar toggle that arms map-click catchment lookup. */
+function LookupButton({
+  active,
+  dictionary,
+  onClick,
+}: {
+  active: boolean;
+  dictionary: ReturnType<typeof getMessages>;
+  onClick: () => void;
+}) {
+  return (
+    <button
+      onClick={onClick}
+      className={`rounded-full px-3 py-1.5 text-xs font-medium shadow-md whitespace-nowrap transition-colors ${
+        active ? 'bg-indigo-600 text-white' : 'bg-white/90 backdrop-blur-sm text-gray-700 hover:bg-gray-100'
+      }`}
+    >
+      {active ? dictionary.lookup.cancel : `◎ ${dictionary.lookup.button}`}
+    </button>
+  );
+}
 
 export default function SchoolsPage() {
   const [allSchools, setAllSchools] = useState<School[]>([]);
@@ -46,6 +72,21 @@ export default function SchoolsPage() {
   const [geoReady, setGeoReady] = useState(false);
   const [leftPanelOpen, setLeftPanelOpen] = useState(true);
   const [sheetSnap, setSheetSnap] = useState<SheetSnap>('peek');
+  // Catchment display for the selected school. Tagged with the school it belongs
+  // to so selecting another school makes it stale by construction — no reset
+  // effect, and a slow fetch that lands after the user moved on is ignored.
+  const [catchmentState, setCatchmentState] = useState<{
+    schoolId: string;
+    visible: boolean;
+    features: CatchmentFeature[] | null;
+    error: boolean;
+  } | null>(null);
+  // "Which schools is this location zoned for?" lookup.
+  const [pickMode, setPickMode] = useState(false);
+  const [lookupPin, setLookupPin] = useState<[number, number] | null>(null);
+  const [lookupResults, setLookupResults] = useState<CatchmentFeature[] | null>(null);
+  const [lookupLoading, setLookupLoading] = useState(false);
+  const [lookupError, setLookupError] = useState(false);
   const selectedCardRef = useRef<HTMLDivElement>(null);
   const topBarRef = useRef<HTMLDivElement>(null);
   const [topBarBottom, setTopBarBottom] = useState(56);
@@ -140,6 +181,82 @@ export default function SchoolsPage() {
     setPlaceFocus(schools);
   }, []);
 
+  const activeCatchment = catchmentState && catchmentState.schoolId === selectedSchool?.id
+    ? catchmentState
+    : null;
+  const catchmentVisible = activeCatchment?.visible ?? false;
+  const schoolCatchments = activeCatchment?.features ?? null;
+  const catchmentError = activeCatchment?.error ?? false;
+
+  const handleToggleCatchment = useCallback(() => {
+    const school = selectedSchool;
+    if (!school?.catchments?.length || !Number.isFinite(school.location_age_id)) return;
+
+    if (catchmentVisible) {
+      setCatchmentState({ schoolId: school.id, visible: false, features: schoolCatchments, error: false });
+      return;
+    }
+
+    setCatchmentState({ schoolId: school.id, visible: true, features: schoolCatchments, error: false });
+    if (schoolCatchments) return; // already fetched for this school
+
+    loadCatchmentsForSchool(Number(school.location_age_id), school.catchments.map(c => c.kind))
+      .then(features => {
+        setCatchmentState(current => (
+          current?.schoolId === school.id ? { ...current, features } : current
+        ));
+      })
+      .catch(() => {
+        setCatchmentState(current => (
+          current?.schoolId === school.id ? { ...current, visible: false, error: true } : current
+        ));
+      });
+  }, [catchmentVisible, schoolCatchments, selectedSchool]);
+
+  const clearLookup = useCallback(() => {
+    setPickMode(false);
+    setLookupPin(null);
+    setLookupResults(null);
+    setLookupError(false);
+    setLookupLoading(false);
+  }, []);
+
+  const handlePickLocation = useCallback(([lat, lng]: [number, number]) => {
+    setPickMode(false);
+    setSelectedSchool(null);
+    setLookupPin([lat, lng]);
+    setLookupResults([]);
+    setLookupError(false);
+    setLookupLoading(true);
+    if (isMobile) setSheetSnap('expanded');
+
+    // GeoJSON is [lng, lat]; Leaflet hands us [lat, lng].
+    lookupCatchmentsAt([lng, lat])
+      .then(features => {
+        setLookupResults(features);
+        setLookupLoading(false);
+      })
+      .catch(() => {
+        setLookupError(true);
+        setLookupLoading(false);
+      });
+  }, [isMobile]);
+
+  const schoolsByLocationAgeId = useMemo(() => {
+    const map = new Map<number, School>();
+    for (const school of allSchools) {
+      if (Number.isFinite(school.location_age_id)) map.set(Number(school.location_age_id), school);
+    }
+    return map;
+  }, [allSchools]);
+
+  // The lookup result and a school's own zone are mutually exclusive views.
+  const mapCatchments = lookupResults?.length
+    ? lookupResults
+    : catchmentVisible
+      ? schoolCatchments
+      : null;
+
   const areaSummary = useMemo(() => {
     const government = visibleSchools.filter(school => school.sector === 'Government').length;
     const catholic = visibleSchools.filter(school => school.sector === 'Catholic').length;
@@ -175,6 +292,10 @@ export default function SchoolsPage() {
             flyToSchool={selectedSchool}
             fitToSchools={placeFocus}
             onGeoReady={handleGeoReady}
+            catchmentFeatures={mapCatchments}
+            pickMode={pickMode}
+            onPickLocation={handlePickLocation}
+            lookupPin={lookupPin}
           />
         )}
       </div>
@@ -190,18 +311,42 @@ export default function SchoolsPage() {
                 onPickPlace={handlePickPlace}
               />
             </div>
-            <div className="pointer-events-auto">
+            <div className="pointer-events-auto flex gap-2 items-center">
+              <LookupButton
+                active={pickMode}
+                dictionary={dictionary}
+                onClick={() => (pickMode ? clearLookup() : setPickMode(true))}
+              />
               <FilterBar filters={filters} onChange={setFilters} dictionary={dictionary} variant="scroll" />
             </div>
+            {pickMode && (
+              <div className="pointer-events-none rounded-lg bg-indigo-600/95 px-3 py-2 text-[11px] text-white shadow-md">
+                {dictionary.lookup.hint}
+              </div>
+            )}
           </div>
 
           <BottomSheet snap={sheetSnap} onSnapChange={setSheetSnap}>
-            {selectedSchool ? (
+            {lookupPin && !selectedSchool ? (
+              <CatchmentLookup
+                results={lookupResults}
+                schoolsByLocationAgeId={schoolsByLocationAgeId}
+                loading={lookupLoading}
+                error={lookupError}
+                dictionary={dictionary}
+                onClear={clearLookup}
+                onPickSchool={handlePickSchool}
+                variant="sheet"
+              />
+            ) : selectedSchool ? (
               <SchoolDetail
                 school={selectedSchool}
                 dictionary={dictionary}
                 onClose={handleMapClick}
                 variant="sheet"
+                catchmentVisible={catchmentVisible}
+                onToggleCatchment={handleToggleCatchment}
+                catchmentError={catchmentError}
               />
             ) : (
               <SchoolList
@@ -235,9 +380,37 @@ export default function SchoolsPage() {
               />
             </div>
             <div className="pointer-events-auto">
+              <LookupButton
+                active={pickMode}
+                dictionary={dictionary}
+                onClick={() => (pickMode ? clearLookup() : setPickMode(true))}
+              />
+            </div>
+            <div className="pointer-events-auto">
               <FilterBar filters={filters} onChange={setFilters} dictionary={dictionary} />
             </div>
           </div>
+
+          {pickMode && (
+            <div className="absolute top-16 left-1/2 -translate-x-1/2 z-30 rounded-lg bg-indigo-600/95 px-4 py-2 text-xs text-white shadow-lg pointer-events-none">
+              {dictionary.lookup.hint}
+            </div>
+          )}
+
+          {/* Shares the right-hand column with the detail panel. Selecting a
+              result swaps to that school's detail; closing it returns here,
+              because the lookup state is kept. */}
+          {lookupPin && !selectedSchool && (
+            <CatchmentLookup
+              results={lookupResults}
+              schoolsByLocationAgeId={schoolsByLocationAgeId}
+              loading={lookupLoading}
+              error={lookupError}
+              dictionary={dictionary}
+              onClear={clearLookup}
+              onPickSchool={handlePickSchool}
+            />
+          )}
 
           <div
             style={{ top: topBarBottom + 8 }}
@@ -277,6 +450,9 @@ export default function SchoolsPage() {
               school={selectedSchool}
               dictionary={dictionary}
               onClose={handleMapClick}
+              catchmentVisible={catchmentVisible}
+              onToggleCatchment={handleToggleCatchment}
+              catchmentError={catchmentError}
             />
           )}
 

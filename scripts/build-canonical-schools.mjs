@@ -3,6 +3,8 @@ import { classifyReligion, deriveIsReligious } from './religion-classify.mjs';
 
 const profilePath = 'data/acara/processed/school-profile-2025.json';
 const religionOverridesPath = 'data/religion/manual-overrides.json';
+// Optional layer: absent until 'npm run nsw:catchment:build' has been run.
+const catchmentLayerPath = 'data/catchment/nsw/processed/catchment-layer.json';
 const locationPath = 'data/acara/processed/school-location-2025.json';
 const legacyPath = 'public/data/schools.json';
 const matchesPath = 'data/acara/processed/betterschool-acara-matches.json';
@@ -32,6 +34,10 @@ const matchesPayload = readJson(matchesPath);
 const religionOverrides = new Map(
   (fs.existsSync(religionOverridesPath) ? readJson(religionOverridesPath) : [])
     .map((override) => [override.acara_sml_id, override]),
+);
+const catchmentLayer = fs.existsSync(catchmentLayerPath) ? readJson(catchmentLayerPath) : null;
+const catchmentsByLocationAgeId = new Map(
+  Object.entries(catchmentLayer?.by_location_age_id ?? {}),
 );
 
 const profilesByLocationAgeId = new Map(profilePayload.records.map(record => [record.location_age_id, record]));
@@ -84,6 +90,13 @@ for (const location of locationPayload.records) {
   const myschoolUrl = Number.isFinite(location.acara_sml_id)
     ? `https://www.myschool.edu.au/school/${location.acara_sml_id}`
     : undefined;
+  // Government schools only: catchments are a statutory feature of public
+  // enrolment. Catholic and Independent schools admit on their own criteria
+  // (parish, siblings, entrance exam) and have no geographic zone, so attaching
+  // one here — even by accident — would state something false.
+  const catchments = sectorValue === 'Government'
+    ? catchmentsByLocationAgeId.get(String(location.location_age_id))
+    : undefined;
 
   schools.push(compactObject({
     id: canonicalId(location),
@@ -122,6 +135,7 @@ for (const location of locationPayload.records) {
     is_religious: religion.is_religious,
     religion_source: religion.religion_source,
     fees,
+    catchments,
     legacy_score: hasLegacyMetric ? legacy.score : undefined,
     legacy_rank: hasLegacyMetric ? legacy.rank : undefined,
     legacy_metric_status: hasLegacyMetric
@@ -175,6 +189,14 @@ const feesBandCounts = schools.reduce((acc, school) => {
   return acc;
 }, {});
 
+const catchmentCounts = schools.reduce((acc, school) => {
+  for (const catchment of school.catchments ?? []) {
+    acc[catchment.kind] = (acc[catchment.kind] ?? 0) + 1;
+  }
+  if (school.catchments) acc.schools_with_catchment = (acc.schools_with_catchment ?? 0) + 1;
+  return acc;
+}, {});
+
 const metadata = readJson(metadataPath);
 metadata.dataset_status = 'canonical_acara_base_with_legacy_metric_layer';
 metadata.coverage_note = 'Canonical public app dataset is ACARA 2025 official public School Location/Profile records with valid coordinates. Legacy score/rank are optional attached metrics only.';
@@ -196,6 +218,10 @@ metadata.provenance.naplan = 'NAPLAN scores are not stored. Each school links ou
 metadata.provenance.fees = 'Government schools are marked free (no tuition; voluntary contributions only). Catholic/Independent fees are not yet collected — left absent rather than guessed. Future fees carry precise amounts where available, otherwise a band, always with a source.';
 metadata.fields.myschool_url = 'Deep link to the school My School page, built from acara_sml_id (verified pattern).';
 metadata.fields.fees = 'Tuition fees: free for Government; other sectors pending collection. Precise amount preferred, else band; always with fee_source.';
+metadata.provenance.catchment = catchmentLayer
+  ? `NSW government school intake zones from data.nsw.gov.au (CC-BY, ${catchmentLayer.data_year} enrolment year), joined by USE_ID -> master dataset School_code -> AgeID -> location_age_id. Deterministic ID join only; unjoined polygons are recorded in data/catchment/nsw/processed/unmatched.json rather than name-matched. Attached to Government schools only: non-government schools admit on their own criteria and have no geographic zone. Boundaries are a guide, not a legal instrument — NSW Department of Education disclaims responsibility where this data informs property decisions, and the official School Finder is authoritative.`
+  : 'Not collected in this build.';
+metadata.fields.catchments = 'NSW only, Government schools only. Each entry carries geometry_url (loaded on demand), the applicable year levels, data_year and source. Absent means no catchment data, not "no catchment".';
 metadata.generated_from = {
   canonical_builder: 'scripts/build-canonical-schools.mjs',
   acara_location_records: locationPayload.records.length,
@@ -209,6 +235,7 @@ metadata.generated_from = {
   religion_affiliation_counts: religionAffiliationCounts,
   religion_source_counts: religionSourceCounts,
   fees_band_counts: feesBandCounts,
+  catchment_counts: catchmentCounts,
 };
 metadata.generated_at = new Date().toISOString();
 

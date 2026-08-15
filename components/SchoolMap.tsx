@@ -1,11 +1,31 @@
 "use client";
 
 import { useEffect, useState, useCallback, useRef } from 'react';
-import { MapContainer, TileLayer, Marker, useMap, useMapEvents } from 'react-leaflet';
+import { MapContainer, TileLayer, Marker, GeoJSON, useMap, useMapEvents } from 'react-leaflet';
 import L from 'leaflet';
 import 'leaflet.markercluster';
 import { School } from '@/types/school';
 import { getMarkerRadius, getMarkerColor } from '@/utils/schoolFilters';
+import type { CatchmentFeature } from '@/lib/catchmentLookup';
+
+/** Catchment outline colours, distinct from the sector hues used by markers. */
+const CATCHMENT_STYLE: Record<string, { color: string; dashArray?: string }> = {
+  primary: { color: '#2563eb' },
+  secondary: { color: '#db2777' },
+  future: { color: '#64748b', dashArray: '6 4' },
+};
+
+/** Pin marking the location the user asked about in catchment lookup mode. */
+const lookupPinIcon = L.divIcon({
+  className: 'catchment-lookup-pin',
+  html: `<div style="
+    width:18px;height:18px;border-radius:50% 50% 50% 0;
+    background:#4f46e5;border:2px solid white;
+    transform:rotate(-45deg);box-shadow:0 1px 4px rgba(0,0,0,.4);
+  "></div>`,
+  iconSize: [18, 18],
+  iconAnchor: [9, 18],
+});
 
 /** Cache marker icons by rendered radius, sector, and selection state. */
 const iconCache = new Map<string, L.DivIcon>();
@@ -97,6 +117,13 @@ interface SchoolMapProps {
   flyToSchool?: School | null;
   fitToSchools?: School[] | null;
   onGeoReady?: () => void;
+  /** Catchment polygons to draw, if any. */
+  catchmentFeatures?: CatchmentFeature[] | null;
+  /** When true, a map click picks a location to look up instead of clearing the selection. */
+  pickMode?: boolean;
+  onPickLocation?: (point: [number, number]) => void;
+  /** [lat, lng] of the location currently being looked up. */
+  lookupPin?: [number, number] | null;
 }
 
 type Coordinates = [number, number];
@@ -203,9 +230,43 @@ async function locateByIp(): Promise<Coordinates | null> {
   return null;
 }
 
-/** Track background clicks and clear the selected school. */
-function MapClickTracker({ onMapClick }: { onMapClick: () => void }) {
-  useMapEvents({ click: onMapClick });
+/**
+ * Track background clicks. In pick mode a click chooses a location to look up;
+ * otherwise it clears the selected school.
+ */
+function MapClickTracker({
+  onMapClick,
+  pickMode,
+  onPickLocation,
+}: {
+  onMapClick: () => void;
+  pickMode?: boolean;
+  onPickLocation?: (point: [number, number]) => void;
+}) {
+  useMapEvents({
+    click: (event) => {
+      if (pickMode) onPickLocation?.([event.latlng.lat, event.latlng.lng]);
+      else onMapClick();
+    },
+  });
+  return null;
+}
+
+/** Fit the map around a set of catchment polygons once they load. */
+function FitToCatchments({ features }: { features: CatchmentFeature[] | null | undefined }) {
+  const map = useMap();
+  const signature = (features ?? []).map(f => `${f.properties.location_age_id}-${f.properties.kind}`).join(',');
+
+  useEffect(() => {
+    if (!features || features.length === 0) return;
+    const bounds = L.latLngBounds([]);
+    for (const feature of features) {
+      bounds.extend(L.geoJSON(feature as never).getBounds());
+    }
+    if (bounds.isValid()) map.fitBounds(bounds, { padding: [60, 60], maxZoom: 14 });
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [signature]);
+
   return null;
 }
 
@@ -439,6 +500,10 @@ export default function SchoolMap({
   flyToSchool,
   fitToSchools,
   onGeoReady,
+  catchmentFeatures,
+  pickMode,
+  onPickLocation,
+  lookupPin,
 }: SchoolMapProps) {
   useEffect(() => {
     if (!document.getElementById('leaflet-css')) {
@@ -479,8 +544,30 @@ export default function SchoolMap({
         <GeoLocator onReady={handleGeoReady} />
         <FlyToTracker school={flyToSchool} />
         <FitToSchools focus={fitToSchools ?? null} schools={schools} onBoundsChange={handleBoundsChange} />
-        <MapClickTracker onMapClick={onMapClick} />
+        <MapClickTracker onMapClick={onMapClick} pickMode={pickMode} onPickLocation={onPickLocation} />
         <BoundsTracker schools={schools} onBoundsChange={handleBoundsChange} geoReady={geoReady} />
+        <FitToCatchments features={catchmentFeatures} />
+
+        {/* Catchment outlines sit under the markers so schools stay clickable. */}
+        {catchmentFeatures?.map((feature) => {
+          const style = CATCHMENT_STYLE[feature.properties.kind] ?? CATCHMENT_STYLE.primary;
+          return (
+            <GeoJSON
+              key={`${feature.properties.location_age_id}-${feature.properties.kind}`}
+              data={feature as never}
+              interactive={false}
+              style={{
+                color: style.color,
+                weight: 2,
+                dashArray: style.dashArray,
+                fillColor: style.color,
+                fillOpacity: 0.1,
+              }}
+            />
+          );
+        })}
+
+        {lookupPin && <Marker position={lookupPin} icon={lookupPinIcon} interactive={false} />}
 
         {/* Cluster all filtered schools so dense areas stay readable. */}
         <ClusterLayer

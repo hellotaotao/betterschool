@@ -50,3 +50,6 @@ scripts/process_school_data.py
 
 # claude code local settings
 .claude/settings.local.json
+
+# NSW catchment raw downloads (regenerate with npm run nsw:catchment:fetch)
+data/catchment/nsw/raw/

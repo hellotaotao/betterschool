@@ -87,6 +87,33 @@
     "Secular": "世俗 / 非宗教",
     "Unknown": "未分类"
   },
+  "catchment": {
+    "title": "学区",
+    "show": "在地图上显示学区",
+    "hide": "隐藏学区",
+    "primary": "小学学区",
+    "secondary": "中学学区",
+    "future": "未来学区",
+    "years": "适用 {levels} 年级",
+    "dataYear": "{year} 招生年度",
+    "effectiveFrom": "{year} 年起生效",
+    "nonGovernment": "非政府学校没有地理学区，按各自标准招生——堂区、兄弟姐妹在读、或入学考试。",
+    "notPublished": "该校未公布学区范围。",
+    "nswOnly": "学区数据目前仅覆盖新南威尔士州公立学校。",
+    "disclaimer": "学区会变动，边界甚至可能从一条街中间穿过。这是参考，不是入学保证——NSW 教育部声明：若将此数据用于房产决策，教育部不承担责任。请用官方 School Finder 按具体地址核实。",
+    "officialLink": "NSW 官方 School Finder",
+    "loadError": "学区边界加载失败。"
+  },
+  "lookup": {
+    "button": "查对口学校",
+    "hint": "在地图上点击任意位置，查看该位置的对口学校",
+    "cancel": "取消",
+    "title": "该位置的对口学校",
+    "searching": "查询中…",
+    "noResults": "该位置不在任何 NSW 公立学区范围内。",
+    "clear": "清除",
+    "error": "查询失败，请重试。"
+  },
   "legend": {
     "sizeEqualsEnrolments": "大小 = 在校人数",
     "enrolmentsUnknown": "未公布在校人数"
