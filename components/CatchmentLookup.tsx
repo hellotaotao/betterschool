@@ -15,6 +15,8 @@ interface CatchmentLookupProps {
   onClear: () => void;
   onPickSchool: (school: School) => void;
   variant?: 'panel' | 'sheet';
+  /** Distance from the viewport top to sit below the (wrapping) top bar. */
+  topOffset?: number;
 }
 
 export default function CatchmentLookup({
@@ -26,9 +28,11 @@ export default function CatchmentLookup({
   onClear,
   onPickSchool,
   variant = 'panel',
+  topOffset,
 }: CatchmentLookupProps) {
-  const wrapClass = variant === 'panel'
-    ? 'absolute top-14 right-3 z-20 w-64 max-h-[calc(100vh-5rem)] bg-white/95 backdrop-blur-sm rounded-xl shadow-xl flex flex-col overflow-hidden'
+  const isPanel = variant === 'panel';
+  const wrapClass = isPanel
+    ? 'absolute right-3 bottom-3 z-20 w-64 bg-white/95 backdrop-blur-sm rounded-xl shadow-xl flex flex-col overflow-hidden'
     : 'flex flex-col h-full overflow-hidden bg-white';
 
   // Primary before secondary before future — the order a parent reads them in.
@@ -36,7 +40,7 @@ export default function CatchmentLookup({
   const sorted = [...(results ?? [])].sort((a, b) => order[a.properties.kind] - order[b.properties.kind]);
 
   return (
-    <div className={wrapClass}>
+    <div className={wrapClass} style={isPanel ? { top: topOffset ?? 56 } : undefined}>
       <div className="px-3 py-2.5 border-b border-gray-100 flex justify-between items-center shrink-0">
         <span className="text-xs font-bold text-indigo-600">{dictionary.lookup.title}</span>
         <button onClick={onClear} className="text-gray-400 hover:text-gray-700 text-base leading-none">✕</button>

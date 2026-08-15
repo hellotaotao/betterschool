@@ -14,6 +14,8 @@ interface SchoolDetailProps {
   catchmentVisible?: boolean;
   onToggleCatchment?: () => void;
   catchmentError?: boolean;
+  /** Distance from the viewport top to sit below the (wrapping) top bar. */
+  topOffset?: number;
 }
 
 export default function SchoolDetail({
@@ -24,15 +26,17 @@ export default function SchoolDetail({
   catchmentVisible = false,
   onToggleCatchment,
   catchmentError = false,
+  topOffset,
 }: SchoolDetailProps) {
   const catchments = school.catchments ?? [];
   const isGovernment = school.sector === 'Government';
-  const wrapClass = variant === 'panel'
-    ? 'absolute top-14 right-3 bottom-3 z-10 w-56 bg-white/95 backdrop-blur-sm rounded-xl shadow-xl flex flex-col overflow-hidden'
+  const isPanel = variant === 'panel';
+  const wrapClass = isPanel
+    ? 'absolute right-3 bottom-3 z-10 w-56 bg-white/95 backdrop-blur-sm rounded-xl shadow-xl flex flex-col overflow-hidden'
     : 'flex flex-col h-full overflow-hidden bg-white';
 
   return (
-    <div className={wrapClass}>
+    <div className={wrapClass} style={isPanel ? { top: topOffset ?? 56 } : undefined}>
       <div className="px-3 py-2.5 border-b border-gray-100 flex justify-between items-center shrink-0">
         <span className="text-xs font-bold text-indigo-600">{dictionary.details.title}</span>
         <button

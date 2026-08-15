@@ -392,7 +392,10 @@ export default function SchoolsPage() {
           </div>
 
           {pickMode && (
-            <div className="absolute top-16 left-1/2 -translate-x-1/2 z-30 rounded-lg bg-indigo-600/95 px-4 py-2 text-xs text-white shadow-lg pointer-events-none">
+            <div
+              style={{ top: topBarBottom + 8 }}
+              className="absolute left-1/2 -translate-x-1/2 z-30 rounded-lg bg-indigo-600/95 px-4 py-2 text-xs text-white shadow-lg pointer-events-none"
+            >
               {dictionary.lookup.hint}
             </div>
           )}
@@ -409,6 +412,7 @@ export default function SchoolsPage() {
               dictionary={dictionary}
               onClear={clearLookup}
               onPickSchool={handlePickSchool}
+              topOffset={topBarBottom + 8}
             />
           )}
 
@@ -450,6 +454,7 @@ export default function SchoolsPage() {
               school={selectedSchool}
               dictionary={dictionary}
               onClose={handleMapClick}
+              topOffset={topBarBottom + 8}
               catchmentVisible={catchmentVisible}
               onToggleCatchment={handleToggleCatchment}
               catchmentError={catchmentError}
