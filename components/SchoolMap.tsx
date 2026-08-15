@@ -124,6 +124,8 @@ interface SchoolMapProps {
   onPickLocation?: (point: [number, number]) => void;
   /** [lat, lng] of the location currently being looked up. */
   lookupPin?: [number, number] | null;
+  /** False when a deep link already decided where the map should sit. */
+  autoLocate?: boolean;
 }
 
 type Coordinates = [number, number];
@@ -299,11 +301,21 @@ function BoundsTracker({
   return null;
 }
 
-/** Center the map around the detected user location after mount. */
-function GeoLocator({ onReady }: { onReady?: () => void }) {
+/**
+ * Center the map around the detected user location after mount.
+ *
+ * Skipped when the page already has an explicit target (a /schools?school=
+ * deep link): IP lookup resolves seconds later and would otherwise yank the
+ * view away from the school the visitor asked for.
+ */
+function GeoLocator({ onReady, enabled = true }: { onReady?: () => void; enabled?: boolean }) {
   const map = useMap();
 
   useEffect(() => {
+    if (!enabled) {
+      onReady?.();
+      return;
+    }
     let cancelled = false;
 
     const done = (lat: number, lng: number) => {
@@ -361,9 +373,34 @@ function GeoLocator({ onReady }: { onReady?: () => void }) {
 function FlyToTracker({ school }: { school: School | null | undefined }) {
   const map = useMap();
   useEffect(() => {
-    if (school?.lat && school?.lng) {
-      map.flyTo([school.lat, school.lng], Math.max(map.getZoom(), 13), { duration: 0.8 });
+    if (!school || !Number.isFinite(school.lat) || !Number.isFinite(school.lng)) return;
+
+    // flyTo's easing solves for the viewport size, dividing by it. On a
+    // zero-sized container that divide yields NaN and the animation lands on
+    // "Invalid LatLng object: (NaN, NaN)" several frames later, nowhere near
+    // the cause. The map only mounts once the dataset resolves, and a
+    // /schools?school= deep link selects a school in that same commit, so this
+    // effect can run before Leaflet has measured the container.
+    //
+    // setView is the right call in that state regardless: arriving from a
+    // landing page should land on the school, not animate across the country.
+    let animatable = false;
+    try {
+      const size = map.getSize();
+      const centre = map.getCenter();
+      animatable = size.x > 0 && size.y > 0
+        && Number.isFinite(centre.lat) && Number.isFinite(centre.lng)
+        && Number.isFinite(map.getZoom());
+    } catch {
+      animatable = false; // Leaflet throws until a view is set.
     }
+
+    if (!animatable) {
+      map.setView([school.lat, school.lng], 14);
+      return;
+    }
+
+    map.flyTo([school.lat, school.lng], Math.max(map.getZoom(), 13), { duration: 0.8 });
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [school]);
   return null;
@@ -504,6 +541,7 @@ export default function SchoolMap({
   pickMode,
   onPickLocation,
   lookupPin,
+  autoLocate = true,
 }: SchoolMapProps) {
   useEffect(() => {
     if (!document.getElementById('leaflet-css')) {
@@ -541,7 +579,7 @@ export default function SchoolMap({
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
 
-        <GeoLocator onReady={handleGeoReady} />
+        <GeoLocator onReady={handleGeoReady} enabled={autoLocate} />
         <FlyToTracker school={flyToSchool} />
         <FitToSchools focus={fitToSchools ?? null} schools={schools} onBoundsChange={handleBoundsChange} />
         <MapClickTracker onMapClick={onMapClick} pickMode={pickMode} onPickLocation={onPickLocation} />

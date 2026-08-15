@@ -87,6 +87,8 @@ export default function SchoolsPage() {
   const [lookupResults, setLookupResults] = useState<CatchmentFeature[] | null>(null);
   const [lookupLoading, setLookupLoading] = useState(false);
   const [lookupError, setLookupError] = useState(false);
+  // A deep link decides the initial view; IP geolocation must not override it.
+  const [deepLinked, setDeepLinked] = useState(false);
   const selectedCardRef = useRef<HTMLDivElement>(null);
   const topBarRef = useRef<HTMLDivElement>(null);
   const [topBarBottom, setTopBarBottom] = useState(56);
@@ -99,6 +101,27 @@ export default function SchoolsPage() {
       .then((data: School[]) => {
         setAllSchools(data);
         setLoading(false);
+        // Deep link from a prerendered school or catchment page:
+        // /schools?school=<acara_sml_id>[&catchment=1]. Read from location
+        // rather than useSearchParams so this client-only route keeps
+        // prerendering without a Suspense bailout.
+        const query = new URLSearchParams(window.location.search);
+        const requested = Number(query.get('school'));
+        if (!Number.isFinite(requested) || requested === 0) return;
+        const match = data.find(school => school.acara_sml_id === requested);
+        if (!match) return;
+        setSelectedSchool(match);
+        setDeepLinked(true);
+        if (query.get('catchment') !== '1' || !match.catchments?.length) return;
+
+        setCatchmentState({ schoolId: match.id, visible: true, features: null, error: false });
+        loadCatchmentsForSchool(Number(match.location_age_id), match.catchments.map(c => c.kind))
+          .then(features => setCatchmentState(current => (
+            current?.schoolId === match.id ? { ...current, features } : current
+          )))
+          .catch(() => setCatchmentState(current => (
+            current?.schoolId === match.id ? { ...current, visible: false, error: true } : current
+          )));
       })
       .catch(() => setLoading(false));
   }, []);
@@ -293,6 +316,7 @@ export default function SchoolsPage() {
             fitToSchools={placeFocus}
             onGeoReady={handleGeoReady}
             catchmentFeatures={mapCatchments}
+            autoLocate={!deepLinked}
             pickMode={pickMode}
             onPickLocation={handlePickLocation}
             lookupPin={lookupPin}

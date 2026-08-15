@@ -60,6 +60,28 @@ The catchment build reads the ACARA *location* layer rather than
 `schools.canonical.json`, because canonical consumes the catchment layer —
 depending on it there would be circular.
 
+### Routes
+
+| Route | Rendering | Count |
+|---|---|---|
+| `/schools` | client-only map app | 1 |
+| `/school/[state]/[slug]` | prerendered | 11,034 |
+| `/suburb/[state]/[slug]` | prerendered | 4,800 |
+| `/catchment/[state]/[slug]` | prerendered | 2,029 |
+
+The prerendered pages are the SEO surface — the map app is one client-rendered
+URL and is invisible to search. They read the dataset off disk at build time via
+`lib/schoolsData.ts` (never import it from a client component) and link into the
+app through `/schools?school=<acara_sml_id>[&catchment=1]`.
+
+Slugs come from `lib/slug.ts`: `<name>-<suburb>`, because school names repeat
+heavily inside a state (NSW has 47 "St Joseph's Primary School"). Only a genuine
+same-suburb duplicate gets an `-<acara_sml_id>` suffix, so URLs stay stable.
+
+`PRERENDER_ALL_SCHOOLS=0` drops school pages to on-demand rendering: 17.9k → 6.8k
+prerendered pages, 1.9 GB → 643 MB of build output. Most of that weight is the
+per-page `.segments/` RSC payloads Next 16 emits, not HTML.
+
 ### Runtime
 
 - `app/page.tsx` redirects to `/schools`; `app/schools/page.tsx` is the whole app.
