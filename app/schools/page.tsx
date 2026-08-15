@@ -9,7 +9,7 @@ import {
   Locale,
 } from '@/lib/i18n';
 import { School } from '@/types/school';
-import { FilterState, filterSchools, hasLegacyScore } from '@/utils/schoolFilters';
+import { FilterState, filterSchools, SECTOR_COLORS } from '@/utils/schoolFilters';
 import { useMediaQuery } from '@/lib/useMediaQuery';
 import schoolsMetadata from '@/public/data/schools.metadata.json';
 
@@ -35,7 +35,6 @@ export default function SchoolsPage() {
   const [filters, setFilters] = useState<FilterState>({
     sector: 'all',
     schoolType: 'all',
-    legacyMetric: 'all',
     icsea: 'all',
     enrolments: 'all',
     religion: 'all',
@@ -43,7 +42,7 @@ export default function SchoolsPage() {
   const [visibleSchools, setVisibleSchools] = useState<School[]>([]);
   const [selectedSchool, setSelectedSchool] = useState<School | null>(null);
   const [placeFocus, setPlaceFocus] = useState<School[] | null>(null);
-  const [sortBy, setSortBy] = useState<'name' | 'score' | 'icsea' | 'enrolments'>('name');
+  const [sortBy, setSortBy] = useState<'name' | 'icsea' | 'enrolments'>('name');
   const [geoReady, setGeoReady] = useState(false);
   const [leftPanelOpen, setLeftPanelOpen] = useState(true);
   const [sheetSnap, setSheetSnap] = useState<SheetSnap>('peek');
@@ -97,11 +96,6 @@ export default function SchoolsPage() {
   const displayedSchools = useMemo(() => {
     return [...visibleSchools].sort((a, b) => {
       if (sortBy === 'name') return a.school_name.localeCompare(b.school_name);
-      if (sortBy === 'score') {
-        const aScore = hasLegacyScore(a) ? a.legacy_score : Number.NEGATIVE_INFINITY;
-        const bScore = hasLegacyScore(b) ? b.legacy_score : Number.NEGATIVE_INFINITY;
-        return bScore - aScore || a.school_name.localeCompare(b.school_name);
-      }
       if (sortBy === 'icsea') {
         const aIcsea = Number.isFinite(a.icsea) ? Number(a.icsea) : Number.NEGATIVE_INFINITY;
         const bIcsea = Number.isFinite(b.icsea) ? Number(b.icsea) : Number.NEGATIVE_INFINITY;
@@ -147,7 +141,6 @@ export default function SchoolsPage() {
   }, []);
 
   const areaSummary = useMemo(() => {
-    const scored = visibleSchools.filter(hasLegacyScore).length;
     const government = visibleSchools.filter(school => school.sector === 'Government').length;
     const catholic = visibleSchools.filter(school => school.sector === 'Catholic').length;
     const independent = visibleSchools.filter(school => school.sector === 'Independent').length;
@@ -158,7 +151,7 @@ export default function SchoolsPage() {
       ? Math.round(icseaValues.reduce((sum, value) => sum + value, 0) / icseaValues.length)
       : null;
 
-    return { scored, government, catholic, independent, averageIcsea };
+    return { government, catholic, independent, averageIcsea };
   }, [visibleSchools]);
 
   const areaLabel = geoReady
@@ -287,26 +280,41 @@ export default function SchoolsPage() {
             />
           )}
 
-          <div className="absolute bottom-8 right-3 z-10 bg-white/90 backdrop-blur-sm rounded-lg px-3 py-2 shadow-md text-[10px] text-gray-600 space-y-1">
+          {/* The detail panel occupies the same right-hand column, so hide the
+              legend while a school is selected instead of stacking the two. */}
+          <div className={`absolute bottom-8 right-3 z-10 bg-white/90 backdrop-blur-sm rounded-lg px-3 py-2 shadow-md text-[10px] text-gray-600 space-y-1 ${selectedSchool ? 'hidden' : ''}`}>
             <div className="flex items-center gap-2">
-              <span className="w-3 h-3 rounded-full bg-green-500 border border-white inline-block shrink-0"></span>
-              {dictionary.legend.governmentSchools}
+              <span
+                className="w-3 h-3 rounded-full border border-white inline-block shrink-0"
+                style={{ background: SECTOR_COLORS.Government }}
+              ></span>
+              {dictionary.filters.government}
             </div>
             <div className="flex items-center gap-2">
-              <span className="w-3 h-3 rounded-full bg-orange-500 border border-white inline-block shrink-0"></span>
-              {dictionary.legend.nonGovernmentSchools}
+              <span
+                className="w-3 h-3 rounded-full border border-white inline-block shrink-0"
+                style={{ background: SECTOR_COLORS.Catholic }}
+              ></span>
+              {dictionary.filters.catholic}
             </div>
             <div className="flex items-center gap-2">
-              <span className="w-2.5 h-2.5 rounded-full bg-gray-400 border border-white inline-block shrink-0 opacity-75"></span>
-              {dictionary.legend.profileOnlySchools}
+              <span
+                className="w-3 h-3 rounded-full border border-white inline-block shrink-0"
+                style={{ background: SECTOR_COLORS.Independent }}
+              ></span>
+              {dictionary.filters.independent}
             </div>
-            <div className="flex items-center gap-2">
-              <span className="flex gap-0.5 items-center">
+            <div className="flex items-center gap-2 pt-1 border-t border-gray-100">
+              <span className="flex gap-0.5 items-center shrink-0">
                 <span className="w-1.5 h-1.5 rounded-full bg-gray-400 inline-block"></span>
                 <span className="w-2.5 h-2.5 rounded-full bg-gray-400 inline-block"></span>
                 <span className="w-3.5 h-3.5 rounded-full bg-gray-400 inline-block"></span>
               </span>
-              <span>{dictionary.legend.sizeEqualsScore}</span>
+              <span>{dictionary.legend.sizeEqualsEnrolments}</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <span className="w-2 h-2 rounded-full bg-gray-400 border border-white inline-block shrink-0 opacity-55"></span>
+              {dictionary.legend.enrolmentsUnknown}
             </div>
           </div>
         </>

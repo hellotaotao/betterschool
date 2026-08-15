@@ -1,6 +1,5 @@
 import { School, SchoolSector, SchoolType } from '@/types/school';
 
-export type LegacyMetricFilter = 'all' | 'scored' | 'profile';
 export type IcseaBucket = 'all' | '900' | '1000' | '1100' | '1200';
 export type EnrolmentBucket = 'all' | 'small' | 'medium' | 'large';
 export type ReligionFilter = 'all' | 'religious' | 'secular';
@@ -8,7 +7,6 @@ export type ReligionFilter = 'all' | 'religious' | 'secular';
 export interface FilterState {
   sector: 'all' | SchoolSector;
   schoolType: 'all' | SchoolType;
-  legacyMetric: LegacyMetricFilter;
   icsea: IcseaBucket;
   enrolments: EnrolmentBucket;
   religion: ReligionFilter;
@@ -20,41 +18,49 @@ export function hasLegacyScore(school: School): school is School & { legacy_scor
     && Number.isFinite(school.legacy_rank);
 }
 
+/** Radius (px) used for schools whose enrolment count is not published. */
+export const UNKNOWN_ENROLMENT_RADIUS = 5;
+
+const MIN_RADIUS = 5;
+const MAX_RADIUS = 18;
+/** Enrolments at or above this map to MAX_RADIUS; sits between p90 (981) and p99 (2076). */
+const ENROLMENT_CAP = 1200;
+
 /**
- * Compute the marker radius from legacy score in pixels.
- * Profile-only official ACARA schools stay deliberately small/neutral.
- * Uses a quadratic curve so higher legacy scores stand out more clearly.
- * score 60 -> radius 4; score 100 -> radius 32
+ * Compute the marker radius (px) from total enrolments.
+ *
+ * Enrolments come from the official ACARA base and are present for ~90% of
+ * schools, so size is a real, nationally consistent signal. Uses a square-root
+ * curve so that *area* scales with enrolments — the perceptually correct
+ * encoding for circles.
+ *
+ * Deliberately NOT driven by legacy_score: that metric covers only 8% of
+ * schools and is absent for entire states (WA 0, NT 0, QLD 3), which made the
+ * map read as "no good schools here" wherever the legacy import had no data.
  */
-export function getMarkerRadius(score: number | undefined): number {
-  if (score === undefined || !Number.isFinite(score)) return 4;
-  const clamped = Math.max(60, Math.min(100, score));
-  const t = (clamped - 60) / 40;
-  return 4 + t * t * 28;
+export function getMarkerRadius(enrolments: number | undefined): number {
+  if (enrolments === undefined || !Number.isFinite(enrolments)) return UNKNOWN_ENROLMENT_RADIUS;
+  const clamped = Math.max(0, Math.min(ENROLMENT_CAP, enrolments));
+  return MIN_RADIUS + (MAX_RADIUS - MIN_RADIUS) * Math.sqrt(clamped / ENROLMENT_CAP);
 }
 
-/** Linearly interpolate between two hex colors. */
-function interpolateHex(color1: string, color2: string, t: number): string {
-  const parse = (c: string) => [
-    parseInt(c.slice(1, 3), 16),
-    parseInt(c.slice(3, 5), 16),
-    parseInt(c.slice(5, 7), 16),
-  ];
-  const [r1, g1, b1] = parse(color1);
-  const [r2, g2, b2] = parse(color2);
-  const r = Math.round(r1 + (r2 - r1) * t);
-  const g = Math.round(g1 + (g2 - g1) * t);
-  const b = Math.round(b1 + (b2 - b1) * t);
-  return `#${[r, g, b].map(v => v.toString(16).padStart(2, '0')).join('')}`;
-}
+/** Marker fill colors, keyed by the official ACARA sector. */
+export const SECTOR_COLORS: Record<string, string> = {
+  Government: '#16a34a',
+  Catholic: '#7c3aed',
+  Independent: '#ea580c',
+};
 
-/** Compute the marker color from optional legacy score and official ACARA sector. */
-export function getMarkerColor(score: number | undefined, sector: string): string {
-  if (score === undefined || !Number.isFinite(score)) return '#9ca3af';
-  const t = Math.max(0, Math.min(1, (score - 60) / 40));
-  return sector === 'Government'
-    ? interpolateHex('#86efac', '#15803d', t)
-    : interpolateHex('#fed7aa', '#c2410c', t);
+const UNKNOWN_SECTOR_COLOR = '#6b7280';
+
+/**
+ * Compute the marker color from the official ACARA sector.
+ *
+ * Sector is present for 100% of schools and is a fact, not an inference, so it
+ * is safe to use as the primary visual encoding.
+ */
+export function getMarkerColor(sector: string): string {
+  return SECTOR_COLORS[sector] ?? UNKNOWN_SECTOR_COLOR;
 }
 
 function matchesSector(schoolSector: string, filterSector: FilterState['sector']): boolean {
@@ -89,8 +95,6 @@ export function filterSchools(schools: School[], filters: FilterState): School[]
   return schools.filter(school => {
     if (!matchesSector(school.sector, filters.sector)) return false;
     if (!matchesReligion(school, filters.religion)) return false;
-    if (filters.legacyMetric === 'scored' && !hasLegacyScore(school)) return false;
-    if (filters.legacyMetric === 'profile' && hasLegacyScore(school)) return false;
     if (filters.schoolType !== 'all' && school.school_type !== filters.schoolType) return false;
     if (!matchesIcsea(school, filters.icsea)) return false;
     if (!matchesEnrolmentBucket(school, filters.enrolments)) return false;

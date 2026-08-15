@@ -2,8 +2,7 @@
 
 import { useState, useMemo, useRef, useEffect } from 'react';
 import { School } from '@/types/school';
-import { formatMessage, Messages } from '@/lib/i18n';
-import { hasLegacyScore } from '@/utils/schoolFilters';
+import { formatMessage, getSectorLabel, Messages } from '@/lib/i18n';
 import { searchSchools } from '@/lib/searchSchools';
 
 interface SearchBoxProps {
@@ -84,9 +83,9 @@ export default function SearchBox({ allSchools, dictionary, onPickSchool, onPick
                 <span className="block text-xs font-semibold text-gray-800 truncate">{r.school.school_name}</span>
                 <span className="block text-[10px] text-gray-400 truncate">{r.school.suburb}, {r.school.state}</span>
               </span>
-              {hasLegacyScore(r.school)
-                ? <span className="text-[10px] font-bold text-white bg-indigo-600 rounded-full px-2 py-0.5 shrink-0">{r.school.legacy_score}</span>
-                : <span className="text-[10px] text-gray-400 shrink-0">profile</span>}
+              <span className="text-[10px] text-gray-400 shrink-0">
+                {getSectorLabel(r.school.sector, dictionary)}
+              </span>
             </button>
           ))}
           {placeResults.length > 0 && (

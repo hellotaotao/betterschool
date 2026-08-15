@@ -29,32 +29,18 @@ export default function SchoolDetail({ school, dictionary, onClose, variant = 'p
       </div>
 
       <div className="flex-1 overflow-y-auto p-3">
-        <div className="flex justify-between items-start gap-2 mb-3">
-          <div>
-            <h2 className="text-sm font-bold text-gray-900 leading-tight">
-              {school.school_name}
-            </h2>
-            <p className="text-[10px] text-gray-400 mt-0.5">
-              {school.suburb}, {school.state} {school.postcode}
-            </p>
-          </div>
-          <div className="shrink-0 bg-indigo-600 text-white text-center rounded-lg px-2 py-1">
-            <div className="text-lg font-black leading-none">{hasLegacyScore(school) ? school.legacy_score : '—'}</div>
-            <div className="text-[8px] font-normal">{hasLegacyScore(school) ? dictionary.details.legacyScore : dictionary.details.profileOnly}</div>
-          </div>
+        {/* No headline score: a single number per school is the league-table
+            framing this project deliberately avoids. */}
+        <div className="mb-3">
+          <h2 className="text-sm font-bold text-gray-900 leading-tight">
+            {school.school_name}
+          </h2>
+          <p className="text-[10px] text-gray-400 mt-0.5">
+            {school.suburb}, {school.state} {school.postcode}
+          </p>
         </div>
 
         <div className="bg-gray-50 rounded-lg p-2.5 space-y-2 text-xs">
-          <div className="flex justify-between">
-            <span className="text-gray-500">{dictionary.details.legacyScore}</span>
-            <span className="font-bold text-gray-800">{hasLegacyScore(school) ? school.legacy_score : '—'}</span>
-          </div>
-          <div className="border-t border-gray-100" />
-          <div className="flex justify-between">
-            <span className="text-gray-500">{dictionary.details.datasetRank}</span>
-            <span className="font-bold text-gray-800">{hasLegacyScore(school) ? `#${school.legacy_rank}` : '—'}</span>
-          </div>
-          <div className="border-t border-gray-100" />
           <div className="flex justify-between items-center">
             <span className="text-gray-500">{dictionary.details.sector}</span>
             <span
@@ -213,6 +199,29 @@ export default function SchoolDetail({ school, dictionary, onClose, variant = 'p
             </>
           )}
         </div>
+
+        {/* Legacy import: opaque methodology, covers only ~8% of schools and is
+            absent for entire states. Kept for the schools that have it, but
+            demoted to the bottom and explicitly caveated. */}
+        {hasLegacyScore(school) && (
+          <div className="mt-2 rounded-lg border border-amber-200 bg-amber-50/60 p-2.5 space-y-2 text-xs">
+            <div className="text-[10px] font-semibold text-amber-900">
+              {dictionary.details.legacySectionTitle}
+            </div>
+            <div className="flex justify-between">
+              <span className="text-amber-800/70">{dictionary.details.legacyScore}</span>
+              <span className="font-medium text-amber-900">{school.legacy_score}</span>
+            </div>
+            <div className="border-t border-amber-200/60" />
+            <div className="flex justify-between">
+              <span className="text-amber-800/70">{dictionary.details.datasetRank}</span>
+              <span className="font-medium text-amber-900">#{school.legacy_rank}</span>
+            </div>
+            <p className="text-[9px] text-amber-800/80 leading-snug">
+              {dictionary.details.legacyCaveat}
+            </p>
+          </div>
+        )}
       </div>
     </div>
   );

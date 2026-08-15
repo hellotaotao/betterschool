@@ -7,12 +7,13 @@ import 'leaflet.markercluster';
 import { School } from '@/types/school';
 import { getMarkerRadius, getMarkerColor } from '@/utils/schoolFilters';
 
-/** Cache marker icons by legacy score, sector, and selection state. */
+/** Cache marker icons by rendered radius, sector, and selection state. */
 const iconCache = new Map<string, L.DivIcon>();
 
 function getSchoolIcon(school: School, isSelected: boolean): L.DivIcon {
-  const score = school.legacy_score;
-  const cacheKey = `${Number.isFinite(score) ? Math.round(score ?? 0) : 'profile'}-${school.sector}-${isSelected}`;
+  const radius = getMarkerRadius(school.total_enrolments);
+  const known = Number.isFinite(school.total_enrolments);
+  const cacheKey = `${Math.round(radius * 2)}-${known ? 'k' : 'u'}-${school.sector}-${isSelected}`;
   const cached = iconCache.get(cacheKey);
   if (cached) return cached;
   const icon = createSchoolIcon(school, isSelected);
@@ -20,15 +21,22 @@ function getSchoolIcon(school: School, isSelected: boolean): L.DivIcon {
   return icon;
 }
 
-/** Create a Leaflet DivIcon from school data and selection state. */
+/**
+ * Create a Leaflet DivIcon from school data and selection state.
+ *
+ * Color = official ACARA sector, size = official ACARA enrolments. Both are
+ * facts present for ~100% / ~90% of schools respectively. No number is drawn
+ * inside the marker: a single headline score per school is exactly the
+ * league-table framing this project deliberately avoids.
+ */
 function createSchoolIcon(school: School, isSelected: boolean): L.DivIcon {
-  const score = school.legacy_score;
-  const radius = getMarkerRadius(score);
+  const radius = getMarkerRadius(school.total_enrolments);
   const size = radius * 2;
-  const bgColor = isSelected ? '#4f46e5' : getMarkerColor(score, school.sector);
+  const bgColor = isSelected ? '#4f46e5' : getMarkerColor(school.sector);
   const boxShadow = isSelected ? '0 0 0 6px rgba(79,70,229,0.35)' : '';
-  const showLabel = Number.isFinite(score) && radius >= 13; // Diameter >= 26px, roughly score >= 83.
-  const fontSize = Math.max(10, Math.min(18, Math.round(radius * 0.75)));
+  // Enrolments are not published for ~10% of schools; render those faintly so
+  // their small radius does not read as "this is a tiny school".
+  const opacity = Number.isFinite(school.total_enrolments) ? 1 : 0.55;
 
   const html = `<div
     class="marker-circle"
@@ -39,13 +47,10 @@ function createSchoolIcon(school: School, isSelected: boolean): L.DivIcon {
       background:${bgColor};
       border:2px solid white;
       ${boxShadow ? `box-shadow:${boxShadow};` : ''}
-      display:flex;
-      align-items:center;
-      justify-content:center;
       cursor:pointer;
-      opacity:${Number.isFinite(score) ? 1 : 0.75};
+      opacity:${opacity};
     "
-  >${showLabel ? `<span style="color:white;font-weight:bold;font-size:${fontSize}px;line-height:1;user-select:none;">${Math.round(score ?? 0)}</span>` : ''}</div>`;
+  ></div>`;
 
   return L.divIcon({
     html,

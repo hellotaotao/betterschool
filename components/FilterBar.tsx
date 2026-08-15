@@ -46,12 +46,6 @@ function PillGroup<T extends string>({
 }
 
 export default function FilterBar({ filters, onChange, dictionary, variant = 'wrap' }: FilterBarProps) {
-  const legacyMetricOptions: PillOption<FilterState['legacyMetric']>[] = [
-    { label: dictionary.filters.allOfficial, value: 'all' },
-    { label: dictionary.filters.withLegacyScore, value: 'scored' },
-    { label: dictionary.filters.profileOnly, value: 'profile' },
-  ];
-
   const sectorOptions: PillOption<FilterState['sector']>[] = [
     { label: dictionary.filters.all, value: 'all' },
     { label: dictionary.filters.government, value: 'Government' },
@@ -94,7 +88,6 @@ export default function FilterBar({ filters, onChange, dictionary, variant = 'wr
 
   return (
     <div className={containerClass}>
-      <PillGroup options={legacyMetricOptions} value={filters.legacyMetric} onSelect={v => onChange({ ...filters, legacyMetric: v })} />
       <PillGroup options={sectorOptions} value={filters.sector} onSelect={v => onChange({ ...filters, sector: v })} />
       <PillGroup options={religionOptions} value={filters.religion} onSelect={v => onChange({ ...filters, religion: v })} />
       <PillGroup options={icseaOptions} value={filters.icsea} onSelect={v => onChange({ ...filters, icsea: v })} />

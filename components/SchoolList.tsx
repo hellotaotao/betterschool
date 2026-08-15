@@ -2,13 +2,11 @@
 
 import { RefObject } from 'react';
 import { School } from '@/types/school';
-import { getSectorLabel, formatMessage, Messages } from '@/lib/i18n';
-import { hasLegacyScore } from '@/utils/schoolFilters';
+import { getSchoolTypeLabel, getSectorLabel, formatMessage, Messages } from '@/lib/i18n';
 
-type SortKey = 'name' | 'score' | 'icsea' | 'enrolments';
+type SortKey = 'name' | 'icsea' | 'enrolments';
 
 interface AreaSummary {
-  scored: number;
   government: number;
   catholic: number;
   independent: number;
@@ -54,7 +52,6 @@ export default function SchoolList({
           className="text-xs text-gray-500 border-0 bg-transparent cursor-pointer focus:outline-none"
         >
           <option value="name">{dictionary.sidebar.sortByName}</option>
-          <option value="score">{dictionary.sidebar.sortByScore}</option>
           <option value="icsea">{dictionary.sidebar.sortByIcsea}</option>
           <option value="enrolments">{dictionary.sidebar.sortByEnrolments}</option>
         </select>
@@ -62,9 +59,8 @@ export default function SchoolList({
 
       <div className="px-3 py-2 border-b border-gray-100 bg-indigo-50/70 text-[10px] text-indigo-950 leading-snug shrink-0 grid grid-cols-2 gap-x-3 gap-y-1">
         <div>{formatMessage(dictionary.sidebar.visibleCount, { count: schools.length })}</div>
-        <div>{formatMessage(dictionary.sidebar.scoredCount, { count: areaSummary.scored })}</div>
-        <div>{formatMessage(dictionary.sidebar.sectorCounts, { government: areaSummary.government, catholic: areaSummary.catholic, independent: areaSummary.independent })}</div>
         <div>{formatMessage(dictionary.sidebar.averageIcsea, { value: areaSummary.averageIcsea ?? '—' })}</div>
+        <div className="col-span-2">{formatMessage(dictionary.sidebar.sectorCounts, { government: areaSummary.government, catholic: areaSummary.catholic, independent: areaSummary.independent })}</div>
       </div>
 
       <div className="px-3 py-2 border-b border-gray-100 bg-amber-50/70 text-[10px] text-amber-900 leading-snug shrink-0">
@@ -98,37 +94,36 @@ export default function SchoolList({
                     : 'bg-white border border-gray-100 hover:border-gray-300 hover:shadow-sm'
                 }`}
               >
-                <div className="flex justify-between items-start gap-1">
-                  <h3 className="text-xs font-semibold text-gray-900 leading-tight">
-                    {school.school_name}
-                  </h3>
-                  <span
-                    className={`shrink-0 text-[10px] font-bold px-1.5 py-0.5 rounded-full ${
-                      isSelected
-                        ? 'bg-indigo-600 text-white'
-                        : 'bg-blue-50 text-blue-700'
-                    }`}
-                  >
-                    {hasLegacyScore(school) ? school.legacy_score : dictionary.sidebar.profileOnly}
-                  </span>
-                </div>
+                <h3 className="text-xs font-semibold text-gray-900 leading-tight">
+                  {school.school_name}
+                </h3>
                 <p className="text-[10px] text-gray-400 mt-0.5">
                   {school.suburb}, {school.state}
                 </p>
-                <div className="flex items-center gap-1.5 mt-1">
+                <div className="flex items-center flex-wrap gap-x-1.5 gap-y-1 mt-1">
                   <span
                     className={`text-[9px] px-1.5 py-0.5 rounded-full ${
                       school.sector === 'Government'
                         ? 'bg-green-100 text-green-700'
-                        : 'bg-orange-100 text-orange-700'
+                        : school.sector === 'Catholic'
+                          ? 'bg-violet-100 text-violet-700'
+                          : 'bg-orange-100 text-orange-700'
                     }`}
                   >
                     {getSectorLabel(school.sector, dictionary)}
                   </span>
-                  {hasLegacyScore(school) ? (
-                    <span className="text-[10px] text-gray-400">{dictionary.sidebar.legacyRank} #{school.legacy_rank}</span>
-                  ) : (
-                    <span className="text-[10px] text-gray-400">{dictionary.sidebar.profileOnly}</span>
+                  {school.school_type && (
+                    <span className="text-[10px] text-gray-400">
+                      {getSchoolTypeLabel(school.school_type, dictionary)}
+                    </span>
+                  )}
+                  {Number.isFinite(school.total_enrolments) && (
+                    <span className="text-[10px] text-gray-400">
+                      {formatMessage(dictionary.sidebar.studentsShort, { count: Number(school.total_enrolments) })}
+                    </span>
+                  )}
+                  {Number.isFinite(school.icsea) && (
+                    <span className="text-[10px] text-gray-400">ICSEA {school.icsea}</span>
                   )}
                 </div>
               </div>

@@ -9,9 +9,6 @@
   },
   "filters": {
     "all": "All",
-    "allOfficial": "All official schools",
-    "withLegacyScore": "With legacy score",
-    "profileOnly": "Profile only",
     "government": "Government",
     "catholic": "Catholic",
     "independent": "Independent",
@@ -36,7 +33,6 @@
     "collapseList": "Collapse list",
     "expandList": "Expand list",
     "areaCount": "{count} schools in this area",
-    "sortByScore": "Sort by legacy score",
     "sortByName": "Sort by name",
     "sortByIcsea": "Sort by ICSEA",
     "sortByEnrolments": "Sort by enrolments",
@@ -44,19 +40,17 @@
     "locating": "Locating...",
     "emptyTitle": "No schools match the current map view",
     "emptyHint": "Zoom out or adjust the filters",
-    "profileOnly": "Profile only",
-    "legacyScore": "Legacy score",
-    "legacyRank": "Legacy rank",
+    "studentsShort": "{count} students",
     "visibleCount": "Visible: {count}",
-    "scoredCount": "Legacy scored: {count}",
     "sectorCounts": "Gov {government} · Cath {catholic} · Ind {independent}",
     "averageIcsea": "Avg ICSEA: {value}"
   },
   "details": {
     "title": "School details",
+    "legacySectionTitle": "Legacy imported metric — not official",
     "legacyScore": "Legacy/historical score",
     "datasetRank": "Legacy/historical rank",
-    "profileOnly": "Official profile only",
+    "legacyCaveat": "Imported from an earlier dataset with an opaque methodology. It covers only ~8% of Australian schools and is missing for entire states, so it cannot be compared across schools or regions. Not an ACARA or national ranking.",
     "sector": "Sector",
     "religiousAffiliation": "Religious affiliation",
     "schoolType": "School type",
@@ -94,13 +88,11 @@
     "Unknown": "Unknown"
   },
   "legend": {
-    "governmentSchools": "Government schools with legacy score",
-    "nonGovernmentSchools": "Non-government schools with legacy score",
-    "profileOnlySchools": "Official profile-only schools",
-    "sizeEqualsScore": "Size = legacy score"
+    "sizeEqualsEnrolments": "Size = enrolments",
+    "enrolmentsUnknown": "Enrolments not published"
   },
   "dataNotice": {
     "title": "ACARA canonical base",
-    "body": "Map/list use official ACARA 2025 public school profile and location data. Legacy score/rank are optional reference metrics for matched schools only; they are not official ACARA or national rankings."
+    "body": "Map and list use official ACARA 2025 public school profile and location data. Marker colour = sector, size = enrolments — both official ACARA fields. This site publishes no ranking or composite quality score."
   }
 }
