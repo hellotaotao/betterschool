@@ -1,7 +1,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { cache } from 'react';
-import { School } from '@/types/school';
+import { School, type SchoolCatchment } from '@/types/school';
 import {
   pointInGeometry,
   type CatchmentFeature,
@@ -156,6 +156,13 @@ export interface SchoolInZone {
   slug: string;
 }
 
+export interface CatchmentZoneSection {
+  catchment: SchoolCatchment;
+  feature: CatchmentFeature;
+  inside: SchoolInZone[];
+  suburbs: string[];
+}
+
 let cachedNswSchools: School[] | null = null;
 
 /** NSW schools with usable coordinates, computed once for all zone pages. */
@@ -194,7 +201,7 @@ function geometryBbox(geometry: CatchmentFeature['geometry']): [number, number, 
  * suburbs this zone covers": without suburb boundary data that would be an
  * inference, and the schools inside a zone are only a sample of its area.
  */
-export function getSchoolsInZone(feature: CatchmentFeature, limit = 40): SchoolInZone[] {
+export function getSchoolsInZone(feature: CatchmentFeature, limit?: number): SchoolInZone[] {
   const candidates = getNswSchools();
   const [minLng, minLat, maxLng, maxLat] = geometryBbox(feature.geometry);
   const inside: SchoolInZone[] = [];
@@ -207,13 +214,29 @@ export function getSchoolsInZone(feature: CatchmentFeature, limit = 40): SchoolI
     if (school.lng < minLng || school.lng > maxLng || school.lat < minLat || school.lat > maxLat) continue;
     if (!pointInGeometry([school.lng, school.lat], feature.geometry)) continue;
     inside.push({ school, slug: getSchoolSlug(school) });
-    if (inside.length >= limit) break;
   }
 
-  return inside.sort((a, b) => a.school.school_name.localeCompare(b.school.school_name));
+  inside.sort((a, b) => a.school.school_name.localeCompare(b.school.school_name));
+  return limit !== undefined && Number.isFinite(limit) ? inside.slice(0, limit) : inside;
 }
 
 /** Suburbs of the schools inside a zone — a sample of the area, not its extent. */
 export function getZoneSuburbs(inside: SchoolInZone[]): string[] {
   return [...new Set(inside.map(entry => entry.school.suburb))].sort();
+}
+
+/** Each published zone paired with its own geometry and computed area sample. */
+export function getCatchmentZoneSections(school: School): CatchmentZoneSection[] {
+  if (!Number.isFinite(school.location_age_id)) return [];
+
+  return (school.catchments ?? []).flatMap<CatchmentZoneSection>(catchment => {
+    const feature = readCatchmentFeature({
+      location_age_id: Number(school.location_age_id),
+      kind: catchment.kind,
+    });
+    if (!feature) return [];
+
+    const inside = getSchoolsInZone(feature);
+    return [{ catchment, feature, inside, suburbs: getZoneSuburbs(inside) }];
+  });
 }

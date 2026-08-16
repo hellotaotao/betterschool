@@ -2,12 +2,10 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import {
+  getCatchmentZoneSections,
   getSchoolBySlug,
   getSchoolSlug,
-  getSchoolsInZone,
   getSchoolsWithCatchments,
-  getZoneSuburbs,
-  readCatchmentFeature,
 } from '@/lib/schoolsData';
 import { catchmentPath, schoolPath, stateSlug, suburbPath } from '@/lib/slug';
 import { absoluteUrl, SITE_NAME, stateName } from '@/lib/site';
@@ -76,21 +74,7 @@ export default async function CatchmentPage({ params }: { params: Promise<RouteP
 
   const catchments = school.catchments;
   const dataYear = catchments[0]?.data_year;
-
-  // One feature per zone kind; a Central School has both a primary and a
-  // secondary zone with different boundaries.
-  const zones = catchments
-    .map(catchment => ({
-      catchment,
-      feature: readCatchmentFeature({
-        location_age_id: Number(school.location_age_id),
-        kind: catchment.kind,
-      }),
-    }))
-    .filter((zone): zone is { catchment: typeof catchments[number]; feature: NonNullable<ReturnType<typeof readCatchmentFeature>> } => zone.feature !== null);
-
-  const inside = zones.length > 0 ? getSchoolsInZone(zones[0].feature) : [];
-  const zoneSuburbs = getZoneSuburbs(inside);
+  const zones = getCatchmentZoneSections(school);
 
   return (
     <PageShell
@@ -159,16 +143,18 @@ export default async function CatchmentPage({ params }: { params: Promise<RouteP
         </a>
       </section>
 
-      {inside.length > 0 && (
-        <section className="mt-8" aria-labelledby="inside">
-          <h2 id="inside" className="text-base font-semibold">Other schools inside this zone</h2>
+      {zones.map(({ catchment, inside, suburbs }) => (
+        <section key={catchment.kind} className="mt-8" aria-labelledby={`inside-${catchment.kind}`}>
+          <h2 id={`inside-${catchment.kind}`} className="text-base font-semibold">
+            Other schools inside the {catchment.kind} zone
+          </h2>
           <p className="mt-1 text-xs text-gray-500">
             Schools whose own address falls within the boundary — including non-government schools,
             which do not use zones themselves but are an option for families living here.
           </p>
-          {zoneSuburbs.length > 0 && (
+          {suburbs.length > 0 && (
             <p className="mt-2 text-sm text-gray-700">
-              Suburbs represented: {zoneSuburbs.join(', ')}.{' '}
+              Suburbs represented: {suburbs.join(', ')}.{' '}
               <span className="text-gray-500">
                 These are the suburbs of the schools inside the boundary, which is a sample of the
                 area rather than a list of every suburb the zone touches.
@@ -181,7 +167,7 @@ export default async function CatchmentPage({ params }: { params: Promise<RouteP
             ))}
           </ul>
         </section>
-      )}
+      ))}
 
       <section className="mt-8">
         <h2 className="text-base font-semibold">About {school.school_name}</h2>
