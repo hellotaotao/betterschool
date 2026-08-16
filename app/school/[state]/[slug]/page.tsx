@@ -10,6 +10,7 @@ import {
 } from '@/lib/schoolsData';
 import { catchmentPath, schoolPath, stateSlug, suburbPath } from '@/lib/slug';
 import { absoluteUrl, SITE_NAME, stateName } from '@/lib/site';
+import { safeSchoolWebsiteUrl } from '@/lib/schoolUrl';
 import PageShell from '@/components/seo/PageShell';
 import SchoolLinkCard from '@/components/seo/SchoolLinkCard';
 
@@ -103,13 +104,14 @@ export default async function SchoolPage({ params }: { params: Promise<RoutePara
   const peers = getSuburbPeers(school);
   const catchments = school.catchments ?? [];
   const isGovernment = school.sector === 'Government';
+  const schoolWebsiteUrl = safeSchoolWebsiteUrl(school.school_url);
 
   const jsonLd = {
     '@context': 'https://schema.org',
     '@type': 'School',
     name: school.school_name,
     url: absoluteUrl(schoolPath(school.state, slug)),
-    ...(school.school_url ? { sameAs: [school.school_url] } : {}),
+    ...(schoolWebsiteUrl ? { sameAs: [schoolWebsiteUrl] } : {}),
     address: {
       '@type': 'PostalAddress',
       addressLocality: school.suburb,
@@ -159,9 +161,9 @@ export default async function SchoolPage({ params }: { params: Promise<RoutePara
             NAPLAN on My School →
           </a>
         )}
-        {school.school_url && (
+        {schoolWebsiteUrl && (
           <a
-            href={school.school_url}
+            href={schoolWebsiteUrl}
             target="_blank"
             rel="noreferrer"
             className="rounded-full border border-gray-300 px-4 py-1.5 text-xs font-medium text-gray-700 hover:border-indigo-400 hover:text-indigo-700"
