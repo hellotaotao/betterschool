@@ -161,11 +161,17 @@ export default async function CatchmentPage({ params }: { params: Promise<RouteP
               </span>
             </p>
           )}
-          <ul className="mt-3 grid gap-2 sm:grid-cols-2">
-            {inside.map(entry => (
-              <SchoolLinkCard key={entry.school.id} school={entry.school} slug={entry.slug} />
-            ))}
-          </ul>
+          {inside.length > 0 ? (
+            <ul className="mt-3 grid gap-2 sm:grid-cols-2">
+              {inside.map(entry => (
+                <SchoolLinkCard key={entry.school.id} school={entry.school} slug={entry.slug} />
+              ))}
+            </ul>
+          ) : (
+            <p className="mt-3 text-sm text-gray-700">
+              No other geocoded schools were found inside this published boundary.
+            </p>
+          )}
         </section>
       ))}
 
