@@ -10,8 +10,9 @@ import {
 } from './catchmentLookup';
 import { buildSchoolSlugs, stateSlug, suburbSlug } from './slug';
 
-// Server-only: these pages are prerendered, so the dataset is read straight off
-// disk rather than fetched. Never import this from a "use client" component.
+// Server-only: build-time sitemap generation and on-demand ISR pages read the
+// dataset straight off disk rather than fetching it. Never import this from a
+// "use client" component.
 const DATA_DIR = path.join(process.cwd(), 'public', 'data');
 
 function readJson<T>(...segments: string[]): T {
@@ -37,11 +38,11 @@ export interface SchoolsDataset {
 }
 
 /**
- * Load and index the canonical dataset once per build.
+ * Load and index the canonical dataset for build-time or server runtime use.
  *
- * `cache()` dedupes across the many pages generated in a single render pass;
- * the module-level fallback covers generateStaticParams, which runs outside a
- * React render.
+ * `cache()` dedupes calls within a React server render; the module-level
+ * fallback reuses the dataset for non-React build callers and later ISR route
+ * renders in the same process.
  */
 let cachedDataset: SchoolsDataset | null = null;
 
