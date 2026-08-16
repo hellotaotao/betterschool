@@ -13,4 +13,12 @@ describe('safeSchoolWebsiteUrl', () => {
     expect(safeSchoolWebsiteUrl('')).toBeUndefined();
     expect(safeSchoolWebsiteUrl(undefined)).toBeUndefined();
   });
+
+  it('rejects URLs with a username', () => {
+    expect(safeSchoolWebsiteUrl('http://koroitps@education.vic.gov.au')).toBeUndefined();
+  });
+
+  it('rejects URLs with a password', () => {
+    expect(safeSchoolWebsiteUrl('https://:secret@school.example.edu.au')).toBeUndefined();
+  });
 });
