@@ -8,7 +8,7 @@ import {
   getSuburbPeers,
   getSchoolSlug,
 } from '@/lib/schoolsData';
-import { catchmentPath, schoolPath, stateSlug, suburbPath } from '@/lib/slug';
+import { catchmentPath, schoolPath, suburbPath } from '@/lib/slug';
 import { absoluteUrl, SITE_NAME, stateName } from '@/lib/site';
 import { safeSchoolWebsiteUrl } from '@/lib/schoolUrl';
 import PageShell from '@/components/seo/PageShell';
@@ -19,34 +19,11 @@ interface RouteParams {
   slug: string;
 }
 
-/**
- * School pages are the bulk of the site, so they carry the build-size decision.
- *
- * Measured on the 2025 dataset:
- *   prerender all  → 17,869 pages, 32s build, 1.9 GB, ~197k files
- *   on demand      →  6,835 pages, 11s build, 643 MB,  ~75k files
- *
- * Most of that weight is the per-page `.segments/` RSC payloads Next 16 emits
- * for navigation prefetch, not the HTML. Prerendering everything is the better
- * default — Googlebot never waits on a cold render — but a host with a file
- * count or artefact size limit can flip it with PRERENDER_ALL_SCHOOLS=0, and
- * the pages then render on first request and are cached from then on. Either
- * way every URL stays in the sitemap.
- */
-const PRERENDER_ALL_SCHOOLS = process.env.PRERENDER_ALL_SCHOOLS !== '0';
-
-// Must be a static literal — Next parses it at compile time, so it cannot read
-// the env switch. `true` is correct either way: an unknown slug finds no school
-// and falls through to notFound(), so bogus URLs still 404.
 export const dynamicParams = true;
+export const revalidate = false;
 
 export function generateStaticParams(): RouteParams[] {
-  if (!PRERENDER_ALL_SCHOOLS) return [];
-  const { schools, slugs } = getSchoolsDataset();
-  return schools.map(school => ({
-    state: stateSlug(school.state),
-    slug: slugs.get(school.id) ?? '',
-  })).filter(params => params.slug !== '');
+  return [];
 }
 
 function describe(school: School): string {

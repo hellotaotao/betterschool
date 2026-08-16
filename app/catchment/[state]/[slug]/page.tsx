@@ -4,10 +4,8 @@ import { notFound } from 'next/navigation';
 import {
   getCatchmentZoneSections,
   getSchoolBySlug,
-  getSchoolSlug,
-  getSchoolsWithCatchments,
 } from '@/lib/schoolsData';
-import { catchmentPath, schoolPath, stateSlug, suburbPath } from '@/lib/slug';
+import { catchmentPath, schoolPath, suburbPath } from '@/lib/slug';
 import { absoluteUrl, SITE_NAME, stateName } from '@/lib/site';
 import PageShell from '@/components/seo/PageShell';
 import SchoolLinkCard from '@/components/seo/SchoolLinkCard';
@@ -30,13 +28,11 @@ interface RouteParams {
   slug: string;
 }
 
-export const dynamicParams = false;
+export const dynamicParams = true;
+export const revalidate = false;
 
 export function generateStaticParams(): RouteParams[] {
-  return getSchoolsWithCatchments().map(school => ({
-    state: stateSlug(school.state),
-    slug: getSchoolSlug(school),
-  })).filter(params => params.slug !== '');
+  return [];
 }
 
 function describe(name: string, suburb: string, state: string, years: string[]): string {

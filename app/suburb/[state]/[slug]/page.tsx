@@ -5,7 +5,6 @@ import { School } from '@/types/school';
 import {
   getRelatedSuburbs,
   getSchoolSlug,
-  getSchoolsDataset,
   getSuburb,
 } from '@/lib/schoolsData';
 import { stateSlug, suburbPath } from '@/lib/slug';
@@ -18,14 +17,11 @@ interface RouteParams {
   slug: string;
 }
 
-export const dynamicParams = false;
+export const dynamicParams = true;
+export const revalidate = false;
 
 export function generateStaticParams(): RouteParams[] {
-  const { suburbs } = getSchoolsDataset();
-  return [...suburbs.values()].map(group => ({
-    state: stateSlug(group.state),
-    slug: group.slug,
-  }));
+  return [];
 }
 
 /** Group order matches how a parent thinks about stages, not alphabetical. */
