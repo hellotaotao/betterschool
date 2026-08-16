@@ -66,7 +66,7 @@ depending on it there would be circular.
 |---|---|---|
 | `/schools` | client-only map app | 1 |
 | `/school/[state]/[slug]` | on-demand ISR | 11,034 |
-| `/suburb/[state]/[slug]` | on-demand ISR | 4,800 |
+| `/suburb/[state]/[slug]` | on-demand ISR | 4,799 |
 | `/catchment/[state]/[slug]` | on-demand ISR | 2,029 |
 
 The long-tail routes are the SEO surface — the map app is one client-rendered URL
