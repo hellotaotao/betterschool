@@ -241,3 +241,66 @@ export function getCatchmentZoneSections(school: School): CatchmentZoneSection[]
     return [{ catchment, feature, inside, suburbs: getZoneSuburbs(inside) }];
   });
 }
+
+// --- State-level indexes ----------------------------------------------------
+
+export interface StateSummary {
+  /** ACARA state code, e.g. 'NSW'. */
+  state: string;
+  slug: string;
+  schools: number;
+  suburbs: SuburbGroup[];
+  /** Schools in the state with a published intake zone. */
+  zoned: number;
+}
+
+let cachedStateSummaries: StateSummary[] | null = null;
+
+/**
+ * One entry per state, used by the browse index.
+ *
+ * These pages exist so the long-tail pages are not orphans: a page reachable
+ * only from the sitemap has no internal links pointing at it, which both hides
+ * it from readers and tells search engines nothing about its importance.
+ */
+export function getStateSummaries(): StateSummary[] {
+  if (cachedStateSummaries) return cachedStateSummaries;
+
+  const dataset = getSchoolsDataset();
+  const byState = new Map<string, StateSummary>();
+
+  for (const group of dataset.suburbs.values()) {
+    let summary = byState.get(group.state);
+    if (!summary) {
+      summary = { state: group.state, slug: stateSlug(group.state), schools: 0, suburbs: [], zoned: 0 };
+      byState.set(group.state, summary);
+    }
+    summary.suburbs.push(group);
+    summary.schools += group.schools.length;
+    summary.zoned += group.schools.filter(school => (school.catchments?.length ?? 0) > 0).length;
+  }
+
+  for (const summary of byState.values()) {
+    summary.suburbs.sort((a, b) => a.suburb.localeCompare(b.suburb));
+  }
+
+  cachedStateSummaries = [...byState.values()].sort((a, b) => b.schools - a.schools);
+  return cachedStateSummaries;
+}
+
+export function getStateSummary(state: string): StateSummary | undefined {
+  const wanted = stateSlug(state);
+  return getStateSummaries().find(summary => summary.slug === wanted);
+}
+
+/** Group suburbs under their first character, so an index can be scanned. */
+export function groupSuburbsByInitial(suburbs: SuburbGroup[]): [string, SuburbGroup[]][] {
+  const groups = new Map<string, SuburbGroup[]>();
+  for (const suburb of suburbs) {
+    const initial = /^[A-Za-z]/.test(suburb.suburb) ? suburb.suburb[0].toUpperCase() : '#';
+    const bucket = groups.get(initial);
+    if (bucket) bucket.push(suburb);
+    else groups.set(initial, [suburb]);
+  }
+  return [...groups.entries()].sort((a, b) => a[0].localeCompare(b[0]));
+}

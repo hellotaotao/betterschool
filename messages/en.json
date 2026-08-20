@@ -47,6 +47,7 @@
   },
   "details": {
     "title": "School details",
+    "fullProfile": "Full profile page",
     "legacySectionTitle": "Legacy imported metric — not official",
     "legacyScore": "Legacy/historical score",
     "datasetRank": "Legacy/historical rank",

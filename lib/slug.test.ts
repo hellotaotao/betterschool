@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { School } from '@/types/school';
-import { buildSchoolSlugs, slugify, suburbSlug } from './slug';
+import { buildSchoolSlugs, schoolSlugFor, slugify, suburbSlug } from './slug';
 
 function school(overrides: Partial<School> & { id: string }): School {
   return {
@@ -97,5 +97,28 @@ describe('buildSchoolSlugs', () => {
     const slugs = buildSchoolSlugs(schools);
     expect(slugs.size).toBe(3);
     for (const s of schools) expect(slugs.get(s.id)).toBeTruthy();
+  });
+});
+
+describe('schoolSlugFor', () => {
+  const hubbardA = school({ id: 'a', acara_sml_id: 40701, school_name: "Hubbard's School", suburb: 'Milton', state: 'QLD' });
+  const hubbardB = school({ id: 'b', acara_sml_id: 53477, school_name: "Hubbard's School", suburb: 'Milton', state: 'QLD' });
+  const chatswood = school({ id: 'c', acara_sml_id: 41316, school_name: 'Chatswood Public School', suburb: 'Chatswood' });
+  const all = [hubbardA, hubbardB, chatswood];
+
+  it('agrees with buildSchoolSlugs for a unique name', () => {
+    expect(schoolSlugFor(chatswood, all)).toBe(buildSchoolSlugs(all).get('c'));
+  });
+
+  it('agrees with buildSchoolSlugs for a colliding pair', () => {
+    const bulk = buildSchoolSlugs(all);
+    expect(schoolSlugFor(hubbardA, all)).toBe(bulk.get('a'));
+    expect(schoolSlugFor(hubbardB, all)).toBe(bulk.get('b'));
+  });
+
+  it('does not treat a same-named school in another state as a collision', () => {
+    const wa = school({ id: 'd', acara_sml_id: 1, school_name: 'Trinity College', suburb: 'Perth', state: 'WA' });
+    const tas = school({ id: 'e', acara_sml_id: 2, school_name: 'Trinity College', suburb: 'Perth', state: 'TAS' });
+    expect(schoolSlugFor(wa, [wa, tas])).toBe('trinity-college-perth');
   });
 });

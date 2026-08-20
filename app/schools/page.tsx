@@ -11,6 +11,7 @@ import {
 import { School } from '@/types/school';
 import { FilterState, filterSchools, SECTOR_COLORS } from '@/utils/schoolFilters';
 import { useMediaQuery } from '@/lib/useMediaQuery';
+import { schoolPath, schoolSlugFor } from '@/lib/slug';
 import schoolsMetadata from '@/public/data/schools.metadata.json';
 
 import type { CatchmentFeature } from '@/lib/catchmentLookup';
@@ -294,6 +295,13 @@ export default function SchoolsPage() {
 
   const areaLabel = formatMessage(dictionary.sidebar.areaCount, { count: displayedSchools.length });
 
+  // Link the detail panel at the school's own page, so the prerendered pages are
+  // reachable from the app rather than only from search results.
+  const profileHref = useMemo(() => {
+    if (!selectedSchool || allSchools.length === 0) return undefined;
+    return schoolPath(selectedSchool.state, schoolSlugFor(selectedSchool, allSchools));
+  }, [selectedSchool, allSchools]);
+
   return (
     <div className="relative w-screen h-screen overflow-hidden">
       <div className="absolute inset-0 z-0 bg-gray-100">
@@ -366,6 +374,7 @@ export default function SchoolsPage() {
                 catchmentVisible={catchmentVisible}
                 onToggleCatchment={handleToggleCatchment}
                 catchmentError={catchmentError}
+                profileHref={profileHref}
               />
             ) : (
               <SchoolList
@@ -475,6 +484,7 @@ export default function SchoolsPage() {
               catchmentVisible={catchmentVisible}
               onToggleCatchment={handleToggleCatchment}
               catchmentError={catchmentError}
+              profileHref={profileHref}
             />
           )}
 

@@ -30,9 +30,14 @@ export default function PageShell({
           <Link href="/schools" className="text-sm font-bold text-indigo-700 hover:underline">
             {SITE_NAME}
           </Link>
-          <Link href="/schools" className="text-xs text-gray-500 hover:text-indigo-700 hover:underline">
-            Open the map →
-          </Link>
+          <div className="flex items-center gap-4">
+            <Link href="/browse" className="text-xs text-gray-500 hover:text-indigo-700 hover:underline">
+              Browse by state
+            </Link>
+            <Link href="/schools" className="text-xs text-gray-500 hover:text-indigo-700 hover:underline">
+              Open the map →
+            </Link>
+          </div>
         </div>
       </header>
 

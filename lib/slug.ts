@@ -66,3 +66,22 @@ export function suburbPath(state: string, suburb: string): string {
 export function catchmentPath(state: string, slug: string): string {
   return `/catchment/${stateSlug(state)}/${slug}`;
 }
+
+/**
+ * Slug for a single school, resolved against the full set.
+ *
+ * The client only ever needs one school's URL at a time, so this avoids
+ * building all 11,034 slugs up front just to link out of the detail panel.
+ * Same rule as buildSchoolSlugs: the plain `<name>-<suburb>` slug unless
+ * another school in the same state would collide with it.
+ */
+export function schoolSlugFor(school: School, allSchools: School[]): string {
+  const base = baseSchoolSlug(school);
+  const state = stateSlug(school.state);
+  const collides = allSchools.some(
+    other => other.id !== school.id
+      && stateSlug(other.state) === state
+      && baseSchoolSlug(other) === base,
+  );
+  return collides ? `${base}-${school.acara_sml_id}` : base;
+}

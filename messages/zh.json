@@ -47,6 +47,7 @@
   },
   "details": {
     "title": "学校详情",
+    "fullProfile": "完整档案页",
     "legacySectionTitle": "历史导入指标 — 非官方",
     "legacyScore": "历史评分",
     "datasetRank": "历史数据集排名",

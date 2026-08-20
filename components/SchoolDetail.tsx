@@ -14,6 +14,8 @@ interface SchoolDetailProps {
   catchmentVisible?: boolean;
   onToggleCatchment?: () => void;
   catchmentError?: boolean;
+  /** Link to this school's own page, when one can be built. */
+  profileHref?: string;
   /** Distance from the viewport top to sit below the (wrapping) top bar. */
   topOffset?: number;
 }
@@ -26,6 +28,7 @@ export default function SchoolDetail({
   catchmentVisible = false,
   onToggleCatchment,
   catchmentError = false,
+  profileHref,
   topOffset,
 }: SchoolDetailProps) {
   const catchments = school.catchments ?? [];
@@ -58,6 +61,15 @@ export default function SchoolDetail({
             {school.suburb}, {school.state} {school.postcode}
           </p>
         </div>
+
+        {profileHref && (
+          <a
+            href={profileHref}
+            className="mb-2 block rounded-md bg-indigo-50 px-2 py-1.5 text-center text-[11px] font-medium text-indigo-700 hover:bg-indigo-100"
+          >
+            {dictionary.details.fullProfile} →
+          </a>
+        )}
 
         <div className="bg-gray-50 rounded-lg p-2.5 space-y-2 text-xs">
           <div className="flex justify-between items-center">

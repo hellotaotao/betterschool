@@ -3,14 +3,17 @@ import {
   getSchoolSlug,
   getSchoolsDataset,
   getSchoolsWithCatchments,
+  getStateSummaries,
 } from '@/lib/schoolsData';
 import { catchmentPath, schoolPath, suburbPath } from '@/lib/slug';
 import { absoluteUrl } from '@/lib/site';
 
 /**
- * One sitemap for every prerendered page (~17.9k URLs), comfortably inside the
- * 50,000-URL limit. `lastModified` tracks the dataset build, since that is the
- * only thing that changes these pages.
+ * One sitemap for every canonical URL (~17.9k), comfortably inside the
+ * 50,000-URL limit. The long-tail pages render on demand rather than at build
+ * time, so this is how a crawler discovers them — together with the /browse
+ * and state indexes above, which give them internal links as well.
+ * `lastModified` tracks the dataset build, the only thing that changes them.
  */
 export default function sitemap(): MetadataRoute.Sitemap {
   const dataset = getSchoolsDataset();
@@ -20,7 +23,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   const entries: MetadataRoute.Sitemap = [
     { url: absoluteUrl('/schools'), lastModified, changeFrequency: 'weekly', priority: 1 },
+    { url: absoluteUrl('/browse'), lastModified, changeFrequency: 'weekly', priority: 0.9 },
   ];
+
+  // State indexes: the crawl path from /browse down to the suburb pages.
+  for (const summary of getStateSummaries()) {
+    entries.push({
+      url: absoluteUrl(`/suburb/${summary.slug}`),
+      lastModified,
+      changeFrequency: 'monthly',
+      priority: 0.8,
+    });
+  }
 
   for (const school of dataset.schools) {
     const slug = dataset.slugs.get(school.id);

@@ -65,6 +65,8 @@ depending on it there would be circular.
 | Route | Rendering | Canonical URLs |
 |---|---|---|
 | `/schools` | client-only map app | 1 |
+| `/browse` | prerendered | 1 |
+| `/suburb/[state]` | prerendered | 8 |
 | `/school/[state]/[slug]` | on-demand ISR | 11,034 |
 | `/suburb/[state]/[slug]` | on-demand ISR | 4,799 |
 | `/catchment/[state]/[slug]` | on-demand ISR | 2,029 |
@@ -76,6 +78,13 @@ valid URL generates the page and caches it for the rest of the deployment.
 These server-only routes read the prebuilt dataset off disk via
 `lib/schoolsData.ts` (never import it from a client component) and link into the
 app through `/schools?school=<acara_sml_id>[&catchment=1]`.
+
+`/browse` and `/suburb/[state]` are prerendered because they are the entry
+points: without them the long-tail pages are reachable only from the sitemap,
+which hides them from readers and gives search engines no internal links to
+weigh. The crawl path is `/browse` → `/suburb/<state>` → `/suburb/<state>/<slug>`
+→ `/school/<state>/<slug>`, and the map's detail panel links back out to the
+school page (`lib/slug.ts::schoolSlugFor` builds that URL client-side).
 
 Slugs come from `lib/slug.ts`: `<name>-<suburb>`, because school names repeat
 heavily inside a state (NSW has 47 "St Joseph's Primary School"). Only a genuine
