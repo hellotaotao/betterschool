@@ -69,7 +69,6 @@ export default function SchoolsPage() {
   const [selectedSchool, setSelectedSchool] = useState<School | null>(null);
   const [placeFocus, setPlaceFocus] = useState<School[] | null>(null);
   const [sortBy, setSortBy] = useState<'name' | 'icsea' | 'enrolments'>('name');
-  const [geoReady, setGeoReady] = useState(false);
   const [leftPanelOpen, setLeftPanelOpen] = useState(true);
   const [sheetSnap, setSheetSnap] = useState<SheetSnap>('peek');
   // Catchment display for the selected school. Tagged with the school it belongs
@@ -177,7 +176,6 @@ export default function SchoolsPage() {
     }
   }, [selectedSchool]);
 
-  const handleGeoReady = useCallback(() => setGeoReady(true), []);
 
   function schoolId(s: School) {
     return s.id;
@@ -294,9 +292,7 @@ export default function SchoolsPage() {
     return { government, catholic, independent, averageIcsea };
   }, [visibleSchools]);
 
-  const areaLabel = geoReady
-    ? formatMessage(dictionary.sidebar.areaCount, { count: displayedSchools.length })
-    : dictionary.sidebar.locating;
+  const areaLabel = formatMessage(dictionary.sidebar.areaCount, { count: displayedSchools.length });
 
   return (
     <div className="relative w-screen h-screen overflow-hidden">
@@ -314,7 +310,6 @@ export default function SchoolsPage() {
             onMapClick={handleMapClick}
             flyToSchool={selectedSchool}
             fitToSchools={placeFocus}
-            onGeoReady={handleGeoReady}
             catchmentFeatures={mapCatchments}
             autoLocate={!deepLinked}
             pickMode={pickMode}
@@ -382,7 +377,6 @@ export default function SchoolsPage() {
                 areaSummary={areaSummary}
                 areaLabel={areaLabel}
                 loading={loading}
-                geoReady={geoReady}
                 dictionary={dictionary}
                 selectedCardRef={selectedCardRef}
               />
@@ -465,7 +459,6 @@ export default function SchoolsPage() {
                   areaSummary={areaSummary}
                   areaLabel={areaLabel}
                   loading={loading}
-                  geoReady={geoReady}
                   dictionary={dictionary}
                   selectedCardRef={selectedCardRef}
                 />

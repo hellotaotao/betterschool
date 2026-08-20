@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState, useCallback, useRef } from 'react';
+import { useEffect, useCallback, useRef } from 'react';
 import { MapContainer, TileLayer, Marker, GeoJSON, useMap, useMapEvents } from 'react-leaflet';
 import L from 'leaflet';
 import 'leaflet.markercluster';
@@ -272,31 +272,34 @@ function FitToCatchments({ features }: { features: CatchmentFeature[] | null | u
   return null;
 }
 
-/** Report schools visible in the current viewport. */
+/**
+ * Report schools visible in the current viewport.
+ *
+ * Deliberately not gated on geolocation. It used to be, which held the list
+ * empty until three IP services had been tried in sequence and, failing those,
+ * the browser's own geolocation timed out — up to 6.2s, and the IP services do
+ * return 429 in practice. The map has a valid view from the moment it mounts,
+ * so the list can fill straight away; when geolocation later moves the map,
+ * moveend fires and the list follows.
+ */
 function BoundsTracker({
   schools,
   onBoundsChange,
-  geoReady,
 }: {
   schools: School[];
   onBoundsChange: (visible: School[]) => void;
-  geoReady: boolean;
 }) {
-  const map = useMapEvents({
-    moveend: () => {
-      if (!geoReady) return;
-      const bounds = map.getBounds();
-      onBoundsChange(schools.filter(s => bounds.contains([s.lat, s.lng])));
-    },
-  });
+  const report = () => {
+    const bounds = map.getBounds();
+    onBoundsChange(schools.filter(s => bounds.contains([s.lat, s.lng])));
+  };
+  const map = useMapEvents({ moveend: report, resize: report });
 
-  // Recompute visible schools when geolocation finishes or data changes.
   useEffect(() => {
-    if (!geoReady) return;
     const bounds = map.getBounds();
     onBoundsChange(schools.filter(s => bounds.contains([s.lat, s.lng])));
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [schools, geoReady]);
+  }, [schools]);
 
   return null;
 }
@@ -553,12 +556,6 @@ export default function SchoolMap({
     }
   }, []);
 
-  const [geoReady, setGeoReady] = useState(false);
-  const handleGeoReady = useCallback(() => {
-    setGeoReady(true);
-    onGeoReady?.();
-  }, [onGeoReady]);
-
   const handleBoundsChange = useCallback((visible: School[]) => {
     onBoundsChange(visible);
   }, [onBoundsChange]);
@@ -579,11 +576,11 @@ export default function SchoolMap({
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
 
-        <GeoLocator onReady={handleGeoReady} enabled={autoLocate} />
+        <GeoLocator onReady={onGeoReady} enabled={autoLocate} />
         <FlyToTracker school={flyToSchool} />
         <FitToSchools focus={fitToSchools ?? null} schools={schools} onBoundsChange={handleBoundsChange} />
         <MapClickTracker onMapClick={onMapClick} pickMode={pickMode} onPickLocation={onPickLocation} />
-        <BoundsTracker schools={schools} onBoundsChange={handleBoundsChange} geoReady={geoReady} />
+        <BoundsTracker schools={schools} onBoundsChange={handleBoundsChange} />
         <FitToCatchments features={catchmentFeatures} />
 
         {/* Catchment outlines sit under the markers so schools stay clickable. */}

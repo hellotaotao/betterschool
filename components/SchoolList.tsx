@@ -6,6 +6,9 @@ import { getSchoolTypeLabel, getSectorLabel, formatMessage, Messages } from '@/l
 
 type SortKey = 'name' | 'icsea' | 'enrolments';
 
+/** Upper bound on list cards kept in the DOM at once. */
+const MAX_RENDERED = 150;
+
 interface AreaSummary {
   government: number;
   catholic: number;
@@ -22,7 +25,6 @@ interface SchoolListProps {
   areaSummary: AreaSummary;
   areaLabel: string;
   loading: boolean;
-  geoReady: boolean;
   dictionary: Messages;
   selectedCardRef: RefObject<HTMLDivElement | null>;
 }
@@ -36,10 +38,16 @@ export default function SchoolList({
   areaSummary,
   areaLabel,
   loading,
-  geoReady,
   dictionary,
   selectedCardRef,
 }: SchoolListProps) {
+  // The viewport can legitimately contain every school in the country — the map
+  // opens at a whole-of-Australia view before geolocation moves it. Rendering
+  // 11,034 cards there costs far more than it tells anyone, so cap the DOM and
+  // say plainly that the list is truncated.
+  const rendered = schools.slice(0, MAX_RENDERED);
+  const truncated = schools.length - rendered.length;
+
   return (
     <div className="w-full h-full bg-white/95 backdrop-blur-sm flex flex-col overflow-hidden">
       <div className="px-3 py-2.5 border-b border-gray-100 flex justify-between items-center shrink-0">
@@ -71,8 +79,6 @@ export default function SchoolList({
       <div className="flex-1 overflow-y-auto p-2 space-y-1.5">
         {loading ? (
           <p className="text-center text-xs text-gray-400 py-8">{dictionary.sidebar.loading}</p>
-        ) : !geoReady ? (
-          <p className="text-center text-xs text-gray-400 py-8">{dictionary.sidebar.locating}</p>
         ) : schools.length === 0 ? (
           <p className="text-center text-xs text-gray-400 py-8">
             {dictionary.sidebar.emptyTitle}
@@ -80,7 +86,7 @@ export default function SchoolList({
             <span className="text-gray-300">{dictionary.sidebar.emptyHint}</span>
           </p>
         ) : (
-          schools.map((school) => {
+          rendered.map((school) => {
             const sid = school.id;
             const isSelected = !!selectedSchool && selectedSchool.id === sid;
             return (
@@ -129,6 +135,12 @@ export default function SchoolList({
               </div>
             );
           })
+        )}
+
+        {truncated > 0 && (
+          <p className="text-center text-[10px] text-gray-400 py-3">
+            {formatMessage(dictionary.sidebar.listTruncated, { shown: rendered.length, total: schools.length })}
+          </p>
         )}
       </div>
     </div>
