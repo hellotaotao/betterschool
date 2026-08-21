@@ -47,6 +47,7 @@ scripts/process_school_data.py
 # local agent/tool scratch dirs (not project files)
 .superpowers/
 .gstack/
+.playwright-mcp/
 
 # claude code local settings
 .claude/settings.local.json
