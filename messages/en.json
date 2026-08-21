@@ -117,7 +117,8 @@
   },
   "legend": {
     "sizeEqualsEnrolments": "Size = enrolments",
-    "enrolmentsUnknown": "Enrolments not published"
+    "enrolmentsUnknown": "Enrolments not published",
+    "clusterRing": "Ring = several schools, sliced by sector"
   },
   "dataNotice": {
     "title": "ACARA canonical base",

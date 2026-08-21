@@ -526,6 +526,17 @@ export default function SchoolsPage() {
               <span className="w-2 h-2 rounded-full bg-gray-400 border border-white inline-block shrink-0 opacity-55"></span>
               {dictionary.legend.enrolmentsUnknown}
             </div>
+            <div className="flex items-center gap-2">
+              <span
+                className="w-3.5 h-3.5 rounded-full inline-block shrink-0 relative"
+                style={{
+                  background: `conic-gradient(${SECTOR_COLORS.Government} 0deg 200deg, ${SECTOR_COLORS.Catholic} 200deg 290deg, ${SECTOR_COLORS.Independent} 290deg 360deg)`,
+                }}
+              >
+                <span className="absolute inset-[3.5px] rounded-full bg-white"></span>
+              </span>
+              <span>{dictionary.legend.clusterRing}</span>
+            </div>
           </div>
         </>
       )}

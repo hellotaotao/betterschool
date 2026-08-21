@@ -182,6 +182,14 @@ grey, which read to users as "there are no good schools here". It now survives
 only as a caveated block at the bottom of the detail panel.
 `utils/schoolFilters.test.ts` has a regression guard for this.
 
+Cluster bubbles are **rings sliced by the sectors they contain**, not filled
+discs. Two rules constrain them, and both were broken once: the fill must come
+from `SECTOR_COLORS`, never a fourth hue (a flat indigo `#4f46e5` bubble sat 19
+degrees of hue from the Catholic violet, so a pair of government schools read as
+"Catholic"), and the shape must not be a filled circle, because a filled circle
+already means *one school* and its diameter already means enrolments. Any new
+aggregate drawn on the map inherits both rules.
+
 ## Conventions
 
 - Comments explain **why**, not what. Match the surrounding density.

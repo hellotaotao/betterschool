@@ -117,7 +117,8 @@
   },
   "legend": {
     "sizeEqualsEnrolments": "大小 = 在校人数",
-    "enrolmentsUnknown": "未公布在校人数"
+    "enrolmentsUnknown": "未公布在校人数",
+    "clusterRing": "环形 = 多所学校，按办学性质分色"
   },
   "dataNotice": {
     "title": "ACARA 官方基础数据",
