@@ -14,10 +14,10 @@ export function generateStaticParams(): RouteParams[] {
 
 export async function generateMetadata({ params }: { params: Promise<RouteParams> }): Promise<Metadata> {
   const { state, slug } = await params;
-  return schoolMetadata('en', state, slug);
+  return schoolMetadata('zh', state, slug);
 }
 
 export default async function Page({ params }: { params: Promise<RouteParams> }) {
   const { state, slug } = await params;
-  return <SchoolBody locale="en" state={state} slug={slug} />;
+  return <SchoolBody locale="zh" state={state} slug={slug} />;
 }

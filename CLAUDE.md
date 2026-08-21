@@ -71,6 +71,10 @@ depending on it there would be circular.
 | `/suburb/[state]/[slug]` | on-demand ISR | 4,799 |
 | `/catchment/[state]/[slug]` | on-demand ISR | 2,029 |
 
+Every route above except the map exists twice: bare for English and under `/zh`
+for Chinese — 35,743 canonical URLs in total. English keeps the unprefixed paths
+it already publishes; those must not move.
+
 The long-tail routes are the SEO surface — the map app is one client-rendered URL
 and is invisible to search. The build emits zero school, suburb or catchment
 pages, but the sitemap still lists every canonical URL. The first request for a
@@ -85,6 +89,31 @@ which hides them from readers and gives search engines no internal links to
 weigh. The crawl path is `/browse` → `/suburb/<state>` → `/suburb/<state>/<slug>`
 → `/school/<state>/<slug>`, and the map's detail panel links back out to the
 school page (`lib/slug.ts::schoolSlugFor` builds that URL client-side).
+
+### Bilingual pages
+
+The page bodies live in `components/seo/pages/*Body.tsx` and take a `locale`.
+Route files under `app/` and `app/zh/` are ten-line shims that pass `'en'` or
+`'zh'` — **never copy a page body per locale**, which is how `CLAUDE.md` and
+`AGENTS.md` drifted apart until one described an architecture the project no
+longer had.
+
+- Strings live in `messages/{en,zh}.json` under `seo.*`. `lib/i18n.test.ts`
+  enforces that both files carry identical keys, no empty values, and the same
+  `{placeholders}` — a missing key is otherwise a blank on the page, not a type
+  error.
+- `lib/seoLocale.ts` builds canonical + hreflang. Each version canonicals to
+  itself and lists both languages plus `x-default` → English.
+- `lib/slug.ts` path helpers take an optional trailing locale; English is the
+  unprefixed default, so existing call sites keep working.
+- School and suburb names stay in English on Chinese pages — that is what
+  parents type into a search box. Titles wrap them in Chinese framing, and
+  English titles use the state abbreviation ("NSW") because that is how
+  Australians search.
+- Known limitation: `<html lang>` stays `en` on `/zh` pages. Only the root
+  layout renders `<html>`, and reading the locale there would force every page
+  out of static rendering. `PageShell` sets `lang` on its wrapper instead, which
+  scopes correctly for screen readers; hreflang is what search engines target.
 
 Slugs come from `lib/slug.ts`: `<name>-<suburb>`, because school names repeat
 heavily inside a state (NSW has 47 "St Joseph's Primary School"). Only a genuine
@@ -105,7 +134,8 @@ same-suburb duplicate gets an `-<acara_sml_id>` suffix, so URLs stay stable.
   unit-tested; `lib/catchmentClient.ts` — the fetching/caching around it.
 - `components/CatchmentLookup.tsx` — "what is this location zoned for?" results.
 - `lib/i18n.ts` + `messages/{en,zh}.json` — locale auto-detected from
-  `navigator.languages`. **Both message files must keep identical key sets.**
+  `navigator.languages`. **Both message files must keep identical key sets**,
+  enforced by `lib/i18n.test.ts`.
 
 ### Dead code
 

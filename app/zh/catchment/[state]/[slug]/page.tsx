@@ -1,7 +1,7 @@
 // Thin route shim: the page itself lives in components/seo/pages so the English
 // and Chinese versions cannot drift apart.
 import type { Metadata } from 'next';
-import SchoolBody, { schoolMetadata } from '@/components/seo/pages/SchoolBody';
+import CatchmentBody, { catchmentMetadata } from '@/components/seo/pages/CatchmentBody';
 
 interface RouteParams { state: string; slug: string }
 
@@ -14,10 +14,10 @@ export function generateStaticParams(): RouteParams[] {
 
 export async function generateMetadata({ params }: { params: Promise<RouteParams> }): Promise<Metadata> {
   const { state, slug } = await params;
-  return schoolMetadata('en', state, slug);
+  return catchmentMetadata('zh', state, slug);
 }
 
 export default async function Page({ params }: { params: Promise<RouteParams> }) {
   const { state, slug } = await params;
-  return <SchoolBody locale="en" state={state} slug={slug} />;
+  return <CatchmentBody locale="zh" state={state} slug={slug} />;
 }

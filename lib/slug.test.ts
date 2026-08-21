@@ -1,6 +1,18 @@
 import { describe, expect, it } from 'vitest';
 import { School } from '@/types/school';
-import { buildSchoolSlugs, schoolSlugFor, slugify, suburbSlug } from './slug';
+import {
+  browsePath,
+  buildSchoolSlugs,
+  catchmentPath,
+  mapPath,
+  schoolPath,
+  schoolSlugFor,
+  slugify,
+  stateIndexPath,
+  suburbPath,
+  suburbSlug,
+  toLocalePath,
+} from './slug';
 
 function school(overrides: Partial<School> & { id: string }): School {
   return {
@@ -120,5 +132,37 @@ describe('schoolSlugFor', () => {
     const wa = school({ id: 'd', acara_sml_id: 1, school_name: 'Trinity College', suburb: 'Perth', state: 'WA' });
     const tas = school({ id: 'e', acara_sml_id: 2, school_name: 'Trinity College', suburb: 'Perth', state: 'TAS' });
     expect(schoolSlugFor(wa, [wa, tas])).toBe('trinity-college-perth');
+  });
+});
+
+describe('locale-aware paths', () => {
+  const nsw = school({ id: 'a', school_name: 'Chatswood Public School', suburb: 'Chatswood' });
+
+  it('leaves English paths unprefixed so published URLs do not move', () => {
+    expect(schoolPath('NSW', 'chatswood-public-school-chatswood')).toBe('/school/nsw/chatswood-public-school-chatswood');
+    expect(suburbPath('NSW', 'Chatswood')).toBe('/suburb/nsw/chatswood');
+    expect(catchmentPath('NSW', 'x')).toBe('/catchment/nsw/x');
+    expect(browsePath()).toBe('/browse');
+    expect(stateIndexPath('NSW')).toBe('/suburb/nsw');
+  });
+
+  it('prefixes Chinese paths with /zh', () => {
+    expect(schoolPath(nsw.state, 'chatswood-public-school-chatswood', 'zh'))
+      .toBe('/zh/school/nsw/chatswood-public-school-chatswood');
+    expect(suburbPath('NSW', 'Chatswood', 'zh')).toBe('/zh/suburb/nsw/chatswood');
+    expect(catchmentPath('NSW', 'x', 'zh')).toBe('/zh/catchment/nsw/x');
+    expect(browsePath('zh')).toBe('/zh/browse');
+    expect(stateIndexPath('NSW', 'zh')).toBe('/zh/suburb/nsw');
+  });
+
+  it('shares one map route between locales', () => {
+    expect(mapPath()).toBe('/schools');
+  });
+
+  it('swaps the prefix on an existing path in both directions', () => {
+    expect(toLocalePath('/school/nsw/x', 'zh')).toBe('/zh/school/nsw/x');
+    expect(toLocalePath('/zh/school/nsw/x', 'en')).toBe('/school/nsw/x');
+    expect(toLocalePath('/zh/school/nsw/x', 'zh')).toBe('/zh/school/nsw/x');
+    expect(toLocalePath('/browse', 'en')).toBe('/browse');
   });
 });

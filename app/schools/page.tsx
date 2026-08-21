@@ -299,8 +299,10 @@ export default function SchoolsPage() {
   // reachable from the app rather than only from search results.
   const profileHref = useMemo(() => {
     if (!selectedSchool || allSchools.length === 0) return undefined;
-    return schoolPath(selectedSchool.state, schoolSlugFor(selectedSchool, allSchools));
-  }, [selectedSchool, allSchools]);
+    // Follow the reader into their own language: the app picks its locale from
+    // the browser, and the school page exists in both.
+    return schoolPath(selectedSchool.state, schoolSlugFor(selectedSchool, allSchools), locale);
+  }, [selectedSchool, allSchools, locale]);
 
   return (
     <div className="relative w-screen h-screen overflow-hidden">

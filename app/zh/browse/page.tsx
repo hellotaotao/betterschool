@@ -3,8 +3,8 @@
 import type { Metadata } from 'next';
 import BrowseBody, { browseMetadata } from '@/components/seo/pages/BrowseBody';
 
-export const metadata: Metadata = browseMetadata('en');
+export const metadata: Metadata = browseMetadata('zh');
 
 export default function Page() {
-  return <BrowseBody locale="en" />;
+  return <BrowseBody locale="zh" />;
 }

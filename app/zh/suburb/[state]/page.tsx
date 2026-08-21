@@ -16,10 +16,10 @@ export function generateStaticParams(): RouteParams[] {
 
 export async function generateMetadata({ params }: { params: Promise<RouteParams> }): Promise<Metadata> {
   const { state } = await params;
-  return stateIndexMetadata('en', state);
+  return stateIndexMetadata('zh', state);
 }
 
 export default async function Page({ params }: { params: Promise<RouteParams> }) {
   const { state } = await params;
-  return <StateIndexBody locale="en" state={state} />;
+  return <StateIndexBody locale="zh" state={state} />;
 }

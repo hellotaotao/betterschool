@@ -1,4 +1,6 @@
 import { School } from '@/types/school';
+// Type-only: erased at build time, so this stays free of the message bundles.
+import type { Locale } from './i18n';
 
 /**
  * Lowercase ASCII slug. Apostrophes and '&' become separators rather than being
@@ -55,16 +57,49 @@ export function buildSchoolSlugs(schools: School[]): Map<string, string> {
   return slugs;
 }
 
-export function schoolPath(state: string, slug: string): string {
-  return `/school/${stateSlug(state)}/${slug}`;
+/**
+ * URL prefix per locale.
+ *
+ * English keeps the bare paths it already publishes — those URLs are in the
+ * sitemap and must not move — and Chinese lives under /zh.
+ */
+export function localePrefix(locale: Locale = 'en'): string {
+  return locale === 'zh' ? '/zh' : '';
 }
 
-export function suburbPath(state: string, suburb: string): string {
-  return `/suburb/${stateSlug(state)}/${suburbSlug(suburb)}`;
+export function schoolPath(state: string, slug: string, locale: Locale = 'en'): string {
+  return `${localePrefix(locale)}/school/${stateSlug(state)}/${slug}`;
 }
 
-export function catchmentPath(state: string, slug: string): string {
-  return `/catchment/${stateSlug(state)}/${slug}`;
+export function suburbPath(state: string, suburb: string, locale: Locale = 'en'): string {
+  return `${localePrefix(locale)}/suburb/${stateSlug(state)}/${suburbSlug(suburb)}`;
+}
+
+export function catchmentPath(state: string, slug: string, locale: Locale = 'en'): string {
+  return `${localePrefix(locale)}/catchment/${stateSlug(state)}/${slug}`;
+}
+
+export function browsePath(locale: Locale = 'en'): string {
+  return `${localePrefix(locale)}/browse`;
+}
+
+export function stateIndexPath(state: string, locale: Locale = 'en'): string {
+  return `${localePrefix(locale)}/suburb/${stateSlug(state)}`;
+}
+
+/**
+ * The map app is a single client-rendered route shared by both locales — it
+ * picks its own language from navigator.languages, and search engines never
+ * see it, so a /zh twin would add maintenance for no gain.
+ */
+export function mapPath(): string {
+  return '/schools';
+}
+
+/** Swap the locale prefix on an already-built path. */
+export function toLocalePath(path: string, locale: Locale): string {
+  const bare = path.startsWith('/zh/') ? path.slice(3) : path === '/zh' ? '/' : path;
+  return `${localePrefix(locale)}${bare}`;
 }
 
 /**
