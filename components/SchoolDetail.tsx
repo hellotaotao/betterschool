@@ -62,12 +62,17 @@ export default function SchoolDetail({
           </p>
         </div>
 
+        {/* The panel is a preview; the school's own page is the shareable,
+            linkable version and the way into its suburb and catchment. It was
+            previously a pale 11px strip between the title and the data table,
+            which read as a divider rather than somewhere to go. */}
         {profileHref && (
           <a
             href={profileHref}
-            className="mb-2 block rounded-md bg-indigo-50 px-2 py-1.5 text-center text-[11px] font-medium text-indigo-700 hover:bg-indigo-100"
+            className="mb-3 flex items-center justify-center gap-1 rounded-lg bg-indigo-600 px-3 py-2 text-xs font-semibold text-white shadow-sm hover:bg-indigo-700"
           >
-            {dictionary.details.fullProfile} →
+            {dictionary.details.fullProfile}
+            <span aria-hidden="true">→</span>
           </a>
         )}
 

@@ -5,7 +5,7 @@ import { MapContainer, TileLayer, Marker, GeoJSON, useMap, useMapEvents } from '
 import L from 'leaflet';
 import 'leaflet.markercluster';
 import { School } from '@/types/school';
-import { getMarkerRadius, getMarkerColor } from '@/utils/schoolFilters';
+import { getMarkerRadius, getMarkerColor, SECTOR_COLORS } from '@/utils/schoolFilters';
 import type { CatchmentFeature } from '@/lib/catchmentLookup';
 
 /** Catchment outline colours, distinct from the sector hues used by markers. */
@@ -80,26 +80,70 @@ function createSchoolIcon(school: School, isSelected: boolean): L.DivIcon {
   });
 }
 
-/** Render a cluster bubble whose size scales with the number of grouped schools. */
+/** A school marker carries its sector so cluster bubbles can show the real mix. */
+type SchoolMarker = L.Marker & { schoolSector?: string };
+
+/** Slice order, so the same sector mix always draws the same ring. */
+const CLUSTER_SLICE_ORDER = ['Government', 'Catholic', 'Independent', 'Unknown'];
+
+/** Ring thickness (px); the disc inside it carries the count. */
+const CLUSTER_RING_WIDTH = 7;
+
+/**
+ * Render a cluster as a ring sliced by the sectors it contains, with the school
+ * count in the middle.
+ *
+ * The bubble used to be one flat indigo sitting 19 degrees of hue from the
+ * Catholic violet, so two government schools 48px apart merged into a purple dot
+ * that read as "Catholic". A ring also keeps the aggregate out of the size
+ * encoding: a filled disc means one school and its diameter means enrolments, so
+ * a group of schools must not be drawn as a filled disc.
+ */
 function createClusterIcon(cluster: L.MarkerCluster): L.DivIcon {
   const count = cluster.getChildCount();
   const size = count < 10 ? 34 : count < 100 ? 40 : count < 1000 ? 48 : 56;
   const label = count >= 1000 ? `${Math.round(count / 1000)}k` : `${count}`;
+
+  const tally = new Map<string, number>();
+  for (const marker of cluster.getAllChildMarkers() as SchoolMarker[]) {
+    const sector = marker.schoolSector ?? '';
+    const key = sector in SECTOR_COLORS ? sector : 'Unknown';
+    tally.set(key, (tally.get(key) ?? 0) + 1);
+  }
+
+  const total = [...tally.values()].reduce((sum, n) => sum + n, 0);
+  const stops: string[] = [];
+  let cursor = 0;
+  for (const key of CLUSTER_SLICE_ORDER) {
+    const slice = tally.get(key);
+    if (!slice) continue;
+    const start = (cursor / total) * 360;
+    cursor += slice;
+    stops.push(`${getMarkerColor(key)} ${start.toFixed(2)}deg ${((cursor / total) * 360).toFixed(2)}deg`);
+  }
+  // getAllChildMarkers can come back empty mid-animation; grey is the honest fallback.
+  const ring = stops.length ? `conic-gradient(${stops.join(',')})` : getMarkerColor('Unknown');
+
   const html = `<div style="
+      position:relative;
       width:${size}px;
       height:${size}px;
       border-radius:50%;
-      background:rgba(79,70,229,0.92);
-      border:2px solid white;
-      box-shadow:0 1px 4px rgba(0,0,0,0.3);
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      color:white;
-      font-weight:700;
-      font-size:13px;
-      line-height:1;
-    ">${label}</div>`;
+      background:${ring};
+      box-shadow:0 0 0 2px white,0 1px 4px rgba(0,0,0,0.3);
+    "><div style="
+        position:absolute;
+        inset:${CLUSTER_RING_WIDTH}px;
+        border-radius:50%;
+        background:white;
+        display:flex;
+        align-items:center;
+        justify-content:center;
+        color:#1e293b;
+        font-weight:700;
+        font-size:13px;
+        line-height:1;
+      ">${label}</div></div>`;
 
   return L.divIcon({
     html,
@@ -471,7 +515,9 @@ function ClusterLayer({
       // a real unmount), dereferencing a null map. The one-time synchronous cost is
       // negligible next to loading the dataset.
       showCoverageOnHover: false,
-      maxClusterRadius: 48,
+      // 48 merged schools that were only just touching (markers run to 36px
+      // wide), so pairs and triples clustered far more than density warranted.
+      maxClusterRadius: 30,
       spiderfyOnMaxZoom: true,
       iconCreateFunction: createClusterIcon,
     });
@@ -495,9 +541,10 @@ function ClusterLayer({
 
     for (const school of schools) {
       if (!school.lat || !school.lng) continue;
-      const marker = L.marker([school.lat, school.lng], {
+      const marker: SchoolMarker = L.marker([school.lat, school.lng], {
         icon: getSchoolIcon(school, false),
       });
+      marker.schoolSector = school.sector;
       marker.on('click', () => clickRef.current(school));
       markers.set(school.id, marker);
       if (school.id !== selectedId) layers.push(marker);
