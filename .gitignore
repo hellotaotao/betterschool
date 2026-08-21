@@ -44,7 +44,7 @@ scripts/analyze_top_primary_2022.js
 scripts/inspect_acara.py
 scripts/process_school_data.py
 
-# superpowers
+# local agent/tool scratch dirs (not project files)
 .superpowers/
 .gstack/
 

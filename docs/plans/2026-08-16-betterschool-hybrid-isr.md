@@ -1,7 +1,5 @@
 # BetterSchool Hybrid ISR Implementation Plan
 
-> **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
-
 **Goal:** Replace full build-time enumeration of BetterSchool's three long-tail SEO route families with first-request static generation and deployment-lifetime caching, then prove the result on Vercel before pushing `main`.
 
 **Architecture:** Keep the home, schools explorer, robots, and sitemap build-time routes unchanged. The school, suburb, and catchment page modules each return no build-time params, accept valid runtime params, and cache the generated static result indefinitely until a new deployment. Existing lookup and `notFound()` behavior remains responsible for invalid URLs.

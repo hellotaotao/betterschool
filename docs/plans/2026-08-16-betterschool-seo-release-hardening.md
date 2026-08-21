@@ -1,7 +1,5 @@
 # BetterSchool SEO Release Hardening Implementation Plan
 
-> **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
-
 **Goal:** 修正 BetterSchool SEO 页面的 catchment 与学校网址正确性问题，并在推送生产前通过 Vercel Preview 验证完整静态产物。
 
 **Architecture:** 保留现有 Next.js App Router 与完整预渲染策略。把 URL 校验和 zone 数据整理下沉为纯/可测试 helper，页面只渲染已经验证的数据；发布门禁由本地测试、build、smoke、独立审查和 Vercel Preview 组成。

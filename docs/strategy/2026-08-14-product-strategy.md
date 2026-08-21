@@ -23,7 +23,7 @@
 
 ### 1.2 真正的资产：数据纪律
 
-`schools.metadata.json` + `docs/superpowers/specs/2026-06-17-school-data-enrichment-design.md` 建立的规范，是竞品都没有的：
+`schools.metadata.json` + `docs/specs/2026-06-17-school-data-enrichment-design.md` 建立的规范，是竞品都没有的：
 
 - 官方(ACARA) / 推断 / 未采集**三态分离**，每个推断字段带 `*_source`
 - 「`Unknown` 优于错标」写成贯穿准则

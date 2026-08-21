@@ -1,14 +1,12 @@
 # 搜索 + 移动端适配 实现计划
 
-> **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
-
 **Goal:** 给 betterschool.au 加纯本地学校搜索(校名/区名/邮编),并用底部抽屉布局让站点在手机上可用。
 
 **Architecture:** 把 558 行的 `app/schools/page.tsx` 拆成职责单一的组件(SearchBox / FilterBar / SchoolList / SchoolDetail / BottomSheet),搜索逻辑抽到纯函数 `lib/searchSchools.ts`(vitest 单测),用 `useMediaQuery` 在桌面浮层布局与移动抽屉布局之间切换。每个任务保持 app 可运行。
 
 **Tech Stack:** Next.js 16, React 19, TypeScript, Leaflet/react-leaflet, Tailwind v4, vitest(新增)。
 
-**Spec:** `docs/superpowers/specs/2026-06-17-search-and-mobile-design.md`
+**Spec:** `docs/specs/2026-06-17-search-and-mobile-design.md`
 
 **分支:** `feature/search-and-mobile`(已创建)
 

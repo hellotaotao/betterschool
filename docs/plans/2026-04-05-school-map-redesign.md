@@ -1,7 +1,5 @@
 # School Map 重设计实现计划
 
-> **For agentic workers:** REQUIRED SUB-SKILL: Use `superpowers:subagent-driven-development` (recommended) or `superpowers:executing-plans` to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
-
 **目标：** 将 BetterSchool 学校地图页面改造成"地图全屏 + UI 悬浮 + 地图视口驱动列表"的现代地图优先体验。
 
 **架构：** 地图占满全部视口，顶部筛选栏、左侧学校列表、右侧详情面板通过绝对定位悬浮在地图上。`schools/page.tsx` 持有所有状态，SchoolMap 通过回调将圆点点击和地图边界变化通知给父组件。

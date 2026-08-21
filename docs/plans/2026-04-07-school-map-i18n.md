@@ -1,7 +1,5 @@
 # School Map I18n Implementation Plan
 
-> **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
-
 **Goal:** Add lightweight browser-language i18n to the school map UI with English as the default locale.
 
 **Architecture:** Keep the current `/schools` page as a client component, move UI strings into locale JSON resources, and detect the preferred browser language after mount. Use a small helper module for locale selection, string formatting, and repeated label translation.

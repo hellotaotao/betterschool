@@ -190,6 +190,6 @@ only as a caveated block at the bottom of the detail panel.
 - Changing user-facing strings means editing **both** `messages/en.json` and
   `messages/zh.json`.
 - `@/*` maps to the project root.
-- Design docs live in `docs/superpowers/specs/`, implementation plans in
-  `docs/superpowers/plans/`, strategy in `docs/strategy/`. Data work follows
+- Design docs live in `docs/specs/`, implementation plans in
+  `docs/plans/`, strategy in `docs/strategy/`. Data work follows
   spec → plan → implement.
