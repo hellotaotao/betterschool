@@ -1,7 +1,20 @@
 # School Marker Redesign — Design Spec
 
 **Date:** 2026-04-06  
-**Status:** Approved
+**Status:** Partially superseded — 2026-08-15, commit `f9167a6`
+
+> **Still live:** the delivery mechanism. `CircleMarker` really was replaced by
+> `Marker + L.divIcon` and hover really did move to pure CSS, so §5, §7 and the
+> Non-Goals still describe `components/SchoolMap.tsx` as it stands.
+>
+> **Dead:** everything that encodes score into a marker — the quadratic size
+> curve (§1), the score→shade colour interpolation (§2) and the in-circle score
+> label (§3). `legacy_score` covers 911 of 11,034 schools and is skewed hard by
+> state (WA 0, NT 0, QLD 3), so encoding it painted all 1,277 WA schools as small
+> grey dots — which read to a Perth parent as "there are no good schools here".
+> Markers now encode sector → colour and enrolments → size, both official ACARA
+> fields. Current rule: the "Marker encoding (and why)" section of `CLAUDE.md`.
+> Regression guard: `utils/schoolFilters.test.ts`.
 
 ## Problem
 
