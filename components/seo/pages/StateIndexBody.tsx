@@ -4,7 +4,7 @@ import { notFound } from 'next/navigation';
 import { getStateSummary, groupSuburbsByInitial } from '@/lib/schoolsData';
 import { formatMessage } from '@/lib/i18n';
 import { buildPageMetadata, getSeo, localeStateName, type Locale } from '@/lib/seoLocale';
-import { browsePath, mapPath, stateIndexPath, suburbPath } from '@/lib/slug';
+import { browsePath, mapUrl, stateIndexPath, suburbPath } from '@/lib/slug';
 import PageShell from '@/components/seo/PageShell';
 
 export function stateIndexMetadata(locale: Locale, state: string): Metadata {
@@ -54,7 +54,7 @@ export default function StateIndexBody({ locale, state }: { locale: Locale; stat
 
       <div className="mt-4 flex flex-wrap gap-2">
         <Link
-          href={mapPath()}
+          href={mapUrl({ locale })}
           className="rounded-full bg-indigo-600 px-4 py-1.5 text-xs font-medium text-white hover:bg-indigo-700"
         >
           {shell.openMap}

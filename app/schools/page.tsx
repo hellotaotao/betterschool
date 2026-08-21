@@ -3,10 +3,11 @@
 import { useState, useEffect, useMemo, useRef, useCallback } from 'react';
 import dynamic from 'next/dynamic';
 import {
-  detectBrowserLocale,
   formatMessage,
   getMessages,
   Locale,
+  LOCALE_STORAGE_KEY,
+  resolveInitialLocale,
 } from '@/lib/i18n';
 import { School } from '@/types/school';
 import { FilterState, filterSchools, SECTOR_COLORS } from '@/utils/schoolFilters';
@@ -32,6 +33,34 @@ const SchoolMap = dynamic(() => import('../../components/SchoolMap'), {
 // long max-age, so without a version query returning users would keep stale data
 // for up to a day after each data update. generated_at changes on every rebuild.
 const DATA_VERSION = String(schoolsMetadata.generated_at ?? '').replace(/\D/g, '') || 'v1';
+
+/**
+ * Manual language switch.
+ *
+ * The app guesses from navigator.languages, and that guess is often wrong for
+ * this audience — plenty of Chinese-speaking parents in Australia run an
+ * English browser, and vice versa. The choice is remembered, so it only has to
+ * be made once.
+ */
+function LanguageToggle({ locale, onChange }: { locale: Locale; onChange: (next: Locale) => void }) {
+  return (
+    <div className="flex gap-1 bg-white/90 backdrop-blur-sm rounded-full px-1 py-1 shadow-md shrink-0">
+      {(['en', 'zh'] as const).map(option => (
+        <button
+          key={option}
+          onClick={() => onChange(option)}
+          aria-pressed={locale === option}
+          lang={option === 'zh' ? 'zh-Hans' : 'en'}
+          className={`px-2.5 py-0.5 rounded-full text-xs font-medium transition-colors ${
+            locale === option ? 'bg-indigo-600 text-white' : 'text-gray-600 hover:bg-gray-100'
+          }`}
+        >
+          {option === 'en' ? 'EN' : '中文'}
+        </button>
+      ))}
+    </div>
+  );
+}
 
 /** Toolbar toggle that arms map-click catchment lookup. */
 function LookupButton({
@@ -133,7 +162,25 @@ export default function SchoolsPage() {
         ? [navigator.language]
         : [];
 
-    window.setTimeout(() => setLocale(detectBrowserLocale(languages)), 0);
+    let stored: string | null = null;
+    try {
+      stored = window.localStorage.getItem(LOCALE_STORAGE_KEY);
+    } catch {
+      // Private browsing and blocked storage both throw; the guess still works.
+    }
+
+    const query = new URLSearchParams(window.location.search).get('lang');
+    // Deferred a tick so the first paint matches the server-rendered shell.
+    window.setTimeout(() => setLocale(resolveInitialLocale({ query, stored, languages })), 0);
+  }, []);
+
+  const handleLocaleChange = useCallback((next: Locale) => {
+    setLocale(next);
+    try {
+      window.localStorage.setItem(LOCALE_STORAGE_KEY, next);
+    } catch {
+      // Non-fatal: the switch still applies for this visit.
+    }
   }, []);
 
   // The desktop top bar (search + filters) wraps to a variable number of rows
@@ -346,6 +393,7 @@ export default function SchoolsPage() {
                 dictionary={dictionary}
                 onClick={() => (pickMode ? clearLookup() : setPickMode(true))}
               />
+              <LanguageToggle locale={locale} onChange={handleLocaleChange} />
               <FilterBar filters={filters} onChange={setFilters} dictionary={dictionary} variant="scroll" />
             </div>
             {pickMode && (
@@ -414,6 +462,9 @@ export default function SchoolsPage() {
                 dictionary={dictionary}
                 onClick={() => (pickMode ? clearLookup() : setPickMode(true))}
               />
+            </div>
+            <div className="pointer-events-auto">
+              <LanguageToggle locale={locale} onChange={handleLocaleChange} />
             </div>
             <div className="pointer-events-auto">
               <FilterBar filters={filters} onChange={setFilters} dictionary={dictionary} />

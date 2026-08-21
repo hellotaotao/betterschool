@@ -7,7 +7,7 @@ import { safeSchoolWebsiteUrl } from '@/lib/schoolUrl';
 import { formatMessage, getMessages, getReligionLabel, getSchoolTypeLabel, getSectorLabel } from '@/lib/i18n';
 import { buildPageMetadata, getSeo, localeKind, localeStateLabel, localeStateName, type Locale } from '@/lib/seoLocale';
 import { absoluteUrl } from '@/lib/site';
-import { browsePath, catchmentPath, mapPath, schoolPath, stateIndexPath, suburbPath } from '@/lib/slug';
+import { browsePath, catchmentPath, mapUrl, schoolPath, stateIndexPath, suburbPath } from '@/lib/slug';
 import PageShell from '@/components/seo/PageShell';
 import SchoolLinkCard from '@/components/seo/SchoolLinkCard';
 
@@ -114,7 +114,7 @@ export default function SchoolBody({ locale, state, slug }: { locale: Locale; st
 
       <div className="mt-4 flex flex-wrap gap-2">
         <Link
-          href={`${mapPath()}?school=${school.acara_sml_id}`}
+          href={mapUrl({ locale, school: school.acara_sml_id })}
           className="rounded-full bg-indigo-600 px-4 py-1.5 text-xs font-medium text-white hover:bg-indigo-700"
         >
           {t.viewOnMap}

@@ -89,11 +89,29 @@ export function stateIndexPath(state: string, locale: Locale = 'en'): string {
 
 /**
  * The map app is a single client-rendered route shared by both locales — it
- * picks its own language from navigator.languages, and search engines never
- * see it, so a /zh twin would add maintenance for no gain.
+ * picks its own language, and search engines never see it, so a /zh twin would
+ * add maintenance for no gain.
  */
 export function mapPath(): string {
   return '/schools';
+}
+
+/**
+ * Link into the map app.
+ *
+ * `locale` becomes ?lang=, which the app treats as an explicit instruction: a
+ * reader who arrived on the Chinese page and taps "打开地图" should not be
+ * handed back to English because their browser happens to be set that way.
+ * robots.txt already keeps /schools? out of the index, so the extra parameter
+ * costs nothing in search.
+ */
+export function mapUrl(options: { locale?: Locale; school?: number; catchment?: boolean } = {}): string {
+  const params = new URLSearchParams();
+  if (Number.isFinite(options.school)) params.set('school', String(options.school));
+  if (options.catchment) params.set('catchment', '1');
+  if (options.locale) params.set('lang', options.locale);
+  const query = params.toString();
+  return query ? `/schools?${query}` : '/schools';
 }
 
 /** Swap the locale prefix on an already-built path. */

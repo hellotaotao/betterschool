@@ -5,7 +5,7 @@ import { School } from '@/types/school';
 import { getRelatedSuburbs, getSchoolSlug, getSuburb } from '@/lib/schoolsData';
 import { formatMessage, getMessages, getSchoolTypeLabel, getSectorLabel } from '@/lib/i18n';
 import { buildPageMetadata, getSeo, localeStateLabel, localeStateName, type Locale } from '@/lib/seoLocale';
-import { browsePath, catchmentPath, mapPath, stateIndexPath, suburbPath } from '@/lib/slug';
+import { browsePath, catchmentPath, mapUrl, stateIndexPath, suburbPath } from '@/lib/slug';
 import PageShell from '@/components/seo/PageShell';
 import SchoolLinkCard from '@/components/seo/SchoolLinkCard';
 
@@ -90,7 +90,7 @@ export default function SuburbBody({ locale, state, slug }: { locale: Locale; st
 
       <div className="mt-4">
         <Link
-          href={mapPath()}
+          href={mapUrl({ locale })}
           className="rounded-full bg-indigo-600 px-4 py-1.5 text-xs font-medium text-white hover:bg-indigo-700"
         >
           {formatMessage(t.exploreOnMap, { suburb: group.suburb })}
@@ -140,7 +140,7 @@ export default function SuburbBody({ locale, state, slug }: { locale: Locale; st
         ) : (
           <p className="mt-2 text-sm text-gray-600">
             {formatMessage(t.zonesNone, { suburb: group.suburb })}{' '}
-            <Link href={mapPath()} className="text-indigo-700 hover:underline">
+            <Link href={mapUrl({ locale })} className="text-indigo-700 hover:underline">
               {t.zonesNoneCta}
             </Link>
           </p>

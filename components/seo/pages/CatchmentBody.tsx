@@ -4,7 +4,7 @@ import { notFound } from 'next/navigation';
 import { getCatchmentZoneSections, getSchoolBySlug } from '@/lib/schoolsData';
 import { formatMessage, getMessages, getSchoolTypeLabel, getSectorLabel } from '@/lib/i18n';
 import { buildPageMetadata, getSeo, localeKind, localeStateLabel, localeStateName, type Locale } from '@/lib/seoLocale';
-import { browsePath, catchmentPath, mapPath, schoolPath, stateIndexPath, suburbPath } from '@/lib/slug';
+import { browsePath, catchmentPath, mapUrl, schoolPath, stateIndexPath, suburbPath } from '@/lib/slug';
 import PageShell from '@/components/seo/PageShell';
 import SchoolLinkCard from '@/components/seo/SchoolLinkCard';
 
@@ -79,7 +79,7 @@ export default function CatchmentBody({ locale, state, slug }: { locale: Locale;
 
       <div className="mt-4">
         <Link
-          href={`${mapPath()}?school=${school.acara_sml_id}&catchment=1`}
+          href={mapUrl({ locale, school: school.acara_sml_id, catchment: true })}
           className="rounded-full bg-indigo-600 px-4 py-1.5 text-xs font-medium text-white hover:bg-indigo-700"
         >
           {t.seeOnMap}

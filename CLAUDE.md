@@ -133,9 +133,16 @@ same-suburb duplicate gets an `-<acara_sml_id>` suffix, so URLs stay stable.
 - `lib/catchmentLookup.ts` — pure geometry (point-in-polygon, bbox prefilter),
   unit-tested; `lib/catchmentClient.ts` — the fetching/caching around it.
 - `components/CatchmentLookup.tsx` — "what is this location zoned for?" results.
-- `lib/i18n.ts` + `messages/{en,zh}.json` — locale auto-detected from
-  `navigator.languages`. **Both message files must keep identical key sets**,
-  enforced by `lib/i18n.test.ts`.
+- `lib/i18n.ts` + `messages/{en,zh}.json`. **Both message files must keep
+  identical key sets**, enforced by `lib/i18n.test.ts`.
+- Map locale resolves in this order (`resolveInitialLocale`): `?lang=` →
+  remembered choice in `localStorage` → `navigator.languages`. The query
+  parameter is how a `/zh` page hands a reader to the map without dropping
+  their language; the stored value is the manual EN/中文 toggle in the top bar.
+  Browser detection is only the last resort — it is often wrong for this
+  audience, who frequently read Chinese on an English-language browser.
+  Everything the map links out to (`mapUrl`, `schoolPath`) follows the resolved
+  locale, so the "full profile" button lands on the matching language.
 
 ### Dead code
 

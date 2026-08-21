@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import en from '@/messages/en.json';
 import zh from '@/messages/zh.json';
-import { formatMessage, getMessages, detectBrowserLocale } from './i18n';
+import { formatMessage, getMessages, detectBrowserLocale, resolveInitialLocale } from './i18n';
 
 function flatten(value: unknown, prefix = ''): string[] {
   if (typeof value !== 'object' || value === null) return [prefix];
@@ -74,5 +74,27 @@ describe('getMessages', () => {
   it('returns the requested locale bundle', () => {
     expect(getMessages('zh').seo.shell.otherLanguage).toBe('English');
     expect(getMessages('en').seo.shell.otherLanguage).toBe('中文');
+  });
+});
+
+describe('resolveInitialLocale', () => {
+  it('lets an explicit ?lang= win over everything', () => {
+    expect(resolveInitialLocale({ query: 'en', stored: 'zh', languages: ['zh-CN'] })).toBe('en');
+    expect(resolveInitialLocale({ query: 'zh', stored: 'en', languages: ['en-AU'] })).toBe('zh');
+  });
+
+  it('remembers a stored choice over the browser guess', () => {
+    expect(resolveInitialLocale({ stored: 'en', languages: ['zh-CN'] })).toBe('en');
+    expect(resolveInitialLocale({ stored: 'zh', languages: ['en-AU'] })).toBe('zh');
+  });
+
+  it('falls back to the browser when nothing was chosen', () => {
+    expect(resolveInitialLocale({ languages: ['zh-Hans-AU'] })).toBe('zh');
+    expect(resolveInitialLocale({ languages: ['en-AU'] })).toBe('en');
+  });
+
+  it('ignores junk in the query or in storage', () => {
+    expect(resolveInitialLocale({ query: 'fr', stored: 'de', languages: ['zh-CN'] })).toBe('zh');
+    expect(resolveInitialLocale({ query: null, stored: null, languages: [] })).toBe('en');
   });
 });

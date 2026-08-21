@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { getSchoolsDataset, getStateSummaries } from '@/lib/schoolsData';
 import { formatMessage } from '@/lib/i18n';
 import { buildPageMetadata, getSeo, localeStateName, type Locale } from '@/lib/seoLocale';
-import { mapPath, stateIndexPath } from '@/lib/slug';
+import { mapUrl, stateIndexPath } from '@/lib/slug';
 import PageShell from '@/components/seo/PageShell';
 
 const BARE_PATH = '/browse';
@@ -42,7 +42,7 @@ export default function BrowseBody({ locale }: { locale: Locale }) {
 
       <div className="mt-4">
         <Link
-          href={mapPath()}
+          href={mapUrl({ locale })}
           className="rounded-full bg-indigo-600 px-4 py-1.5 text-xs font-medium text-white hover:bg-indigo-700"
         >
           {getSeo(locale).shell.openMap}

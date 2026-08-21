@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { SITE_NAME } from '@/lib/site';
 import { getSeo, htmlLang, type Locale } from '@/lib/seoLocale';
-import { browsePath, mapPath, toLocalePath } from '@/lib/slug';
+import { browsePath, mapUrl, toLocalePath } from '@/lib/slug';
 
 export interface Crumb {
   label: string;
@@ -42,14 +42,14 @@ export default function PageShell({
     <div lang={htmlLang(locale)} className="min-h-screen bg-white text-gray-900">
       <header className="border-b border-gray-200">
         <div className="mx-auto max-w-3xl px-4 py-3 flex items-center justify-between gap-4">
-          <Link href={mapPath()} className="text-sm font-bold text-indigo-700 hover:underline">
+          <Link href={mapUrl({ locale })} className="text-sm font-bold text-indigo-700 hover:underline">
             {SITE_NAME}
           </Link>
           <div className="flex items-center gap-4">
             <Link href={browsePath(locale)} className="text-xs text-gray-500 hover:text-indigo-700 hover:underline">
               {t.browseByState}
             </Link>
-            <Link href={mapPath()} className="text-xs text-gray-500 hover:text-indigo-700 hover:underline">
+            <Link href={mapUrl({ locale })} className="text-xs text-gray-500 hover:text-indigo-700 hover:underline">
               {t.openMap} →
             </Link>
             <Link
