@@ -197,6 +197,12 @@ degrees of hue from the Catholic violet, so a pair of government schools read as
 already means *one school* and its diameter already means enrolments. Any new
 aggregate drawn on the map inherits both rules.
 
+The same constraint binds **selection**. A selected marker keeps its sector fill
+and is picked out by an achromatic white-gap-plus-slate ring; it used to flip to
+the same indigo, which turned a green government school purple the moment a user
+clicked it. Map state — selected, hovered, or anything added later — is drawn
+with shape, weight and neutral tone. Hue belongs to sector.
+
 ## Conventions
 
 - Comments explain **why**, not what. Match the surrounding density.

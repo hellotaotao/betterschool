@@ -48,12 +48,21 @@ function getSchoolIcon(school: School, isSelected: boolean): L.DivIcon {
  * facts present for ~100% / ~90% of schools respectively. No number is drawn
  * inside the marker: a single headline score per school is exactly the
  * league-table framing this project deliberately avoids.
+ *
+ * Selecting a school never recolours it. The fill used to flip to indigo, which
+ * sits 19 degrees of hue from the Catholic violet — so clicking a green
+ * government school turned it purple. The rings do that job on their own, and
+ * they are deliberately achromatic, because hue on this map means sector.
  */
 function createSchoolIcon(school: School, isSelected: boolean): L.DivIcon {
   const radius = getMarkerRadius(school.total_enrolments);
   const size = radius * 2;
-  const bgColor = isSelected ? '#4f46e5' : getMarkerColor(school.sector);
-  const boxShadow = isSelected ? '0 0 0 6px rgba(79,70,229,0.35)' : '';
+  const bgColor = getMarkerColor(school.sector);
+  // White gap, crisp slate ring, soft halo — visible against OSM tiles at any
+  // marker size without borrowing a sector hue.
+  const boxShadow = isSelected
+    ? '0 0 0 2px #0f172a,0 0 0 7px rgba(15,23,42,0.22)'
+    : '';
   // Enrolments are not published for ~10% of schools; render those faintly so
   // their small radius does not read as "this is a tiny school".
   const opacity = Number.isFinite(school.total_enrolments) ? 1 : 0.55;
