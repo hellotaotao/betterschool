@@ -14,10 +14,13 @@ export default function SchoolLinkCard({
   school,
   slug,
   locale,
+  distance,
 }: {
   school: School;
   slug: string;
   locale: Locale;
+  /** Pre-formatted proximity line, shown only where the card is a distance result. */
+  distance?: string;
 }) {
   const dictionary = getMessages(locale);
 
@@ -31,6 +34,7 @@ export default function SchoolLinkCard({
         <span className="block text-xs text-gray-500 mt-0.5">
           {school.suburb}, {school.state} {school.postcode}
         </span>
+        {distance && <span className="block text-[11px] text-gray-400 mt-0.5">{distance}</span>}
         <span className="mt-2 flex flex-wrap items-center gap-x-2 gap-y-1 text-xs text-gray-500">
           <span className={`rounded-full px-2 py-0.5 text-[11px] ${SECTOR_CLASS[school.sector] ?? 'bg-gray-100 text-gray-700'}`}>
             {getSectorLabel(school.sector, dictionary)}

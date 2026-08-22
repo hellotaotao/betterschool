@@ -120,6 +120,12 @@
     "enrolmentsUnknown": "Enrolments not published",
     "clusterRing": "Ring = several schools, sliced by sector"
   },
+  "directory": {
+    "heading": "School directory",
+    "browseAll": "Browse every school by suburb",
+    "hint": "Profiles, catchment zones and suburb pages for all of Australia.",
+    "byState": "By state"
+  },
   "dataNotice": {
     "title": "ACARA canonical base",
     "body": "Map and list use official ACARA 2025 public school profile and location data. Marker colour = sector, size = enrolments — both official ACARA fields. This site publishes no ranking or composite quality score."
@@ -144,7 +150,9 @@
       "stateMeta": "{schools} schools · {suburbs} suburbs",
       "stateZoned": "{count} with an intake zone",
       "zonesHeading": "Intake zones",
-      "zonesBody": "Zone boundaries currently cover NSW government schools only. Zones apply to government schools alone — Catholic and Independent schools admit on their own criteria and have no geographic zone. Other states are not yet collected, which is different from having none."
+      "zonesBody": "Zone boundaries currently cover NSW government schools only. Zones apply to government schools alone — Catholic and Independent schools admit on their own criteria and have no geographic zone. Other states are not yet collected, which is different from having none.",
+      "largestHeading": "Suburbs with the most schools",
+      "largestHint": "A shortcut into the biggest suburb pages. Every suburb is reachable through its state above."
     },
     "stateIndex": {
       "metaTitle": "Schools in {state}, by suburb",
@@ -153,7 +161,10 @@
       "counts": "{schools} schools · {suburbs} suburbs",
       "zonedNote": "{count} government schools in {state} publish an intake zone. A zone is set by address, and boundaries can run through the middle of a street — check the address itself rather than the suburb.",
       "notCollectedNote": "Intake zone boundaries are not collected for {state} yet — which is not the same as saying its government schools have none.",
-      "jumpToLetter": "Jump to letter"
+      "jumpToLetter": "Jump to letter",
+      "largestHeading": "Biggest suburbs in {state}",
+      "otherStatesHeading": "Other states and territories",
+      "allSuburbsHeading": "Every suburb in {state}, A–Z"
     },
     "suburb": {
       "metaTitle": "Schools in {suburb}, {state}",
@@ -170,7 +181,7 @@
       "zonesNoneCta": "Look up a specific address on the map",
       "catchmentLink": "{school} catchment",
       "relatedHeading": "Nearby suburbs",
-      "relatedHint": "Suburbs sharing a postcode with {suburb}."
+      "relatedHint": "Closest suburbs to {suburb}, by straight-line distance."
     },
     "school": {
       "metaTitle": "{school}, {suburb} {state}",
@@ -212,6 +223,9 @@
       "zoneOtherState": "Intake zone data currently covers NSW government schools only, so none is shown for {state}.",
       "peersHeading": "Other schools in {suburb}",
       "peersAll": "All schools in {suburb}",
+      "nearbyHeading": "Schools near {suburb}",
+      "nearbyHint": "Closest schools outside {suburb}, by straight-line distance. A suburb boundary is an administrative line, not the limit of what your child can attend.",
+      "nearbyDistance": "{km} km from {school}",
       "notShownHeading": "What this page does not show",
       "notShownBody": "No rank, no rating and no composite quality score — not for this school and not for any of the {total} schools on this site. NAPLAN results are not republished here; the My School link above goes to the official source."
     },

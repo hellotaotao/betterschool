@@ -25,6 +25,13 @@ export interface SuburbGroup {
   slug: string;
   postcodes: string[];
   schools: School[];
+  /**
+   * Mean position of this suburb's schools. Not the suburb's geographic centre
+   * — we hold no suburb boundaries — so it is only ever used to order other
+   * suburbs by proximity, never presented as the suburb's location.
+   */
+  lat: number;
+  lng: number;
 }
 
 export interface SchoolsDataset {
@@ -69,6 +76,8 @@ export const getSchoolsDataset = cache((): SchoolsDataset => {
         slug: suburbSlug(school.suburb),
         postcodes: [],
         schools: [],
+        lat: 0,
+        lng: 0,
       };
       suburbs.set(suburbKey, group);
     }
@@ -81,6 +90,11 @@ export const getSchoolsDataset = cache((): SchoolsDataset => {
   for (const group of suburbs.values()) {
     group.schools.sort((a, b) => a.school_name.localeCompare(b.school_name));
     group.postcodes.sort();
+    // Every ACARA record in the canonical file has coordinates, so this is a
+    // mean over the whole group rather than over whichever schools happened to
+    // carry a position.
+    group.lat = group.schools.reduce((sum, s) => sum + Number(s.lat), 0) / group.schools.length;
+    group.lng = group.schools.reduce((sum, s) => sum + Number(s.lng), 0) / group.schools.length;
   }
 
   cachedDataset = { schools, slugs, bySlug, suburbs, metadata };
@@ -106,26 +120,101 @@ export function getSuburbPeers(school: School, limit = 12): School[] {
   return group.schools.filter(peer => peer.id !== school.id).slice(0, limit);
 }
 
+/** Straight-line distance in km. Haversine on a spherical earth. */
+function distanceKm(aLat: number, aLng: number, bLat: number, bLng: number): number {
+  const toRad = (deg: number) => (deg * Math.PI) / 180;
+  const dLat = toRad(bLat - aLat);
+  const dLng = toRad(bLng - aLng);
+  const h = Math.sin(dLat / 2) ** 2
+    + Math.cos(toRad(aLat)) * Math.cos(toRad(bLat)) * Math.sin(dLng / 2) ** 2;
+  return 2 * 6371 * Math.asin(Math.sqrt(h));
+}
+
 /**
- * Nearby suburbs, defined as other suburbs sharing a postcode with this one.
+ * Suburbs holding the most schools, nationally or within one state.
  *
- * Postcode is an honest proxy that needs no extra dataset. It is not a distance
- * ranking and is not presented as one.
+ * A hub that fans out to 1,431 alphabetical entries gives each of them a
+ * 1/1431 share of whatever reaches it. This puts the densest suburbs one click
+ * from the hub instead. "Most schools" is a count we hold, not a popularity
+ * claim we would have to invent traffic data to make.
  */
-export function getRelatedSuburbs(group: SuburbGroup, limit = 12): SuburbGroup[] {
+export function getLargestSuburbs(state: string | null, limit: number): SuburbGroup[] {
   const dataset = getSchoolsDataset();
-  const postcodes = new Set(group.postcodes);
-  const related: SuburbGroup[] = [];
+  const groups = [...dataset.suburbs.values()]
+    .filter(group => (state ? group.state === state : true));
+
+  return groups
+    .sort((a, b) => b.schools.length - a.schools.length || a.suburb.localeCompare(b.suburb))
+    .slice(0, limit);
+}
+
+export interface NearbySuburb {
+  group: SuburbGroup;
+  km: number;
+}
+
+/**
+ * The nearest other suburbs in the same state, by straight-line distance
+ * between school positions.
+ *
+ * This replaced a shared-postcode rule. Postcode needed no coordinates, but it
+ * left 1,242 of 4,800 suburb pages (26%) with no outbound link at all — a page
+ * a reader and a crawler can both enter and neither can leave. Distance is
+ * computed from official ACARA coordinates, which every school has, so every
+ * suburb page now links onward.
+ *
+ * Straight-line, not travel distance, and the page says so.
+ */
+export function getRelatedSuburbs(group: SuburbGroup, limit = 12): NearbySuburb[] {
+  const dataset = getSchoolsDataset();
+  const scored: NearbySuburb[] = [];
 
   for (const candidate of dataset.suburbs.values()) {
     if (candidate === group) continue;
     if (candidate.state !== group.state) continue;
-    if (!candidate.postcodes.some(postcode => postcodes.has(postcode))) continue;
-    related.push(candidate);
-    if (related.length >= limit) break;
+    scored.push({ group: candidate, km: distanceKm(group.lat, group.lng, candidate.lat, candidate.lng) });
   }
 
-  return related.sort((a, b) => a.suburb.localeCompare(b.suburb));
+  return scored.sort((a, b) => a.km - b.km).slice(0, limit);
+}
+
+export interface NearbySchool {
+  school: School;
+  slug: string;
+  km: number;
+}
+
+/**
+ * The nearest schools outside this school's own suburb.
+ *
+ * 2,716 of 4,800 suburbs hold exactly one school, so `getSuburbPeers` returns
+ * nothing for more than half the school pages — leaving them with no lateral
+ * link and near-duplicate content against their own suburb page. This is also
+ * the question an address-first reader is actually asking: the suburb boundary
+ * is an administrative line, not the edge of what their child can attend.
+ *
+ * Kept as a separate section from the same-suburb peers rather than padding
+ * that list, so "in this suburb" and "near this suburb" stay distinguishable.
+ */
+export function getNearbySchools(school: School, limit = 8): NearbySchool[] {
+  const dataset = getSchoolsDataset();
+  const own = suburbSlug(school.suburb);
+  const scored: NearbySchool[] = [];
+
+  for (const candidate of dataset.schools) {
+    if (candidate.id === school.id) continue;
+    if (candidate.state !== school.state) continue;
+    if (suburbSlug(candidate.suburb) === own) continue;
+    const slug = dataset.slugs.get(candidate.id);
+    if (!slug) continue;
+    scored.push({
+      school: candidate,
+      slug,
+      km: distanceKm(Number(school.lat), Number(school.lng), Number(candidate.lat), Number(candidate.lng)),
+    });
+  }
+
+  return scored.sort((a, b) => a.km - b.km).slice(0, limit);
 }
 
 // --- Catchments -------------------------------------------------------------

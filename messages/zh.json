@@ -120,6 +120,12 @@
     "enrolmentsUnknown": "未公布在校人数",
     "clusterRing": "环形 = 多所学校，按办学性质分色"
   },
+  "directory": {
+    "heading": "学校目录",
+    "browseAll": "按 suburb 浏览全部学校",
+    "hint": "全澳学校详情页、学区范围与各 suburb 汇总。",
+    "byState": "按州浏览"
+  },
   "dataNotice": {
     "title": "ACARA 官方基础数据",
     "body": "地图与列表使用 ACARA 2025 官方公开学校资料和位置数据。标记颜色 = 办学性质，大小 = 在校人数，均为 ACARA 官方字段。本站不发布任何排名或综合评分。"
@@ -144,7 +150,9 @@
       "stateMeta": "{schools} 所学校 · {suburbs} 个城区",
       "stateZoned": "{count} 所有学区",
       "zonesHeading": "关于学区",
-      "zonesBody": "目前只收录了新南威尔士州公立学校的学区边界。学区只适用于公立学校——天主教学校和独立学校按各自的标准招生，没有地理学区。其他州还没有采集，这跟「没有学区」是两回事。"
+      "zonesBody": "目前只收录了新南威尔士州公立学校的学区边界。学区只适用于公立学校——天主教学校和独立学校按各自的标准招生，没有地理学区。其他州还没有采集，这跟「没有学区」是两回事。",
+      "largestHeading": "学校最多的城区",
+      "largestHint": "直接进入学校最多的几个城区页面。全部城区都可以通过上面的州索引找到。"
     },
     "stateIndex": {
       "metaTitle": "{state}学校一览（按城区）",
@@ -153,7 +161,10 @@
       "counts": "{schools} 所学校 · {suburbs} 个城区",
       "zonedNote": "{state}有 {count} 所公立学校公布了学区。学区按地址划定，边界可能从一条街中间穿过——请核对具体地址，不要只看城区。",
       "notCollectedNote": "{state}的学区边界还没有采集。这不等于说该州公立学校没有学区。",
-      "jumpToLetter": "按字母跳转"
+      "jumpToLetter": "按字母跳转",
+      "largestHeading": "{state}学校最多的城区",
+      "otherStatesHeading": "其他州与领地",
+      "allSuburbsHeading": "{state}全部城区（A–Z）"
     },
     "suburb": {
       "metaTitle": "{suburb}（{state}）的学校",
@@ -170,7 +181,7 @@
       "zonesNoneCta": "在地图上查询具体地址",
       "catchmentLink": "{school} 的学区",
       "relatedHeading": "邻近城区",
-      "relatedHint": "与{suburb}共用邮编的城区。"
+      "relatedHint": "离 {suburb} 最近的城区，按直线距离排序。"
     },
     "school": {
       "metaTitle": "{school}（{suburb}，{state}）学校资料",
@@ -212,6 +223,9 @@
       "zoneOtherState": "学区数据目前只覆盖新南威尔士州公立学校，因此{state}暂无学区信息。",
       "peersHeading": "{suburb}的其他学校",
       "peersAll": "{suburb}的全部学校",
+      "nearbyHeading": "{suburb} 附近的学校",
+      "nearbyHint": "{suburb} 之外最近的学校，按直线距离排序。城区边界只是行政划分，不是孩子能读哪些学校的边界。",
+      "nearbyDistance": "距 {school} {km} 公里",
       "notShownHeading": "这个页面不提供什么",
       "notShownBody": "没有排名、没有评级、没有综合评分——这所学校没有，本站 {total} 所学校都没有。NAPLAN 成绩不在本站转载，上面的 My School 链接指向官方来源。"
     },

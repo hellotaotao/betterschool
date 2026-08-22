@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { School } from '@/types/school';
-import { getSchoolBySlug, getSchoolsDataset, getSchoolSlug, getSuburbPeers } from '@/lib/schoolsData';
+import { getNearbySchools, getSchoolBySlug, getSchoolsDataset, getSchoolSlug, getSuburbPeers } from '@/lib/schoolsData';
 import { safeSchoolWebsiteUrl } from '@/lib/schoolUrl';
 import { formatMessage, getMessages, getReligionLabel, getSchoolTypeLabel, getSectorLabel } from '@/lib/i18n';
 import { buildPageMetadata, getSeo, localeKind, localeStateLabel, localeStateName, type Locale } from '@/lib/seoLocale';
@@ -60,6 +60,7 @@ export default function SchoolBody({ locale, state, slug }: { locale: Locale; st
   const dictionary = getMessages(locale);
   const dataset = getSchoolsDataset();
   const peers = getSuburbPeers(school);
+  const nearby = getNearbySchools(school);
   const catchments = school.catchments ?? [];
   const isGovernment = school.sector === 'Government';
   const schoolWebsiteUrl = safeSchoolWebsiteUrl(school.school_url);
@@ -252,6 +253,31 @@ export default function SchoolBody({ locale, state, slug }: { locale: Locale; st
           >
             {formatMessage(t.peersAll, { suburb: school.suburb })} →
           </Link>
+        </section>
+      )}
+
+      {nearby.length > 0 && (
+        <section className="mt-8" aria-labelledby="nearby-schools">
+          <h2 id="nearby-schools" className="text-base font-semibold">
+            {formatMessage(t.nearbyHeading, { suburb: school.suburb })}
+          </h2>
+          <p className="mt-1 text-xs text-gray-500">
+            {formatMessage(t.nearbyHint, { suburb: school.suburb })}
+          </p>
+          <ul className="mt-3 grid gap-2 sm:grid-cols-2">
+            {nearby.map(entry => (
+              <SchoolLinkCard
+                key={entry.school.id}
+                school={entry.school}
+                slug={entry.slug}
+                locale={locale}
+                distance={formatMessage(t.nearbyDistance, {
+                  km: entry.km < 10 ? entry.km.toFixed(1) : Math.round(entry.km),
+                  school: school.school_name,
+                })}
+              />
+            ))}
+          </ul>
         </section>
       )}
 

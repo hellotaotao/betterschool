@@ -2,7 +2,8 @@
 
 import { RefObject } from 'react';
 import { School } from '@/types/school';
-import { getSchoolTypeLabel, getSectorLabel, formatMessage, Messages } from '@/lib/i18n';
+import { getSchoolTypeLabel, getSectorLabel, formatMessage, Locale, Messages } from '@/lib/i18n';
+import DirectoryLinks from './DirectoryLinks';
 
 type SortKey = 'name' | 'icsea' | 'enrolments';
 
@@ -26,6 +27,7 @@ interface SchoolListProps {
   areaLabel: string;
   loading: boolean;
   dictionary: Messages;
+  locale: Locale;
   selectedCardRef: RefObject<HTMLDivElement | null>;
 }
 
@@ -39,6 +41,7 @@ export default function SchoolList({
   areaLabel,
   loading,
   dictionary,
+  locale,
   selectedCardRef,
 }: SchoolListProps) {
   // The viewport can legitimately contain every school in the country — the map
@@ -143,6 +146,8 @@ export default function SchoolList({
           </p>
         )}
       </div>
+
+      <DirectoryLinks locale={locale} dictionary={dictionary} />
     </div>
   );
 }

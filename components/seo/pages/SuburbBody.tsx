@@ -90,7 +90,7 @@ export default function SuburbBody({ locale, state, slug }: { locale: Locale; st
 
       <div className="mt-4">
         <Link
-          href={mapUrl({ locale })}
+          href={mapUrl({ locale, suburb: { state: group.state, suburb: group.suburb } })}
           className="rounded-full bg-indigo-600 px-4 py-1.5 text-xs font-medium text-white hover:bg-indigo-700"
         >
           {formatMessage(t.exploreOnMap, { suburb: group.suburb })}
@@ -140,7 +140,10 @@ export default function SuburbBody({ locale, state, slug }: { locale: Locale; st
         ) : (
           <p className="mt-2 text-sm text-gray-600">
             {formatMessage(t.zonesNone, { suburb: group.suburb })}{' '}
-            <Link href={mapUrl({ locale })} className="text-indigo-700 hover:underline">
+            <Link
+              href={mapUrl({ locale, suburb: { state: group.state, suburb: group.suburb } })}
+              className="text-indigo-700 hover:underline"
+            >
               {t.zonesNoneCta}
             </Link>
           </p>
@@ -154,13 +157,14 @@ export default function SuburbBody({ locale, state, slug }: { locale: Locale; st
             {formatMessage(t.relatedHint, { suburb: group.suburb })}
           </p>
           <ul className="mt-2 flex flex-wrap gap-2">
-            {related.map(other => (
+            {related.map(({ group: other, km }) => (
               <li key={`${other.state}-${other.slug}`}>
                 <Link
                   href={suburbPath(other.state, other.suburb, locale)}
-                  className="inline-block rounded-full border border-gray-200 px-3 py-1 text-xs text-gray-700 hover:border-indigo-400 hover:text-indigo-700"
+                  className="inline-flex items-baseline gap-1.5 rounded-full border border-gray-200 px-3 py-1 text-xs text-gray-700 hover:border-indigo-400 hover:text-indigo-700"
                 >
                   {other.suburb}
+                  <span className="text-[10px] text-gray-400">{km < 10 ? km.toFixed(1) : Math.round(km)} km</span>
                 </Link>
               </li>
             ))}

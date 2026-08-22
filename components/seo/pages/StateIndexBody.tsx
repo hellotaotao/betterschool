@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import { getStateSummary, groupSuburbsByInitial } from '@/lib/schoolsData';
+import { getLargestSuburbs, getStateSummaries, getStateSummary, groupSuburbsByInitial } from '@/lib/schoolsData';
 import { formatMessage } from '@/lib/i18n';
 import { buildPageMetadata, getSeo, localeStateName, type Locale } from '@/lib/seoLocale';
 import { browsePath, mapUrl, stateIndexPath, suburbPath } from '@/lib/slug';
@@ -34,6 +34,8 @@ export default function StateIndexBody({ locale, state }: { locale: Locale; stat
   const shell = getSeo(locale).shell;
   const groups = groupSuburbsByInitial(summary.suburbs);
   const full = localeStateName(locale, summary.state);
+  const largest = getLargestSuburbs(summary.state, 12);
+  const siblings = getStateSummaries().filter(other => other.state !== summary.state);
 
   return (
     <PageShell
@@ -71,7 +73,30 @@ export default function StateIndexBody({ locale, state }: { locale: Locale; stat
         </p>
       )}
 
-      <nav aria-label={t.jumpToLetter} className="mt-6 flex flex-wrap gap-1">
+      <section className="mt-8" aria-labelledby="largest">
+        <h2 id="largest" className="text-base font-semibold">
+          {formatMessage(t.largestHeading, { state: full })}
+        </h2>
+        <ul className="mt-3 flex flex-wrap gap-2">
+          {largest.map(group => (
+            <li key={group.slug}>
+              <Link
+                href={suburbPath(group.state, group.suburb, locale)}
+                className="inline-flex items-baseline gap-1.5 rounded-full border border-gray-200 px-3 py-1 text-xs text-gray-700 hover:border-indigo-400 hover:text-indigo-700"
+              >
+                {group.suburb}
+                <span className="text-[10px] text-gray-400">{group.schools.length}</span>
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </section>
+
+      <h2 className="mt-8 text-base font-semibold">
+        {formatMessage(t.allSuburbsHeading, { state: full })}
+      </h2>
+
+      <nav aria-label={t.jumpToLetter} className="mt-3 flex flex-wrap gap-1">
         {groups.map(([initial]) => (
           <a
             key={initial}
@@ -85,7 +110,7 @@ export default function StateIndexBody({ locale, state }: { locale: Locale; stat
 
       {groups.map(([initial, suburbs]) => (
         <section key={initial} id={`letter-${initial}`} className="mt-6 scroll-mt-4">
-          <h2 className="text-base font-semibold border-b border-gray-100 pb-1">{initial}</h2>
+          <h3 className="text-sm font-semibold border-b border-gray-100 pb-1">{initial}</h3>
           <ul className="mt-2 grid gap-x-4 gap-y-1 sm:grid-cols-2">
             {suburbs.map(group => (
               <li key={group.slug} className="text-sm">
@@ -101,6 +126,23 @@ export default function StateIndexBody({ locale, state }: { locale: Locale; stat
           </ul>
         </section>
       ))}
+
+      <section className="mt-10 border-t border-gray-100 pt-5" aria-labelledby="other-states">
+        <h2 id="other-states" className="text-base font-semibold">{t.otherStatesHeading}</h2>
+        <ul className="mt-3 flex flex-wrap gap-2">
+          {siblings.map(other => (
+            <li key={other.state}>
+              <Link
+                href={stateIndexPath(other.state, locale)}
+                className="inline-flex items-baseline gap-1.5 rounded-full border border-gray-200 px-3 py-1 text-xs text-gray-700 hover:border-indigo-400 hover:text-indigo-700"
+              >
+                {localeStateName(locale, other.state)}
+                <span className="text-[10px] text-gray-400">{other.schools.toLocaleString()}</span>
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </section>
     </PageShell>
   );
 }

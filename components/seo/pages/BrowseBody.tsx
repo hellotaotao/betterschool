@@ -1,9 +1,9 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import { getSchoolsDataset, getStateSummaries } from '@/lib/schoolsData';
+import { getLargestSuburbs, getSchoolsDataset, getStateSummaries } from '@/lib/schoolsData';
 import { formatMessage } from '@/lib/i18n';
 import { buildPageMetadata, getSeo, localeStateName, type Locale } from '@/lib/seoLocale';
-import { mapUrl, stateIndexPath } from '@/lib/slug';
+import { mapUrl, stateIndexPath, suburbPath } from '@/lib/slug';
 import PageShell from '@/components/seo/PageShell';
 
 const BARE_PATH = '/browse';
@@ -24,6 +24,7 @@ export default function BrowseBody({ locale }: { locale: Locale }) {
   const t = getSeo(locale).browse;
   const states = getStateSummaries();
   const dataset = getSchoolsDataset();
+  const largest = getLargestSuburbs(null, 24);
 
   return (
     <PageShell
@@ -68,6 +69,24 @@ export default function BrowseBody({ locale }: { locale: Locale }) {
                   })}
                   {summary.zoned > 0 && ` · ${formatMessage(t.stateZoned, { count: summary.zoned.toLocaleString() })}`}
                 </span>
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </section>
+
+      <section className="mt-8" aria-labelledby="largest">
+        <h2 id="largest" className="text-base font-semibold">{t.largestHeading}</h2>
+        <p className="mt-1 text-xs text-gray-500">{t.largestHint}</p>
+        <ul className="mt-3 flex flex-wrap gap-2">
+          {largest.map(group => (
+            <li key={`${group.state}-${group.slug}`}>
+              <Link
+                href={suburbPath(group.state, group.suburb, locale)}
+                className="inline-flex items-baseline gap-1.5 rounded-full border border-gray-200 px-3 py-1 text-xs text-gray-700 hover:border-indigo-400 hover:text-indigo-700"
+              >
+                {group.suburb}
+                <span className="text-[10px] text-gray-400">{group.state} · {group.schools.length}</span>
               </Link>
             </li>
           ))}

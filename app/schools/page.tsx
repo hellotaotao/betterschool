@@ -12,7 +12,7 @@ import {
 import { School } from '@/types/school';
 import { FilterState, filterSchools, SECTOR_COLORS } from '@/utils/schoolFilters';
 import { useMediaQuery } from '@/lib/useMediaQuery';
-import { schoolPath, schoolSlugFor } from '@/lib/slug';
+import { schoolPath, schoolSlugFor, stateSlug, suburbSlug } from '@/lib/slug';
 import schoolsMetadata from '@/public/data/schools.metadata.json';
 
 import type { CatchmentFeature } from '@/lib/catchmentLookup';
@@ -135,6 +135,23 @@ export default function SchoolsPage() {
         // rather than useSearchParams so this client-only route keeps
         // prerendering without a Suspense bailout.
         const query = new URLSearchParams(window.location.search);
+
+        // A suburb page's "explore on the map" link. Reuses the same place
+        // focus the search box produces, so the map fits the suburb's actual
+        // schools rather than guessing a centre and a zoom.
+        const suburbParam = query.get('suburb');
+        const stateParam = query.get('state');
+        if (suburbParam && stateParam) {
+          const matches = data.filter(school => (
+            suburbSlug(school.suburb) === suburbParam && stateSlug(school.state) === stateParam
+          ));
+          if (matches.length > 0) {
+            setPlaceFocus(matches);
+            setDeepLinked(true);
+            return;
+          }
+        }
+
         const requested = Number(query.get('school'));
         if (!Number.isFinite(requested) || requested === 0) return;
         const match = data.find(school => school.acara_sml_id === requested);
@@ -437,6 +454,7 @@ export default function SchoolsPage() {
                 areaLabel={areaLabel}
                 loading={loading}
                 dictionary={dictionary}
+                locale={locale}
                 selectedCardRef={selectedCardRef}
               />
             )}
@@ -522,6 +540,7 @@ export default function SchoolsPage() {
                   areaLabel={areaLabel}
                   loading={loading}
                   dictionary={dictionary}
+                  locale={locale}
                   selectedCardRef={selectedCardRef}
                 />
               </div>

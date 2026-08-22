@@ -105,10 +105,20 @@ export function mapPath(): string {
  * robots.txt already keeps /schools? out of the index, so the extra parameter
  * costs nothing in search.
  */
-export function mapUrl(options: { locale?: Locale; school?: number; catchment?: boolean } = {}): string {
+export function mapUrl(options: {
+  locale?: Locale;
+  school?: number;
+  catchment?: boolean;
+  /** Open the map fitted to one suburb's schools. */
+  suburb?: { state: string; suburb: string };
+} = {}): string {
   const params = new URLSearchParams();
   if (Number.isFinite(options.school)) params.set('school', String(options.school));
   if (options.catchment) params.set('catchment', '1');
+  if (options.suburb) {
+    params.set('suburb', suburbSlug(options.suburb.suburb));
+    params.set('state', stateSlug(options.suburb.state));
+  }
   if (options.locale) params.set('lang', options.locale);
   const query = params.toString();
   return query ? `/schools?${query}` : '/schools';
