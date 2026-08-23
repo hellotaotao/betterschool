@@ -1,6 +1,8 @@
 import { CatchmentKind } from '@/types/school';
 
 export interface CatchmentIndexEntry {
+  /** Lowercase state slug, e.g. 'nsw'. Decides which directory holds the geometry. */
+  state: string;
   location_age_id: number;
   acara_sml_id: number;
   kind: CatchmentKind;
@@ -96,10 +98,22 @@ export function bboxContains(bbox: [number, number, number, number], point: [num
  * handful of candidates — few enough that fetching their full-precision geometry
  * on demand is cheap. This is why no spatial grid is needed.
  */
-export function candidatesAt(index: CatchmentIndex, point: [number, number]): CatchmentIndexEntry[] {
-  return index.catchments.filter(entry => bboxContains(entry.bbox, point));
+export function candidatesAt(entries: CatchmentIndexEntry[], point: [number, number]): CatchmentIndexEntry[] {
+  return entries.filter(entry => bboxContains(entry.bbox, point));
 }
 
-export function catchmentGeometryUrl(entry: { location_age_id: number; kind: CatchmentKind }): string {
-  return `/data/catchment/nsw/${entry.location_age_id}-${entry.kind}.json`;
+/**
+ * States with a published intake-zone layer, in the order they were added.
+ *
+ * A constant rather than a fetched manifest: a state arrives with a build
+ * script and a copy change anyway, so there is nothing here a round trip could
+ * learn that the code does not already state. Loaders must tolerate a state
+ * listed here whose data has not been built yet.
+ */
+export const CATCHMENT_STATES = ['nsw', 'sa'] as const;
+
+export function catchmentGeometryUrl(
+  entry: { state: string; location_age_id: number; kind: CatchmentKind },
+): string {
+  return `/data/catchment/${entry.state}/${entry.location_age_id}-${entry.kind}.json`;
 }

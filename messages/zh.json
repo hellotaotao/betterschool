@@ -101,10 +101,10 @@
     "effectiveFrom": "{year} 年起生效",
     "nonGovernment": "非政府学校没有地理学区，按各自标准招生——堂区、兄弟姐妹在读、或入学考试。",
     "notPublished": "该校未公布学区范围。",
-    "nswOnly": "学区数据目前仅覆盖新南威尔士州公立学校。",
-    "disclaimer": "学区会变动，边界甚至可能从一条街中间穿过。这是参考，不是入学保证——NSW 教育部声明：若将此数据用于房产决策，教育部不承担责任。请用官方 School Finder 按具体地址核实。",
-    "officialLink": "NSW 官方 School Finder",
-    "loadError": "学区边界加载失败。"
+    "disclaimer": "学区会变动，边界可能从一条街中间穿过。这里提供的是参考，不是法定入学资格 —— 若据此做置业决定，{state}教育部门不承担责任。请到官方工具核对具体地址。",
+    "officialLink": "{state}官方学区查询工具",
+    "loadError": "学区边界加载失败。",
+    "statesOnly": "学区数据目前覆盖{states}的公立学校。"
   },
   "lookup": {
     "button": "查对口学校",
@@ -176,13 +176,14 @@
       "exploreOnMap": "在地图上查看 {suburb}",
       "typeHeading": "{type}（{count} 所）",
       "zonesHeading": "学区",
-      "zonesOtherState": "学区数据目前只覆盖新南威尔士州公立学校，因此{state}暂无学区信息。",
+      "zonesOtherState": "学区数据目前覆盖{states}，所以{state}暂时没有。",
       "zonesPresent": "{suburb}有 {count} 所公立学校公布了学区。学区是「住在范围内就保证有学位」的那块地，按地址划定，边界可能从一条街中间穿过，所以要核对自己的地址，不能只看城区。",
       "zonesNone": "没有以{suburb}为校址的公立学校公布学区。但这不代表这个城区不属于任何学区——它很可能落在别处某所学校的学区范围内。",
       "zonesNoneCta": "在地图上查询具体地址",
       "catchmentLink": "{school} 的学区",
       "relatedHeading": "邻近城区",
-      "relatedHint": "离 {suburb} 最近的城区，按直线距离排序。"
+      "relatedHint": "离 {suburb} 最近的城区，按直线距离排序。",
+      "zonesNonePartial": "没有以 {suburb} 为校址的公立学校公布学区。{state}只给一部分公立学校划片，所以这一点说明不了什么 —— 这个城区仍可能落在别处某所学校的学区范围内。"
     },
     "school": {
       "metaTitle": "{school}（{suburb}，{state}）学校资料",
@@ -220,19 +221,21 @@
       "zoneDataYear": "{year} 招生年度",
       "zoneLink": "查看 {school} 的学区范围",
       "zoneNonGovernment": "非公立学校没有地理学区，按各自的标准招生——所属堂区、兄弟姐妹在读、或者入学考试。",
-      "zoneNotPublished": "这所学校没有公布学区范围。",
-      "zoneOtherState": "学区数据目前只覆盖新南威尔士州公立学校，因此{state}暂无学区信息。",
+      "zoneNotPublished": "该校没有公布对口学区。",
+      "zoneOtherState": "学区数据目前覆盖{states}，所以{state}暂时没有。",
       "peersHeading": "{suburb}的其他学校",
       "peersAll": "{suburb}的全部学校",
       "nearbyHeading": "{suburb} 附近的学校",
       "nearbyHint": "{suburb} 之外最近的学校，按直线距离排序。城区边界只是行政划分，不是孩子能读哪些学校的边界。",
       "nearbyDistance": "距 {school} {km} 公里",
       "notShownHeading": "这个页面不提供什么",
-      "notShownBody": "没有排名、没有评级、没有综合评分——这所学校没有，本站 {total} 所学校都没有。NAPLAN 成绩不在本站转载，上面的 My School 链接指向官方来源。"
+      "notShownBody": "没有排名、没有评级、没有综合评分——这所学校没有，本站 {total} 所学校都没有。NAPLAN 成绩不在本站转载，上面的 My School 链接指向官方来源。",
+      "zoneLineNoYears": "{kind}",
+      "zonePartialState": "{state}只给一部分公立学校划定了学区，而公开数据没有说明依据是什么。该校没有公布学区 —— 这跟该校没有学区不是一回事。"
     },
     "catchment": {
       "metaTitle": "{school} 学区范围（{suburb}，{state}）",
-      "metaDescription": "{school}（{suburb}，{state}）公布的学区范围，适用 {levels} 年级。新南威尔士州教育部官方边界——请核对具体地址，学区可能从一条街中间分开。",
+      "metaDescription": "{school}（{suburb}，{state}）公布的对口学区范围。数据来自教育部门官方边界，并与部门自己的地址查询工具核对过。",
       "heading": "{school} 的学区范围",
       "seeOnMap": "在地图上查看学区",
       "zoneHeading": "学区详情",
@@ -242,8 +245,8 @@
       "zoneEffective": "{year} 年起生效",
       "zoneUpdated": "边界最后变更于 {date}",
       "checkHeading": "请核对你自己的地址",
-      "checkBody": "新州公立学校会为住在学区内的孩子保留学位。学区会随着学校开办、关闭和人口变化而调整，边界可能沿着一条街的中线走——马路对面的两户人家可能分属不同学区。本页是参考，不是入学保证；新南威尔士州教育部声明，若将此数据用于房产决策，教育部不承担责任。",
-      "schoolFinderLink": "在官方 NSW School Finder 核对地址",
+      "checkBody": "{state}的公立学校会为住在学区内的孩子保留学位。学区会随着学校开办、关闭和满员而变动，边界甚至可能从一条街的中间穿过 —— 所以靠近边缘的地址必须去查，不能想当然。以教育部门自己的工具为准。",
+      "schoolFinderLink": "到{state}教育部门核对具体地址",
       "insideHeading": "学区范围内的其他学校",
       "insideHint": "校址落在这条边界内的学校——也包括非公立学校，它们自己不划学区，但对住在这一带的家庭同样是选项。",
       "insideSuburbs": "涉及城区：{suburbs}。",
@@ -255,7 +258,8 @@
       "fullProfileLink": "查看 {school} 的完整资料",
       "crumb": "学区",
       "insideHeadingKind": "{kind}学区范围内的其他学校",
-      "insideNone": "在这条公布的边界内，没有找到其他带坐标的学校。"
+      "insideNone": "在这条公布的边界内，没有找到其他带坐标的学校。",
+      "zoneYearsUnknown": "该州未按学区公布适用年级"
     },
     "kinds": {
       "primary": "小学",

@@ -19,17 +19,17 @@ describe('getCatchmentZoneSections', () => {
 
 describe('getSchoolsInZone', () => {
   it('returns all 44 schools in the 56110 secondary zone unless a limit is explicit', () => {
-    const feature = schoolsData.readCatchmentFeature({ location_age_id: 56110, kind: 'secondary' });
+    const feature = schoolsData.readCatchmentFeature({ state: 'nsw', location_age_id: 56110, kind: 'secondary' });
     expect(feature).not.toBeNull();
     if (!feature) throw new Error('56110 secondary catchment fixture is missing');
 
-    const allSchools = schoolsData.getSchoolsInZone(feature);
+    const allSchools = schoolsData.getSchoolsInZone(feature, 'NSW');
     const names = allSchools.map(entry => entry.school.school_name);
 
     expect(allSchools).toHaveLength(44);
     expect(names).toEqual([...names].sort((a, b) => a.localeCompare(b)));
 
-    const limited = schoolsData.getSchoolsInZone(feature, 10);
+    const limited = schoolsData.getSchoolsInZone(feature, 'NSW', 10);
     expect(limited).toHaveLength(10);
     expect(limited.map(entry => entry.school.school_name)).toEqual(names.slice(0, 10));
   });

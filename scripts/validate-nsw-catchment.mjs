@@ -98,20 +98,23 @@ if (fs.existsSync(canonicalPath)) {
   const schools = readJson(canonicalPath);
   let attached = 0;
   for (const school of schools) {
-    if (!school.catchments) continue;
+    // Other states publish zones too now, so filter by source rather than
+    // asserting on every school that has any catchment at all.
+    const nswCatchments = (school.catchments ?? []).filter((c) => c.source === 'data.nsw.gov.au');
+    if (nswCatchments.length === 0) continue;
     attached += 1;
-    check(school.state === 'NSW', `${school.school_name}: catchment attached to a ${school.state} school`);
+    check(school.state === 'NSW', `${school.school_name}: NSW catchment attached to a ${school.state} school`);
     check(
       school.sector === 'Government',
       `${school.school_name}: catchment attached to a ${school.sector} school — non-government schools have no zone`,
     );
-    for (const catchment of school.catchments) {
+    for (const catchment of nswCatchments) {
       check(Boolean(catchment.source_url), `${school.school_name}: catchment missing source_url`);
       check(Number.isFinite(catchment.data_year), `${school.school_name}: catchment missing data_year`);
     }
   }
-  check(attached > 0, 'Canonical has no catchments attached — did canonical:build run after nsw:catchment:build?');
-  console.log(`Canonical schools with a catchment: ${attached}`);
+  check(attached > 0, 'Canonical has no NSW catchments attached — did canonical:build run after nsw:catchment:build?');
+  console.log(`Canonical NSW schools with a catchment: ${attached}`);
 } else {
   warnings.push('schools.canonical.json not found — skipped the canonical attachment checks');
 }

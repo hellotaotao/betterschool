@@ -1,5 +1,17 @@
-import fs from 'node:fs';
-import path from 'node:path';
+// Geometry, rounding and IO rules are identical for every state; only the
+// source URLs, attribute names and join chain below are NSW's own.
+export {
+  COORD_PRECISION,
+  ensureDir,
+  readJson,
+  writeJson,
+  roundCoord,
+  roundCoordinates,
+  geometryBbox,
+  coarsenBbox,
+  countVertices,
+  mergeGeometries,
+} from './catchment-common.mjs';
 
 export const NSW_CATCHMENT_SOURCE = 'data.nsw.gov.au';
 export const CATCHMENT_DATASET_URL =
@@ -26,17 +38,6 @@ export const LAYERS = [
   { kind: 'future', base: 'catchments_future' },
 ];
 
-/**
- * Coordinate decimal places kept when writing GeoJSON.
- *
- * 6 dp is ~0.1 m at NSW latitudes — far finer than the boundaries themselves
- * are meaningful — while cutting file size roughly in half versus the raw
- * doubles. This is rounding, NOT geometric simplification: no vertex is ever
- * dropped, so adjacent catchments cannot develop slivers or gaps and the
- * reverse lookup stays faithful to the published boundary.
- */
-export const COORD_PRECISION = 6;
-
 /** Source attribute names for the per-year-level flags, in school order. */
 export const YEAR_FIELDS = [
   ['KINDERGART', 'K'],
@@ -47,33 +48,6 @@ export const YEAR_FIELDS = [
 
 /** Rough NSW bounding box, used to reject geometry that lands somewhere impossible. */
 export const NSW_BBOX = { minLng: 140.9, minLat: -37.6, maxLng: 159.3, maxLat: -27.9 };
-
-export function ensureDir(dir) {
-  fs.mkdirSync(dir, { recursive: true });
-}
-
-export function readJson(filePath) {
-  return JSON.parse(fs.readFileSync(filePath, 'utf8'));
-}
-
-export function writeJson(filePath, payload, { pretty = true } = {}) {
-  ensureDir(path.dirname(filePath));
-  const body = pretty ? JSON.stringify(payload, null, 2) : JSON.stringify(payload);
-  fs.writeFileSync(filePath, `${body}\n`);
-  return filePath;
-}
-
-export function roundCoord(value) {
-  return Number(value.toFixed(COORD_PRECISION));
-}
-
-/** Recursively round every coordinate pair in a GeoJSON coordinate array. */
-export function roundCoordinates(coordinates) {
-  if (typeof coordinates[0] === 'number') {
-    return [roundCoord(coordinates[0]), roundCoord(coordinates[1])];
-  }
-  return coordinates.map(roundCoordinates);
-}
 
 /**
  * Read the per-year-level flags off a source feature.
@@ -110,51 +84,6 @@ export function readYearLevels(properties) {
     year_levels: levels,
     effective_year: startYears.length > 0 ? Math.min(...startYears) : undefined,
   };
-}
-
-/** Compute [minLng, minLat, maxLng, maxLat] for a GeoJSON geometry. */
-export function geometryBbox(geometry) {
-  let minLng = Infinity, minLat = Infinity, maxLng = -Infinity, maxLat = -Infinity;
-
-  const visit = (coordinates) => {
-    if (typeof coordinates[0] === 'number') {
-      const [lng, lat] = coordinates;
-      if (lng < minLng) minLng = lng;
-      if (lat < minLat) minLat = lat;
-      if (lng > maxLng) maxLng = lng;
-      if (lat > maxLat) maxLat = lat;
-      return;
-    }
-    coordinates.forEach(visit);
-  };
-
-  visit(geometry.coordinates);
-  return [minLng, minLat, maxLng, maxLat];
-}
-
-/**
- * Round a bbox to 4 dp (~11 m) for the lookup index, always outward.
- *
- * The index is only a coarse prefilter before exact point-in-polygon on the
- * full-precision geometry, so 6 dp there is wasted bytes. Rounding must expand
- * the box, never shrink it: a box rounded inward could exclude a point that
- * genuinely falls inside the catchment.
- */
-export function coarsenBbox([minLng, minLat, maxLng, maxLat]) {
-  const floor = (value) => Math.floor(value * 1e4) / 1e4;
-  const ceil = (value) => Math.ceil(value * 1e4) / 1e4;
-  return [floor(minLng), floor(minLat), ceil(maxLng), ceil(maxLat)];
-}
-
-/** Count coordinate pairs in a geometry — used for coverage reporting. */
-export function countVertices(geometry) {
-  let total = 0;
-  const visit = (coordinates) => {
-    if (typeof coordinates[0] === 'number') { total += 1; return; }
-    coordinates.forEach(visit);
-  };
-  visit(geometry.coordinates);
-  return total;
 }
 
 /**

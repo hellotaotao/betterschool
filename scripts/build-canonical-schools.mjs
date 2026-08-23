@@ -3,8 +3,13 @@ import { classifyReligion, deriveIsReligious } from './religion-classify.mjs';
 
 const profilePath = 'data/acara/processed/school-profile-2025.json';
 const religionOverridesPath = 'data/religion/manual-overrides.json';
-// Optional layer: absent until 'npm run nsw:catchment:build' has been run.
-const catchmentLayerPath = 'data/catchment/nsw/processed/catchment-layer.json';
+// Optional layers: each absent until that state's catchment build has run.
+// location_age_id is an ACARA identifier and so is nationally unique, which is
+// why the states can share one lookup without colliding.
+const catchmentLayerPaths = {
+  NSW: 'data/catchment/nsw/processed/catchment-layer.json',
+  SA: 'data/catchment/sa/processed/catchment-layer.json',
+};
 const locationPath = 'data/acara/processed/school-location-2025.json';
 const legacyPath = 'public/data/schools.json';
 const matchesPath = 'data/acara/processed/betterschool-acara-matches.json';
@@ -35,10 +40,22 @@ const religionOverrides = new Map(
   (fs.existsSync(religionOverridesPath) ? readJson(religionOverridesPath) : [])
     .map((override) => [override.acara_sml_id, override]),
 );
-const catchmentLayer = fs.existsSync(catchmentLayerPath) ? readJson(catchmentLayerPath) : null;
-const catchmentsByLocationAgeId = new Map(
-  Object.entries(catchmentLayer?.by_location_age_id ?? {}),
+const catchmentLayers = Object.fromEntries(
+  Object.entries(catchmentLayerPaths)
+    .map(([state, layerPath]) => [state, fs.existsSync(layerPath) ? readJson(layerPath) : null])
+    .filter(([, layer]) => layer !== null),
 );
+const catchmentsByLocationAgeId = new Map();
+for (const layer of Object.values(catchmentLayers)) {
+  for (const [locationAgeId, entries] of Object.entries(layer.by_location_age_id ?? {})) {
+    // A site belongs to one state, so an existing key would mean two states
+    // claimed the same ACARA site — a real conflict, not something to merge.
+    if (catchmentsByLocationAgeId.has(locationAgeId)) {
+      throw new Error(`Two states both published a catchment for location_age_id ${locationAgeId}`);
+    }
+    catchmentsByLocationAgeId.set(locationAgeId, entries);
+  }
+}
 
 const profilesByLocationAgeId = new Map(profilePayload.records.map(record => [record.location_age_id, record]));
 const legacyByLocalId = new Map(legacySchools.map(record => [record.local_id, record]));
@@ -218,10 +235,17 @@ metadata.provenance.naplan = 'NAPLAN scores are not stored. Each school links ou
 metadata.provenance.fees = 'Government schools are marked free (no tuition; voluntary contributions only). Catholic/Independent fees are not yet collected — left absent rather than guessed. Future fees carry precise amounts where available, otherwise a band, always with a source.';
 metadata.fields.myschool_url = 'Deep link to the school My School page, built from acara_sml_id (verified pattern).';
 metadata.fields.fees = 'Tuition fees: free for Government; other sectors pending collection. Precise amount preferred, else band; always with fee_source.';
-metadata.provenance.catchment = catchmentLayer
-  ? `NSW government school intake zones from data.nsw.gov.au (CC-BY, ${catchmentLayer.data_year} enrolment year), joined by USE_ID -> master dataset School_code -> AgeID -> location_age_id. Deterministic ID join only; unjoined polygons are recorded in data/catchment/nsw/processed/unmatched.json rather than name-matched. Attached to Government schools only: non-government schools admit on their own criteria and have no geographic zone. Boundaries are a guide, not a legal instrument — NSW Department of Education disclaims responsibility where this data informs property decisions, and the official School Finder is authoritative.`
+const catchmentProvenance = {
+  NSW: (layer) => `NSW government school intake zones from data.nsw.gov.au (CC-BY, ${layer.data_year} enrolment year), joined by USE_ID -> master dataset School_code -> AgeID -> location_age_id. Deterministic ID join only; unjoined polygons are recorded in data/catchment/nsw/processed/unmatched.json rather than name-matched. Covers 2,029 of 2,223 NSW government schools. Boundaries are a guide, not a legal instrument — NSW Department of Education disclaims responsibility where this data informs property decisions, and the official School Finder is authoritative.`,
+  SA: (layer) => `SA government school zones from data.sa.gov.au (CC-BY, ${layer.data_year} enrolment year), joined by org_num -> Government Education Sites -> the one ACARA school that is both within ${(layer.join.max_allowed_km * 1000).toFixed(0)} m of the published site and named the same (observed max ${(layer.join.max_distance_km * 1000).toFixed(0)} m). Name and distance both select the match, because co-located campuses make either alone wrong. Unconfirmed polygons are recorded in data/catchment/sa/processed/unmatched.json. South Australia publishes zones for only part of its government system — 124 of 521 schools — and the published data does not say why, so a South Australian school without a zone must not be read as "no zone published for a school that has one". No year levels: the SA source carries none per zone.`,
+};
+
+metadata.provenance.catchment = Object.keys(catchmentLayers).length > 0
+  ? Object.entries(catchmentLayers)
+    .map(([state, layer]) => catchmentProvenance[state](layer))
+    .join(' ')
   : 'Not collected in this build.';
-metadata.fields.catchments = 'NSW only, Government schools only. Each entry carries geometry_url (loaded on demand), the applicable year levels, data_year and source. Absent means no catchment data, not "no catchment".';
+metadata.fields.catchments = 'NSW and SA, Government schools only. Each entry carries geometry_url (loaded on demand), catch_type, data_year and source; year_levels only where the source publishes them per zone (NSW does, SA does not). Absent means no catchment data for that school, and what that means differs by state — see provenance.catchment.';
 metadata.generated_from = {
   canonical_builder: 'scripts/build-canonical-schools.mjs',
   acara_location_records: locationPayload.records.length,

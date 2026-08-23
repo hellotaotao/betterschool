@@ -219,7 +219,7 @@ async function main() {
       catch_type: entry.catch_type,
       year_levels: yearLevels,
       ...(entry.effective_year ? { effective_year: entry.effective_year } : {}),
-      nsw_school_code: records[0].nsw_school_code,
+      source_school_code: records[0].nsw_school_code,
       data_year: dataYear,
       source: NSW_CATCHMENT_SOURCE,
       source_url: CATCHMENT_DATASET_URL,

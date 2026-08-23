@@ -1,0 +1,1574 @@
+{
+  "state": "SA",
+  "data_year": 2025,
+  "generated_at": "2026-08-23T15:44:04.058Z",
+  "stats": {
+    "primary": {
+      "polygons": 84,
+      "joined": 84,
+      "join_rate": 1
+    },
+    "secondary": {
+      "polygons": 46,
+      "joined": 46,
+      "join_rate": 1
+    }
+  },
+  "join": {
+    "method": "org_num -> education sites -> nearest ACARA school, confirmed by name",
+    "sites_dataset": "https://data.sa.gov.au/data/dataset/south-australian-government-education-site",
+    "median_distance_km": 0,
+    "max_distance_km": 0.5222,
+    "max_allowed_km": 1.5
+  },
+  "by_location_age_id": {
+    "46053": [
+      {
+        "geometry_url": "/data/catchment/sa/46053-secondary.json",
+        "kind": "secondary",
+        "catch_type": "SEC",
+        "year_levels": [],
+        "source_school_code": "768",
+        "data_year": 2025,
+        "source": "data.sa.gov.au",
+        "source_url": "https://data.sa.gov.au/data/dataset/school-zones-for-south-australian-govt-high-schools"
+      }
+    ],
+    "46057": [
+      {
+        "geometry_url": "/data/catchment/sa/46057-secondary.json",
+        "kind": "secondary",
+        "catch_type": "SEC",
+        "year_levels": [],
+        "source_school_code": "801",
+        "data_year": 2025,
+        "source": "data.sa.gov.au",
+        "source_url": "https://data.sa.gov.au/data/dataset/school-zones-for-south-australian-govt-high-schools"
+      }
+    ],
+    "46060": [
+      {
+        "geometry_url": "/data/catchment/sa/46060-secondary.json",
+        "kind": "secondary",
+        "catch_type": "SEC",
+        "year_levels": [],
+        "source_school_code": "892",
+        "data_year": 2025,
+        "source": "data.sa.gov.au",
+        "source_url": "https://data.sa.gov.au/data/dataset/school-zones-for-south-australian-govt-high-schools"
+      }
+    ],
+    "46061": [
+      {
+        "geometry_url": "/data/catchment/sa/46061-secondary.json",
+        "kind": "secondary",
+        "catch_type": "SEC",
+        "year_levels": [],
+        "source_school_code": "965",
+        "data_year": 2025,
+        "source": "data.sa.gov.au",
+        "source_url": "https://data.sa.gov.au/data/dataset/school-zones-for-south-australian-govt-high-schools"
+      }
+    ],
+    "46064": [
+      {
+        "geometry_url": "/data/catchment/sa/46064-secondary.json",
+        "kind": "secondary",
+        "catch_type": "PRSEC",
+        "year_levels": [],
+        "source_school_code": "908",
+        "data_year": 2025,
+        "source": "data.sa.gov.au",
+        "source_url": "https://data.sa.gov.au/data/dataset/school-zones-for-south-australian-govt-high-schools"
+      }
+    ],
+    "46065": [
+      {
+        "geometry_url": "/data/catchment/sa/46065-secondary.json",
+        "kind": "secondary",
+        "catch_type": "SEC",
+        "year_levels": [],
+        "source_school_code": "941",
+        "data_year": 2025,
+        "source": "data.sa.gov.au",
+        "source_url": "https://data.sa.gov.au/data/dataset/school-zones-for-south-australian-govt-high-schools"
+      }
+    ],
+    "46068": [
+      {
+        "geometry_url": "/data/catchment/sa/46068-secondary.json",
+        "kind": "secondary",
+        "catch_type": "SEC",
+        "year_levels": [],
+        "source_school_code": "1013",
+        "data_year": 2025,
+        "source": "data.sa.gov.au",
+        "source_url": "https://data.sa.gov.au/data/dataset/school-zones-for-south-australian-govt-high-schools"
+      }
+    ],
+    "46069": [
+      {
+        "geometry_url": "/data/catchment/sa/46069-secondary.json",
+        "kind": "secondary",
+        "catch_type": "SEC",
+        "year_levels": [],
+        "source_school_code": "976",
+        "data_year": 2025,
+        "source": "data.sa.gov.au",
+        "source_url": "https://data.sa.gov.au/data/dataset/school-zones-for-south-australian-govt-high-schools"
+      }
+    ],
+    "46074": [
+      {
+        "geometry_url": "/data/catchment/sa/46074-secondary.json",
+        "kind": "secondary",
+        "catch_type": "SEC",
+        "year_levels": [],
+        "source_school_code": "805",
+        "data_year": 2025,
+        "source": "data.sa.gov.au",
+        "source_url": "https://data.sa.gov.au/data/dataset/school-zones-for-south-australian-govt-high-schools"
+      }
+    ],
+    "46075": [
+      {
+        "geometry_url": "/data/catchment/sa/46075-secondary.json",
+        "kind": "secondary",
+        "catch_type": "SEC",
+        "year_levels": [],
+        "source_school_code": "910",
+        "data_year": 2025,
+        "source": "data.sa.gov.au",
+        "source_url": "https://data.sa.gov.au/data/dataset/school-zones-for-south-australian-govt-high-schools"
+      }
+    ],
+    "46079": [
+      {
+        "geometry_url": "/data/catchment/sa/46079-secondary.json",
+        "kind": "secondary",
+        "catch_type": "SEC",
+        "year_levels": [],
+        "source_school_code": "814",
+        "data_year": 2025,
+        "source": "data.sa.gov.au",
+        "source_url": "https://data.sa.gov.au/data/dataset/school-zones-for-south-australian-govt-high-schools"
+      }
+    ],
+    "46082": [
+      {
+        "geometry_url": "/data/catchment/sa/46082-secondary.json",
+        "kind": "secondary",
+        "catch_type": "SEC",
+        "year_levels": [],
+        "source_school_code": "787",
+        "data_year": 2025,
+        "source": "data.sa.gov.au",
+        "source_url": "https://data.sa.gov.au/data/dataset/school-zones-for-south-australian-govt-high-schools"
+      }
+    ],
+    "46083": [
+      {
+        "geometry_url": "/data/catchment/sa/46083-secondary.json",
+        "kind": "secondary",
+        "catch_type": "PRSEC",
+        "year_levels": [],
+        "source_school_code": "1099",
+        "data_year": 2025,
+        "source": "data.sa.gov.au",
+        "source_url": "https://data.sa.gov.au/data/dataset/school-zones-for-south-australian-govt-high-schools"
+      }
+    ],
+    "46085": [
+      {
+        "geometry_url": "/data/catchment/sa/46085-secondary.json",
+        "kind": "secondary",
+        "catch_type": "PRSEC",
+        "year_levels": [],
+        "source_school_code": "907",
+        "data_year": 2025,
+        "source": "data.sa.gov.au",
+        "source_url": "https://data.sa.gov.au/data/dataset/school-zones-for-south-australian-govt-high-schools"
+      }
+    ],
+    "46886": [
+      {
+        "geometry_url": "/data/catchment/sa/46886-primary.json",
+        "kind": "primary",
+        "catch_type": "PRIM",
+        "year_levels": [],
+        "source_school_code": "179",
+        "data_year": 2025,
+        "source": "data.sa.gov.au",
+        "source_url": "https://data.sa.gov.au/data/dataset/school-zones-for-south-australian-govt-primary-schools"
+      }
+    ],
+    "46889": [
+      {
+        "geometry_url": "/data/catchment/sa/46889-primary.json",
+        "kind": "primary",
+        "catch_type": "PRIM",
+        "year_levels": [],
+        "source_school_code": "646",
+        "data_year": 2025,
+        "source": "data.sa.gov.au",
+        "source_url": "https://data.sa.gov.au/data/dataset/school-zones-for-south-australian-govt-primary-schools"
+      }
+    ],
+    "46894": [
+      {
+        "geometry_url": "/data/catchment/sa/46894-primary.json",
+        "kind": "primary",
+        "catch_type": "PRIM",
+        "year_levels": [],
+        "source_school_code": "473",
+        "data_year": 2025,
+        "source": "data.sa.gov.au",
+        "source_url": "https://data.sa.gov.au/data/dataset/school-zones-for-south-australian-govt-primary-schools"
+      }
+    ],
+    "46897": [
+      {
+        "geometry_url": "/data/catchment/sa/46897-primary.json",
+        "kind": "primary",
+        "catch_type": "PRIM",
+        "year_levels": [],
+        "source_school_code": "497",
+        "data_year": 2025,
+        "source": "data.sa.gov.au",
+        "source_url": "https://data.sa.gov.au/data/dataset/school-zones-for-south-australian-govt-primary-schools"
+      }
+    ],
+    "46911": [
+      {
+        "geometry_url": "/data/catchment/sa/46911-primary.json",
+        "kind": "primary",
+        "catch_type": "PRIM",
+        "year_levels": [],
+        "source_school_code": "219",
+        "data_year": 2025,
+        "source": "data.sa.gov.au",
+        "source_url": "https://data.sa.gov.au/data/dataset/school-zones-for-south-australian-govt-primary-schools"
+      }
+    ],
+    "46914": [
+      {
+        "geometry_url": "/data/catchment/sa/46914-primary.json",
+        "kind": "primary",
+        "catch_type": "PRIM",
+        "year_levels": [],
+        "source_school_code": "1375",
+        "data_year": 2025,
+        "source": "data.sa.gov.au",
+        "source_url": "https://data.sa.gov.au/data/dataset/school-zones-for-south-australian-govt-primary-schools"
+      }
+    ],
+    "46916": [
+      {
+        "geometry_url": "/data/catchment/sa/46916-primary.json",
+        "kind": "primary",
+        "catch_type": "PRIM",
+        "year_levels": [],
+        "source_school_code": "1246",
+        "data_year": 2025,
+        "source": "data.sa.gov.au",
+        "source_url": "https://data.sa.gov.au/data/dataset/school-zones-for-south-australian-govt-primary-schools"
+      }
+    ],
+    "46920": [
+      {
+        "geometry_url": "/data/catchment/sa/46920-primary.json",
+        "kind": "primary",
+        "catch_type": "PRIM",
+        "year_levels": [],
+        "source_school_code": "177",
+        "data_year": 2025,
+        "source": "data.sa.gov.au",
+        "source_url": "https://data.sa.gov.au/data/dataset/school-zones-for-south-australian-govt-primary-schools"
+      }
+    ],
+    "46921": [
+      {
+        "geometry_url": "/data/catchment/sa/46921-secondary.json",
+        "kind": "secondary",
+        "catch_type": "SEC",
+        "year_levels": [],
+        "source_school_code": "809",
+        "data_year": 2025,
+        "source": "data.sa.gov.au",
+        "source_url": "https://data.sa.gov.au/data/dataset/school-zones-for-south-australian-govt-high-schools"
+      }
+    ],
+    "46940": [
+      {
+        "geometry_url": "/data/catchment/sa/46940-primary.json",
+        "kind": "primary",
+        "catch_type": "PRIM",
+        "year_levels": [],
+        "source_school_code": "911",
+        "data_year": 2025,
+        "source": "data.sa.gov.au",
+        "source_url": "https://data.sa.gov.au/data/dataset/school-zones-for-south-australian-govt-primary-schools"
+      }
+    ],
+    "46947": [
+      {
+        "geometry_url": "/data/catchment/sa/46947-primary.json",
+        "kind": "primary",
+        "catch_type": "PRIM",
+        "year_levels": [],
+        "source_school_code": "548",
+        "data_year": 2025,
+        "source": "data.sa.gov.au",
+        "source_url": "https://data.sa.gov.au/data/dataset/school-zones-for-south-australian-govt-primary-schools"
+      }
+    ],
+    "46955": [
+      {
+        "geometry_url": "/data/catchment/sa/46955-primary.json",
+        "kind": "primary",
+        "catch_type": "PRIM",
+        "year_levels": [],
+        "source_school_code": "723",
+        "data_year": 2025,
+        "source": "data.sa.gov.au",
+        "source_url": "https://data.sa.gov.au/data/dataset/school-zones-for-south-australian-govt-primary-schools"
+      }
+    ],
+    "46956": [
+      {
+        "geometry_url": "/data/catchment/sa/46956-primary.json",
+        "kind": "primary",
+        "catch_type": "PRIM",
+        "year_levels": [],
+        "source_school_code": "475",
+        "data_year": 2025,
+        "source": "data.sa.gov.au",
+        "source_url": "https://data.sa.gov.au/data/dataset/school-zones-for-south-australian-govt-primary-schools"
+      }
+    ],
+    "46967": [
+      {
+        "geometry_url": "/data/catchment/sa/46967-primary.json",
+        "kind": "primary",
+        "catch_type": "PRIM",
+        "year_levels": [],
+        "source_school_code": "1017",
+        "data_year": 2025,
+        "source": "data.sa.gov.au",
+        "source_url": "https://data.sa.gov.au/data/dataset/school-zones-for-south-australian-govt-primary-schools"
+      }
+    ],
+    "46968": [
+      {
+        "geometry_url": "/data/catchment/sa/46968-primary.json",
+        "kind": "primary",
+        "catch_type": "PRIM",
+        "year_levels": [],
+        "source_school_code": "391",
+        "data_year": 2025,
+        "source": "data.sa.gov.au",
+        "source_url": "https://data.sa.gov.au/data/dataset/school-zones-for-south-australian-govt-primary-schools"
+      }
+    ],
+    "46973": [
+      {
+        "geometry_url": "/data/catchment/sa/46973-secondary.json",
+        "kind": "secondary",
+        "catch_type": "SEC",
+        "year_levels": [],
+        "source_school_code": "893",
+        "data_year": 2025,
+        "source": "data.sa.gov.au",
+        "source_url": "https://data.sa.gov.au/data/dataset/school-zones-for-south-australian-govt-high-schools"
+      }
+    ],
+    "46974": [
+      {
+        "geometry_url": "/data/catchment/sa/46974-secondary.json",
+        "kind": "secondary",
+        "catch_type": "SEC",
+        "year_levels": [],
+        "source_school_code": "803",
+        "data_year": 2025,
+        "source": "data.sa.gov.au",
+        "source_url": "https://data.sa.gov.au/data/dataset/school-zones-for-south-australian-govt-high-schools"
+      }
+    ],
+    "46975": [
+      {
+        "geometry_url": "/data/catchment/sa/46975-primary.json",
+        "kind": "primary",
+        "catch_type": "PRIM",
+        "year_levels": [],
+        "source_school_code": "637",
+        "data_year": 2025,
+        "source": "data.sa.gov.au",
+        "source_url": "https://data.sa.gov.au/data/dataset/school-zones-for-south-australian-govt-primary-schools"
+      }
+    ],
+    "46979": [
+      {
+        "geometry_url": "/data/catchment/sa/46979-primary.json",
+        "kind": "primary",
+        "catch_type": "PRIM",
+        "year_levels": [],
+        "source_school_code": "668",
+        "data_year": 2025,
+        "source": "data.sa.gov.au",
+        "source_url": "https://data.sa.gov.au/data/dataset/school-zones-for-south-australian-govt-primary-schools"
+      }
+    ],
+    "46981": [
+      {
+        "geometry_url": "/data/catchment/sa/46981-primary.json",
+        "kind": "primary",
+        "catch_type": "PRIM",
+        "year_levels": [],
+        "source_school_code": "913",
+        "data_year": 2025,
+        "source": "data.sa.gov.au",
+        "source_url": "https://data.sa.gov.au/data/dataset/school-zones-for-south-australian-govt-primary-schools"
+      }
+    ],
+    "46984": [
+      {
+        "geometry_url": "/data/catchment/sa/46984-secondary.json",
+        "kind": "secondary",
+        "catch_type": "SEC",
+        "year_levels": [],
+        "source_school_code": "905",
+        "data_year": 2025,
+        "source": "data.sa.gov.au",
+        "source_url": "https://data.sa.gov.au/data/dataset/school-zones-for-south-australian-govt-high-schools"
+      }
+    ],
+    "46988": [
+      {
+        "geometry_url": "/data/catchment/sa/46988-primary.json",
+        "kind": "primary",
+        "catch_type": "PRIM",
+        "year_levels": [],
+        "source_school_code": "104",
+        "data_year": 2025,
+        "source": "data.sa.gov.au",
+        "source_url": "https://data.sa.gov.au/data/dataset/school-zones-for-south-australian-govt-primary-schools"
+      }
+    ],
+    "46992": [
+      {
+        "geometry_url": "/data/catchment/sa/46992-primary.json",
+        "kind": "primary",
+        "catch_type": "PRIM",
+        "year_levels": [],
+        "source_school_code": "447",
+        "data_year": 2025,
+        "source": "data.sa.gov.au",
+        "source_url": "https://data.sa.gov.au/data/dataset/school-zones-for-south-australian-govt-primary-schools"
+      }
+    ],
+    "46997": [
+      {
+        "geometry_url": "/data/catchment/sa/46997-secondary.json",
+        "kind": "secondary",
+        "catch_type": "SEC",
+        "year_levels": [],
+        "source_school_code": "797",
+        "data_year": 2025,
+        "source": "data.sa.gov.au",
+        "source_url": "https://data.sa.gov.au/data/dataset/school-zones-for-south-australian-govt-high-schools"
+      }
+    ],
+    "47000": [
+      {
+        "geometry_url": "/data/catchment/sa/47000-primary.json",
+        "kind": "primary",
+        "catch_type": "PRIM",
+        "year_levels": [],
+        "source_school_code": "1063",
+        "data_year": 2025,
+        "source": "data.sa.gov.au",
+        "source_url": "https://data.sa.gov.au/data/dataset/school-zones-for-south-australian-govt-primary-schools"
+      }
+    ],
+    "47001": [
+      {
+        "geometry_url": "/data/catchment/sa/47001-primary.json",
+        "kind": "primary",
+        "catch_type": "PRIM",
+        "year_levels": [],
+        "source_school_code": "328",
+        "data_year": 2025,
+        "source": "data.sa.gov.au",
+        "source_url": "https://data.sa.gov.au/data/dataset/school-zones-for-south-australian-govt-primary-schools"
+      }
+    ],
+    "47002": [
+      {
+        "geometry_url": "/data/catchment/sa/47002-primary.json",
+        "kind": "primary",
+        "catch_type": "PRIM",
+        "year_levels": [],
+        "source_school_code": "152",
+        "data_year": 2025,
+        "source": "data.sa.gov.au",
+        "source_url": "https://data.sa.gov.au/data/dataset/school-zones-for-south-australian-govt-primary-schools"
+      }
+    ],
+    "47003": [
+      {
+        "geometry_url": "/data/catchment/sa/47003-secondary.json",
+        "kind": "secondary",
+        "catch_type": "SEC",
+        "year_levels": [],
+        "source_school_code": "927",
+        "data_year": 2025,
+        "source": "data.sa.gov.au",
+        "source_url": "https://data.sa.gov.au/data/dataset/school-zones-for-south-australian-govt-high-schools"
+      }
+    ],
+    "47008": [
+      {
+        "geometry_url": "/data/catchment/sa/47008-primary.json",
+        "kind": "primary",
+        "catch_type": "PRIM",
+        "year_levels": [],
+        "source_school_code": "647",
+        "data_year": 2025,
+        "source": "data.sa.gov.au",
+        "source_url": "https://data.sa.gov.au/data/dataset/school-zones-for-south-australian-govt-primary-schools"
+      }
+    ],
+    "47009": [
+      {
+        "geometry_url": "/data/catchment/sa/47009-primary.json",
+        "kind": "primary",
+        "catch_type": "PRIM",
+        "year_levels": [],
+        "source_school_code": "699",
+        "data_year": 2025,
+        "source": "data.sa.gov.au",
+        "source_url": "https://data.sa.gov.au/data/dataset/school-zones-for-south-australian-govt-primary-schools"
+      }
+    ],
+    "47010": [
+      {
+        "geometry_url": "/data/catchment/sa/47010-primary.json",
+        "kind": "primary",
+        "catch_type": "PRIM",
+        "year_levels": [],
+        "source_school_code": "131",
+        "data_year": 2025,
+        "source": "data.sa.gov.au",
+        "source_url": "https://data.sa.gov.au/data/dataset/school-zones-for-south-australian-govt-primary-schools"
+      }
+    ],
+    "47011": [
+      {
+        "geometry_url": "/data/catchment/sa/47011-primary.json",
+        "kind": "primary",
+        "catch_type": "PRIM",
+        "year_levels": [],
+        "source_school_code": "169",
+        "data_year": 2025,
+        "source": "data.sa.gov.au",
+        "source_url": "https://data.sa.gov.au/data/dataset/school-zones-for-south-australian-govt-primary-schools"
+      }
+    ],
+    "47012": [
+      {
+        "geometry_url": "/data/catchment/sa/47012-secondary.json",
+        "kind": "secondary",
+        "catch_type": "SEC",
+        "year_levels": [],
+        "source_school_code": "817",
+        "data_year": 2025,
+        "source": "data.sa.gov.au",
+        "source_url": "https://data.sa.gov.au/data/dataset/school-zones-for-south-australian-govt-high-schools"
+      }
+    ],
+    "47013": [
+      {
+        "geometry_url": "/data/catchment/sa/47013-primary.json",
+        "kind": "primary",
+        "catch_type": "PRIM",
+        "year_levels": [],
+        "source_school_code": "249",
+        "data_year": 2025,
+        "source": "data.sa.gov.au",
+        "source_url": "https://data.sa.gov.au/data/dataset/school-zones-for-south-australian-govt-primary-schools"
+      }
+    ],
+    "47016": [
+      {
+        "geometry_url": "/data/catchment/sa/47016-primary.json",
+        "kind": "primary",
+        "catch_type": "PRIM",
+        "year_levels": [],
+        "source_school_code": "474",
+        "data_year": 2025,
+        "source": "data.sa.gov.au",
+        "source_url": "https://data.sa.gov.au/data/dataset/school-zones-for-south-australian-govt-primary-schools"
+      }
+    ],
+    "47017": [
+      {
+        "geometry_url": "/data/catchment/sa/47017-primary.json",
+        "kind": "primary",
+        "catch_type": "PRIM",
+        "year_levels": [],
+        "source_school_code": "1036",
+        "data_year": 2025,
+        "source": "data.sa.gov.au",
+        "source_url": "https://data.sa.gov.au/data/dataset/school-zones-for-south-australian-govt-primary-schools"
+      }
+    ],
+    "47022": [
+      {
+        "geometry_url": "/data/catchment/sa/47022-primary.json",
+        "kind": "primary",
+        "catch_type": "PRIM",
+        "year_levels": [],
+        "source_school_code": "1213",
+        "data_year": 2025,
+        "source": "data.sa.gov.au",
+        "source_url": "https://data.sa.gov.au/data/dataset/school-zones-for-south-australian-govt-primary-schools"
+      }
+    ],
+    "47026": [
+      {
+        "geometry_url": "/data/catchment/sa/47026-primary.json",
+        "kind": "primary",
+        "catch_type": "PRIM",
+        "year_levels": [],
+        "source_school_code": "923",
+        "data_year": 2025,
+        "source": "data.sa.gov.au",
+        "source_url": "https://data.sa.gov.au/data/dataset/school-zones-for-south-australian-govt-primary-schools"
+      }
+    ],
+    "47027": [
+      {
+        "geometry_url": "/data/catchment/sa/47027-primary.json",
+        "kind": "primary",
+        "catch_type": "PRIM",
+        "year_levels": [],
+        "source_school_code": "1043",
+        "data_year": 2025,
+        "source": "data.sa.gov.au",
+        "source_url": "https://data.sa.gov.au/data/dataset/school-zones-for-south-australian-govt-primary-schools"
+      }
+    ],
+    "47035": [
+      {
+        "geometry_url": "/data/catchment/sa/47035-primary.json",
+        "kind": "primary",
+        "catch_type": "PRIM",
+        "year_levels": [],
+        "source_school_code": "967",
+        "data_year": 2025,
+        "source": "data.sa.gov.au",
+        "source_url": "https://data.sa.gov.au/data/dataset/school-zones-for-south-australian-govt-primary-schools"
+      }
+    ],
+    "47036": [
+      {
+        "geometry_url": "/data/catchment/sa/47036-primary.json",
+        "kind": "primary",
+        "catch_type": "PRIM",
+        "year_levels": [],
+        "source_school_code": "457",
+        "data_year": 2025,
+        "source": "data.sa.gov.au",
+        "source_url": "https://data.sa.gov.au/data/dataset/school-zones-for-south-australian-govt-primary-schools"
+      }
+    ],
+    "47038": [
+      {
+        "geometry_url": "/data/catchment/sa/47038-primary.json",
+        "kind": "primary",
+        "catch_type": "PRIM",
+        "year_levels": [],
+        "source_school_code": "368",
+        "data_year": 2025,
+        "source": "data.sa.gov.au",
+        "source_url": "https://data.sa.gov.au/data/dataset/school-zones-for-south-australian-govt-primary-schools"
+      }
+    ],
+    "47039": [
+      {
+        "geometry_url": "/data/catchment/sa/47039-primary.json",
+        "kind": "primary",
+        "catch_type": "PRIM",
+        "year_levels": [],
+        "source_school_code": "305",
+        "data_year": 2025,
+        "source": "data.sa.gov.au",
+        "source_url": "https://data.sa.gov.au/data/dataset/school-zones-for-south-australian-govt-primary-schools"
+      }
+    ],
+    "47050": [
+      {
+        "geometry_url": "/data/catchment/sa/47050-primary.json",
+        "kind": "primary",
+        "catch_type": "PRIM",
+        "year_levels": [],
+        "source_school_code": "898",
+        "data_year": 2025,
+        "source": "data.sa.gov.au",
+        "source_url": "https://data.sa.gov.au/data/dataset/school-zones-for-south-australian-govt-primary-schools"
+      }
+    ],
+    "47059": [
+      {
+        "geometry_url": "/data/catchment/sa/47059-secondary.json",
+        "kind": "secondary",
+        "catch_type": "SEC",
+        "year_levels": [],
+        "source_school_code": "1117",
+        "data_year": 2025,
+        "source": "data.sa.gov.au",
+        "source_url": "https://data.sa.gov.au/data/dataset/school-zones-for-south-australian-govt-high-schools"
+      }
+    ],
+    "47062": [
+      {
+        "geometry_url": "/data/catchment/sa/47062-primary.json",
+        "kind": "primary",
+        "catch_type": "PRIM",
+        "year_levels": [],
+        "source_school_code": "432",
+        "data_year": 2025,
+        "source": "data.sa.gov.au",
+        "source_url": "https://data.sa.gov.au/data/dataset/school-zones-for-south-australian-govt-primary-schools"
+      }
+    ],
+    "47063": [
+      {
+        "geometry_url": "/data/catchment/sa/47063-secondary.json",
+        "kind": "secondary",
+        "catch_type": "SEC",
+        "year_levels": [],
+        "source_school_code": "964",
+        "data_year": 2025,
+        "source": "data.sa.gov.au",
+        "source_url": "https://data.sa.gov.au/data/dataset/school-zones-for-south-australian-govt-high-schools"
+      }
+    ],
+    "47068": [
+      {
+        "geometry_url": "/data/catchment/sa/47068-secondary.json",
+        "kind": "secondary",
+        "catch_type": "PRSEC",
+        "year_levels": [],
+        "source_school_code": "1430",
+        "data_year": 2025,
+        "source": "data.sa.gov.au",
+        "source_url": "https://data.sa.gov.au/data/dataset/school-zones-for-south-australian-govt-high-schools"
+      }
+    ],
+    "47070": [
+      {
+        "geometry_url": "/data/catchment/sa/47070-secondary.json",
+        "kind": "secondary",
+        "catch_type": "SEC",
+        "year_levels": [],
+        "source_school_code": "1184",
+        "data_year": 2025,
+        "source": "data.sa.gov.au",
+        "source_url": "https://data.sa.gov.au/data/dataset/school-zones-for-south-australian-govt-high-schools"
+      }
+    ],
+    "47075": [
+      {
+        "geometry_url": "/data/catchment/sa/47075-secondary.json",
+        "kind": "secondary",
+        "catch_type": "SEC",
+        "year_levels": [],
+        "source_school_code": "574",
+        "data_year": 2025,
+        "source": "data.sa.gov.au",
+        "source_url": "https://data.sa.gov.au/data/dataset/school-zones-for-south-australian-govt-high-schools"
+      }
+    ],
+    "47080": [
+      {
+        "geometry_url": "/data/catchment/sa/47080-primary.json",
+        "kind": "primary",
+        "catch_type": "PRIM",
+        "year_levels": [],
+        "source_school_code": "1540",
+        "data_year": 2025,
+        "source": "data.sa.gov.au",
+        "source_url": "https://data.sa.gov.au/data/dataset/school-zones-for-south-australian-govt-primary-schools"
+      }
+    ],
+    "47094": [
+      {
+        "geometry_url": "/data/catchment/sa/47094-secondary.json",
+        "kind": "secondary",
+        "catch_type": "SEC",
+        "year_levels": [],
+        "source_school_code": "1137",
+        "data_year": 2025,
+        "source": "data.sa.gov.au",
+        "source_url": "https://data.sa.gov.au/data/dataset/school-zones-for-south-australian-govt-high-schools"
+      }
+    ],
+    "47109": [
+      {
+        "geometry_url": "/data/catchment/sa/47109-secondary.json",
+        "kind": "secondary",
+        "catch_type": "SEC",
+        "year_levels": [],
+        "source_school_code": "1011",
+        "data_year": 2025,
+        "source": "data.sa.gov.au",
+        "source_url": "https://data.sa.gov.au/data/dataset/school-zones-for-south-australian-govt-high-schools"
+      }
+    ],
+    "47110": [
+      {
+        "geometry_url": "/data/catchment/sa/47110-primary.json",
+        "kind": "primary",
+        "catch_type": "PRIM",
+        "year_levels": [],
+        "source_school_code": "1177",
+        "data_year": 2025,
+        "source": "data.sa.gov.au",
+        "source_url": "https://data.sa.gov.au/data/dataset/school-zones-for-south-australian-govt-primary-schools"
+      }
+    ],
+    "47131": [
+      {
+        "geometry_url": "/data/catchment/sa/47131-primary.json",
+        "kind": "primary",
+        "catch_type": "PRIM",
+        "year_levels": [],
+        "source_school_code": "222",
+        "data_year": 2025,
+        "source": "data.sa.gov.au",
+        "source_url": "https://data.sa.gov.au/data/dataset/school-zones-for-south-australian-govt-primary-schools"
+      }
+    ],
+    "47157": [
+      {
+        "geometry_url": "/data/catchment/sa/47157-primary.json",
+        "kind": "primary",
+        "catch_type": "PRSEC",
+        "year_levels": [],
+        "source_school_code": "774",
+        "data_year": 2025,
+        "source": "data.sa.gov.au",
+        "source_url": "https://data.sa.gov.au/data/dataset/school-zones-for-south-australian-govt-primary-schools"
+      },
+      {
+        "geometry_url": "/data/catchment/sa/47157-secondary.json",
+        "kind": "secondary",
+        "catch_type": "PRSEC",
+        "year_levels": [],
+        "source_school_code": "774",
+        "data_year": 2025,
+        "source": "data.sa.gov.au",
+        "source_url": "https://data.sa.gov.au/data/dataset/school-zones-for-south-australian-govt-high-schools"
+      }
+    ],
+    "47158": [
+      {
+        "geometry_url": "/data/catchment/sa/47158-primary.json",
+        "kind": "primary",
+        "catch_type": "PRIM",
+        "year_levels": [],
+        "source_school_code": "255",
+        "data_year": 2025,
+        "source": "data.sa.gov.au",
+        "source_url": "https://data.sa.gov.au/data/dataset/school-zones-for-south-australian-govt-primary-schools"
+      }
+    ],
+    "47160": [
+      {
+        "geometry_url": "/data/catchment/sa/47160-primary.json",
+        "kind": "primary",
+        "catch_type": "PRIM",
+        "year_levels": [],
+        "source_school_code": "1008",
+        "data_year": 2025,
+        "source": "data.sa.gov.au",
+        "source_url": "https://data.sa.gov.au/data/dataset/school-zones-for-south-australian-govt-primary-schools"
+      }
+    ],
+    "47161": [
+      {
+        "geometry_url": "/data/catchment/sa/47161-primary.json",
+        "kind": "primary",
+        "catch_type": "PRIM",
+        "year_levels": [],
+        "source_school_code": "141",
+        "data_year": 2025,
+        "source": "data.sa.gov.au",
+        "source_url": "https://data.sa.gov.au/data/dataset/school-zones-for-south-australian-govt-primary-schools"
+      }
+    ],
+    "47162": [
+      {
+        "geometry_url": "/data/catchment/sa/47162-primary.json",
+        "kind": "primary",
+        "catch_type": "PRIM",
+        "year_levels": [],
+        "source_school_code": "455",
+        "data_year": 2025,
+        "source": "data.sa.gov.au",
+        "source_url": "https://data.sa.gov.au/data/dataset/school-zones-for-south-australian-govt-primary-schools"
+      }
+    ],
+    "47171": [
+      {
+        "geometry_url": "/data/catchment/sa/47171-primary.json",
+        "kind": "primary",
+        "catch_type": "PRIM",
+        "year_levels": [],
+        "source_school_code": "413",
+        "data_year": 2025,
+        "source": "data.sa.gov.au",
+        "source_url": "https://data.sa.gov.au/data/dataset/school-zones-for-south-australian-govt-primary-schools"
+      }
+    ],
+    "47173": [
+      {
+        "geometry_url": "/data/catchment/sa/47173-secondary.json",
+        "kind": "secondary",
+        "catch_type": "SEC",
+        "year_levels": [],
+        "source_school_code": "926",
+        "data_year": 2025,
+        "source": "data.sa.gov.au",
+        "source_url": "https://data.sa.gov.au/data/dataset/school-zones-for-south-australian-govt-high-schools"
+      }
+    ],
+    "47189": [
+      {
+        "geometry_url": "/data/catchment/sa/47189-primary.json",
+        "kind": "primary",
+        "catch_type": "PRIM",
+        "year_levels": [],
+        "source_school_code": "1226",
+        "data_year": 2025,
+        "source": "data.sa.gov.au",
+        "source_url": "https://data.sa.gov.au/data/dataset/school-zones-for-south-australian-govt-primary-schools"
+      }
+    ],
+    "47190": [
+      {
+        "geometry_url": "/data/catchment/sa/47190-primary.json",
+        "kind": "primary",
+        "catch_type": "PRIM",
+        "year_levels": [],
+        "source_school_code": "1018",
+        "data_year": 2025,
+        "source": "data.sa.gov.au",
+        "source_url": "https://data.sa.gov.au/data/dataset/school-zones-for-south-australian-govt-primary-schools"
+      }
+    ],
+    "47207": [
+      {
+        "geometry_url": "/data/catchment/sa/47207-secondary.json",
+        "kind": "secondary",
+        "catch_type": "SEC",
+        "year_levels": [],
+        "source_school_code": "638",
+        "data_year": 2025,
+        "source": "data.sa.gov.au",
+        "source_url": "https://data.sa.gov.au/data/dataset/school-zones-for-south-australian-govt-high-schools"
+      }
+    ],
+    "47221": [
+      {
+        "geometry_url": "/data/catchment/sa/47221-primary.json",
+        "kind": "primary",
+        "catch_type": "PRIM",
+        "year_levels": [],
+        "source_school_code": "362",
+        "data_year": 2025,
+        "source": "data.sa.gov.au",
+        "source_url": "https://data.sa.gov.au/data/dataset/school-zones-for-south-australian-govt-primary-schools"
+      }
+    ],
+    "47224": [
+      {
+        "geometry_url": "/data/catchment/sa/47224-primary.json",
+        "kind": "primary",
+        "catch_type": "PRIM",
+        "year_levels": [],
+        "source_school_code": "251",
+        "data_year": 2025,
+        "source": "data.sa.gov.au",
+        "source_url": "https://data.sa.gov.au/data/dataset/school-zones-for-south-australian-govt-primary-schools"
+      }
+    ],
+    "47225": [
+      {
+        "geometry_url": "/data/catchment/sa/47225-secondary.json",
+        "kind": "secondary",
+        "catch_type": "SEC",
+        "year_levels": [],
+        "source_school_code": "909",
+        "data_year": 2025,
+        "source": "data.sa.gov.au",
+        "source_url": "https://data.sa.gov.au/data/dataset/school-zones-for-south-australian-govt-high-schools"
+      }
+    ],
+    "47226": [
+      {
+        "geometry_url": "/data/catchment/sa/47226-primary.json",
+        "kind": "primary",
+        "catch_type": "PRIM",
+        "year_levels": [],
+        "source_school_code": "744",
+        "data_year": 2025,
+        "source": "data.sa.gov.au",
+        "source_url": "https://data.sa.gov.au/data/dataset/school-zones-for-south-australian-govt-primary-schools"
+      }
+    ],
+    "47255": [
+      {
+        "geometry_url": "/data/catchment/sa/47255-primary.json",
+        "kind": "primary",
+        "catch_type": "PRIM",
+        "year_levels": [],
+        "source_school_code": "163",
+        "data_year": 2025,
+        "source": "data.sa.gov.au",
+        "source_url": "https://data.sa.gov.au/data/dataset/school-zones-for-south-australian-govt-primary-schools"
+      }
+    ],
+    "47256": [
+      {
+        "geometry_url": "/data/catchment/sa/47256-primary.json",
+        "kind": "primary",
+        "catch_type": "PRIM",
+        "year_levels": [],
+        "source_school_code": "225",
+        "data_year": 2025,
+        "source": "data.sa.gov.au",
+        "source_url": "https://data.sa.gov.au/data/dataset/school-zones-for-south-australian-govt-primary-schools"
+      }
+    ],
+    "47307": [
+      {
+        "geometry_url": "/data/catchment/sa/47307-primary.json",
+        "kind": "primary",
+        "catch_type": "PRIM",
+        "year_levels": [],
+        "source_school_code": "1021",
+        "data_year": 2025,
+        "source": "data.sa.gov.au",
+        "source_url": "https://data.sa.gov.au/data/dataset/school-zones-for-south-australian-govt-primary-schools"
+      }
+    ],
+    "47312": [
+      {
+        "geometry_url": "/data/catchment/sa/47312-primary.json",
+        "kind": "primary",
+        "catch_type": "PRIM",
+        "year_levels": [],
+        "source_school_code": "290",
+        "data_year": 2025,
+        "source": "data.sa.gov.au",
+        "source_url": "https://data.sa.gov.au/data/dataset/school-zones-for-south-australian-govt-primary-schools"
+      }
+    ],
+    "47341": [
+      {
+        "geometry_url": "/data/catchment/sa/47341-primary.json",
+        "kind": "primary",
+        "catch_type": "PRIM",
+        "year_levels": [],
+        "source_school_code": "378",
+        "data_year": 2025,
+        "source": "data.sa.gov.au",
+        "source_url": "https://data.sa.gov.au/data/dataset/school-zones-for-south-australian-govt-primary-schools"
+      }
+    ],
+    "47369": [
+      {
+        "geometry_url": "/data/catchment/sa/47369-primary.json",
+        "kind": "primary",
+        "catch_type": "PRIM",
+        "year_levels": [],
+        "source_school_code": "387",
+        "data_year": 2025,
+        "source": "data.sa.gov.au",
+        "source_url": "https://data.sa.gov.au/data/dataset/school-zones-for-south-australian-govt-primary-schools"
+      }
+    ],
+    "47435": [
+      {
+        "geometry_url": "/data/catchment/sa/47435-primary.json",
+        "kind": "primary",
+        "catch_type": "PRIM",
+        "year_levels": [],
+        "source_school_code": "685",
+        "data_year": 2025,
+        "source": "data.sa.gov.au",
+        "source_url": "https://data.sa.gov.au/data/dataset/school-zones-for-south-australian-govt-primary-schools"
+      }
+    ],
+    "47474": [
+      {
+        "geometry_url": "/data/catchment/sa/47474-primary.json",
+        "kind": "primary",
+        "catch_type": "PRIM",
+        "year_levels": [],
+        "source_school_code": "359",
+        "data_year": 2025,
+        "source": "data.sa.gov.au",
+        "source_url": "https://data.sa.gov.au/data/dataset/school-zones-for-south-australian-govt-primary-schools"
+      }
+    ],
+    "47506": [
+      {
+        "geometry_url": "/data/catchment/sa/47506-primary.json",
+        "kind": "primary",
+        "catch_type": "PRIM",
+        "year_levels": [],
+        "source_school_code": "355",
+        "data_year": 2025,
+        "source": "data.sa.gov.au",
+        "source_url": "https://data.sa.gov.au/data/dataset/school-zones-for-south-australian-govt-primary-schools"
+      }
+    ],
+    "54706": [
+      {
+        "geometry_url": "/data/catchment/sa/54706-primary.json",
+        "kind": "primary",
+        "catch_type": "PRIM",
+        "year_levels": [],
+        "source_school_code": "1844",
+        "data_year": 2025,
+        "source": "data.sa.gov.au",
+        "source_url": "https://data.sa.gov.au/data/dataset/school-zones-for-south-australian-govt-primary-schools"
+      }
+    ],
+    "54707": [
+      {
+        "geometry_url": "/data/catchment/sa/54707-primary.json",
+        "kind": "primary",
+        "catch_type": "PRIM",
+        "year_levels": [],
+        "source_school_code": "1848",
+        "data_year": 2025,
+        "source": "data.sa.gov.au",
+        "source_url": "https://data.sa.gov.au/data/dataset/school-zones-for-south-australian-govt-primary-schools"
+      }
+    ],
+    "54709": [
+      {
+        "geometry_url": "/data/catchment/sa/54709-primary.json",
+        "kind": "primary",
+        "catch_type": "PRIM",
+        "year_levels": [],
+        "source_school_code": "1858",
+        "data_year": 2025,
+        "source": "data.sa.gov.au",
+        "source_url": "https://data.sa.gov.au/data/dataset/school-zones-for-south-australian-govt-primary-schools"
+      }
+    ],
+    "54713": [
+      {
+        "geometry_url": "/data/catchment/sa/54713-primary.json",
+        "kind": "primary",
+        "catch_type": "PRIM",
+        "year_levels": [],
+        "source_school_code": "1776",
+        "data_year": 2025,
+        "source": "data.sa.gov.au",
+        "source_url": "https://data.sa.gov.au/data/dataset/school-zones-for-south-australian-govt-primary-schools"
+      }
+    ],
+    "54714": [
+      {
+        "geometry_url": "/data/catchment/sa/54714-secondary.json",
+        "kind": "secondary",
+        "catch_type": "SEC",
+        "year_levels": [],
+        "source_school_code": "1834",
+        "data_year": 2025,
+        "source": "data.sa.gov.au",
+        "source_url": "https://data.sa.gov.au/data/dataset/school-zones-for-south-australian-govt-high-schools"
+      }
+    ],
+    "54716": [
+      {
+        "geometry_url": "/data/catchment/sa/54716-secondary.json",
+        "kind": "secondary",
+        "catch_type": "SEC",
+        "year_levels": [],
+        "source_school_code": "641",
+        "data_year": 2025,
+        "source": "data.sa.gov.au",
+        "source_url": "https://data.sa.gov.au/data/dataset/school-zones-for-south-australian-govt-high-schools"
+      }
+    ],
+    "54843": [
+      {
+        "geometry_url": "/data/catchment/sa/54843-primary.json",
+        "kind": "primary",
+        "catch_type": "PRIM",
+        "year_levels": [],
+        "source_school_code": "1854",
+        "data_year": 2025,
+        "source": "data.sa.gov.au",
+        "source_url": "https://data.sa.gov.au/data/dataset/school-zones-for-south-australian-govt-primary-schools"
+      }
+    ],
+    "54863": [
+      {
+        "geometry_url": "/data/catchment/sa/54863-primary.json",
+        "kind": "primary",
+        "catch_type": "PRIM",
+        "year_levels": [],
+        "source_school_code": "1777",
+        "data_year": 2025,
+        "source": "data.sa.gov.au",
+        "source_url": "https://data.sa.gov.au/data/dataset/school-zones-for-south-australian-govt-primary-schools"
+      }
+    ],
+    "54907": [
+      {
+        "geometry_url": "/data/catchment/sa/54907-primary.json",
+        "kind": "primary",
+        "catch_type": "PRIM",
+        "year_levels": [],
+        "source_school_code": "1851",
+        "data_year": 2025,
+        "source": "data.sa.gov.au",
+        "source_url": "https://data.sa.gov.au/data/dataset/school-zones-for-south-australian-govt-primary-schools"
+      }
+    ],
+    "54908": [
+      {
+        "geometry_url": "/data/catchment/sa/54908-primary.json",
+        "kind": "primary",
+        "catch_type": "PRIM",
+        "year_levels": [],
+        "source_school_code": "1071",
+        "data_year": 2025,
+        "source": "data.sa.gov.au",
+        "source_url": "https://data.sa.gov.au/data/dataset/school-zones-for-south-australian-govt-primary-schools"
+      }
+    ],
+    "54910": [
+      {
+        "geometry_url": "/data/catchment/sa/54910-secondary.json",
+        "kind": "secondary",
+        "catch_type": "PRSEC",
+        "year_levels": [],
+        "source_school_code": "906",
+        "data_year": 2025,
+        "source": "data.sa.gov.au",
+        "source_url": "https://data.sa.gov.au/data/dataset/school-zones-for-south-australian-govt-high-schools"
+      }
+    ],
+    "54912": [
+      {
+        "geometry_url": "/data/catchment/sa/54912-primary.json",
+        "kind": "primary",
+        "catch_type": "PRIM",
+        "year_levels": [],
+        "source_school_code": "1847",
+        "data_year": 2025,
+        "source": "data.sa.gov.au",
+        "source_url": "https://data.sa.gov.au/data/dataset/school-zones-for-south-australian-govt-primary-schools"
+      }
+    ],
+    "55076": [
+      {
+        "geometry_url": "/data/catchment/sa/55076-primary.json",
+        "kind": "primary",
+        "catch_type": "PRSEC",
+        "year_levels": [],
+        "source_school_code": "640",
+        "data_year": 2025,
+        "source": "data.sa.gov.au",
+        "source_url": "https://data.sa.gov.au/data/dataset/school-zones-for-south-australian-govt-primary-schools"
+      },
+      {
+        "geometry_url": "/data/catchment/sa/55076-secondary.json",
+        "kind": "secondary",
+        "catch_type": "PRSEC",
+        "year_levels": [],
+        "source_school_code": "640",
+        "data_year": 2025,
+        "source": "data.sa.gov.au",
+        "source_url": "https://data.sa.gov.au/data/dataset/school-zones-for-south-australian-govt-high-schools"
+      }
+    ],
+    "55856": [
+      {
+        "geometry_url": "/data/catchment/sa/55856-primary.json",
+        "kind": "primary",
+        "catch_type": "PRIM",
+        "year_levels": [],
+        "source_school_code": "1876",
+        "data_year": 2025,
+        "source": "data.sa.gov.au",
+        "source_url": "https://data.sa.gov.au/data/dataset/school-zones-for-south-australian-govt-primary-schools"
+      }
+    ],
+    "56017": [
+      {
+        "geometry_url": "/data/catchment/sa/56017-secondary.json",
+        "kind": "secondary",
+        "catch_type": "SEC",
+        "year_levels": [],
+        "source_school_code": "823",
+        "data_year": 2025,
+        "source": "data.sa.gov.au",
+        "source_url": "https://data.sa.gov.au/data/dataset/school-zones-for-south-australian-govt-high-schools"
+      }
+    ],
+    "56487": [
+      {
+        "geometry_url": "/data/catchment/sa/56487-primary.json",
+        "kind": "primary",
+        "catch_type": "PRIM",
+        "year_levels": [],
+        "source_school_code": "533",
+        "data_year": 2025,
+        "source": "data.sa.gov.au",
+        "source_url": "https://data.sa.gov.au/data/dataset/school-zones-for-south-australian-govt-primary-schools"
+      }
+    ],
+    "56488": [
+      {
+        "geometry_url": "/data/catchment/sa/56488-primary.json",
+        "kind": "primary",
+        "catch_type": "PRIM",
+        "year_levels": [],
+        "source_school_code": "1056",
+        "data_year": 2025,
+        "source": "data.sa.gov.au",
+        "source_url": "https://data.sa.gov.au/data/dataset/school-zones-for-south-australian-govt-primary-schools"
+      }
+    ],
+    "56502": [
+      {
+        "geometry_url": "/data/catchment/sa/56502-primary.json",
+        "kind": "primary",
+        "catch_type": "PRIM",
+        "year_levels": [],
+        "source_school_code": "1664",
+        "data_year": 2025,
+        "source": "data.sa.gov.au",
+        "source_url": "https://data.sa.gov.au/data/dataset/school-zones-for-south-australian-govt-primary-schools"
+      }
+    ],
+    "56504": [
+      {
+        "geometry_url": "/data/catchment/sa/56504-primary.json",
+        "kind": "primary",
+        "catch_type": "PRIM",
+        "year_levels": [],
+        "source_school_code": "1022",
+        "data_year": 2025,
+        "source": "data.sa.gov.au",
+        "source_url": "https://data.sa.gov.au/data/dataset/school-zones-for-south-australian-govt-primary-schools"
+      }
+    ],
+    "56507": [
+      {
+        "geometry_url": "/data/catchment/sa/56507-primary.json",
+        "kind": "primary",
+        "catch_type": "PRIM",
+        "year_levels": [],
+        "source_school_code": "1449",
+        "data_year": 2025,
+        "source": "data.sa.gov.au",
+        "source_url": "https://data.sa.gov.au/data/dataset/school-zones-for-south-australian-govt-primary-schools"
+      }
+    ],
+    "57389": [
+      {
+        "geometry_url": "/data/catchment/sa/57389-secondary.json",
+        "kind": "secondary",
+        "catch_type": "SEC",
+        "year_levels": [],
+        "source_school_code": "1673",
+        "data_year": 2025,
+        "source": "data.sa.gov.au",
+        "source_url": "https://data.sa.gov.au/data/dataset/school-zones-for-south-australian-govt-high-schools"
+      }
+    ],
+    "57445": [
+      {
+        "geometry_url": "/data/catchment/sa/57445-primary.json",
+        "kind": "primary",
+        "catch_type": "PRIM",
+        "year_levels": [],
+        "source_school_code": "987",
+        "data_year": 2025,
+        "source": "data.sa.gov.au",
+        "source_url": "https://data.sa.gov.au/data/dataset/school-zones-for-south-australian-govt-primary-schools"
+      }
+    ],
+    "62786": [
+      {
+        "geometry_url": "/data/catchment/sa/62786-primary.json",
+        "kind": "primary",
+        "catch_type": "PRSEC",
+        "year_levels": [],
+        "source_school_code": "1907",
+        "data_year": 2025,
+        "source": "data.sa.gov.au",
+        "source_url": "https://data.sa.gov.au/data/dataset/school-zones-for-south-australian-govt-primary-schools"
+      },
+      {
+        "geometry_url": "/data/catchment/sa/62786-secondary.json",
+        "kind": "secondary",
+        "catch_type": "PRSEC",
+        "year_levels": [],
+        "source_school_code": "1907",
+        "data_year": 2025,
+        "source": "data.sa.gov.au",
+        "source_url": "https://data.sa.gov.au/data/dataset/school-zones-for-south-australian-govt-high-schools"
+      }
+    ],
+    "68847": [
+      {
+        "geometry_url": "/data/catchment/sa/68847-primary.json",
+        "kind": "primary",
+        "catch_type": "PRIM",
+        "year_levels": [],
+        "source_school_code": "1901",
+        "data_year": 2025,
+        "source": "data.sa.gov.au",
+        "source_url": "https://data.sa.gov.au/data/dataset/school-zones-for-south-australian-govt-primary-schools"
+      }
+    ],
+    "69046": [
+      {
+        "geometry_url": "/data/catchment/sa/69046-secondary.json",
+        "kind": "secondary",
+        "catch_type": "SEC",
+        "year_levels": [],
+        "source_school_code": "1902",
+        "data_year": 2025,
+        "source": "data.sa.gov.au",
+        "source_url": "https://data.sa.gov.au/data/dataset/school-zones-for-south-australian-govt-high-schools"
+      }
+    ],
+    "69824": [
+      {
+        "geometry_url": "/data/catchment/sa/69824-primary.json",
+        "kind": "primary",
+        "catch_type": "PRIM",
+        "year_levels": [],
+        "source_school_code": "1228",
+        "data_year": 2025,
+        "source": "data.sa.gov.au",
+        "source_url": "https://data.sa.gov.au/data/dataset/school-zones-for-south-australian-govt-primary-schools"
+      }
+    ],
+    "70040": [
+      {
+        "geometry_url": "/data/catchment/sa/70040-secondary.json",
+        "kind": "secondary",
+        "catch_type": "PRSEC",
+        "year_levels": [],
+        "source_school_code": "1028",
+        "data_year": 2025,
+        "source": "data.sa.gov.au",
+        "source_url": "https://data.sa.gov.au/data/dataset/school-zones-for-south-australian-govt-high-schools"
+      }
+    ],
+    "86089": [
+      {
+        "geometry_url": "/data/catchment/sa/86089-secondary.json",
+        "kind": "secondary",
+        "catch_type": "SEC",
+        "year_levels": [],
+        "source_school_code": "1919",
+        "data_year": 2025,
+        "source": "data.sa.gov.au",
+        "source_url": "https://data.sa.gov.au/data/dataset/school-zones-for-south-australian-govt-high-schools"
+      }
+    ],
+    "87609": [
+      {
+        "geometry_url": "/data/catchment/sa/87609-primary.json",
+        "kind": "primary",
+        "catch_type": "PRSEC",
+        "year_levels": [],
+        "source_school_code": "1913",
+        "data_year": 2025,
+        "source": "data.sa.gov.au",
+        "source_url": "https://data.sa.gov.au/data/dataset/school-zones-for-south-australian-govt-primary-schools"
+      },
+      {
+        "geometry_url": "/data/catchment/sa/87609-secondary.json",
+        "kind": "secondary",
+        "catch_type": "PRSEC",
+        "year_levels": [],
+        "source_school_code": "1913",
+        "data_year": 2025,
+        "source": "data.sa.gov.au",
+        "source_url": "https://data.sa.gov.au/data/dataset/school-zones-for-south-australian-govt-high-schools"
+      }
+    ],
+    "87611": [
+      {
+        "geometry_url": "/data/catchment/sa/87611-primary.json",
+        "kind": "primary",
+        "catch_type": "PRSEC",
+        "year_levels": [],
+        "source_school_code": "1914",
+        "data_year": 2025,
+        "source": "data.sa.gov.au",
+        "source_url": "https://data.sa.gov.au/data/dataset/school-zones-for-south-australian-govt-primary-schools"
+      },
+      {
+        "geometry_url": "/data/catchment/sa/87611-secondary.json",
+        "kind": "secondary",
+        "catch_type": "PRSEC",
+        "year_levels": [],
+        "source_school_code": "1914",
+        "data_year": 2025,
+        "source": "data.sa.gov.au",
+        "source_url": "https://data.sa.gov.au/data/dataset/school-zones-for-south-australian-govt-high-schools"
+      }
+    ],
+    "88715": [
+      {
+        "geometry_url": "/data/catchment/sa/88715-secondary.json",
+        "kind": "secondary",
+        "catch_type": "SEC",
+        "year_levels": [],
+        "source_school_code": "1920",
+        "data_year": 2025,
+        "source": "data.sa.gov.au",
+        "source_url": "https://data.sa.gov.au/data/dataset/school-zones-for-south-australian-govt-high-schools"
+      }
+    ],
+    "88727": [
+      {
+        "geometry_url": "/data/catchment/sa/88727-primary.json",
+        "kind": "primary",
+        "catch_type": "PRSEC",
+        "year_levels": [],
+        "source_school_code": "1900",
+        "data_year": 2025,
+        "source": "data.sa.gov.au",
+        "source_url": "https://data.sa.gov.au/data/dataset/school-zones-for-south-australian-govt-primary-schools"
+      },
+      {
+        "geometry_url": "/data/catchment/sa/88727-secondary.json",
+        "kind": "secondary",
+        "catch_type": "PRSEC",
+        "year_levels": [],
+        "source_school_code": "1900",
+        "data_year": 2025,
+        "source": "data.sa.gov.au",
+        "source_url": "https://data.sa.gov.au/data/dataset/school-zones-for-south-australian-govt-high-schools"
+      }
+    ]
+  }
+}

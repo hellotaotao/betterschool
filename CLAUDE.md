@@ -30,11 +30,15 @@ npm run acara:validate   # sanity-check the parsed ACARA layer
 npm run canonical:build  # merge all layers -> public/data/schools.canonical.json
 npm run canonical:validate
 
-# NSW catchments (independent of the ACARA steps above, but run before
-# canonical:build so the layer gets merged in)
-npm run nsw:catchment:fetch     # download shapefiles + master dataset (needs 'unzip')
+# Catchments, per state (independent of the ACARA steps above, but run before
+# canonical:build so the layers get merged in). Both need 'unzip'.
+npm run nsw:catchment:fetch     # download shapefiles + master dataset
 npm run nsw:catchment:build     # join + emit public/data/catchment/nsw/
 npm run nsw:catchment:validate  # join-rate floors, geometry and attachment checks
+
+npm run sa:catchment:fetch      # download zone shapefiles + education sites
+npm run sa:catchment:build      # join + emit public/data/catchment/sa/
+npm run sa:catchment:validate
 ```
 
 ## Architecture
@@ -48,17 +52,26 @@ ACARA/*.xlsx
   └─ scripts/parse-acara-*.mjs      → data/acara/processed/*.json
   └─ scripts/religion-classify.mjs  → religion layer
   └─ scripts/match-betterschool-acara.mjs → legacy metric layer
-data.nsw.gov.au
-  └─ scripts/{fetch,parse,build}-nsw-catchment.mjs → catchment layer
+data.nsw.gov.au / data.sa.gov.au
+  └─ scripts/{fetch,parse,build}-{nsw,sa}-catchment.mjs → catchment layers
        └─ scripts/build-canonical-schools.mjs
             → public/data/schools.canonical.json  (11,034 schools, ~15MB)
             → public/data/schools.metadata.json   (provenance + coverage counts)
             → public/data/catchment/nsw/*.json    (2,152 zones, loaded on demand)
+            → public/data/catchment/sa/*.json     (130 zones, loaded on demand)
 ```
 
-The catchment build reads the ACARA *location* layer rather than
-`schools.canonical.json`, because canonical consumes the catchment layer —
-depending on it there would be circular.
+The catchment builds read the ACARA *location* layer rather than
+`schools.canonical.json`, because canonical consumes the catchment layers —
+depending on them there would be circular.
+
+Geometry, rounding and bbox rules live in `scripts/catchment-common.mjs` and are
+shared by every state; only source URLs, attribute names and the join chain are
+per-state. A new state needs a `{fetch,parse,build,validate}-<state>-catchment.mjs`
+set, an entry in `CATCHMENT_STATES` (`lib/catchmentLookup.ts`), one in
+`STATE_INFO` (`lib/catchmentStates.ts`), and a line in `catchmentLayerPaths`
+(`scripts/build-canonical-schools.mjs`). `lib/catchmentStates.test.ts` fails if
+the first two disagree.
 
 ### Routes
 
@@ -130,8 +143,15 @@ same-suburb duplicate gets an `-<acara_sml_id>` suffix, so URLs stay stable.
 - `components/SchoolDetail.tsx`, `FilterBar.tsx`, `SearchBox.tsx`, `BottomSheet.tsx`
   (mobile layout switches on `useMediaQuery('(max-width: 768px)')`).
 - `utils/schoolFilters.ts` — filter predicates + marker encoding.
-- `lib/catchmentLookup.ts` — pure geometry (point-in-polygon, bbox prefilter),
-  unit-tested; `lib/catchmentClient.ts` — the fetching/caching around it.
+- `lib/catchmentLookup.ts` — pure geometry (point-in-polygon, bbox prefilter)
+  plus `CATCHMENT_STATES`, unit-tested; `lib/catchmentClient.ts` — the
+  fetching/caching around it, which merges every state's index into one list and
+  stamps each entry with the state it was read from, so a lookup spans states
+  without the caller tracking which file to read. A state whose build has not run
+  contributes nothing rather than failing the lookup.
+- `lib/catchmentStates.ts` — per-state facts the copy depends on: the
+  department's own address checker, and whether the state zones its whole
+  government system.
 - `components/CatchmentLookup.tsx` — "what is this location zoned for?" results.
 - `lib/i18n.ts` + `messages/{en,zh}.json`. **Both message files must keep
   identical key sets**, enforced by `lib/i18n.test.ts`.
@@ -171,10 +191,23 @@ These are the project's core commitments. They matter more than any feature.
    one, otherwise a band — always with `fee_source` + `source_url` + `fee_year`.
    Catchment geometry is likewise stored unsimplified, so the reverse lookup runs
    against the published boundary rather than an approximation of our own.
-7. **Absent is not the same as none.** No catchment on a Catholic school means
-   "zones do not apply to this sector"; no catchment on a NSW government school
-   means "none published"; on a Victorian school it means "not collected yet".
-   The UI says which — it never renders a bare empty state.
+7. **Absent is not the same as none.** Four different absences, and the UI says
+   which every time rather than rendering a bare empty state:
+   - Catholic or Independent school → "zones do not apply to this sector".
+   - NSW government school with no zone → "none published". NSW zones 2,029 of
+     its 2,223 government schools, so the silence is informative.
+   - SA government school with no zone → says almost nothing. SA publishes zones
+     for 124 of 521 government schools and the published data gives no rule for
+     which, so the page must not let a reader infer the school is unzoned.
+   - Victorian school → "not collected yet".
+
+   The same rule governs year levels. NSW publishes them per zone; SA publishes
+   none, and its schools' own "Reception to Year 12" designation describes the
+   *school*, not the zone — six SA schools hold both a primary and a secondary
+   zone, so copying it onto each would claim the primary zone runs to Year 12.
+   SA zones therefore carry an empty `year_levels`, and the UI omits the line
+   rather than inventing one. `validate-sa-catchment.mjs` fails if that array
+   ever arrives missing or populated.
 
 ### Marker encoding (and why)
 

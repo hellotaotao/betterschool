@@ -8,6 +8,7 @@ import { formatMessage, getMessages, getReligionLabel, getSchoolTypeLabel, getSe
 import { buildPageMetadata, getSeo, localeKind, localeStateLabel, localeStateName, type Locale } from '@/lib/seoLocale';
 import { absoluteUrl } from '@/lib/site';
 import { browsePath, catchmentPath, mapUrl, schoolPath, stateIndexPath, suburbPath } from '@/lib/slug';
+import { catchmentStateCodes, catchmentStateInfo } from '@/lib/catchmentStates';
 import PageShell from '@/components/seo/PageShell';
 import SchoolLinkCard from '@/components/seo/SchoolLinkCard';
 
@@ -64,6 +65,8 @@ export default function SchoolBody({ locale, state, slug }: { locale: Locale; st
   const catchments = school.catchments ?? [];
   const isGovernment = school.sector === 'Government';
   const schoolWebsiteUrl = safeSchoolWebsiteUrl(school.school_url);
+  const zoneState = catchmentStateInfo(school.state);
+  const coveredStates = catchmentStateCodes().map(code => localeStateLabel(locale, code)).join(', ');
   const full = localeStateName(locale, school.state);
 
   const jsonLd = {
@@ -207,10 +210,12 @@ export default function SchoolBody({ locale, state, slug }: { locale: Locale; st
             <ul className="space-y-1 text-sm">
               {catchments.map(catchment => (
                 <li key={catchment.kind}>
-                  {formatMessage(t.zoneLine, {
-                    kind: localeKind(locale, catchment.kind),
-                    levels: catchment.year_levels.join(', '),
-                  })}
+                  {catchment.year_levels.length > 0
+                    ? formatMessage(t.zoneLine, {
+                      kind: localeKind(locale, catchment.kind),
+                      levels: catchment.year_levels.join(', '),
+                    })
+                    : formatMessage(t.zoneLineNoYears, { kind: localeKind(locale, catchment.kind) })}
                   <span className="text-gray-500">
                     {' ('}
                     {formatMessage(t.zoneDataYear, { year: catchment.data_year })}
@@ -228,11 +233,17 @@ export default function SchoolBody({ locale, state, slug }: { locale: Locale; st
           </div>
         ) : (
           <p className="mt-2 text-sm text-gray-600">
+            {/* Three different absences, and the page must not blur them: zones
+                do not apply, none was published for a school in a state that
+                zones everything, or the state only zones part of its system so
+                the silence means very little. */}
             {!isGovernment
               ? t.zoneNonGovernment
-              : school.state === 'NSW'
-                ? t.zoneNotPublished
-                : formatMessage(t.zoneOtherState, { state: full })}
+              : !zoneState
+                ? formatMessage(t.zoneOtherState, { state: full, states: coveredStates })
+                : zoneState.complete
+                  ? t.zoneNotPublished
+                  : formatMessage(t.zonePartialState, { state: full })}
           </p>
         )}
       </section>

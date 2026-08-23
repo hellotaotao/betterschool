@@ -1,15 +1,15 @@
 "use client";
 
 import { School } from '@/types/school';
-import { formatMessage, getReligionLabel, getSchoolTypeLabel, getSectorLabel, Messages } from '@/lib/i18n';
+import { coveredCatchmentStates, formatMessage, getReligionLabel, getSchoolTypeLabel, getSectorLabel, Locale, Messages } from '@/lib/i18n';
+import { catchmentStateInfo } from '@/lib/catchmentStates';
 import { hasLegacyScore } from '@/utils/schoolFilters';
 import ZoneSwatch from './ZoneSwatch';
-
-const SCHOOL_FINDER_URL = 'https://education.nsw.gov.au/school-finder';
 
 interface SchoolDetailProps {
   school: School;
   dictionary: Messages;
+  locale: Locale;
   onClose: () => void;
   variant?: 'panel' | 'sheet';
   catchmentVisible?: boolean;
@@ -24,6 +24,7 @@ interface SchoolDetailProps {
 export default function SchoolDetail({
   school,
   dictionary,
+  locale,
   onClose,
   variant = 'panel',
   catchmentVisible = false,
@@ -33,6 +34,8 @@ export default function SchoolDetail({
   topOffset,
 }: SchoolDetailProps) {
   const catchments = school.catchments ?? [];
+  const finderUrl = catchmentStateInfo(school.state)?.finderUrl;
+  const stateLabel = locale === 'zh' ? (dictionary.seo.states as Record<string, string>)[school.state] ?? school.state : school.state;
   const isGovernment = school.sector === 'Government';
   const isPanel = variant === 'panel';
   const wrapClass = isPanel
@@ -252,9 +255,11 @@ export default function SchoolDetail({
                       <ZoneSwatch kind={catchment.kind} />
                       {dictionary.catchment[catchment.kind]}
                     </span>
-                    <span className="font-medium text-blue-900 text-right">
-                      {formatMessage(dictionary.catchment.years, { levels: catchment.year_levels.join(', ') })}
-                    </span>
+                    {catchment.year_levels.length > 0 && (
+                      <span className="font-medium text-blue-900 text-right">
+                        {formatMessage(dictionary.catchment.years, { levels: catchment.year_levels.join(', ') })}
+                      </span>
+                    )}
                   </div>
                   <div className="text-[9px] text-blue-800/60">
                     {formatMessage(dictionary.catchment.dataYear, { year: catchment.data_year })}
@@ -282,9 +287,11 @@ export default function SchoolDetail({
                 <p className="text-[9px] text-red-600">{dictionary.catchment.loadError}</p>
               )}
 
-              <p className="text-[9px] text-blue-800/80 leading-snug">{dictionary.catchment.disclaimer}</p>
+              <p className="text-[9px] text-blue-800/80 leading-snug">
+                {formatMessage(dictionary.catchment.disclaimer, { state: stateLabel })}
+              </p>
               <a
-                href={SCHOOL_FINDER_URL}
+                href={finderUrl}
                 target="_blank"
                 rel="noreferrer"
                 className="block text-[10px] font-medium text-blue-700 hover:underline"
@@ -296,9 +303,11 @@ export default function SchoolDetail({
             <p className="text-[9px] text-blue-800/70 leading-snug">
               {!isGovernment
                 ? dictionary.catchment.nonGovernment
-                : school.state === 'NSW'
+                : catchmentStateInfo(school.state)
                   ? dictionary.catchment.notPublished
-                  : dictionary.catchment.nswOnly}
+                  : formatMessage(dictionary.catchment.statesOnly, {
+                    states: coveredCatchmentStates(dictionary, locale),
+                  })}
             </p>
           )}
         </div>

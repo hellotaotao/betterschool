@@ -161,7 +161,7 @@ export default function SchoolsPage() {
         if (query.get('catchment') !== '1' || !match.catchments?.length) return;
 
         setCatchmentState({ schoolId: match.id, visible: true, features: null, error: false });
-        loadCatchmentsForSchool(Number(match.location_age_id), match.catchments.map(c => c.kind))
+        loadCatchmentsForSchool(match.state, Number(match.location_age_id), match.catchments.map(c => c.kind))
           .then(features => setCatchmentState(current => (
             current?.schoolId === match.id ? { ...current, features } : current
           )))
@@ -286,7 +286,7 @@ export default function SchoolsPage() {
     setCatchmentState({ schoolId: school.id, visible: true, features: schoolCatchments, error: false });
     if (schoolCatchments) return; // already fetched for this school
 
-    loadCatchmentsForSchool(Number(school.location_age_id), school.catchments.map(c => c.kind))
+    loadCatchmentsForSchool(school.state, Number(school.location_age_id), school.catchments.map(c => c.kind))
       .then(features => {
         setCatchmentState(current => (
           current?.schoolId === school.id ? { ...current, features } : current
@@ -428,6 +428,7 @@ export default function SchoolsPage() {
                 loading={lookupLoading}
                 error={lookupError}
                 dictionary={dictionary}
+                locale={locale}
                 onClear={clearLookup}
                 onPickSchool={handlePickSchool}
                 variant="sheet"
@@ -436,6 +437,7 @@ export default function SchoolsPage() {
               <SchoolDetail
                 school={selectedSchool}
                 dictionary={dictionary}
+                locale={locale}
                 onClose={handleMapClick}
                 variant="sheet"
                 catchmentVisible={catchmentVisible}
@@ -508,6 +510,7 @@ export default function SchoolsPage() {
               loading={lookupLoading}
               error={lookupError}
               dictionary={dictionary}
+              locale={locale}
               onClear={clearLookup}
               onPickSchool={handlePickSchool}
               topOffset={topBarBottom + 8}
@@ -551,6 +554,7 @@ export default function SchoolsPage() {
             <SchoolDetail
               school={selectedSchool}
               dictionary={dictionary}
+              locale={locale}
               onClose={handleMapClick}
               topOffset={topBarBottom + 8}
               catchmentVisible={catchmentVisible}

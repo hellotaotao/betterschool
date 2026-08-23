@@ -1,0 +1,48 @@
+import { CATCHMENT_STATES } from './catchmentLookup';
+
+/**
+ * What each state publishes, and where its authoritative checker lives.
+ *
+ * Every state's zones come with the same warning — a boundary can run through
+ * the middle of a street — but the tool that settles it is the state
+ * department's own, so linking a South Australian reader at the NSW School
+ * Finder would be worse than not linking at all.
+ *
+ * `complete` records whether the state zones its whole government system. NSW
+ * publishes a zone for 2,029 of 2,223 government schools, so a NSW school
+ * without one has genuinely had none published. South Australia publishes 124
+ * of 521, and the published data gives no rule for which — so "no zone here"
+ * carries much less information there, and the page has to say so rather than
+ * letting a reader infer the school is unzoned.
+ */
+export interface CatchmentStateInfo {
+  /** ACARA state code. */
+  state: string;
+  /** The department's own address checker. */
+  finderUrl: string;
+  /** Whether the state zones essentially all of its government schools. */
+  complete: boolean;
+}
+
+const STATE_INFO: Record<string, CatchmentStateInfo> = {
+  NSW: {
+    state: 'NSW',
+    finderUrl: 'https://education.nsw.gov.au/school-finder',
+    complete: true,
+  },
+  SA: {
+    state: 'SA',
+    finderUrl: 'https://www.education.sa.gov.au/parents-and-families/enrol-school-or-preschool/find-school-zone-or-catchment-area',
+    complete: false,
+  },
+};
+
+/** Null for a state whose zones we have not collected. */
+export function catchmentStateInfo(state: string): CatchmentStateInfo | null {
+  return STATE_INFO[state.toUpperCase()] ?? null;
+}
+
+/** ACARA codes of the states with a published zone layer, in CATCHMENT_STATES order. */
+export function catchmentStateCodes(): string[] {
+  return CATCHMENT_STATES.map(slug => slug.toUpperCase());
+}

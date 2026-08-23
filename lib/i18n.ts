@@ -1,6 +1,8 @@
 import enMessages from '@/messages/en.json';
 import zhMessages from '@/messages/zh.json';
 
+import { catchmentStateCodes } from './catchmentStates';
+
 export type Locale = 'en' | 'zh';
 
 export type Messages = typeof enMessages;
@@ -73,4 +75,12 @@ export function getReligionLabel(affiliation: string | undefined, dictionary: Me
   const labels = dictionary.religions as Record<string, string>;
   if (!affiliation) return labels.Unknown;
   return labels[affiliation] ?? affiliation;
+}
+
+/** Localised list of the states whose zones we publish, e.g. "NSW, SA". */
+export function coveredCatchmentStates(dictionary: Messages, locale: Locale): string {
+  const names = dictionary.seo.states as Record<string, string>;
+  return catchmentStateCodes()
+    .map(code => (locale === 'zh' ? names[code] ?? code : code))
+    .join(locale === 'zh' ? '、' : ', ');
 }

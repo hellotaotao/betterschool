@@ -3,6 +3,7 @@ import path from 'node:path';
 import { cache } from 'react';
 import { School, type SchoolCatchment } from '@/types/school';
 import {
+  CATCHMENT_STATES,
   pointInGeometry,
   type CatchmentFeature,
   type CatchmentIndex,
@@ -219,19 +220,32 @@ export function getNearbySchools(school: School, limit = 8): NearbySchool[] {
 
 // --- Catchments -------------------------------------------------------------
 
-let cachedCatchmentIndex: CatchmentIndex | null | undefined;
+let cachedCatchmentEntries: CatchmentIndexEntry[] | undefined;
 
-export function getCatchmentIndex(): CatchmentIndex | null {
-  if (cachedCatchmentIndex !== undefined) return cachedCatchmentIndex;
-  const file = path.join(DATA_DIR, 'catchment', 'nsw', 'index.json');
-  cachedCatchmentIndex = fs.existsSync(file)
-    ? (JSON.parse(fs.readFileSync(file, 'utf8')) as CatchmentIndex)
-    : null;
-  return cachedCatchmentIndex;
+/**
+ * Every published state's index entries, merged.
+ *
+ * A state listed in CATCHMENT_STATES whose build has not been run contributes
+ * nothing rather than throwing — a checkout with only one state built is normal.
+ */
+export function getCatchmentEntries(): CatchmentIndexEntry[] {
+  if (cachedCatchmentEntries !== undefined) return cachedCatchmentEntries;
+
+  cachedCatchmentEntries = CATCHMENT_STATES.flatMap(state => {
+    const file = path.join(DATA_DIR, 'catchment', state, 'index.json');
+    if (!fs.existsSync(file)) return [];
+    const index = JSON.parse(fs.readFileSync(file, 'utf8')) as CatchmentIndex;
+    // Stamped by the reader, not stored per entry — see the client loader.
+    return index.catchments.map(entry => ({ ...entry, state }));
+  });
+
+  return cachedCatchmentEntries;
 }
 
-export function readCatchmentFeature(entry: Pick<CatchmentIndexEntry, 'location_age_id' | 'kind'>): CatchmentFeature | null {
-  const file = path.join(DATA_DIR, 'catchment', 'nsw', `${entry.location_age_id}-${entry.kind}.json`);
+export function readCatchmentFeature(
+  entry: Pick<CatchmentIndexEntry, 'state' | 'location_age_id' | 'kind'>,
+): CatchmentFeature | null {
+  const file = path.join(DATA_DIR, 'catchment', entry.state, `${entry.location_age_id}-${entry.kind}.json`);
   if (!fs.existsSync(file)) return null;
   return JSON.parse(fs.readFileSync(file, 'utf8')) as CatchmentFeature;
 }
@@ -253,16 +267,25 @@ export interface CatchmentZoneSection {
   suburbs: string[];
 }
 
-let cachedNswSchools: School[] | null = null;
+const cachedStateSchools = new Map<string, School[]>();
 
-/** NSW schools with usable coordinates, computed once for all zone pages. */
-function getNswSchools(): School[] {
-  if (!cachedNswSchools) {
-    cachedNswSchools = getSchoolsDataset().schools.filter(
-      school => school.state === 'NSW' && Number.isFinite(school.lat) && Number.isFinite(school.lng),
+/**
+ * One state's schools with usable coordinates, computed once per state.
+ *
+ * A zone never crosses a state border, so testing a zone against the whole
+ * country would be ~11,000 point-in-polygon calls to find candidates that could
+ * only ever have come from one state.
+ */
+function getSchoolsForState(state: string): School[] {
+  const key = state.toUpperCase();
+  let pool = cachedStateSchools.get(key);
+  if (!pool) {
+    pool = getSchoolsDataset().schools.filter(
+      school => school.state === key && Number.isFinite(school.lat) && Number.isFinite(school.lng),
     );
+    cachedStateSchools.set(key, pool);
   }
-  return cachedNswSchools;
+  return pool;
 }
 
 /** [minLng, minLat, maxLng, maxLat] of a polygon or multipolygon. */
@@ -291,16 +314,16 @@ function geometryBbox(geometry: CatchmentFeature['geometry']): [number, number, 
  * suburbs this zone covers": without suburb boundary data that would be an
  * inference, and the schools inside a zone are only a sample of its area.
  */
-export function getSchoolsInZone(feature: CatchmentFeature, limit?: number): SchoolInZone[] {
-  const candidates = getNswSchools();
+export function getSchoolsInZone(feature: CatchmentFeature, state: string, limit?: number): SchoolInZone[] {
+  const candidates = getSchoolsForState(state);
   const [minLng, minLat, maxLng, maxLat] = geometryBbox(feature.geometry);
   const inside: SchoolInZone[] = [];
 
   for (const school of candidates) {
     if (school.acara_sml_id === feature.properties.acara_sml_id) continue;
     // Cheap rejection first: point-in-polygon over a few hundred vertices, run
-    // for every NSW school on every one of 2,029 zone pages, is what makes the
-    // build slow. The bbox test removes almost all of them.
+    // for every school in the state on every one of ~2,150 zone pages, is what
+    // makes the build slow. The bbox test removes almost all of them.
     if (school.lng < minLng || school.lng > maxLng || school.lat < minLat || school.lat > maxLat) continue;
     if (!pointInGeometry([school.lng, school.lat], feature.geometry)) continue;
     inside.push({ school, slug: getSchoolSlug(school) });
@@ -321,12 +344,13 @@ export function getCatchmentZoneSections(school: School): CatchmentZoneSection[]
 
   return (school.catchments ?? []).flatMap<CatchmentZoneSection>(catchment => {
     const feature = readCatchmentFeature({
+      state: school.state.toLowerCase(),
       location_age_id: Number(school.location_age_id),
       kind: catchment.kind,
     });
     if (!feature) return [];
 
-    const inside = getSchoolsInZone(feature);
+    const inside = getSchoolsInZone(feature, school.state);
     return [{ catchment, feature, inside, suburbs: getZoneSuburbs(inside) }];
   });
 }

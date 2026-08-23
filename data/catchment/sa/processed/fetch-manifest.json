@@ -1,0 +1,29 @@
+{
+  "fetched_at": "2026-08-23T15:37:21.555Z",
+  "current_enrolment_year": 2025,
+  "dataset_pages": {
+    "primary_zones": "https://data.sa.gov.au/data/dataset/school-zones-for-south-australian-govt-primary-schools",
+    "high_zones": "https://data.sa.gov.au/data/dataset/school-zones-for-south-australian-govt-high-schools",
+    "education_sites": "https://data.sa.gov.au/data/dataset/south-australian-government-education-site"
+  },
+  "downloads": {
+    "primary_zones": {
+      "url": "https://data.sa.gov.au/data/dataset/4ec9b847-da5d-4ac6-82aa-5d653c17e19e/resource/3aca3689-0967-4239-8e03-4b0359fbbf95/download/primaryschoolzones2025ey.zip",
+      "bytes": 206507,
+      "etag": "\"1727234029.078-206507-1023809763\"",
+      "last_modified": "Wed, 25 Sep 2024 03:13:49 GMT"
+    },
+    "high_zones": {
+      "url": "https://data.sa.gov.au/data/dataset/46832dee-6c89-4a09-b813-f7864f257bde/resource/2107f2b8-610c-4caa-a640-153c6e46176d/download/highschoolzones2025ey.zip",
+      "bytes": 280060,
+      "etag": "\"1727233177.077-280060-1067784433\"",
+      "last_modified": "Wed, 25 Sep 2024 02:59:37 GMT"
+    },
+    "education_sites": {
+      "url": "https://www.dptiapps.com.au/dataportal/GovernmentEducationSites_geojson.zip",
+      "bytes": 386135,
+      "etag": null,
+      "last_modified": "Sun, 28 Jun 2026 00:25:55 GMT"
+    }
+  }
+}

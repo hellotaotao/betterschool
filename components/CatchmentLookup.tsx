@@ -2,10 +2,9 @@
 
 import { School } from '@/types/school';
 import ZoneSwatch from './ZoneSwatch';
-import { formatMessage, Messages } from '@/lib/i18n';
+import { coveredCatchmentStates, formatMessage, Locale, Messages } from '@/lib/i18n';
+import { catchmentStateInfo } from '@/lib/catchmentStates';
 import type { CatchmentFeature } from '@/lib/catchmentLookup';
-
-const SCHOOL_FINDER_URL = 'https://education.nsw.gov.au/school-finder';
 
 interface CatchmentLookupProps {
   results: CatchmentFeature[] | null;
@@ -13,6 +12,7 @@ interface CatchmentLookupProps {
   loading: boolean;
   error: boolean;
   dictionary: Messages;
+  locale: Locale;
   onClear: () => void;
   onPickSchool: (school: School) => void;
   variant?: 'panel' | 'sheet';
@@ -26,6 +26,7 @@ export default function CatchmentLookup({
   loading,
   error,
   dictionary,
+  locale,
   onClear,
   onPickSchool,
   variant = 'panel',
@@ -45,6 +46,16 @@ export default function CatchmentLookup({
   const overlapping = (['primary', 'secondary', 'future'] as const)
     .some(kind => sorted.filter(f => f.properties.kind === kind).length > 1);
 
+  // A point sits in one state, so the first result that resolves to a school
+  // settles which department's finder is the authoritative one to link.
+  const resultState = sorted
+    .map(feature => schoolsByLocationAgeId.get(feature.properties.location_age_id)?.state)
+    .find(Boolean);
+  const finderUrl = resultState ? catchmentStateInfo(resultState)?.finderUrl : undefined;
+  const stateLabel = resultState
+    ? (locale === 'zh' ? (dictionary.seo.states as Record<string, string>)[resultState] ?? resultState : resultState)
+    : '';
+
   return (
     <div className={wrapClass} style={isPanel ? { top: topOffset ?? 56 } : undefined}>
       <div className="px-3 py-2.5 border-b border-gray-100 flex justify-between items-center shrink-0">
@@ -60,7 +71,9 @@ export default function CatchmentLookup({
         {!loading && !error && sorted.length === 0 && (
           <div className="py-4 space-y-2">
             <p className="text-xs text-gray-500 text-center">{dictionary.lookup.noResults}</p>
-            <p className="text-[10px] text-gray-400 text-center">{dictionary.catchment.nswOnly}</p>
+            <p className="text-[10px] text-gray-400 text-center">
+              {formatMessage(dictionary.catchment.statesOnly, { states: coveredCatchmentStates(dictionary, locale) })}
+            </p>
           </div>
         )}
 
@@ -89,9 +102,11 @@ export default function CatchmentLookup({
               {school && (
                 <div className="text-[10px] text-gray-400 mt-0.5">{school.suburb}, {school.state}</div>
               )}
-              <div className="text-[10px] text-gray-400 mt-1">
-                {formatMessage(dictionary.catchment.years, { levels: feature.properties.year_levels.join(', ') })}
-              </div>
+              {feature.properties.year_levels.length > 0 && (
+                <div className="text-[10px] text-gray-400 mt-1">
+                  {formatMessage(dictionary.catchment.years, { levels: feature.properties.year_levels.join(', ') })}
+                </div>
+              )}
               <div className="text-[9px] text-gray-400">
                 {formatMessage(dictionary.catchment.dataYear, { year: feature.properties.data_year })}
               </div>
@@ -101,15 +116,19 @@ export default function CatchmentLookup({
 
         {!loading && !error && sorted.length > 0 && (
           <div className="pt-1 space-y-1.5">
-            <p className="text-[9px] text-gray-500 leading-snug">{dictionary.catchment.disclaimer}</p>
-            <a
-              href={SCHOOL_FINDER_URL}
-              target="_blank"
-              rel="noreferrer"
-              className="block text-[10px] font-medium text-indigo-600 hover:underline"
-            >
-              {dictionary.catchment.officialLink} →
-            </a>
+            <p className="text-[9px] text-gray-500 leading-snug">
+              {formatMessage(dictionary.catchment.disclaimer, { state: stateLabel })}
+            </p>
+            {finderUrl && (
+              <a
+                href={finderUrl}
+                target="_blank"
+                rel="noreferrer"
+                className="block text-[10px] font-medium text-indigo-600 hover:underline"
+              >
+                {formatMessage(dictionary.catchment.officialLink, { state: stateLabel })} →
+              </a>
+            )}
           </div>
         )}
       </div>

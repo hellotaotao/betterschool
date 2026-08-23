@@ -6,6 +6,7 @@ import { getRelatedSuburbs, getSchoolSlug, getSuburb } from '@/lib/schoolsData';
 import { formatMessage, getMessages, getSchoolTypeLabel, getSectorLabel } from '@/lib/i18n';
 import { buildPageMetadata, getSeo, localeStateLabel, localeStateName, type Locale } from '@/lib/seoLocale';
 import { browsePath, catchmentPath, mapUrl, stateIndexPath, suburbPath } from '@/lib/slug';
+import { catchmentStateCodes, catchmentStateInfo } from '@/lib/catchmentStates';
 import PageShell from '@/components/seo/PageShell';
 import SchoolLinkCard from '@/components/seo/SchoolLinkCard';
 
@@ -60,6 +61,8 @@ export default function SuburbBody({ locale, state, slug }: { locale: Locale; st
     return acc;
   }, {});
   const zoned = group.schools.filter(school => (school.catchments?.length ?? 0) > 0);
+  const zoneState = catchmentStateInfo(group.state);
+  const coveredStates = catchmentStateCodes().map(code => localeStateLabel(locale, code)).join(', ');
 
   return (
     <PageShell
@@ -115,9 +118,9 @@ export default function SuburbBody({ locale, state, slug }: { locale: Locale; st
 
       <section className="mt-8" aria-labelledby="zones">
         <h2 id="zones" className="text-base font-semibold">{t.zonesHeading}</h2>
-        {group.state !== 'NSW' ? (
+        {!zoneState ? (
           <p className="mt-2 text-sm text-gray-600">
-            {formatMessage(t.zonesOtherState, { state: full })}
+            {formatMessage(t.zonesOtherState, { state: full, states: coveredStates })}
           </p>
         ) : zoned.length > 0 ? (
           <>
@@ -139,7 +142,9 @@ export default function SuburbBody({ locale, state, slug }: { locale: Locale; st
           </>
         ) : (
           <p className="mt-2 text-sm text-gray-600">
-            {formatMessage(t.zonesNone, { suburb: group.suburb })}{' '}
+            {zoneState.complete
+              ? formatMessage(t.zonesNone, { suburb: group.suburb })
+              : formatMessage(t.zonesNonePartial, { suburb: group.suburb, state: full })}{' '}
             <Link
               href={mapUrl({ locale, suburb: { state: group.state, suburb: group.suburb } })}
               className="text-indigo-700 hover:underline"

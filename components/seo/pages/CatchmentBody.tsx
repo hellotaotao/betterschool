@@ -7,8 +7,7 @@ import { buildPageMetadata, getSeo, localeKind, localeStateLabel, localeStateNam
 import { browsePath, catchmentPath, mapUrl, schoolPath, stateIndexPath, suburbPath } from '@/lib/slug';
 import PageShell from '@/components/seo/PageShell';
 import SchoolLinkCard from '@/components/seo/SchoolLinkCard';
-
-const SCHOOL_FINDER_URL = 'https://education.nsw.gov.au/school-finder';
+import { catchmentStateInfo } from '@/lib/catchmentStates';
 
 /** Source ADD_DATE is a bare yyyymmdd string. Render it, don't dump it. */
 function formatBoundaryDate(raw: string | undefined, locale: Locale): string | null {
@@ -28,12 +27,10 @@ export function catchmentMetadata(locale: Locale, state: string, slug: string): 
   if (!school?.catchments?.length) return {};
 
   const t = getSeo(locale).catchment;
-  const levels = [...new Set(school.catchments.flatMap(c => c.year_levels))].join(', ');
   const values = {
     school: school.school_name,
     suburb: school.suburb,
     state: localeStateLabel(locale, school.state),
-    levels,
   };
 
   return buildPageMetadata({
@@ -56,6 +53,9 @@ export default function CatchmentBody({ locale, state, slug }: { locale: Locale;
   const dataYear = catchments[0]?.data_year;
   const zones = getCatchmentZoneSections(school);
   const full = localeStateName(locale, school.state);
+  // Every state warns that a boundary can split a street, but only the
+  // school's own department can settle an address.
+  const finderUrl = catchmentStateInfo(school.state)?.finderUrl;
 
   return (
     <PageShell
@@ -97,7 +97,9 @@ export default function CatchmentBody({ locale, state, slug }: { locale: Locale;
                   {formatMessage(t.zoneKind, { kind: localeKind(locale, catchment.kind) })}
                 </dt>
                 <dd className="text-sm text-gray-900 sm:col-span-2">
-                  {formatMessage(t.zoneYears, { levels: catchment.year_levels.join(', ') })}
+                  {catchment.year_levels.length > 0
+                    ? formatMessage(t.zoneYears, { levels: catchment.year_levels.join(', ') })
+                    : t.zoneYearsUnknown}
                   <span className="block text-[11px] text-gray-400 mt-0.5">
                     {formatMessage(t.zoneDataYear, { year: catchment.data_year })}
                     {catchment.effective_year
@@ -114,15 +116,19 @@ export default function CatchmentBody({ locale, state, slug }: { locale: Locale;
 
       <section className="mt-8 rounded-lg border border-amber-200 bg-amber-50/60 p-3">
         <h2 className="text-sm font-semibold text-amber-900">{t.checkHeading}</h2>
-        <p className="mt-1 text-xs text-amber-900/80 leading-relaxed">{t.checkBody}</p>
-        <a
-          href={SCHOOL_FINDER_URL}
-          target="_blank"
-          rel="noreferrer"
-          className="mt-2 inline-block text-xs font-medium text-amber-900 underline"
-        >
-          {t.schoolFinderLink} →
-        </a>
+        <p className="mt-1 text-xs text-amber-900/80 leading-relaxed">
+          {formatMessage(t.checkBody, { state: localeStateLabel(locale, school.state) })}
+        </p>
+        {finderUrl && (
+          <a
+            href={finderUrl}
+            target="_blank"
+            rel="noreferrer"
+            className="mt-2 inline-block text-xs font-medium text-amber-900 underline"
+          >
+            {formatMessage(t.schoolFinderLink, { state: localeStateLabel(locale, school.state) })} →
+          </a>
+        )}
       </section>
 
       {zones.map(({ catchment, inside, suburbs }) => (

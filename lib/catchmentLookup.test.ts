@@ -82,25 +82,33 @@ describe('candidatesAt', () => {
     attribution: 'NSW Department of Education',
     licence: 'CC-BY',
     catchments: [
-      { location_age_id: 1, acara_sml_id: 11, kind: 'primary', catch_type: 'PRIMARY', year_levels: ['K'], bbox: [150, -34, 151, -33] },
-      { location_age_id: 2, acara_sml_id: 22, kind: 'secondary', catch_type: 'HIGH_COED', year_levels: ['7'], bbox: [150.5, -33.8, 152, -33.2] },
-      { location_age_id: 3, acara_sml_id: 33, kind: 'primary', catch_type: 'PRIMARY', year_levels: ['K'], bbox: [140, -37, 141, -36] },
+      { state: 'nsw', location_age_id: 1, acara_sml_id: 11, kind: 'primary', catch_type: 'PRIMARY', year_levels: ['K'], bbox: [150, -34, 151, -33] },
+      { state: 'nsw', location_age_id: 2, acara_sml_id: 22, kind: 'secondary', catch_type: 'HIGH_COED', year_levels: ['7'], bbox: [150.5, -33.8, 152, -33.2] },
+      { state: 'nsw', location_age_id: 3, acara_sml_id: 33, kind: 'primary', catch_type: 'PRIMARY', year_levels: ['K'], bbox: [140, -37, 141, -36] },
+      { state: 'sa', location_age_id: 4, acara_sml_id: 44, kind: 'primary', catch_type: 'PRIM', year_levels: ['R'], bbox: [138.5, -35, 138.7, -34.8] },
     ],
   };
 
   it('returns every catchment whose bbox covers the point, across kinds', () => {
-    const hits = candidatesAt(index, [150.7, -33.5]);
+    const hits = candidatesAt(index.catchments, [150.7, -33.5]);
     expect(hits.map(entry => entry.location_age_id)).toEqual([1, 2]);
   });
 
   it('returns nothing far from any catchment', () => {
-    expect(candidatesAt(index, [145, -30])).toEqual([]);
+    expect(candidatesAt(index.catchments, [145, -30])).toEqual([]);
   });
 });
 
 describe('catchmentGeometryUrl', () => {
   it('matches the filename the build script emits', () => {
-    expect(catchmentGeometryUrl({ location_age_id: 50321, kind: 'primary' }))
+    expect(catchmentGeometryUrl({ state: 'nsw', location_age_id: 50321, kind: 'primary' }))
       .toBe('/data/catchment/nsw/50321-primary.json');
+  });
+
+  // The entry carries its own state, so one merged index can serve a lookup
+  // that straddles a border without the caller tracking which file to read.
+  it('routes each state to its own directory', () => {
+    expect(catchmentGeometryUrl({ state: 'sa', location_age_id: 1234, kind: 'secondary' }))
+      .toBe('/data/catchment/sa/1234-secondary.json');
   });
 });

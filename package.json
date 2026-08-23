@@ -18,7 +18,11 @@
     "nsw:catchment:fetch": "node scripts/fetch-nsw-catchment.mjs",
     "nsw:catchment:parse": "node scripts/parse-nsw-catchment.mjs",
     "nsw:catchment:build": "node scripts/build-nsw-catchment.mjs",
-    "nsw:catchment:validate": "node scripts/validate-nsw-catchment.mjs"
+    "nsw:catchment:validate": "node scripts/validate-nsw-catchment.mjs",
+    "sa:catchment:fetch": "node scripts/fetch-sa-catchment.mjs",
+    "sa:catchment:parse": "node scripts/parse-sa-catchment.mjs",
+    "sa:catchment:build": "node scripts/build-sa-catchment.mjs",
+    "sa:catchment:validate": "node scripts/validate-sa-catchment.mjs"
   },
   "dependencies": {
     "@types/leaflet": "^1.9.21",

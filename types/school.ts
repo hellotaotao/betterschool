@@ -33,13 +33,22 @@ export interface SchoolCatchment {
   /** Static GeoJSON Feature, fetched on demand — geometry never ships in the canonical file. */
   geometry_url: string;
   kind: CatchmentKind;
-  /** Official CATCH_TYPE, e.g. PRIMARY / CENTRAL_HIGH / INFANTS. '+' joined when merged rows disagree. */
+  /** The source's own zone label — NSW CATCH_TYPE (PRIMARY / CENTRAL_HIGH / INFANTS), SA type (PRIM / SEC / PRSEC). '+' joined when merged rows disagree. */
   catch_type: string;
-  /** Year levels this zone applies to, e.g. ['K','1',…,'6']. Read from the source flags, not inferred from catch_type. */
+  /**
+   * Year levels this zone applies to, e.g. ['K','1',…,'6'].
+   *
+   * Read from the source's own per-zone flags, never inferred from catch_type
+   * or from the school's year range. Empty where the source publishes no
+   * per-zone year levels at all — South Australia does not, and six SA schools
+   * hold both a primary and a secondary zone, so borrowing the school's
+   * designation would claim the primary zone runs to Year 12.
+   */
   year_levels: string[];
   /** Future zones only: the year the zone takes effect. */
   effective_year?: number;
-  nsw_school_code: string;
+  /** The publishing department's own school identifier: NSW USE_ID, SA org_num. */
+  source_school_code: string;
   /** Enrolment year the boundary applies to. */
   data_year: number;
   source: string;

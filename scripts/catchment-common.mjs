@@ -1,0 +1,154 @@
+// Geometry and file helpers shared by every state's catchment pipeline.
+//
+// Split out of nsw-catchment-common.mjs when South Australia was added: the
+// per-state modules differ in source URLs, attribute names and join chain, but
+// none of that reaches the rounding, bbox and IO rules, which must stay
+// identical across states or the reverse lookup would behave differently
+// depending on which side of a border a user clicked.
+
+import fs from 'node:fs';
+import path from 'node:path';
+
+/**
+ * Coordinate decimal places kept when writing GeoJSON.
+ *
+ * 6 dp is ~0.1 m at Australian latitudes — far finer than the boundaries
+ * themselves are meaningful — while cutting file size roughly in half versus
+ * the raw doubles. This is rounding, NOT geometric simplification: no vertex is
+ * ever dropped, so adjacent catchments cannot develop slivers or gaps and the
+ * reverse lookup stays faithful to the published boundary.
+ */
+export const COORD_PRECISION = 6;
+
+export function ensureDir(dir) {
+  fs.mkdirSync(dir, { recursive: true });
+}
+
+export function readJson(filePath) {
+  return JSON.parse(fs.readFileSync(filePath, 'utf8'));
+}
+
+export function writeJson(filePath, payload, { pretty = true } = {}) {
+  ensureDir(path.dirname(filePath));
+  const body = pretty ? JSON.stringify(payload, null, 2) : JSON.stringify(payload);
+  fs.writeFileSync(filePath, `${body}\n`);
+  return filePath;
+}
+
+export function roundCoord(value) {
+  return Number(value.toFixed(COORD_PRECISION));
+}
+
+/** Recursively round every coordinate pair in a GeoJSON coordinate array. */
+export function roundCoordinates(coordinates) {
+  if (typeof coordinates[0] === 'number') {
+    return [roundCoord(coordinates[0]), roundCoord(coordinates[1])];
+  }
+  return coordinates.map(roundCoordinates);
+}
+
+/** Compute [minLng, minLat, maxLng, maxLat] for a GeoJSON geometry. */
+export function geometryBbox(geometry) {
+  let minLng = Infinity, minLat = Infinity, maxLng = -Infinity, maxLat = -Infinity;
+
+  const visit = (coordinates) => {
+    if (typeof coordinates[0] === 'number') {
+      const [lng, lat] = coordinates;
+      if (lng < minLng) minLng = lng;
+      if (lat < minLat) minLat = lat;
+      if (lng > maxLng) maxLng = lng;
+      if (lat > maxLat) maxLat = lat;
+      return;
+    }
+    coordinates.forEach(visit);
+  };
+
+  visit(geometry.coordinates);
+  return [minLng, minLat, maxLng, maxLat];
+}
+
+/**
+ * Round a bbox to 4 dp (~11 m) for the lookup index, always outward.
+ *
+ * The index is only a coarse prefilter before exact point-in-polygon on the
+ * full-precision geometry, so 6 dp there is wasted bytes. Rounding must expand
+ * the box, never shrink it: a box rounded inward could exclude a point that
+ * genuinely falls inside the catchment.
+ */
+export function coarsenBbox([minLng, minLat, maxLng, maxLat]) {
+  const floor = (value) => Math.floor(value * 1e4) / 1e4;
+  const ceil = (value) => Math.ceil(value * 1e4) / 1e4;
+  return [floor(minLng), floor(minLat), ceil(maxLng), ceil(maxLat)];
+}
+
+/** Count coordinate pairs in a geometry — used for coverage reporting. */
+export function countVertices(geometry) {
+  let total = 0;
+  const visit = (coordinates) => {
+    if (typeof coordinates[0] === 'number') { total += 1; return; }
+    coordinates.forEach(visit);
+  };
+  visit(geometry.coordinates);
+  return total;
+}
+
+/** Merge same-school, same-kind polygons into one MultiPolygon. */
+export function mergeGeometries(records) {
+  if (records.length === 1) return records[0].geometry;
+
+  const polygons = [];
+  for (const record of records) {
+    if (record.geometry.type === 'Polygon') polygons.push(record.geometry.coordinates);
+    else if (record.geometry.type === 'MultiPolygon') polygons.push(...record.geometry.coordinates);
+  }
+  return { type: 'MultiPolygon', coordinates: polygons };
+}
+
+/** Great-circle distance in km — used to confirm an ID join landed on the right site. */
+export function distanceKm(aLat, aLng, bLat, bLng) {
+  const toRad = (deg) => (deg * Math.PI) / 180;
+  const dLat = toRad(bLat - aLat);
+  const dLng = toRad(bLng - aLng);
+  const h = Math.sin(dLat / 2) ** 2
+    + Math.cos(toRad(aLat)) * Math.cos(toRad(bLat)) * Math.sin(dLng / 2) ** 2;
+  return 2 * 6371 * Math.asin(Math.sqrt(h));
+}
+
+/** Case- and punctuation-insensitive name key, for verifying a join rather than making one. */
+export function normaliseName(value) {
+  return String(value ?? '').toLowerCase().replace(/[^a-z0-9]+/g, ' ').trim();
+}
+
+/**
+ * Ray-cast point-in-polygon, holes respected.
+ *
+ * Mirrors lib/catchmentLookup.ts. Kept here so the validators can ask the
+ * geometry the same question the app asks at runtime; a validator that used a
+ * looser test could pass a boundary the app then disagrees with.
+ */
+function pointInRing(point, ring) {
+  let inside = false;
+  for (let i = 0, j = ring.length - 1; i < ring.length; j = i++) {
+    const [xi, yi] = ring[i];
+    const [xj, yj] = ring[j];
+    if (((yi > point[1]) !== (yj > point[1]))
+      && (point[0] < ((xj - xi) * (point[1] - yi)) / (yj - yi) + xi)) {
+      inside = !inside;
+    }
+  }
+  return inside;
+}
+
+function pointInPolygon(point, rings) {
+  if (!pointInRing(point, rings[0])) return false;
+  for (let i = 1; i < rings.length; i += 1) {
+    if (pointInRing(point, rings[i])) return false; // in a hole
+  }
+  return true;
+}
+
+export function pointInGeometry(point, geometry) {
+  if (geometry.type === 'Polygon') return pointInPolygon(point, geometry.coordinates);
+  if (geometry.type === 'MultiPolygon') return geometry.coordinates.some((rings) => pointInPolygon(point, rings));
+  return false;
+}
