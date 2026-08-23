@@ -58,3 +58,17 @@ body {
 .leaflet-cluster-anim .leaflet-marker-shadow {
   transition: transform 0.25s ease-out, opacity 0.25s ease-in;
 }
+
+/*
+ * Basemap recedes while the zone browse overlay is on.
+ *
+ * OSM tiles carry coloured roads, waterways and parkland at the same widths and
+ * hues as a boundary line, so at full saturation an outline reads as one more
+ * road. Only the tile pane is dimmed — markers, zone outlines and the lookup
+ * pin sit in other panes and keep their colour, which is the whole point: the
+ * data rises out of the basemap rather than everything fading together.
+ */
+.zone-overlay-active .leaflet-tile-pane {
+  filter: saturate(0.3) brightness(1.06);
+  transition: filter 200ms ease-out;
+}

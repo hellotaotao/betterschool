@@ -10,7 +10,7 @@ import {
   resolveInitialLocale,
 } from '@/lib/i18n';
 import { School } from '@/types/school';
-import { FilterState, filterSchools, SECTOR_COLORS } from '@/utils/schoolFilters';
+import { CATCHMENT_COLORS, FilterState, filterSchools, SECTOR_COLORS } from '@/utils/schoolFilters';
 import { useMediaQuery } from '@/lib/useMediaQuery';
 import { schoolPath, schoolSlugFor, stateSlug, suburbSlug } from '@/lib/slug';
 import schoolsMetadata from '@/public/data/schools.metadata.json';
@@ -446,7 +446,7 @@ export default function SchoolsPage() {
 
   return (
     <div className="relative w-screen h-screen overflow-hidden">
-      <div className="absolute inset-0 z-0 bg-gray-100">
+      <div className={`absolute inset-0 z-0 bg-gray-100${overlayState?.features.length ? ' zone-overlay-active' : ''}`}>
         {loading ? (
           <div className="w-full h-full flex items-center justify-center text-gray-500">
             {dictionary.loadingMap}
@@ -665,6 +665,18 @@ export default function SchoolsPage() {
           {/* The detail panel occupies the same right-hand column, so hide the
               legend while a school is selected instead of stacking the two. */}
           <div className={`absolute bottom-8 right-3 z-10 bg-white/90 backdrop-blur-sm rounded-lg px-3 py-2 shadow-md text-[10px] text-gray-600 space-y-1 ${selectedSchool ? 'hidden' : ''}`}>
+            {zoneOverlay !== 'off' && (
+              <div className="flex items-center gap-2 pb-1 mb-1 border-b border-gray-100">
+                <span
+                  className="inline-block w-4 h-0 shrink-0"
+                  style={{
+                    borderTop: `2.5px solid ${CATCHMENT_COLORS[zoneOverlay].color}`,
+                    outline: '1.5px solid rgba(255,255,255,0.9)',
+                  }}
+                ></span>
+                <span className="font-medium text-gray-700">{dictionary.catchment[zoneOverlay]}</span>
+              </div>
+            )}
             <div className="flex items-center gap-2">
               <span
                 className="w-3 h-3 rounded-full border border-white inline-block shrink-0"

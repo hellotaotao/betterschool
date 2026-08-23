@@ -663,7 +663,22 @@ export default function SchoolMap({
 
         {/* Browse overlay: outlines only, no fill. A filled zone already means
             "this is the school you selected", and dozens of translucent fills
-            stacked over one another would read as depth that is not there. */}
+            stacked over one another would read as depth that is not there.
+
+            Drawn twice — a white casing under a coloured stroke. A single thin
+            line disappears into an OSM basemap that is already full of coloured
+            roads and waterways at similar widths; the casing is what makes it
+            read as a deliberate boundary rather than another road. Every casing
+            is laid down before any coloured stroke, so a neighbouring zone's
+            halo cannot paint over the line it abuts. */}
+        {overlayFeatures?.map((feature) => (
+          <GeoJSON
+            key={`overlay-casing-${feature.properties.location_age_id}-${feature.properties.kind}`}
+            data={feature as never}
+            interactive={false}
+            style={{ color: '#ffffff', weight: 5, opacity: 0.85, fill: false }}
+          />
+        ))}
         {overlayFeatures?.map((feature) => {
           const style = CATCHMENT_COLORS[feature.properties.kind] ?? CATCHMENT_COLORS.primary;
           return (
@@ -673,8 +688,8 @@ export default function SchoolMap({
               interactive={false}
               style={{
                 color: style.color,
-                weight: 1,
-                opacity: 0.55,
+                weight: 2.5,
+                opacity: 1,
                 dashArray: style.dashArray,
                 fill: false,
               }}
