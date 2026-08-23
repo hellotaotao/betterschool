@@ -51,6 +51,18 @@ export const SECTOR_COLORS: Record<string, string> = {
   Independent: '#ea580c',
 };
 
+/**
+ * Catchment outline colours, deliberately outside the sector palette: on this
+ * map hue means sector, so a zone boundary must not borrow one of those three.
+ * Lives here rather than in SchoolMap because the detail and lookup panels name
+ * these colours too, and SchoolMap is a dynamic ssr:false import.
+ */
+export const CATCHMENT_COLORS: Record<string, { color: string; dashArray?: string }> = {
+  primary: { color: '#2563eb' },
+  secondary: { color: '#db2777' },
+  future: { color: '#64748b', dashArray: '6 4' },
+};
+
 const UNKNOWN_SECTOR_COLOR = '#6b7280';
 
 /**

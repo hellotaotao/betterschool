@@ -95,6 +95,7 @@
     "primary": "小学学区",
     "secondary": "中学学区",
     "future": "未来学区",
+    "overlapNote": "同一个地址可以同时落在多个学区里。男校和女校覆盖的是同一片区域；只招 11–12 年级的高中部，也会叠在 7–12 年级的学校之上。",
     "years": "适用 {levels} 年级",
     "dataYear": "{year} 招生年度",
     "effectiveFrom": "{year} 年起生效",

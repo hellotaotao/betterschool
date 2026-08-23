@@ -3,6 +3,7 @@
 import { School } from '@/types/school';
 import { formatMessage, getReligionLabel, getSchoolTypeLabel, getSectorLabel, Messages } from '@/lib/i18n';
 import { hasLegacyScore } from '@/utils/schoolFilters';
+import ZoneSwatch from './ZoneSwatch';
 
 const SCHOOL_FINDER_URL = 'https://education.nsw.gov.au/school-finder';
 
@@ -247,7 +248,10 @@ export default function SchoolDetail({
               {catchments.map(catchment => (
                 <div key={`${catchment.kind}-${catchment.catch_type}`} className="space-y-0.5">
                   <div className="flex justify-between gap-2">
-                    <span className="text-blue-800/70">{dictionary.catchment[catchment.kind]}</span>
+                    <span className="flex items-center gap-1.5 text-blue-800/70">
+                      <ZoneSwatch kind={catchment.kind} />
+                      {dictionary.catchment[catchment.kind]}
+                    </span>
                     <span className="font-medium text-blue-900 text-right">
                       {formatMessage(dictionary.catchment.years, { levels: catchment.year_levels.join(', ') })}
                     </span>

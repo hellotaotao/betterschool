@@ -95,6 +95,7 @@
     "primary": "Primary intake zone",
     "secondary": "Secondary intake zone",
     "future": "Future intake zone",
+    "overlapNote": "More than one zone can cover the same address. Boys' and girls' high schools serve the same area, and a senior campus can cover Years 11–12 on top of a Years 7–12 school.",
     "years": "Years {levels}",
     "dataYear": "{year} enrolment year",
     "effectiveFrom": "Takes effect {year}",

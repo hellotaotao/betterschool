@@ -1,6 +1,7 @@
 "use client";
 
 import { School } from '@/types/school';
+import ZoneSwatch from './ZoneSwatch';
 import { formatMessage, Messages } from '@/lib/i18n';
 import type { CatchmentFeature } from '@/lib/catchmentLookup';
 
@@ -38,6 +39,11 @@ export default function CatchmentLookup({
   // Primary before secondary before future — the order a parent reads them in.
   const order = { primary: 0, secondary: 1, future: 2 } as const;
   const sorted = [...(results ?? [])].sort((a, b) => order[a.properties.kind] - order[b.properties.kind]);
+  // Two zones of one kind over a single address is normal here, not an error —
+  // single-sex highs cover the same ground, and senior campuses sit on top of
+  // 7-12 schools. Say so, rather than leaving the reader to guess.
+  const overlapping = (['primary', 'secondary', 'future'] as const)
+    .some(kind => sorted.filter(f => f.properties.kind === kind).length > 1);
 
   return (
     <div className={wrapClass} style={isPanel ? { top: topOffset ?? 56 } : undefined}>
@@ -58,6 +64,12 @@ export default function CatchmentLookup({
           </div>
         )}
 
+        {!loading && !error && overlapping && (
+          <p className="rounded-md bg-blue-50/70 px-2.5 py-2 text-[10px] leading-snug text-blue-900">
+            {dictionary.catchment.overlapNote}
+          </p>
+        )}
+
         {!loading && !error && sorted.map(feature => {
           const school = schoolsByLocationAgeId.get(feature.properties.location_age_id);
           return (
@@ -67,7 +79,8 @@ export default function CatchmentLookup({
               disabled={!school}
               className="w-full text-left p-2.5 rounded-lg bg-white border border-gray-100 hover:border-indigo-300 hover:shadow-sm transition-all disabled:cursor-default"
             >
-              <div className="text-[9px] font-semibold uppercase tracking-wide text-indigo-600">
+              <div className="flex items-center gap-1.5 text-[9px] font-semibold uppercase tracking-wide text-indigo-600">
+                <ZoneSwatch kind={feature.properties.kind} />
                 {dictionary.catchment[feature.properties.kind]}
               </div>
               <div className="text-xs font-semibold text-gray-900 leading-tight mt-0.5">

@@ -5,15 +5,9 @@ import { MapContainer, TileLayer, Marker, GeoJSON, useMap, useMapEvents } from '
 import L from 'leaflet';
 import 'leaflet.markercluster';
 import { School } from '@/types/school';
-import { getMarkerRadius, getMarkerColor, SECTOR_COLORS } from '@/utils/schoolFilters';
+import { getMarkerRadius, getMarkerColor, CATCHMENT_COLORS, SECTOR_COLORS } from '@/utils/schoolFilters';
 import type { CatchmentFeature } from '@/lib/catchmentLookup';
 
-/** Catchment outline colours, distinct from the sector hues used by markers. */
-const CATCHMENT_STYLE: Record<string, { color: string; dashArray?: string }> = {
-  primary: { color: '#2563eb' },
-  secondary: { color: '#db2777' },
-  future: { color: '#64748b', dashArray: '6 4' },
-};
 
 /**
  * Pin marking the location the user asked about in catchment lookup mode.
@@ -654,7 +648,7 @@ export default function SchoolMap({
 
         {/* Catchment outlines sit under the markers so schools stay clickable. */}
         {catchmentFeatures?.map((feature) => {
-          const style = CATCHMENT_STYLE[feature.properties.kind] ?? CATCHMENT_STYLE.primary;
+          const style = CATCHMENT_COLORS[feature.properties.kind] ?? CATCHMENT_COLORS.primary;
           return (
             <GeoJSON
               key={`${feature.properties.location_age_id}-${feature.properties.kind}`}
