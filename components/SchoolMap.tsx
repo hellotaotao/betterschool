@@ -15,16 +15,29 @@ const CATCHMENT_STYLE: Record<string, { color: string; dashArray?: string }> = {
   future: { color: '#64748b', dashArray: '6 4' },
 };
 
-/** Pin marking the location the user asked about in catchment lookup mode. */
+/**
+ * Pin marking the location the user asked about in catchment lookup mode.
+ *
+ * Sized well clear of the school markers (10-36px) it lands among — at 18px it
+ * was just another dot in the crowd, and the one thing on screen that answers
+ * "where did I click?" has to win that comparison. Slate rather than a hue,
+ * for the same reason selection is slate: colour on this map means sector.
+ */
 const lookupPinIcon = L.divIcon({
   className: 'catchment-lookup-pin',
   html: `<div style="
-    width:18px;height:18px;border-radius:50% 50% 50% 0;
-    background:#4f46e5;border:2px solid white;
-    transform:rotate(-45deg);box-shadow:0 1px 4px rgba(0,0,0,.4);
-  "></div>`,
-  iconSize: [18, 18],
-  iconAnchor: [9, 18],
+    position:relative;
+    width:28px;height:28px;border-radius:50% 50% 50% 0;
+    background:#0f172a;border:3px solid white;
+    transform:rotate(-45deg);
+    box-shadow:0 0 0 4px rgba(15,23,42,.18),0 2px 6px rgba(0,0,0,.45);
+  "><div style="
+      position:absolute;top:50%;left:50%;
+      width:8px;height:8px;margin:-4px 0 0 -4px;
+      border-radius:50%;background:white;
+    "></div></div>`,
+  iconSize: [28, 28],
+  iconAnchor: [14, 28],
 });
 
 /** Cache marker icons by rendered radius, sector, and selection state. */
