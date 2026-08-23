@@ -8,6 +8,8 @@ import { School } from '@/types/school';
 import { getMarkerRadius, getMarkerColor, CATCHMENT_COLORS, SECTOR_COLORS } from '@/utils/schoolFilters';
 import type { CatchmentFeature } from '@/lib/catchmentLookup';
 
+export interface Viewport { west: number; south: number; east: number; north: number }
+
 
 /**
  * Pin marking the location the user asked about in catchment lookup mode.
@@ -179,6 +181,9 @@ interface SchoolMapProps {
   onGeoReady?: () => void;
   /** Catchment polygons to draw, if any. */
   catchmentFeatures?: CatchmentFeature[] | null;
+  /** Browse overlay: every zone of one kind across the viewport, outlines only. */
+  overlayFeatures?: CatchmentFeature[] | null;
+  onViewportChange?: (viewport: Viewport) => void;
   /** When true, a map click picks a location to look up instead of clearing the selection. */
   pickMode?: boolean;
   onPickLocation?: (point: [number, number]) => void;
@@ -345,19 +350,27 @@ function FitToCatchments({ features }: { features: CatchmentFeature[] | null | u
 function BoundsTracker({
   schools,
   onBoundsChange,
+  onViewportChange,
 }: {
   schools: School[];
   onBoundsChange: (visible: School[]) => void;
+  /** Raw viewport, for the browse overlay's index query. */
+  onViewportChange?: (viewport: Viewport) => void;
 }) {
   const report = () => {
     const bounds = map.getBounds();
     onBoundsChange(schools.filter(s => bounds.contains([s.lat, s.lng])));
+    onViewportChange?.({
+      west: bounds.getWest(),
+      south: bounds.getSouth(),
+      east: bounds.getEast(),
+      north: bounds.getNorth(),
+    });
   };
   const map = useMapEvents({ moveend: report, resize: report });
 
   useEffect(() => {
-    const bounds = map.getBounds();
-    onBoundsChange(schools.filter(s => bounds.contains([s.lat, s.lng])));
+    report();
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [schools]);
 
@@ -604,6 +617,8 @@ export default function SchoolMap({
   fitToSchools,
   onGeoReady,
   catchmentFeatures,
+  overlayFeatures,
+  onViewportChange,
   pickMode,
   onPickLocation,
   lookupPin,
@@ -643,8 +658,29 @@ export default function SchoolMap({
         <FlyToTracker school={flyToSchool} />
         <FitToSchools focus={fitToSchools ?? null} schools={schools} onBoundsChange={handleBoundsChange} />
         <MapClickTracker onMapClick={onMapClick} pickMode={pickMode} onPickLocation={onPickLocation} />
-        <BoundsTracker schools={schools} onBoundsChange={handleBoundsChange} />
+        <BoundsTracker schools={schools} onBoundsChange={handleBoundsChange} onViewportChange={onViewportChange} />
         <FitToCatchments features={catchmentFeatures} />
+
+        {/* Browse overlay: outlines only, no fill. A filled zone already means
+            "this is the school you selected", and dozens of translucent fills
+            stacked over one another would read as depth that is not there. */}
+        {overlayFeatures?.map((feature) => {
+          const style = CATCHMENT_COLORS[feature.properties.kind] ?? CATCHMENT_COLORS.primary;
+          return (
+            <GeoJSON
+              key={`overlay-${feature.properties.location_age_id}-${feature.properties.kind}`}
+              data={feature as never}
+              interactive={false}
+              style={{
+                color: style.color,
+                weight: 1,
+                opacity: 0.55,
+                dashArray: style.dashArray,
+                fill: false,
+              }}
+            />
+          );
+        })}
 
         {/* Catchment outlines sit under the markers so schools stay clickable. */}
         {catchmentFeatures?.map((feature) => {

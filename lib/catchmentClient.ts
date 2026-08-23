@@ -3,6 +3,8 @@ import {
   candidatesAt,
   catchmentGeometryUrl,
   pointInGeometry,
+  zonesInBounds,
+  type ViewportBounds,
   type CatchmentFeature,
   type CatchmentIndex,
   type CatchmentIndexEntry,
@@ -96,4 +98,52 @@ export async function lookupCatchmentsAt(point: [number, number]): Promise<Catch
   const candidates = candidatesAt(index, point);
   const features = await Promise.all(candidates.map(loadCatchmentFeature));
   return features.filter(feature => pointInGeometry(point, feature.geometry));
+}
+
+/**
+ * The most zones the browse overlay will draw at once.
+ *
+ * A count gate rather than a zoom gate: zone size varies by two orders of
+ * magnitude between inner Sydney and the far west, so the same zoom level means
+ * 98 polygons in one place and a handful in another. Measured payloads for a
+ * single kind — inner Sydney ~98 primary, Adelaide metro ~59 primary, Sydney
+ * metro-wide 553 — put the readable ceiling around here, and past it the map is
+ * a wall of outlines anyway.
+ */
+export const MAX_ZONES_IN_VIEW = 220;
+
+export interface ZonesInView {
+  /** Zones actually loaded, empty when the view holds too many. */
+  features: CatchmentFeature[];
+  /** How many zones of this kind the viewport covers, drawn or not. */
+  total: number;
+  /** True when `total` exceeded the cap and nothing was drawn. */
+  tooMany: boolean;
+}
+
+/**
+ * Every zone of one kind overlapping the current viewport.
+ *
+ * One kind at a time by design. Primary and secondary zones are independent
+ * coverages of the same ground, so drawing both puts two or more polygons over
+ * every inhabited part of the map — and over three for the 17% of addresses
+ * that sit in several secondary zones at once.
+ *
+ * The index is already in memory for the reverse lookup and carries every
+ * bbox, so choosing candidates costs nothing; only their geometry is fetched,
+ * and `featureCache` keeps it across pans.
+ */
+export async function loadZonesInView(
+  bounds: ViewportBounds,
+  kind: CatchmentIndexEntry['kind'],
+): Promise<ZonesInView> {
+  const index = await loadCatchmentIndex();
+  const candidates = zonesInBounds(index, bounds, kind);
+
+  if (candidates.length > MAX_ZONES_IN_VIEW) {
+    return { features: [], total: candidates.length, tooMany: true };
+  }
+
+  const features = await Promise.all(candidates.map(loadCatchmentFeature));
+  return { features, total: candidates.length, tooMany: false };
 }

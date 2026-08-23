@@ -153,6 +153,17 @@ same-suburb duplicate gets an `-<acara_sml_id>` suffix, so URLs stay stable.
   department's own address checker, and whether the state zones its whole
   government system.
 - `components/CatchmentLookup.tsx` — "what is this location zoned for?" results.
+
+The map answers three different questions about zones, and they are separate
+controls on purpose: select a school to draw *its* zone (filled), drop a pin to
+ask what an address is zoned for, or switch the browse overlay on to see every
+zone across the viewport (outlines only, no fill — a filled zone already means
+"the school you selected"). The overlay draws one kind at a time. Primary and
+secondary zones are independent coverages of the same ground, so drawing both
+puts two or more outlines over every inhabited part of the map. It is gated on
+how many zones the viewport holds rather than on zoom, because zone area varies
+by two orders of magnitude between inner Sydney and the far west — past
+`MAX_ZONES_IN_VIEW` it says how many are there instead of drawing them.
 - `lib/i18n.ts` + `messages/{en,zh}.json`. **Both message files must keep
   identical key sets**, enforced by `lib/i18n.test.ts`.
 - Map locale resolves in this order (`resolveInitialLocale`): `?lang=` →
@@ -229,6 +240,14 @@ degrees of hue from the Catholic violet, so a pair of government schools read as
 "Catholic"), and the shape must not be a filled circle, because a filled circle
 already means *one school* and its diameter already means enrolments. Any new
 aggregate drawn on the map inherits both rules.
+
+The browse overlay obeys the same rule from the other direction: adjacent
+zones are told apart by their shared border, never by giving each a different
+hue. A reader seeing two neighbouring primary zones in different colours would
+reasonably ask what the difference means, and the answer would be "nothing" —
+which is exactly the kind of empty signal this palette exists to prevent. If
+borders alone ever prove too weak, vary lightness within the same hue; do not
+reach for another colour.
 
 The same constraint binds **selection**. A selected marker keeps its sector fill
 and is picked out by an achromatic white-gap-plus-slate ring; it used to flip to

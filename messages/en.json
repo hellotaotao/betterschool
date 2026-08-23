@@ -116,6 +116,16 @@
     "clear": "Clear",
     "error": "Lookup failed. Please try again."
   },
+  "zoneBrowse": {
+    "label": "Zone borders",
+    "off": "Off",
+    "primary": "Primary",
+    "secondary": "Secondary",
+    "tooMany": "{count} zones in view — zoom in to draw them",
+    "none": "No published zones in this view",
+    "showing": "{count} zones shown",
+    "hint": "One kind at a time: primary and secondary zones cover the same ground, so drawing both hides the boundaries."
+  },
   "legend": {
     "sizeEqualsEnrolments": "Size = enrolments",
     "enrolmentsUnknown": "Enrolments not published",

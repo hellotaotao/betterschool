@@ -112,6 +112,26 @@ export function candidatesAt(entries: CatchmentIndexEntry[], point: [number, num
  */
 export const CATCHMENT_STATES = ['nsw', 'sa'] as const;
 
+export interface ViewportBounds { west: number; south: number; east: number; north: number }
+
+/**
+ * Zones of one kind whose bbox overlaps a viewport.
+ *
+ * The browse overlay's candidate step. Pure and separate from the fetching so
+ * the cap that protects it can be tested without a network.
+ */
+export function zonesInBounds(
+  entries: CatchmentIndexEntry[],
+  bounds: ViewportBounds,
+  kind: CatchmentKind,
+): CatchmentIndexEntry[] {
+  return entries.filter(entry => {
+    if (entry.kind !== kind) return false;
+    const [west, south, east, north] = entry.bbox;
+    return !(east < bounds.west || west > bounds.east || north < bounds.south || south > bounds.north);
+  });
+}
+
 export function catchmentGeometryUrl(
   entry: { state: string; location_age_id: number; kind: CatchmentKind },
 ): string {

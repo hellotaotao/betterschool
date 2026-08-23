@@ -16,7 +16,8 @@ import { schoolPath, schoolSlugFor, stateSlug, suburbSlug } from '@/lib/slug';
 import schoolsMetadata from '@/public/data/schools.metadata.json';
 
 import type { CatchmentFeature } from '@/lib/catchmentLookup';
-import { loadCatchmentsForSchool, lookupCatchmentsAt } from '@/lib/catchmentClient';
+import { loadCatchmentsForSchool, loadZonesInView, lookupCatchmentsAt } from '@/lib/catchmentClient';
+import type { Viewport } from '../../components/SchoolMap';
 
 import SchoolDetail from '../../components/SchoolDetail';
 import SchoolList from '../../components/SchoolList';
@@ -56,6 +57,60 @@ function LanguageToggle({ locale, onChange }: { locale: Locale; onChange: (next:
           }`}
         >
           {option === 'en' ? 'EN' : '中文'}
+        </button>
+      ))}
+    </div>
+  );
+}
+
+type ZoneOverlayKind = 'off' | 'primary' | 'secondary';
+
+/** What the browse overlay is currently doing, in one line. */
+function zoneOverlayStatus(
+  state: { features: CatchmentFeature[]; total: number; tooMany: boolean } | null,
+  dictionary: ReturnType<typeof getMessages>,
+): string | null {
+  if (!state) return null;
+  if (state.tooMany) return formatMessage(dictionary.zoneBrowse.tooMany, { count: state.total });
+  if (state.total === 0) return dictionary.zoneBrowse.none;
+  return formatMessage(dictionary.zoneBrowse.showing, { count: state.total });
+}
+
+/**
+ * Browse control for zone boundaries across the whole viewport.
+ *
+ * Three states rather than on/off: primary and secondary zones are independent
+ * coverages of the same ground, so showing both at once stacks two or more
+ * outlines over every inhabited part of the map and reads as noise.
+ */
+function ZoneOverlayControl({
+  value,
+  onChange,
+  dictionary,
+}: {
+  value: ZoneOverlayKind;
+  onChange: (next: ZoneOverlayKind) => void;
+  dictionary: ReturnType<typeof getMessages>;
+}) {
+  const options: [ZoneOverlayKind, string][] = [
+    ['off', dictionary.zoneBrowse.off],
+    ['primary', dictionary.zoneBrowse.primary],
+    ['secondary', dictionary.zoneBrowse.secondary],
+  ];
+
+  return (
+    <div className="flex items-center gap-1 rounded-full bg-white/90 backdrop-blur-sm px-2 py-1 shadow-md shrink-0">
+      <span className="text-[10px] text-gray-500 whitespace-nowrap">{dictionary.zoneBrowse.label}</span>
+      {options.map(([option, label]) => (
+        <button
+          key={option}
+          onClick={() => onChange(option)}
+          aria-pressed={value === option}
+          className={`rounded-full px-2 py-0.5 text-xs font-medium whitespace-nowrap transition-colors ${
+            value === option ? 'bg-indigo-600 text-white' : 'text-gray-600 hover:bg-gray-100'
+          }`}
+        >
+          {label}
         </button>
       ))}
     </div>
@@ -111,6 +166,10 @@ export default function SchoolsPage() {
     error: boolean;
   } | null>(null);
   // "Which schools is this location zoned for?" lookup.
+  // Browse overlay: every zone of one kind across the viewport.
+  const [zoneOverlay, setZoneOverlay] = useState<ZoneOverlayKind>('off');
+  const [viewport, setViewport] = useState<Viewport | null>(null);
+  const [overlayState, setOverlayState] = useState<{ features: CatchmentFeature[]; total: number; tooMany: boolean } | null>(null);
   const [pickMode, setPickMode] = useState(false);
   const [lookupPin, setLookupPin] = useState<[number, number] | null>(null);
   const [lookupResults, setLookupResults] = useState<CatchmentFeature[] | null>(null);
@@ -171,6 +230,22 @@ export default function SchoolsPage() {
       })
       .catch(() => setLoading(false));
   }, []);
+
+  useEffect(() => {
+    if (zoneOverlay === 'off' || !viewport) {
+      setOverlayState(null);
+      return;
+    }
+
+    // A pan that lands while an earlier fetch is still in flight must not have
+    // the stale result painted over it.
+    let current = true;
+    loadZonesInView(viewport, zoneOverlay)
+      .then(result => { if (current) setOverlayState(result); })
+      .catch(() => { if (current) setOverlayState(null); });
+
+    return () => { current = false; };
+  }, [zoneOverlay, viewport]);
 
   useEffect(() => {
     const languages = navigator.languages?.length > 0
@@ -358,6 +433,7 @@ export default function SchoolsPage() {
   }, [visibleSchools]);
 
   const areaLabel = formatMessage(dictionary.sidebar.areaCount, { count: displayedSchools.length });
+  const zoneStatus = zoneOverlay === 'off' ? null : zoneOverlayStatus(overlayState, dictionary);
 
   // Link the detail panel at the school's own page, so the prerendered pages are
   // reachable from the app rather than only from search results.
@@ -385,6 +461,8 @@ export default function SchoolsPage() {
             flyToSchool={selectedSchool}
             fitToSchools={placeFocus}
             catchmentFeatures={mapCatchments}
+            overlayFeatures={overlayState?.features ?? null}
+            onViewportChange={setViewport}
             autoLocate={!deepLinked}
             pickMode={pickMode}
             onPickLocation={handlePickLocation}
@@ -404,18 +482,26 @@ export default function SchoolsPage() {
                 onPickPlace={handlePickPlace}
               />
             </div>
-            <div className="pointer-events-auto flex gap-2 items-center">
+            <div className="pointer-events-auto flex gap-2 items-center overflow-x-auto">
               <LookupButton
                 active={pickMode}
                 dictionary={dictionary}
                 onClick={() => (pickMode ? clearLookup() : setPickMode(true))}
               />
+              <ZoneOverlayControl value={zoneOverlay} onChange={setZoneOverlay} dictionary={dictionary} />
               <LanguageToggle locale={locale} onChange={handleLocaleChange} />
+            </div>
+            <div className="pointer-events-auto">
               <FilterBar filters={filters} onChange={setFilters} dictionary={dictionary} variant="scroll" />
             </div>
             {pickMode && (
               <div className="pointer-events-none rounded-lg bg-indigo-600/95 px-3 py-2 text-[11px] text-white shadow-md">
                 {dictionary.lookup.hint}
+              </div>
+            )}
+            {zoneStatus && (
+              <div className="pointer-events-none rounded-lg bg-white/95 px-3 py-1.5 text-[11px] text-gray-700 shadow-md">
+                {zoneStatus}
               </div>
             )}
           </div>
@@ -484,6 +570,9 @@ export default function SchoolsPage() {
               />
             </div>
             <div className="pointer-events-auto">
+              <ZoneOverlayControl value={zoneOverlay} onChange={setZoneOverlay} dictionary={dictionary} />
+            </div>
+            <div className="pointer-events-auto">
               <LanguageToggle locale={locale} onChange={handleLocaleChange} />
             </div>
             <div className="pointer-events-auto">
@@ -491,12 +580,21 @@ export default function SchoolsPage() {
             </div>
           </div>
 
-          {pickMode && (
+          {(pickMode || zoneStatus) && (
             <div
               style={{ top: topBarBottom + 8 }}
-              className="absolute left-1/2 -translate-x-1/2 z-30 rounded-lg bg-indigo-600/95 px-4 py-2 text-xs text-white shadow-lg pointer-events-none"
+              className="absolute left-1/2 -translate-x-1/2 z-30 flex flex-col items-center gap-1.5 pointer-events-none"
             >
-              {dictionary.lookup.hint}
+              {pickMode && (
+                <div className="rounded-lg bg-indigo-600/95 px-4 py-2 text-xs text-white shadow-lg">
+                  {dictionary.lookup.hint}
+                </div>
+              )}
+              {zoneStatus && (
+                <div className="rounded-lg bg-white/95 px-4 py-1.5 text-xs text-gray-700 shadow-lg">
+                  {zoneStatus}
+                </div>
+              )}
             </div>
           )}
 

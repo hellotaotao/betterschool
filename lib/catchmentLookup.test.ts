@@ -4,10 +4,12 @@ import {
   candidatesAt,
   catchmentGeometryUrl,
   pointInGeometry,
+  zonesInBounds,
   pointInPolygon,
   pointInRing,
   type CatchmentIndex,
   type Ring,
+  type CatchmentIndexEntry,
 } from './catchmentLookup';
 
 /** Unit square, closed. */
@@ -110,5 +112,35 @@ describe('catchmentGeometryUrl', () => {
   it('routes each state to its own directory', () => {
     expect(catchmentGeometryUrl({ state: 'sa', location_age_id: 1234, kind: 'secondary' }))
       .toBe('/data/catchment/sa/1234-secondary.json');
+  });
+});
+
+describe('zonesInBounds', () => {
+  const entries: CatchmentIndexEntry[] = [
+    { state: 'nsw', location_age_id: 1, acara_sml_id: 11, kind: 'primary', catch_type: 'PRIMARY', year_levels: ['K'], bbox: [151.0, -33.9, 151.1, -33.8] },
+    { state: 'nsw', location_age_id: 2, acara_sml_id: 22, kind: 'primary', catch_type: 'PRIMARY', year_levels: ['K'], bbox: [151.1, -33.9, 151.2, -33.8] },
+    { state: 'nsw', location_age_id: 3, acara_sml_id: 33, kind: 'secondary', catch_type: 'HIGH_COED', year_levels: ['7'], bbox: [151.0, -33.9, 151.2, -33.8] },
+    { state: 'nsw', location_age_id: 4, acara_sml_id: 44, kind: 'primary', catch_type: 'PRIMARY', year_levels: ['K'], bbox: [149.0, -33.9, 149.1, -33.8] },
+  ];
+  const view = { west: 151.05, south: -33.88, east: 151.15, north: -33.82 };
+
+  it('returns only the requested kind', () => {
+    // Primary and secondary are independent coverages of the same ground, so
+    // the overlay draws one at a time; mixing them is what makes it unreadable.
+    expect(zonesInBounds(entries, view, 'primary').map(e => e.location_age_id)).toEqual([1, 2]);
+    expect(zonesInBounds(entries, view, 'secondary').map(e => e.location_age_id)).toEqual([3]);
+  });
+
+  it('excludes zones whose bbox misses the viewport entirely', () => {
+    expect(zonesInBounds(entries, view, 'primary').map(e => e.location_age_id)).not.toContain(4);
+  });
+
+  it('includes a zone that merely overlaps an edge, since bbox is a prefilter', () => {
+    const sliver = { west: 151.09, south: -33.85, east: 151.095, north: -33.84 };
+    expect(zonesInBounds(entries, sliver, 'primary').map(e => e.location_age_id)).toEqual([1]);
+  });
+
+  it('returns nothing for a viewport nowhere near any zone', () => {
+    expect(zonesInBounds(entries, { west: 130, south: -20, east: 131, north: -19 }, 'primary')).toEqual([]);
   });
 });
