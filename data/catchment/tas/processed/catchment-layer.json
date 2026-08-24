@@ -1,0 +1,2124 @@
+{
+  "state": "TAS",
+  "data_year": 2025,
+  "generated_at": "2026-08-24T16:49:37.580Z",
+  "stats": {
+    "primary": {
+      "polygons": 149,
+      "joined": 149,
+      "join_rate": 1,
+      "school_attachments": 150
+    }
+  },
+  "join": {
+    "method": "exact ACARA name or audited exact alias plus polygon containment",
+    "match_methods": {
+      "exact_name_and_containment": 144,
+      "audited_exact_alias_and_containment": 4,
+      "audited_shared_zone_and_containment": 1
+    },
+    "shared_source_features": 1
+  },
+  "by_location_age_id": {
+    "46593": [
+      {
+        "geometry_url": "/data/catchment/tas/46593-primary.json",
+        "kind": "primary",
+        "catch_type": "PRIMARY_INTAKE",
+        "year_levels": [],
+        "source_school_code": "112",
+        "data_year": 2025,
+        "source": "LISTdata",
+        "source_url": "https://listdata.thelist.tas.gov.au/opendata/index.html",
+        "source_sector": "Combined",
+        "match_method": "exact_name_and_containment"
+      }
+    ],
+    "46595": [
+      {
+        "geometry_url": "/data/catchment/tas/46595-primary.json",
+        "kind": "primary",
+        "catch_type": "PRIMARY_INTAKE",
+        "year_levels": [],
+        "source_school_code": "176",
+        "data_year": 2025,
+        "source": "LISTdata",
+        "source_url": "https://listdata.thelist.tas.gov.au/opendata/index.html",
+        "source_sector": "Combined",
+        "match_method": "exact_name_and_containment"
+      }
+    ],
+    "46596": [
+      {
+        "geometry_url": "/data/catchment/tas/46596-primary.json",
+        "kind": "primary",
+        "catch_type": "PRIMARY_INTAKE",
+        "year_levels": [],
+        "source_school_code": "791",
+        "data_year": 2025,
+        "source": "LISTdata",
+        "source_url": "https://listdata.thelist.tas.gov.au/opendata/index.html",
+        "source_sector": "Primary",
+        "match_method": "exact_name_and_containment"
+      }
+    ],
+    "46608": [
+      {
+        "geometry_url": "/data/catchment/tas/46608-primary.json",
+        "kind": "primary",
+        "catch_type": "PRIMARY_INTAKE",
+        "year_levels": [],
+        "source_school_code": "073",
+        "data_year": 2025,
+        "source": "LISTdata",
+        "source_url": "https://listdata.thelist.tas.gov.au/opendata/index.html",
+        "source_sector": "Combined",
+        "match_method": "audited_exact_alias_and_containment"
+      }
+    ],
+    "46609": [
+      {
+        "geometry_url": "/data/catchment/tas/46609-primary.json",
+        "kind": "primary",
+        "catch_type": "PRIMARY_INTAKE",
+        "year_levels": [],
+        "source_school_code": "124",
+        "data_year": 2025,
+        "source": "LISTdata",
+        "source_url": "https://listdata.thelist.tas.gov.au/opendata/index.html",
+        "source_sector": "Combined",
+        "match_method": "exact_name_and_containment"
+      }
+    ],
+    "46614": [
+      {
+        "geometry_url": "/data/catchment/tas/46614-primary.json",
+        "kind": "primary",
+        "catch_type": "PRIMARY_INTAKE",
+        "year_levels": [],
+        "source_school_code": "021",
+        "data_year": 2025,
+        "source": "LISTdata",
+        "source_url": "https://listdata.thelist.tas.gov.au/opendata/index.html",
+        "source_sector": "Combined",
+        "match_method": "exact_name_and_containment"
+      }
+    ],
+    "46616": [
+      {
+        "geometry_url": "/data/catchment/tas/46616-primary.json",
+        "kind": "primary",
+        "catch_type": "PRIMARY_INTAKE",
+        "year_levels": [],
+        "source_school_code": "132",
+        "data_year": 2025,
+        "source": "LISTdata",
+        "source_url": "https://listdata.thelist.tas.gov.au/opendata/index.html",
+        "source_sector": "Combined",
+        "match_method": "exact_name_and_containment"
+      }
+    ],
+    "46619": [
+      {
+        "geometry_url": "/data/catchment/tas/46619-primary.json",
+        "kind": "primary",
+        "catch_type": "PRIMARY_INTAKE",
+        "year_levels": [],
+        "source_school_code": "236",
+        "data_year": 2025,
+        "source": "LISTdata",
+        "source_url": "https://listdata.thelist.tas.gov.au/opendata/index.html",
+        "source_sector": "Combined",
+        "match_method": "exact_name_and_containment"
+      }
+    ],
+    "46620": [
+      {
+        "geometry_url": "/data/catchment/tas/46620-primary.json",
+        "kind": "primary",
+        "catch_type": "PRIMARY_INTAKE",
+        "year_levels": [],
+        "source_school_code": "240",
+        "data_year": 2025,
+        "source": "LISTdata",
+        "source_url": "https://listdata.thelist.tas.gov.au/opendata/index.html",
+        "source_sector": "Combined",
+        "match_method": "exact_name_and_containment"
+      }
+    ],
+    "46621": [
+      {
+        "geometry_url": "/data/catchment/tas/46621-primary.json",
+        "kind": "primary",
+        "catch_type": "PRIMARY_INTAKE",
+        "year_levels": [],
+        "source_school_code": "286",
+        "data_year": 2025,
+        "source": "LISTdata",
+        "source_url": "https://listdata.thelist.tas.gov.au/opendata/index.html",
+        "source_sector": "Combined",
+        "match_method": "audited_exact_alias_and_containment"
+      }
+    ],
+    "46622": [
+      {
+        "geometry_url": "/data/catchment/tas/46622-primary.json",
+        "kind": "primary",
+        "catch_type": "PRIMARY_INTAKE",
+        "year_levels": [],
+        "source_school_code": "327",
+        "data_year": 2025,
+        "source": "LISTdata",
+        "source_url": "https://listdata.thelist.tas.gov.au/opendata/index.html",
+        "source_sector": "Combined",
+        "match_method": "exact_name_and_containment"
+      }
+    ],
+    "46623": [
+      {
+        "geometry_url": "/data/catchment/tas/46623-primary.json",
+        "kind": "primary",
+        "catch_type": "PRIMARY_INTAKE",
+        "year_levels": [],
+        "source_school_code": "330",
+        "data_year": 2025,
+        "source": "LISTdata",
+        "source_url": "https://listdata.thelist.tas.gov.au/opendata/index.html",
+        "source_sector": "Primary",
+        "match_method": "exact_name_and_containment"
+      }
+    ],
+    "46624": [
+      {
+        "geometry_url": "/data/catchment/tas/46624-primary.json",
+        "kind": "primary",
+        "catch_type": "PRIMARY_INTAKE",
+        "year_levels": [],
+        "source_school_code": "379",
+        "data_year": 2025,
+        "source": "LISTdata",
+        "source_url": "https://listdata.thelist.tas.gov.au/opendata/index.html",
+        "source_sector": "Combined",
+        "match_method": "exact_name_and_containment"
+      }
+    ],
+    "46778": [
+      {
+        "geometry_url": "/data/catchment/tas/46778-primary.json",
+        "kind": "primary",
+        "catch_type": "PRIMARY_INTAKE",
+        "year_levels": [],
+        "source_school_code": "046",
+        "data_year": 2025,
+        "source": "LISTdata",
+        "source_url": "https://listdata.thelist.tas.gov.au/opendata/index.html",
+        "source_sector": "Combined",
+        "match_method": "exact_name_and_containment"
+      }
+    ],
+    "46779": [
+      {
+        "geometry_url": "/data/catchment/tas/46779-primary.json",
+        "kind": "primary",
+        "catch_type": "PRIMARY_INTAKE",
+        "year_levels": [],
+        "source_school_code": "056",
+        "data_year": 2025,
+        "source": "LISTdata",
+        "source_url": "https://listdata.thelist.tas.gov.au/opendata/index.html",
+        "source_sector": "Combined",
+        "match_method": "exact_name_and_containment"
+      }
+    ],
+    "46780": [
+      {
+        "geometry_url": "/data/catchment/tas/46780-primary.json",
+        "kind": "primary",
+        "catch_type": "PRIMARY_INTAKE",
+        "year_levels": [],
+        "source_school_code": "074",
+        "data_year": 2025,
+        "source": "LISTdata",
+        "source_url": "https://listdata.thelist.tas.gov.au/opendata/index.html",
+        "source_sector": "Primary",
+        "match_method": "exact_name_and_containment"
+      }
+    ],
+    "46783": [
+      {
+        "geometry_url": "/data/catchment/tas/46783-primary.json",
+        "kind": "primary",
+        "catch_type": "PRIMARY_INTAKE",
+        "year_levels": [],
+        "source_school_code": "165",
+        "data_year": 2025,
+        "source": "LISTdata",
+        "source_url": "https://listdata.thelist.tas.gov.au/opendata/index.html",
+        "source_sector": "Combined",
+        "match_method": "exact_name_and_containment"
+      }
+    ],
+    "46787": [
+      {
+        "geometry_url": "/data/catchment/tas/46787-primary.json",
+        "kind": "primary",
+        "catch_type": "PRIMARY_INTAKE",
+        "year_levels": [],
+        "source_school_code": "251",
+        "data_year": 2025,
+        "source": "LISTdata",
+        "source_url": "https://listdata.thelist.tas.gov.au/opendata/index.html",
+        "source_sector": "Primary",
+        "match_method": "exact_name_and_containment"
+      }
+    ],
+    "46793": [
+      {
+        "geometry_url": "/data/catchment/tas/46793-primary.json",
+        "kind": "primary",
+        "catch_type": "PRIMARY_INTAKE",
+        "year_levels": [],
+        "source_school_code": "316",
+        "data_year": 2025,
+        "source": "LISTdata",
+        "source_url": "https://listdata.thelist.tas.gov.au/opendata/index.html",
+        "source_sector": "Combined",
+        "match_method": "exact_name_and_containment"
+      }
+    ],
+    "46795": [
+      {
+        "geometry_url": "/data/catchment/tas/46795-primary.json",
+        "kind": "primary",
+        "catch_type": "PRIMARY_INTAKE",
+        "year_levels": [],
+        "source_school_code": "377",
+        "data_year": 2025,
+        "source": "LISTdata",
+        "source_url": "https://listdata.thelist.tas.gov.au/opendata/index.html",
+        "source_sector": "Combined",
+        "match_method": "exact_name_and_containment"
+      }
+    ],
+    "46796": [
+      {
+        "geometry_url": "/data/catchment/tas/46796-primary.json",
+        "kind": "primary",
+        "catch_type": "PRIMARY_INTAKE",
+        "year_levels": [],
+        "source_school_code": "411",
+        "data_year": 2025,
+        "source": "LISTdata",
+        "source_url": "https://listdata.thelist.tas.gov.au/opendata/index.html",
+        "source_sector": "Combined",
+        "match_method": "exact_name_and_containment"
+      }
+    ],
+    "46797": [
+      {
+        "geometry_url": "/data/catchment/tas/46797-primary.json",
+        "kind": "primary",
+        "catch_type": "PRIMARY_INTAKE",
+        "year_levels": [],
+        "source_school_code": "412",
+        "data_year": 2025,
+        "source": "LISTdata",
+        "source_url": "https://listdata.thelist.tas.gov.au/opendata/index.html",
+        "source_sector": "Combined",
+        "match_method": "exact_name_and_containment"
+      }
+    ],
+    "46798": [
+      {
+        "geometry_url": "/data/catchment/tas/46798-primary.json",
+        "kind": "primary",
+        "catch_type": "PRIMARY_INTAKE",
+        "year_levels": [],
+        "source_school_code": "416",
+        "data_year": 2025,
+        "source": "LISTdata",
+        "source_url": "https://listdata.thelist.tas.gov.au/opendata/index.html",
+        "source_sector": "Combined",
+        "match_method": "audited_exact_alias_and_containment"
+      }
+    ],
+    "46835": [
+      {
+        "geometry_url": "/data/catchment/tas/46835-primary.json",
+        "kind": "primary",
+        "catch_type": "PRIMARY_INTAKE",
+        "year_levels": [],
+        "source_school_code": "159",
+        "data_year": 2025,
+        "source": "LISTdata",
+        "source_url": "https://listdata.thelist.tas.gov.au/opendata/index.html",
+        "source_sector": "Primary",
+        "match_method": "exact_name_and_containment"
+      }
+    ],
+    "46836": [
+      {
+        "geometry_url": "/data/catchment/tas/46836-primary.json",
+        "kind": "primary",
+        "catch_type": "PRIMARY_INTAKE",
+        "year_levels": [],
+        "source_school_code": "201",
+        "data_year": 2025,
+        "source": "LISTdata",
+        "source_url": "https://listdata.thelist.tas.gov.au/opendata/index.html",
+        "source_sector": "Primary",
+        "match_method": "exact_name_and_containment"
+      }
+    ],
+    "48051": [
+      {
+        "geometry_url": "/data/catchment/tas/48051-primary.json",
+        "kind": "primary",
+        "catch_type": "PRIMARY_INTAKE",
+        "year_levels": [],
+        "source_school_code": "003",
+        "data_year": 2025,
+        "source": "LISTdata",
+        "source_url": "https://listdata.thelist.tas.gov.au/opendata/index.html",
+        "source_sector": "Primary",
+        "match_method": "exact_name_and_containment"
+      }
+    ],
+    "48052": [
+      {
+        "geometry_url": "/data/catchment/tas/48052-primary.json",
+        "kind": "primary",
+        "catch_type": "PRIMARY_INTAKE",
+        "year_levels": [],
+        "source_school_code": "045",
+        "data_year": 2025,
+        "source": "LISTdata",
+        "source_url": "https://listdata.thelist.tas.gov.au/opendata/index.html",
+        "source_sector": "Primary",
+        "match_method": "exact_name_and_containment"
+      }
+    ],
+    "48060": [
+      {
+        "geometry_url": "/data/catchment/tas/48060-primary.json",
+        "kind": "primary",
+        "catch_type": "PRIMARY_INTAKE",
+        "year_levels": [],
+        "source_school_code": "135",
+        "data_year": 2025,
+        "source": "LISTdata",
+        "source_url": "https://listdata.thelist.tas.gov.au/opendata/index.html",
+        "source_sector": "Primary",
+        "match_method": "exact_name_and_containment"
+      }
+    ],
+    "48062": [
+      {
+        "geometry_url": "/data/catchment/tas/48062-primary.json",
+        "kind": "primary",
+        "catch_type": "PRIMARY_INTAKE",
+        "year_levels": [],
+        "source_school_code": "170",
+        "data_year": 2025,
+        "source": "LISTdata",
+        "source_url": "https://listdata.thelist.tas.gov.au/opendata/index.html",
+        "source_sector": "Primary",
+        "match_method": "exact_name_and_containment"
+      }
+    ],
+    "48063": [
+      {
+        "geometry_url": "/data/catchment/tas/48063-primary.json",
+        "kind": "primary",
+        "catch_type": "PRIMARY_INTAKE",
+        "year_levels": [],
+        "source_school_code": "200",
+        "data_year": 2025,
+        "source": "LISTdata",
+        "source_url": "https://listdata.thelist.tas.gov.au/opendata/index.html",
+        "source_sector": "Primary",
+        "match_method": "exact_name_and_containment"
+      }
+    ],
+    "48064": [
+      {
+        "geometry_url": "/data/catchment/tas/48064-primary.json",
+        "kind": "primary",
+        "catch_type": "PRIMARY_INTAKE",
+        "year_levels": [],
+        "source_school_code": "319",
+        "data_year": 2025,
+        "source": "LISTdata",
+        "source_url": "https://listdata.thelist.tas.gov.au/opendata/index.html",
+        "source_sector": "Primary",
+        "match_method": "exact_name_and_containment"
+      }
+    ],
+    "48065": [
+      {
+        "geometry_url": "/data/catchment/tas/48065-primary.json",
+        "kind": "primary",
+        "catch_type": "PRIMARY_INTAKE",
+        "year_levels": [],
+        "source_school_code": "253",
+        "data_year": 2025,
+        "source": "LISTdata",
+        "source_url": "https://listdata.thelist.tas.gov.au/opendata/index.html",
+        "source_sector": "Primary",
+        "match_method": "exact_name_and_containment"
+      }
+    ],
+    "48066": [
+      {
+        "geometry_url": "/data/catchment/tas/48066-primary.json",
+        "kind": "primary",
+        "catch_type": "PRIMARY_INTAKE",
+        "year_levels": [],
+        "source_school_code": "S01",
+        "data_year": 2025,
+        "source": "LISTdata",
+        "source_url": "https://listdata.thelist.tas.gov.au/opendata/index.html",
+        "source_sector": "Primary",
+        "match_method": "audited_shared_zone_and_containment"
+      }
+    ],
+    "48067": [
+      {
+        "geometry_url": "/data/catchment/tas/48067-primary.json",
+        "kind": "primary",
+        "catch_type": "PRIMARY_INTAKE",
+        "year_levels": [],
+        "source_school_code": "374",
+        "data_year": 2025,
+        "source": "LISTdata",
+        "source_url": "https://listdata.thelist.tas.gov.au/opendata/index.html",
+        "source_sector": "Primary",
+        "match_method": "exact_name_and_containment"
+      }
+    ],
+    "48068": [
+      {
+        "geometry_url": "/data/catchment/tas/48068-primary.json",
+        "kind": "primary",
+        "catch_type": "PRIMARY_INTAKE",
+        "year_levels": [],
+        "source_school_code": "199",
+        "data_year": 2025,
+        "source": "LISTdata",
+        "source_url": "https://listdata.thelist.tas.gov.au/opendata/index.html",
+        "source_sector": "Primary",
+        "match_method": "exact_name_and_containment"
+      }
+    ],
+    "48069": [
+      {
+        "geometry_url": "/data/catchment/tas/48069-primary.json",
+        "kind": "primary",
+        "catch_type": "PRIMARY_INTAKE",
+        "year_levels": [],
+        "source_school_code": "174",
+        "data_year": 2025,
+        "source": "LISTdata",
+        "source_url": "https://listdata.thelist.tas.gov.au/opendata/index.html",
+        "source_sector": "Primary",
+        "match_method": "exact_name_and_containment"
+      }
+    ],
+    "48071": [
+      {
+        "geometry_url": "/data/catchment/tas/48071-primary.json",
+        "kind": "primary",
+        "catch_type": "PRIMARY_INTAKE",
+        "year_levels": [],
+        "source_school_code": "229",
+        "data_year": 2025,
+        "source": "LISTdata",
+        "source_url": "https://listdata.thelist.tas.gov.au/opendata/index.html",
+        "source_sector": "Primary",
+        "match_method": "exact_name_and_containment"
+      }
+    ],
+    "48072": [
+      {
+        "geometry_url": "/data/catchment/tas/48072-primary.json",
+        "kind": "primary",
+        "catch_type": "PRIMARY_INTAKE",
+        "year_levels": [],
+        "source_school_code": "022",
+        "data_year": 2025,
+        "source": "LISTdata",
+        "source_url": "https://listdata.thelist.tas.gov.au/opendata/index.html",
+        "source_sector": "Primary",
+        "match_method": "exact_name_and_containment"
+      }
+    ],
+    "48073": [
+      {
+        "geometry_url": "/data/catchment/tas/48073-primary.json",
+        "kind": "primary",
+        "catch_type": "PRIMARY_INTAKE",
+        "year_levels": [],
+        "source_school_code": "134",
+        "data_year": 2025,
+        "source": "LISTdata",
+        "source_url": "https://listdata.thelist.tas.gov.au/opendata/index.html",
+        "source_sector": "Primary",
+        "match_method": "exact_name_and_containment"
+      }
+    ],
+    "48074": [
+      {
+        "geometry_url": "/data/catchment/tas/48074-primary.json",
+        "kind": "primary",
+        "catch_type": "PRIMARY_INTAKE",
+        "year_levels": [],
+        "source_school_code": "197",
+        "data_year": 2025,
+        "source": "LISTdata",
+        "source_url": "https://listdata.thelist.tas.gov.au/opendata/index.html",
+        "source_sector": "Primary",
+        "match_method": "exact_name_and_containment"
+      }
+    ],
+    "48128": [
+      {
+        "geometry_url": "/data/catchment/tas/48128-primary.json",
+        "kind": "primary",
+        "catch_type": "PRIMARY_INTAKE",
+        "year_levels": [],
+        "source_school_code": "323",
+        "data_year": 2025,
+        "source": "LISTdata",
+        "source_url": "https://listdata.thelist.tas.gov.au/opendata/index.html",
+        "source_sector": "Primary",
+        "match_method": "exact_name_and_containment"
+      }
+    ],
+    "48133": [
+      {
+        "geometry_url": "/data/catchment/tas/48133-primary.json",
+        "kind": "primary",
+        "catch_type": "PRIMARY_INTAKE",
+        "year_levels": [],
+        "source_school_code": "289",
+        "data_year": 2025,
+        "source": "LISTdata",
+        "source_url": "https://listdata.thelist.tas.gov.au/opendata/index.html",
+        "source_sector": "Primary",
+        "match_method": "exact_name_and_containment"
+      }
+    ],
+    "48168": [
+      {
+        "geometry_url": "/data/catchment/tas/48168-primary.json",
+        "kind": "primary",
+        "catch_type": "PRIMARY_INTAKE",
+        "year_levels": [],
+        "source_school_code": "053",
+        "data_year": 2025,
+        "source": "LISTdata",
+        "source_url": "https://listdata.thelist.tas.gov.au/opendata/index.html",
+        "source_sector": "Primary",
+        "match_method": "exact_name_and_containment"
+      }
+    ],
+    "48170": [
+      {
+        "geometry_url": "/data/catchment/tas/48170-primary.json",
+        "kind": "primary",
+        "catch_type": "PRIMARY_INTAKE",
+        "year_levels": [],
+        "source_school_code": "178",
+        "data_year": 2025,
+        "source": "LISTdata",
+        "source_url": "https://listdata.thelist.tas.gov.au/opendata/index.html",
+        "source_sector": "Primary",
+        "match_method": "exact_name_and_containment"
+      }
+    ],
+    "48171": [
+      {
+        "geometry_url": "/data/catchment/tas/48171-primary.json",
+        "kind": "primary",
+        "catch_type": "PRIMARY_INTAKE",
+        "year_levels": [],
+        "source_school_code": "177",
+        "data_year": 2025,
+        "source": "LISTdata",
+        "source_url": "https://listdata.thelist.tas.gov.au/opendata/index.html",
+        "source_sector": "Primary",
+        "match_method": "exact_name_and_containment"
+      }
+    ],
+    "48172": [
+      {
+        "geometry_url": "/data/catchment/tas/48172-primary.json",
+        "kind": "primary",
+        "catch_type": "PRIMARY_INTAKE",
+        "year_levels": [],
+        "source_school_code": "279",
+        "data_year": 2025,
+        "source": "LISTdata",
+        "source_url": "https://listdata.thelist.tas.gov.au/opendata/index.html",
+        "source_sector": "Primary",
+        "match_method": "exact_name_and_containment"
+      }
+    ],
+    "48173": [
+      {
+        "geometry_url": "/data/catchment/tas/48173-primary.json",
+        "kind": "primary",
+        "catch_type": "PRIMARY_INTAKE",
+        "year_levels": [],
+        "source_school_code": "017",
+        "data_year": 2025,
+        "source": "LISTdata",
+        "source_url": "https://listdata.thelist.tas.gov.au/opendata/index.html",
+        "source_sector": "Primary",
+        "match_method": "exact_name_and_containment"
+      }
+    ],
+    "48177": [
+      {
+        "geometry_url": "/data/catchment/tas/48177-primary.json",
+        "kind": "primary",
+        "catch_type": "PRIMARY_INTAKE",
+        "year_levels": [],
+        "source_school_code": "147",
+        "data_year": 2025,
+        "source": "LISTdata",
+        "source_url": "https://listdata.thelist.tas.gov.au/opendata/index.html",
+        "source_sector": "Primary",
+        "match_method": "exact_name_and_containment"
+      }
+    ],
+    "48178": [
+      {
+        "geometry_url": "/data/catchment/tas/48178-primary.json",
+        "kind": "primary",
+        "catch_type": "PRIMARY_INTAKE",
+        "year_levels": [],
+        "source_school_code": "195",
+        "data_year": 2025,
+        "source": "LISTdata",
+        "source_url": "https://listdata.thelist.tas.gov.au/opendata/index.html",
+        "source_sector": "Primary",
+        "match_method": "exact_name_and_containment"
+      }
+    ],
+    "48180": [
+      {
+        "geometry_url": "/data/catchment/tas/48180-primary.json",
+        "kind": "primary",
+        "catch_type": "PRIMARY_INTAKE",
+        "year_levels": [],
+        "source_school_code": "399",
+        "data_year": 2025,
+        "source": "LISTdata",
+        "source_url": "https://listdata.thelist.tas.gov.au/opendata/index.html",
+        "source_sector": "Primary",
+        "match_method": "exact_name_and_containment"
+      }
+    ],
+    "48181": [
+      {
+        "geometry_url": "/data/catchment/tas/48181-primary.json",
+        "kind": "primary",
+        "catch_type": "PRIMARY_INTAKE",
+        "year_levels": [],
+        "source_school_code": "052",
+        "data_year": 2025,
+        "source": "LISTdata",
+        "source_url": "https://listdata.thelist.tas.gov.au/opendata/index.html",
+        "source_sector": "Primary",
+        "match_method": "exact_name_and_containment"
+      }
+    ],
+    "48182": [
+      {
+        "geometry_url": "/data/catchment/tas/48182-primary.json",
+        "kind": "primary",
+        "catch_type": "PRIMARY_INTAKE",
+        "year_levels": [],
+        "source_school_code": "284",
+        "data_year": 2025,
+        "source": "LISTdata",
+        "source_url": "https://listdata.thelist.tas.gov.au/opendata/index.html",
+        "source_sector": "Primary",
+        "match_method": "exact_name_and_containment"
+      }
+    ],
+    "48183": [
+      {
+        "geometry_url": "/data/catchment/tas/48183-primary.json",
+        "kind": "primary",
+        "catch_type": "PRIMARY_INTAKE",
+        "year_levels": [],
+        "source_school_code": "173",
+        "data_year": 2025,
+        "source": "LISTdata",
+        "source_url": "https://listdata.thelist.tas.gov.au/opendata/index.html",
+        "source_sector": "Primary",
+        "match_method": "exact_name_and_containment"
+      }
+    ],
+    "48184": [
+      {
+        "geometry_url": "/data/catchment/tas/48184-primary.json",
+        "kind": "primary",
+        "catch_type": "PRIMARY_INTAKE",
+        "year_levels": [],
+        "source_school_code": "317",
+        "data_year": 2025,
+        "source": "LISTdata",
+        "source_url": "https://listdata.thelist.tas.gov.au/opendata/index.html",
+        "source_sector": "Primary",
+        "match_method": "exact_name_and_containment"
+      }
+    ],
+    "48185": [
+      {
+        "geometry_url": "/data/catchment/tas/48185-primary.json",
+        "kind": "primary",
+        "catch_type": "PRIMARY_INTAKE",
+        "year_levels": [],
+        "source_school_code": "276",
+        "data_year": 2025,
+        "source": "LISTdata",
+        "source_url": "https://listdata.thelist.tas.gov.au/opendata/index.html",
+        "source_sector": "Primary",
+        "match_method": "exact_name_and_containment"
+      }
+    ],
+    "48187": [
+      {
+        "geometry_url": "/data/catchment/tas/48187-primary.json",
+        "kind": "primary",
+        "catch_type": "PRIMARY_INTAKE",
+        "year_levels": [],
+        "source_school_code": "044",
+        "data_year": 2025,
+        "source": "LISTdata",
+        "source_url": "https://listdata.thelist.tas.gov.au/opendata/index.html",
+        "source_sector": "Combined",
+        "match_method": "exact_name_and_containment"
+      }
+    ],
+    "48188": [
+      {
+        "geometry_url": "/data/catchment/tas/48188-primary.json",
+        "kind": "primary",
+        "catch_type": "PRIMARY_INTAKE",
+        "year_levels": [],
+        "source_school_code": "131",
+        "data_year": 2025,
+        "source": "LISTdata",
+        "source_url": "https://listdata.thelist.tas.gov.au/opendata/index.html",
+        "source_sector": "Primary",
+        "match_method": "exact_name_and_containment"
+      }
+    ],
+    "48189": [
+      {
+        "geometry_url": "/data/catchment/tas/48189-primary.json",
+        "kind": "primary",
+        "catch_type": "PRIMARY_INTAKE",
+        "year_levels": [],
+        "source_school_code": "149",
+        "data_year": 2025,
+        "source": "LISTdata",
+        "source_url": "https://listdata.thelist.tas.gov.au/opendata/index.html",
+        "source_sector": "Primary",
+        "match_method": "exact_name_and_containment"
+      }
+    ],
+    "48191": [
+      {
+        "geometry_url": "/data/catchment/tas/48191-primary.json",
+        "kind": "primary",
+        "catch_type": "PRIMARY_INTAKE",
+        "year_levels": [],
+        "source_school_code": "057",
+        "data_year": 2025,
+        "source": "LISTdata",
+        "source_url": "https://listdata.thelist.tas.gov.au/opendata/index.html",
+        "source_sector": "Primary",
+        "match_method": "exact_name_and_containment"
+      }
+    ],
+    "48192": [
+      {
+        "geometry_url": "/data/catchment/tas/48192-primary.json",
+        "kind": "primary",
+        "catch_type": "PRIMARY_INTAKE",
+        "year_levels": [],
+        "source_school_code": "115",
+        "data_year": 2025,
+        "source": "LISTdata",
+        "source_url": "https://listdata.thelist.tas.gov.au/opendata/index.html",
+        "source_sector": "Primary",
+        "match_method": "exact_name_and_containment"
+      }
+    ],
+    "48193": [
+      {
+        "geometry_url": "/data/catchment/tas/48193-primary.json",
+        "kind": "primary",
+        "catch_type": "PRIMARY_INTAKE",
+        "year_levels": [],
+        "source_school_code": "168",
+        "data_year": 2025,
+        "source": "LISTdata",
+        "source_url": "https://listdata.thelist.tas.gov.au/opendata/index.html",
+        "source_sector": "Primary",
+        "match_method": "exact_name_and_containment"
+      }
+    ],
+    "48194": [
+      {
+        "geometry_url": "/data/catchment/tas/48194-primary.json",
+        "kind": "primary",
+        "catch_type": "PRIMARY_INTAKE",
+        "year_levels": [],
+        "source_school_code": "019",
+        "data_year": 2025,
+        "source": "LISTdata",
+        "source_url": "https://listdata.thelist.tas.gov.au/opendata/index.html",
+        "source_sector": "Primary",
+        "match_method": "exact_name_and_containment"
+      }
+    ],
+    "48195": [
+      {
+        "geometry_url": "/data/catchment/tas/48195-primary.json",
+        "kind": "primary",
+        "catch_type": "PRIMARY_INTAKE",
+        "year_levels": [],
+        "source_school_code": "186",
+        "data_year": 2025,
+        "source": "LISTdata",
+        "source_url": "https://listdata.thelist.tas.gov.au/opendata/index.html",
+        "source_sector": "Primary",
+        "match_method": "exact_name_and_containment"
+      }
+    ],
+    "48196": [
+      {
+        "geometry_url": "/data/catchment/tas/48196-primary.json",
+        "kind": "primary",
+        "catch_type": "PRIMARY_INTAKE",
+        "year_levels": [],
+        "source_school_code": "314",
+        "data_year": 2025,
+        "source": "LISTdata",
+        "source_url": "https://listdata.thelist.tas.gov.au/opendata/index.html",
+        "source_sector": "Primary",
+        "match_method": "exact_name_and_containment"
+      }
+    ],
+    "48197": [
+      {
+        "geometry_url": "/data/catchment/tas/48197-primary.json",
+        "kind": "primary",
+        "catch_type": "PRIMARY_INTAKE",
+        "year_levels": [],
+        "source_school_code": "033",
+        "data_year": 2025,
+        "source": "LISTdata",
+        "source_url": "https://listdata.thelist.tas.gov.au/opendata/index.html",
+        "source_sector": "Combined",
+        "match_method": "exact_name_and_containment"
+      }
+    ],
+    "48198": [
+      {
+        "geometry_url": "/data/catchment/tas/48198-primary.json",
+        "kind": "primary",
+        "catch_type": "PRIMARY_INTAKE",
+        "year_levels": [],
+        "source_school_code": "317",
+        "data_year": 2025,
+        "source": "LISTdata",
+        "source_url": "https://listdata.thelist.tas.gov.au/opendata/index.html",
+        "source_sector": "Primary",
+        "match_method": "exact_name_and_containment"
+      }
+    ],
+    "48202": [
+      {
+        "geometry_url": "/data/catchment/tas/48202-primary.json",
+        "kind": "primary",
+        "catch_type": "PRIMARY_INTAKE",
+        "year_levels": [],
+        "source_school_code": "094",
+        "data_year": 2025,
+        "source": "LISTdata",
+        "source_url": "https://listdata.thelist.tas.gov.au/opendata/index.html",
+        "source_sector": "Primary",
+        "match_method": "exact_name_and_containment"
+      }
+    ],
+    "48207": [
+      {
+        "geometry_url": "/data/catchment/tas/48207-primary.json",
+        "kind": "primary",
+        "catch_type": "PRIMARY_INTAKE",
+        "year_levels": [],
+        "source_school_code": "018",
+        "data_year": 2025,
+        "source": "LISTdata",
+        "source_url": "https://listdata.thelist.tas.gov.au/opendata/index.html",
+        "source_sector": "Primary",
+        "match_method": "exact_name_and_containment"
+      }
+    ],
+    "48209": [
+      {
+        "geometry_url": "/data/catchment/tas/48209-primary.json",
+        "kind": "primary",
+        "catch_type": "PRIMARY_INTAKE",
+        "year_levels": [],
+        "source_school_code": "087",
+        "data_year": 2025,
+        "source": "LISTdata",
+        "source_url": "https://listdata.thelist.tas.gov.au/opendata/index.html",
+        "source_sector": "Primary",
+        "match_method": "exact_name_and_containment"
+      }
+    ],
+    "48211": [
+      {
+        "geometry_url": "/data/catchment/tas/48211-primary.json",
+        "kind": "primary",
+        "catch_type": "PRIMARY_INTAKE",
+        "year_levels": [],
+        "source_school_code": "129",
+        "data_year": 2025,
+        "source": "LISTdata",
+        "source_url": "https://listdata.thelist.tas.gov.au/opendata/index.html",
+        "source_sector": "Primary",
+        "match_method": "exact_name_and_containment"
+      }
+    ],
+    "48213": [
+      {
+        "geometry_url": "/data/catchment/tas/48213-primary.json",
+        "kind": "primary",
+        "catch_type": "PRIMARY_INTAKE",
+        "year_levels": [],
+        "source_school_code": "233",
+        "data_year": 2025,
+        "source": "LISTdata",
+        "source_url": "https://listdata.thelist.tas.gov.au/opendata/index.html",
+        "source_sector": "Primary",
+        "match_method": "exact_name_and_containment"
+      }
+    ],
+    "48214": [
+      {
+        "geometry_url": "/data/catchment/tas/48214-primary.json",
+        "kind": "primary",
+        "catch_type": "PRIMARY_INTAKE",
+        "year_levels": [],
+        "source_school_code": "255",
+        "data_year": 2025,
+        "source": "LISTdata",
+        "source_url": "https://listdata.thelist.tas.gov.au/opendata/index.html",
+        "source_sector": "Primary",
+        "match_method": "exact_name_and_containment"
+      }
+    ],
+    "48216": [
+      {
+        "geometry_url": "/data/catchment/tas/48216-primary.json",
+        "kind": "primary",
+        "catch_type": "PRIMARY_INTAKE",
+        "year_levels": [],
+        "source_school_code": "281",
+        "data_year": 2025,
+        "source": "LISTdata",
+        "source_url": "https://listdata.thelist.tas.gov.au/opendata/index.html",
+        "source_sector": "Primary",
+        "match_method": "exact_name_and_containment"
+      }
+    ],
+    "48217": [
+      {
+        "geometry_url": "/data/catchment/tas/48217-primary.json",
+        "kind": "primary",
+        "catch_type": "PRIMARY_INTAKE",
+        "year_levels": [],
+        "source_school_code": "328",
+        "data_year": 2025,
+        "source": "LISTdata",
+        "source_url": "https://listdata.thelist.tas.gov.au/opendata/index.html",
+        "source_sector": "Primary",
+        "match_method": "exact_name_and_containment"
+      }
+    ],
+    "48218": [
+      {
+        "geometry_url": "/data/catchment/tas/48218-primary.json",
+        "kind": "primary",
+        "catch_type": "PRIMARY_INTAKE",
+        "year_levels": [],
+        "source_school_code": "335",
+        "data_year": 2025,
+        "source": "LISTdata",
+        "source_url": "https://listdata.thelist.tas.gov.au/opendata/index.html",
+        "source_sector": "Primary",
+        "match_method": "exact_name_and_containment"
+      }
+    ],
+    "48271": [
+      {
+        "geometry_url": "/data/catchment/tas/48271-primary.json",
+        "kind": "primary",
+        "catch_type": "PRIMARY_INTAKE",
+        "year_levels": [],
+        "source_school_code": "378",
+        "data_year": 2025,
+        "source": "LISTdata",
+        "source_url": "https://listdata.thelist.tas.gov.au/opendata/index.html",
+        "source_sector": "Primary",
+        "match_method": "exact_name_and_containment"
+      }
+    ],
+    "48272": [
+      {
+        "geometry_url": "/data/catchment/tas/48272-primary.json",
+        "kind": "primary",
+        "catch_type": "PRIMARY_INTAKE",
+        "year_levels": [],
+        "source_school_code": "400",
+        "data_year": 2025,
+        "source": "LISTdata",
+        "source_url": "https://listdata.thelist.tas.gov.au/opendata/index.html",
+        "source_sector": "Primary",
+        "match_method": "exact_name_and_containment"
+      }
+    ],
+    "48273": [
+      {
+        "geometry_url": "/data/catchment/tas/48273-primary.json",
+        "kind": "primary",
+        "catch_type": "PRIMARY_INTAKE",
+        "year_levels": [],
+        "source_school_code": "404",
+        "data_year": 2025,
+        "source": "LISTdata",
+        "source_url": "https://listdata.thelist.tas.gov.au/opendata/index.html",
+        "source_sector": "Primary",
+        "match_method": "exact_name_and_containment"
+      }
+    ],
+    "48274": [
+      {
+        "geometry_url": "/data/catchment/tas/48274-primary.json",
+        "kind": "primary",
+        "catch_type": "PRIMARY_INTAKE",
+        "year_levels": [],
+        "source_school_code": "417",
+        "data_year": 2025,
+        "source": "LISTdata",
+        "source_url": "https://listdata.thelist.tas.gov.au/opendata/index.html",
+        "source_sector": "Primary",
+        "match_method": "exact_name_and_containment"
+      }
+    ],
+    "48276": [
+      {
+        "geometry_url": "/data/catchment/tas/48276-primary.json",
+        "kind": "primary",
+        "catch_type": "PRIMARY_INTAKE",
+        "year_levels": [],
+        "source_school_code": "126",
+        "data_year": 2025,
+        "source": "LISTdata",
+        "source_url": "https://listdata.thelist.tas.gov.au/opendata/index.html",
+        "source_sector": "Combined",
+        "match_method": "exact_name_and_containment"
+      }
+    ],
+    "48277": [
+      {
+        "geometry_url": "/data/catchment/tas/48277-primary.json",
+        "kind": "primary",
+        "catch_type": "PRIMARY_INTAKE",
+        "year_levels": [],
+        "source_school_code": "318",
+        "data_year": 2025,
+        "source": "LISTdata",
+        "source_url": "https://listdata.thelist.tas.gov.au/opendata/index.html",
+        "source_sector": "Primary",
+        "match_method": "exact_name_and_containment"
+      }
+    ],
+    "48279": [
+      {
+        "geometry_url": "/data/catchment/tas/48279-primary.json",
+        "kind": "primary",
+        "catch_type": "PRIMARY_INTAKE",
+        "year_levels": [],
+        "source_school_code": "028",
+        "data_year": 2025,
+        "source": "LISTdata",
+        "source_url": "https://listdata.thelist.tas.gov.au/opendata/index.html",
+        "source_sector": "Primary",
+        "match_method": "exact_name_and_containment"
+      }
+    ],
+    "48282": [
+      {
+        "geometry_url": "/data/catchment/tas/48282-primary.json",
+        "kind": "primary",
+        "catch_type": "PRIMARY_INTAKE",
+        "year_levels": [],
+        "source_school_code": "278",
+        "data_year": 2025,
+        "source": "LISTdata",
+        "source_url": "https://listdata.thelist.tas.gov.au/opendata/index.html",
+        "source_sector": "Primary",
+        "match_method": "exact_name_and_containment"
+      }
+    ],
+    "48283": [
+      {
+        "geometry_url": "/data/catchment/tas/48283-primary.json",
+        "kind": "primary",
+        "catch_type": "PRIMARY_INTAKE",
+        "year_levels": [],
+        "source_school_code": "302",
+        "data_year": 2025,
+        "source": "LISTdata",
+        "source_url": "https://listdata.thelist.tas.gov.au/opendata/index.html",
+        "source_sector": "Primary",
+        "match_method": "exact_name_and_containment"
+      }
+    ],
+    "48286": [
+      {
+        "geometry_url": "/data/catchment/tas/48286-primary.json",
+        "kind": "primary",
+        "catch_type": "PRIMARY_INTAKE",
+        "year_levels": [],
+        "source_school_code": "140",
+        "data_year": 2025,
+        "source": "LISTdata",
+        "source_url": "https://listdata.thelist.tas.gov.au/opendata/index.html",
+        "source_sector": "Primary",
+        "match_method": "exact_name_and_containment"
+      }
+    ],
+    "48288": [
+      {
+        "geometry_url": "/data/catchment/tas/48288-primary.json",
+        "kind": "primary",
+        "catch_type": "PRIMARY_INTAKE",
+        "year_levels": [],
+        "source_school_code": "239",
+        "data_year": 2025,
+        "source": "LISTdata",
+        "source_url": "https://listdata.thelist.tas.gov.au/opendata/index.html",
+        "source_sector": "Primary",
+        "match_method": "exact_name_and_containment"
+      }
+    ],
+    "48289": [
+      {
+        "geometry_url": "/data/catchment/tas/48289-primary.json",
+        "kind": "primary",
+        "catch_type": "PRIMARY_INTAKE",
+        "year_levels": [],
+        "source_school_code": "336",
+        "data_year": 2025,
+        "source": "LISTdata",
+        "source_url": "https://listdata.thelist.tas.gov.au/opendata/index.html",
+        "source_sector": "Primary",
+        "match_method": "exact_name_and_containment"
+      }
+    ],
+    "48290": [
+      {
+        "geometry_url": "/data/catchment/tas/48290-primary.json",
+        "kind": "primary",
+        "catch_type": "PRIMARY_INTAKE",
+        "year_levels": [],
+        "source_school_code": "023",
+        "data_year": 2025,
+        "source": "LISTdata",
+        "source_url": "https://listdata.thelist.tas.gov.au/opendata/index.html",
+        "source_sector": "Primary",
+        "match_method": "exact_name_and_containment"
+      }
+    ],
+    "48291": [
+      {
+        "geometry_url": "/data/catchment/tas/48291-primary.json",
+        "kind": "primary",
+        "catch_type": "PRIMARY_INTAKE",
+        "year_levels": [],
+        "source_school_code": "248",
+        "data_year": 2025,
+        "source": "LISTdata",
+        "source_url": "https://listdata.thelist.tas.gov.au/opendata/index.html",
+        "source_sector": "Primary",
+        "match_method": "exact_name_and_containment"
+      }
+    ],
+    "48292": [
+      {
+        "geometry_url": "/data/catchment/tas/48292-primary.json",
+        "kind": "primary",
+        "catch_type": "PRIMARY_INTAKE",
+        "year_levels": [],
+        "source_school_code": "179",
+        "data_year": 2025,
+        "source": "LISTdata",
+        "source_url": "https://listdata.thelist.tas.gov.au/opendata/index.html",
+        "source_sector": "Primary",
+        "match_method": "exact_name_and_containment"
+      }
+    ],
+    "48294": [
+      {
+        "geometry_url": "/data/catchment/tas/48294-primary.json",
+        "kind": "primary",
+        "catch_type": "PRIMARY_INTAKE",
+        "year_levels": [],
+        "source_school_code": "408",
+        "data_year": 2025,
+        "source": "LISTdata",
+        "source_url": "https://listdata.thelist.tas.gov.au/opendata/index.html",
+        "source_sector": "Primary",
+        "match_method": "exact_name_and_containment"
+      }
+    ],
+    "48295": [
+      {
+        "geometry_url": "/data/catchment/tas/48295-primary.json",
+        "kind": "primary",
+        "catch_type": "PRIMARY_INTAKE",
+        "year_levels": [],
+        "source_school_code": "069",
+        "data_year": 2025,
+        "source": "LISTdata",
+        "source_url": "https://listdata.thelist.tas.gov.au/opendata/index.html",
+        "source_sector": "Primary",
+        "match_method": "exact_name_and_containment"
+      }
+    ],
+    "48297": [
+      {
+        "geometry_url": "/data/catchment/tas/48297-primary.json",
+        "kind": "primary",
+        "catch_type": "PRIMARY_INTAKE",
+        "year_levels": [],
+        "source_school_code": "193",
+        "data_year": 2025,
+        "source": "LISTdata",
+        "source_url": "https://listdata.thelist.tas.gov.au/opendata/index.html",
+        "source_sector": "Primary",
+        "match_method": "exact_name_and_containment"
+      }
+    ],
+    "48298": [
+      {
+        "geometry_url": "/data/catchment/tas/48298-primary.json",
+        "kind": "primary",
+        "catch_type": "PRIMARY_INTAKE",
+        "year_levels": [],
+        "source_school_code": "172",
+        "data_year": 2025,
+        "source": "LISTdata",
+        "source_url": "https://listdata.thelist.tas.gov.au/opendata/index.html",
+        "source_sector": "Primary",
+        "match_method": "exact_name_and_containment"
+      }
+    ],
+    "48300": [
+      {
+        "geometry_url": "/data/catchment/tas/48300-primary.json",
+        "kind": "primary",
+        "catch_type": "PRIMARY_INTAKE",
+        "year_levels": [],
+        "source_school_code": "310",
+        "data_year": 2025,
+        "source": "LISTdata",
+        "source_url": "https://listdata.thelist.tas.gov.au/opendata/index.html",
+        "source_sector": "Combined",
+        "match_method": "exact_name_and_containment"
+      }
+    ],
+    "48303": [
+      {
+        "geometry_url": "/data/catchment/tas/48303-primary.json",
+        "kind": "primary",
+        "catch_type": "PRIMARY_INTAKE",
+        "year_levels": [],
+        "source_school_code": "299",
+        "data_year": 2025,
+        "source": "LISTdata",
+        "source_url": "https://listdata.thelist.tas.gov.au/opendata/index.html",
+        "source_sector": "Primary",
+        "match_method": "exact_name_and_containment"
+      }
+    ],
+    "48305": [
+      {
+        "geometry_url": "/data/catchment/tas/48305-primary.json",
+        "kind": "primary",
+        "catch_type": "PRIMARY_INTAKE",
+        "year_levels": [],
+        "source_school_code": "071",
+        "data_year": 2025,
+        "source": "LISTdata",
+        "source_url": "https://listdata.thelist.tas.gov.au/opendata/index.html",
+        "source_sector": "Primary",
+        "match_method": "exact_name_and_containment"
+      }
+    ],
+    "48306": [
+      {
+        "geometry_url": "/data/catchment/tas/48306-primary.json",
+        "kind": "primary",
+        "catch_type": "PRIMARY_INTAKE",
+        "year_levels": [],
+        "source_school_code": "086",
+        "data_year": 2025,
+        "source": "LISTdata",
+        "source_url": "https://listdata.thelist.tas.gov.au/opendata/index.html",
+        "source_sector": "Primary",
+        "match_method": "exact_name_and_containment"
+      }
+    ],
+    "48307": [
+      {
+        "geometry_url": "/data/catchment/tas/48307-primary.json",
+        "kind": "primary",
+        "catch_type": "PRIMARY_INTAKE",
+        "year_levels": [],
+        "source_school_code": "114",
+        "data_year": 2025,
+        "source": "LISTdata",
+        "source_url": "https://listdata.thelist.tas.gov.au/opendata/index.html",
+        "source_sector": "Primary",
+        "match_method": "exact_name_and_containment"
+      }
+    ],
+    "48308": [
+      {
+        "geometry_url": "/data/catchment/tas/48308-primary.json",
+        "kind": "primary",
+        "catch_type": "PRIMARY_INTAKE",
+        "year_levels": [],
+        "source_school_code": "322",
+        "data_year": 2025,
+        "source": "LISTdata",
+        "source_url": "https://listdata.thelist.tas.gov.au/opendata/index.html",
+        "source_sector": "Primary",
+        "match_method": "exact_name_and_containment"
+      }
+    ],
+    "48309": [
+      {
+        "geometry_url": "/data/catchment/tas/48309-primary.json",
+        "kind": "primary",
+        "catch_type": "PRIMARY_INTAKE",
+        "year_levels": [],
+        "source_school_code": "192",
+        "data_year": 2025,
+        "source": "LISTdata",
+        "source_url": "https://listdata.thelist.tas.gov.au/opendata/index.html",
+        "source_sector": "Primary",
+        "match_method": "exact_name_and_containment"
+      }
+    ],
+    "48310": [
+      {
+        "geometry_url": "/data/catchment/tas/48310-primary.json",
+        "kind": "primary",
+        "catch_type": "PRIMARY_INTAKE",
+        "year_levels": [],
+        "source_school_code": "231",
+        "data_year": 2025,
+        "source": "LISTdata",
+        "source_url": "https://listdata.thelist.tas.gov.au/opendata/index.html",
+        "source_sector": "Primary",
+        "match_method": "exact_name_and_containment"
+      }
+    ],
+    "48311": [
+      {
+        "geometry_url": "/data/catchment/tas/48311-primary.json",
+        "kind": "primary",
+        "catch_type": "PRIMARY_INTAKE",
+        "year_levels": [],
+        "source_school_code": "322",
+        "data_year": 2025,
+        "source": "LISTdata",
+        "source_url": "https://listdata.thelist.tas.gov.au/opendata/index.html",
+        "source_sector": "Primary",
+        "match_method": "exact_name_and_containment"
+      }
+    ],
+    "48312": [
+      {
+        "geometry_url": "/data/catchment/tas/48312-primary.json",
+        "kind": "primary",
+        "catch_type": "PRIMARY_INTAKE",
+        "year_levels": [],
+        "source_school_code": "410",
+        "data_year": 2025,
+        "source": "LISTdata",
+        "source_url": "https://listdata.thelist.tas.gov.au/opendata/index.html",
+        "source_sector": "Primary",
+        "match_method": "exact_name_and_containment"
+      }
+    ],
+    "48313": [
+      {
+        "geometry_url": "/data/catchment/tas/48313-primary.json",
+        "kind": "primary",
+        "catch_type": "PRIMARY_INTAKE",
+        "year_levels": [],
+        "source_school_code": "090",
+        "data_year": 2025,
+        "source": "LISTdata",
+        "source_url": "https://listdata.thelist.tas.gov.au/opendata/index.html",
+        "source_sector": "Primary",
+        "match_method": "exact_name_and_containment"
+      }
+    ],
+    "48315": [
+      {
+        "geometry_url": "/data/catchment/tas/48315-primary.json",
+        "kind": "primary",
+        "catch_type": "PRIMARY_INTAKE",
+        "year_levels": [],
+        "source_school_code": "321",
+        "data_year": 2025,
+        "source": "LISTdata",
+        "source_url": "https://listdata.thelist.tas.gov.au/opendata/index.html",
+        "source_sector": "Primary",
+        "match_method": "exact_name_and_containment"
+      }
+    ],
+    "48316": [
+      {
+        "geometry_url": "/data/catchment/tas/48316-primary.json",
+        "kind": "primary",
+        "catch_type": "PRIMARY_INTAKE",
+        "year_levels": [],
+        "source_school_code": "394",
+        "data_year": 2025,
+        "source": "LISTdata",
+        "source_url": "https://listdata.thelist.tas.gov.au/opendata/index.html",
+        "source_sector": "Primary",
+        "match_method": "exact_name_and_containment"
+      }
+    ],
+    "48317": [
+      {
+        "geometry_url": "/data/catchment/tas/48317-primary.json",
+        "kind": "primary",
+        "catch_type": "PRIMARY_INTAKE",
+        "year_levels": [],
+        "source_school_code": "407",
+        "data_year": 2025,
+        "source": "LISTdata",
+        "source_url": "https://listdata.thelist.tas.gov.au/opendata/index.html",
+        "source_sector": "Primary",
+        "match_method": "exact_name_and_containment"
+      }
+    ],
+    "48319": [
+      {
+        "geometry_url": "/data/catchment/tas/48319-primary.json",
+        "kind": "primary",
+        "catch_type": "PRIMARY_INTAKE",
+        "year_levels": [],
+        "source_school_code": "275",
+        "data_year": 2025,
+        "source": "LISTdata",
+        "source_url": "https://listdata.thelist.tas.gov.au/opendata/index.html",
+        "source_sector": "Primary",
+        "match_method": "exact_name_and_containment"
+      }
+    ],
+    "48322": [
+      {
+        "geometry_url": "/data/catchment/tas/48322-primary.json",
+        "kind": "primary",
+        "catch_type": "PRIMARY_INTAKE",
+        "year_levels": [],
+        "source_school_code": "035",
+        "data_year": 2025,
+        "source": "LISTdata",
+        "source_url": "https://listdata.thelist.tas.gov.au/opendata/index.html",
+        "source_sector": "Primary",
+        "match_method": "exact_name_and_containment"
+      }
+    ],
+    "48324": [
+      {
+        "geometry_url": "/data/catchment/tas/48324-primary.json",
+        "kind": "primary",
+        "catch_type": "PRIMARY_INTAKE",
+        "year_levels": [],
+        "source_school_code": "054",
+        "data_year": 2025,
+        "source": "LISTdata",
+        "source_url": "https://listdata.thelist.tas.gov.au/opendata/index.html",
+        "source_sector": "Primary",
+        "match_method": "exact_name_and_containment"
+      }
+    ],
+    "48325": [
+      {
+        "geometry_url": "/data/catchment/tas/48325-primary.json",
+        "kind": "primary",
+        "catch_type": "PRIMARY_INTAKE",
+        "year_levels": [],
+        "source_school_code": "196",
+        "data_year": 2025,
+        "source": "LISTdata",
+        "source_url": "https://listdata.thelist.tas.gov.au/opendata/index.html",
+        "source_sector": "Primary",
+        "match_method": "exact_name_and_containment"
+      }
+    ],
+    "48327": [
+      {
+        "geometry_url": "/data/catchment/tas/48327-primary.json",
+        "kind": "primary",
+        "catch_type": "PRIMARY_INTAKE",
+        "year_levels": [],
+        "source_school_code": "020",
+        "data_year": 2025,
+        "source": "LISTdata",
+        "source_url": "https://listdata.thelist.tas.gov.au/opendata/index.html",
+        "source_sector": "Primary",
+        "match_method": "exact_name_and_containment"
+      }
+    ],
+    "48328": [
+      {
+        "geometry_url": "/data/catchment/tas/48328-primary.json",
+        "kind": "primary",
+        "catch_type": "PRIMARY_INTAKE",
+        "year_levels": [],
+        "source_school_code": "141",
+        "data_year": 2025,
+        "source": "LISTdata",
+        "source_url": "https://listdata.thelist.tas.gov.au/opendata/index.html",
+        "source_sector": "Primary",
+        "match_method": "exact_name_and_containment"
+      }
+    ],
+    "48329": [
+      {
+        "geometry_url": "/data/catchment/tas/48329-primary.json",
+        "kind": "primary",
+        "catch_type": "PRIMARY_INTAKE",
+        "year_levels": [],
+        "source_school_code": "225",
+        "data_year": 2025,
+        "source": "LISTdata",
+        "source_url": "https://listdata.thelist.tas.gov.au/opendata/index.html",
+        "source_sector": "Primary",
+        "match_method": "exact_name_and_containment"
+      }
+    ],
+    "48330": [
+      {
+        "geometry_url": "/data/catchment/tas/48330-primary.json",
+        "kind": "primary",
+        "catch_type": "PRIMARY_INTAKE",
+        "year_levels": [],
+        "source_school_code": "277",
+        "data_year": 2025,
+        "source": "LISTdata",
+        "source_url": "https://listdata.thelist.tas.gov.au/opendata/index.html",
+        "source_sector": "Primary",
+        "match_method": "exact_name_and_containment"
+      }
+    ],
+    "48337": [
+      {
+        "geometry_url": "/data/catchment/tas/48337-primary.json",
+        "kind": "primary",
+        "catch_type": "PRIMARY_INTAKE",
+        "year_levels": [],
+        "source_school_code": "794",
+        "data_year": 2025,
+        "source": "LISTdata",
+        "source_url": "https://listdata.thelist.tas.gov.au/opendata/index.html",
+        "source_sector": "Primary",
+        "match_method": "exact_name_and_containment"
+      }
+    ],
+    "48340": [
+      {
+        "geometry_url": "/data/catchment/tas/48340-primary.json",
+        "kind": "primary",
+        "catch_type": "PRIMARY_INTAKE",
+        "year_levels": [],
+        "source_school_code": "091",
+        "data_year": 2025,
+        "source": "LISTdata",
+        "source_url": "https://listdata.thelist.tas.gov.au/opendata/index.html",
+        "source_sector": "Primary",
+        "match_method": "exact_name_and_containment"
+      }
+    ],
+    "48341": [
+      {
+        "geometry_url": "/data/catchment/tas/48341-primary.json",
+        "kind": "primary",
+        "catch_type": "PRIMARY_INTAKE",
+        "year_levels": [],
+        "source_school_code": "113",
+        "data_year": 2025,
+        "source": "LISTdata",
+        "source_url": "https://listdata.thelist.tas.gov.au/opendata/index.html",
+        "source_sector": "Primary",
+        "match_method": "exact_name_and_containment"
+      }
+    ],
+    "48342": [
+      {
+        "geometry_url": "/data/catchment/tas/48342-primary.json",
+        "kind": "primary",
+        "catch_type": "PRIMARY_INTAKE",
+        "year_levels": [],
+        "source_school_code": "272",
+        "data_year": 2025,
+        "source": "LISTdata",
+        "source_url": "https://listdata.thelist.tas.gov.au/opendata/index.html",
+        "source_sector": "Primary",
+        "match_method": "exact_name_and_containment"
+      }
+    ],
+    "48343": [
+      {
+        "geometry_url": "/data/catchment/tas/48343-primary.json",
+        "kind": "primary",
+        "catch_type": "PRIMARY_INTAKE",
+        "year_levels": [],
+        "source_school_code": "313",
+        "data_year": 2025,
+        "source": "LISTdata",
+        "source_url": "https://listdata.thelist.tas.gov.au/opendata/index.html",
+        "source_sector": "Primary",
+        "match_method": "exact_name_and_containment"
+      }
+    ],
+    "48344": [
+      {
+        "geometry_url": "/data/catchment/tas/48344-primary.json",
+        "kind": "primary",
+        "catch_type": "PRIMARY_INTAKE",
+        "year_levels": [],
+        "source_school_code": "333",
+        "data_year": 2025,
+        "source": "LISTdata",
+        "source_url": "https://listdata.thelist.tas.gov.au/opendata/index.html",
+        "source_sector": "Primary",
+        "match_method": "exact_name_and_containment"
+      }
+    ],
+    "48350": [
+      {
+        "geometry_url": "/data/catchment/tas/48350-primary.json",
+        "kind": "primary",
+        "catch_type": "PRIMARY_INTAKE",
+        "year_levels": [],
+        "source_school_code": "029",
+        "data_year": 2025,
+        "source": "LISTdata",
+        "source_url": "https://listdata.thelist.tas.gov.au/opendata/index.html",
+        "source_sector": "Primary",
+        "match_method": "exact_name_and_containment"
+      }
+    ],
+    "48351": [
+      {
+        "geometry_url": "/data/catchment/tas/48351-primary.json",
+        "kind": "primary",
+        "catch_type": "PRIMARY_INTAKE",
+        "year_levels": [],
+        "source_school_code": "014",
+        "data_year": 2025,
+        "source": "LISTdata",
+        "source_url": "https://listdata.thelist.tas.gov.au/opendata/index.html",
+        "source_sector": "Primary",
+        "match_method": "exact_name_and_containment"
+      }
+    ],
+    "48352": [
+      {
+        "geometry_url": "/data/catchment/tas/48352-primary.json",
+        "kind": "primary",
+        "catch_type": "PRIMARY_INTAKE",
+        "year_levels": [],
+        "source_school_code": "164",
+        "data_year": 2025,
+        "source": "LISTdata",
+        "source_url": "https://listdata.thelist.tas.gov.au/opendata/index.html",
+        "source_sector": "Primary",
+        "match_method": "exact_name_and_containment"
+      }
+    ],
+    "48353": [
+      {
+        "geometry_url": "/data/catchment/tas/48353-primary.json",
+        "kind": "primary",
+        "catch_type": "PRIMARY_INTAKE",
+        "year_levels": [],
+        "source_school_code": "109",
+        "data_year": 2025,
+        "source": "LISTdata",
+        "source_url": "https://listdata.thelist.tas.gov.au/opendata/index.html",
+        "source_sector": "Primary",
+        "match_method": "exact_name_and_containment"
+      }
+    ],
+    "48355": [
+      {
+        "geometry_url": "/data/catchment/tas/48355-primary.json",
+        "kind": "primary",
+        "catch_type": "PRIMARY_INTAKE",
+        "year_levels": [],
+        "source_school_code": "227",
+        "data_year": 2025,
+        "source": "LISTdata",
+        "source_url": "https://listdata.thelist.tas.gov.au/opendata/index.html",
+        "source_sector": "Primary",
+        "match_method": "exact_name_and_containment"
+      }
+    ],
+    "48356": [
+      {
+        "geometry_url": "/data/catchment/tas/48356-primary.json",
+        "kind": "primary",
+        "catch_type": "PRIMARY_INTAKE",
+        "year_levels": [],
+        "source_school_code": "194",
+        "data_year": 2025,
+        "source": "LISTdata",
+        "source_url": "https://listdata.thelist.tas.gov.au/opendata/index.html",
+        "source_sector": "Primary",
+        "match_method": "exact_name_and_containment"
+      }
+    ],
+    "48365": [
+      {
+        "geometry_url": "/data/catchment/tas/48365-primary.json",
+        "kind": "primary",
+        "catch_type": "PRIMARY_INTAKE",
+        "year_levels": [],
+        "source_school_code": "334",
+        "data_year": 2025,
+        "source": "LISTdata",
+        "source_url": "https://listdata.thelist.tas.gov.au/opendata/index.html",
+        "source_sector": "Primary",
+        "match_method": "exact_name_and_containment"
+      }
+    ],
+    "48368": [
+      {
+        "geometry_url": "/data/catchment/tas/48368-primary.json",
+        "kind": "primary",
+        "catch_type": "PRIMARY_INTAKE",
+        "year_levels": [],
+        "source_school_code": "419",
+        "data_year": 2025,
+        "source": "LISTdata",
+        "source_url": "https://listdata.thelist.tas.gov.au/opendata/index.html",
+        "source_sector": "Primary",
+        "match_method": "exact_name_and_containment"
+      }
+    ],
+    "54627": [
+      {
+        "geometry_url": "/data/catchment/tas/54627-primary.json",
+        "kind": "primary",
+        "catch_type": "PRIMARY_INTAKE",
+        "year_levels": [],
+        "source_school_code": "075",
+        "data_year": 2025,
+        "source": "LISTdata",
+        "source_url": "https://listdata.thelist.tas.gov.au/opendata/index.html",
+        "source_sector": "Primary",
+        "match_method": "exact_name_and_containment"
+      }
+    ],
+    "55072": [
+      {
+        "geometry_url": "/data/catchment/tas/55072-primary.json",
+        "kind": "primary",
+        "catch_type": "PRIMARY_INTAKE",
+        "year_levels": [],
+        "source_school_code": "096",
+        "data_year": 2025,
+        "source": "LISTdata",
+        "source_url": "https://listdata.thelist.tas.gov.au/opendata/index.html",
+        "source_sector": "Primary",
+        "match_method": "exact_name_and_containment"
+      }
+    ],
+    "55079": [
+      {
+        "geometry_url": "/data/catchment/tas/55079-primary.json",
+        "kind": "primary",
+        "catch_type": "PRIMARY_INTAKE",
+        "year_levels": [],
+        "source_school_code": "160",
+        "data_year": 2025,
+        "source": "LISTdata",
+        "source_url": "https://listdata.thelist.tas.gov.au/opendata/index.html",
+        "source_sector": "Primary",
+        "match_method": "exact_name_and_containment"
+      }
+    ],
+    "55866": [
+      {
+        "geometry_url": "/data/catchment/tas/55866-primary.json",
+        "kind": "primary",
+        "catch_type": "PRIMARY_INTAKE",
+        "year_levels": [],
+        "source_school_code": "016",
+        "data_year": 2025,
+        "source": "LISTdata",
+        "source_url": "https://listdata.thelist.tas.gov.au/opendata/index.html",
+        "source_sector": "Primary",
+        "match_method": "exact_name_and_containment"
+      }
+    ],
+    "57212": [
+      {
+        "geometry_url": "/data/catchment/tas/57212-primary.json",
+        "kind": "primary",
+        "catch_type": "PRIMARY_INTAKE",
+        "year_levels": [],
+        "source_school_code": "203",
+        "data_year": 2025,
+        "source": "LISTdata",
+        "source_url": "https://listdata.thelist.tas.gov.au/opendata/index.html",
+        "source_sector": "Combined",
+        "match_method": "exact_name_and_containment"
+      }
+    ],
+    "57405": [
+      {
+        "geometry_url": "/data/catchment/tas/57405-primary.json",
+        "kind": "primary",
+        "catch_type": "PRIMARY_INTAKE",
+        "year_levels": [],
+        "source_school_code": "047",
+        "data_year": 2025,
+        "source": "LISTdata",
+        "source_url": "https://listdata.thelist.tas.gov.au/opendata/index.html",
+        "source_sector": "Primary",
+        "match_method": "exact_name_and_containment"
+      }
+    ],
+    "57476": [
+      {
+        "geometry_url": "/data/catchment/tas/57476-primary.json",
+        "kind": "primary",
+        "catch_type": "PRIMARY_INTAKE",
+        "year_levels": [],
+        "source_school_code": "S01",
+        "data_year": 2025,
+        "source": "LISTdata",
+        "source_url": "https://listdata.thelist.tas.gov.au/opendata/index.html",
+        "source_sector": "Primary",
+        "match_method": "audited_shared_zone_and_containment"
+      }
+    ],
+    "68851": [
+      {
+        "geometry_url": "/data/catchment/tas/68851-primary.json",
+        "kind": "primary",
+        "catch_type": "PRIMARY_INTAKE",
+        "year_levels": [],
+        "source_school_code": "381",
+        "data_year": 2025,
+        "source": "LISTdata",
+        "source_url": "https://listdata.thelist.tas.gov.au/opendata/index.html",
+        "source_sector": "Primary",
+        "match_method": "exact_name_and_containment"
+      }
+    ],
+    "68852": [
+      {
+        "geometry_url": "/data/catchment/tas/68852-primary.json",
+        "kind": "primary",
+        "catch_type": "PRIMARY_INTAKE",
+        "year_levels": [],
+        "source_school_code": "133",
+        "data_year": 2025,
+        "source": "LISTdata",
+        "source_url": "https://listdata.thelist.tas.gov.au/opendata/index.html",
+        "source_sector": "Primary",
+        "match_method": "exact_name_and_containment"
+      }
+    ],
+    "68997": [
+      {
+        "geometry_url": "/data/catchment/tas/68997-primary.json",
+        "kind": "primary",
+        "catch_type": "PRIMARY_INTAKE",
+        "year_levels": [],
+        "source_school_code": "647",
+        "data_year": 2025,
+        "source": "LISTdata",
+        "source_url": "https://listdata.thelist.tas.gov.au/opendata/index.html",
+        "source_sector": "Primary",
+        "match_method": "exact_name_and_containment"
+      }
+    ],
+    "69035": [
+      {
+        "geometry_url": "/data/catchment/tas/69035-primary.json",
+        "kind": "primary",
+        "catch_type": "PRIMARY_INTAKE",
+        "year_levels": [],
+        "source_school_code": "850",
+        "data_year": 2025,
+        "source": "LISTdata",
+        "source_url": "https://listdata.thelist.tas.gov.au/opendata/index.html",
+        "source_sector": "Primary",
+        "match_method": "exact_name_and_containment"
+      }
+    ],
+    "69036": [
+      {
+        "geometry_url": "/data/catchment/tas/69036-primary.json",
+        "kind": "primary",
+        "catch_type": "PRIMARY_INTAKE",
+        "year_levels": [],
+        "source_school_code": "769",
+        "data_year": 2025,
+        "source": "LISTdata",
+        "source_url": "https://listdata.thelist.tas.gov.au/opendata/index.html",
+        "source_sector": "Primary",
+        "match_method": "exact_name_and_containment"
+      }
+    ],
+    "69037": [
+      {
+        "geometry_url": "/data/catchment/tas/69037-primary.json",
+        "kind": "primary",
+        "catch_type": "PRIMARY_INTAKE",
+        "year_levels": [],
+        "source_school_code": "415",
+        "data_year": 2025,
+        "source": "LISTdata",
+        "source_url": "https://listdata.thelist.tas.gov.au/opendata/index.html",
+        "source_sector": "Primary",
+        "match_method": "exact_name_and_containment"
+      }
+    ],
+    "69040": [
+      {
+        "geometry_url": "/data/catchment/tas/69040-primary.json",
+        "kind": "primary",
+        "catch_type": "PRIMARY_INTAKE",
+        "year_levels": [],
+        "source_school_code": "597",
+        "data_year": 2025,
+        "source": "LISTdata",
+        "source_url": "https://listdata.thelist.tas.gov.au/opendata/index.html",
+        "source_sector": "Primary",
+        "match_method": "exact_name_and_containment"
+      }
+    ],
+    "69041": [
+      {
+        "geometry_url": "/data/catchment/tas/69041-primary.json",
+        "kind": "primary",
+        "catch_type": "PRIMARY_INTAKE",
+        "year_levels": [],
+        "source_school_code": "123",
+        "data_year": 2025,
+        "source": "LISTdata",
+        "source_url": "https://listdata.thelist.tas.gov.au/opendata/index.html",
+        "source_sector": "Primary",
+        "match_method": "exact_name_and_containment"
+      }
+    ],
+    "69042": [
+      {
+        "geometry_url": "/data/catchment/tas/69042-primary.json",
+        "kind": "primary",
+        "catch_type": "PRIMARY_INTAKE",
+        "year_levels": [],
+        "source_school_code": "142",
+        "data_year": 2025,
+        "source": "LISTdata",
+        "source_url": "https://listdata.thelist.tas.gov.au/opendata/index.html",
+        "source_sector": "Primary",
+        "match_method": "exact_name_and_containment"
+      }
+    ],
+    "69970": [
+      {
+        "geometry_url": "/data/catchment/tas/69970-primary.json",
+        "kind": "primary",
+        "catch_type": "PRIMARY_INTAKE",
+        "year_levels": [],
+        "source_school_code": "403",
+        "data_year": 2025,
+        "source": "LISTdata",
+        "source_url": "https://listdata.thelist.tas.gov.au/opendata/index.html",
+        "source_sector": "Primary",
+        "match_method": "exact_name_and_containment"
+      }
+    ],
+    "69971": [
+      {
+        "geometry_url": "/data/catchment/tas/69971-primary.json",
+        "kind": "primary",
+        "catch_type": "PRIMARY_INTAKE",
+        "year_levels": [],
+        "source_school_code": "409",
+        "data_year": 2025,
+        "source": "LISTdata",
+        "source_url": "https://listdata.thelist.tas.gov.au/opendata/index.html",
+        "source_sector": "Primary",
+        "match_method": "exact_name_and_containment"
+      }
+    ],
+    "70144": [
+      {
+        "geometry_url": "/data/catchment/tas/70144-primary.json",
+        "kind": "primary",
+        "catch_type": "PRIMARY_INTAKE",
+        "year_levels": [],
+        "source_school_code": "088",
+        "data_year": 2025,
+        "source": "LISTdata",
+        "source_url": "https://listdata.thelist.tas.gov.au/opendata/index.html",
+        "source_sector": "Primary",
+        "match_method": "exact_name_and_containment"
+      }
+    ],
+    "89676": [
+      {
+        "geometry_url": "/data/catchment/tas/89676-primary.json",
+        "kind": "primary",
+        "catch_type": "PRIMARY_INTAKE",
+        "year_levels": [],
+        "source_school_code": "New school opening in 2025 - Legana Primary School",
+        "data_year": 2025,
+        "source": "LISTdata",
+        "source_url": "https://listdata.thelist.tas.gov.au/opendata/index.html",
+        "source_sector": "Primary",
+        "match_method": "audited_exact_alias_and_containment"
+      }
+    ]
+  }
+}

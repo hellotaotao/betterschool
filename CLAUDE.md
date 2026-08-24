@@ -49,6 +49,11 @@ npm run qld:catchment:fetch     # download 2026 primary/junior/senior KML layers
 npm run qld:catchment:parse     # verify source identity and exact KML geometry
 npm run qld:catchment:build     # join + emit exact stage variants
 npm run qld:catchment:validate
+
+npm run tas:catchment:fetch     # download LISTdata statewide intake areas
+npm run tas:catchment:parse     # project EPSG:28355 geometry without simplifying
+npm run tas:catchment:build     # exact name/alias + containment join
+npm run tas:catchment:validate
 ```
 
 ## Architecture
@@ -62,7 +67,7 @@ ACARA/*.xlsx
   └─ scripts/parse-acara-*.mjs      → data/acara/processed/*.json
   └─ scripts/religion-classify.mjs  → religion layer
   └─ scripts/match-betterschool-acara.mjs → legacy metric layer
-data.nsw.gov.au / data.sa.gov.au / discover.data.vic.gov.au / data.qld.gov.au
+data.nsw.gov.au / data.sa.gov.au / discover.data.vic.gov.au / data.qld.gov.au / LISTdata
   └─ scripts/{fetch,parse,build,validate}-<state>-catchment.mjs → catchment layers
        └─ scripts/build-canonical-schools.mjs
             → public/data/schools.canonical.json  (11,034 schools, ~15MB)
@@ -71,6 +76,7 @@ data.nsw.gov.au / data.sa.gov.au / discover.data.vic.gov.au / data.qld.gov.au
             → public/data/catchment/sa/*.json     (130 zones, loaded on demand)
             → public/data/catchment/vic/*.json    (2,560 exact variants, loaded on demand)
             → public/data/catchment/qld/*.json    (1,362 exact variants, loaded on demand)
+            → public/data/catchment/tas/*.json    (150 primary intake areas, loaded on demand)
 ```
 
 The catchment builds read the ACARA *location* layer rather than
@@ -233,9 +239,15 @@ These are the project's core commitments. They matter more than any feature.
      official negotiated-catchment layers cover primary, junior secondary and
      senior secondary; the five source records excluded by exact join checks
      remain explicit in `data/catchment/qld/processed/unmatched.json`.
+   - TAS government school with no attached zone → "none published". LISTdata
+     comprehensively publishes the address intake areas for primary and district
+     schools (149 source polygons attached to 150 schools because one is
+     explicitly shared). High-school entitlement follows the primary school
+     attended at the end of Year 6, so the feeder layer is not misrepresented as
+     an address catchment.
 
-   The same rule governs year levels. NSW, VIC and QLD publish them per zone; SA publishes
-   none, and its schools' own "Reception to Year 12" designation describes the
+   The same rule governs year levels. NSW, VIC and QLD publish them per zone; SA and TAS publish
+   none, and their schools' own year designations describe the
    *school*, not the zone — six SA schools hold both a primary and a secondary
    zone, so copying it onto each would claim the primary zone runs to Year 12.
    SA zones therefore carry an empty `year_levels`, and the UI omits the line

@@ -19,7 +19,10 @@ import { CATCHMENT_STATES } from './catchmentLookup';
  * selective and alternative settings need not have an ordinary local zone.
  * Queensland publishes the negotiated catchments for its primary, junior
  * secondary and senior secondary systems; special and other non-catchment
- * settings are outside those layers.
+ * settings are outside those layers. Tasmania publishes every primary and
+ * district school's address intake area. Its high-school pathway instead
+ * follows the primary school attended at the end of Year 6, so it is not
+ * represented as an address catchment.
  */
 export interface CatchmentStateInfo {
   /** ACARA state code. */
@@ -49,6 +52,11 @@ const STATE_INFO: Record<string, CatchmentStateInfo> = {
   QLD: {
     state: 'QLD',
     finderUrl: 'https://www.qgso.qld.gov.au/maps/edmap/',
+    complete: true,
+  },
+  TAS: {
+    state: 'TAS',
+    finderUrl: 'https://www.decyp.tas.gov.au/learning/find-your-local-school/intake-areas-tasmanian-government-schools/',
     complete: true,
   },
 };

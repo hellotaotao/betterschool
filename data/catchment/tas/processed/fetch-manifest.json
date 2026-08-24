@@ -1,0 +1,12 @@
+{
+  "fetched_at": "2026-08-24T16:49:26.785Z",
+  "current_data_year": 2025,
+  "dataset_page": "https://listdata.thelist.tas.gov.au/opendata/index.html",
+  "metadata_page": "https://www.thelist.tas.gov.au/app/content/data/geo-meta-data-record?detailRecordUID=a3862681-7a0c-4df6-a34b-bc594f00b45d",
+  "download": {
+    "url": "https://listdata.thelist.tas.gov.au/opendata/data/LIST_DOE_SCHOOL_INTAKE_AREAS_STATEWIDE.zip",
+    "bytes": 30050471,
+    "etag": "\"16607e0-1ca88a7-63a2931b7e89c\"",
+    "last_modified": "Fri, 18 Jul 2025 00:27:42 GMT"
+  }
+}

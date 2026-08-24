@@ -1,0 +1,6 @@
+{
+  "generated_at": "2026-08-24T16:49:37.581Z",
+  "count": 0,
+  "note": "Source polygons without one exact contained ACARA identity are left unmatched. No fuzzy or nearest-school fallback is used.",
+  "records": []
+}
