@@ -173,7 +173,13 @@ export function mergeGeometries(records) {
   return { type: 'MultiPolygon', coordinates: polygons };
 }
 
-const levelOrder = (level) => (level === 'P' ? 0 : Number(level));
+const LEVEL_ORDER = new Map([
+  ['Preschool', -2],
+  ['P', -1],
+  ['K', 0],
+  ...Array.from({ length: 12 }, (_, index) => [String(index + 1), index + 1]),
+]);
+const levelOrder = (level) => LEVEL_ORDER.get(level) ?? Number.MAX_SAFE_INTEGER;
 
 /**
  * Coalesce only byte-identical rounded geometries.

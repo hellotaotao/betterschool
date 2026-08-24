@@ -1,0 +1,18 @@
+{
+  "fetched_at": "2026-08-24T17:06:06.315Z",
+  "data_year": 2027,
+  "dataset_page": "https://www.arcgis.com/home/item.html?id=41bc23f14bb249ba9ed80b5260657c6a",
+  "item": {
+    "url": "https://www.arcgis.com/sharing/rest/content/items/41bc23f14bb249ba9ed80b5260657c6a?f=json",
+    "id": "41bc23f14bb249ba9ed80b5260657c6a",
+    "title": "ACTGOV Priority Enrolment Areas 2026",
+    "modified": 1776746348000,
+    "licence": "CC BY 4.0"
+  },
+  "download": {
+    "url": "https://services1.arcgis.com/E5n4f1VY84i0xSjy/arcgis/rest/services/ACTGOV_Priority_Enrolment_Areas_2026/FeatureServer/2/query?where=1%3D1&outFields=*&returnGeometry=true&outSR=4326&f=geojson",
+    "bytes": 6989614,
+    "etag": "sd64640_655257609",
+    "last_modified": "Tue, 21 Apr 2026 01:56:21 GMT"
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "generated_at": "2026-08-24T17:06:06.775Z",
+  "count": 2,
+  "note": "Exact future-school identities without a 2025 ACARA location_age_id remain unmatched. No key is invented and no fuzzy or nearest-school fallback is used.",
+  "records": [
+    {
+      "reason": "exact_acara_identity_has_no_location_age_id",
+      "source_school_code": "45",
+      "source_name": "Strathnairn Primary School",
+      "source_type": "Primary",
+      "source_year_range": "P-6"
+    },
+    {
+      "reason": "exact_acara_identity_has_no_location_age_id",
+      "source_school_code": "94",
+      "source_name": "Whitlam Primary School (P-6)",
+      "source_type": "Primary",
+      "source_year_range": "P-6"
+    }
+  ]
+}

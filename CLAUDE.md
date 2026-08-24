@@ -54,6 +54,11 @@ npm run tas:catchment:fetch     # download LISTdata statewide intake areas
 npm run tas:catchment:parse     # project EPSG:28355 geometry without simplifying
 npm run tas:catchment:build     # exact name/alias + containment join
 npm run tas:catchment:validate
+
+npm run act:catchment:fetch     # download official 2027 ArcGIS PEA GeoJSON
+npm run act:catchment:parse     # verify source fields, year ranges and geometry
+npm run act:catchment:build     # exact identity/alias + containment join
+npm run act:catchment:validate
 ```
 
 ## Architecture
@@ -67,7 +72,7 @@ ACARA/*.xlsx
   └─ scripts/parse-acara-*.mjs      → data/acara/processed/*.json
   └─ scripts/religion-classify.mjs  → religion layer
   └─ scripts/match-betterschool-acara.mjs → legacy metric layer
-data.nsw.gov.au / data.sa.gov.au / discover.data.vic.gov.au / data.qld.gov.au / LISTdata
+data.nsw.gov.au / data.sa.gov.au / discover.data.vic.gov.au / data.qld.gov.au / LISTdata / ACTmapi
   └─ scripts/{fetch,parse,build,validate}-<state>-catchment.mjs → catchment layers
        └─ scripts/build-canonical-schools.mjs
             → public/data/schools.canonical.json  (11,034 schools, ~15MB)
@@ -77,6 +82,7 @@ data.nsw.gov.au / data.sa.gov.au / discover.data.vic.gov.au / data.qld.gov.au / 
             → public/data/catchment/vic/*.json    (2,560 exact variants, loaded on demand)
             → public/data/catchment/qld/*.json    (1,362 exact variants, loaded on demand)
             → public/data/catchment/tas/*.json    (150 primary intake areas, loaded on demand)
+            → public/data/catchment/act/*.json    (93 exact variants, loaded on demand)
 ```
 
 The catchment builds read the ACARA *location* layer rather than
@@ -245,8 +251,13 @@ These are the project's core commitments. They matter more than any feature.
      explicitly shared). High-school entitlement follows the primary school
      attended at the end of Year 6, so the feeder layer is not misrepresented as
      an address catchment.
+   - ACT government school with no attached PEA → "none published". The
+     official layer comprehensively publishes 2027 Priority Enrolment Areas;
+     92 of 94 source features attach as 93 variants to 83 ACARA locations. The
+     two unmatched opening schools have exact ACARA 2025 identities but no
+     `location_age_id`, so no identifier is invented.
 
-   The same rule governs year levels. NSW, VIC and QLD publish them per zone; SA and TAS publish
+   The same rule governs year levels. NSW, VIC, QLD and ACT publish them per zone; SA and TAS publish
    none, and their schools' own year designations describe the
    *school*, not the zone — six SA schools hold both a primary and a secondary
    zone, so copying it onto each would claim the primary zone runs to Year 12.
@@ -259,6 +270,10 @@ These are the project's core commitments. They matter more than any feature.
    QLD publishes primary as Prep-6, junior secondary as Years 7-10 and senior
    secondary as Years 11-12. Junior and senior geometry is likewise coalesced
    only when the exact rounded coordinates are byte-identical.
+   ACT publishes Preschool/K/Year ranges per PEA. For the 2027 enrolment year,
+   the department's transition page narrows Aunty Agnes Shea High School to
+   Years 7-9 and Whitlam Primary School to Preschool-Year 2; those explicit
+   current ranges override the ArcGIS layer's eventual generic school range.
 
 ### Marker encoding (and why)
 

@@ -34,7 +34,11 @@
     "tas:catchment:fetch": "node scripts/fetch-tas-catchment.mjs",
     "tas:catchment:parse": "node scripts/parse-tas-catchment.mjs",
     "tas:catchment:build": "node scripts/build-tas-catchment.mjs",
-    "tas:catchment:validate": "node scripts/validate-tas-catchment.mjs"
+    "tas:catchment:validate": "node scripts/validate-tas-catchment.mjs",
+    "act:catchment:fetch": "node scripts/fetch-act-catchment.mjs",
+    "act:catchment:parse": "node scripts/parse-act-catchment.mjs",
+    "act:catchment:build": "node scripts/build-act-catchment.mjs",
+    "act:catchment:validate": "node scripts/validate-act-catchment.mjs"
   },
   "dependencies": {
     "@types/leaflet": "^1.9.21",

@@ -1,0 +1,1910 @@
+{
+  "state": "ACT",
+  "data_year": 2027,
+  "generated_at": "2026-08-24T17:06:06.775Z",
+  "stats": {
+    "Primary": {
+      "polygons": 63,
+      "joined": 61,
+      "attachments": 61,
+      "join_rate": 0.9683
+    },
+    "High": {
+      "polygons": 22,
+      "joined": 22,
+      "attachments": 23,
+      "join_rate": 1
+    },
+    "College": {
+      "polygons": 9,
+      "joined": 9,
+      "attachments": 9,
+      "join_rate": 1
+    }
+  },
+  "join": {
+    "method": "exact base name or audited exact alias/campus mapping plus polygon containment",
+    "source_features": 94,
+    "joined_source_features": 92,
+    "source_attachments": 93,
+    "matched_locations": 83,
+    "variants": 93,
+    "match_methods": {
+      "audited_exact_alias_and_containment": 1,
+      "exact_base_name_and_containment": 89,
+      "audited_stage_to_campuses_and_containment": 2
+    }
+  },
+  "by_location_age_id": {
+    "6655": [
+      {
+        "geometry_url": "/data/catchment/act/act-6655-secondary-4.json",
+        "zone_id": "act-6655-secondary-4",
+        "kind": "secondary",
+        "catch_type": "HIGH_PEA",
+        "year_levels": [
+          "7",
+          "8",
+          "9",
+          "10"
+        ],
+        "source_school_code": "4",
+        "data_year": 2027,
+        "source": "ACTmapi",
+        "source_url": "https://www.arcgis.com/home/item.html?id=41bc23f14bb249ba9ed80b5260657c6a"
+      }
+    ],
+    "44753": [
+      {
+        "geometry_url": "/data/catchment/act/act-44753-primary-46.json",
+        "zone_id": "act-44753-primary-46",
+        "kind": "primary",
+        "catch_type": "PRIMARY_PEA",
+        "year_levels": [
+          "Preschool",
+          "K",
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6"
+        ],
+        "source_school_code": "46",
+        "data_year": 2027,
+        "source": "ACTmapi",
+        "source_url": "https://www.arcgis.com/home/item.html?id=41bc23f14bb249ba9ed80b5260657c6a"
+      }
+    ],
+    "44967": [
+      {
+        "geometry_url": "/data/catchment/act/act-44967-secondary-7.json",
+        "zone_id": "act-44967-secondary-7",
+        "kind": "secondary",
+        "catch_type": "COLLEGE_PEA",
+        "year_levels": [
+          "11",
+          "12"
+        ],
+        "source_school_code": "7",
+        "data_year": 2027,
+        "source": "ACTmapi",
+        "source_url": "https://www.arcgis.com/home/item.html?id=41bc23f14bb249ba9ed80b5260657c6a"
+      }
+    ],
+    "45768": [
+      {
+        "geometry_url": "/data/catchment/act/act-45768-secondary-20.json",
+        "zone_id": "act-45768-secondary-20",
+        "kind": "secondary",
+        "catch_type": "HIGH_PEA",
+        "year_levels": [
+          "7",
+          "8",
+          "9",
+          "10"
+        ],
+        "source_school_code": "20",
+        "data_year": 2027,
+        "source": "ACTmapi",
+        "source_url": "https://www.arcgis.com/home/item.html?id=41bc23f14bb249ba9ed80b5260657c6a"
+      }
+    ],
+    "45992": [
+      {
+        "geometry_url": "/data/catchment/act/act-45992-primary-55.json",
+        "zone_id": "act-45992-primary-55",
+        "kind": "primary",
+        "catch_type": "PRIMARY_PEA",
+        "year_levels": [
+          "Preschool",
+          "K",
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6"
+        ],
+        "source_school_code": "55",
+        "data_year": 2027,
+        "source": "ACTmapi",
+        "source_url": "https://www.arcgis.com/home/item.html?id=41bc23f14bb249ba9ed80b5260657c6a"
+      }
+    ],
+    "46647": [
+      {
+        "geometry_url": "/data/catchment/act/act-46647-primary-54.json",
+        "zone_id": "act-46647-primary-54",
+        "kind": "primary",
+        "catch_type": "PRIMARY_PEA",
+        "year_levels": [
+          "Preschool",
+          "K",
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6"
+        ],
+        "source_school_code": "54",
+        "data_year": 2027,
+        "source": "ACTmapi",
+        "source_url": "https://www.arcgis.com/home/item.html?id=41bc23f14bb249ba9ed80b5260657c6a"
+      },
+      {
+        "geometry_url": "/data/catchment/act/act-46647-secondary-8.json",
+        "zone_id": "act-46647-secondary-8",
+        "kind": "secondary",
+        "catch_type": "HIGH_PEA",
+        "year_levels": [
+          "7",
+          "8",
+          "9",
+          "10"
+        ],
+        "source_school_code": "8",
+        "data_year": 2027,
+        "source": "ACTmapi",
+        "source_url": "https://www.arcgis.com/home/item.html?id=41bc23f14bb249ba9ed80b5260657c6a"
+      }
+    ],
+    "46648": [
+      {
+        "geometry_url": "/data/catchment/act/act-46648-secondary-6.json",
+        "zone_id": "act-46648-secondary-6",
+        "kind": "secondary",
+        "catch_type": "COLLEGE_PEA",
+        "year_levels": [
+          "11",
+          "12"
+        ],
+        "source_school_code": "6",
+        "data_year": 2027,
+        "source": "ACTmapi",
+        "source_url": "https://www.arcgis.com/home/item.html?id=41bc23f14bb249ba9ed80b5260657c6a"
+      }
+    ],
+    "46652": [
+      {
+        "geometry_url": "/data/catchment/act/act-46652-secondary-4.json",
+        "zone_id": "act-46652-secondary-4",
+        "kind": "secondary",
+        "catch_type": "HIGH_PEA",
+        "year_levels": [
+          "7",
+          "8",
+          "9",
+          "10"
+        ],
+        "source_school_code": "4",
+        "data_year": 2027,
+        "source": "ACTmapi",
+        "source_url": "https://www.arcgis.com/home/item.html?id=41bc23f14bb249ba9ed80b5260657c6a"
+      },
+      {
+        "geometry_url": "/data/catchment/act/act-46652-secondary-9.json",
+        "zone_id": "act-46652-secondary-9",
+        "kind": "secondary",
+        "catch_type": "COLLEGE_PEA",
+        "year_levels": [
+          "11",
+          "12"
+        ],
+        "source_school_code": "9",
+        "data_year": 2027,
+        "source": "ACTmapi",
+        "source_url": "https://www.arcgis.com/home/item.html?id=41bc23f14bb249ba9ed80b5260657c6a"
+      }
+    ],
+    "46653": [
+      {
+        "geometry_url": "/data/catchment/act/act-46653-secondary-5.json",
+        "zone_id": "act-46653-secondary-5",
+        "kind": "secondary",
+        "catch_type": "COLLEGE_PEA",
+        "year_levels": [
+          "11",
+          "12"
+        ],
+        "source_school_code": "5",
+        "data_year": 2027,
+        "source": "ACTmapi",
+        "source_url": "https://www.arcgis.com/home/item.html?id=41bc23f14bb249ba9ed80b5260657c6a"
+      }
+    ],
+    "46657": [
+      {
+        "geometry_url": "/data/catchment/act/act-46657-secondary-5.json",
+        "zone_id": "act-46657-secondary-5",
+        "kind": "secondary",
+        "catch_type": "HIGH_PEA",
+        "year_levels": [
+          "7",
+          "8",
+          "9",
+          "10"
+        ],
+        "source_school_code": "5",
+        "data_year": 2027,
+        "source": "ACTmapi",
+        "source_url": "https://www.arcgis.com/home/item.html?id=41bc23f14bb249ba9ed80b5260657c6a"
+      }
+    ],
+    "50303": [
+      {
+        "geometry_url": "/data/catchment/act/act-50303-secondary-17.json",
+        "zone_id": "act-50303-secondary-17",
+        "kind": "secondary",
+        "catch_type": "HIGH_PEA",
+        "year_levels": [
+          "7",
+          "8",
+          "9",
+          "10"
+        ],
+        "source_school_code": "17",
+        "data_year": 2027,
+        "source": "ACTmapi",
+        "source_url": "https://www.arcgis.com/home/item.html?id=41bc23f14bb249ba9ed80b5260657c6a"
+      }
+    ],
+    "50310": [
+      {
+        "geometry_url": "/data/catchment/act/act-50310-primary-6.json",
+        "zone_id": "act-50310-primary-6",
+        "kind": "primary",
+        "catch_type": "PRIMARY_PEA",
+        "year_levels": [
+          "Preschool",
+          "K",
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6"
+        ],
+        "source_school_code": "6",
+        "data_year": 2027,
+        "source": "ACTmapi",
+        "source_url": "https://www.arcgis.com/home/item.html?id=41bc23f14bb249ba9ed80b5260657c6a"
+      }
+    ],
+    "50311": [
+      {
+        "geometry_url": "/data/catchment/act/act-50311-secondary-7.json",
+        "zone_id": "act-50311-secondary-7",
+        "kind": "secondary",
+        "catch_type": "HIGH_PEA",
+        "year_levels": [
+          "7",
+          "8",
+          "9",
+          "10"
+        ],
+        "source_school_code": "7",
+        "data_year": 2027,
+        "source": "ACTmapi",
+        "source_url": "https://www.arcgis.com/home/item.html?id=41bc23f14bb249ba9ed80b5260657c6a"
+      }
+    ],
+    "50313": [
+      {
+        "geometry_url": "/data/catchment/act/act-50313-primary-50.json",
+        "zone_id": "act-50313-primary-50",
+        "kind": "primary",
+        "catch_type": "PRIMARY_PEA",
+        "year_levels": [
+          "Preschool",
+          "K",
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6"
+        ],
+        "source_school_code": "50",
+        "data_year": 2027,
+        "source": "ACTmapi",
+        "source_url": "https://www.arcgis.com/home/item.html?id=41bc23f14bb249ba9ed80b5260657c6a"
+      }
+    ],
+    "50320": [
+      {
+        "geometry_url": "/data/catchment/act/act-50320-primary-19.json",
+        "zone_id": "act-50320-primary-19",
+        "kind": "primary",
+        "catch_type": "PRIMARY_PEA",
+        "year_levels": [
+          "Preschool",
+          "K",
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6"
+        ],
+        "source_school_code": "19",
+        "data_year": 2027,
+        "source": "ACTmapi",
+        "source_url": "https://www.arcgis.com/home/item.html?id=41bc23f14bb249ba9ed80b5260657c6a"
+      }
+    ],
+    "50321": [
+      {
+        "geometry_url": "/data/catchment/act/act-50321-primary-24.json",
+        "zone_id": "act-50321-primary-24",
+        "kind": "primary",
+        "catch_type": "PRIMARY_PEA",
+        "year_levels": [
+          "Preschool",
+          "K",
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6"
+        ],
+        "source_school_code": "24",
+        "data_year": 2027,
+        "source": "ACTmapi",
+        "source_url": "https://www.arcgis.com/home/item.html?id=41bc23f14bb249ba9ed80b5260657c6a"
+      }
+    ],
+    "50331": [
+      {
+        "geometry_url": "/data/catchment/act/act-50331-primary-17.json",
+        "zone_id": "act-50331-primary-17",
+        "kind": "primary",
+        "catch_type": "PRIMARY_PEA",
+        "year_levels": [
+          "Preschool",
+          "K",
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6"
+        ],
+        "source_school_code": "17",
+        "data_year": 2027,
+        "source": "ACTmapi",
+        "source_url": "https://www.arcgis.com/home/item.html?id=41bc23f14bb249ba9ed80b5260657c6a"
+      }
+    ],
+    "50334": [
+      {
+        "geometry_url": "/data/catchment/act/act-50334-primary-61.json",
+        "zone_id": "act-50334-primary-61",
+        "kind": "primary",
+        "catch_type": "PRIMARY_PEA",
+        "year_levels": [
+          "Preschool",
+          "K",
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6"
+        ],
+        "source_school_code": "61",
+        "data_year": 2027,
+        "source": "ACTmapi",
+        "source_url": "https://www.arcgis.com/home/item.html?id=41bc23f14bb249ba9ed80b5260657c6a"
+      }
+    ],
+    "50338": [
+      {
+        "geometry_url": "/data/catchment/act/act-50338-primary-60.json",
+        "zone_id": "act-50338-primary-60",
+        "kind": "primary",
+        "catch_type": "PRIMARY_PEA",
+        "year_levels": [
+          "Preschool",
+          "K",
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6"
+        ],
+        "source_school_code": "60",
+        "data_year": 2027,
+        "source": "ACTmapi",
+        "source_url": "https://www.arcgis.com/home/item.html?id=41bc23f14bb249ba9ed80b5260657c6a"
+      }
+    ],
+    "50347": [
+      {
+        "geometry_url": "/data/catchment/act/act-50347-primary-29.json",
+        "zone_id": "act-50347-primary-29",
+        "kind": "primary",
+        "catch_type": "PRIMARY_PEA",
+        "year_levels": [
+          "Preschool",
+          "K",
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6"
+        ],
+        "source_school_code": "29",
+        "data_year": 2027,
+        "source": "ACTmapi",
+        "source_url": "https://www.arcgis.com/home/item.html?id=41bc23f14bb249ba9ed80b5260657c6a"
+      }
+    ],
+    "50349": [
+      {
+        "geometry_url": "/data/catchment/act/act-50349-primary-43.json",
+        "zone_id": "act-50349-primary-43",
+        "kind": "primary",
+        "catch_type": "PRIMARY_PEA",
+        "year_levels": [
+          "Preschool",
+          "K",
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6"
+        ],
+        "source_school_code": "43",
+        "data_year": 2027,
+        "source": "ACTmapi",
+        "source_url": "https://www.arcgis.com/home/item.html?id=41bc23f14bb249ba9ed80b5260657c6a"
+      }
+    ],
+    "50354": [
+      {
+        "geometry_url": "/data/catchment/act/act-50354-secondary-1.json",
+        "zone_id": "act-50354-secondary-1",
+        "kind": "secondary",
+        "catch_type": "COLLEGE_PEA",
+        "year_levels": [
+          "11",
+          "12"
+        ],
+        "source_school_code": "1",
+        "data_year": 2027,
+        "source": "ACTmapi",
+        "source_url": "https://www.arcgis.com/home/item.html?id=41bc23f14bb249ba9ed80b5260657c6a"
+      }
+    ],
+    "50359": [
+      {
+        "geometry_url": "/data/catchment/act/act-50359-primary-18.json",
+        "zone_id": "act-50359-primary-18",
+        "kind": "primary",
+        "catch_type": "PRIMARY_PEA",
+        "year_levels": [
+          "Preschool",
+          "K",
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6"
+        ],
+        "source_school_code": "18",
+        "data_year": 2027,
+        "source": "ACTmapi",
+        "source_url": "https://www.arcgis.com/home/item.html?id=41bc23f14bb249ba9ed80b5260657c6a"
+      }
+    ],
+    "50360": [
+      {
+        "geometry_url": "/data/catchment/act/act-50360-secondary-21.json",
+        "zone_id": "act-50360-secondary-21",
+        "kind": "secondary",
+        "catch_type": "HIGH_PEA",
+        "year_levels": [
+          "7",
+          "8",
+          "9",
+          "10"
+        ],
+        "source_school_code": "21",
+        "data_year": 2027,
+        "source": "ACTmapi",
+        "source_url": "https://www.arcgis.com/home/item.html?id=41bc23f14bb249ba9ed80b5260657c6a"
+      }
+    ],
+    "50364": [
+      {
+        "geometry_url": "/data/catchment/act/act-50364-primary-20.json",
+        "zone_id": "act-50364-primary-20",
+        "kind": "primary",
+        "catch_type": "PRIMARY_PEA",
+        "year_levels": [
+          "Preschool",
+          "K",
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6"
+        ],
+        "source_school_code": "20",
+        "data_year": 2027,
+        "source": "ACTmapi",
+        "source_url": "https://www.arcgis.com/home/item.html?id=41bc23f14bb249ba9ed80b5260657c6a"
+      }
+    ],
+    "50365": [
+      {
+        "geometry_url": "/data/catchment/act/act-50365-primary-49.json",
+        "zone_id": "act-50365-primary-49",
+        "kind": "primary",
+        "catch_type": "PRIMARY_PEA",
+        "year_levels": [
+          "Preschool",
+          "K",
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6"
+        ],
+        "source_school_code": "49",
+        "data_year": 2027,
+        "source": "ACTmapi",
+        "source_url": "https://www.arcgis.com/home/item.html?id=41bc23f14bb249ba9ed80b5260657c6a"
+      }
+    ],
+    "50376": [
+      {
+        "geometry_url": "/data/catchment/act/act-50376-primary-4.json",
+        "zone_id": "act-50376-primary-4",
+        "kind": "primary",
+        "catch_type": "PRIMARY_PEA",
+        "year_levels": [
+          "Preschool",
+          "K",
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6"
+        ],
+        "source_school_code": "4",
+        "data_year": 2027,
+        "source": "ACTmapi",
+        "source_url": "https://www.arcgis.com/home/item.html?id=41bc23f14bb249ba9ed80b5260657c6a"
+      }
+    ],
+    "50377": [
+      {
+        "geometry_url": "/data/catchment/act/act-50377-secondary-11.json",
+        "zone_id": "act-50377-secondary-11",
+        "kind": "secondary",
+        "catch_type": "HIGH_PEA",
+        "year_levels": [
+          "7",
+          "8",
+          "9",
+          "10"
+        ],
+        "source_school_code": "11",
+        "data_year": 2027,
+        "source": "ACTmapi",
+        "source_url": "https://www.arcgis.com/home/item.html?id=41bc23f14bb249ba9ed80b5260657c6a"
+      }
+    ],
+    "50378": [
+      {
+        "geometry_url": "/data/catchment/act/act-50378-secondary-22.json",
+        "zone_id": "act-50378-secondary-22",
+        "kind": "secondary",
+        "catch_type": "HIGH_PEA",
+        "year_levels": [
+          "7",
+          "8",
+          "9",
+          "10"
+        ],
+        "source_school_code": "22",
+        "data_year": 2027,
+        "source": "ACTmapi",
+        "source_url": "https://www.arcgis.com/home/item.html?id=41bc23f14bb249ba9ed80b5260657c6a"
+      }
+    ],
+    "50380": [
+      {
+        "geometry_url": "/data/catchment/act/act-50380-secondary-4.json",
+        "zone_id": "act-50380-secondary-4",
+        "kind": "secondary",
+        "catch_type": "COLLEGE_PEA",
+        "year_levels": [
+          "11",
+          "12"
+        ],
+        "source_school_code": "4",
+        "data_year": 2027,
+        "source": "ACTmapi",
+        "source_url": "https://www.arcgis.com/home/item.html?id=41bc23f14bb249ba9ed80b5260657c6a"
+      }
+    ],
+    "50381": [
+      {
+        "geometry_url": "/data/catchment/act/act-50381-primary-47.json",
+        "zone_id": "act-50381-primary-47",
+        "kind": "primary",
+        "catch_type": "PRIMARY_PEA",
+        "year_levels": [
+          "Preschool",
+          "K",
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6"
+        ],
+        "source_school_code": "47",
+        "data_year": 2027,
+        "source": "ACTmapi",
+        "source_url": "https://www.arcgis.com/home/item.html?id=41bc23f14bb249ba9ed80b5260657c6a"
+      }
+    ],
+    "50382": [
+      {
+        "geometry_url": "/data/catchment/act/act-50382-primary-57.json",
+        "zone_id": "act-50382-primary-57",
+        "kind": "primary",
+        "catch_type": "PRIMARY_PEA",
+        "year_levels": [
+          "Preschool",
+          "K",
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6"
+        ],
+        "source_school_code": "57",
+        "data_year": 2027,
+        "source": "ACTmapi",
+        "source_url": "https://www.arcgis.com/home/item.html?id=41bc23f14bb249ba9ed80b5260657c6a"
+      }
+    ],
+    "50385": [
+      {
+        "geometry_url": "/data/catchment/act/act-50385-primary-30.json",
+        "zone_id": "act-50385-primary-30",
+        "kind": "primary",
+        "catch_type": "PRIMARY_PEA",
+        "year_levels": [
+          "Preschool",
+          "K",
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6"
+        ],
+        "source_school_code": "30",
+        "data_year": 2027,
+        "source": "ACTmapi",
+        "source_url": "https://www.arcgis.com/home/item.html?id=41bc23f14bb249ba9ed80b5260657c6a"
+      }
+    ],
+    "50387": [
+      {
+        "geometry_url": "/data/catchment/act/act-50387-primary-40.json",
+        "zone_id": "act-50387-primary-40",
+        "kind": "primary",
+        "catch_type": "PRIMARY_PEA",
+        "year_levels": [
+          "Preschool",
+          "K",
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6"
+        ],
+        "source_school_code": "40",
+        "data_year": 2027,
+        "source": "ACTmapi",
+        "source_url": "https://www.arcgis.com/home/item.html?id=41bc23f14bb249ba9ed80b5260657c6a"
+      }
+    ],
+    "50389": [
+      {
+        "geometry_url": "/data/catchment/act/act-50389-primary-32.json",
+        "zone_id": "act-50389-primary-32",
+        "kind": "primary",
+        "catch_type": "PRIMARY_PEA",
+        "year_levels": [
+          "Preschool",
+          "K",
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6"
+        ],
+        "source_school_code": "32",
+        "data_year": 2027,
+        "source": "ACTmapi",
+        "source_url": "https://www.arcgis.com/home/item.html?id=41bc23f14bb249ba9ed80b5260657c6a"
+      }
+    ],
+    "50392": [
+      {
+        "geometry_url": "/data/catchment/act/act-50392-primary-13.json",
+        "zone_id": "act-50392-primary-13",
+        "kind": "primary",
+        "catch_type": "PRIMARY_PEA",
+        "year_levels": [
+          "Preschool",
+          "K",
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6"
+        ],
+        "source_school_code": "13",
+        "data_year": 2027,
+        "source": "ACTmapi",
+        "source_url": "https://www.arcgis.com/home/item.html?id=41bc23f14bb249ba9ed80b5260657c6a"
+      }
+    ],
+    "50393": [
+      {
+        "geometry_url": "/data/catchment/act/act-50393-primary-38.json",
+        "zone_id": "act-50393-primary-38",
+        "kind": "primary",
+        "catch_type": "PRIMARY_PEA",
+        "year_levels": [
+          "Preschool",
+          "K",
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6"
+        ],
+        "source_school_code": "38",
+        "data_year": 2027,
+        "source": "ACTmapi",
+        "source_url": "https://www.arcgis.com/home/item.html?id=41bc23f14bb249ba9ed80b5260657c6a"
+      }
+    ],
+    "50394": [
+      {
+        "geometry_url": "/data/catchment/act/act-50394-primary-53.json",
+        "zone_id": "act-50394-primary-53",
+        "kind": "primary",
+        "catch_type": "PRIMARY_PEA",
+        "year_levels": [
+          "Preschool",
+          "K",
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6"
+        ],
+        "source_school_code": "53",
+        "data_year": 2027,
+        "source": "ACTmapi",
+        "source_url": "https://www.arcgis.com/home/item.html?id=41bc23f14bb249ba9ed80b5260657c6a"
+      }
+    ],
+    "50397": [
+      {
+        "geometry_url": "/data/catchment/act/act-50397-primary-56.json",
+        "zone_id": "act-50397-primary-56",
+        "kind": "primary",
+        "catch_type": "PRIMARY_PEA",
+        "year_levels": [
+          "Preschool",
+          "K",
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6"
+        ],
+        "source_school_code": "56",
+        "data_year": 2027,
+        "source": "ACTmapi",
+        "source_url": "https://www.arcgis.com/home/item.html?id=41bc23f14bb249ba9ed80b5260657c6a"
+      }
+    ],
+    "50398": [
+      {
+        "geometry_url": "/data/catchment/act/act-50398-primary-8.json",
+        "zone_id": "act-50398-primary-8",
+        "kind": "primary",
+        "catch_type": "PRIMARY_PEA",
+        "year_levels": [
+          "Preschool",
+          "K",
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6"
+        ],
+        "source_school_code": "8",
+        "data_year": 2027,
+        "source": "ACTmapi",
+        "source_url": "https://www.arcgis.com/home/item.html?id=41bc23f14bb249ba9ed80b5260657c6a"
+      }
+    ],
+    "50399": [
+      {
+        "geometry_url": "/data/catchment/act/act-50399-secondary-12.json",
+        "zone_id": "act-50399-secondary-12",
+        "kind": "secondary",
+        "catch_type": "HIGH_PEA",
+        "year_levels": [
+          "7",
+          "8",
+          "9",
+          "10"
+        ],
+        "source_school_code": "12",
+        "data_year": 2027,
+        "source": "ACTmapi",
+        "source_url": "https://www.arcgis.com/home/item.html?id=41bc23f14bb249ba9ed80b5260657c6a"
+      }
+    ],
+    "50400": [
+      {
+        "geometry_url": "/data/catchment/act/act-50400-primary-31.json",
+        "zone_id": "act-50400-primary-31",
+        "kind": "primary",
+        "catch_type": "PRIMARY_PEA",
+        "year_levels": [
+          "Preschool",
+          "K",
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6"
+        ],
+        "source_school_code": "31",
+        "data_year": 2027,
+        "source": "ACTmapi",
+        "source_url": "https://www.arcgis.com/home/item.html?id=41bc23f14bb249ba9ed80b5260657c6a"
+      }
+    ],
+    "50401": [
+      {
+        "geometry_url": "/data/catchment/act/act-50401-primary-34.json",
+        "zone_id": "act-50401-primary-34",
+        "kind": "primary",
+        "catch_type": "PRIMARY_PEA",
+        "year_levels": [
+          "Preschool",
+          "K",
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6"
+        ],
+        "source_school_code": "34",
+        "data_year": 2027,
+        "source": "ACTmapi",
+        "source_url": "https://www.arcgis.com/home/item.html?id=41bc23f14bb249ba9ed80b5260657c6a"
+      }
+    ],
+    "50402": [
+      {
+        "geometry_url": "/data/catchment/act/act-50402-primary-15.json",
+        "zone_id": "act-50402-primary-15",
+        "kind": "primary",
+        "catch_type": "PRIMARY_PEA",
+        "year_levels": [
+          "Preschool",
+          "K",
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6"
+        ],
+        "source_school_code": "15",
+        "data_year": 2027,
+        "source": "ACTmapi",
+        "source_url": "https://www.arcgis.com/home/item.html?id=41bc23f14bb249ba9ed80b5260657c6a"
+      }
+    ],
+    "51119": [
+      {
+        "geometry_url": "/data/catchment/act/act-51119-primary-36.json",
+        "zone_id": "act-51119-primary-36",
+        "kind": "primary",
+        "catch_type": "PRIMARY_PEA",
+        "year_levels": [
+          "Preschool",
+          "K",
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6"
+        ],
+        "source_school_code": "36",
+        "data_year": 2027,
+        "source": "ACTmapi",
+        "source_url": "https://www.arcgis.com/home/item.html?id=41bc23f14bb249ba9ed80b5260657c6a"
+      }
+    ],
+    "51122": [
+      {
+        "geometry_url": "/data/catchment/act/act-51122-primary-48.json",
+        "zone_id": "act-51122-primary-48",
+        "kind": "primary",
+        "catch_type": "PRIMARY_PEA",
+        "year_levels": [
+          "Preschool",
+          "K",
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6"
+        ],
+        "source_school_code": "48",
+        "data_year": 2027,
+        "source": "ACTmapi",
+        "source_url": "https://www.arcgis.com/home/item.html?id=41bc23f14bb249ba9ed80b5260657c6a"
+      },
+      {
+        "geometry_url": "/data/catchment/act/act-51122-secondary-15.json",
+        "zone_id": "act-51122-secondary-15",
+        "kind": "secondary",
+        "catch_type": "HIGH_PEA",
+        "year_levels": [
+          "7",
+          "8",
+          "9",
+          "10"
+        ],
+        "source_school_code": "15",
+        "data_year": 2027,
+        "source": "ACTmapi",
+        "source_url": "https://www.arcgis.com/home/item.html?id=41bc23f14bb249ba9ed80b5260657c6a"
+      }
+    ],
+    "51123": [
+      {
+        "geometry_url": "/data/catchment/act/act-51123-primary-52.json",
+        "zone_id": "act-51123-primary-52",
+        "kind": "primary",
+        "catch_type": "PRIMARY_PEA",
+        "year_levels": [
+          "Preschool",
+          "K",
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6"
+        ],
+        "source_school_code": "52",
+        "data_year": 2027,
+        "source": "ACTmapi",
+        "source_url": "https://www.arcgis.com/home/item.html?id=41bc23f14bb249ba9ed80b5260657c6a"
+      }
+    ],
+    "51124": [
+      {
+        "geometry_url": "/data/catchment/act/act-51124-primary-39.json",
+        "zone_id": "act-51124-primary-39",
+        "kind": "primary",
+        "catch_type": "PRIMARY_PEA",
+        "year_levels": [
+          "Preschool",
+          "K",
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6"
+        ],
+        "source_school_code": "39",
+        "data_year": 2027,
+        "source": "ACTmapi",
+        "source_url": "https://www.arcgis.com/home/item.html?id=41bc23f14bb249ba9ed80b5260657c6a"
+      }
+    ],
+    "51125": [
+      {
+        "geometry_url": "/data/catchment/act/act-51125-primary-37.json",
+        "zone_id": "act-51125-primary-37",
+        "kind": "primary",
+        "catch_type": "PRIMARY_PEA",
+        "year_levels": [
+          "Preschool",
+          "K",
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6"
+        ],
+        "source_school_code": "37",
+        "data_year": 2027,
+        "source": "ACTmapi",
+        "source_url": "https://www.arcgis.com/home/item.html?id=41bc23f14bb249ba9ed80b5260657c6a"
+      }
+    ],
+    "51126": [
+      {
+        "geometry_url": "/data/catchment/act/act-51126-primary-16.json",
+        "zone_id": "act-51126-primary-16",
+        "kind": "primary",
+        "catch_type": "PRIMARY_PEA",
+        "year_levels": [
+          "Preschool",
+          "K",
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6"
+        ],
+        "source_school_code": "16",
+        "data_year": 2027,
+        "source": "ACTmapi",
+        "source_url": "https://www.arcgis.com/home/item.html?id=41bc23f14bb249ba9ed80b5260657c6a"
+      }
+    ],
+    "51127": [
+      {
+        "geometry_url": "/data/catchment/act/act-51127-primary-41.json",
+        "zone_id": "act-51127-primary-41",
+        "kind": "primary",
+        "catch_type": "PRIMARY_PEA",
+        "year_levels": [
+          "Preschool",
+          "K",
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6"
+        ],
+        "source_school_code": "41",
+        "data_year": 2027,
+        "source": "ACTmapi",
+        "source_url": "https://www.arcgis.com/home/item.html?id=41bc23f14bb249ba9ed80b5260657c6a"
+      }
+    ],
+    "54231": [
+      {
+        "geometry_url": "/data/catchment/act/act-54231-secondary-3.json",
+        "zone_id": "act-54231-secondary-3",
+        "kind": "secondary",
+        "catch_type": "COLLEGE_PEA",
+        "year_levels": [
+          "11",
+          "12"
+        ],
+        "source_school_code": "3",
+        "data_year": 2027,
+        "source": "ACTmapi",
+        "source_url": "https://www.arcgis.com/home/item.html?id=41bc23f14bb249ba9ed80b5260657c6a"
+      }
+    ],
+    "54381": [
+      {
+        "geometry_url": "/data/catchment/act/act-54381-secondary-2.json",
+        "zone_id": "act-54381-secondary-2",
+        "kind": "secondary",
+        "catch_type": "COLLEGE_PEA",
+        "year_levels": [
+          "11",
+          "12"
+        ],
+        "source_school_code": "2",
+        "data_year": 2027,
+        "source": "ACTmapi",
+        "source_url": "https://www.arcgis.com/home/item.html?id=41bc23f14bb249ba9ed80b5260657c6a"
+      }
+    ],
+    "54382": [
+      {
+        "geometry_url": "/data/catchment/act/act-54382-primary-26.json",
+        "zone_id": "act-54382-primary-26",
+        "kind": "primary",
+        "catch_type": "PRIMARY_PEA",
+        "year_levels": [
+          "Preschool",
+          "K",
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6"
+        ],
+        "source_school_code": "26",
+        "data_year": 2027,
+        "source": "ACTmapi",
+        "source_url": "https://www.arcgis.com/home/item.html?id=41bc23f14bb249ba9ed80b5260657c6a"
+      }
+    ],
+    "54383": [
+      {
+        "geometry_url": "/data/catchment/act/act-54383-secondary-6.json",
+        "zone_id": "act-54383-secondary-6",
+        "kind": "secondary",
+        "catch_type": "HIGH_PEA",
+        "year_levels": [
+          "7",
+          "8",
+          "9",
+          "10"
+        ],
+        "source_school_code": "6",
+        "data_year": 2027,
+        "source": "ACTmapi",
+        "source_url": "https://www.arcgis.com/home/item.html?id=41bc23f14bb249ba9ed80b5260657c6a"
+      }
+    ],
+    "54384": [
+      {
+        "geometry_url": "/data/catchment/act/act-54384-primary-7.json",
+        "zone_id": "act-54384-primary-7",
+        "kind": "primary",
+        "catch_type": "PRIMARY_PEA",
+        "year_levels": [
+          "Preschool",
+          "K",
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6"
+        ],
+        "source_school_code": "7",
+        "data_year": 2027,
+        "source": "ACTmapi",
+        "source_url": "https://www.arcgis.com/home/item.html?id=41bc23f14bb249ba9ed80b5260657c6a"
+      }
+    ],
+    "54386": [
+      {
+        "geometry_url": "/data/catchment/act/act-54386-primary-58.json",
+        "zone_id": "act-54386-primary-58",
+        "kind": "primary",
+        "catch_type": "PRIMARY_PEA",
+        "year_levels": [
+          "Preschool",
+          "K",
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6"
+        ],
+        "source_school_code": "58",
+        "data_year": 2027,
+        "source": "ACTmapi",
+        "source_url": "https://www.arcgis.com/home/item.html?id=41bc23f14bb249ba9ed80b5260657c6a"
+      }
+    ],
+    "54387": [
+      {
+        "geometry_url": "/data/catchment/act/act-54387-primary-21.json",
+        "zone_id": "act-54387-primary-21",
+        "kind": "primary",
+        "catch_type": "PRIMARY_PEA",
+        "year_levels": [
+          "Preschool",
+          "K",
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6"
+        ],
+        "source_school_code": "21",
+        "data_year": 2027,
+        "source": "ACTmapi",
+        "source_url": "https://www.arcgis.com/home/item.html?id=41bc23f14bb249ba9ed80b5260657c6a"
+      }
+    ],
+    "54389": [
+      {
+        "geometry_url": "/data/catchment/act/act-54389-primary-3.json",
+        "zone_id": "act-54389-primary-3",
+        "kind": "primary",
+        "catch_type": "PRIMARY_PEA",
+        "year_levels": [
+          "Preschool",
+          "K",
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6"
+        ],
+        "source_school_code": "3",
+        "data_year": 2027,
+        "source": "ACTmapi",
+        "source_url": "https://www.arcgis.com/home/item.html?id=41bc23f14bb249ba9ed80b5260657c6a"
+      }
+    ],
+    "54727": [
+      {
+        "geometry_url": "/data/catchment/act/act-54727-primary-9.json",
+        "zone_id": "act-54727-primary-9",
+        "kind": "primary",
+        "catch_type": "PRIMARY_PEA",
+        "year_levels": [
+          "Preschool",
+          "K",
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6"
+        ],
+        "source_school_code": "9",
+        "data_year": 2027,
+        "source": "ACTmapi",
+        "source_url": "https://www.arcgis.com/home/item.html?id=41bc23f14bb249ba9ed80b5260657c6a"
+      }
+    ],
+    "54839": [
+      {
+        "geometry_url": "/data/catchment/act/act-54839-secondary-13.json",
+        "zone_id": "act-54839-secondary-13",
+        "kind": "secondary",
+        "catch_type": "HIGH_PEA",
+        "year_levels": [
+          "7",
+          "8",
+          "9",
+          "10"
+        ],
+        "source_school_code": "13",
+        "data_year": 2027,
+        "source": "ACTmapi",
+        "source_url": "https://www.arcgis.com/home/item.html?id=41bc23f14bb249ba9ed80b5260657c6a"
+      }
+    ],
+    "54840": [
+      {
+        "geometry_url": "/data/catchment/act/act-54840-primary-2.json",
+        "zone_id": "act-54840-primary-2",
+        "kind": "primary",
+        "catch_type": "PRIMARY_PEA",
+        "year_levels": [
+          "Preschool",
+          "K",
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6"
+        ],
+        "source_school_code": "2",
+        "data_year": 2027,
+        "source": "ACTmapi",
+        "source_url": "https://www.arcgis.com/home/item.html?id=41bc23f14bb249ba9ed80b5260657c6a"
+      }
+    ],
+    "54841": [
+      {
+        "geometry_url": "/data/catchment/act/act-54841-primary-22.json",
+        "zone_id": "act-54841-primary-22",
+        "kind": "primary",
+        "catch_type": "PRIMARY_PEA",
+        "year_levels": [
+          "Preschool",
+          "K",
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6"
+        ],
+        "source_school_code": "22",
+        "data_year": 2027,
+        "source": "ACTmapi",
+        "source_url": "https://www.arcgis.com/home/item.html?id=41bc23f14bb249ba9ed80b5260657c6a"
+      }
+    ],
+    "55030": [
+      {
+        "geometry_url": "/data/catchment/act/act-55030-primary-33.json",
+        "zone_id": "act-55030-primary-33",
+        "kind": "primary",
+        "catch_type": "PRIMARY_PEA",
+        "year_levels": [
+          "Preschool",
+          "K",
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6"
+        ],
+        "source_school_code": "33",
+        "data_year": 2027,
+        "source": "ACTmapi",
+        "source_url": "https://www.arcgis.com/home/item.html?id=41bc23f14bb249ba9ed80b5260657c6a"
+      }
+    ],
+    "55066": [
+      {
+        "geometry_url": "/data/catchment/act/act-55066-primary-10.json",
+        "zone_id": "act-55066-primary-10",
+        "kind": "primary",
+        "catch_type": "PRIMARY_PEA",
+        "year_levels": [
+          "Preschool",
+          "K",
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6"
+        ],
+        "source_school_code": "10",
+        "data_year": 2027,
+        "source": "ACTmapi",
+        "source_url": "https://www.arcgis.com/home/item.html?id=41bc23f14bb249ba9ed80b5260657c6a"
+      }
+    ],
+    "55096": [
+      {
+        "geometry_url": "/data/catchment/act/act-55096-primary-25.json",
+        "zone_id": "act-55096-primary-25",
+        "kind": "primary",
+        "catch_type": "PRIMARY_PEA",
+        "year_levels": [
+          "Preschool",
+          "K",
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6"
+        ],
+        "source_school_code": "25",
+        "data_year": 2027,
+        "source": "ACTmapi",
+        "source_url": "https://www.arcgis.com/home/item.html?id=41bc23f14bb249ba9ed80b5260657c6a"
+      }
+    ],
+    "55373": [
+      {
+        "geometry_url": "/data/catchment/act/act-55373-secondary-9.json",
+        "zone_id": "act-55373-secondary-9",
+        "kind": "secondary",
+        "catch_type": "HIGH_PEA",
+        "year_levels": [
+          "7",
+          "8",
+          "9",
+          "10"
+        ],
+        "source_school_code": "9",
+        "data_year": 2027,
+        "source": "ACTmapi",
+        "source_url": "https://www.arcgis.com/home/item.html?id=41bc23f14bb249ba9ed80b5260657c6a"
+      }
+    ],
+    "55844": [
+      {
+        "geometry_url": "/data/catchment/act/act-55844-primary-27.json",
+        "zone_id": "act-55844-primary-27",
+        "kind": "primary",
+        "catch_type": "PRIMARY_PEA",
+        "year_levels": [
+          "Preschool",
+          "K",
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6"
+        ],
+        "source_school_code": "27",
+        "data_year": 2027,
+        "source": "ACTmapi",
+        "source_url": "https://www.arcgis.com/home/item.html?id=41bc23f14bb249ba9ed80b5260657c6a"
+      }
+    ],
+    "55980": [
+      {
+        "geometry_url": "/data/catchment/act/act-55980-primary-12.json",
+        "zone_id": "act-55980-primary-12",
+        "kind": "primary",
+        "catch_type": "PRIMARY_PEA",
+        "year_levels": [
+          "Preschool",
+          "K",
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6"
+        ],
+        "source_school_code": "12",
+        "data_year": 2027,
+        "source": "ACTmapi",
+        "source_url": "https://www.arcgis.com/home/item.html?id=41bc23f14bb249ba9ed80b5260657c6a"
+      },
+      {
+        "geometry_url": "/data/catchment/act/act-55980-secondary-2.json",
+        "zone_id": "act-55980-secondary-2",
+        "kind": "secondary",
+        "catch_type": "HIGH_PEA",
+        "year_levels": [
+          "7",
+          "8",
+          "9",
+          "10"
+        ],
+        "source_school_code": "2",
+        "data_year": 2027,
+        "source": "ACTmapi",
+        "source_url": "https://www.arcgis.com/home/item.html?id=41bc23f14bb249ba9ed80b5260657c6a"
+      }
+    ],
+    "56583": [
+      {
+        "geometry_url": "/data/catchment/act/act-56583-primary-51.json",
+        "zone_id": "act-56583-primary-51",
+        "kind": "primary",
+        "catch_type": "PRIMARY_PEA",
+        "year_levels": [
+          "Preschool",
+          "K",
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6"
+        ],
+        "source_school_code": "51",
+        "data_year": 2027,
+        "source": "ACTmapi",
+        "source_url": "https://www.arcgis.com/home/item.html?id=41bc23f14bb249ba9ed80b5260657c6a"
+      }
+    ],
+    "57809": [
+      {
+        "geometry_url": "/data/catchment/act/act-57809-primary-59.json",
+        "zone_id": "act-57809-primary-59",
+        "kind": "primary",
+        "catch_type": "PRIMARY_PEA",
+        "year_levels": [
+          "Preschool",
+          "K",
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6"
+        ],
+        "source_school_code": "59",
+        "data_year": 2027,
+        "source": "ACTmapi",
+        "source_url": "https://www.arcgis.com/home/item.html?id=41bc23f14bb249ba9ed80b5260657c6a"
+      },
+      {
+        "geometry_url": "/data/catchment/act/act-57809-secondary-1.json",
+        "zone_id": "act-57809-secondary-1",
+        "kind": "secondary",
+        "catch_type": "HIGH_PEA",
+        "year_levels": [
+          "7",
+          "8",
+          "9",
+          "10"
+        ],
+        "source_school_code": "1",
+        "data_year": 2027,
+        "source": "ACTmapi",
+        "source_url": "https://www.arcgis.com/home/item.html?id=41bc23f14bb249ba9ed80b5260657c6a"
+      }
+    ],
+    "65740": [
+      {
+        "geometry_url": "/data/catchment/act/act-65740-primary-35.json",
+        "zone_id": "act-65740-primary-35",
+        "kind": "primary",
+        "catch_type": "PRIMARY_PEA",
+        "year_levels": [
+          "3",
+          "4",
+          "5",
+          "6"
+        ],
+        "source_school_code": "35",
+        "data_year": 2027,
+        "source": "ACTmapi",
+        "source_url": "https://www.arcgis.com/home/item.html?id=41bc23f14bb249ba9ed80b5260657c6a"
+      },
+      {
+        "geometry_url": "/data/catchment/act/act-65740-primary-93.json",
+        "zone_id": "act-65740-primary-93",
+        "kind": "primary",
+        "catch_type": "PRIMARY_PEA",
+        "year_levels": [
+          "Preschool",
+          "K",
+          "1",
+          "2"
+        ],
+        "source_school_code": "93",
+        "data_year": 2027,
+        "source": "ACTmapi",
+        "source_url": "https://www.arcgis.com/home/item.html?id=41bc23f14bb249ba9ed80b5260657c6a"
+      },
+      {
+        "geometry_url": "/data/catchment/act/act-65740-secondary-16.json",
+        "zone_id": "act-65740-secondary-16",
+        "kind": "secondary",
+        "catch_type": "HIGH_PEA",
+        "year_levels": [
+          "7",
+          "8",
+          "9",
+          "10"
+        ],
+        "source_school_code": "16",
+        "data_year": 2027,
+        "source": "ACTmapi",
+        "source_url": "https://www.arcgis.com/home/item.html?id=41bc23f14bb249ba9ed80b5260657c6a"
+      }
+    ],
+    "67587": [
+      {
+        "geometry_url": "/data/catchment/act/act-67587-secondary-8.json",
+        "zone_id": "act-67587-secondary-8",
+        "kind": "secondary",
+        "catch_type": "COLLEGE_PEA",
+        "year_levels": [
+          "11",
+          "12"
+        ],
+        "source_school_code": "8",
+        "data_year": 2027,
+        "source": "ACTmapi",
+        "source_url": "https://www.arcgis.com/home/item.html?id=41bc23f14bb249ba9ed80b5260657c6a"
+      }
+    ],
+    "67588": [
+      {
+        "geometry_url": "/data/catchment/act/act-67588-primary-5.json",
+        "zone_id": "act-67588-primary-5",
+        "kind": "primary",
+        "catch_type": "PRIMARY_PEA",
+        "year_levels": [
+          "Preschool",
+          "K",
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6"
+        ],
+        "source_school_code": "5",
+        "data_year": 2027,
+        "source": "ACTmapi",
+        "source_url": "https://www.arcgis.com/home/item.html?id=41bc23f14bb249ba9ed80b5260657c6a"
+      },
+      {
+        "geometry_url": "/data/catchment/act/act-67588-secondary-19.json",
+        "zone_id": "act-67588-secondary-19",
+        "kind": "secondary",
+        "catch_type": "HIGH_PEA",
+        "year_levels": [
+          "7",
+          "8",
+          "9",
+          "10"
+        ],
+        "source_school_code": "19",
+        "data_year": 2027,
+        "source": "ACTmapi",
+        "source_url": "https://www.arcgis.com/home/item.html?id=41bc23f14bb249ba9ed80b5260657c6a"
+      }
+    ],
+    "68128": [
+      {
+        "geometry_url": "/data/catchment/act/act-68128-primary-42.json",
+        "zone_id": "act-68128-primary-42",
+        "kind": "primary",
+        "catch_type": "PRIMARY_PEA",
+        "year_levels": [
+          "Preschool",
+          "K",
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6"
+        ],
+        "source_school_code": "42",
+        "data_year": 2027,
+        "source": "ACTmapi",
+        "source_url": "https://www.arcgis.com/home/item.html?id=41bc23f14bb249ba9ed80b5260657c6a"
+      },
+      {
+        "geometry_url": "/data/catchment/act/act-68128-secondary-10.json",
+        "zone_id": "act-68128-secondary-10",
+        "kind": "secondary",
+        "catch_type": "HIGH_PEA",
+        "year_levels": [
+          "7",
+          "8",
+          "9",
+          "10"
+        ],
+        "source_school_code": "10",
+        "data_year": 2027,
+        "source": "ACTmapi",
+        "source_url": "https://www.arcgis.com/home/item.html?id=41bc23f14bb249ba9ed80b5260657c6a"
+      }
+    ],
+    "69942": [
+      {
+        "geometry_url": "/data/catchment/act/act-69942-primary-44.json",
+        "zone_id": "act-69942-primary-44",
+        "kind": "primary",
+        "catch_type": "PRIMARY_PEA",
+        "year_levels": [
+          "Preschool",
+          "K",
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6"
+        ],
+        "source_school_code": "44",
+        "data_year": 2027,
+        "source": "ACTmapi",
+        "source_url": "https://www.arcgis.com/home/item.html?id=41bc23f14bb249ba9ed80b5260657c6a"
+      }
+    ],
+    "69943": [
+      {
+        "geometry_url": "/data/catchment/act/act-69943-primary-11.json",
+        "zone_id": "act-69943-primary-11",
+        "kind": "primary",
+        "catch_type": "PRIMARY_PEA",
+        "year_levels": [
+          "Preschool",
+          "K",
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6"
+        ],
+        "source_school_code": "11",
+        "data_year": 2027,
+        "source": "ACTmapi",
+        "source_url": "https://www.arcgis.com/home/item.html?id=41bc23f14bb249ba9ed80b5260657c6a"
+      }
+    ],
+    "70330": [
+      {
+        "geometry_url": "/data/catchment/act/act-70330-primary-28.json",
+        "zone_id": "act-70330-primary-28",
+        "kind": "primary",
+        "catch_type": "PRIMARY_PEA",
+        "year_levels": [
+          "Preschool",
+          "K",
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6"
+        ],
+        "source_school_code": "28",
+        "data_year": 2027,
+        "source": "ACTmapi",
+        "source_url": "https://www.arcgis.com/home/item.html?id=41bc23f14bb249ba9ed80b5260657c6a"
+      }
+    ],
+    "85509": [
+      {
+        "geometry_url": "/data/catchment/act/act-85509-primary-23.json",
+        "zone_id": "act-85509-primary-23",
+        "kind": "primary",
+        "catch_type": "PRIMARY_PEA",
+        "year_levels": [
+          "K",
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6"
+        ],
+        "source_school_code": "23",
+        "data_year": 2027,
+        "source": "ACTmapi",
+        "source_url": "https://www.arcgis.com/home/item.html?id=41bc23f14bb249ba9ed80b5260657c6a"
+      }
+    ],
+    "86987": [
+      {
+        "geometry_url": "/data/catchment/act/act-86987-primary-1.json",
+        "zone_id": "act-86987-primary-1",
+        "kind": "primary",
+        "catch_type": "PRIMARY_PEA",
+        "year_levels": [
+          "Preschool",
+          "K",
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6"
+        ],
+        "source_school_code": "1",
+        "data_year": 2027,
+        "source": "ACTmapi",
+        "source_url": "https://www.arcgis.com/home/item.html?id=41bc23f14bb249ba9ed80b5260657c6a"
+      },
+      {
+        "geometry_url": "/data/catchment/act/act-86987-secondary-3.json",
+        "zone_id": "act-86987-secondary-3",
+        "kind": "secondary",
+        "catch_type": "HIGH_PEA",
+        "year_levels": [
+          "7",
+          "8",
+          "9",
+          "10"
+        ],
+        "source_school_code": "3",
+        "data_year": 2027,
+        "source": "ACTmapi",
+        "source_url": "https://www.arcgis.com/home/item.html?id=41bc23f14bb249ba9ed80b5260657c6a"
+      }
+    ],
+    "88028": [
+      {
+        "geometry_url": "/data/catchment/act/act-88028-primary-14.json",
+        "zone_id": "act-88028-primary-14",
+        "kind": "primary",
+        "catch_type": "PRIMARY_PEA",
+        "year_levels": [
+          "Preschool",
+          "K",
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6"
+        ],
+        "source_school_code": "14",
+        "data_year": 2027,
+        "source": "ACTmapi",
+        "source_url": "https://www.arcgis.com/home/item.html?id=41bc23f14bb249ba9ed80b5260657c6a"
+      }
+    ],
+    "88699": [
+      {
+        "geometry_url": "/data/catchment/act/act-88699-secondary-14.json",
+        "zone_id": "act-88699-secondary-14",
+        "kind": "secondary",
+        "catch_type": "HIGH_PEA",
+        "year_levels": [
+          "7",
+          "8",
+          "9",
+          "10"
+        ],
+        "source_school_code": "14",
+        "data_year": 2027,
+        "source": "ACTmapi",
+        "source_url": "https://www.arcgis.com/home/item.html?id=41bc23f14bb249ba9ed80b5260657c6a"
+      }
+    ],
+    "89009": [
+      {
+        "geometry_url": "/data/catchment/act/act-89009-secondary-18.json",
+        "zone_id": "act-89009-secondary-18",
+        "kind": "secondary",
+        "catch_type": "HIGH_PEA",
+        "year_levels": [
+          "7",
+          "8",
+          "9"
+        ],
+        "source_school_code": "18",
+        "data_year": 2027,
+        "source": "ACTmapi",
+        "source_url": "https://www.arcgis.com/home/item.html?id=41bc23f14bb249ba9ed80b5260657c6a"
+      }
+    ]
+  }
+}

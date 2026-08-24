@@ -22,7 +22,10 @@ import { CATCHMENT_STATES } from './catchmentLookup';
  * settings are outside those layers. Tasmania publishes every primary and
  * district school's address intake area. Its high-school pathway instead
  * follows the primary school attended at the end of Year 6, so it is not
- * represented as an address catchment.
+ * represented as an address catchment. ACT publishes its Priority Enrolment
+ * Areas comprehensively; schools or programs without a PEA remain outside the
+ * layer, and two 2027 schools cannot yet be attached because ACARA 2025 has no
+ * location_age_id for them.
  */
 export interface CatchmentStateInfo {
   /** ACARA state code. */
@@ -57,6 +60,11 @@ const STATE_INFO: Record<string, CatchmentStateInfo> = {
   TAS: {
     state: 'TAS',
     finderUrl: 'https://www.decyp.tas.gov.au/learning/find-your-local-school/intake-areas-tasmanian-government-schools/',
+    complete: true,
+  },
+  ACT: {
+    state: 'ACT',
+    finderUrl: 'https://www.act.gov.au/education-and-training/find-a-school-and-enrol/find-a-school-in-your-priority-enrolment-area',
     complete: true,
   },
 };

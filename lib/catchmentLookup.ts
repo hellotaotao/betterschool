@@ -145,7 +145,7 @@ export function catchmentStateAt(
  * learn that the code does not already state. Loaders must tolerate a state
  * listed here whose data has not been built yet.
  */
-export const CATCHMENT_STATES = ['nsw', 'sa', 'vic', 'qld', 'tas'] as const;
+export const CATCHMENT_STATES = ['nsw', 'sa', 'vic', 'qld', 'tas', 'act'] as const;
 
 export type ZoneOverlayKind =
   | 'off'
