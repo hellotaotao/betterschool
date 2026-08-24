@@ -127,7 +127,8 @@
     "tooMany": "{count} zones in view — zoom in to draw them",
     "none": "No published zones in this view",
     "showing": "{count} zones shown",
-    "hint": "One kind at a time: primary and secondary zones cover the same ground, so drawing both hides the boundaries."
+    "saPrimaryPartial": "In South Australia, only some primary schools have formal zones. Blank areas use the closest unzoned school by road.",
+    "hint": "One kind at a time: overlapping primary and secondary borders are difficult to distinguish."
   },
   "legend": {
     "sizeEqualsEnrolments": "Size = enrolments",

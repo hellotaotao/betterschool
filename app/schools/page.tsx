@@ -24,7 +24,12 @@ import { schoolPath, schoolSlugFor, stateSlug, suburbSlug } from '@/lib/slug';
 import schoolsMetadata from '@/public/data/schools.metadata.json';
 
 import type { CatchmentFeature } from '@/lib/catchmentLookup';
-import { loadCatchmentsForSchool, loadZonesInView, lookupCatchmentsAt } from '@/lib/catchmentClient';
+import {
+  loadCatchmentsForSchool,
+  loadZonesInView,
+  lookupCatchmentsAt,
+  type ZonesInView,
+} from '@/lib/catchmentClient';
 import type { Viewport } from '../../components/SchoolMap';
 
 import SchoolDetail from '../../components/SchoolDetail';
@@ -85,9 +90,8 @@ function zoneOverlayStatus(
 /**
  * Browse control for zone boundaries across the whole viewport.
  *
- * Three states rather than on/off: primary and secondary zones are independent
- * coverages of the same ground, so showing both at once stacks two or more
- * outlines over every inhabited part of the map and reads as noise.
+ * Three states rather than on/off: primary and secondary are independent
+ * boundary layers, and showing both at once obscures the places they overlap.
  */
 function ZoneOverlayControl({
   value,
@@ -175,7 +179,7 @@ export default function SchoolsPage() {
   // Browse overlay: every zone of one kind across the viewport.
   const [zoneOverlay, setZoneOverlay] = useState<ZoneOverlayKind>('off');
   const [viewport, setViewport] = useState<Viewport | null>(null);
-  const [overlayState, setOverlayState] = useState<{ features: CatchmentFeature[]; total: number; tooMany: boolean } | null>(null);
+  const [overlayState, setOverlayState] = useState<ZonesInView | null>(null);
   const [pickMode, setPickMode] = useState(false);
   const [lookupPin, setLookupPin] = useState<[number, number] | null>(null);
   const [lookupResults, setLookupResults] = useState<CatchmentFeature[] | null>(null);
@@ -239,10 +243,7 @@ export default function SchoolsPage() {
   }, []);
 
   useEffect(() => {
-    if (zoneOverlay === 'off' || !viewport) {
-      setOverlayState(null);
-      return;
-    }
+    if (zoneOverlay === 'off' || !viewport) return;
 
     // A pan that lands while an earlier fetch is still in flight must not have
     // the stale result painted over it.
@@ -339,6 +340,7 @@ export default function SchoolsPage() {
   }
 
   const handleZoneOverlayChange = useCallback((next: ZoneOverlayKind) => {
+    setOverlayState(null);
     setZoneOverlay(next);
     if (selectedSchool && !schoolMatchesZoneOverlay(selectedSchool, next)) {
       setSelectedSchool(null);
@@ -451,6 +453,9 @@ export default function SchoolsPage() {
 
   const areaLabel = formatMessage(dictionary.sidebar.areaCount, { count: displayedSchools.length });
   const zoneStatus = zoneOverlay === 'off' ? null : zoneOverlayStatus(overlayState, dictionary);
+  const zoneContext = zoneOverlay === 'primary' && overlayState?.state === 'sa'
+    ? dictionary.zoneBrowse.saPrimaryPartial
+    : null;
 
   // Link the detail panel at the school's own page, so the prerendered pages are
   // reachable from the app rather than only from search results.
@@ -518,7 +523,8 @@ export default function SchoolsPage() {
             )}
             {zoneStatus && (
               <div className="pointer-events-none rounded-lg bg-white/95 px-3 py-1.5 text-[11px] text-gray-700 shadow-md">
-                {zoneStatus}
+                <div>{zoneStatus}</div>
+                {zoneContext && <div className="mt-1 max-w-sm text-gray-600">{zoneContext}</div>}
               </div>
             )}
           </div>
@@ -598,7 +604,7 @@ export default function SchoolsPage() {
             </div>
           </div>
 
-          {(pickMode || zoneStatus) && (
+          {(pickMode || zoneStatus || zoneContext) && (
             <div
               style={{ top: topBarBottom + 8 }}
               className="absolute left-1/2 -translate-x-1/2 z-30 flex flex-col items-center gap-1.5 pointer-events-none"
@@ -610,7 +616,8 @@ export default function SchoolsPage() {
               )}
               {zoneStatus && (
                 <div className="rounded-lg bg-white/95 px-4 py-1.5 text-xs text-gray-700 shadow-lg">
-                  {zoneStatus}
+                  <div>{zoneStatus}</div>
+                  {zoneContext && <div className="mt-1 max-w-md text-gray-600">{zoneContext}</div>}
                 </div>
               )}
             </div>

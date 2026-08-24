@@ -117,11 +117,14 @@ export function filterSchools(schools: School[], filters: FilterState): School[]
 
 export function schoolMatchesZoneOverlay(school: School, overlay: ZoneOverlayKind): boolean {
   if (overlay === 'off') return true;
-  return school.sector === 'Government'
-    && school.catchments?.some(catchment => catchment.kind === overlay) === true;
+  if (school.sector !== 'Government') return false;
+  if (overlay === 'primary') {
+    return school.school_type === 'Primary' || school.school_type === 'Combined';
+  }
+  return school.school_type === 'Secondary' || school.school_type === 'Combined';
 }
 
-/** Keep browse markers relevant to the kind of Government zone on screen. */
+/** Keep browse markers relevant without hiding Government schools that are unzoned. */
 export function filterSchoolsForZoneOverlay(schools: School[], overlay: ZoneOverlayKind): School[] {
   if (overlay === 'off') return schools;
   return schools.filter(school => schoolMatchesZoneOverlay(school, overlay));

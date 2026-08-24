@@ -176,7 +176,9 @@ describe('filterSchoolsForZoneOverlay', () => {
     school({ id: 'government-primary', catchments: [primaryCatchment] }),
     school({ id: 'government-secondary', school_type: 'Secondary', catchments: [secondaryCatchment] }),
     school({ id: 'government-combined', school_type: 'Combined', catchments: [primaryCatchment, secondaryCatchment] }),
-    school({ id: 'government-unzoned', school_type: 'Primary' }),
+    school({ id: 'government-unzoned-primary', school_type: 'Primary' }),
+    school({ id: 'government-unzoned-secondary', school_type: 'Secondary' }),
+    school({ id: 'government-special', school_type: 'Special' }),
     school({ id: 'catholic-primary', sector: 'Catholic', catchments: [primaryCatchment] }),
     school({ id: 'independent-secondary', sector: 'Independent', catchments: [secondaryCatchment] }),
   ];
@@ -188,11 +190,19 @@ describe('filterSchoolsForZoneOverlay', () => {
     expect(ids('off')).toEqual(schools.map(s => s.id));
   });
 
-  it('shows only Government schools with a primary zone in primary mode', () => {
-    expect(ids('primary')).toEqual(['government-primary', 'government-combined']);
+  it('shows every Government primary or combined school, including unzoned schools', () => {
+    expect(ids('primary')).toEqual([
+      'government-primary',
+      'government-combined',
+      'government-unzoned-primary',
+    ]);
   });
 
-  it('shows only Government schools with a secondary zone in secondary mode', () => {
-    expect(ids('secondary')).toEqual(['government-secondary', 'government-combined']);
+  it('shows every Government secondary or combined school, including unzoned schools', () => {
+    expect(ids('secondary')).toEqual([
+      'government-secondary',
+      'government-combined',
+      'government-unzoned-secondary',
+    ]);
   });
 });

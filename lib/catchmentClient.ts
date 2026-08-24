@@ -129,15 +129,16 @@ export interface ZonesInView {
   total: number;
   /** True when `total` exceeded the cap and nothing was drawn. */
   tooMany: boolean;
+  /** Published state containing the viewport centre, used only for explanatory copy. */
+  state: string | null;
 }
 
 /**
  * Every zone of one kind overlapping the current viewport.
  *
- * One kind at a time by design. Primary and secondary zones are independent
- * coverages of the same ground, so drawing both puts two or more polygons over
- * every inhabited part of the map — and over three for the 17% of addresses
- * that sit in several secondary zones at once.
+ * One kind at a time by design. Primary and secondary are independent layers,
+ * so drawing both makes their overlapping borders ambiguous — and several
+ * secondary zones can overlap one address where single-sex options coexist.
  *
  * The index is already in memory for the reverse lookup and carries every
  * bbox, so choosing candidates costs nothing; only their geometry is fetched,
@@ -149,11 +150,15 @@ export async function loadZonesInView(
 ): Promise<ZonesInView> {
   const index = await loadCatchmentIndex();
   const candidates = zonesInBounds(index, bounds, kind);
+  const state = catchmentStateAt(index, [
+    (bounds.west + bounds.east) / 2,
+    (bounds.south + bounds.north) / 2,
+  ]);
 
   if (candidates.length > MAX_ZONES_IN_VIEW) {
-    return { features: [], total: candidates.length, tooMany: true };
+    return { features: [], total: candidates.length, tooMany: true, state };
   }
 
   const features = await Promise.all(candidates.map(loadCatchmentFeature));
-  return { features, total: candidates.length, tooMany: false };
+  return { features, total: candidates.length, tooMany: false, state };
 }

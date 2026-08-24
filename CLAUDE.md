@@ -159,8 +159,8 @@ controls on purpose: select a school to draw *its* zone (filled), drop a pin to
 ask what an address is zoned for, or switch the browse overlay on to see every
 zone across the viewport (outlines only, no fill — a filled zone already means
 "the school you selected"). The overlay draws one kind at a time. Primary and
-secondary zones are independent coverages of the same ground, so drawing both
-puts two or more outlines over every inhabited part of the map. It is gated on
+secondary zones are independent boundary layers, so drawing both obscures the
+places they overlap. It is gated on
 how many zones the viewport holds rather than on zoom, because zone area varies
 by two orders of magnitude between inner Sydney and the far west — past
 `MAX_ZONES_IN_VIEW` it says how many are there instead of drawing them.
