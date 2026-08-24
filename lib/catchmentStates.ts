@@ -17,6 +17,9 @@ import { CATCHMENT_STATES } from './catchmentLookup';
  * letting a reader infer the school is unzoned. Victoria publishes its
  * designated-neighbourhood zones comprehensively, although specialist,
  * selective and alternative settings need not have an ordinary local zone.
+ * Queensland publishes the negotiated catchments for its primary, junior
+ * secondary and senior secondary systems; special and other non-catchment
+ * settings are outside those layers.
  */
 export interface CatchmentStateInfo {
   /** ACARA state code. */
@@ -41,6 +44,11 @@ const STATE_INFO: Record<string, CatchmentStateInfo> = {
   VIC: {
     state: 'VIC',
     finderUrl: 'https://www.findmyschool.vic.gov.au/',
+    complete: true,
+  },
+  QLD: {
+    state: 'QLD',
+    finderUrl: 'https://www.qgso.qld.gov.au/maps/edmap/',
     complete: true,
   },
 };

@@ -44,6 +44,11 @@ npm run vic:catchment:fetch     # download 2027 GeoJSON zones + 2025 school site
 npm run vic:catchment:parse     # verify source attributes, CRS and geometry
 npm run vic:catchment:build     # join + emit exact year variants
 npm run vic:catchment:validate
+
+npm run qld:catchment:fetch     # download 2026 primary/junior/senior KML layers
+npm run qld:catchment:parse     # verify source identity and exact KML geometry
+npm run qld:catchment:build     # join + emit exact stage variants
+npm run qld:catchment:validate
 ```
 
 ## Architecture
@@ -57,7 +62,7 @@ ACARA/*.xlsx
   └─ scripts/parse-acara-*.mjs      → data/acara/processed/*.json
   └─ scripts/religion-classify.mjs  → religion layer
   └─ scripts/match-betterschool-acara.mjs → legacy metric layer
-data.nsw.gov.au / data.sa.gov.au / discover.data.vic.gov.au
+data.nsw.gov.au / data.sa.gov.au / discover.data.vic.gov.au / data.qld.gov.au
   └─ scripts/{fetch,parse,build,validate}-<state>-catchment.mjs → catchment layers
        └─ scripts/build-canonical-schools.mjs
             → public/data/schools.canonical.json  (11,034 schools, ~15MB)
@@ -65,6 +70,7 @@ data.nsw.gov.au / data.sa.gov.au / discover.data.vic.gov.au
             → public/data/catchment/nsw/*.json    (2,152 zones, loaded on demand)
             → public/data/catchment/sa/*.json     (130 zones, loaded on demand)
             → public/data/catchment/vic/*.json    (2,560 exact variants, loaded on demand)
+            → public/data/catchment/qld/*.json    (1,362 exact variants, loaded on demand)
 ```
 
 The catchment builds read the ACARA *location* layer rather than
@@ -88,10 +94,10 @@ the first two disagree.
 | `/suburb/[state]` | prerendered | 8 |
 | `/school/[state]/[slug]` | on-demand ISR | 11,034 |
 | `/suburb/[state]/[slug]` | on-demand ISR | 4,799 |
-| `/catchment/[state]/[slug]` | on-demand ISR | 3,676 |
+| `/catchment/[state]/[slug]` | on-demand ISR | 4,902 |
 
 Every route above except the map exists twice: bare for English and under `/zh`
-for Chinese — 39,037 canonical URLs in total. English keeps the unprefixed paths
+for Chinese — 41,489 canonical URLs in total. English keeps the unprefixed paths
 it already publishes; those must not move.
 
 The long-tail routes are the SEO surface — the map app is one client-rendered URL
@@ -169,7 +175,7 @@ zone across the viewport (outlines only, no fill — a filled zone already means
 Secondary (years not published), then Year 7 through Year 12. The unspecified
 choice is for sources such as SA that publish a secondary boundary without
 per-zone years. A year choice draws only boundaries whose source explicitly
-includes that year; VIC never falls into the unspecified bucket. It is gated on
+includes that year; VIC and QLD never fall into the unspecified bucket. It is gated on
 how many zones the viewport holds rather than on zoom, because zone area varies
 by two orders of magnitude between inner Sydney and the far west — past
 `MAX_ZONES_IN_VIEW` it says how many are there instead of drawing them.
@@ -223,8 +229,12 @@ These are the project's core commitments. They matter more than any feature.
      official dataset covers the designated-neighbourhood system; 27 source
      entities that cannot be joined exactly across the 2025 ACARA/site snapshot
      remain explicit in `data/catchment/vic/processed/unmatched.json`.
+   - QLD government school with no attached zone → "none published". The
+     official negotiated-catchment layers cover primary, junior secondary and
+     senior secondary; the five source records excluded by exact join checks
+     remain explicit in `data/catchment/qld/processed/unmatched.json`.
 
-   The same rule governs year levels. NSW and VIC publish them per zone; SA publishes
+   The same rule governs year levels. NSW, VIC and QLD publish them per zone; SA publishes
    none, and its schools' own "Reception to Year 12" designation describes the
    *school*, not the zone — six SA schools hold both a primary and a secondary
    zone, so copying it onto each would claim the primary zone runs to Year 12.
@@ -234,6 +244,9 @@ These are the project's core commitments. They matter more than any feature.
    for Year 7 through Year 12. Different geometry remains a distinct `zone_id`
    and `geometry_url`; only exactly identical geometry after 6-decimal coordinate
    rounding is coalesced, with its source year labels unioned.
+   QLD publishes primary as Prep-6, junior secondary as Years 7-10 and senior
+   secondary as Years 11-12. Junior and senior geometry is likewise coalesced
+   only when the exact rounded coordinates are byte-identical.
 
 ### Marker encoding (and why)
 

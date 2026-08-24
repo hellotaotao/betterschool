@@ -33,3 +33,31 @@ describe('geometryAreaKm2', () => {
     expect(withHole).toBeLessThan(full);
   });
 });
+
+describe('groupExactGeometryVariants', () => {
+  const polygon = (east) => ({
+    type: 'Polygon',
+    coordinates: [[[144, -38], [east, -38], [east, -37], [144, -38]]],
+  });
+
+  it('coalesces only byte-identical geometry and unions published source fields', () => {
+    expect(common.groupExactGeometryVariants([
+      { geometry: polygon(145), year_levels: ['7'], catch_type: 'JUNIOR', source_school_code: '1000' },
+      { geometry: polygon(145), year_levels: ['8'], catch_type: 'JUNIOR', source_school_code: '1000' },
+      { geometry: polygon(146), year_levels: ['9'], catch_type: 'JUNIOR', source_school_code: '1000' },
+    ])).toEqual([
+      {
+        geometry: polygon(145),
+        year_levels: ['7', '8'],
+        catch_types: ['JUNIOR'],
+        source_school_codes: ['1000'],
+      },
+      {
+        geometry: polygon(146),
+        year_levels: ['9'],
+        catch_types: ['JUNIOR'],
+        source_school_codes: ['1000'],
+      },
+    ]);
+  });
+});

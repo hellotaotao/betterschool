@@ -1,0 +1,64 @@
+{
+  "fetched_at": "2026-08-24T16:26:48.259Z",
+  "data_year": 2026,
+  "dataset_page": "https://www.data.qld.gov.au/dataset/queensland-state-schools-geographic-information",
+  "dataset_id": "b01b50fc-b8ab-4c88-bc4a-34d42930fea8",
+  "resource_ids": {
+    "primary": {
+      "sites": "145b0e94-dfce-42b3-872b-8866b29b20ee",
+      "catchments": "a35846d9-e320-46fc-aea1-b477001ca485"
+    },
+    "junior_secondary": {
+      "sites": "827b0eae-12f3-4604-831d-97cde7d021dc",
+      "catchments": "2557305a-5339-4945-819f-551bd917fe39"
+    },
+    "senior_secondary": {
+      "sites": "9ca39d88-29ca-43ab-a928-3372024163b9",
+      "catchments": "930ba950-9661-4edb-bb04-8cdfb3305d33"
+    }
+  },
+  "downloads": {
+    "primary": {
+      "sites": {
+        "url": "https://www.data.qld.gov.au/dataset/b01b50fc-b8ab-4c88-bc4a-34d42930fea8/resource/145b0e94-dfce-42b3-872b-8866b29b20ee/download/primary_sites_2026.kml",
+        "bytes": 470464,
+        "etag": "\"d471457dceb236a69acc79032ddd22b8\"",
+        "last_modified": "Wed, 01 Apr 2026 23:32:08 GMT"
+      },
+      "catchments": {
+        "url": "https://www.data.qld.gov.au/dataset/b01b50fc-b8ab-4c88-bc4a-34d42930fea8/resource/a35846d9-e320-46fc-aea1-b477001ca485/download/primary_catchments_2026.kml",
+        "bytes": 31544480,
+        "etag": "\"86d389f09c9b4c5f157b682dfc3df5d2\"",
+        "last_modified": "Wed, 01 Apr 2026 23:32:57 GMT"
+      }
+    },
+    "junior_secondary": {
+      "sites": {
+        "url": "https://www.data.qld.gov.au/dataset/b01b50fc-b8ab-4c88-bc4a-34d42930fea8/resource/827b0eae-12f3-4604-831d-97cde7d021dc/download/junior_secondary_sites_2026.kml",
+        "bytes": 127503,
+        "etag": "\"aa18ecab6421d3fd76f7921a98b46042\"",
+        "last_modified": "Wed, 01 Apr 2026 23:33:41 GMT"
+      },
+      "catchments": {
+        "url": "https://www.data.qld.gov.au/dataset/b01b50fc-b8ab-4c88-bc4a-34d42930fea8/resource/2557305a-5339-4945-819f-551bd917fe39/download/junior_secondary_catchments_2026.kml",
+        "bytes": 15770968,
+        "etag": "\"db0201b5cd5e35772990a4f48f55b77e\"",
+        "last_modified": "Wed, 01 Apr 2026 23:34:19 GMT"
+      }
+    },
+    "senior_secondary": {
+      "sites": {
+        "url": "https://www.data.qld.gov.au/dataset/b01b50fc-b8ab-4c88-bc4a-34d42930fea8/resource/9ca39d88-29ca-43ab-a928-3372024163b9/download/senior_secondary_sites_2026.kml",
+        "bytes": 105925,
+        "etag": "\"dd8fa2064cddf41070c26b1c7ac299f0\"",
+        "last_modified": "Wed, 01 Apr 2026 23:34:54 GMT"
+      },
+      "catchments": {
+        "url": "https://www.data.qld.gov.au/dataset/b01b50fc-b8ab-4c88-bc4a-34d42930fea8/resource/930ba950-9661-4edb-bb04-8cdfb3305d33/download/senior_secondary_catchments_2026.kml",
+        "bytes": 13898346,
+        "etag": "\"0ecb788fc3f7e9d73603ced0058ff894\"",
+        "last_modified": "Wed, 01 Apr 2026 23:35:24 GMT"
+      }
+    }
+  }
+}

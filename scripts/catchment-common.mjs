@@ -173,6 +173,42 @@ export function mergeGeometries(records) {
   return { type: 'MultiPolygon', coordinates: polygons };
 }
 
+const levelOrder = (level) => (level === 'P' ? 0 : Number(level));
+
+/**
+ * Coalesce only byte-identical rounded geometries.
+ *
+ * A shared geometry may safely carry the union of its source year labels;
+ * geometries that differ by even one rounded coordinate remain separate
+ * variants. This is shared because several states publish stage/year layers.
+ */
+export function groupExactGeometryVariants(records) {
+  const grouped = new Map();
+  for (const record of records) {
+    const key = JSON.stringify(record.geometry);
+    let variant = grouped.get(key);
+    if (!variant) {
+      variant = {
+        geometry: record.geometry,
+        yearLevels: new Set(),
+        catchTypes: new Set(),
+        sourceSchoolCodes: new Set(),
+      };
+      grouped.set(key, variant);
+    }
+    for (const level of record.year_levels) variant.yearLevels.add(level);
+    if (record.catch_type) variant.catchTypes.add(record.catch_type);
+    if (record.source_school_code) variant.sourceSchoolCodes.add(record.source_school_code);
+  }
+
+  return [...grouped.values()].map((variant) => ({
+    geometry: variant.geometry,
+    year_levels: [...variant.yearLevels].sort((a, b) => levelOrder(a) - levelOrder(b)),
+    catch_types: [...variant.catchTypes].sort(),
+    source_school_codes: [...variant.sourceSchoolCodes].sort(),
+  }));
+}
+
 /** Great-circle distance in km — used to confirm an ID join landed on the right site. */
 export function distanceKm(aLat, aLng, bLat, bLng) {
   const toRad = (deg) => (deg * Math.PI) / 180;

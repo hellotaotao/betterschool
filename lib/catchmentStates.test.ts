@@ -8,16 +8,18 @@ describe('catchmentStateInfo', () => {
     expect(catchmentStateInfo('NSW')).not.toBeNull();
     expect(catchmentStateInfo('SA')).not.toBeNull();
     expect(catchmentStateInfo('VIC')).not.toBeNull();
+    expect(catchmentStateInfo('QLD')).not.toBeNull();
   });
 
   it('returns null for a state whose zones are not collected', () => {
-    expect(catchmentStateInfo('QLD')).toBeNull();
+    expect(catchmentStateInfo('WA')).toBeNull();
   });
 
   it('accepts either case, because callers pass ACARA codes and URL slugs', () => {
     expect(catchmentStateInfo('nsw')?.state).toBe('NSW');
     expect(catchmentStateInfo('sa')?.state).toBe('SA');
     expect(catchmentStateInfo('vic')?.state).toBe('VIC');
+    expect(catchmentStateInfo('qld')?.state).toBe('QLD');
   });
 
   /**
@@ -31,6 +33,7 @@ describe('catchmentStateInfo', () => {
     expect(catchmentStateInfo('NSW')?.complete).toBe(true);
     expect(catchmentStateInfo('SA')?.complete).toBe(false);
     expect(catchmentStateInfo('VIC')?.complete).toBe(true);
+    expect(catchmentStateInfo('QLD')?.complete).toBe(true);
   });
 
   it('sends each state at its own department, never another state\'s', () => {
@@ -39,6 +42,7 @@ describe('catchmentStateInfo', () => {
       'https://www.education.sa.gov.au/parents-and-families/enrol-school-or-preschool/find-a-school-zone-or-preschool-catchment-area',
     );
     expect(catchmentStateInfo('VIC')?.finderUrl).toBe('https://www.findmyschool.vic.gov.au/');
+    expect(catchmentStateInfo('QLD')?.finderUrl).toBe('https://www.qgso.qld.gov.au/maps/edmap/');
   });
 });
 
@@ -65,7 +69,8 @@ describe('catchmentAbsenceKind', () => {
     expect(absenceKind('SA', 'Government')).toBe('partial-state');
     expect(absenceKind('NSW', 'Government')).toBe('not-published');
     expect(absenceKind('VIC', 'Government')).toBe('not-published');
-    expect(absenceKind('QLD', 'Government')).toBe('not-collected');
+    expect(absenceKind('QLD', 'Government')).toBe('not-published');
+    expect(absenceKind('WA', 'Government')).toBe('not-collected');
     expect(absenceKind('SA', 'Catholic')).toBe('non-government');
   });
 });

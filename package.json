@@ -26,7 +26,11 @@
     "vic:catchment:fetch": "node scripts/fetch-vic-catchment.mjs",
     "vic:catchment:parse": "node scripts/parse-vic-catchment.mjs",
     "vic:catchment:build": "node scripts/build-vic-catchment.mjs",
-    "vic:catchment:validate": "node scripts/validate-vic-catchment.mjs"
+    "vic:catchment:validate": "node scripts/validate-vic-catchment.mjs",
+    "qld:catchment:fetch": "node scripts/fetch-qld-catchment.mjs",
+    "qld:catchment:parse": "node scripts/parse-qld-catchment.mjs",
+    "qld:catchment:build": "node scripts/build-qld-catchment.mjs",
+    "qld:catchment:validate": "node scripts/validate-qld-catchment.mjs"
   },
   "dependencies": {
     "@types/leaflet": "^1.9.21",

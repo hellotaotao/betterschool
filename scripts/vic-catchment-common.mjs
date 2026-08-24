@@ -10,6 +10,7 @@ export {
   coarsenBbox,
   countVertices,
   mergeGeometries,
+  groupExactGeometryVariants,
   distanceKm,
   normaliseName,
   pointInGeometry,
@@ -77,40 +78,4 @@ export function schoolNumberFromEntityCode(value) {
   const match = /^1(\d{4})(\d{2})$/.exec(text);
   if (!match) throw new Error(`Malformed Victorian entity code: ${text || '(blank)'}`);
   return String(Number(match[1]));
-}
-
-const levelOrder = (level) => (level === 'P' ? 0 : Number(level));
-
-/**
- * Coalesce only byte-identical rounded geometries.
- *
- * Different year layers can publish genuinely different boundaries. A shared
- * geometry may safely carry the union of its source year labels; geometries
- * that differ by even one rounded coordinate remain separate variants.
- */
-export function groupExactGeometryVariants(records) {
-  const grouped = new Map();
-  for (const record of records) {
-    const key = JSON.stringify(record.geometry);
-    let variant = grouped.get(key);
-    if (!variant) {
-      variant = {
-        geometry: record.geometry,
-        yearLevels: new Set(),
-        catchTypes: new Set(),
-        sourceSchoolCodes: new Set(),
-      };
-      grouped.set(key, variant);
-    }
-    for (const level of record.year_levels) variant.yearLevels.add(level);
-    if (record.catch_type) variant.catchTypes.add(record.catch_type);
-    if (record.source_school_code) variant.sourceSchoolCodes.add(record.source_school_code);
-  }
-
-  return [...grouped.values()].map((variant) => ({
-    geometry: variant.geometry,
-    year_levels: [...variant.yearLevels].sort((a, b) => levelOrder(a) - levelOrder(b)),
-    catch_types: [...variant.catchTypes].sort(),
-    source_school_codes: [...variant.sourceSchoolCodes].sort(),
-  }));
 }

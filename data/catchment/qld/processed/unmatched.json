@@ -1,0 +1,80 @@
+{
+  "generated_at": "2026-08-24T16:30:00.744Z",
+  "count": 5,
+  "note": "Source records without one exact expanded ACARA identity within the site-distance bound and exact published geometry. No fuzzy-name or nearest-school fallback is used.",
+  "records": [
+    {
+      "layer": "primary",
+      "source_school_code": "B059",
+      "source_name": "Norfolk Island Central School",
+      "reason": "no_official_site_or_exact_acara_identity_inside_zone",
+      "candidates": []
+    },
+    {
+      "layer": "primary",
+      "source_school_code": "0187",
+      "source_name": "Begonia SS",
+      "site": {
+        "source_name": "Begonia SS",
+        "source_school_code": "0187",
+        "longitude": 148.324991,
+        "latitude": -27.491787
+      },
+      "reason": "no_exact_acara_candidate_within_distance_and_zone",
+      "candidates": [
+        {
+          "school_name": "Begonia State School",
+          "location_age_id": 52260,
+          "distance_km": 18.75902851888353,
+          "inside_zone": true
+        }
+      ]
+    },
+    {
+      "layer": "primary",
+      "source_school_code": "1667",
+      "source_name": "Durong South SS",
+      "site": {
+        "source_name": "Durong South SS",
+        "source_school_code": "1667",
+        "longitude": 151.244079,
+        "latitude": -26.392349
+      },
+      "reason": "no_exact_acara_candidate_within_distance_and_zone",
+      "candidates": [
+        {
+          "school_name": "Durong South State School",
+          "location_age_id": 52507,
+          "distance_km": 4.657541840924492,
+          "inside_zone": true
+        }
+      ]
+    },
+    {
+      "layer": "junior_secondary",
+      "source_school_code": "B059",
+      "source_name": "Norfolk Island Central School",
+      "site": {
+        "source_name": "Norfolk Island Central School",
+        "source_school_code": "B059",
+        "longitude": 167.96655,
+        "latitude": -29.041096
+      },
+      "reason": "no_exact_acara_candidate_within_distance_and_zone",
+      "candidates": []
+    },
+    {
+      "layer": "senior_secondary",
+      "source_school_code": "B059",
+      "source_name": "Norfolk Island Central School",
+      "site": {
+        "source_name": "Norfolk Island Central School",
+        "source_school_code": "B059",
+        "longitude": 167.96655,
+        "latitude": -29.041096
+      },
+      "reason": "no_exact_acara_candidate_within_distance_and_zone",
+      "candidates": []
+    }
+  ]
+}

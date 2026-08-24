@@ -56,3 +56,4 @@ scripts/process_school_data.py
 data/catchment/nsw/raw/
 data/catchment/sa/raw/
 data/catchment/vic/raw/
+data/catchment/qld/raw/
