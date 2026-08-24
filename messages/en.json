@@ -104,7 +104,10 @@
     "disclaimer": "Zones change, and boundaries can split a single street. This is a guide, not a legal entitlement — the {state} education department accepts no responsibility where this data informs a property decision. Confirm the address on the official finder.",
     "officialLink": "Official {state} school zone finder",
     "loadError": "Could not load the zone boundary.",
-    "statesOnly": "Intake zone data currently covers {states} government schools."
+    "statesOnly": "Intake zone data currently covers {states} government schools.",
+    "notPublishedAtPoint": "No {state} government intake zone is published for this point.",
+    "partialSchool": "{state} publishes zones for only some government schools. No boundary is published for this school. Unzoned schools use the unzoned school closest by road, and the department does not publish that boundary. Check the address on the official tool.",
+    "partialAtPoint": "{state} publishes zones for only some government schools. This point may instead be assigned to the unzoned school closest by road; the department does not publish that boundary. Check the address on the official tool."
   },
   "lookup": {
     "button": "Zoned schools",
@@ -112,7 +115,7 @@
     "cancel": "Cancel",
     "title": "Zoned for this location",
     "searching": "Looking up…",
-    "noResults": "No NSW government intake zone covers this point.",
+    "noResults": "No published intake zone covers this point.",
     "clear": "Clear",
     "error": "Lookup failed. Please try again."
   },

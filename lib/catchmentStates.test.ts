@@ -1,5 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { catchmentStateCodes, catchmentStateInfo } from './catchmentStates';
+import * as catchmentStates from './catchmentStates';
 import { CATCHMENT_STATES } from './catchmentLookup';
 
 describe('catchmentStateInfo', () => {
@@ -32,7 +33,9 @@ describe('catchmentStateInfo', () => {
 
   it('sends each state at its own department, never another state\'s', () => {
     expect(catchmentStateInfo('NSW')?.finderUrl).toContain('education.nsw.gov.au');
-    expect(catchmentStateInfo('SA')?.finderUrl).toContain('education.sa.gov.au');
+    expect(catchmentStateInfo('SA')?.finderUrl).toBe(
+      'https://www.education.sa.gov.au/parents-and-families/enrol-school-or-preschool/find-a-school-zone-or-preschool-catchment-area',
+    );
   });
 });
 
@@ -47,5 +50,18 @@ describe('catchmentStateCodes', () => {
     for (const slug of CATCHMENT_STATES) {
       expect(catchmentStateInfo(slug), `no CatchmentStateInfo for ${slug}`).not.toBeNull();
     }
+  });
+});
+
+describe('catchmentAbsenceKind', () => {
+  it('keeps partial coverage distinct from none published and not collected', () => {
+    const absenceKind = (catchmentStates as Record<string, unknown>).catchmentAbsenceKind;
+    expect(absenceKind).toBeTypeOf('function');
+    if (typeof absenceKind !== 'function') return;
+
+    expect(absenceKind('SA', 'Government')).toBe('partial-state');
+    expect(absenceKind('NSW', 'Government')).toBe('not-published');
+    expect(absenceKind('VIC', 'Government')).toBe('not-collected');
+    expect(absenceKind('SA', 'Catholic')).toBe('non-government');
   });
 });

@@ -92,6 +92,39 @@ export function countVertices(geometry) {
   return total;
 }
 
+/** Approximate a small GeoJSON polygon's surface area in square kilometres. */
+export function geometryAreaKm2(geometry) {
+  const ringArea = (ring) => {
+    if (ring.length < 4) return 0;
+    const radiusKm = 6371.0088;
+    const toRad = (degrees) => (degrees * Math.PI) / 180;
+    const meanLat = ring.reduce((sum, [, lat]) => sum + lat, 0) / ring.length;
+    const cosLat = Math.cos(toRad(meanLat));
+    const projected = ring.map(([lng, lat]) => [
+      radiusKm * toRad(lng) * cosLat,
+      radiusKm * toRad(lat),
+    ]);
+    let twiceArea = 0;
+    for (let index = 0; index < projected.length - 1; index += 1) {
+      const [x1, y1] = projected[index];
+      const [x2, y2] = projected[index + 1];
+      twiceArea += x1 * y2 - x2 * y1;
+    }
+    return Math.abs(twiceArea) / 2;
+  };
+
+  const polygonArea = (rings) => {
+    if (rings.length === 0) return 0;
+    return Math.max(0, ringArea(rings[0]) - rings.slice(1).reduce((sum, ring) => sum + ringArea(ring), 0));
+  };
+
+  if (geometry.type === 'Polygon') return polygonArea(geometry.coordinates);
+  if (geometry.type === 'MultiPolygon') {
+    return geometry.coordinates.reduce((sum, rings) => sum + polygonArea(rings), 0);
+  }
+  return 0;
+}
+
 /** Merge same-school, same-kind polygons into one MultiPolygon. */
 export function mergeGeometries(records) {
   if (records.length === 1) return records[0].geometry;

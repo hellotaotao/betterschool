@@ -32,7 +32,7 @@ const STATE_INFO: Record<string, CatchmentStateInfo> = {
   },
   SA: {
     state: 'SA',
-    finderUrl: 'https://www.education.sa.gov.au/parents-and-families/enrol-school-or-preschool/find-school-zone-or-catchment-area',
+    finderUrl: 'https://www.education.sa.gov.au/parents-and-families/enrol-school-or-preschool/find-a-school-zone-or-preschool-catchment-area',
     complete: false,
   },
 };
@@ -45,4 +45,18 @@ export function catchmentStateInfo(state: string): CatchmentStateInfo | null {
 /** ACARA codes of the states with a published zone layer, in CATCHMENT_STATES order. */
 export function catchmentStateCodes(): string[] {
   return CATCHMENT_STATES.map(slug => slug.toUpperCase());
+}
+
+export type CatchmentAbsenceKind =
+  | 'non-government'
+  | 'not-published'
+  | 'partial-state'
+  | 'not-collected';
+
+/** The meaning of an absent catchment for one school. */
+export function catchmentAbsenceKind(state: string, sector: string): CatchmentAbsenceKind {
+  if (sector !== 'Government') return 'non-government';
+  const info = catchmentStateInfo(state);
+  if (!info) return 'not-collected';
+  return info.complete ? 'not-published' : 'partial-state';
 }

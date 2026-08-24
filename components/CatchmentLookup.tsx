@@ -8,6 +8,8 @@ import type { CatchmentFeature } from '@/lib/catchmentLookup';
 
 interface CatchmentLookupProps {
   results: CatchmentFeature[] | null;
+  /** State slug inferred from the collected zone envelopes for an empty result. */
+  lookupState: string | null;
   schoolsByLocationAgeId: Map<number, School>;
   loading: boolean;
   error: boolean;
@@ -22,6 +24,7 @@ interface CatchmentLookupProps {
 
 export default function CatchmentLookup({
   results,
+  lookupState,
   schoolsByLocationAgeId,
   loading,
   error,
@@ -50,10 +53,11 @@ export default function CatchmentLookup({
   // settles which department's finder is the authoritative one to link.
   const resultState = sorted
     .map(feature => schoolsByLocationAgeId.get(feature.properties.location_age_id)?.state)
-    .find(Boolean);
-  const finderUrl = resultState ? catchmentStateInfo(resultState)?.finderUrl : undefined;
-  const stateLabel = resultState
-    ? (locale === 'zh' ? (dictionary.seo.states as Record<string, string>)[resultState] ?? resultState : resultState)
+    .find(Boolean) ?? lookupState;
+  const stateInfo = resultState ? catchmentStateInfo(resultState) : null;
+  const finderUrl = stateInfo?.finderUrl;
+  const stateLabel = stateInfo
+    ? (locale === 'zh' ? (dictionary.seo.states as Record<string, string>)[stateInfo.state] ?? stateInfo.state : stateInfo.state)
     : '';
 
   return (
@@ -72,8 +76,27 @@ export default function CatchmentLookup({
           <div className="py-4 space-y-2">
             <p className="text-xs text-gray-500 text-center">{dictionary.lookup.noResults}</p>
             <p className="text-[10px] text-gray-400 text-center">
-              {formatMessage(dictionary.catchment.statesOnly, { states: coveredCatchmentStates(dictionary, locale) })}
+              {stateInfo
+                ? formatMessage(
+                  stateInfo.complete
+                    ? dictionary.catchment.notPublishedAtPoint
+                    : dictionary.catchment.partialAtPoint,
+                  { state: stateLabel },
+                )
+                : formatMessage(dictionary.catchment.statesOnly, {
+                  states: coveredCatchmentStates(dictionary, locale),
+                })}
             </p>
+            {finderUrl && (
+              <a
+                href={finderUrl}
+                target="_blank"
+                rel="noreferrer"
+                className="block text-center text-[10px] font-medium text-indigo-600 hover:underline"
+              >
+                {formatMessage(dictionary.catchment.officialLink, { state: stateLabel })} →
+              </a>
+            )}
           </div>
         )}
 

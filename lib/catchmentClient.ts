@@ -2,6 +2,7 @@ import {
   CATCHMENT_STATES,
   candidatesAt,
   catchmentGeometryUrl,
+  catchmentStateAt,
   pointInGeometry,
   zonesInBounds,
   type ViewportBounds,
@@ -93,11 +94,20 @@ export function loadCatchmentsForSchool(
  * single-sex highs cover the same ground or a senior campus overlays a 7-12
  * school, which is why the results panel explains the overlap.
  */
-export async function lookupCatchmentsAt(point: [number, number]): Promise<CatchmentFeature[]> {
+export interface CatchmentLookupResult {
+  features: CatchmentFeature[];
+  /** State slug when one collected state's overall zone envelope contains the point. */
+  state: string | null;
+}
+
+export async function lookupCatchmentsAt(point: [number, number]): Promise<CatchmentLookupResult> {
   const index = await loadCatchmentIndex();
   const candidates = candidatesAt(index, point);
   const features = await Promise.all(candidates.map(loadCatchmentFeature));
-  return features.filter(feature => pointInGeometry(point, feature.geometry));
+  return {
+    features: features.filter(feature => pointInGeometry(point, feature.geometry)),
+    state: catchmentStateAt(index, point),
+  };
 }
 
 /**

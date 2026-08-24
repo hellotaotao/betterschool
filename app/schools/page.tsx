@@ -173,6 +173,7 @@ export default function SchoolsPage() {
   const [pickMode, setPickMode] = useState(false);
   const [lookupPin, setLookupPin] = useState<[number, number] | null>(null);
   const [lookupResults, setLookupResults] = useState<CatchmentFeature[] | null>(null);
+  const [lookupState, setLookupState] = useState<string | null>(null);
   const [lookupLoading, setLookupLoading] = useState(false);
   const [lookupError, setLookupError] = useState(false);
   // A deep link decides the initial view; IP geolocation must not override it.
@@ -378,6 +379,7 @@ export default function SchoolsPage() {
     setPickMode(false);
     setLookupPin(null);
     setLookupResults(null);
+    setLookupState(null);
     setLookupError(false);
     setLookupLoading(false);
   }, []);
@@ -387,14 +389,16 @@ export default function SchoolsPage() {
     setSelectedSchool(null);
     setLookupPin([lat, lng]);
     setLookupResults([]);
+    setLookupState(null);
     setLookupError(false);
     setLookupLoading(true);
     if (isMobile) setSheetSnap('expanded');
 
     // GeoJSON is [lng, lat]; Leaflet hands us [lat, lng].
     lookupCatchmentsAt([lng, lat])
-      .then(features => {
-        setLookupResults(features);
+      .then(result => {
+        setLookupResults(result.features);
+        setLookupState(result.state);
         setLookupLoading(false);
       })
       .catch(() => {
@@ -510,6 +514,7 @@ export default function SchoolsPage() {
             {lookupPin && !selectedSchool ? (
               <CatchmentLookup
                 results={lookupResults}
+                lookupState={lookupState}
                 schoolsByLocationAgeId={schoolsByLocationAgeId}
                 loading={lookupLoading}
                 error={lookupError}
@@ -604,6 +609,7 @@ export default function SchoolsPage() {
           {lookupPin && !selectedSchool && (
             <CatchmentLookup
               results={lookupResults}
+              lookupState={lookupState}
               schoolsByLocationAgeId={schoolsByLocationAgeId}
               loading={lookupLoading}
               error={lookupError}

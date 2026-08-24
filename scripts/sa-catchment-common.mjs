@@ -12,6 +12,7 @@ export {
   geometryBbox,
   coarsenBbox,
   countVertices,
+  geometryAreaKm2,
   mergeGeometries,
   distanceKm,
   normaliseName,

@@ -2,7 +2,7 @@
 
 import { School } from '@/types/school';
 import { coveredCatchmentStates, formatMessage, getReligionLabel, getSchoolTypeLabel, getSectorLabel, Locale, Messages } from '@/lib/i18n';
-import { catchmentStateInfo } from '@/lib/catchmentStates';
+import { catchmentAbsenceKind, catchmentStateInfo } from '@/lib/catchmentStates';
 import { hasLegacyScore } from '@/utils/schoolFilters';
 import ZoneSwatch from './ZoneSwatch';
 
@@ -34,9 +34,11 @@ export default function SchoolDetail({
   topOffset,
 }: SchoolDetailProps) {
   const catchments = school.catchments ?? [];
-  const finderUrl = catchmentStateInfo(school.state)?.finderUrl;
+  const zoneState = catchmentStateInfo(school.state);
+  const finderUrl = zoneState?.finderUrl;
   const stateLabel = locale === 'zh' ? (dictionary.seo.states as Record<string, string>)[school.state] ?? school.state : school.state;
   const isGovernment = school.sector === 'Government';
+  const absenceKind = catchmentAbsenceKind(school.state, school.sector);
   const isPanel = variant === 'panel';
   const wrapClass = isPanel
     ? 'absolute right-3 bottom-3 z-10 w-56 bg-white/95 backdrop-blur-sm rounded-xl shadow-xl flex flex-col overflow-hidden'
@@ -296,19 +298,33 @@ export default function SchoolDetail({
                 rel="noreferrer"
                 className="block text-[10px] font-medium text-blue-700 hover:underline"
               >
-                {dictionary.catchment.officialLink} →
+                {formatMessage(dictionary.catchment.officialLink, { state: stateLabel })} →
               </a>
             </>
           ) : (
-            <p className="text-[9px] text-blue-800/70 leading-snug">
-              {!isGovernment
-                ? dictionary.catchment.nonGovernment
-                : catchmentStateInfo(school.state)
-                  ? dictionary.catchment.notPublished
-                  : formatMessage(dictionary.catchment.statesOnly, {
-                    states: coveredCatchmentStates(dictionary, locale),
-                  })}
-            </p>
+            <div className="space-y-1.5">
+              <p className="text-[9px] text-blue-800/70 leading-snug">
+                {absenceKind === 'non-government'
+                  ? dictionary.catchment.nonGovernment
+                  : absenceKind === 'not-published'
+                    ? dictionary.catchment.notPublished
+                    : absenceKind === 'partial-state'
+                      ? formatMessage(dictionary.catchment.partialSchool, { state: stateLabel })
+                      : formatMessage(dictionary.catchment.statesOnly, {
+                        states: coveredCatchmentStates(dictionary, locale),
+                      })}
+              </p>
+              {isGovernment && finderUrl && (
+                <a
+                  href={finderUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="block text-[10px] font-medium text-blue-700 hover:underline"
+                >
+                  {formatMessage(dictionary.catchment.officialLink, { state: stateLabel })} →
+                </a>
+              )}
+            </div>
           )}
         </div>
 

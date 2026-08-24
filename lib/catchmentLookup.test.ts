@@ -11,6 +11,7 @@ import {
   type Ring,
   type CatchmentIndexEntry,
 } from './catchmentLookup';
+import * as catchmentLookup from './catchmentLookup';
 
 /** Unit square, closed. */
 const square: Ring = [[0, 0], [0, 10], [10, 10], [10, 0], [0, 0]];
@@ -112,6 +113,36 @@ describe('catchmentGeometryUrl', () => {
   it('routes each state to its own directory', () => {
     expect(catchmentGeometryUrl({ state: 'sa', location_age_id: 1234, kind: 'secondary' }))
       .toBe('/data/catchment/sa/1234-secondary.json');
+  });
+});
+
+describe('catchmentStateAt', () => {
+  const entries = [
+    { state: 'sa', location_age_id: 1, acara_sml_id: 11, kind: 'primary' as const, catch_type: 'PRIM', year_levels: [], bbox: [138.4, -35.2, 138.8, -34.7] as [number, number, number, number] },
+    { state: 'sa', location_age_id: 2, acara_sml_id: 12, kind: 'secondary' as const, catch_type: 'SEC', year_levels: [], bbox: [138.5, -35.1, 138.9, -34.6] as [number, number, number, number] },
+    { state: 'nsw', location_age_id: 3, acara_sml_id: 13, kind: 'primary' as const, catch_type: 'PRIMARY', year_levels: ['K'], bbox: [150.8, -34.2, 151.4, -33.5] as [number, number, number, number] },
+  ];
+
+  it('identifies a single published state envelope even when no zone contains the point', () => {
+    const stateAt = (catchmentLookup as Record<string, unknown>).catchmentStateAt;
+    expect(stateAt).toBeTypeOf('function');
+    if (typeof stateAt !== 'function') return;
+
+    expect(stateAt(entries, [138.81, -34.9])).toBe('sa');
+    expect(stateAt(entries, [151.2, -33.9])).toBe('nsw');
+    expect(stateAt(entries, [145, -30])).toBeNull();
+  });
+
+  it('returns unknown when two state envelopes overlap', () => {
+    const stateAt = (catchmentLookup as Record<string, unknown>).catchmentStateAt;
+    expect(stateAt).toBeTypeOf('function');
+    if (typeof stateAt !== 'function') return;
+
+    const overlapping = [
+      ...entries,
+      { state: 'vic', location_age_id: 4, acara_sml_id: 14, kind: 'primary' as const, catch_type: 'PRIMARY', year_levels: [], bbox: [138.7, -35.3, 141.0, -34.5] as [number, number, number, number] },
+    ];
+    expect(stateAt(overlapping, [138.8, -34.9])).toBeNull();
   });
 });
 

@@ -16,6 +16,7 @@ import {
   DATA_YEAR,
   MAX_SITE_DISTANCE_KM,
   readJson,
+  geometryAreaKm2,
   pointInGeometry,
 } from './sa-catchment-common.mjs';
 
@@ -53,6 +54,9 @@ function eachRing(geometry, visit) {
 const layer = readJson(path.join(PROCESSED_DIR, 'catchment-layer.json'));
 const index = readJson(path.join(PUBLIC_DIR, 'index.json'));
 const unmatched = readJson(path.join(PROCESSED_DIR, 'unmatched.json'));
+const canonicalSchools = fs.existsSync(canonicalPath) ? readJson(canonicalPath) : null;
+const schoolsByAcara = new Map((canonicalSchools ?? []).map((school) => [school.acara_sml_id, school]));
+const schoolsByLocation = new Map((canonicalSchools ?? []).map((school) => [Number(school.location_age_id), school]));
 
 // 1. Join rates have not regressed.
 for (const [kind, floor] of Object.entries(JOIN_RATE_FLOOR)) {
@@ -90,6 +94,7 @@ if (index.data_year < currentYear) {
 
 // 3. Every indexed catchment has a geometry file, and it is well formed.
 let vertices = 0;
+const verificationRows = [];
 for (const entry of index.catchments) {
   const fileName = `${entry.location_age_id}-${entry.kind}.json`;
   const filePath = path.join(PUBLIC_DIR, fileName);
@@ -99,6 +104,17 @@ for (const entry of index.catchments) {
   }
 
   const feature = readJson(filePath);
+  const school = schoolsByLocation.get(Number(entry.location_age_id));
+  const layerEntry = (layer.by_location_age_id?.[String(entry.location_age_id)] ?? [])
+    .find((candidate) => candidate.kind === entry.kind);
+  verificationRows.push({
+    suburb: school?.suburb ?? 'Unknown',
+    school: school?.school_name ?? feature.properties?.school_name ?? 'Unknown',
+    kind: entry.kind,
+    catchType: entry.catch_type,
+    sourceSchoolCode: layerEntry?.source_school_code ?? 'Unknown',
+    areaKm2: geometryAreaKm2(feature.geometry),
+  });
   check(feature.type === 'Feature', `${fileName}: not a GeoJSON Feature`);
   check(feature.properties?.data_year === DATA_YEAR, `${fileName}: data_year disagrees with the pinned enrolment year`);
   check(Boolean(feature.properties?.catch_type), `${fileName}: no catch_type`);
@@ -134,11 +150,10 @@ for (const entry of index.catchments) {
 // boundary. It holds for all 130 SA zones, so a failure means a zone landed on
 // the wrong school — the exact error the name check exists to prevent, caught
 // here from a different direction.
-if (fs.existsSync(canonicalPath)) {
-  const byAcara = new Map(readJson(canonicalPath).map((school) => [school.acara_sml_id, school]));
+if (canonicalSchools) {
   let contained = 0;
   for (const entry of index.catchments) {
-    const school = byAcara.get(entry.acara_sml_id);
+    const school = schoolsByAcara.get(entry.acara_sml_id);
     const filePath = path.join(PUBLIC_DIR, `${entry.location_age_id}-${entry.kind}.json`);
     if (!school || !fs.existsSync(filePath)) continue;
     const feature = readJson(filePath);
@@ -160,10 +175,9 @@ check(
 );
 
 // 5. Canonical attachment: SA Government schools only.
-if (fs.existsSync(canonicalPath)) {
-  const schools = readJson(canonicalPath);
+if (canonicalSchools) {
   let attached = 0;
-  for (const school of schools) {
+  for (const school of canonicalSchools) {
     const saCatchments = (school.catchments ?? []).filter((c) => c.source === 'data.sa.gov.au');
     if (saCatchments.length === 0) continue;
     attached += 1;
@@ -175,6 +189,11 @@ if (fs.existsSync(canonicalPath)) {
     for (const catchment of saCatchments) {
       check(Boolean(catchment.source_url), `${school.school_name}: catchment missing source_url`);
       check(catchment.data_year === DATA_YEAR, `${school.school_name}: catchment data_year is not ${DATA_YEAR}`);
+      const geometryPath = path.join('public', String(catchment.geometry_url ?? '').replace(/^\/+/, ''));
+      check(
+        Boolean(catchment.geometry_url) && fs.existsSync(geometryPath),
+        `${school.school_name}: geometry_url does not resolve to a file (${catchment.geometry_url ?? 'missing'})`,
+      );
       // The array must exist even though it is always empty here. Omitting it
       // once shipped `undefined.length` to every SA school page that has a
       // zone, because consumers type the field as string[].
@@ -192,6 +211,23 @@ if (fs.existsSync(canonicalPath)) {
   console.log(`Canonical SA schools with a catchment: ${attached}`);
 } else {
   warnings.push('schools.canonical.json not found — skipped the canonical attachment checks');
+}
+
+check(
+  verificationRows.length === index.catchments.length,
+  `Human verification list has ${verificationRows.length} rows for ${index.catchments.length} index entries`,
+);
+verificationRows.sort((a, b) => (
+  a.suburb.localeCompare(b.suburb)
+  || a.school.localeCompare(b.school)
+  || a.kind.localeCompare(b.kind)
+));
+
+console.log('Human verification — all SA zones sorted by suburb:');
+for (const row of verificationRows) {
+  console.log(
+    `  ${row.suburb} | ${row.school} | ${row.kind} | ${row.catchType} | org_num ${row.sourceSchoolCode} | ${row.areaKm2.toFixed(2)} km²`,
+  );
 }
 
 console.log(`Index entries: ${index.catchments.length}, vertices: ${vertices.toLocaleString()}`);

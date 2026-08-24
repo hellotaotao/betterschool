@@ -37,6 +37,21 @@ function field(properties, name) {
   return key === undefined ? undefined : properties[key];
 }
 
+/** Normalise the three attributes the join depends on, failing closed. */
+export function readZoneAttributes(properties) {
+  const attributes = {
+    org_num: Number(field(properties, 'org_num')),
+    catch_type: String(field(properties, 'type') ?? '').trim(),
+    source_name: String(field(properties, 'school') ?? '').trim(),
+  };
+  if (!Number.isFinite(attributes.org_num) || !attributes.source_name || !attributes.catch_type) {
+    throw new Error(
+      `Zone has no org_num or school name/type. Attribute names present: ${Object.keys(properties).join(', ')}`,
+    );
+  }
+  return attributes;
+}
+
 /** Read one shapefile layer into normalised records. */
 async function readLayer({ kind, dir, base }) {
   const shpPath = path.join(RAW_DIR, dir, `${base}.shp`);
@@ -54,6 +69,7 @@ async function readLayer({ kind, dir, base }) {
     .filter((feature) => feature.geometry && feature.geometry.coordinates?.length > 0)
     .map((feature) => {
       const properties = feature.properties ?? {};
+      const attributes = readZoneAttributes(properties);
       const geometry = {
         type: feature.geometry.type,
         coordinates: roundCoordinates(feature.geometry.coordinates),
@@ -61,24 +77,12 @@ async function readLayer({ kind, dir, base }) {
 
       return {
         kind,
-        org_num: Number(field(properties, 'org_num')),
-        catch_type: String(field(properties, 'type') ?? '').trim(),
-        source_name: String(field(properties, 'school') ?? '').trim(),
+        ...attributes,
         geometry,
         bbox: geometryBbox(geometry),
         vertices: countVertices(geometry),
       };
     });
-
-  // Fail here rather than letting empty attributes flow downstream as 130
-  // unjoinable polygons — the casing has already changed once between years.
-  const blank = records.filter((record) => !Number.isFinite(record.org_num) || !record.source_name);
-  if (blank.length > 0) {
-    throw new Error(
-      `${base}: ${blank.length}/${records.length} features have no org_num or school name. `
-      + `Attribute names present: ${Object.keys(collection.features[0]?.properties ?? {}).join(', ')}`,
-    );
-  }
 
   return records;
 }

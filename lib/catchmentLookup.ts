@@ -103,6 +103,36 @@ export function candidatesAt(entries: CatchmentIndexEntry[], point: [number, num
 }
 
 /**
+ * Identify one published state's overall zone envelope for no-result copy.
+ *
+ * This does not claim the point is inside a zone. It only lets the UI explain
+ * why a miss inside a state's collected area means something different there.
+ * An overlap stays unknown rather than choosing one state arbitrarily.
+ */
+export function catchmentStateAt(
+  entries: CatchmentIndexEntry[],
+  point: [number, number],
+): string | null {
+  const extents = new Map<string, [number, number, number, number]>();
+  for (const entry of entries) {
+    const current = extents.get(entry.state);
+    if (!current) {
+      extents.set(entry.state, [...entry.bbox]);
+      continue;
+    }
+    current[0] = Math.min(current[0], entry.bbox[0]);
+    current[1] = Math.min(current[1], entry.bbox[1]);
+    current[2] = Math.max(current[2], entry.bbox[2]);
+    current[3] = Math.max(current[3], entry.bbox[3]);
+  }
+
+  const matches = [...extents.entries()]
+    .filter(([, bbox]) => bboxContains(bbox, point))
+    .map(([state]) => state);
+  return matches.length === 1 ? matches[0] : null;
+}
+
+/**
  * States with a published intake-zone layer, in the order they were added.
  *
  * A constant rather than a fetched manifest: a state arrives with a build
