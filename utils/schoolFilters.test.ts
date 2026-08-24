@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import { School } from '@/types/school';
 import {
+  filterSchoolsForZoneOverlay,
   filterSchools,
   getMarkerColor,
   getMarkerRadius,
@@ -151,5 +152,47 @@ describe('filterSchools', () => {
 
   it('combines filters conjunctively', () => {
     expect(ids({ sector: 'Independent', schoolType: 'Primary' })).toEqual(['d']);
+  });
+});
+
+describe('filterSchoolsForZoneOverlay', () => {
+  const primaryCatchment = {
+    geometry_url: '/data/catchment/nsw/primary.json',
+    kind: 'primary' as const,
+    catch_type: 'PRIMARY',
+    year_levels: ['K', '1', '2', '3', '4', '5', '6'],
+    source_school_code: '1001',
+    data_year: 2026,
+    source: 'NSW Department of Education',
+    source_url: 'https://education.nsw.gov.au/',
+  };
+  const secondaryCatchment = {
+    ...primaryCatchment,
+    geometry_url: '/data/catchment/nsw/secondary.json',
+    kind: 'secondary' as const,
+    catch_type: 'SECONDARY',
+  };
+  const schools = [
+    school({ id: 'government-primary', catchments: [primaryCatchment] }),
+    school({ id: 'government-secondary', school_type: 'Secondary', catchments: [secondaryCatchment] }),
+    school({ id: 'government-combined', school_type: 'Combined', catchments: [primaryCatchment, secondaryCatchment] }),
+    school({ id: 'government-unzoned', school_type: 'Primary' }),
+    school({ id: 'catholic-primary', sector: 'Catholic', catchments: [primaryCatchment] }),
+    school({ id: 'independent-secondary', sector: 'Independent', catchments: [secondaryCatchment] }),
+  ];
+
+  const ids = (overlay: 'off' | 'primary' | 'secondary') =>
+    filterSchoolsForZoneOverlay(schools, overlay).map(s => s.id);
+
+  it('does not narrow schools when the zone overlay is off', () => {
+    expect(ids('off')).toEqual(schools.map(s => s.id));
+  });
+
+  it('shows only Government schools with a primary zone in primary mode', () => {
+    expect(ids('primary')).toEqual(['government-primary', 'government-combined']);
+  });
+
+  it('shows only Government schools with a secondary zone in secondary mode', () => {
+    expect(ids('secondary')).toEqual(['government-secondary', 'government-combined']);
   });
 });

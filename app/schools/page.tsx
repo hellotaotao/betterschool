@@ -10,7 +10,15 @@ import {
   resolveInitialLocale,
 } from '@/lib/i18n';
 import { School } from '@/types/school';
-import { CATCHMENT_COLORS, FilterState, filterSchools, SECTOR_COLORS } from '@/utils/schoolFilters';
+import {
+  CATCHMENT_COLORS,
+  FilterState,
+  filterSchools,
+  filterSchoolsForZoneOverlay,
+  schoolMatchesZoneOverlay,
+  SECTOR_COLORS,
+  type ZoneOverlayKind,
+} from '@/utils/schoolFilters';
 import { useMediaQuery } from '@/lib/useMediaQuery';
 import { schoolPath, schoolSlugFor, stateSlug, suburbSlug } from '@/lib/slug';
 import schoolsMetadata from '@/public/data/schools.metadata.json';
@@ -62,8 +70,6 @@ function LanguageToggle({ locale, onChange }: { locale: Locale; onChange: (next:
     </div>
   );
 }
-
-type ZoneOverlayKind = 'off' | 'primary' | 'secondary';
 
 /** What the browse overlay is currently doing, in one line. */
 function zoneOverlayStatus(
@@ -293,8 +299,8 @@ export default function SchoolsPage() {
   }, [isMobile]);
 
   const filteredSchools = useMemo(
-    () => filterSchools(allSchools, filters),
-    [allSchools, filters]
+    () => filterSchoolsForZoneOverlay(filterSchools(allSchools, filters), zoneOverlay),
+    [allSchools, filters, zoneOverlay]
   );
 
   const displayedSchools = useMemo(() => {
@@ -331,6 +337,13 @@ export default function SchoolsPage() {
   function handleMapClick() {
     setSelectedSchool(null);
   }
+
+  const handleZoneOverlayChange = useCallback((next: ZoneOverlayKind) => {
+    setZoneOverlay(next);
+    if (selectedSchool && !schoolMatchesZoneOverlay(selectedSchool, next)) {
+      setSelectedSchool(null);
+    }
+  }, [selectedSchool]);
 
   const handlePickSchool = useCallback((s: School) => {
     setPlaceFocus(null);
@@ -492,7 +505,7 @@ export default function SchoolsPage() {
                 dictionary={dictionary}
                 onClick={() => (pickMode ? clearLookup() : setPickMode(true))}
               />
-              <ZoneOverlayControl value={zoneOverlay} onChange={setZoneOverlay} dictionary={dictionary} />
+              <ZoneOverlayControl value={zoneOverlay} onChange={handleZoneOverlayChange} dictionary={dictionary} />
               <LanguageToggle locale={locale} onChange={handleLocaleChange} />
             </div>
             <div className="pointer-events-auto">
@@ -575,7 +588,7 @@ export default function SchoolsPage() {
               />
             </div>
             <div className="pointer-events-auto">
-              <ZoneOverlayControl value={zoneOverlay} onChange={setZoneOverlay} dictionary={dictionary} />
+              <ZoneOverlayControl value={zoneOverlay} onChange={handleZoneOverlayChange} dictionary={dictionary} />
             </div>
             <div className="pointer-events-auto">
               <LanguageToggle locale={locale} onChange={handleLocaleChange} />

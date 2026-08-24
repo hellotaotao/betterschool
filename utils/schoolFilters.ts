@@ -3,6 +3,7 @@ import { School, SchoolSector, SchoolType } from '@/types/school';
 export type IcseaBucket = 'all' | '900' | '1000' | '1100' | '1200';
 export type EnrolmentBucket = 'all' | 'small' | 'medium' | 'large';
 export type ReligionFilter = 'all' | 'religious' | 'secular';
+export type ZoneOverlayKind = 'off' | 'primary' | 'secondary';
 
 export interface FilterState {
   sector: 'all' | SchoolSector;
@@ -112,4 +113,16 @@ export function filterSchools(schools: School[], filters: FilterState): School[]
     if (!matchesEnrolmentBucket(school, filters.enrolments)) return false;
     return true;
   });
+}
+
+export function schoolMatchesZoneOverlay(school: School, overlay: ZoneOverlayKind): boolean {
+  if (overlay === 'off') return true;
+  return school.sector === 'Government'
+    && school.catchments?.some(catchment => catchment.kind === overlay) === true;
+}
+
+/** Keep browse markers relevant to the kind of Government zone on screen. */
+export function filterSchoolsForZoneOverlay(schools: School[], overlay: ZoneOverlayKind): School[] {
+  if (overlay === 'off') return schools;
+  return schools.filter(school => schoolMatchesZoneOverlay(school, overlay));
 }
