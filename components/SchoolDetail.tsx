@@ -1,6 +1,6 @@
 "use client";
 
-import { School } from '@/types/school';
+import { School, type SchoolCatchment } from '@/types/school';
 import { coveredCatchmentStates, formatMessage, getReligionLabel, getSchoolTypeLabel, getSectorLabel, Locale, Messages } from '@/lib/i18n';
 import { catchmentAbsenceKind, catchmentStateInfo } from '@/lib/catchmentStates';
 import { hasLegacyScore } from '@/utils/schoolFilters';
@@ -12,8 +12,8 @@ interface SchoolDetailProps {
   locale: Locale;
   onClose: () => void;
   variant?: 'panel' | 'sheet';
-  catchmentVisible?: boolean;
-  onToggleCatchment?: () => void;
+  activeCatchmentUrl?: string;
+  onToggleCatchment?: (catchment: SchoolCatchment) => void;
   catchmentError?: boolean;
   /** Link to this school's own page, when one can be built. */
   profileHref?: string;
@@ -27,7 +27,7 @@ export default function SchoolDetail({
   locale,
   onClose,
   variant = 'panel',
-  catchmentVisible = false,
+  activeCatchmentUrl,
   onToggleCatchment,
   catchmentError = false,
   profileHref,
@@ -250,40 +250,42 @@ export default function SchoolDetail({
 
           {catchments.length > 0 ? (
             <>
-              {catchments.map(catchment => (
-                <div key={`${catchment.kind}-${catchment.catch_type}`} className="space-y-0.5">
-                  <div className="flex justify-between gap-2">
-                    <span className="flex items-center gap-1.5 text-blue-800/70">
-                      <ZoneSwatch kind={catchment.kind} />
-                      {dictionary.catchment[catchment.kind]}
-                    </span>
-                    {catchment.year_levels.length > 0 && (
-                      <span className="font-medium text-blue-900 text-right">
-                        {formatMessage(dictionary.catchment.years, { levels: catchment.year_levels.join(', ') })}
+              {catchments.map(catchment => {
+                const visible = activeCatchmentUrl === catchment.geometry_url;
+                return (
+                  <div key={catchment.geometry_url} className="space-y-1">
+                    <div className="flex justify-between gap-2">
+                      <span className="flex items-center gap-1.5 text-blue-800/70">
+                        <ZoneSwatch kind={catchment.kind} />
+                        {dictionary.catchment[catchment.kind]}
                       </span>
+                      {catchment.year_levels.length > 0 && (
+                        <span className="font-medium text-blue-900 text-right">
+                          {formatMessage(dictionary.catchment.years, { levels: catchment.year_levels.join(', ') })}
+                        </span>
+                      )}
+                    </div>
+                    <div className="text-[9px] text-blue-800/60">
+                      {formatMessage(dictionary.catchment.dataYear, { year: catchment.data_year })}
+                      {catchment.effective_year
+                        ? ` · ${formatMessage(dictionary.catchment.effectiveFrom, { year: catchment.effective_year })}`
+                        : ''}
+                    </div>
+                    {onToggleCatchment && (
+                      <button
+                        onClick={() => onToggleCatchment(catchment)}
+                        className={`w-full rounded-md px-2 py-1 text-[10px] font-medium transition-colors ${
+                          visible
+                            ? 'bg-blue-600 text-white hover:bg-blue-700'
+                            : 'bg-white text-blue-700 border border-blue-200 hover:bg-blue-50'
+                        }`}
+                      >
+                        {visible ? dictionary.catchment.hide : dictionary.catchment.show}
+                      </button>
                     )}
                   </div>
-                  <div className="text-[9px] text-blue-800/60">
-                    {formatMessage(dictionary.catchment.dataYear, { year: catchment.data_year })}
-                    {catchment.effective_year
-                      ? ` · ${formatMessage(dictionary.catchment.effectiveFrom, { year: catchment.effective_year })}`
-                      : ''}
-                  </div>
-                </div>
-              ))}
-
-              {onToggleCatchment && (
-                <button
-                  onClick={onToggleCatchment}
-                  className={`w-full rounded-md px-2 py-1.5 text-[11px] font-medium transition-colors ${
-                    catchmentVisible
-                      ? 'bg-blue-600 text-white hover:bg-blue-700'
-                      : 'bg-white text-blue-700 border border-blue-200 hover:bg-blue-50'
-                  }`}
-                >
-                  {catchmentVisible ? dictionary.catchment.hide : dictionary.catchment.show}
-                </button>
-              )}
+                );
+              })}
 
               {catchmentError && (
                 <p className="text-[9px] text-red-600">{dictionary.catchment.loadError}</p>

@@ -1,0 +1,26 @@
+{
+  "fetched_at": "2026-08-24T15:59:00.824Z",
+  "current_enrolment_year": 2027,
+  "dataset_pages": {
+    "zones": "https://discover.data.vic.gov.au/dataset/victorian-government-school-zones-2027",
+    "school_locations": "https://discover.data.vic.gov.au/dataset/school-locations-2025"
+  },
+  "resource_ids": {
+    "zones": "5b2a9b83-5635-48d0-85cd-e674e8912c69",
+    "school_locations": "d26bf015-a1e5-48dd-a1d6-8edd4b0a511b"
+  },
+  "downloads": {
+    "zones": {
+      "url": "https://www.education.vic.gov.au/Documents/about/research/datavic/dv419_DataVic_School_Zones_2027_MAR26.zip",
+      "bytes": 10673831,
+      "etag": "\"{07CF29C9-8ED3-4D46-B5C1-219B6B062735},2\"",
+      "last_modified": "Mon, 23 Mar 2026 00:29:38 GMT"
+    },
+    "school_locations": {
+      "url": "https://www.education.vic.gov.au/Documents/about/research/datavic/dv402-SchoolLocations2025.csv",
+      "bytes": 534679,
+      "etag": "\"{CF36AD97-713C-495F-B0EC-9E45E057ADD8},5\"",
+      "last_modified": "Thu, 28 Aug 2025 22:57:47 GMT"
+    }
+  }
+}

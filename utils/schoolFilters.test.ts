@@ -183,7 +183,7 @@ describe('filterSchoolsForZoneOverlay', () => {
     school({ id: 'independent-secondary', sector: 'Independent', catchments: [secondaryCatchment] }),
   ];
 
-  const ids = (overlay: 'off' | 'primary' | 'secondary') =>
+  const ids = (overlay: 'off' | 'primary' | 'secondary-unspecified' | 'year-7' | 'year-12') =>
     filterSchoolsForZoneOverlay(schools, overlay).map(s => s.id);
 
   it('does not narrow schools when the zone overlay is off', () => {
@@ -198,11 +198,14 @@ describe('filterSchoolsForZoneOverlay', () => {
     ]);
   });
 
-  it('shows every Government secondary or combined school, including unzoned schools', () => {
-    expect(ids('secondary')).toEqual([
+  it('shows Government secondary and combined schools for every secondary overlay', () => {
+    const expected = [
       'government-secondary',
       'government-combined',
       'government-unzoned-secondary',
-    ]);
+    ];
+    expect(ids('secondary-unspecified')).toEqual(expected);
+    expect(ids('year-7')).toEqual(expected);
+    expect(ids('year-12')).toEqual(expected);
   });
 });

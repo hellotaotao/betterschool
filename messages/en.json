@@ -123,7 +123,8 @@
     "label": "Zone borders",
     "off": "Off",
     "primary": "Primary",
-    "secondary": "Secondary",
+    "secondary": "Secondary (years not published)",
+    "year": "Year {year}",
     "tooMany": "{count} zones in view — zoom in to draw them",
     "none": "No published zones in this view",
     "showing": "{count} zones shown",
@@ -149,7 +150,7 @@
     "shell": {
       "browseByState": "Browse by state",
       "openMap": "Open the map",
-      "footerData": "School identity, location and profile data comes from the ACARA Data Access Program. NSW intake zones come from Data.NSW (CC-BY, NSW Department of Education).",
+      "footerData": "School identity, location and profile data comes from the ACARA Data Access Program. Official catchment source links appear below when this page uses boundary data.",
       "footerStance": "BetterSchool.au publishes no school ranking and no composite quality score. Where a value is inferred rather than official, the page says so; where it is not collected, the page says that too rather than showing a blank.",
       "acaraLinkText": "ACARA Data Access Program",
       "nswLinkText": "Data.NSW",

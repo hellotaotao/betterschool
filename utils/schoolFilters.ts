@@ -1,9 +1,10 @@
 import { School, SchoolSector, SchoolType } from '@/types/school';
+import type { ZoneOverlayKind } from '@/lib/catchmentLookup';
 
 export type IcseaBucket = 'all' | '900' | '1000' | '1100' | '1200';
 export type EnrolmentBucket = 'all' | 'small' | 'medium' | 'large';
 export type ReligionFilter = 'all' | 'religious' | 'secular';
-export type ZoneOverlayKind = 'off' | 'primary' | 'secondary';
+export type { ZoneOverlayKind } from '@/lib/catchmentLookup';
 
 export interface FilterState {
   sector: 'all' | SchoolSector;

@@ -9,7 +9,7 @@ import {
   LOCALE_STORAGE_KEY,
   resolveInitialLocale,
 } from '@/lib/i18n';
-import { School } from '@/types/school';
+import { School, type SchoolCatchment } from '@/types/school';
 import {
   CATCHMENT_COLORS,
   FilterState,
@@ -25,7 +25,7 @@ import schoolsMetadata from '@/public/data/schools.metadata.json';
 
 import type { CatchmentFeature } from '@/lib/catchmentLookup';
 import {
-  loadCatchmentsForSchool,
+  loadCatchmentFeature,
   loadZonesInView,
   lookupCatchmentsAt,
   type ZonesInView,
@@ -90,8 +90,8 @@ function zoneOverlayStatus(
 /**
  * Browse control for zone boundaries across the whole viewport.
  *
- * Three states rather than on/off: primary and secondary are independent
- * boundary layers, and showing both at once obscures the places they overlap.
+ * Secondary choices are year-specific when the source publishes that fact.
+ * A separate unspecified option keeps SA honest rather than inventing years.
  */
 function ZoneOverlayControl({
   value,
@@ -105,7 +105,11 @@ function ZoneOverlayControl({
   const options: [ZoneOverlayKind, string][] = [
     ['off', dictionary.zoneBrowse.off],
     ['primary', dictionary.zoneBrowse.primary],
-    ['secondary', dictionary.zoneBrowse.secondary],
+    ['secondary-unspecified', dictionary.zoneBrowse.secondary],
+    ...([7, 8, 9, 10, 11, 12] as const).map((year): [ZoneOverlayKind, string] => [
+      `year-${year}`,
+      formatMessage(dictionary.zoneBrowse.year, { year }),
+    ]),
   ];
 
   return (
@@ -171,8 +175,9 @@ export default function SchoolsPage() {
   // effect, and a slow fetch that lands after the user moved on is ignored.
   const [catchmentState, setCatchmentState] = useState<{
     schoolId: string;
+    geometryUrl: string;
     visible: boolean;
-    features: CatchmentFeature[] | null;
+    feature: CatchmentFeature | null;
     error: boolean;
   } | null>(null);
   // "Which schools is this location zoned for?" lookup.
@@ -230,13 +235,29 @@ export default function SchoolsPage() {
         setDeepLinked(true);
         if (query.get('catchment') !== '1' || !match.catchments?.length) return;
 
-        setCatchmentState({ schoolId: match.id, visible: true, features: null, error: false });
-        loadCatchmentsForSchool(match.state, Number(match.location_age_id), match.catchments.map(c => c.kind))
-          .then(features => setCatchmentState(current => (
-            current?.schoolId === match.id ? { ...current, features } : current
+        const catchment = match.catchments[0];
+        setCatchmentState({
+          schoolId: match.id,
+          geometryUrl: catchment.geometry_url,
+          visible: true,
+          feature: null,
+          error: false,
+        });
+        loadCatchmentFeature({
+          state: match.state.toLowerCase(),
+          location_age_id: Number(match.location_age_id),
+          kind: catchment.kind,
+          geometry_url: catchment.geometry_url,
+        })
+          .then(feature => setCatchmentState(current => (
+            current?.schoolId === match.id && current.geometryUrl === catchment.geometry_url
+              ? { ...current, feature }
+              : current
           )))
           .catch(() => setCatchmentState(current => (
-            current?.schoolId === match.id ? { ...current, visible: false, error: true } : current
+            current?.schoolId === match.id && current.geometryUrl === catchment.geometry_url
+              ? { ...current, visible: false, error: true }
+              : current
           )));
       })
       .catch(() => setLoading(false));
@@ -362,33 +383,51 @@ export default function SchoolsPage() {
     ? catchmentState
     : null;
   const catchmentVisible = activeCatchment?.visible ?? false;
-  const schoolCatchments = activeCatchment?.features ?? null;
+  const schoolCatchments = activeCatchment?.feature ? [activeCatchment.feature] : null;
   const catchmentError = activeCatchment?.error ?? false;
 
-  const handleToggleCatchment = useCallback(() => {
+  const handleToggleCatchment = useCallback((catchment: SchoolCatchment) => {
     const school = selectedSchool;
     if (!school?.catchments?.length || !Number.isFinite(school.location_age_id)) return;
 
-    if (catchmentVisible) {
-      setCatchmentState({ schoolId: school.id, visible: false, features: schoolCatchments, error: false });
+    if (activeCatchment?.geometryUrl === catchment.geometry_url && catchmentVisible) {
+      setCatchmentState({ ...activeCatchment, visible: false, error: false });
       return;
     }
 
-    setCatchmentState({ schoolId: school.id, visible: true, features: schoolCatchments, error: false });
-    if (schoolCatchments) return; // already fetched for this school
+    const cached = activeCatchment?.geometryUrl === catchment.geometry_url
+      ? activeCatchment.feature
+      : null;
+    setCatchmentState({
+      schoolId: school.id,
+      geometryUrl: catchment.geometry_url,
+      visible: true,
+      feature: cached,
+      error: false,
+    });
+    if (cached) return;
 
-    loadCatchmentsForSchool(school.state, Number(school.location_age_id), school.catchments.map(c => c.kind))
-      .then(features => {
+    loadCatchmentFeature({
+      state: school.state.toLowerCase(),
+      location_age_id: Number(school.location_age_id),
+      kind: catchment.kind,
+      geometry_url: catchment.geometry_url,
+    })
+      .then(feature => {
         setCatchmentState(current => (
-          current?.schoolId === school.id ? { ...current, features } : current
+          current?.schoolId === school.id && current.geometryUrl === catchment.geometry_url
+            ? { ...current, feature }
+            : current
         ));
       })
       .catch(() => {
         setCatchmentState(current => (
-          current?.schoolId === school.id ? { ...current, visible: false, error: true } : current
+          current?.schoolId === school.id && current.geometryUrl === catchment.geometry_url
+            ? { ...current, visible: false, error: true }
+            : current
         ));
       });
-  }, [catchmentVisible, schoolCatchments, selectedSchool]);
+  }, [activeCatchment, catchmentVisible, selectedSchool]);
 
   const clearLookup = useCallback(() => {
     setPickMode(false);
@@ -453,6 +492,13 @@ export default function SchoolsPage() {
 
   const areaLabel = formatMessage(dictionary.sidebar.areaCount, { count: displayedSchools.length });
   const zoneStatus = zoneOverlay === 'off' ? null : zoneOverlayStatus(overlayState, dictionary);
+  const zoneLegendLabel = zoneOverlay === 'off'
+    ? null
+    : zoneOverlay === 'primary'
+      ? dictionary.catchment.primary
+      : zoneOverlay === 'secondary-unspecified'
+        ? dictionary.zoneBrowse.secondary
+        : formatMessage(dictionary.zoneBrowse.year, { year: zoneOverlay.slice('year-'.length) });
   const zoneContext = zoneOverlay === 'primary' && overlayState?.state === 'sa'
     ? dictionary.zoneBrowse.saPrimaryPartial
     : null;
@@ -550,7 +596,7 @@ export default function SchoolsPage() {
                 locale={locale}
                 onClose={handleMapClick}
                 variant="sheet"
-                catchmentVisible={catchmentVisible}
+                activeCatchmentUrl={catchmentVisible ? activeCatchment?.geometryUrl : undefined}
                 onToggleCatchment={handleToggleCatchment}
                 catchmentError={catchmentError}
                 profileHref={profileHref}
@@ -681,7 +727,7 @@ export default function SchoolsPage() {
               locale={locale}
               onClose={handleMapClick}
               topOffset={topBarBottom + 8}
-              catchmentVisible={catchmentVisible}
+              activeCatchmentUrl={catchmentVisible ? activeCatchment?.geometryUrl : undefined}
               onToggleCatchment={handleToggleCatchment}
               catchmentError={catchmentError}
               profileHref={profileHref}
@@ -696,11 +742,11 @@ export default function SchoolsPage() {
                 <span
                   className="inline-block w-4 h-0 shrink-0"
                   style={{
-                    borderTop: `2.5px solid ${CATCHMENT_COLORS[zoneOverlay].color}`,
+                    borderTop: `2.5px solid ${CATCHMENT_COLORS[zoneOverlay === 'primary' ? 'primary' : 'secondary'].color}`,
                     outline: '1.5px solid rgba(255,255,255,0.9)',
                   }}
                 ></span>
-                <span className="font-medium text-gray-700">{dictionary.catchment[zoneOverlay]}</span>
+                <span className="font-medium text-gray-700">{zoneLegendLabel}</span>
               </div>
             )}
             <div className="flex items-center gap-2">

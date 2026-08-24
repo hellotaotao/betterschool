@@ -1,0 +1,336 @@
+{
+  "generated_at": "2026-08-24T16:04:20.397Z",
+  "count": 27,
+  "note": "Source entities without one exact ACARA identity whose published coordinates fall inside their zone. No fuzzy name or nearest-school fallback is used.",
+  "records": [
+    {
+      "source_school_code": "1891101",
+      "school_number": "8911",
+      "source_name": "Springside Primary School",
+      "campus_name": "Springside Primary School",
+      "site_name": "Springside Primary School",
+      "layers": [
+        "primary"
+      ],
+      "reason": "no_exact_acara_candidate_inside_zone",
+      "candidates": []
+    },
+    {
+      "source_school_code": "1562701",
+      "school_number": "5627",
+      "source_name": "Hillside Primary School",
+      "campus_name": "Hillside Primary School",
+      "site_name": null,
+      "layers": [
+        "primary"
+      ],
+      "reason": "no_exact_acara_candidate_inside_zone",
+      "candidates": []
+    },
+    {
+      "source_school_code": "1559801",
+      "school_number": "5598",
+      "source_name": "Topirum Primary School",
+      "campus_name": "Topirum Primary School",
+      "site_name": "Topirum Primary School",
+      "layers": [
+        "primary"
+      ],
+      "reason": "no_exact_acara_candidate_inside_zone",
+      "candidates": []
+    },
+    {
+      "source_school_code": "1561401",
+      "school_number": "5614",
+      "source_name": "Barayip Primary School",
+      "campus_name": "Barayip Primary School",
+      "site_name": "Barayip Primary School",
+      "layers": [
+        "primary"
+      ],
+      "reason": "no_exact_acara_candidate_inside_zone",
+      "candidates": []
+    },
+    {
+      "source_school_code": "1558201",
+      "school_number": "5582",
+      "source_name": "Wirrigirri Primary School",
+      "campus_name": "Wirrigirri Primary School",
+      "site_name": "Wirrigirri Primary School",
+      "layers": [
+        "primary"
+      ],
+      "reason": "no_exact_acara_candidate_inside_zone",
+      "candidates": []
+    },
+    {
+      "source_school_code": "1560901",
+      "school_number": "5609",
+      "source_name": "Turrun Primary School",
+      "campus_name": "Turrun Primary School",
+      "site_name": "Turrun Primary School",
+      "layers": [
+        "primary"
+      ],
+      "reason": "no_exact_acara_candidate_inside_zone",
+      "candidates": []
+    },
+    {
+      "source_school_code": "1561901",
+      "school_number": "5619",
+      "source_name": "Mirniyan Primary School",
+      "campus_name": "Mirniyan Primary School",
+      "site_name": "Mirniyan Primary School",
+      "layers": [
+        "primary"
+      ],
+      "reason": "no_exact_acara_candidate_inside_zone",
+      "candidates": []
+    },
+    {
+      "source_school_code": "1561501",
+      "school_number": "5615",
+      "source_name": "Kuyim Primary School",
+      "campus_name": "Kuyim Primary School",
+      "site_name": "Kuyim Primary School",
+      "layers": [
+        "primary"
+      ],
+      "reason": "no_exact_acara_candidate_inside_zone",
+      "candidates": []
+    },
+    {
+      "source_school_code": "1562201",
+      "school_number": "5622",
+      "source_name": "Kulap Primary School",
+      "campus_name": "Kulap Primary School",
+      "site_name": null,
+      "layers": [
+        "primary"
+      ],
+      "reason": "no_exact_acara_candidate_inside_zone",
+      "candidates": []
+    },
+    {
+      "source_school_code": "1561001",
+      "school_number": "5610",
+      "source_name": "Balambalam Primary School",
+      "campus_name": "Balambalam Primary School",
+      "site_name": null,
+      "layers": [
+        "primary"
+      ],
+      "reason": "no_exact_acara_candidate_inside_zone",
+      "candidates": []
+    },
+    {
+      "source_school_code": "1561701",
+      "school_number": "5617",
+      "source_name": "Kala Primary School",
+      "campus_name": "Kala Primary School",
+      "site_name": null,
+      "layers": [
+        "primary"
+      ],
+      "reason": "no_exact_acara_candidate_inside_zone",
+      "candidates": []
+    },
+    {
+      "source_school_code": "1560601",
+      "school_number": "5606",
+      "source_name": "Narrarrang Primary School",
+      "campus_name": "Narrarrang Primary School",
+      "site_name": null,
+      "layers": [
+        "primary"
+      ],
+      "reason": "no_exact_acara_candidate_inside_zone",
+      "candidates": []
+    },
+    {
+      "source_school_code": "1561101",
+      "school_number": "5611",
+      "source_name": "Yirrama Primary School",
+      "campus_name": "Yirrama Primary School",
+      "site_name": null,
+      "layers": [
+        "primary"
+      ],
+      "reason": "no_exact_acara_candidate_inside_zone",
+      "candidates": []
+    },
+    {
+      "source_school_code": "1562101",
+      "school_number": "5621",
+      "source_name": "Biyala Primary School",
+      "campus_name": "Biyala Primary School",
+      "site_name": null,
+      "layers": [
+        "primary"
+      ],
+      "reason": "no_exact_acara_candidate_inside_zone",
+      "candidates": []
+    },
+    {
+      "source_school_code": "1561801",
+      "school_number": "5618",
+      "source_name": "Gamadji Primary School",
+      "campus_name": "Gamadji Primary School",
+      "site_name": null,
+      "layers": [
+        "primary"
+      ],
+      "reason": "no_exact_acara_candidate_inside_zone",
+      "candidates": []
+    },
+    {
+      "source_school_code": "1561301",
+      "school_number": "5613",
+      "source_name": "Wiyal Primary School",
+      "campus_name": "Wiyal Primary School",
+      "site_name": null,
+      "layers": [
+        "primary"
+      ],
+      "reason": "no_exact_acara_candidate_inside_zone",
+      "candidates": []
+    },
+    {
+      "source_school_code": "1562001",
+      "school_number": "5620",
+      "source_name": "Umarkoo Primary School",
+      "campus_name": "Umarkoo Primary School",
+      "site_name": null,
+      "layers": [
+        "primary"
+      ],
+      "reason": "no_exact_acara_candidate_inside_zone",
+      "candidates": []
+    },
+    {
+      "source_school_code": "1560501",
+      "school_number": "5605",
+      "source_name": "Muyan Primary School",
+      "campus_name": "Muyan Primary School",
+      "site_name": null,
+      "layers": [
+        "primary"
+      ],
+      "reason": "no_exact_acara_candidate_inside_zone",
+      "candidates": []
+    },
+    {
+      "source_school_code": "1561601",
+      "school_number": "5616",
+      "source_name": "Mindalk Primary School",
+      "campus_name": "Mindalk Primary School",
+      "site_name": null,
+      "layers": [
+        "primary"
+      ],
+      "reason": "no_exact_acara_candidate_inside_zone",
+      "candidates": []
+    },
+    {
+      "source_school_code": "1561201",
+      "school_number": "5612",
+      "source_name": "Murrum Primary School",
+      "campus_name": "Murrum Primary School",
+      "site_name": null,
+      "layers": [
+        "primary"
+      ],
+      "reason": "no_exact_acara_candidate_inside_zone",
+      "candidates": []
+    },
+    {
+      "source_school_code": "1551701",
+      "school_number": "5517",
+      "source_name": "Kerribana Primary School",
+      "campus_name": "Kerribana Primary School",
+      "site_name": null,
+      "layers": [
+        "primary"
+      ],
+      "reason": "no_exact_acara_candidate_inside_zone",
+      "candidates": []
+    },
+    {
+      "source_school_code": "1830101",
+      "school_number": "8301",
+      "source_name": "Yurran P-9 College",
+      "campus_name": "Yurran P-9 College",
+      "site_name": null,
+      "layers": [
+        "primary"
+      ],
+      "reason": "no_exact_acara_candidate_inside_zone",
+      "candidates": []
+    },
+    {
+      "source_school_code": "1562401",
+      "school_number": "5624",
+      "source_name": "Aintree North Primary School (interim name)",
+      "campus_name": "Aintree North Primary School (interim name)",
+      "site_name": null,
+      "layers": [
+        "primary"
+      ],
+      "reason": "no_exact_acara_candidate_inside_zone",
+      "candidates": []
+    },
+    {
+      "source_school_code": "1772401",
+      "school_number": "7724",
+      "source_name": "Wulerrp Secondary College",
+      "campus_name": "Wulerrp Secondary College",
+      "site_name": "Wulerrp Secondary College",
+      "layers": [
+        "secondary_year_7",
+        "secondary_year_8",
+        "secondary_year_9"
+      ],
+      "reason": "no_exact_acara_candidate_inside_zone",
+      "candidates": []
+    },
+    {
+      "source_school_code": "1708701",
+      "school_number": "7087",
+      "source_name": "Birranga College",
+      "campus_name": "Birranga College",
+      "site_name": null,
+      "layers": [
+        "secondary_year_7",
+        "secondary_year_8"
+      ],
+      "reason": "no_exact_acara_candidate_inside_zone",
+      "candidates": []
+    },
+    {
+      "source_school_code": "1772601",
+      "school_number": "7726",
+      "source_name": "Kolorer College",
+      "campus_name": "Kolorer College",
+      "site_name": null,
+      "layers": [
+        "secondary_year_7",
+        "secondary_year_8"
+      ],
+      "reason": "no_exact_acara_candidate_inside_zone",
+      "candidates": []
+    },
+    {
+      "source_school_code": "1799801",
+      "school_number": "7998",
+      "source_name": "Ngayuk College",
+      "campus_name": "Ngayuk College",
+      "site_name": null,
+      "layers": [
+        "secondary_year_7",
+        "secondary_year_8"
+      ],
+      "reason": "no_exact_acara_candidate_inside_zone",
+      "candidates": []
+    }
+  ]
+}

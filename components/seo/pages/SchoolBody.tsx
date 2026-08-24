@@ -102,6 +102,10 @@ export default function SchoolBody({ locale, state, slug }: { locale: Locale; st
       locale={locale}
       bareEnglishPath={schoolPath(school.state, slug)}
       dataYear={2025}
+      sourceLinks={[...new Map(catchments.map(catchment => [
+        catchment.source_url,
+        { url: catchment.source_url, label: catchment.source },
+      ])).values()]}
       crumbs={[
         { label: shell.browseByState, href: browsePath(locale) },
         { label: full, href: stateIndexPath(school.state, locale) },
@@ -209,7 +213,7 @@ export default function SchoolBody({ locale, state, slug }: { locale: Locale; st
           <div className="mt-2 rounded-lg border border-blue-200 bg-blue-50/50 p-3">
             <ul className="space-y-1 text-sm">
               {catchments.map(catchment => (
-                <li key={catchment.kind}>
+                <li key={catchment.geometry_url}>
                   {catchment.year_levels.length > 0
                     ? formatMessage(t.zoneLine, {
                       kind: localeKind(locale, catchment.kind),

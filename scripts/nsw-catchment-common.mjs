@@ -11,6 +11,8 @@ export {
   coarsenBbox,
   countVertices,
   mergeGeometries,
+  splitCsvRow,
+  parseCsv,
 } from './catchment-common.mjs';
 
 export const NSW_CATCHMENT_SOURCE = 'data.nsw.gov.au';
@@ -84,45 +86,4 @@ export function readYearLevels(properties) {
     year_levels: levels,
     effective_year: startYears.length > 0 ? Math.min(...startYears) : undefined,
   };
-}
-
-/**
- * Minimal RFC 4180 CSV row splitter.
- *
- * master_dataset.csv contains quoted fields with embedded commas (addresses,
- * school names), so splitting on ',' loses column alignment and silently
- * corrupts the AgeID join.
- */
-export function splitCsvRow(line) {
-  const fields = [];
-  let current = '';
-  let quoted = false;
-
-  for (let i = 0; i < line.length; i += 1) {
-    const char = line[i];
-    if (quoted) {
-      if (char === '"') {
-        if (line[i + 1] === '"') { current += '"'; i += 1; }
-        else quoted = false;
-      } else current += char;
-    } else if (char === '"') {
-      quoted = true;
-    } else if (char === ',') {
-      fields.push(current);
-      current = '';
-    } else current += char;
-  }
-
-  fields.push(current);
-  return fields.map((field) => field.trim());
-}
-
-export function parseCsv(text) {
-  const lines = text.split(/\r?\n/).filter((line) => line.trim().length > 0);
-  if (lines.length < 2) throw new Error('CSV has no data rows');
-  const headers = splitCsvRow(lines[0]);
-  return lines.slice(1).map((line) => {
-    const values = splitCsvRow(line);
-    return Object.fromEntries(headers.map((header, index) => [header, values[index] ?? '']));
-  });
 }

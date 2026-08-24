@@ -35,6 +35,42 @@ export function writeJson(filePath, payload, { pretty = true } = {}) {
   return filePath;
 }
 
+/** Minimal RFC 4180 CSV row splitter. */
+export function splitCsvRow(line) {
+  const fields = [];
+  let current = '';
+  let quoted = false;
+
+  for (let i = 0; i < line.length; i += 1) {
+    const char = line[i];
+    if (quoted) {
+      if (char === '"') {
+        if (line[i + 1] === '"') { current += '"'; i += 1; }
+        else quoted = false;
+      } else current += char;
+    } else if (char === '"') {
+      quoted = true;
+    } else if (char === ',') {
+      fields.push(current);
+      current = '';
+    } else current += char;
+  }
+
+  fields.push(current);
+  return fields.map((field) => field.trim());
+}
+
+/** Parse a CSV document into objects keyed by its header row. */
+export function parseCsv(text) {
+  const lines = text.replace(/^\uFEFF/, '').split(/\r?\n/).filter((line) => line.trim().length > 0);
+  if (lines.length < 2) throw new Error('CSV has no data rows');
+  const headers = splitCsvRow(lines[0]);
+  return lines.slice(1).map((line) => {
+    const values = splitCsvRow(line);
+    return Object.fromEntries(headers.map((header, index) => [header, values[index] ?? '']));
+  });
+}
+
 export function roundCoord(value) {
   return Number(value.toFixed(COORD_PRECISION));
 }

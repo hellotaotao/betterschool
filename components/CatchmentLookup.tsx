@@ -110,7 +110,7 @@ export default function CatchmentLookup({
           const school = schoolsByLocationAgeId.get(feature.properties.location_age_id);
           return (
             <button
-              key={`${feature.properties.location_age_id}-${feature.properties.kind}`}
+              key={feature.properties.zone_id ?? `${feature.properties.location_age_id}-${feature.properties.kind}-${feature.properties.year_levels.join('-')}`}
               onClick={() => school && onPickSchool(school)}
               disabled={!school}
               className="w-full text-left p-2.5 rounded-lg bg-white border border-gray-100 hover:border-indigo-300 hover:shadow-sm transition-all disabled:cursor-default"

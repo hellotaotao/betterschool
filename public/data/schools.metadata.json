@@ -25,7 +25,7 @@
       "note": "Official ACARA identity, profile and location data is the canonical base table/map layer. Legacy score/rank is retained only as an optional metric layer for matched schools."
     },
     "religion": "Religious affiliation is INFERRED, not an official ACARA field. Catholic/Government come from sector (high confidence); Independent schools are classified only from religious governing bodies or a conservative explicit-name match, and are left Unknown rather than guessed when signals are weak.",
-    "catchment": "NSW government school intake zones from data.nsw.gov.au (CC-BY, 2026 enrolment year), joined by USE_ID -> master dataset School_code -> AgeID -> location_age_id. Deterministic ID join only; unjoined polygons are recorded in data/catchment/nsw/processed/unmatched.json rather than name-matched. Covers 2,029 of 2,223 NSW government schools. Boundaries are a guide, not a legal instrument — NSW Department of Education disclaims responsibility where this data informs property decisions, and the official School Finder is authoritative. SA government school zones from data.sa.gov.au (CC-BY, 2025 enrolment year), joined by org_num -> Government Education Sites -> the one ACARA school that is both within 1500 m of the published site and named the same (observed max 522 m). Name and distance both select the match, because co-located campuses make either alone wrong. Unconfirmed polygons are recorded in data/catchment/sa/processed/unmatched.json. South Australia publishes zones for only part of its government system — 124 of 521 schools — and the published data does not say why, so a South Australian school without a zone must not be read as \"no zone published for a school that has one\". No year levels: the SA source carries none per zone."
+    "catchment": "NSW government school intake zones from data.nsw.gov.au (CC-BY, 2026 enrolment year), joined by USE_ID -> master dataset School_code -> AgeID -> location_age_id. Deterministic ID join only; unjoined polygons are recorded in data/catchment/nsw/processed/unmatched.json rather than name-matched. Covers 2,029 of 2,223 NSW government schools. Boundaries are a guide, not a legal instrument — NSW Department of Education disclaims responsibility where this data informs property decisions, and the official School Finder is authoritative. SA government school zones from data.sa.gov.au (CC-BY, 2025 enrolment year), joined by org_num -> Government Education Sites -> the one ACARA school that is both within 1500 m of the published site and named the same (observed max 522 m). Name and distance both select the match, because co-located campuses make either alone wrong. Unconfirmed polygons are recorded in data/catchment/sa/processed/unmatched.json. South Australia publishes zones for only part of its government system — 124 of 521 schools — and the published data does not say why, so a South Australian school without a zone must not be read as \"no zone published for a school that has one\". No year levels: the SA source carries none per zone. Victorian government school zones from discover.data.vic.gov.au (CC BY 4.0, 2027 enrolment year), joined from the exact ENTITY_CODE school number to the official Victorian school identity, then to one exact ACARA base or campus name whose coordinates fall inside the published polygon. When the older site register has no row, the exact source identity plus polygon containment is required. 1530 of 1557 source entities joined; the rest are recorded in data/catchment/vic/processed/unmatched.json, with no fuzzy or nearest-school fallback. Secondary boundaries remain distinct by published year level: only byte-identical 6-decimal geometries are coalesced, and their year labels are unioned."
   },
   "fields": {
     "local_id": "Legacy BetterSchool local_id, present only when a legacy record was deterministically matched to ACARA.",
@@ -42,7 +42,7 @@
     "religion_source": "sector | governing_body | name_explicit | manual; absent when Unknown.",
     "myschool_url": "Deep link to the school My School page, built from acara_sml_id (verified pattern).",
     "fees": "Tuition fees: free for Government; other sectors pending collection. Precise amount preferred, else band; always with fee_source.",
-    "catchments": "NSW and SA, Government schools only. Each entry carries geometry_url (loaded on demand), catch_type, data_year and source; year_levels only where the source publishes them per zone (NSW does, SA does not). Absent means no catchment data for that school, and what that means differs by state — see provenance.catchment."
+    "catchments": "NSW, SA and VIC, Government schools only. Each distinct boundary variant carries zone_id, geometry_url (loaded on demand), catch_type, data_year and source. year_levels are exact source-published levels where available (NSW and VIC); SA publishes none. VIC year variants with different geometry remain separate. Absent means no catchment data for that school, and what that means differs by state — see provenance.catchment."
   },
   "generated_from": {
     "canonical_builder": "scripts/build-canonical-schools.mjs",
@@ -83,11 +83,11 @@
       "not_collected": 3906
     },
     "catchment_counts": {
-      "primary": 1737,
-      "schools_with_catchment": 2153,
-      "secondary": 483,
+      "primary": 2983,
+      "schools_with_catchment": 3676,
+      "secondary": 1797,
       "future": 61
     }
   },
-  "generated_at": "2026-08-23T15:44:04.433Z"
+  "generated_at": "2026-08-24T16:06:23.188Z"
 }

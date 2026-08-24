@@ -8,6 +8,10 @@ export interface CatchmentIndexEntry {
   kind: CatchmentKind;
   catch_type: string;
   year_levels: string[];
+  /** Stable identity for one distinct boundary variant. Absent on legacy NSW/SA indexes. */
+  zone_id?: string;
+  /** Published geometry path. Absent on legacy indexes, whose filename is deterministic. */
+  geometry_url?: string;
   effective_year?: number;
   /** [minLng, minLat, maxLng, maxLat], rounded outward — a prefilter, not a boundary. */
   bbox: [number, number, number, number];
@@ -38,6 +42,7 @@ export interface CatchmentFeature {
     kind: CatchmentKind;
     catch_type: string;
     year_levels: string[];
+    zone_id?: string;
     effective_year?: number;
     data_year: number;
     source_url: string;
@@ -140,7 +145,18 @@ export function catchmentStateAt(
  * learn that the code does not already state. Loaders must tolerate a state
  * listed here whose data has not been built yet.
  */
-export const CATCHMENT_STATES = ['nsw', 'sa'] as const;
+export const CATCHMENT_STATES = ['nsw', 'sa', 'vic'] as const;
+
+export type ZoneOverlayKind =
+  | 'off'
+  | 'primary'
+  | 'secondary-unspecified'
+  | 'year-7'
+  | 'year-8'
+  | 'year-9'
+  | 'year-10'
+  | 'year-11'
+  | 'year-12';
 
 export interface ViewportBounds { west: number; south: number; east: number; north: number }
 
@@ -153,17 +169,24 @@ export interface ViewportBounds { west: number; south: number; east: number; nor
 export function zonesInBounds(
   entries: CatchmentIndexEntry[],
   bounds: ViewportBounds,
-  kind: CatchmentKind,
+  overlay: Exclude<ZoneOverlayKind, 'off'>,
 ): CatchmentIndexEntry[] {
   return entries.filter(entry => {
-    if (entry.kind !== kind) return false;
+    if (overlay === 'primary') {
+      if (entry.kind !== 'primary') return false;
+    } else if (overlay === 'secondary-unspecified') {
+      if (entry.kind !== 'secondary' || entry.year_levels.length > 0) return false;
+    } else {
+      const year = overlay.slice('year-'.length);
+      if (entry.kind !== 'secondary' || !entry.year_levels.includes(year)) return false;
+    }
     const [west, south, east, north] = entry.bbox;
     return !(east < bounds.west || west > bounds.east || north < bounds.south || south > bounds.north);
   });
 }
 
 export function catchmentGeometryUrl(
-  entry: { state: string; location_age_id: number; kind: CatchmentKind },
+  entry: { state: string; location_age_id: number; kind: CatchmentKind; geometry_url?: string },
 ): string {
-  return `/data/catchment/${entry.state}/${entry.location_age_id}-${entry.kind}.json`;
+  return entry.geometry_url ?? `/data/catchment/${entry.state}/${entry.location_age_id}-${entry.kind}.json`;
 }

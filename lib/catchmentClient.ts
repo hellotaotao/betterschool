@@ -9,7 +9,9 @@ import {
   type CatchmentFeature,
   type CatchmentIndex,
   type CatchmentIndexEntry,
+  type ZoneOverlayKind,
 } from './catchmentLookup';
+import type { SchoolCatchment } from '@/types/school';
 
 let indexPromise: Promise<CatchmentIndexEntry[]> | null = null;
 const featureCache = new Map<string, Promise<CatchmentFeature>>();
@@ -54,7 +56,7 @@ export function loadCatchmentIndex(): Promise<CatchmentIndexEntry[]> {
 }
 
 export function loadCatchmentFeature(
-  entry: Pick<CatchmentIndexEntry, 'state' | 'location_age_id' | 'kind'>,
+  entry: Pick<CatchmentIndexEntry, 'state' | 'location_age_id' | 'kind'> & Pick<Partial<CatchmentIndexEntry>, 'geometry_url'>,
 ): Promise<CatchmentFeature> {
   const url = catchmentGeometryUrl(entry);
   const cached = featureCache.get(url);
@@ -76,11 +78,16 @@ export function loadCatchmentFeature(
 export function loadCatchmentsForSchool(
   state: string,
   locationAgeId: number,
-  kinds: CatchmentIndexEntry['kind'][],
+  catchments: SchoolCatchment[],
 ): Promise<CatchmentFeature[]> {
   const stateSlug = state.toLowerCase();
   return Promise.all(
-    kinds.map(kind => loadCatchmentFeature({ state: stateSlug, location_age_id: locationAgeId, kind })),
+    catchments.map(catchment => loadCatchmentFeature({
+      state: stateSlug,
+      location_age_id: locationAgeId,
+      kind: catchment.kind,
+      geometry_url: catchment.geometry_url,
+    })),
   );
 }
 
@@ -146,10 +153,10 @@ export interface ZonesInView {
  */
 export async function loadZonesInView(
   bounds: ViewportBounds,
-  kind: CatchmentIndexEntry['kind'],
+  overlay: Exclude<ZoneOverlayKind, 'off'>,
 ): Promise<ZonesInView> {
   const index = await loadCatchmentIndex();
-  const candidates = zonesInBounds(index, bounds, kind);
+  const candidates = zonesInBounds(index, bounds, overlay);
   const state = catchmentStateAt(index, [
     (bounds.west + bounds.east) / 2,
     (bounds.south + bounds.north) / 2,

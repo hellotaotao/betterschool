@@ -8,6 +8,15 @@ describe('normaliseName', () => {
   });
 });
 
+describe('parseCsv', () => {
+  it('handles a BOM, quoted commas and escaped quotes', () => {
+    expect(common.parseCsv('\uFEFFid,name\r\n1,"Park, North"\r\n2,"The ""Village"" School"\r\n')).toEqual([
+      { id: '1', name: 'Park, North' },
+      { id: '2', name: 'The "Village" School' },
+    ]);
+  });
+});
+
 describe('geometryAreaKm2', () => {
   it('measures polygon area and subtracts holes', () => {
     expect(common.geometryAreaKm2).toBeTypeOf('function');

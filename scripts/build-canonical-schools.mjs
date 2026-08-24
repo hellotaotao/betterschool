@@ -9,6 +9,7 @@ const religionOverridesPath = 'data/religion/manual-overrides.json';
 const catchmentLayerPaths = {
   NSW: 'data/catchment/nsw/processed/catchment-layer.json',
   SA: 'data/catchment/sa/processed/catchment-layer.json',
+  VIC: 'data/catchment/vic/processed/catchment-layer.json',
 };
 const locationPath = 'data/acara/processed/school-location-2025.json';
 const legacyPath = 'public/data/schools.json';
@@ -238,6 +239,7 @@ metadata.fields.fees = 'Tuition fees: free for Government; other sectors pending
 const catchmentProvenance = {
   NSW: (layer) => `NSW government school intake zones from data.nsw.gov.au (CC-BY, ${layer.data_year} enrolment year), joined by USE_ID -> master dataset School_code -> AgeID -> location_age_id. Deterministic ID join only; unjoined polygons are recorded in data/catchment/nsw/processed/unmatched.json rather than name-matched. Covers 2,029 of 2,223 NSW government schools. Boundaries are a guide, not a legal instrument — NSW Department of Education disclaims responsibility where this data informs property decisions, and the official School Finder is authoritative.`,
   SA: (layer) => `SA government school zones from data.sa.gov.au (CC-BY, ${layer.data_year} enrolment year), joined by org_num -> Government Education Sites -> the one ACARA school that is both within ${(layer.join.max_allowed_km * 1000).toFixed(0)} m of the published site and named the same (observed max ${(layer.join.max_distance_km * 1000).toFixed(0)} m). Name and distance both select the match, because co-located campuses make either alone wrong. Unconfirmed polygons are recorded in data/catchment/sa/processed/unmatched.json. South Australia publishes zones for only part of its government system — 124 of 521 schools — and the published data does not say why, so a South Australian school without a zone must not be read as "no zone published for a school that has one". No year levels: the SA source carries none per zone.`,
+  VIC: (layer) => `Victorian government school zones from discover.data.vic.gov.au (CC BY 4.0, ${layer.data_year} enrolment year), joined from the exact ENTITY_CODE school number to the official Victorian school identity, then to one exact ACARA base or campus name whose coordinates fall inside the published polygon. When the older site register has no row, the exact source identity plus polygon containment is required. ${layer.join.joined_entities} of ${layer.join.entities} source entities joined; the rest are recorded in data/catchment/vic/processed/unmatched.json, with no fuzzy or nearest-school fallback. Secondary boundaries remain distinct by published year level: only byte-identical 6-decimal geometries are coalesced, and their year labels are unioned.`,
 };
 
 metadata.provenance.catchment = Object.keys(catchmentLayers).length > 0
@@ -245,7 +247,7 @@ metadata.provenance.catchment = Object.keys(catchmentLayers).length > 0
     .map(([state, layer]) => catchmentProvenance[state](layer))
     .join(' ')
   : 'Not collected in this build.';
-metadata.fields.catchments = 'NSW and SA, Government schools only. Each entry carries geometry_url (loaded on demand), catch_type, data_year and source; year_levels only where the source publishes them per zone (NSW does, SA does not). Absent means no catchment data for that school, and what that means differs by state — see provenance.catchment.';
+metadata.fields.catchments = 'NSW, SA and VIC, Government schools only. Each distinct boundary variant carries zone_id, geometry_url (loaded on demand), catch_type, data_year and source. year_levels are exact source-published levels where available (NSW and VIC); SA publishes none. VIC year variants with different geometry remain separate. Absent means no catchment data for that school, and what that means differs by state — see provenance.catchment.';
 metadata.generated_from = {
   canonical_builder: 'scripts/build-canonical-schools.mjs',
   acara_location_records: locationPayload.records.length,

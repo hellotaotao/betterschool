@@ -114,6 +114,15 @@ describe('catchmentGeometryUrl', () => {
     expect(catchmentGeometryUrl({ state: 'sa', location_age_id: 1234, kind: 'secondary' }))
       .toBe('/data/catchment/sa/1234-secondary.json');
   });
+
+  it('uses the indexed geometry URL for a year-level variant', () => {
+    expect(catchmentGeometryUrl({
+      state: 'vic',
+      location_age_id: 4321,
+      kind: 'secondary',
+      geometry_url: '/data/catchment/vic/4321-secondary-year-9.json',
+    })).toBe('/data/catchment/vic/4321-secondary-year-9.json');
+  });
 });
 
 describe('catchmentStateAt', () => {
@@ -152,14 +161,24 @@ describe('zonesInBounds', () => {
     { state: 'nsw', location_age_id: 2, acara_sml_id: 22, kind: 'primary', catch_type: 'PRIMARY', year_levels: ['K'], bbox: [151.1, -33.9, 151.2, -33.8] },
     { state: 'nsw', location_age_id: 3, acara_sml_id: 33, kind: 'secondary', catch_type: 'HIGH_COED', year_levels: ['7'], bbox: [151.0, -33.9, 151.2, -33.8] },
     { state: 'nsw', location_age_id: 4, acara_sml_id: 44, kind: 'primary', catch_type: 'PRIMARY', year_levels: ['K'], bbox: [149.0, -33.9, 149.1, -33.8] },
+    { state: 'vic', location_age_id: 5, acara_sml_id: 55, kind: 'secondary', catch_type: 'SECONDARY', year_levels: ['8', '9'], bbox: [151.0, -33.9, 151.2, -33.8] },
+    { state: 'sa', location_age_id: 6, acara_sml_id: 66, kind: 'secondary', catch_type: 'SEC', year_levels: [], bbox: [151.0, -33.9, 151.2, -33.8] },
   ];
   const view = { west: 151.05, south: -33.88, east: 151.15, north: -33.82 };
 
-  it('returns only the requested kind', () => {
-    // Primary and secondary are independent coverages of the same ground, so
-    // the overlay draws one at a time; mixing them is what makes it unreadable.
+  it('returns primary zones without mixing in secondary boundaries', () => {
     expect(zonesInBounds(entries, view, 'primary').map(e => e.location_age_id)).toEqual([1, 2]);
-    expect(zonesInBounds(entries, view, 'secondary').map(e => e.location_age_id)).toEqual([3]);
+  });
+
+  it('returns only secondary zones whose source omitted year levels', () => {
+    expect(zonesInBounds(entries, view, 'secondary-unspecified').map(e => e.location_age_id)).toEqual([6]);
+  });
+
+  it('returns the exact secondary year selected by the reader', () => {
+    expect(zonesInBounds(entries, view, 'year-7').map(e => e.location_age_id)).toEqual([3]);
+    expect(zonesInBounds(entries, view, 'year-8').map(e => e.location_age_id)).toEqual([5]);
+    expect(zonesInBounds(entries, view, 'year-9').map(e => e.location_age_id)).toEqual([5]);
+    expect(zonesInBounds(entries, view, 'year-10')).toEqual([]);
   });
 
   it('excludes zones whose bbox misses the viewport entirely', () => {

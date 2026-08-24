@@ -673,7 +673,7 @@ export default function SchoolMap({
             halo cannot paint over the line it abuts. */}
         {overlayFeatures?.map((feature) => (
           <GeoJSON
-            key={`overlay-casing-${feature.properties.location_age_id}-${feature.properties.kind}`}
+            key={`overlay-casing-${feature.properties.zone_id ?? `${feature.properties.location_age_id}-${feature.properties.kind}-${feature.properties.year_levels.join('-')}`}`}
             data={feature as never}
             interactive={false}
             style={{ color: '#ffffff', weight: 5, opacity: 0.85, fill: false }}
@@ -683,7 +683,7 @@ export default function SchoolMap({
           const style = CATCHMENT_COLORS[feature.properties.kind] ?? CATCHMENT_COLORS.primary;
           return (
             <GeoJSON
-              key={`overlay-${feature.properties.location_age_id}-${feature.properties.kind}`}
+              key={`overlay-${feature.properties.zone_id ?? `${feature.properties.location_age_id}-${feature.properties.kind}-${feature.properties.year_levels.join('-')}`}`}
               data={feature as never}
               interactive={false}
               style={{
@@ -702,7 +702,7 @@ export default function SchoolMap({
           const style = CATCHMENT_COLORS[feature.properties.kind] ?? CATCHMENT_COLORS.primary;
           return (
             <GeoJSON
-              key={`${feature.properties.location_age_id}-${feature.properties.kind}`}
+              key={feature.properties.zone_id ?? `${feature.properties.location_age_id}-${feature.properties.kind}-${feature.properties.year_levels.join('-')}`}
               data={feature as never}
               interactive={false}
               style={{

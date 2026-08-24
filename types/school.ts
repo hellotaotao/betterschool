@@ -32,8 +32,10 @@ export type CatchmentKind = 'primary' | 'secondary' | 'future';
 export interface SchoolCatchment {
   /** Static GeoJSON Feature, fetched on demand — geometry never ships in the canonical file. */
   geometry_url: string;
+  /** Stable identity for one distinct boundary variant. */
+  zone_id?: string;
   kind: CatchmentKind;
-  /** The source's own zone label — NSW CATCH_TYPE (PRIMARY / CENTRAL_HIGH / INFANTS), SA type (PRIM / SEC / PRSEC). '+' joined when merged rows disagree. */
+  /** The source's own zone label. '+' joined when exact merged rows carry several labels. */
   catch_type: string;
   /**
    * Year levels this zone applies to, e.g. ['K','1',…,'6'].
@@ -47,7 +49,7 @@ export interface SchoolCatchment {
   year_levels: string[];
   /** Future zones only: the year the zone takes effect. */
   effective_year?: number;
-  /** The publishing department's own school identifier: NSW USE_ID, SA org_num. */
+  /** The publishing department's own school identifier: NSW USE_ID, SA org_num, or VIC ENTITY_CODE. */
   source_school_code: string;
   /** Enrolment year the boundary applies to. */
   data_year: number;

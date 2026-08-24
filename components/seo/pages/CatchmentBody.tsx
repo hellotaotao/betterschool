@@ -62,6 +62,10 @@ export default function CatchmentBody({ locale, state, slug }: { locale: Locale;
       locale={locale}
       bareEnglishPath={catchmentPath(school.state, slug)}
       dataYear={dataYear}
+      sourceLinks={[...new Map(catchments.map(catchment => [
+        catchment.source_url,
+        { url: catchment.source_url, label: catchment.source },
+      ])).values()]}
       crumbs={[
         { label: shell.browseByState, href: browsePath(locale) },
         { label: full, href: stateIndexPath(school.state, locale) },
@@ -92,7 +96,7 @@ export default function CatchmentBody({ locale, state, slug }: { locale: Locale;
           {catchments.map(catchment => {
             const changed = formatBoundaryDate(catchment.boundary_updated, locale);
             return (
-              <div key={catchment.kind} className="py-2 border-b border-gray-100 last:border-0 sm:grid sm:grid-cols-3 sm:gap-3">
+              <div key={catchment.geometry_url} className="py-2 border-b border-gray-100 last:border-0 sm:grid sm:grid-cols-3 sm:gap-3">
                 <dt className="text-xs text-gray-500 sm:col-span-1">
                   {formatMessage(t.zoneKind, { kind: localeKind(locale, catchment.kind) })}
                 </dt>
@@ -131,29 +135,32 @@ export default function CatchmentBody({ locale, state, slug }: { locale: Locale;
         )}
       </section>
 
-      {zones.map(({ catchment, inside, suburbs }) => (
-        <section key={catchment.kind} className="mt-8" aria-labelledby={`inside-${catchment.kind}`}>
-          <h2 id={`inside-${catchment.kind}`} className="text-base font-semibold">
-            {formatMessage(t.insideHeadingKind, { kind: localeKind(locale, catchment.kind) })}
-          </h2>
-          <p className="mt-1 text-xs text-gray-500">{t.insideHint}</p>
-          {suburbs.length > 0 && (
-            <p className="mt-2 text-sm text-gray-700">
-              {formatMessage(t.insideSuburbs, { suburbs: suburbs.join(', ') })}{' '}
-              <span className="text-gray-500">{t.insideSuburbsCaveat}</span>
-            </p>
-          )}
-          {inside.length > 0 ? (
-            <ul className="mt-3 grid gap-2 sm:grid-cols-2">
-              {inside.map(entry => (
-                <SchoolLinkCard key={entry.school.id} school={entry.school} slug={entry.slug} locale={locale} />
-              ))}
-            </ul>
-          ) : (
-            <p className="mt-3 text-sm text-gray-700">{t.insideNone}</p>
-          )}
-        </section>
-      ))}
+      {zones.map(({ catchment, inside, suburbs }) => {
+        const sectionId = `inside-${catchment.zone_id ?? catchment.geometry_url.replace(/[^a-z0-9]+/gi, '-')}`;
+        return (
+          <section key={catchment.geometry_url} className="mt-8" aria-labelledby={sectionId}>
+            <h2 id={sectionId} className="text-base font-semibold">
+              {formatMessage(t.insideHeadingKind, { kind: localeKind(locale, catchment.kind) })}
+            </h2>
+            <p className="mt-1 text-xs text-gray-500">{t.insideHint}</p>
+            {suburbs.length > 0 && (
+              <p className="mt-2 text-sm text-gray-700">
+                {formatMessage(t.insideSuburbs, { suburbs: suburbs.join(', ') })}{' '}
+                <span className="text-gray-500">{t.insideSuburbsCaveat}</span>
+              </p>
+            )}
+            {inside.length > 0 ? (
+              <ul className="mt-3 grid gap-2 sm:grid-cols-2">
+                {inside.map(entry => (
+                  <SchoolLinkCard key={entry.school.id} school={entry.school} slug={entry.slug} locale={locale} />
+                ))}
+              </ul>
+            ) : (
+              <p className="mt-3 text-sm text-gray-700">{t.insideNone}</p>
+            )}
+          </section>
+        );
+      })}
 
       <section className="mt-8">
         <h2 className="text-base font-semibold">

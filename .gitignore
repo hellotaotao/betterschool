@@ -55,3 +55,4 @@ scripts/process_school_data.py
 # Catchment raw downloads (regenerate with npm run <state>:catchment:fetch)
 data/catchment/nsw/raw/
 data/catchment/sa/raw/
+data/catchment/vic/raw/

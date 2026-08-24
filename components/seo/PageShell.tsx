@@ -27,6 +27,7 @@ export default function PageShell({
   crumbs,
   children,
   dataYear,
+  sourceLinks = [],
 }: {
   locale: Locale;
   /** Unprefixed path of this page, used to build the language switch link. */
@@ -34,6 +35,7 @@ export default function PageShell({
   crumbs: Crumb[];
   children: React.ReactNode;
   dataYear?: number;
+  sourceLinks?: { url: string; label: string }[];
 }) {
   const t = getSeo(locale).shell;
   const other: Locale = locale === 'zh' ? 'en' : 'zh';
@@ -95,14 +97,17 @@ export default function PageShell({
             >
               {t.acaraLinkText} →
             </a>
-            <a
-              className="text-indigo-700 hover:underline"
-              href="https://data.nsw.gov.au/data/dataset/nsw-education-school-intake-zones-catchment-areas-for-nsw-government-schools"
-              target="_blank"
-              rel="noreferrer"
-            >
-              {t.nswLinkText} →
-            </a>
+            {sourceLinks.map(source => (
+              <a
+                key={source.url}
+                className="text-indigo-700 hover:underline"
+                href={source.url}
+                target="_blank"
+                rel="noreferrer"
+              >
+                {source.label} →
+              </a>
+            ))}
           </p>
           <p>{t.footerStance}</p>
         </div>

@@ -123,7 +123,8 @@
     "label": "学区边界",
     "off": "关",
     "primary": "小学",
-    "secondary": "中学",
+    "secondary": "中学（年级未公布）",
+    "year": "Year {year}",
     "tooMany": "当前视野内有 {count} 个学区 —— 放大后才会绘制",
     "none": "当前视野内没有已公布的学区",
     "showing": "已显示 {count} 个学区",
@@ -149,7 +150,7 @@
     "shell": {
       "browseByState": "按州浏览",
       "openMap": "打开地图",
-      "footerData": "学校名称、位置与办学资料来自 ACARA Data Access Program。新州学区边界来自 Data.NSW（CC-BY，新南威尔士州教育部）。",
+      "footerData": "学校名称、位置与办学资料来自 ACARA Data Access Program。页面使用学区边界数据时，官方来源链接会列在下方。",
       "footerStance": "BetterSchool.au 不发布任何学校排名，也不发布综合评分。凡是推断得出而非官方公布的字段，页面会写明；没有采集到的，页面也会写明，而不是留一片空白。",
       "acaraLinkText": "ACARA Data Access Program",
       "nswLinkText": "Data.NSW",

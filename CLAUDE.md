@@ -31,7 +31,7 @@ npm run canonical:build  # merge all layers -> public/data/schools.canonical.jso
 npm run canonical:validate
 
 # Catchments, per state (independent of the ACARA steps above, but run before
-# canonical:build so the layers get merged in). Both need 'unzip'.
+# canonical:build so the layers get merged in). Fetch scripts need 'unzip'.
 npm run nsw:catchment:fetch     # download shapefiles + master dataset
 npm run nsw:catchment:build     # join + emit public/data/catchment/nsw/
 npm run nsw:catchment:validate  # join-rate floors, geometry and attachment checks
@@ -39,6 +39,11 @@ npm run nsw:catchment:validate  # join-rate floors, geometry and attachment chec
 npm run sa:catchment:fetch      # download zone shapefiles + education sites
 npm run sa:catchment:build      # join + emit public/data/catchment/sa/
 npm run sa:catchment:validate
+
+npm run vic:catchment:fetch     # download 2027 GeoJSON zones + 2025 school sites
+npm run vic:catchment:parse     # verify source attributes, CRS and geometry
+npm run vic:catchment:build     # join + emit exact year variants
+npm run vic:catchment:validate
 ```
 
 ## Architecture
@@ -52,13 +57,14 @@ ACARA/*.xlsx
   └─ scripts/parse-acara-*.mjs      → data/acara/processed/*.json
   └─ scripts/religion-classify.mjs  → religion layer
   └─ scripts/match-betterschool-acara.mjs → legacy metric layer
-data.nsw.gov.au / data.sa.gov.au
-  └─ scripts/{fetch,parse,build}-{nsw,sa}-catchment.mjs → catchment layers
+data.nsw.gov.au / data.sa.gov.au / discover.data.vic.gov.au
+  └─ scripts/{fetch,parse,build,validate}-<state>-catchment.mjs → catchment layers
        └─ scripts/build-canonical-schools.mjs
             → public/data/schools.canonical.json  (11,034 schools, ~15MB)
             → public/data/schools.metadata.json   (provenance + coverage counts)
             → public/data/catchment/nsw/*.json    (2,152 zones, loaded on demand)
             → public/data/catchment/sa/*.json     (130 zones, loaded on demand)
+            → public/data/catchment/vic/*.json    (2,560 exact variants, loaded on demand)
 ```
 
 The catchment builds read the ACARA *location* layer rather than
@@ -82,10 +88,10 @@ the first two disagree.
 | `/suburb/[state]` | prerendered | 8 |
 | `/school/[state]/[slug]` | on-demand ISR | 11,034 |
 | `/suburb/[state]/[slug]` | on-demand ISR | 4,799 |
-| `/catchment/[state]/[slug]` | on-demand ISR | 2,029 |
+| `/catchment/[state]/[slug]` | on-demand ISR | 3,676 |
 
 Every route above except the map exists twice: bare for English and under `/zh`
-for Chinese — 35,743 canonical URLs in total. English keeps the unprefixed paths
+for Chinese — 39,037 canonical URLs in total. English keeps the unprefixed paths
 it already publishes; those must not move.
 
 The long-tail routes are the SEO surface — the map app is one client-rendered URL
@@ -155,12 +161,15 @@ same-suburb duplicate gets an `-<acara_sml_id>` suffix, so URLs stay stable.
 - `components/CatchmentLookup.tsx` — "what is this location zoned for?" results.
 
 The map answers three different questions about zones, and they are separate
-controls on purpose: select a school to draw *its* zone (filled), drop a pin to
-ask what an address is zoned for, or switch the browse overlay on to see every
+controls on purpose: select a school to draw one exact boundary variant
+(filled), drop a pin to ask what an address is zoned for, or switch the browse
+overlay on to see every
 zone across the viewport (outlines only, no fill — a filled zone already means
-"the school you selected"). The overlay draws one kind at a time. Primary and
-secondary zones are independent boundary layers, so drawing both obscures the
-places they overlap. It is gated on
+"the school you selected"). The overlay selector is flat: Off, Primary,
+Secondary (years not published), then Year 7 through Year 12. The unspecified
+choice is for sources such as SA that publish a secondary boundary without
+per-zone years. A year choice draws only boundaries whose source explicitly
+includes that year; VIC never falls into the unspecified bucket. It is gated on
 how many zones the viewport holds rather than on zoom, because zone area varies
 by two orders of magnitude between inner Sydney and the far west — past
 `MAX_ZONES_IN_VIEW` it says how many are there instead of drawing them.
@@ -210,15 +219,21 @@ These are the project's core commitments. They matter more than any feature.
    - SA government school with no zone → says almost nothing. SA publishes zones
      for 124 of 521 government schools and the published data gives no rule for
      which, so the page must not let a reader infer the school is unzoned.
-   - Victorian school → "not collected yet".
+   - VIC government school with no attached zone → "none published". The
+     official dataset covers the designated-neighbourhood system; 27 source
+     entities that cannot be joined exactly across the 2025 ACARA/site snapshot
+     remain explicit in `data/catchment/vic/processed/unmatched.json`.
 
-   The same rule governs year levels. NSW publishes them per zone; SA publishes
+   The same rule governs year levels. NSW and VIC publish them per zone; SA publishes
    none, and its schools' own "Reception to Year 12" designation describes the
    *school*, not the zone — six SA schools hold both a primary and a secondary
    zone, so copying it onto each would claim the primary zone runs to Year 12.
    SA zones therefore carry an empty `year_levels`, and the UI omits the line
    rather than inventing one. `validate-sa-catchment.mjs` fails if that array
-   ever arrives missing or populated.
+   ever arrives missing or populated. VIC publishes separate secondary geometry
+   for Year 7 through Year 12. Different geometry remains a distinct `zone_id`
+   and `geometry_url`; only exactly identical geometry after 6-decimal coordinate
+   rounding is coalesced, with its source year labels unioned.
 
 ### Marker encoding (and why)
 

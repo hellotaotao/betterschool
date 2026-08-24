@@ -243,9 +243,11 @@ export function getCatchmentEntries(): CatchmentIndexEntry[] {
 }
 
 export function readCatchmentFeature(
-  entry: Pick<CatchmentIndexEntry, 'state' | 'location_age_id' | 'kind'>,
+  entry: Pick<CatchmentIndexEntry, 'state' | 'location_age_id' | 'kind'> & Pick<Partial<CatchmentIndexEntry>, 'geometry_url'>,
 ): CatchmentFeature | null {
-  const file = path.join(DATA_DIR, 'catchment', entry.state, `${entry.location_age_id}-${entry.kind}.json`);
+  const file = entry.geometry_url
+    ? path.join(process.cwd(), 'public', entry.geometry_url.replace(/^\/+/, ''))
+    : path.join(DATA_DIR, 'catchment', entry.state, `${entry.location_age_id}-${entry.kind}.json`);
   if (!fs.existsSync(file)) return null;
   return JSON.parse(fs.readFileSync(file, 'utf8')) as CatchmentFeature;
 }
@@ -347,6 +349,7 @@ export function getCatchmentZoneSections(school: School): CatchmentZoneSection[]
       state: school.state.toLowerCase(),
       location_age_id: Number(school.location_age_id),
       kind: catchment.kind,
+      geometry_url: catchment.geometry_url,
     });
     if (!feature) return [];
 
