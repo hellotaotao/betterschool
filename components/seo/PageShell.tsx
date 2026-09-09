@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { SITE_NAME } from '@/lib/site';
+import BrandLogo from '@/components/BrandLogo';
 import { getSeo, htmlLang, type Locale } from '@/lib/seoLocale';
 import { browsePath, mapUrl, toLocalePath } from '@/lib/slug';
 
@@ -45,7 +45,7 @@ export default function PageShell({
       <header className="border-b border-gray-200">
         <div className="mx-auto max-w-3xl px-4 py-3 flex items-center justify-between gap-4">
           <Link href={mapUrl({ locale })} className="text-sm font-bold text-indigo-700 hover:underline">
-            {SITE_NAME}
+            <BrandLogo />
           </Link>
           <div className="flex items-center gap-4">
             <Link href={browsePath(locale)} className="text-xs text-gray-500 hover:text-indigo-700 hover:underline">

@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useMemo, useRef, useEffect } from 'react';
+import BrandLogo from '@/components/BrandLogo';
 import { School } from '@/types/school';
 import { formatMessage, getSectorLabel, Messages } from '@/lib/i18n';
 import { searchSchools } from '@/lib/searchSchools';
@@ -54,7 +55,7 @@ export default function SearchBox({ allSchools, dictionary, onPickSchool, onPick
   return (
     <div ref={boxRef} className="relative w-full">
       <div className="flex items-center gap-2 bg-white rounded-full px-4 py-2 shadow-md">
-        <span className="text-gray-400 text-sm">🔍</span>
+        <BrandLogo compact />
         <input
           value={query}
           onChange={e => { setQuery(e.target.value); setOpen(true); }}
