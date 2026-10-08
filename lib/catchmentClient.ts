@@ -11,7 +11,6 @@ import {
   type CatchmentIndexEntry,
   type ZoneOverlayKind,
 } from './catchmentLookup';
-import type { SchoolCatchment } from '@/types/school';
 
 let indexPromise: Promise<CatchmentIndexEntry[]> | null = null;
 const featureCache = new Map<string, Promise<CatchmentFeature>>();
@@ -74,21 +73,10 @@ export function loadCatchmentFeature(
   return promise;
 }
 
-/** Load every catchment polygon belonging to one school. */
-export function loadCatchmentsForSchool(
-  state: string,
-  locationAgeId: number,
-  catchments: SchoolCatchment[],
-): Promise<CatchmentFeature[]> {
-  const stateSlug = state.toLowerCase();
-  return Promise.all(
-    catchments.map(catchment => loadCatchmentFeature({
-      state: stateSlug,
-      location_age_id: locationAgeId,
-      kind: catchment.kind,
-      geometry_url: catchment.geometry_url,
-    })),
-  );
+export interface CatchmentLookupResult {
+  features: CatchmentFeature[];
+  /** State slug when one collected state's overall zone envelope contains the point. */
+  state: string | null;
 }
 
 /**
@@ -101,12 +89,6 @@ export function loadCatchmentsForSchool(
  * single-sex highs cover the same ground or a senior campus overlays a 7-12
  * school, which is why the results panel explains the overlap.
  */
-export interface CatchmentLookupResult {
-  features: CatchmentFeature[];
-  /** State slug when one collected state's overall zone envelope contains the point. */
-  state: string | null;
-}
-
 export async function lookupCatchmentsAt(point: [number, number]): Promise<CatchmentLookupResult> {
   const index = await loadCatchmentIndex();
   const candidates = candidatesAt(index, point);

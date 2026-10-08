@@ -5,7 +5,7 @@ import { School } from '@/types/school';
 import { getNearbySchools, getSchoolBySlug, getSchoolsDataset, getSchoolSlug, getSuburbPeers } from '@/lib/schoolsData';
 import { safeSchoolWebsiteUrl } from '@/lib/schoolUrl';
 import { formatMessage, getMessages, getReligionLabel, getSchoolTypeLabel, getSectorLabel } from '@/lib/i18n';
-import { buildPageMetadata, getSeo, localeKind, localeStateLabel, localeStateName, type Locale } from '@/lib/seoLocale';
+import { buildPageMetadata, getSeo, htmlLang, localeKind, localeStateLabel, localeStateName, type Locale } from '@/lib/seoLocale';
 import { absoluteUrl } from '@/lib/site';
 import { browsePath, catchmentPath, mapUrl, schoolPath, stateIndexPath, suburbPath } from '@/lib/slug';
 import { catchmentStateCodes, catchmentStateInfo } from '@/lib/catchmentStates';
@@ -74,7 +74,7 @@ export default function SchoolBody({ locale, state, slug }: { locale: Locale; st
     '@type': 'School',
     name: school.school_name,
     url: absoluteUrl(schoolPath(school.state, slug, locale)),
-    inLanguage: locale === 'zh' ? 'zh-Hans' : 'en-AU',
+    inLanguage: htmlLang(locale),
     ...(schoolWebsiteUrl ? { sameAs: [schoolWebsiteUrl] } : {}),
     address: {
       '@type': 'PostalAddress',
@@ -113,7 +113,11 @@ export default function SchoolBody({ locale, state, slug }: { locale: Locale; st
         { label: school.school_name },
       ]}
     >
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+      {/* "<" escaped so a value can never close the script element early. */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, '\\u003c') }}
+      />
 
       <h1 className="text-2xl font-bold tracking-tight">{school.school_name}</h1>
       <p className="mt-1 text-sm text-gray-500">

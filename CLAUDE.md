@@ -28,6 +28,7 @@ npm run acara:parse      # ACARA xlsx -> data/acara/processed/*.json
 npm run acara:match      # match legacy BetterSchool records to ACARA records
 npm run acara:validate   # sanity-check the parsed ACARA layer
 npm run canonical:build  # merge all layers -> public/data/schools.canonical.json
+                         # (also runs client:build: the map's slimmer copy)
 npm run canonical:validate
 
 # Catchments, per state (independent of the ACARA steps above, but run before
@@ -64,8 +65,11 @@ npm run act:catchment:validate
 ## Architecture
 
 Next.js 16 App Router + React 19 + TypeScript + Tailwind 4. **No runtime
-database and no API routes** — the app is fully static and reads a prebuilt JSON
-file from `public/data/`.
+database and no API routes** — the app is fully static and reads prebuilt JSON
+from `public/data/`. The only request-time code is `proxy.ts`, scoped to
+`/schools`: it copies the edge's own `x-vercel-ip-*` geolocation into a
+short-lived cookie for the map's opening view (Australian positions only), so
+no third-party IP service ever sees a visitor. The page itself stays static.
 
 ```
 ACARA/*.xlsx
@@ -75,8 +79,10 @@ ACARA/*.xlsx
 data.nsw.gov.au / data.sa.gov.au / discover.data.vic.gov.au / data.qld.gov.au / LISTdata / ACTmapi
   └─ scripts/{fetch,parse,build,validate}-<state>-catchment.mjs → catchment layers
        └─ scripts/build-canonical-schools.mjs
-            → public/data/schools.canonical.json  (11,034 schools, ~15MB)
+            → public/data/schools.canonical.json  (11,034 schools, ~19MB; server pages)
             → public/data/schools.metadata.json   (provenance + coverage counts)
+            └─ scripts/build-client-schools.mjs
+                 → public/data/schools.client.json (map app's fields only, ~9MB)
             → public/data/catchment/nsw/*.json    (2,152 zones, loaded on demand)
             → public/data/catchment/sa/*.json     (130 zones, loaded on demand)
             → public/data/catchment/vic/*.json    (2,560 exact variants, loaded on demand)
@@ -89,8 +95,9 @@ The catchment builds read the ACARA *location* layer rather than
 `schools.canonical.json`, because canonical consumes the catchment layers —
 depending on them there would be circular.
 
-Geometry, rounding and bbox rules live in `scripts/catchment-common.mjs` and are
-shared by every state; only source URLs, attribute names and the join chain are
+Geometry, rounding, bbox and validation helpers (`bboxWithin`, `eachRing`,
+`ringIsClosed`, `variantSlug`) live in `scripts/catchment-common.mjs` and are
+shared by every state — import them, never redefine them per script; only source URLs, attribute names and the join chain are
 per-state. A new state needs a `{fetch,parse,build,validate}-<state>-catchment.mjs`
 set, an entry in `CATCHMENT_STATES` (`lib/catchmentLookup.ts`), one in
 `STATE_INFO` (`lib/catchmentStates.ts`), and a line in `catchmentLayerPaths`
@@ -106,15 +113,18 @@ the first two disagree.
 | `/suburb/[state]` | prerendered | 8 |
 | `/school/[state]/[slug]` | on-demand ISR | 11,034 |
 | `/suburb/[state]/[slug]` | on-demand ISR | 4,799 |
-| `/catchment/[state]/[slug]` | on-demand ISR | 4,902 |
+| `/catchment/[state]/[slug]` | on-demand ISR | 5,135 |
 
 Every route above except the map exists twice: bare for English and under `/zh`
-for Chinese — 41,489 canonical URLs in total. English keeps the unprefixed paths
+for Chinese — 41,955 canonical URLs in total. English keeps the unprefixed paths
 it already publishes; those must not move.
 
 The long-tail routes are the SEO surface — the map app is one client-rendered URL
 and is invisible to search. The build emits zero school, suburb or catchment
-pages, but the sitemap still lists every canonical URL. The first request for a
+pages, but the sitemap still lists every canonical URL: `/sitemap.xml` is an
+index (`app/sitemap.xml/route.ts`) over one child per page family —
+`/browse`, `/suburb`, `/school`, `/catchment` `…/sitemap.xml` — each far below
+the 50,000-URL limit, which `lib/sitemap.test.ts` checks. The first request for a
 valid URL generates the page and caches it for the rest of the deployment.
 These server-only routes read the prebuilt dataset off disk via
 `lib/schoolsData.ts` (never import it from a client component) and link into the
@@ -159,8 +169,16 @@ same-suburb duplicate gets an `-<acara_sml_id>` suffix, so URLs stay stable.
 ### Runtime
 
 - `app/page.tsx` redirects to `/schools`; `app/schools/page.tsx` is the whole app.
-- It client-fetches `schools.canonical.json`, cache-busted by the metadata's
-  `generated_at` (`DATA_VERSION`).
+- It client-fetches `schools.client.json`, cache-busted by the metadata's
+  `generated_at` plus that file's own hash (`DATA_VERSION`). The client file is
+  an allowlist projection (`scripts/client-schools.mjs`) typed as `MapSchool`;
+  a field the app starts reading must be added to both, and
+  `types/school.test.ts` fails if they disagree. Client code takes `MapSchool`,
+  never `School`.
+- Page state lives in hooks beside it: `lib/useSchoolCatchment.ts` (the selected
+  school's zone), `lib/useCatchmentLookup.ts` (pin lookup, drops stale
+  responses), `lib/useZoneOverlay.ts`, `lib/useMapLocale.ts`; the toolbar and
+  key are `components/MapControls.tsx` and `components/MapLegend.tsx`.
 - `components/SchoolMap.tsx` — Leaflet via `react-leaflet` (dynamic import,
   `ssr: false`), OpenStreetMap tiles, `L.divIcon` markers. **Not Mapbox.**
 - `components/SchoolList.tsx` — list synced to the map viewport via `BoundsTracker`.
@@ -201,12 +219,6 @@ by two orders of magnitude between inner Sydney and the far west — past
   audience, who frequently read Chinese on an English-language browser.
   Everything the map links out to (`mapUrl`, `schoolPath`) follows the resolved
   locale, so the "full profile" button lands on the matching language.
-
-### Dead code
-
-`db/database.js` and `db/locations.sqlite` are leftovers from an early SQLite
-prototype. Nothing imports them. Do not extend them; delete on sight if touching
-that directory.
 
 ## Data principles — read before touching any data field
 
@@ -308,7 +320,9 @@ The same constraint binds **selection**. A selected marker keeps its sector fill
 and is picked out by an achromatic white-gap-plus-slate ring; it used to flip to
 the same indigo, which turned a green government school purple the moment a user
 clicked it. Map state — selected, hovered, or anything added later — is drawn
-with shape, weight and neutral tone. Hue belongs to sector.
+with shape, weight and neutral tone. Hue belongs to sector. Text badges follow
+suit: sector badges come from `sectorBadgeClass` (`utils/schoolFilters.ts`),
+and every other badge — religious affiliation included — is neutral grey/slate.
 
 ## Conventions
 

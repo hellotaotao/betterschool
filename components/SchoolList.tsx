@@ -1,9 +1,10 @@
 "use client";
 
 import { RefObject } from 'react';
-import { School } from '@/types/school';
+import { MapSchool } from '@/types/school';
 import { getSchoolTypeLabel, getSectorLabel, formatMessage, Locale, Messages } from '@/lib/i18n';
 import DirectoryLinks from './DirectoryLinks';
+import { sectorBadgeClass } from '@/utils/schoolFilters';
 
 type SortKey = 'name' | 'icsea' | 'enrolments';
 
@@ -18,11 +19,11 @@ interface AreaSummary {
 }
 
 interface SchoolListProps {
-  schools: School[];
-  selectedSchool: School | null;
+  schools: MapSchool[];
+  selectedSchool: MapSchool | null;
   sortBy: SortKey;
   onSortChange: (v: SortKey) => void;
-  onSchoolClick: (s: School) => void;
+  onSchoolClick: (s: MapSchool) => void;
   areaSummary: AreaSummary;
   areaLabel: string;
   loading: boolean;
@@ -60,6 +61,7 @@ export default function SchoolList({
         <select
           value={sortBy}
           onChange={e => onSortChange(e.target.value as SortKey)}
+          aria-label={dictionary.sidebar.sortLabel}
           className="text-xs text-gray-500 border-0 bg-transparent cursor-pointer focus:outline-none"
         >
           <option value="name">{dictionary.sidebar.sortByName}</option>
@@ -111,13 +113,7 @@ export default function SchoolList({
                 </p>
                 <div className="flex items-center flex-wrap gap-x-1.5 gap-y-1 mt-1">
                   <span
-                    className={`text-[9px] px-1.5 py-0.5 rounded-full ${
-                      school.sector === 'Government'
-                        ? 'bg-green-100 text-green-700'
-                        : school.sector === 'Catholic'
-                          ? 'bg-violet-100 text-violet-700'
-                          : 'bg-orange-100 text-orange-700'
-                    }`}
+                    className={`text-[9px] px-1.5 py-0.5 rounded-full ${sectorBadgeClass(school.sector)}`}
                   >
                     {getSectorLabel(school.sector, dictionary)}
                   </span>

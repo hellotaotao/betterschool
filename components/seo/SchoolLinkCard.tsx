@@ -3,12 +3,7 @@ import { School } from '@/types/school';
 import { schoolPath } from '@/lib/slug';
 import { getMessages, getSchoolTypeLabel, getSectorLabel, formatMessage } from '@/lib/i18n';
 import type { Locale } from '@/lib/seoLocale';
-
-const SECTOR_CLASS: Record<string, string> = {
-  Government: 'bg-green-100 text-green-800',
-  Catholic: 'bg-violet-100 text-violet-800',
-  Independent: 'bg-orange-100 text-orange-800',
-};
+import { sectorBadgeClass } from '@/utils/schoolFilters';
 
 export default function SchoolLinkCard({
   school,
@@ -36,7 +31,7 @@ export default function SchoolLinkCard({
         </span>
         {distance && <span className="block text-[11px] text-gray-400 mt-0.5">{distance}</span>}
         <span className="mt-2 flex flex-wrap items-center gap-x-2 gap-y-1 text-xs text-gray-500">
-          <span className={`rounded-full px-2 py-0.5 text-[11px] ${SECTOR_CLASS[school.sector] ?? 'bg-gray-100 text-gray-700'}`}>
+          <span className={`rounded-full px-2 py-0.5 text-[11px] ${sectorBadgeClass(school.sector)}`}>
             {getSectorLabel(school.sector, dictionary)}
           </span>
           {school.school_type && <span>{getSchoolTypeLabel(school.school_type, dictionary)}</span>}

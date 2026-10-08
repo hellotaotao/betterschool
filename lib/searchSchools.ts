@@ -1,18 +1,18 @@
-import type { School } from '@/types/school';
+import type { MapSchool } from '@/types/school';
 
 export type SearchResult =
-  | { type: 'school'; school: School }
-  | { type: 'place'; label: string; state: string; postcode?: string; schools: School[] };
+  | { type: 'school'; school: MapSchool }
+  | { type: 'place'; label: string; state: string; postcode?: string; schools: MapSchool[] };
 
 const MAX_RESULTS = 8;
 const RESERVED_PLACE_SLOTS = 3;
 
-export function searchSchools(rawQuery: string, schools: School[]): SearchResult[] {
+export function searchSchools(rawQuery: string, schools: MapSchool[]): SearchResult[] {
   const query = rawQuery.trim().toLowerCase();
   if (query.length < 2) return [];
 
   if (/^\d+$/.test(query)) {
-    const byPostcode = new Map<string, School[]>();
+    const byPostcode = new Map<string, MapSchool[]>();
     for (const s of schools) {
       if (s.postcode && s.postcode.startsWith(query)) {
         const arr = byPostcode.get(s.postcode) ?? [];
@@ -33,7 +33,7 @@ export function searchSchools(rawQuery: string, schools: School[]): SearchResult
   }
 
   // School name matches, ranked: 0 startsWith, 1 word-boundary, 2 includes.
-  const nameMatches: { school: School; rank: number }[] = [];
+  const nameMatches: { school: MapSchool; rank: number }[] = [];
   for (const s of schools) {
     const name = s.school_name.toLowerCase();
     const idx = name.indexOf(query);
@@ -50,7 +50,7 @@ export function searchSchools(rawQuery: string, schools: School[]): SearchResult
   });
 
   // Suburb matches grouped by suburb+state.
-  const bySuburb = new Map<string, School[]>();
+  const bySuburb = new Map<string, MapSchool[]>();
   for (const s of schools) {
     if (s.suburb && s.suburb.toLowerCase().includes(query)) {
       const key = `${s.suburb}|${s.state}`;

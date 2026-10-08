@@ -4,7 +4,6 @@ import {
   browsePath,
   buildSchoolSlugs,
   catchmentPath,
-  mapPath,
   schoolPath,
   schoolSlugFor,
   slugify,
@@ -153,10 +152,6 @@ describe('locale-aware paths', () => {
     expect(catchmentPath('NSW', 'x', 'zh')).toBe('/zh/catchment/nsw/x');
     expect(browsePath('zh')).toBe('/zh/browse');
     expect(stateIndexPath('NSW', 'zh')).toBe('/zh/suburb/nsw');
-  });
-
-  it('shares one map route between locales', () => {
-    expect(mapPath()).toBe('/schools');
   });
 
   it('swaps the prefix on an existing path in both directions', () => {

@@ -89,5 +89,11 @@
       "future": 61
     }
   },
-  "generated_at": "2026-08-24T17:09:08.340Z"
+  "generated_at": "2026-08-24T17:09:08.340Z",
+  "client_dataset": {
+    "path": "/data/schools.client.json",
+    "schools": 11034,
+    "bytes": 9228726,
+    "sha256": "6210c132acbb"
+  }
 }

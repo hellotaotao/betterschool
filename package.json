@@ -6,13 +6,14 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint app components lib utils types scripts --ext .ts,.tsx,.mjs",
+    "lint": "eslint app components lib utils types scripts proxy.ts --ext .ts,.tsx,.mjs",
     "test": "vitest run",
     "test:watch": "vitest",
     "acara:parse": "node scripts/parse-acara-2025.mjs",
     "acara:match": "node scripts/match-betterschool-acara.mjs",
     "acara:validate": "node scripts/validate-acara-data.mjs",
-    "canonical:build": "node scripts/build-canonical-schools.mjs",
+    "canonical:build": "node scripts/build-canonical-schools.mjs && node scripts/build-client-schools.mjs",
+    "client:build": "node scripts/build-client-schools.mjs",
     "canonical:validate": "node scripts/validate-canonical-schools.mjs",
     "nsw:catchment:fetch": "node scripts/fetch-nsw-catchment.mjs",
     "nsw:catchment:parse": "node scripts/parse-nsw-catchment.mjs",
@@ -40,18 +41,17 @@
     "act:catchment:validate": "node scripts/validate-act-catchment.mjs"
   },
   "dependencies": {
-    "@types/leaflet": "^1.9.21",
     "@vercel/analytics": "^2.0.1",
     "leaflet": "^1.9.4",
     "leaflet.markercluster": "^1.5.3",
     "next": "^16.2.2",
     "react": "^19.2.4",
     "react-dom": "^19.2.4",
-    "react-leaflet": "^5.0.0",
-    "xlsx": "^0.18.5"
+    "react-leaflet": "^5.0.0"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4.2.2",
+    "@types/leaflet": "^1.9.21",
     "@types/leaflet.markercluster": "^1.5.6",
     "@types/node": "^20",
     "@types/react": "^19.2.14",
@@ -63,6 +63,7 @@
     "shapefile": "^0.6.6",
     "tailwindcss": "^4.2.2",
     "typescript": "^5",
-    "vitest": "^4.1.9"
+    "vitest": "^4.1.9",
+    "xlsx": "^0.18.5"
   }
 }

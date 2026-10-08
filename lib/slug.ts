@@ -1,4 +1,4 @@
-import { School } from '@/types/school';
+import { MapSchool } from '@/types/school';
 // Type-only: erased at build time, so this stays free of the message bundles.
 import type { Locale } from './i18n';
 
@@ -24,7 +24,7 @@ export function suburbSlug(suburb: string): string {
 }
 
 /** Base slug before any collision suffix. */
-function baseSchoolSlug(school: School): string {
+function baseSchoolSlug(school: MapSchool): string {
   return slugify(`${school.school_name} ${school.suburb}`);
 }
 
@@ -38,8 +38,8 @@ function baseSchoolSlug(school: School): string {
  * Milton QLD), and only those get an `-<acara_sml_id>` suffix, so a rename
  * elsewhere can never churn the other 11,032 URLs.
  */
-export function buildSchoolSlugs(schools: School[]): Map<string, string> {
-  const byKey = new Map<string, School[]>();
+export function buildSchoolSlugs(schools: MapSchool[]): Map<string, string> {
+  const byKey = new Map<string, MapSchool[]>();
   for (const school of schools) {
     const key = `${stateSlug(school.state)}/${baseSchoolSlug(school)}`;
     const bucket = byKey.get(key);
@@ -88,15 +88,6 @@ export function stateIndexPath(state: string, locale: Locale = 'en'): string {
 }
 
 /**
- * The map app is a single client-rendered route shared by both locales — it
- * picks its own language, and search engines never see it, so a /zh twin would
- * add maintenance for no gain.
- */
-export function mapPath(): string {
-  return '/schools';
-}
-
-/**
  * Link into the map app.
  *
  * `locale` becomes ?lang=, which the app treats as an explicit instruction: a
@@ -138,7 +129,7 @@ export function toLocalePath(path: string, locale: Locale): string {
  * Same rule as buildSchoolSlugs: the plain `<name>-<suburb>` slug unless
  * another school in the same state would collide with it.
  */
-export function schoolSlugFor(school: School, allSchools: School[]): string {
+export function schoolSlugFor(school: MapSchool, allSchools: MapSchool[]): string {
   const base = baseSchoolSlug(school);
   const state = stateSlug(school.state);
   const collides = allSchools.some(

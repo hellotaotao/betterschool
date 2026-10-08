@@ -2,35 +2,23 @@
 
 import { useState, useEffect, useMemo, useRef, useCallback } from 'react';
 import dynamic from 'next/dynamic';
+import { formatMessage, getMessages } from '@/lib/i18n';
+import type { MapSchool } from '@/types/school';
 import {
-  formatMessage,
-  getMessages,
-  Locale,
-  LOCALE_STORAGE_KEY,
-  resolveInitialLocale,
-} from '@/lib/i18n';
-import { School, type SchoolCatchment } from '@/types/school';
-import {
-  CATCHMENT_COLORS,
   FilterState,
   filterSchools,
   filterSchoolsForZoneOverlay,
   schoolMatchesZoneOverlay,
-  SECTOR_COLORS,
   type ZoneOverlayKind,
 } from '@/utils/schoolFilters';
 import { useMediaQuery } from '@/lib/useMediaQuery';
+import { useMapLocale } from '@/lib/useMapLocale';
+import { useSchoolCatchment } from '@/lib/useSchoolCatchment';
+import { useCatchmentLookup } from '@/lib/useCatchmentLookup';
+import { useZoneOverlay } from '@/lib/useZoneOverlay';
 import { schoolPath, schoolSlugFor, stateSlug, suburbSlug } from '@/lib/slug';
+import type { ViewportBounds } from '@/lib/catchmentLookup';
 import schoolsMetadata from '@/public/data/schools.metadata.json';
-
-import type { CatchmentFeature } from '@/lib/catchmentLookup';
-import {
-  loadCatchmentFeature,
-  loadZonesInView,
-  lookupCatchmentsAt,
-  type ZonesInView,
-} from '@/lib/catchmentClient';
-import type { Viewport } from '../../components/SchoolMap';
 
 import SchoolDetail from '../../components/SchoolDetail';
 import SchoolList from '../../components/SchoolList';
@@ -38,6 +26,8 @@ import FilterBar from '../../components/FilterBar';
 import SearchBox from '../../components/SearchBox';
 import CatchmentLookup from '../../components/CatchmentLookup';
 import BottomSheet, { SheetSnap } from '../../components/BottomSheet';
+import MapLegend from '../../components/MapLegend';
+import { LanguageToggle, LookupButton, ZoneOverlayControl, zoneOverlayStatus } from '../../components/MapControls';
 
 const SchoolMap = dynamic(() => import('../../components/SchoolMap'), {
   ssr: false,
@@ -45,119 +35,17 @@ const SchoolMap = dynamic(() => import('../../components/SchoolMap'), {
 
 // Cache-bust the static dataset whenever it is rebuilt. /data/* is served with a
 // long max-age, so without a version query returning users would keep stale data
-// for up to a day after each data update. generated_at changes on every rebuild.
-const DATA_VERSION = String(schoolsMetadata.generated_at ?? '').replace(/\D/g, '') || 'v1';
-
-/**
- * Manual language switch.
- *
- * The app guesses from navigator.languages, and that guess is often wrong for
- * this audience — plenty of Chinese-speaking parents in Australia run an
- * English browser, and vice versa. The choice is remembered, so it only has to
- * be made once.
- */
-function LanguageToggle({ locale, onChange }: { locale: Locale; onChange: (next: Locale) => void }) {
-  return (
-    <div className="flex gap-1 bg-white/90 backdrop-blur-sm rounded-full px-1 py-1 shadow-md shrink-0">
-      {(['en', 'zh'] as const).map(option => (
-        <button
-          key={option}
-          onClick={() => onChange(option)}
-          aria-pressed={locale === option}
-          lang={option === 'zh' ? 'zh-Hans' : 'en'}
-          className={`px-2.5 py-0.5 rounded-full text-xs font-medium transition-colors ${
-            locale === option ? 'bg-indigo-600 text-white' : 'text-gray-600 hover:bg-gray-100'
-          }`}
-        >
-          {option === 'en' ? 'EN' : '中文'}
-        </button>
-      ))}
-    </div>
-  );
-}
-
-/** What the browse overlay is currently doing, in one line. */
-function zoneOverlayStatus(
-  state: { features: CatchmentFeature[]; total: number; tooMany: boolean } | null,
-  dictionary: ReturnType<typeof getMessages>,
-): string | null {
-  if (!state) return null;
-  if (state.tooMany) return formatMessage(dictionary.zoneBrowse.tooMany, { count: state.total });
-  if (state.total === 0) return dictionary.zoneBrowse.none;
-  return formatMessage(dictionary.zoneBrowse.showing, { count: state.total });
-}
-
-/**
- * Browse control for zone boundaries across the whole viewport.
- *
- * Secondary choices are year-specific when the source publishes that fact.
- * A separate unspecified option keeps SA honest rather than inventing years.
- */
-function ZoneOverlayControl({
-  value,
-  onChange,
-  dictionary,
-}: {
-  value: ZoneOverlayKind;
-  onChange: (next: ZoneOverlayKind) => void;
-  dictionary: ReturnType<typeof getMessages>;
-}) {
-  const options: [ZoneOverlayKind, string][] = [
-    ['off', dictionary.zoneBrowse.off],
-    ['primary', dictionary.zoneBrowse.primary],
-    ['secondary-unspecified', dictionary.zoneBrowse.secondary],
-    ...([7, 8, 9, 10, 11, 12] as const).map((year): [ZoneOverlayKind, string] => [
-      `year-${year}`,
-      formatMessage(dictionary.zoneBrowse.year, { year }),
-    ]),
-  ];
-
-  return (
-    <div className="flex items-center gap-1 rounded-full bg-white/90 backdrop-blur-sm px-2 py-1 shadow-md shrink-0">
-      <span className="text-[10px] text-gray-500 whitespace-nowrap">{dictionary.zoneBrowse.label}</span>
-      {options.map(([option, label]) => (
-        <button
-          key={option}
-          onClick={() => onChange(option)}
-          aria-pressed={value === option}
-          className={`rounded-full px-2 py-0.5 text-xs font-medium whitespace-nowrap transition-colors ${
-            value === option ? 'bg-indigo-600 text-white' : 'text-gray-600 hover:bg-gray-100'
-          }`}
-        >
-          {label}
-        </button>
-      ))}
-    </div>
-  );
-}
-
-/** Toolbar toggle that arms map-click catchment lookup. */
-function LookupButton({
-  active,
-  dictionary,
-  onClick,
-}: {
-  active: boolean;
-  dictionary: ReturnType<typeof getMessages>;
-  onClick: () => void;
-}) {
-  return (
-    <button
-      onClick={onClick}
-      className={`rounded-full px-3 py-1.5 text-xs font-medium shadow-md whitespace-nowrap transition-colors ${
-        active ? 'bg-indigo-600 text-white' : 'bg-white/90 backdrop-blur-sm text-gray-700 hover:bg-gray-100'
-      }`}
-    >
-      {active ? dictionary.lookup.cancel : `◎ ${dictionary.lookup.button}`}
-    </button>
-  );
-}
+// for up to a day after each data update. generated_at changes on every rebuild;
+// the client file's own hash covers a change to its field allowlist alone.
+const DATA_VERSION = [
+  String(schoolsMetadata.generated_at ?? '').replace(/\D/g, ''),
+  schoolsMetadata.client_dataset?.sha256 ?? '',
+].filter(Boolean).join('-') || 'v1';
 
 export default function SchoolsPage() {
-  const [allSchools, setAllSchools] = useState<School[]>([]);
+  const [allSchools, setAllSchools] = useState<MapSchool[]>([]);
   const [loading, setLoading] = useState(true);
   const [loadError, setLoadError] = useState(false);
-  const [locale, setLocale] = useState<Locale>('en');
   const [filters, setFilters] = useState<FilterState>({
     sector: 'all',
     schoolType: 'all',
@@ -165,51 +53,34 @@ export default function SchoolsPage() {
     enrolments: 'all',
     religion: 'all',
   });
-  const [visibleSchools, setVisibleSchools] = useState<School[]>([]);
-  const [selectedSchool, setSelectedSchool] = useState<School | null>(null);
-  const [placeFocus, setPlaceFocus] = useState<School[] | null>(null);
+  const [visibleSchools, setVisibleSchools] = useState<MapSchool[]>([]);
+  const [selectedSchool, setSelectedSchool] = useState<MapSchool | null>(null);
+  const [placeFocus, setPlaceFocus] = useState<MapSchool[] | null>(null);
   const [sortBy, setSortBy] = useState<'name' | 'icsea' | 'enrolments'>('name');
   const [leftPanelOpen, setLeftPanelOpen] = useState(true);
   const [sheetSnap, setSheetSnap] = useState<SheetSnap>('peek');
-  // Catchment display for the selected school. Tagged with the school it belongs
-  // to so selecting another school makes it stale by construction — no reset
-  // effect, and a slow fetch that lands after the user moved on is ignored.
-  const [catchmentState, setCatchmentState] = useState<{
-    schoolId: string;
-    geometryUrl: string;
-    visible: boolean;
-    feature: CatchmentFeature | null;
-    error: boolean;
-  } | null>(null);
-  // "Which schools is this location zoned for?" lookup.
-  // Browse overlay: every zone of one kind across the viewport.
-  const [zoneOverlay, setZoneOverlay] = useState<ZoneOverlayKind>('off');
-  const [viewport, setViewport] = useState<Viewport | null>(null);
-  const [overlayState, setOverlayState] = useState<ZonesInView | null>(null);
-  const [pickMode, setPickMode] = useState(false);
-  const [lookupPin, setLookupPin] = useState<[number, number] | null>(null);
-  const [lookupResults, setLookupResults] = useState<CatchmentFeature[] | null>(null);
-  const [lookupState, setLookupState] = useState<string | null>(null);
-  const [lookupLoading, setLookupLoading] = useState(false);
-  const [lookupError, setLookupError] = useState(false);
-  // Bumped by every new lookup and by clearing one, so a response that lands
-  // after the reader moved on is dropped instead of painting orphan zones.
-  const lookupRequestRef = useRef(0);
+  const [viewport, setViewport] = useState<ViewportBounds | null>(null);
   // A deep link decides the initial view; IP geolocation must not override it.
   const [deepLinked, setDeepLinked] = useState(false);
   const selectedCardRef = useRef<HTMLDivElement>(null);
   const topBarRef = useRef<HTMLDivElement>(null);
   const [topBarBottom, setTopBarBottom] = useState(56);
+  const [locale, handleLocaleChange] = useMapLocale();
   const dictionary = useMemo(() => getMessages(locale), [locale]);
   const isMobile = useMediaQuery('(max-width: 768px)');
+  const catchment = useSchoolCatchment(selectedSchool);
+  const lookup = useCatchmentLookup();
+  const { kind: zoneOverlay, setKind: setZoneOverlay, zones: overlayState } = useZoneOverlay(viewport);
+  // Stable across renders, so the one-shot dataset effect can depend on it.
+  const showCatchment = catchment.show;
 
   useEffect(() => {
-    fetch(`/data/schools.canonical.json?v=${DATA_VERSION}`)
+    fetch(`/data/schools.client.json?v=${DATA_VERSION}`)
       .then(res => {
         if (!res.ok) throw new Error(`School dataset unavailable (HTTP ${res.status})`);
         return res.json();
       })
-      .then((data: School[]) => {
+      .then((data: MapSchool[]) => {
         setAllSchools(data);
         setLoading(false);
         // Deep link from a prerendered school or catchment page:
@@ -242,78 +113,14 @@ export default function SchoolsPage() {
         setDeepLinked(true);
         if (query.get('catchment') !== '1' || !match.catchments?.length) return;
 
-        const catchment = match.catchments[0];
-        setCatchmentState({
-          schoolId: match.id,
-          geometryUrl: catchment.geometry_url,
-          visible: true,
-          feature: null,
-          error: false,
-        });
-        loadCatchmentFeature({
-          state: match.state.toLowerCase(),
-          location_age_id: Number(match.location_age_id),
-          kind: catchment.kind,
-          geometry_url: catchment.geometry_url,
-        })
-          .then(feature => setCatchmentState(current => (
-            current?.schoolId === match.id && current.geometryUrl === catchment.geometry_url
-              ? { ...current, feature }
-              : current
-          )))
-          .catch(() => setCatchmentState(current => (
-            current?.schoolId === match.id && current.geometryUrl === catchment.geometry_url
-              ? { ...current, visible: false, error: true }
-              : current
-          )));
+        showCatchment(match, match.catchments[0]);
       })
       .catch(() => {
         // An empty map would read as "no schools here", so say it failed.
         setLoadError(true);
         setLoading(false);
       });
-  }, []);
-
-  useEffect(() => {
-    if (zoneOverlay === 'off' || !viewport) return;
-
-    // A pan that lands while an earlier fetch is still in flight must not have
-    // the stale result painted over it.
-    let current = true;
-    loadZonesInView(viewport, zoneOverlay)
-      .then(result => { if (current) setOverlayState(result); })
-      .catch(() => { if (current) setOverlayState(null); });
-
-    return () => { current = false; };
-  }, [zoneOverlay, viewport]);
-
-  useEffect(() => {
-    const languages = navigator.languages?.length > 0
-      ? navigator.languages
-      : navigator.language
-        ? [navigator.language]
-        : [];
-
-    let stored: string | null = null;
-    try {
-      stored = window.localStorage.getItem(LOCALE_STORAGE_KEY);
-    } catch {
-      // Private browsing and blocked storage both throw; the guess still works.
-    }
-
-    const query = new URLSearchParams(window.location.search).get('lang');
-    // Deferred a tick so the first paint matches the server-rendered shell.
-    window.setTimeout(() => setLocale(resolveInitialLocale({ query, stored, languages })), 0);
-  }, []);
-
-  const handleLocaleChange = useCallback((next: Locale) => {
-    setLocale(next);
-    try {
-      window.localStorage.setItem(LOCALE_STORAGE_KEY, next);
-    } catch {
-      // Non-fatal: the switch still applies for this visit.
-    }
-  }, []);
+  }, [showCatchment]);
 
   // The desktop top bar (search + filters) wraps to a variable number of rows
   // depending on viewport width and locale, so track its bottom edge and offset
@@ -356,13 +163,8 @@ export default function SchoolsPage() {
     }
   }, [selectedSchool]);
 
-
-  function schoolId(s: School) {
-    return s.id;
-  }
-
-  function handleSchoolClick(school: School) {
-    const isDeselect = !!selectedSchool && schoolId(selectedSchool) === schoolId(school);
+  function handleSchoolClick(school: MapSchool) {
+    const isDeselect = selectedSchool?.id === school.id;
     setSelectedSchool(isDeselect ? null : school);
     if (!isDeselect && isMobile) setSheetSnap('expanded');
   }
@@ -372,112 +174,32 @@ export default function SchoolsPage() {
   }
 
   const handleZoneOverlayChange = useCallback((next: ZoneOverlayKind) => {
-    setOverlayState(null);
     setZoneOverlay(next);
     if (selectedSchool && !schoolMatchesZoneOverlay(selectedSchool, next)) {
       setSelectedSchool(null);
     }
-  }, [selectedSchool]);
+  }, [selectedSchool, setZoneOverlay]);
 
-  const handlePickSchool = useCallback((s: School) => {
+  const handlePickSchool = useCallback((s: MapSchool) => {
     setPlaceFocus(null);
     setSelectedSchool(s);
     if (isMobile) setSheetSnap('expanded');
   }, [isMobile]);
 
-  const handlePickPlace = useCallback((schools: School[]) => {
+  const handlePickPlace = useCallback((schools: MapSchool[]) => {
     setSelectedSchool(null);
     setPlaceFocus(schools);
   }, []);
 
-  const activeCatchment = catchmentState && catchmentState.schoolId === selectedSchool?.id
-    ? catchmentState
-    : null;
-  const catchmentVisible = activeCatchment?.visible ?? false;
-  const schoolCatchments = activeCatchment?.feature ? [activeCatchment.feature] : null;
-  const catchmentError = activeCatchment?.error ?? false;
-
-  const handleToggleCatchment = useCallback((catchment: SchoolCatchment) => {
-    const school = selectedSchool;
-    if (!school?.catchments?.length || !Number.isFinite(school.location_age_id)) return;
-
-    if (activeCatchment?.geometryUrl === catchment.geometry_url && catchmentVisible) {
-      setCatchmentState({ ...activeCatchment, visible: false, error: false });
-      return;
-    }
-
-    const cached = activeCatchment?.geometryUrl === catchment.geometry_url
-      ? activeCatchment.feature
-      : null;
-    setCatchmentState({
-      schoolId: school.id,
-      geometryUrl: catchment.geometry_url,
-      visible: true,
-      feature: cached,
-      error: false,
-    });
-    if (cached) return;
-
-    loadCatchmentFeature({
-      state: school.state.toLowerCase(),
-      location_age_id: Number(school.location_age_id),
-      kind: catchment.kind,
-      geometry_url: catchment.geometry_url,
-    })
-      .then(feature => {
-        setCatchmentState(current => (
-          current?.schoolId === school.id && current.geometryUrl === catchment.geometry_url
-            ? { ...current, feature }
-            : current
-        ));
-      })
-      .catch(() => {
-        setCatchmentState(current => (
-          current?.schoolId === school.id && current.geometryUrl === catchment.geometry_url
-            ? { ...current, visible: false, error: true }
-            : current
-        ));
-      });
-  }, [activeCatchment, catchmentVisible, selectedSchool]);
-
-  const clearLookup = useCallback(() => {
-    lookupRequestRef.current += 1;
-    setPickMode(false);
-    setLookupPin(null);
-    setLookupResults(null);
-    setLookupState(null);
-    setLookupError(false);
-    setLookupLoading(false);
-  }, []);
-
-  const handlePickLocation = useCallback(([lat, lng]: [number, number]) => {
-    setPickMode(false);
+  const lookUpLocation = lookup.lookUp;
+  const handlePickLocation = useCallback((point: [number, number]) => {
     setSelectedSchool(null);
-    setLookupPin([lat, lng]);
-    setLookupResults([]);
-    setLookupState(null);
-    setLookupError(false);
-    setLookupLoading(true);
     if (isMobile) setSheetSnap('expanded');
-
-    const request = ++lookupRequestRef.current;
-    // GeoJSON is [lng, lat]; Leaflet hands us [lat, lng].
-    lookupCatchmentsAt([lng, lat])
-      .then(result => {
-        if (request !== lookupRequestRef.current) return;
-        setLookupResults(result.features);
-        setLookupState(result.state);
-        setLookupLoading(false);
-      })
-      .catch(() => {
-        if (request !== lookupRequestRef.current) return;
-        setLookupError(true);
-        setLookupLoading(false);
-      });
-  }, [isMobile]);
+    lookUpLocation(point);
+  }, [isMobile, lookUpLocation]);
 
   const schoolsByLocationAgeId = useMemo(() => {
-    const map = new Map<number, School>();
+    const map = new Map<number, MapSchool>();
     for (const school of allSchools) {
       if (Number.isFinite(school.location_age_id)) map.set(Number(school.location_age_id), school);
     }
@@ -488,10 +210,10 @@ export default function SchoolsPage() {
   // The selected school's zone wins: the lookup is kept so closing the detail
   // panel returns to it, and its zones stay as context until then, but once
   // the reader asks for this school's zone that is what the map must show.
-  const mapCatchments = catchmentVisible
-    ? schoolCatchments
-    : lookupResults?.length
-      ? lookupResults
+  const mapCatchments = catchment.visible
+    ? catchment.features
+    : lookup.results?.length
+      ? lookup.results
       : null;
 
   const areaSummary = useMemo(() => {
@@ -550,9 +272,9 @@ export default function SchoolsPage() {
             overlayFeatures={overlayState?.features ?? null}
             onViewportChange={setViewport}
             autoLocate={!deepLinked}
-            pickMode={pickMode}
+            pickMode={lookup.pickMode}
             onPickLocation={handlePickLocation}
-            lookupPin={lookupPin}
+            lookupPin={lookup.pin}
           />
         )}
       </div>
@@ -570,9 +292,9 @@ export default function SchoolsPage() {
             </div>
             <div className="pointer-events-auto flex gap-2 items-center overflow-x-auto">
               <LookupButton
-                active={pickMode}
+                active={lookup.pickMode}
                 dictionary={dictionary}
-                onClick={() => (pickMode ? clearLookup() : setPickMode(true))}
+                onClick={() => (lookup.pickMode ? lookup.clear() : lookup.setPickMode(true))}
               />
               <ZoneOverlayControl value={zoneOverlay} onChange={handleZoneOverlayChange} dictionary={dictionary} />
               <LanguageToggle locale={locale} onChange={handleLocaleChange} />
@@ -580,7 +302,7 @@ export default function SchoolsPage() {
             <div className="pointer-events-auto">
               <FilterBar filters={filters} onChange={setFilters} dictionary={dictionary} variant="scroll" />
             </div>
-            {pickMode && (
+            {lookup.pickMode && (
               <div className="pointer-events-none rounded-lg bg-indigo-600/95 px-3 py-2 text-[11px] text-white shadow-md">
                 {dictionary.lookup.hint}
               </div>
@@ -593,17 +315,21 @@ export default function SchoolsPage() {
             )}
           </div>
 
-          <BottomSheet snap={sheetSnap} onSnapChange={setSheetSnap}>
-            {lookupPin && !selectedSchool ? (
+          <BottomSheet
+            snap={sheetSnap}
+            onSnapChange={setSheetSnap}
+            labels={{ expand: dictionary.sidebar.expandList, collapse: dictionary.sidebar.collapseList }}
+          >
+            {lookup.pin && !selectedSchool ? (
               <CatchmentLookup
-                results={lookupResults}
-                lookupState={lookupState}
+                results={lookup.results}
+                lookupState={lookup.state}
                 schoolsByLocationAgeId={schoolsByLocationAgeId}
-                loading={lookupLoading}
-                error={lookupError}
+                loading={lookup.loading}
+                error={lookup.error}
                 dictionary={dictionary}
                 locale={locale}
-                onClear={clearLookup}
+                onClear={lookup.clear}
                 onPickSchool={handlePickSchool}
                 variant="sheet"
               />
@@ -614,9 +340,9 @@ export default function SchoolsPage() {
                 locale={locale}
                 onClose={handleMapClick}
                 variant="sheet"
-                activeCatchmentUrl={catchmentVisible ? activeCatchment?.geometryUrl : undefined}
-                onToggleCatchment={handleToggleCatchment}
-                catchmentError={catchmentError}
+                activeCatchmentUrl={catchment.activeUrl}
+                onToggleCatchment={catchment.toggle}
+                catchmentError={catchment.error}
                 profileHref={profileHref}
               />
             ) : (
@@ -652,9 +378,9 @@ export default function SchoolsPage() {
             </div>
             <div className="pointer-events-auto">
               <LookupButton
-                active={pickMode}
+                active={lookup.pickMode}
                 dictionary={dictionary}
-                onClick={() => (pickMode ? clearLookup() : setPickMode(true))}
+                onClick={() => (lookup.pickMode ? lookup.clear() : lookup.setPickMode(true))}
               />
             </div>
             <div className="pointer-events-auto">
@@ -668,12 +394,12 @@ export default function SchoolsPage() {
             </div>
           </div>
 
-          {(pickMode || zoneStatus || zoneContext) && (
+          {(lookup.pickMode || zoneStatus || zoneContext) && (
             <div
               style={{ top: topBarBottom + 8 }}
               className="absolute left-1/2 -translate-x-1/2 z-30 flex flex-col items-center gap-1.5 pointer-events-none"
             >
-              {pickMode && (
+              {lookup.pickMode && (
                 <div className="rounded-lg bg-indigo-600/95 px-4 py-2 text-xs text-white shadow-lg">
                   {dictionary.lookup.hint}
                 </div>
@@ -690,16 +416,16 @@ export default function SchoolsPage() {
           {/* Shares the right-hand column with the detail panel. Selecting a
               result swaps to that school's detail; closing it returns here,
               because the lookup state is kept. */}
-          {lookupPin && !selectedSchool && (
+          {lookup.pin && !selectedSchool && (
             <CatchmentLookup
-              results={lookupResults}
-              lookupState={lookupState}
+              results={lookup.results}
+              lookupState={lookup.state}
               schoolsByLocationAgeId={schoolsByLocationAgeId}
-              loading={lookupLoading}
-              error={lookupError}
+              loading={lookup.loading}
+              error={lookup.error}
               dictionary={dictionary}
               locale={locale}
-              onClear={clearLookup}
+              onClear={lookup.clear}
               onPickSchool={handlePickSchool}
               topOffset={topBarBottom + 8}
             />
@@ -715,8 +441,10 @@ export default function SchoolsPage() {
               onClick={() => setLeftPanelOpen(o => !o)}
               className="absolute -right-3 top-1/2 -translate-y-1/2 z-20 w-6 h-12 bg-white rounded-r-md shadow-md flex items-center justify-center text-gray-500 hover:text-gray-800 hover:bg-gray-50 transition-colors"
               title={leftPanelOpen ? dictionary.sidebar.collapseList : dictionary.sidebar.expandList}
+              aria-label={leftPanelOpen ? dictionary.sidebar.collapseList : dictionary.sidebar.expandList}
+              aria-expanded={leftPanelOpen}
             >
-              {leftPanelOpen ? '‹' : '›'}
+              <span aria-hidden="true">{leftPanelOpen ? '‹' : '›'}</span>
             </button>
 
             {leftPanelOpen && (
@@ -745,73 +473,16 @@ export default function SchoolsPage() {
               locale={locale}
               onClose={handleMapClick}
               topOffset={topBarBottom + 8}
-              activeCatchmentUrl={catchmentVisible ? activeCatchment?.geometryUrl : undefined}
-              onToggleCatchment={handleToggleCatchment}
-              catchmentError={catchmentError}
+              activeCatchmentUrl={catchment.activeUrl}
+              onToggleCatchment={catchment.toggle}
+              catchmentError={catchment.error}
               profileHref={profileHref}
             />
           )}
 
           {/* The detail panel occupies the same right-hand column, so hide the
               legend while a school is selected instead of stacking the two. */}
-          <div className={`absolute bottom-8 right-3 z-10 bg-white/90 backdrop-blur-sm rounded-lg px-3 py-2 shadow-md text-[10px] text-gray-600 space-y-1 ${selectedSchool ? 'hidden' : ''}`}>
-            {zoneOverlay !== 'off' && (
-              <div className="flex items-center gap-2 pb-1 mb-1 border-b border-gray-100">
-                <span
-                  className="inline-block w-4 h-0 shrink-0"
-                  style={{
-                    borderTop: `2.5px solid ${CATCHMENT_COLORS[zoneOverlay === 'primary' ? 'primary' : 'secondary'].color}`,
-                    outline: '1.5px solid rgba(255,255,255,0.9)',
-                  }}
-                ></span>
-                <span className="font-medium text-gray-700">{zoneLegendLabel}</span>
-              </div>
-            )}
-            <div className="flex items-center gap-2">
-              <span
-                className="w-3 h-3 rounded-full border border-white inline-block shrink-0"
-                style={{ background: SECTOR_COLORS.Government }}
-              ></span>
-              {dictionary.filters.government}
-            </div>
-            <div className="flex items-center gap-2">
-              <span
-                className="w-3 h-3 rounded-full border border-white inline-block shrink-0"
-                style={{ background: SECTOR_COLORS.Catholic }}
-              ></span>
-              {dictionary.filters.catholic}
-            </div>
-            <div className="flex items-center gap-2">
-              <span
-                className="w-3 h-3 rounded-full border border-white inline-block shrink-0"
-                style={{ background: SECTOR_COLORS.Independent }}
-              ></span>
-              {dictionary.filters.independent}
-            </div>
-            <div className="flex items-center gap-2 pt-1 border-t border-gray-100">
-              <span className="flex gap-0.5 items-center shrink-0">
-                <span className="w-1.5 h-1.5 rounded-full bg-gray-400 inline-block"></span>
-                <span className="w-2.5 h-2.5 rounded-full bg-gray-400 inline-block"></span>
-                <span className="w-3.5 h-3.5 rounded-full bg-gray-400 inline-block"></span>
-              </span>
-              <span>{dictionary.legend.sizeEqualsEnrolments}</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <span className="w-2 h-2 rounded-full bg-gray-400 border border-white inline-block shrink-0 opacity-55"></span>
-              {dictionary.legend.enrolmentsUnknown}
-            </div>
-            <div className="flex items-center gap-2">
-              <span
-                className="w-3.5 h-3.5 rounded-full inline-block shrink-0 relative"
-                style={{
-                  background: `conic-gradient(${SECTOR_COLORS.Government} 0deg 200deg, ${SECTOR_COLORS.Catholic} 200deg 290deg, ${SECTOR_COLORS.Independent} 290deg 360deg)`,
-                }}
-              >
-                <span className="absolute inset-[3.5px] rounded-full bg-white"></span>
-              </span>
-              <span>{dictionary.legend.clusterRing}</span>
-            </div>
-          </div>
+          <MapLegend zoneOverlay={zoneOverlay} label={zoneLegendLabel} hidden={!!selectedSchool} dictionary={dictionary} />
         </>
       )}
     </div>

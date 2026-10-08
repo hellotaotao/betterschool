@@ -1,12 +1,14 @@
 {
   "loadingMap": "加载地图中...",
   "loadError": "学校数据加载失败，请检查网络后刷新页面。",
+  "close": "关闭",
   "search": {
     "placeholder": "搜索学校 / 区 / 邮编",
     "schoolsGroup": "学校",
     "placesGroup": "地区与邮编",
     "placeCount": "{count} 所学校",
-    "noResults": "无匹配结果"
+    "noResults": "无匹配结果",
+    "clear": "清除搜索"
   },
   "filters": {
     "all": "全部",
@@ -34,6 +36,7 @@
     "collapseList": "收起列表",
     "expandList": "展开列表",
     "areaCount": "当前区域 {count} 所学校",
+    "sortLabel": "学校排序",
     "sortByName": "按名称",
     "sortByIcsea": "按 ICSEA",
     "sortByEnrolments": "按在校人数",
@@ -160,7 +163,7 @@
     },
     "browse": {
       "metaTitle": "按州和城区浏览澳洲学校",
-      "metaDescription": "按州和城区浏览全澳学校：{schools} 所学校的 ACARA 官方资料，以及新州公立学校学区边界。不排名，不打综合分。",
+      "metaDescription": "按州和城区浏览全澳学校：{schools} 所学校的 ACARA 官方资料，以及{states}的公立学校学区边界。不排名，不打综合分。",
       "heading": "浏览澳洲学校",
       "intro": "{suburbs} 个城区、{schools} 所学校，数据来自 ACARA 2025 官方采集。选一个州查看它的城区，或者直接打开地图按地址查。",
       "statesHeading": "各州与领地",

@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { getLargestSuburbs, getSchoolsDataset, getStateSummaries } from '@/lib/schoolsData';
-import { formatMessage } from '@/lib/i18n';
+import { coveredCatchmentStates, formatMessage, getMessages } from '@/lib/i18n';
 import { buildPageMetadata, getSeo, localeStateName, type Locale } from '@/lib/seoLocale';
 import { mapUrl, stateIndexPath, suburbPath } from '@/lib/slug';
 import PageShell from '@/components/seo/PageShell';
@@ -15,7 +15,10 @@ export function browseMetadata(locale: Locale): Metadata {
   return buildPageMetadata({
     locale,
     title: t.metaTitle,
-    description: formatMessage(t.metaDescription, { schools: dataset.schools.length.toLocaleString() }),
+    description: formatMessage(t.metaDescription, {
+      schools: dataset.schools.length.toLocaleString(),
+      states: coveredCatchmentStates(getMessages(locale), locale),
+    }),
     bareEnglishPath: BARE_PATH,
   });
 }

@@ -1,29 +1,19 @@
 "use client";
 
-import { School, type SchoolCatchment } from '@/types/school';
+import { MapSchool, type MapSchoolCatchment } from '@/types/school';
 import { coveredCatchmentStates, formatMessage, getReligionLabel, getSchoolTypeLabel, getSectorLabel, Locale, Messages } from '@/lib/i18n';
 import { catchmentAbsenceKind, catchmentStateInfo } from '@/lib/catchmentStates';
-import { hasLegacyScore } from '@/utils/schoolFilters';
+import { hasLegacyScore, sectorBadgeClass } from '@/utils/schoolFilters';
 import ZoneSwatch from './ZoneSwatch';
 
-/**
- * Tints of the map's own SECTOR_COLORS hues. A Catholic school used to get the
- * Independent orange here, so the panel contradicted the marker it opened from.
- */
-const SECTOR_BADGE_CLASSES: Record<string, string> = {
-  Government: 'bg-green-100 text-green-700',
-  Catholic: 'bg-violet-100 text-violet-700',
-  Independent: 'bg-orange-100 text-orange-700',
-};
-
 interface SchoolDetailProps {
-  school: School;
+  school: MapSchool;
   dictionary: Messages;
   locale: Locale;
   onClose: () => void;
   variant?: 'panel' | 'sheet';
   activeCatchmentUrl?: string;
-  onToggleCatchment?: (catchment: SchoolCatchment) => void;
+  onToggleCatchment?: (catchment: MapSchoolCatchment) => void;
   catchmentError?: boolean;
   /** Link to this school's own page, when one can be built. */
   profileHref?: string;
@@ -60,9 +50,10 @@ export default function SchoolDetail({
         <span className="text-xs font-bold text-indigo-600">{dictionary.details.title}</span>
         <button
           onClick={onClose}
+          aria-label={dictionary.close}
           className="text-gray-400 hover:text-gray-700 text-base leading-none"
         >
-          ✕
+          <span aria-hidden="true">✕</span>
         </button>
       </div>
 
@@ -97,7 +88,7 @@ export default function SchoolDetail({
             <span className="text-gray-500">{dictionary.details.sector}</span>
             <span
               className={`text-[10px] px-2 py-0.5 rounded-full font-medium ${
-                SECTOR_BADGE_CLASSES[school.sector] ?? 'bg-gray-100 text-gray-600'
+                sectorBadgeClass(school.sector)
               }`}
             >
               {getSectorLabel(school.sector, dictionary)}
@@ -107,9 +98,11 @@ export default function SchoolDetail({
           <div className="flex justify-between items-center">
             <span className="text-gray-500">{dictionary.details.religiousAffiliation}</span>
             <span
+              // Neutral tones only: purple sat next to the Catholic violet, and
+              // hue on this app means sector.
               className={`text-[10px] px-2 py-0.5 rounded-full font-medium ${
                 school.is_religious === true
-                  ? 'bg-purple-100 text-purple-700'
+                  ? 'bg-slate-200 text-slate-700'
                   : school.is_religious === false
                     ? 'bg-gray-100 text-gray-600'
                     : 'bg-gray-50 text-gray-400'

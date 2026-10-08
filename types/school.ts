@@ -118,3 +118,26 @@ export interface School {
     data_year: number;
   };
 }
+
+/** The catchment fields the map app reads. Attribution stays on the zone page. */
+export type MapSchoolCatchment = Pick<
+  SchoolCatchment,
+  'geometry_url' | 'zone_id' | 'kind' | 'year_levels' | 'effective_year' | 'data_year'
+>;
+
+/**
+ * A school as the map app receives it: `/data/schools.client.json`, projected
+ * from canonical by scripts/client-schools.mjs. Keep the two in step — a field
+ * the app starts reading has to be added to that allowlist too, or it arrives
+ * undefined. A full `School` is assignable to this, so shared helpers typed on
+ * it serve the server pages as well.
+ */
+export type MapSchool = Pick<
+  School,
+  | 'id' | 'acara_sml_id' | 'location_age_id' | 'school_name' | 'suburb' | 'state'
+  | 'postcode' | 'lat' | 'lng' | 'sector' | 'school_type' | 'campus_type' | 'year_range'
+  | 'icsea' | 'icsea_percentile' | 'total_enrolments' | 'girls' | 'boys'
+  | 'lbote_yes_percent' | 'indigenous_percent' | 'school_url' | 'myschool_url'
+  | 'governing_body' | 'religious_affiliation' | 'is_religious' | 'fees'
+  | 'legacy_score' | 'legacy_rank' | 'legacy_metric_status'
+> & { catchments?: MapSchoolCatchment[] };

@@ -1,15 +1,14 @@
 "use client";
 
-import { useEffect, useCallback, useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import { MapContainer, TileLayer, Marker, GeoJSON, useMap, useMapEvents } from 'react-leaflet';
 import L from 'leaflet';
 import 'leaflet.markercluster';
 import 'leaflet/dist/leaflet.css';
-import { School } from '@/types/school';
+import { MapSchool } from '@/types/school';
 import { getMarkerRadius, getMarkerColor, CATCHMENT_COLORS, SECTOR_COLORS } from '@/utils/schoolFilters';
-import type { CatchmentFeature } from '@/lib/catchmentLookup';
-
-export interface Viewport { west: number; south: number; east: number; north: number }
+import { zoneKey, type CatchmentFeature, type ViewportBounds } from '@/lib/catchmentLookup';
+import { isAustralian, readGeoCookie } from '@/lib/ipGeo';
 
 
 /**
@@ -40,7 +39,7 @@ const lookupPinIcon = L.divIcon({
 /** Cache marker icons by rendered radius, sector, and selection state. */
 const iconCache = new Map<string, L.DivIcon>();
 
-function getSchoolIcon(school: School, isSelected: boolean): L.DivIcon {
+function getSchoolIcon(school: MapSchool, isSelected: boolean): L.DivIcon {
   const radius = getMarkerRadius(school.total_enrolments);
   const known = Number.isFinite(school.total_enrolments);
   const cacheKey = `${Math.round(radius * 2)}-${known ? 'k' : 'u'}-${school.sector}-${isSelected}`;
@@ -64,7 +63,7 @@ function getSchoolIcon(school: School, isSelected: boolean): L.DivIcon {
  * government school turned it purple. The rings do that job on their own, and
  * they are deliberately achromatic, because hue on this map means sector.
  */
-function createSchoolIcon(school: School, isSelected: boolean): L.DivIcon {
+function createSchoolIcon(school: MapSchool, isSelected: boolean): L.DivIcon {
   const radius = getMarkerRadius(school.total_enrolments);
   const size = radius * 2;
   const bgColor = getMarkerColor(school.sector);
@@ -172,19 +171,18 @@ function createClusterIcon(cluster: L.MarkerCluster): L.DivIcon {
 }
 
 interface SchoolMapProps {
-  schools: School[];
-  selectedSchool: School | null;
-  onSchoolClick: (school: School) => void;
-  onBoundsChange: (visibleSchools: School[]) => void;
+  schools: MapSchool[];
+  selectedSchool: MapSchool | null;
+  onSchoolClick: (school: MapSchool) => void;
+  onBoundsChange: (visibleSchools: MapSchool[]) => void;
   onMapClick: () => void;
-  flyToSchool?: School | null;
-  fitToSchools?: School[] | null;
-  onGeoReady?: () => void;
+  flyToSchool?: MapSchool | null;
+  fitToSchools?: MapSchool[] | null;
   /** Catchment polygons to draw, if any. */
   catchmentFeatures?: CatchmentFeature[] | null;
   /** Browse overlay: every zone of one kind across the viewport, outlines only. */
   overlayFeatures?: CatchmentFeature[] | null;
-  onViewportChange?: (viewport: Viewport) => void;
+  onViewportChange?: (viewport: ViewportBounds) => void;
   /** When true, a map click picks a location to look up instead of clearing the selection. */
   pickMode?: boolean;
   onPickLocation?: (point: [number, number]) => void;
@@ -192,110 +190,6 @@ interface SchoolMapProps {
   lookupPin?: [number, number] | null;
   /** False when a deep link already decided where the map should sit. */
   autoLocate?: boolean;
-}
-
-type Coordinates = [number, number];
-
-type GeoService = {
-  url: string;
-  timeoutMs: number;
-  parse: (data: unknown) => Coordinates | null;
-};
-
-const GEO_SERVICES: GeoService[] = [
-  {
-    url: 'https://ipapi.co/json/',
-    timeoutMs: 1000,
-    parse: parseIpApiResponse,
-  },
-  {
-    url: 'https://free.freeipapi.com/api/json',
-    timeoutMs: 1200,
-    parse: parseFreeIpApiResponse,
-  },
-  {
-    url: 'https://ipinfo.io/json',
-    timeoutMs: 1000,
-    parse: parseIpInfoResponse,
-  },
-];
-
-function toCoordinate(value: unknown): number | null {
-  const parsed = typeof value === 'number' ? value : Number(value);
-  return Number.isFinite(parsed) ? parsed : null;
-}
-
-function toCoordinates(latitude: unknown, longitude: unknown): Coordinates | null {
-  const lat = toCoordinate(latitude);
-  const lng = toCoordinate(longitude);
-
-  if (lat === null || lng === null) return null;
-  return [lat, lng];
-}
-
-function parseIpApiResponse(data: unknown): Coordinates | null {
-  if (!data || typeof data !== 'object') return null;
-
-  const payload = data as { latitude?: unknown; longitude?: unknown };
-  return toCoordinates(payload.latitude, payload.longitude);
-}
-
-function parseFreeIpApiResponse(data: unknown): Coordinates | null {
-  const payload = Array.isArray(data) ? data[0] : data;
-
-  if (!payload || typeof payload !== 'object') return null;
-
-  const record = payload as { latitude?: unknown; longitude?: unknown };
-  return toCoordinates(record.latitude, record.longitude);
-}
-
-function parseIpInfoResponse(data: unknown): Coordinates | null {
-  if (!data || typeof data !== 'object') return null;
-
-  const payload = data as { loc?: unknown };
-  if (typeof payload.loc !== 'string') return null;
-
-  const [latitude, longitude] = payload.loc.split(',');
-  return toCoordinates(latitude, longitude);
-}
-
-async function fetchJsonWithTimeout(url: string, timeoutMs: number): Promise<unknown> {
-  const controller = new AbortController();
-  const timeoutId = window.setTimeout(() => controller.abort(), timeoutMs);
-
-  try {
-    const response = await fetch(url, {
-      signal: controller.signal,
-      headers: {
-        Accept: 'application/json',
-      },
-    });
-
-    if (!response.ok) {
-      throw new Error(`HTTP ${response.status}`);
-    }
-
-    return response.json();
-  } finally {
-    window.clearTimeout(timeoutId);
-  }
-}
-
-async function locateByIp(): Promise<Coordinates | null> {
-  for (const service of GEO_SERVICES) {
-    try {
-      const payload = await fetchJsonWithTimeout(service.url, service.timeoutMs);
-      const coordinates = service.parse(payload);
-
-      if (coordinates) {
-        return coordinates;
-      }
-    } catch {
-      // Try the next provider.
-    }
-  }
-
-  return null;
 }
 
 /**
@@ -357,10 +251,10 @@ function BoundsTracker({
   onBoundsChange,
   onViewportChange,
 }: {
-  schools: School[];
-  onBoundsChange: (visible: School[]) => void;
+  schools: MapSchool[];
+  onBoundsChange: (visible: MapSchool[]) => void;
   /** Raw viewport, for the browse overlay's index query. */
-  onViewportChange?: (viewport: Viewport) => void;
+  onViewportChange?: (viewport: ViewportBounds) => void;
 }) {
   const report = () => {
     const bounds = map.getBounds();
@@ -383,64 +277,42 @@ function BoundsTracker({
 }
 
 /**
- * Center the map around the detected user location after mount.
+ * Center the map around the visitor's approximate location after mount.
+ *
+ * The position comes from the cookie proxy.ts sets from the edge's own
+ * geolocation, so no third party sees the visitor's IP. Without one (local
+ * dev, an overseas visitor) it falls back to the browser's geolocation, and
+ * keeps that only when it lands in Australia.
  *
  * Skipped when the page already has an explicit target (a /schools?school=
- * deep link): IP lookup resolves seconds later and would otherwise yank the
- * view away from the school the visitor asked for.
+ * deep link): a late-arriving position would otherwise yank the view away
+ * from the school the visitor asked for.
  */
-function GeoLocator({ onReady, enabled = true }: { onReady?: () => void; enabled?: boolean }) {
+function GeoLocator({ enabled = true }: { enabled?: boolean }) {
   const map = useMap();
 
   useEffect(() => {
-    if (!enabled) {
-      onReady?.();
+    if (!enabled) return;
+
+    const edge = readGeoCookie(document.cookie);
+    if (edge) {
+      map.setView(edge, 10);
       return;
     }
+    if (!navigator.geolocation) return;
+
     let cancelled = false;
-
-    const done = (lat: number, lng: number) => {
-      if (cancelled) return;
-      map.setView([lat, lng], 10);
-      onReady?.();
-    };
-
-    const ready = () => {
-      if (!cancelled) {
-        onReady?.();
-      }
-    };
-
-    const fallbackToBrowserGeolocation = () => {
-      if (!navigator.geolocation) {
-        ready();
-        return;
-      }
-
-      navigator.geolocation.getCurrentPosition(
-        (position) => done(position.coords.latitude, position.coords.longitude),
-        () => ready(),
-        {
-          enableHighAccuracy: false,
-          timeout: 3000,
-          maximumAge: 300000,
+    navigator.geolocation.getCurrentPosition(
+      ({ coords }) => {
+        if (!cancelled && isAustralian(coords.latitude, coords.longitude)) {
+          map.setView([coords.latitude, coords.longitude], 10);
         }
-      );
-    };
-
-    void locateByIp()
-      .then((coordinates) => {
-        if (coordinates) {
-          done(coordinates[0], coordinates[1]);
-          return;
-        }
-
-        fallbackToBrowserGeolocation();
-      })
-      .catch(() => {
-        fallbackToBrowserGeolocation();
-      });
-
+      },
+      () => {
+        // Denied or timed out: the default whole-of-Australia view stands.
+      },
+      { enableHighAccuracy: false, timeout: 3000, maximumAge: 300000 },
+    );
     return () => {
       cancelled = true;
     };
@@ -451,7 +323,7 @@ function GeoLocator({ onReady, enabled = true }: { onReady?: () => void; enabled
 }
 
 /** Fly to the selected school after selection changes. */
-function FlyToTracker({ school }: { school: School | null | undefined }) {
+function FlyToTracker({ school }: { school: MapSchool | null | undefined }) {
   const map = useMap();
   useEffect(() => {
     if (!school || !Number.isFinite(school.lat) || !Number.isFinite(school.lng)) return;
@@ -498,9 +370,9 @@ function FitToSchools({
   schools,
   onBoundsChange,
 }: {
-  focus: School[] | null;
-  schools: School[];
-  onBoundsChange: (visible: School[]) => void;
+  focus: MapSchool[] | null;
+  schools: MapSchool[];
+  onBoundsChange: (visible: MapSchool[]) => void;
 }) {
   const map = useMap();
   useEffect(() => {
@@ -530,9 +402,9 @@ function ClusterLayer({
   selectedId,
   onSchoolClick,
 }: {
-  schools: School[];
+  schools: MapSchool[];
   selectedId: string | null;
-  onSchoolClick: (school: School) => void;
+  onSchoolClick: (school: MapSchool) => void;
 }) {
   const map = useMap();
   const groupRef = useRef<L.MarkerClusterGroup | null>(null);
@@ -620,7 +492,6 @@ export default function SchoolMap({
   onMapClick,
   flyToSchool,
   fitToSchools,
-  onGeoReady,
   catchmentFeatures,
   overlayFeatures,
   onViewportChange,
@@ -629,10 +500,6 @@ export default function SchoolMap({
   lookupPin,
   autoLocate = true,
 }: SchoolMapProps) {
-  const handleBoundsChange = useCallback((visible: School[]) => {
-    onBoundsChange(visible);
-  }, [onBoundsChange]);
-
   const defaultCenter: [number, number] = [-25.2744, 133.7751];
 
   return (
@@ -649,11 +516,11 @@ export default function SchoolMap({
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
 
-        <GeoLocator onReady={onGeoReady} enabled={autoLocate} />
+        <GeoLocator enabled={autoLocate} />
         <FlyToTracker school={flyToSchool} />
-        <FitToSchools focus={fitToSchools ?? null} schools={schools} onBoundsChange={handleBoundsChange} />
+        <FitToSchools focus={fitToSchools ?? null} schools={schools} onBoundsChange={onBoundsChange} />
         <MapClickTracker onMapClick={onMapClick} pickMode={pickMode} onPickLocation={onPickLocation} />
-        <BoundsTracker schools={schools} onBoundsChange={handleBoundsChange} onViewportChange={onViewportChange} />
+        <BoundsTracker schools={schools} onBoundsChange={onBoundsChange} onViewportChange={onViewportChange} />
         <FitToCatchments features={catchmentFeatures} />
 
         {/* Browse overlay: outlines only, no fill. A filled zone already means
@@ -668,7 +535,7 @@ export default function SchoolMap({
             halo cannot paint over the line it abuts. */}
         {overlayFeatures?.map((feature) => (
           <GeoJSON
-            key={`overlay-casing-${feature.properties.zone_id ?? `${feature.properties.location_age_id}-${feature.properties.kind}-${feature.properties.year_levels.join('-')}`}`}
+            key={`overlay-casing-${zoneKey(feature)}`}
             data={feature as never}
             interactive={false}
             style={{ color: '#ffffff', weight: 5, opacity: 0.85, fill: false }}
@@ -678,7 +545,7 @@ export default function SchoolMap({
           const style = CATCHMENT_COLORS[feature.properties.kind] ?? CATCHMENT_COLORS.primary;
           return (
             <GeoJSON
-              key={`overlay-${feature.properties.zone_id ?? `${feature.properties.location_age_id}-${feature.properties.kind}-${feature.properties.year_levels.join('-')}`}`}
+              key={`overlay-${zoneKey(feature)}`}
               data={feature as never}
               interactive={false}
               style={{
@@ -697,7 +564,7 @@ export default function SchoolMap({
           const style = CATCHMENT_COLORS[feature.properties.kind] ?? CATCHMENT_COLORS.primary;
           return (
             <GeoJSON
-              key={feature.properties.zone_id ?? `${feature.properties.location_age_id}-${feature.properties.kind}-${feature.properties.year_levels.join('-')}`}
+              key={zoneKey(feature)}
               data={feature as never}
               interactive={false}
               style={{

@@ -8,6 +8,7 @@ import {
   SECTOR_COLORS,
   UNKNOWN_ENROLMENT_RADIUS,
   type FilterState,
+  sectorBadgeClass,
 } from './schoolFilters';
 
 function school(overrides: Partial<School> = {}): School {
@@ -207,5 +208,15 @@ describe('filterSchoolsForZoneOverlay', () => {
     expect(ids('secondary-unspecified')).toEqual(expected);
     expect(ids('year-7')).toEqual(expected);
     expect(ids('year-12')).toEqual(expected);
+  });
+});
+
+describe('sectorBadgeClass', () => {
+  it('tints each sector with its own marker hue and never borrows another', () => {
+    expect(sectorBadgeClass('Government')).toContain('green');
+    expect(sectorBadgeClass('Catholic')).toContain('violet');
+    expect(sectorBadgeClass('Independent')).toContain('orange');
+    // An unrecognised sector is not Independent; it gets no hue at all.
+    expect(sectorBadgeClass('Unknown')).not.toMatch(/orange|green|violet/);
   });
 });

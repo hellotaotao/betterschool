@@ -1,4 +1,4 @@
-import { School, SchoolSector, SchoolType } from '@/types/school';
+import { MapSchool, SchoolSector, SchoolType } from '@/types/school';
 import type { ZoneOverlayKind } from '@/lib/catchmentLookup';
 
 export type IcseaBucket = 'all' | '900' | '1000' | '1100' | '1200';
@@ -14,7 +14,7 @@ export interface FilterState {
   religion: ReligionFilter;
 }
 
-export function hasLegacyScore(school: School): school is School & { legacy_score: number; legacy_rank: number } {
+export function hasLegacyScore(school: MapSchool): school is MapSchool & { legacy_score: number; legacy_rank: number } {
   return school.legacy_metric_status === 'available'
     && Number.isFinite(school.legacy_score)
     && Number.isFinite(school.legacy_rank);
@@ -68,6 +68,21 @@ export const CATCHMENT_COLORS: Record<string, { color: string; dashArray?: strin
 const UNKNOWN_SECTOR_COLOR = '#6b7280';
 
 /**
+ * Tailwind tints of SECTOR_COLORS for text badges. One map for every surface:
+ * three copies drifted, and two of them gave a Catholic or unknown sector the
+ * Independent orange, so a badge contradicted the marker it came from.
+ */
+export const SECTOR_BADGE_CLASSES: Record<string, string> = {
+  Government: 'bg-green-100 text-green-700',
+  Catholic: 'bg-violet-100 text-violet-700',
+  Independent: 'bg-orange-100 text-orange-700',
+};
+
+export function sectorBadgeClass(sector: string): string {
+  return SECTOR_BADGE_CLASSES[sector] ?? 'bg-gray-100 text-gray-600';
+}
+
+/**
  * Compute the marker color from the official ACARA sector.
  *
  * Sector is present for 100% of schools and is a fact, not an inference, so it
@@ -82,12 +97,12 @@ function matchesSector(schoolSector: string, filterSector: FilterState['sector']
   return schoolSector === filterSector;
 }
 
-function matchesIcsea(school: School, bucket: IcseaBucket): boolean {
+function matchesIcsea(school: MapSchool, bucket: IcseaBucket): boolean {
   if (bucket === 'all') return true;
   return Number.isFinite(school.icsea) && Number(school.icsea) >= Number(bucket);
 }
 
-function matchesEnrolmentBucket(school: School, bucket: EnrolmentBucket): boolean {
+function matchesEnrolmentBucket(school: MapSchool, bucket: EnrolmentBucket): boolean {
   if (bucket === 'all') return true;
   if (!Number.isFinite(school.total_enrolments)) return false;
 
@@ -98,14 +113,14 @@ function matchesEnrolmentBucket(school: School, bucket: EnrolmentBucket): boolea
   return enrolments >= 1000;
 }
 
-function matchesReligion(school: School, filter: ReligionFilter): boolean {
+function matchesReligion(school: MapSchool, filter: ReligionFilter): boolean {
   if (filter === 'all') return true;
   if (filter === 'religious') return school.is_religious === true;
   return school.is_religious === false; // 'secular'
 }
 
 /** Filter schools by the active controls. */
-export function filterSchools(schools: School[], filters: FilterState): School[] {
+export function filterSchools(schools: MapSchool[], filters: FilterState): MapSchool[] {
   return schools.filter(school => {
     if (!matchesSector(school.sector, filters.sector)) return false;
     if (!matchesReligion(school, filters.religion)) return false;
@@ -116,7 +131,7 @@ export function filterSchools(schools: School[], filters: FilterState): School[]
   });
 }
 
-export function schoolMatchesZoneOverlay(school: School, overlay: ZoneOverlayKind): boolean {
+export function schoolMatchesZoneOverlay(school: MapSchool, overlay: ZoneOverlayKind): boolean {
   if (overlay === 'off') return true;
   if (school.sector !== 'Government') return false;
   if (overlay === 'primary') {
@@ -126,7 +141,7 @@ export function schoolMatchesZoneOverlay(school: School, overlay: ZoneOverlayKin
 }
 
 /** Keep browse markers relevant without hiding Government schools that are unzoned. */
-export function filterSchoolsForZoneOverlay(schools: School[], overlay: ZoneOverlayKind): School[] {
+export function filterSchoolsForZoneOverlay(schools: MapSchool[], overlay: ZoneOverlayKind): MapSchool[] {
   if (overlay === 'off') return schools;
   return schools.filter(school => schoolMatchesZoneOverlay(school, overlay));
 }

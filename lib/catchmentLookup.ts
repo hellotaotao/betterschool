@@ -195,6 +195,15 @@ export function zonesInBounds(
   });
 }
 
+/**
+ * React key for one drawn zone. zone_id when the index carries one; older NSW
+ * and SA layers predate it, and there school + kind + years is already unique.
+ */
+export function zoneKey(feature: CatchmentFeature): string {
+  const { zone_id, location_age_id, kind, year_levels } = feature.properties;
+  return zone_id ?? `${location_age_id}-${kind}-${year_levels.join('-')}`;
+}
+
 export function catchmentGeometryUrl(
   entry: { state: string; location_age_id: number; kind: CatchmentKind; geometry_url?: string },
 ): string {

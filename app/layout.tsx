@@ -3,6 +3,7 @@ import "./globals.css";
 import { Inter } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import { SITE_NAME, SITE_URL } from "@/lib/site";
+import { coveredCatchmentStates, getMessages } from "@/lib/i18n";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -13,8 +14,10 @@ export const metadata: Metadata = {
         default: `${SITE_NAME} — Australian schools, by where you live`,
         template: `%s | ${SITE_NAME}`,
     },
+    // States come from the published layers, so adding one cannot leave this
+    // describing a smaller site than the one that ships.
     description:
-        "Find the schools around an address: official ACARA profiles for 11,034 Australian schools and NSW government intake zones. No ranking, no composite score.",
+        `Find the schools around an address: official ACARA profiles for 11,034 Australian schools and government intake zones for ${coveredCatchmentStates(getMessages("en"), "en")}. No ranking, no composite score.`,
 };
 
 export default function RootLayout({

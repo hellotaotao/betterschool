@@ -1,12 +1,14 @@
 {
   "loadingMap": "Loading map...",
   "loadError": "Couldn't load the school data. Check your connection and refresh the page.",
+  "close": "Close",
   "search": {
     "placeholder": "Search school / suburb / postcode",
     "schoolsGroup": "Schools",
     "placesGroup": "Suburbs & postcodes",
     "placeCount": "{count} schools",
-    "noResults": "No matches"
+    "noResults": "No matches",
+    "clear": "Clear search"
   },
   "filters": {
     "all": "All",
@@ -34,6 +36,7 @@
     "collapseList": "Collapse list",
     "expandList": "Expand list",
     "areaCount": "{count} schools in this area",
+    "sortLabel": "Sort schools",
     "sortByName": "Sort by name",
     "sortByIcsea": "Sort by ICSEA",
     "sortByEnrolments": "Sort by enrolments",
@@ -160,7 +163,7 @@
     },
     "browse": {
       "metaTitle": "Browse Australian schools by state and suburb",
-      "metaDescription": "Browse every Australian school by state and suburb: official ACARA profiles for {schools} schools plus NSW government intake zones. No ranking, no composite score.",
+      "metaDescription": "Browse every Australian school by state and suburb: official ACARA profiles for {schools} schools plus government intake zones for {states}. No ranking, no composite score.",
       "heading": "Browse Australian schools",
       "intro": "{schools} schools across {suburbs} suburbs, from the official ACARA 2025 collection. Pick a state to see its suburbs, or go straight to the map to search by address.",
       "statesHeading": "States and territories",

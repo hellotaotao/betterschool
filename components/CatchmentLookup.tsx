@@ -1,22 +1,22 @@
 "use client";
 
-import { School } from '@/types/school';
+import { MapSchool } from '@/types/school';
 import ZoneSwatch from './ZoneSwatch';
 import { coveredCatchmentStates, formatMessage, Locale, Messages } from '@/lib/i18n';
 import { catchmentStateInfo } from '@/lib/catchmentStates';
-import type { CatchmentFeature } from '@/lib/catchmentLookup';
+import { zoneKey, type CatchmentFeature } from '@/lib/catchmentLookup';
 
 interface CatchmentLookupProps {
   results: CatchmentFeature[] | null;
   /** State slug inferred from the collected zone envelopes for an empty result. */
   lookupState: string | null;
-  schoolsByLocationAgeId: Map<number, School>;
+  schoolsByLocationAgeId: Map<number, MapSchool>;
   loading: boolean;
   error: boolean;
   dictionary: Messages;
   locale: Locale;
   onClear: () => void;
-  onPickSchool: (school: School) => void;
+  onPickSchool: (school: MapSchool) => void;
   variant?: 'panel' | 'sheet';
   /** Distance from the viewport top to sit below the (wrapping) top bar. */
   topOffset?: number;
@@ -64,7 +64,9 @@ export default function CatchmentLookup({
     <div className={wrapClass} style={isPanel ? { top: topOffset ?? 56 } : undefined}>
       <div className="px-3 py-2.5 border-b border-gray-100 flex justify-between items-center shrink-0">
         <span className="text-xs font-bold text-indigo-600">{dictionary.lookup.title}</span>
-        <button onClick={onClear} className="text-gray-400 hover:text-gray-700 text-base leading-none">✕</button>
+        <button onClick={onClear} aria-label={dictionary.close} className="text-gray-400 hover:text-gray-700 text-base leading-none">
+          <span aria-hidden="true">✕</span>
+        </button>
       </div>
 
       <div className="flex-1 overflow-y-auto p-3 space-y-2">
@@ -110,7 +112,7 @@ export default function CatchmentLookup({
           const school = schoolsByLocationAgeId.get(feature.properties.location_age_id);
           return (
             <button
-              key={feature.properties.zone_id ?? `${feature.properties.location_age_id}-${feature.properties.kind}-${feature.properties.year_levels.join('-')}`}
+              key={zoneKey(feature)}
               onClick={() => school && onPickSchool(school)}
               disabled={!school}
               className="w-full text-left p-2.5 rounded-lg bg-white border border-gray-100 hover:border-indigo-300 hover:shadow-sm transition-all disabled:cursor-default"
