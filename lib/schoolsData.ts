@@ -102,6 +102,16 @@ export const getSchoolsDataset = cache((): SchoolsDataset => {
   return cachedDataset;
 });
 
+/**
+ * When the dataset was built — the only thing that changes the generated
+ * pages, so it is their lastModified. Falls back to now for a checkout whose
+ * metadata predates the field.
+ */
+export function getDatasetLastModified(): Date {
+  const generatedAt = getSchoolsDataset().metadata.generated_at;
+  return generatedAt ? new Date(generatedAt) : new Date();
+}
+
 export function getSchoolBySlug(state: string, slug: string): School | undefined {
   return getSchoolsDataset().bySlug.get(`${stateSlug(state)}/${slug}`);
 }
@@ -324,7 +334,7 @@ export function getSchoolsInZone(feature: CatchmentFeature, state: string, limit
   for (const school of candidates) {
     if (school.acara_sml_id === feature.properties.acara_sml_id) continue;
     // Cheap rejection first: point-in-polygon over a few hundred vertices, run
-    // for every school in the state on every one of ~2,150 zone pages, is what
+    // for every school in the state on every one of ~4,900 zone pages, is what
     // makes the build slow. The bbox test removes almost all of them.
     if (school.lng < minLng || school.lng > maxLng || school.lat < minLat || school.lat > maxLat) continue;
     if (!pointInGeometry([school.lng, school.lat], feature.geometry)) continue;
