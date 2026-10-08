@@ -6,6 +6,16 @@ import { catchmentAbsenceKind, catchmentStateInfo } from '@/lib/catchmentStates'
 import { hasLegacyScore } from '@/utils/schoolFilters';
 import ZoneSwatch from './ZoneSwatch';
 
+/**
+ * Tints of the map's own SECTOR_COLORS hues. A Catholic school used to get the
+ * Independent orange here, so the panel contradicted the marker it opened from.
+ */
+const SECTOR_BADGE_CLASSES: Record<string, string> = {
+  Government: 'bg-green-100 text-green-700',
+  Catholic: 'bg-violet-100 text-violet-700',
+  Independent: 'bg-orange-100 text-orange-700',
+};
+
 interface SchoolDetailProps {
   school: School;
   dictionary: Messages;
@@ -87,9 +97,7 @@ export default function SchoolDetail({
             <span className="text-gray-500">{dictionary.details.sector}</span>
             <span
               className={`text-[10px] px-2 py-0.5 rounded-full font-medium ${
-                school.sector === 'Government'
-                  ? 'bg-green-100 text-green-700'
-                  : 'bg-orange-100 text-orange-700'
+                SECTOR_BADGE_CLASSES[school.sector] ?? 'bg-gray-100 text-gray-600'
               }`}
             >
               {getSectorLabel(school.sector, dictionary)}

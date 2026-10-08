@@ -99,7 +99,7 @@ export function bboxContains(bbox: [number, number, number, number], point: [num
 /**
  * Narrow the index to catchments whose bbox contains the point.
  *
- * Scanning ~2,150 bounding boxes is sub-millisecond, and it typically leaves a
+ * Scanning ~6,500 bounding boxes is sub-millisecond, and it typically leaves a
  * handful of candidates — few enough that fetching their full-precision geometry
  * on demand is cheap. This is why no spatial grid is needed.
  */
@@ -113,11 +113,21 @@ export function candidatesAt(entries: CatchmentIndexEntry[], point: [number, num
  * This does not claim the point is inside a zone. It only lets the UI explain
  * why a miss inside a state's collected area means something different there.
  * An overlap stays unknown rather than choosing one state arbitrarily.
+ *
+ * Individual zone bboxes are consulted first: the zones nearest the point are
+ * local evidence of which department publishes there. Whole-state envelopes
+ * alone read most of inland Victoria (Bendigo, Wodonga) as an NSW overlap, and
+ * the ACT's envelope sits entirely inside NSW's. Where zones of two states
+ * still cover the point, it stays unknown.
  */
 export function catchmentStateAt(
   entries: CatchmentIndexEntry[],
   point: [number, number],
 ): string | null {
+  const local = new Set(candidatesAt(entries, point).map(entry => entry.state));
+  if (local.size === 1) return [...local][0];
+  if (local.size > 1) return null;
+
   const extents = new Map<string, [number, number, number, number]>();
   for (const entry of entries) {
     const current = extents.get(entry.state);

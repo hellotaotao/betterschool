@@ -2,6 +2,7 @@ import { describe, expect, it } from 'vitest';
 import {
   bboxContains,
   candidatesAt,
+  catchmentStateAt,
   catchmentGeometryUrl,
   pointInGeometry,
   zonesInBounds,
@@ -152,6 +153,19 @@ describe('catchmentStateAt', () => {
       { state: 'vic', location_age_id: 4, acara_sml_id: 14, kind: 'primary' as const, catch_type: 'PRIMARY', year_levels: [], bbox: [138.7, -35.3, 141.0, -34.5] as [number, number, number, number] },
     ];
     expect(stateAt(overlapping, [138.8, -34.9])).toBeNull();
+  });
+
+  it('prefers local zone bboxes over overlapping state envelopes', () => {
+    // This ACT envelope sits wholly inside the NSW one, so envelopes alone never name it.
+    const nested: CatchmentIndexEntry[] = [
+      { state: 'nsw', location_age_id: 5, acara_sml_id: 15, kind: 'primary', catch_type: 'PRIMARY', year_levels: ['K'], bbox: [141.0, -37.5, 141.5, -37.0] },
+      { state: 'nsw', location_age_id: 6, acara_sml_id: 16, kind: 'primary', catch_type: 'PRIMARY', year_levels: ['K'], bbox: [153.0, -28.6, 153.6, -28.2] },
+      { state: 'act', location_age_id: 7, acara_sml_id: 17, kind: 'primary', catch_type: 'PEA', year_levels: ['K'], bbox: [149.0, -35.4, 149.2, -35.2] },
+      { state: 'act', location_age_id: 8, acara_sml_id: 18, kind: 'primary', catch_type: 'PEA', year_levels: ['K'], bbox: [148.9, -35.6, 149.0, -35.5] },
+    ];
+    expect(catchmentStateAt(nested, [149.1, -35.3])).toBe('act');
+    // Outside every zone bbox, the overlapping envelopes still stay unknown.
+    expect(catchmentStateAt(nested, [149.1, -35.45])).toBeNull();
   });
 });
 

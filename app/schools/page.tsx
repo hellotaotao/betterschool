@@ -156,6 +156,7 @@ function LookupButton({
 export default function SchoolsPage() {
   const [allSchools, setAllSchools] = useState<School[]>([]);
   const [loading, setLoading] = useState(true);
+  const [loadError, setLoadError] = useState(false);
   const [locale, setLocale] = useState<Locale>('en');
   const [filters, setFilters] = useState<FilterState>({
     sector: 'all',
@@ -191,6 +192,9 @@ export default function SchoolsPage() {
   const [lookupState, setLookupState] = useState<string | null>(null);
   const [lookupLoading, setLookupLoading] = useState(false);
   const [lookupError, setLookupError] = useState(false);
+  // Bumped by every new lookup and by clearing one, so a response that lands
+  // after the reader moved on is dropped instead of painting orphan zones.
+  const lookupRequestRef = useRef(0);
   // A deep link decides the initial view; IP geolocation must not override it.
   const [deepLinked, setDeepLinked] = useState(false);
   const selectedCardRef = useRef<HTMLDivElement>(null);
@@ -201,7 +205,10 @@ export default function SchoolsPage() {
 
   useEffect(() => {
     fetch(`/data/schools.canonical.json?v=${DATA_VERSION}`)
-      .then(res => res.json())
+      .then(res => {
+        if (!res.ok) throw new Error(`School dataset unavailable (HTTP ${res.status})`);
+        return res.json();
+      })
       .then((data: School[]) => {
         setAllSchools(data);
         setLoading(false);
@@ -260,7 +267,11 @@ export default function SchoolsPage() {
               : current
           )));
       })
-      .catch(() => setLoading(false));
+      .catch(() => {
+        // An empty map would read as "no schools here", so say it failed.
+        setLoadError(true);
+        setLoading(false);
+      });
   }, []);
 
   useEffect(() => {
@@ -430,6 +441,7 @@ export default function SchoolsPage() {
   }, [activeCatchment, catchmentVisible, selectedSchool]);
 
   const clearLookup = useCallback(() => {
+    lookupRequestRef.current += 1;
     setPickMode(false);
     setLookupPin(null);
     setLookupResults(null);
@@ -448,14 +460,17 @@ export default function SchoolsPage() {
     setLookupLoading(true);
     if (isMobile) setSheetSnap('expanded');
 
+    const request = ++lookupRequestRef.current;
     // GeoJSON is [lng, lat]; Leaflet hands us [lat, lng].
     lookupCatchmentsAt([lng, lat])
       .then(result => {
+        if (request !== lookupRequestRef.current) return;
         setLookupResults(result.features);
         setLookupState(result.state);
         setLookupLoading(false);
       })
       .catch(() => {
+        if (request !== lookupRequestRef.current) return;
         setLookupError(true);
         setLookupLoading(false);
       });
@@ -470,10 +485,13 @@ export default function SchoolsPage() {
   }, [allSchools]);
 
   // The lookup result and a school's own zone are mutually exclusive views.
-  const mapCatchments = lookupResults?.length
-    ? lookupResults
-    : catchmentVisible
-      ? schoolCatchments
+  // The selected school's zone wins: the lookup is kept so closing the detail
+  // panel returns to it, and its zones stay as context until then, but once
+  // the reader asks for this school's zone that is what the map must show.
+  const mapCatchments = catchmentVisible
+    ? schoolCatchments
+    : lookupResults?.length
+      ? lookupResults
       : null;
 
   const areaSummary = useMemo(() => {
@@ -515,9 +533,9 @@ export default function SchoolsPage() {
   return (
     <div className="relative w-screen h-screen overflow-hidden">
       <div className={`absolute inset-0 z-0 bg-gray-100${overlayState?.features.length ? ' zone-overlay-active' : ''}`}>
-        {loading ? (
+        {loading || loadError ? (
           <div className="w-full h-full flex items-center justify-center text-gray-500">
-            {dictionary.loadingMap}
+            {loadError ? dictionary.loadError : dictionary.loadingMap}
           </div>
         ) : (
           <SchoolMap

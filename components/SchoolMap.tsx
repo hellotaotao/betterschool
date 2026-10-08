@@ -4,6 +4,7 @@ import { useEffect, useCallback, useRef } from 'react';
 import { MapContainer, TileLayer, Marker, GeoJSON, useMap, useMapEvents } from 'react-leaflet';
 import L from 'leaflet';
 import 'leaflet.markercluster';
+import 'leaflet/dist/leaflet.css';
 import { School } from '@/types/school';
 import { getMarkerRadius, getMarkerColor, CATCHMENT_COLORS, SECTOR_COLORS } from '@/utils/schoolFilters';
 import type { CatchmentFeature } from '@/lib/catchmentLookup';
@@ -322,7 +323,11 @@ function MapClickTracker({
 /** Fit the map around a set of catchment polygons once they load. */
 function FitToCatchments({ features }: { features: CatchmentFeature[] | null | undefined }) {
   const map = useMap();
-  const signature = (features ?? []).map(f => `${f.properties.location_age_id}-${f.properties.kind}`).join(',');
+  // zone_id, not school + kind: VIC and QLD give one school several secondary
+  // boundaries, and switching between them must refit the view.
+  const signature = (features ?? [])
+    .map(f => f.properties.zone_id ?? `${f.properties.location_age_id}-${f.properties.kind}`)
+    .join(',');
 
   useEffect(() => {
     if (!features || features.length === 0) return;
@@ -624,16 +629,6 @@ export default function SchoolMap({
   lookupPin,
   autoLocate = true,
 }: SchoolMapProps) {
-  useEffect(() => {
-    if (!document.getElementById('leaflet-css')) {
-      const link = document.createElement('link');
-      link.id = 'leaflet-css';
-      link.rel = 'stylesheet';
-      link.href = '/leaflet.css';
-      document.head.appendChild(link);
-    }
-  }, []);
-
   const handleBoundsChange = useCallback((visible: School[]) => {
     onBoundsChange(visible);
   }, [onBoundsChange]);

@@ -1,5 +1,6 @@
 {
   "loadingMap": "Loading map...",
+  "loadError": "Couldn't load the school data. Check your connection and refresh the page.",
   "search": {
     "placeholder": "Search school / suburb / postcode",
     "schoolsGroup": "Schools",

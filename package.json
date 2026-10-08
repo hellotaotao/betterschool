@@ -9,7 +9,6 @@
     "lint": "eslint app components lib utils types scripts --ext .ts,.tsx,.mjs",
     "test": "vitest run",
     "test:watch": "vitest",
-    "postinstall": "cp node_modules/leaflet/dist/leaflet.css public/leaflet.css",
     "acara:parse": "node scripts/parse-acara-2025.mjs",
     "acara:match": "node scripts/match-betterschool-acara.mjs",
     "acara:validate": "node scripts/validate-acara-data.mjs",
