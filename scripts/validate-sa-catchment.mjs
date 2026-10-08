@@ -19,6 +19,7 @@ import {
   geometryAreaKm2,
   pointInGeometry,
 } from './sa-catchment-common.mjs';
+import { eachRing, ringIsClosed } from './catchment-common.mjs';
 
 /**
  * Measured baselines. Both layers joined completely on the 2025 data, so the
@@ -36,19 +37,6 @@ const warnings = [];
 
 function check(condition, message) {
   if (!condition) errors.push(message);
-}
-
-function ringIsClosed(ring) {
-  if (ring.length < 4) return false;
-  const [firstLng, firstLat] = ring[0];
-  const [lastLng, lastLat] = ring[ring.length - 1];
-  return firstLng === lastLng && firstLat === lastLat;
-}
-
-function eachRing(geometry, visit) {
-  if (geometry.type === 'Polygon') geometry.coordinates.forEach(visit);
-  else if (geometry.type === 'MultiPolygon') geometry.coordinates.forEach((polygon) => polygon.forEach(visit));
-  else errors.push(`Unexpected geometry type ${geometry.type}`);
 }
 
 const layer = readJson(path.join(PROCESSED_DIR, 'catchment-layer.json'));
@@ -125,7 +113,7 @@ for (const entry of index.catchments) {
     `${fileName}: has year levels, but the SA source publishes none per zone`,
   );
 
-  eachRing(feature.geometry, (ring) => {
+  const knownType = eachRing(feature.geometry, (ring) => {
     vertices += ring.length;
     if (!ringIsClosed(ring)) errors.push(`${fileName}: unclosed ring`);
     for (const [lng, lat] of ring) {
@@ -141,6 +129,7 @@ for (const entry of index.catchments) {
       }
     }
   });
+  if (!knownType) errors.push(`Unexpected geometry type ${feature.geometry.type}`);
 }
 
 // 3a. Every zone contains the school it belongs to.

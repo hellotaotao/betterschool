@@ -12,6 +12,7 @@ import {
   NSW_BBOX,
   readJson,
 } from './nsw-catchment-common.mjs';
+import { eachRing, ringIsClosed } from './catchment-common.mjs';
 
 /** Measured baselines; a drop below these means something upstream moved. */
 const JOIN_RATE_FLOOR = { primary: 0.99, secondary: 0.98, future: 0.80 };
@@ -22,19 +23,6 @@ const warnings = [];
 
 function check(condition, message) {
   if (!condition) errors.push(message);
-}
-
-function ringIsClosed(ring) {
-  if (ring.length < 4) return false;
-  const [firstLng, firstLat] = ring[0];
-  const [lastLng, lastLat] = ring[ring.length - 1];
-  return firstLng === lastLng && firstLat === lastLat;
-}
-
-function eachRing(geometry, visit) {
-  if (geometry.type === 'Polygon') geometry.coordinates.forEach(visit);
-  else if (geometry.type === 'MultiPolygon') geometry.coordinates.forEach((polygon) => polygon.forEach(visit));
-  else errors.push(`Unexpected geometry type ${geometry.type}`);
 }
 
 const layer = readJson(path.join(PROCESSED_DIR, 'catchment-layer.json'));
@@ -68,7 +56,7 @@ for (const entry of index.catchments) {
   check(feature.properties?.data_year === index.data_year, `${fileName}: data_year disagrees with the index`);
   check(Array.isArray(entry.year_levels) && entry.year_levels.length > 0, `${fileName}: no year levels`);
 
-  eachRing(feature.geometry, (ring) => {
+  const knownType = eachRing(feature.geometry, (ring) => {
     vertices += ring.length;
     if (!ringIsClosed(ring)) errors.push(`${fileName}: unclosed ring`);
     for (const [lng, lat] of ring) {
@@ -84,6 +72,7 @@ for (const entry of index.catchments) {
       }
     }
   });
+  if (!knownType) errors.push(`Unexpected geometry type ${feature.geometry.type}`);
 }
 
 // 3. No orphan files left behind by a previous build.

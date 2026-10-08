@@ -61,3 +61,33 @@ describe('groupExactGeometryVariants', () => {
     ]);
   });
 });
+
+describe('shared validation helpers', () => {
+  const ring = [[0, 0], [1, 0], [1, 1], [0, 0]];
+
+  it('checks a bbox against a state envelope, edges inclusive', () => {
+    const envelope = { minLng: 140, minLat: -38, maxLng: 150, maxLat: -28 };
+    expect(common.bboxWithin([140, -38, 150, -28], envelope)).toBe(true);
+    expect(common.bboxWithin([139.9, -37, 145, -30], envelope)).toBe(false);
+  });
+
+  it('treats a ring as closed only with four positions ending where it starts', () => {
+    expect(common.ringIsClosed(ring)).toBe(true);
+    expect(common.ringIsClosed([[0, 0], [1, 0], [1, 1], [0, 1]])).toBe(false);
+    expect(common.ringIsClosed([[0, 0], [1, 1], [0, 0]])).toBe(false);
+  });
+
+  it('visits polygon and multipolygon rings and reports any other type', () => {
+    const seen = [];
+    expect(common.eachRing({ type: 'MultiPolygon', coordinates: [[ring], [ring, ring]] }, (r) => seen.push(r))).toBe(true);
+    expect(seen).toHaveLength(3);
+    expect(common.eachRing({ type: 'Point', coordinates: [0, 0] }, () => {})).toBe(false);
+  });
+
+  it('gives different geometry a different variant slug', () => {
+    const a = common.variantSlug('secondary', ['7', '8'], { type: 'Polygon', coordinates: [ring] });
+    const b = common.variantSlug('secondary', ['7', '8'], { type: 'Polygon', coordinates: [[[0, 0], [2, 0], [2, 2], [0, 0]]] });
+    expect(a).toMatch(/^secondary-years-7-8-[0-9a-f]{10}$/);
+    expect(a).not.toBe(b);
+  });
+});

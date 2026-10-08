@@ -1,6 +1,5 @@
 // Join Victorian school zones to ACARA locations and emit exact year variants.
 
-import crypto from 'node:crypto';
 import fs from 'node:fs';
 import path from 'node:path';
 import { readLayers } from './parse-vic-catchment.mjs';
@@ -30,13 +29,10 @@ import {
   pointInGeometry,
   groupExactGeometryVariants,
 } from './vic-catchment-common.mjs';
+import { bboxWithin, uniqueSchools, variantSlug } from './catchment-common.mjs';
 
 const locationPath = 'data/acara/processed/school-location-2025.json';
 const manifestPath = path.join(PROCESSED_DIR, 'fetch-manifest.json');
-
-function uniqueSchools(schools) {
-  return [...new Map(schools.map((school) => [Number(school.location_age_id), school])).values()];
-}
 
 /**
  * Resolve one source entity without fuzzy matching.
@@ -92,18 +88,6 @@ export function resolveEntityMatch({ source_name, campus_name, geometries, site,
   }
 
   return { school: null, reason: 'no_exact_acara_candidate_inside_zone', candidates: [] };
-}
-
-function withinVic(bbox) {
-  const [minLng, minLat, maxLng, maxLat] = bbox;
-  return minLng >= VIC_BBOX.minLng && maxLng <= VIC_BBOX.maxLng
-    && minLat >= VIC_BBOX.minLat && maxLat <= VIC_BBOX.maxLat;
-}
-
-function variantSlug(kind, yearLevels, geometry) {
-  const levels = yearLevels.map((level) => level.toLowerCase()).join('-');
-  const digest = crypto.createHash('sha256').update(JSON.stringify(geometry)).digest('hex').slice(0, 10);
-  return `${kind}-years-${levels}-${digest}`;
 }
 
 function sourceRecords(layers) {
@@ -244,7 +228,7 @@ async function main() {
     const variants = groupExactGeometryVariants(group.records);
     for (const variant of variants) {
       const bbox = geometryBbox(variant.geometry);
-      if (!withinVic(bbox)) outsideVic += 1;
+      if (!bboxWithin(bbox, VIC_BBOX)) outsideVic += 1;
       const slug = variantSlug(group.kind, variant.year_levels, variant.geometry);
       const zoneId = `vic:${group.ageId}:${slug}`;
       const fileName = `${group.ageId}-${slug}.json`;

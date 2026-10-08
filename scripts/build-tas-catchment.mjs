@@ -39,6 +39,7 @@ import {
   readJson,
   writeJson,
 } from './tas-catchment-common.mjs';
+import { bboxWithin } from './catchment-common.mjs';
 
 const locationPath = 'data/acara/processed/school-location-2025.json';
 const manifestPath = path.join(PROCESSED_DIR, 'fetch-manifest.json');
@@ -77,11 +78,6 @@ export function resolveTasMatches({ record, acaraSchools }) {
       ? 'no_exact_acara_candidate_inside_zone'
       : 'several_exact_acara_candidates_inside_zone',
   };
-}
-
-function withinTas([minLng, minLat, maxLng, maxLat]) {
-  return minLng >= TAS_BBOX.minLng && maxLng <= TAS_BBOX.maxLng
-    && minLat >= TAS_BBOX.minLat && maxLat <= TAS_BBOX.maxLat;
 }
 
 async function main() {
@@ -142,7 +138,7 @@ async function main() {
   for (const [ageId, group] of grouped) {
     const geometry = mergeGeometries(group.records);
     const bbox = geometryBbox(geometry);
-    if (!withinTas(bbox)) outsideTas += 1;
+    if (!bboxWithin(bbox, TAS_BBOX)) outsideTas += 1;
     const sourceCodes = [...new Set(group.records.map((record) => (
       record.source_school_code || record.source_name
     )))];

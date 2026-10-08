@@ -1,6 +1,5 @@
 // Join Queensland catchments to ACARA sites and emit exact stage variants.
 
-import crypto from 'node:crypto';
 import fs from 'node:fs';
 import path from 'node:path';
 import { readLayers } from './parse-qld-catchment.mjs';
@@ -30,13 +29,10 @@ import {
   expandQldSchoolName,
   AUDITED_ACARA_NAME_BY_CENTRE_CODE,
 } from './qld-catchment-common.mjs';
+import { bboxWithin, uniqueSchools, variantSlug } from './catchment-common.mjs';
 
 const locationPath = 'data/acara/processed/school-location-2025.json';
 const manifestPath = path.join(PROCESSED_DIR, 'fetch-manifest.json');
-
-function uniqueSchools(schools) {
-  return [...new Map(schools.map((school) => [Number(school.location_age_id), school])).values()];
-}
 
 /** Resolve one official site by exact expanded identity, distance and containment. */
 export function resolveSiteMatch({ source_name, source_school_code, site, geometries, acaraSchools }) {
@@ -128,18 +124,6 @@ export function resolveSourceIdentityMatch({ source_name, geometries, acaraSchoo
     reason: 'no_official_site_or_exact_acara_identity_inside_zone',
     candidates: exactName.map((school) => school.school_name),
   };
-}
-
-function withinQld(bbox) {
-  const [minLng, minLat, maxLng, maxLat] = bbox;
-  return minLng >= QLD_BBOX.minLng && maxLng <= QLD_BBOX.maxLng
-    && minLat >= QLD_BBOX.minLat && maxLat <= QLD_BBOX.maxLat;
-}
-
-function variantSlug(kind, yearLevels, geometry) {
-  const levels = yearLevels.map((level) => level.toLowerCase()).join('-');
-  const digest = crypto.createHash('sha256').update(JSON.stringify(geometry)).digest('hex').slice(0, 10);
-  return `${kind}-years-${levels}-${digest}`;
 }
 
 async function main() {
@@ -287,7 +271,7 @@ async function main() {
   for (const group of bySchoolKind.values()) {
     for (const variant of groupExactGeometryVariants(group.records)) {
       const bbox = geometryBbox(variant.geometry);
-      if (!withinQld(bbox)) outsideQld += 1;
+      if (!bboxWithin(bbox, QLD_BBOX)) outsideQld += 1;
       const slug = variantSlug(group.kind, variant.year_levels, variant.geometry);
       const zoneId = `qld:${group.ageId}:${slug}`;
       const fileName = `${group.ageId}-${slug}.json`;

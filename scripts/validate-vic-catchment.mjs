@@ -13,6 +13,7 @@ import {
   readJson,
   pointInGeometry,
 } from './vic-catchment-common.mjs';
+import { eachRing, ringIsClosed } from './catchment-common.mjs';
 
 const JOIN_RATE_FLOOR = {
   primary: 0.98,
@@ -48,17 +49,6 @@ const warnings = [];
 
 function check(condition, message) {
   if (!condition) errors.push(message);
-}
-
-function ringIsClosed(ring) {
-  if (ring.length < 4) return false;
-  return ring[0][0] === ring[ring.length - 1][0] && ring[0][1] === ring[ring.length - 1][1];
-}
-
-function eachRing(geometry, visit) {
-  if (geometry.type === 'Polygon') geometry.coordinates.forEach(visit);
-  else if (geometry.type === 'MultiPolygon') geometry.coordinates.forEach((polygon) => polygon.forEach(visit));
-  else errors.push(`Unexpected geometry type ${geometry.type}`);
 }
 
 const layer = readJson(path.join(PROCESSED_DIR, 'catchment-layer.json'));
@@ -142,7 +132,7 @@ for (const entry of index.catchments) {
   check(!exactGeometryBySchoolKind.has(exactKey), `${entry.zone_id}: identical geometry was not coalesced`);
   exactGeometryBySchoolKind.set(exactKey, entry.zone_id);
 
-  eachRing(feature.geometry, (ring) => {
+  const knownType = eachRing(feature.geometry, (ring) => {
     vertices += ring.length;
     if (!ringIsClosed(ring)) errors.push(`${entry.zone_id}: unclosed ring`);
     for (const [lng, lat] of ring) {
@@ -156,6 +146,7 @@ for (const entry of index.catchments) {
       }
     }
   });
+  if (!knownType) errors.push(`Unexpected geometry type ${feature.geometry.type}`);
 
   const school = locationsByAgeId.get(Number(entry.location_age_id));
   check(Boolean(school), `${entry.zone_id}: no ACARA location record`);

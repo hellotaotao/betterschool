@@ -6,6 +6,7 @@
 // identical across states or the reverse lookup would behave differently
 // depending on which side of a border a user clicked.
 
+import crypto from 'node:crypto';
 import fs from 'node:fs';
 import path from 'node:path';
 
@@ -262,4 +263,46 @@ export function pointInGeometry(point, geometry) {
   if (geometry.type === 'Polygon') return pointInPolygon(point, geometry.coordinates);
   if (geometry.type === 'MultiPolygon') return geometry.coordinates.some((rings) => pointInPolygon(point, rings));
   return false;
+}
+
+// --- Shared by the per-state build and validate scripts ----------------------
+
+/** True when a [minLng, minLat, maxLng, maxLat] box lies inside a state envelope. */
+export function bboxWithin([minLng, minLat, maxLng, maxLat], envelope) {
+  return minLng >= envelope.minLng && maxLng <= envelope.maxLng
+    && minLat >= envelope.minLat && maxLat <= envelope.maxLat;
+}
+
+/** A GeoJSON ring is closed when it has at least four positions and ends where it starts. */
+export function ringIsClosed(ring) {
+  if (ring.length < 4) return false;
+  const first = ring[0];
+  const last = ring[ring.length - 1];
+  return first[0] === last[0] && first[1] === last[1];
+}
+
+/**
+ * Visit every ring of a Polygon or MultiPolygon. Returns false for any other
+ * geometry type, so the caller can report it in its own words.
+ */
+export function eachRing(geometry, visit) {
+  if (geometry.type === 'Polygon') geometry.coordinates.forEach(visit);
+  else if (geometry.type === 'MultiPolygon') geometry.coordinates.forEach((polygon) => polygon.forEach(visit));
+  else return false;
+  return true;
+}
+
+/** One record per ACARA location, keeping the last seen. */
+export function uniqueSchools(schools) {
+  return [...new Map(schools.map((school) => [Number(school.location_age_id), school])).values()];
+}
+
+/**
+ * File slug for one boundary variant: kind, its years, and a digest of the
+ * exact rounded geometry, so two different shapes can never share a file.
+ */
+export function variantSlug(kind, yearLevels, geometry) {
+  const levels = yearLevels.map((level) => level.toLowerCase()).join('-');
+  const digest = crypto.createHash('sha256').update(JSON.stringify(geometry)).digest('hex').slice(0, 10);
+  return `${kind}-years-${levels}-${digest}`;
 }

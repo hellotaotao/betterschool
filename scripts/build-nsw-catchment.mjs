@@ -40,6 +40,7 @@ import {
   countVertices,
   parseCsv,
 } from './nsw-catchment-common.mjs';
+import { bboxWithin } from './catchment-common.mjs';
 
 const locationPath = 'data/acara/processed/school-location-2025.json';
 const manifestPath = path.join(PROCESSED_DIR, 'fetch-manifest.json');
@@ -54,12 +55,6 @@ function mergeGeometries(records) {
     else if (record.geometry.type === 'MultiPolygon') polygons.push(...record.geometry.coordinates);
   }
   return { type: 'MultiPolygon', coordinates: polygons };
-}
-
-function withinNsw(bbox) {
-  const [minLng, minLat, maxLng, maxLat] = bbox;
-  return minLng >= NSW_BBOX.minLng && maxLng <= NSW_BBOX.maxLng
-    && minLat >= NSW_BBOX.minLat && maxLat <= NSW_BBOX.maxLat;
 }
 
 async function main() {
@@ -164,7 +159,7 @@ async function main() {
   for (const { ageId, kind, location, records } of grouped.values()) {
     const geometry = mergeGeometries(records);
     const bbox = geometryBbox(geometry);
-    if (!withinNsw(bbox)) outsideNsw += 1;
+    if (!bboxWithin(bbox, NSW_BBOX)) outsideNsw += 1;
 
     // Year levels and catch types can differ between merged rows; keep the union
     // rather than silently picking one.

@@ -32,6 +32,7 @@ import {
   readJson,
   writeJson,
 } from './act-catchment-common.mjs';
+import { bboxWithin } from './catchment-common.mjs';
 
 const locationPath = 'data/acara/processed/school-location-2025.json';
 const manifestPath = path.join(PROCESSED_DIR, 'fetch-manifest.json');
@@ -78,11 +79,6 @@ export function resolveActMatches({ record, acaraSchools }) {
         ? 'audited_exact_alias_and_containment'
         : 'exact_base_name_and_containment',
   };
-}
-
-function withinAct([minLng, minLat, maxLng, maxLat]) {
-  return minLng >= ACT_BBOX.minLng && maxLng <= ACT_BBOX.maxLng
-    && minLat >= ACT_BBOX.minLat && maxLat <= ACT_BBOX.maxLat;
 }
 
 async function main() {
@@ -150,7 +146,7 @@ async function main() {
     const variants = groupExactGeometryVariants(group.records);
     for (const variant of variants) {
       const bbox = geometryBbox(variant.geometry);
-      if (!withinAct(bbox)) outsideAct += 1;
+      if (!bboxWithin(bbox, ACT_BBOX)) outsideAct += 1;
       const catchType = variant.catch_types.join('+');
       const sourceCode = variant.source_school_codes.join('+');
       const zoneId = `act-${group.ageId}-${group.kind}-${sourceCode.replace(/[^a-zA-Z0-9-]+/g, '-')}`;

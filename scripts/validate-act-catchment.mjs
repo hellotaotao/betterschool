@@ -13,6 +13,7 @@ import {
   pointInGeometry,
   readJson,
 } from './act-catchment-common.mjs';
+import { eachRing, ringIsClosed } from './catchment-common.mjs';
 
 const EXPECTED_STATS = {
   Primary: { polygons: 63, joined: 61, attachments: 61, floor: 0.9683 },
@@ -23,19 +24,6 @@ const canonicalPath = 'public/data/schools.canonical.json';
 const errors = [];
 const warnings = [];
 const check = (condition, message) => { if (!condition) errors.push(message); };
-
-function eachRing(geometry, visit) {
-  if (geometry.type === 'Polygon') geometry.coordinates.forEach(visit);
-  else if (geometry.type === 'MultiPolygon') geometry.coordinates.forEach((polygon) => polygon.forEach(visit));
-  else errors.push(`Unexpected geometry type ${geometry.type}`);
-}
-
-function ringIsClosed(ring) {
-  if (ring.length < 4) return false;
-  const first = ring[0];
-  const last = ring[ring.length - 1];
-  return first[0] === last[0] && first[1] === last[1];
-}
 
 const layer = readJson(path.join(PROCESSED_DIR, 'catchment-layer.json'));
 const unmatched = readJson(path.join(PROCESSED_DIR, 'unmatched.json'));
@@ -101,7 +89,7 @@ for (const entry of index.catchments) {
       `${entry.zone_id}: secondary year level outside 7-12`);
   }
 
-  eachRing(feature.geometry, (ring) => {
+  const knownType = eachRing(feature.geometry, (ring) => {
     vertices += ring.length;
     if (!ringIsClosed(ring)) errors.push(`${entry.zone_id}: unclosed ring`);
     for (const [lng, lat] of ring) {
@@ -115,6 +103,7 @@ for (const entry of index.catchments) {
       }
     }
   });
+  if (!knownType) errors.push(`Unexpected geometry type ${feature.geometry.type}`);
 
   if (school) {
     if (pointInGeometry([school.lng, school.lat], feature.geometry)) contained += 1;

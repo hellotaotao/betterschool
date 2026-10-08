@@ -58,6 +58,7 @@ import {
   distanceKm,
   normaliseName,
 } from './sa-catchment-common.mjs';
+import { bboxWithin } from './catchment-common.mjs';
 
 const locationPath = 'data/acara/processed/school-location-2025.json';
 const manifestPath = path.join(PROCESSED_DIR, 'fetch-manifest.json');
@@ -65,12 +66,6 @@ const manifestPath = path.join(PROCESSED_DIR, 'fetch-manifest.json');
 /** Dataset page for a zone kind, used for per-zone provenance. */
 function datasetUrlFor(kind) {
   return kind === 'primary' ? PRIMARY_DATASET_URL : HIGH_DATASET_URL;
-}
-
-function withinSa(bbox) {
-  const [minLng, minLat, maxLng, maxLat] = bbox;
-  return minLng >= SA_BBOX.minLng && maxLng <= SA_BBOX.maxLng
-    && minLat >= SA_BBOX.minLat && maxLat <= SA_BBOX.maxLat;
 }
 
 async function main() {
@@ -211,7 +206,7 @@ async function main() {
   for (const { ageId, kind, location, site, records } of grouped.values()) {
     const geometry = mergeGeometries(records);
     const bbox = geometryBbox(geometry);
-    if (!withinSa(bbox)) outsideSa += 1;
+    if (!bboxWithin(bbox, SA_BBOX)) outsideSa += 1;
 
     const catchTypes = [...new Set(records.map((record) => record.catch_type))];
     const fileName = `${ageId}-${kind}.json`;
