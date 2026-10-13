@@ -31,4 +31,9 @@ describe('readGeoCookie', () => {
     expect(readGeoCookie(`${GEO_COOKIE}=51.5,-0.12`)).toBeNull();
     expect(readGeoCookie(`${GEO_COOKIE}=nonsense`)).toBeNull();
   });
+
+  it('ignores a value that is not valid percent-encoding', () => {
+    expect(readGeoCookie(`${GEO_COOKIE}=%`)).toBeNull();
+    expect(readGeoCookie(`${GEO_COOKIE}=%E0%A4%A`)).toBeNull();
+  });
 });

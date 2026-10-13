@@ -31,8 +31,14 @@ export function geoCookieValue(headers: Pick<Headers, 'get'>): string | null {
 export function readGeoCookie(cookie: string): [number, number] | null {
   const entry = cookie.split(';').map(part => part.trim()).find(part => part.startsWith(`${GEO_COOKIE}=`));
   if (!entry) return null;
-  const [lat, lng] = decodeURIComponent(entry.slice(GEO_COOKIE.length + 1)).split(',').map(Number);
-  return isAustralian(lat, lng) ? [lat, lng] : null;
+  try {
+    const [lat, lng] = decodeURIComponent(entry.slice(GEO_COOKIE.length + 1)).split(',').map(Number);
+    return isAustralian(lat, lng) ? [lat, lng] : null;
+  } catch {
+    // A broken percent-escape throws; the map must open on its default view
+    // rather than fail to mount over a cookie nothing here wrote.
+    return null;
+  }
 }
 
 /** Inside the mainland-plus-Tasmania envelope the dataset's coordinates use. */
