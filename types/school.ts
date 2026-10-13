@@ -59,6 +59,31 @@ export interface SchoolCatchment {
   boundary_updated?: string;
 }
 
+/** ACARA's year-level keys, in teaching order. */
+export const GRADE_KEYS = [
+  'two_years_before_year_1', 'one_year_before_year_1',
+  'year_1', 'year_2', 'year_3', 'year_4', 'year_5', 'year_6',
+  'year_7', 'year_8', 'year_9', 'year_10', 'year_11', 'year_12',
+  'primary_ungraded', 'secondary_ungraded',
+] as const;
+
+export type GradeKey = typeof GRADE_KEYS[number];
+
+export interface SchoolStaff {
+  teaching?: number;
+  teaching_fte?: number;
+  non_teaching?: number;
+  non_teaching_fte?: number;
+}
+
+/** Share of students in each socio-educational advantage quarter. Background, not performance. */
+export interface SeaQuarters {
+  bottom_percent?: number;
+  lower_middle_percent?: number;
+  upper_middle_percent?: number;
+  top_percent?: number;
+}
+
 export interface School {
   /** Canonical deterministic app ID based on ACARA IDs. */
   id: string;
@@ -90,6 +115,13 @@ export interface School {
   lbote_no_percent?: number;
   lbote_not_stated_percent?: number;
   indigenous_percent?: number;
+  /**
+   * Enrolments per offered year level. null = offered, count not published.
+   * Server pages only — not in the map's client projection.
+   */
+  grade_enrolments?: Partial<Record<GradeKey, number | null>>;
+  staff?: SchoolStaff;
+  sea_quarters?: SeaQuarters;
   school_url?: string;
   /** Deep link to the school's My School page (NAPLAN etc.); built from acara_sml_id. */
   myschool_url?: string;

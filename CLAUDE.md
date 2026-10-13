@@ -79,7 +79,7 @@ ACARA/*.xlsx
 data.nsw.gov.au / data.sa.gov.au / discover.data.vic.gov.au / data.qld.gov.au / LISTdata / ACTmapi
   └─ scripts/{fetch,parse,build,validate}-<state>-catchment.mjs → catchment layers
        └─ scripts/build-canonical-schools.mjs
-            → public/data/schools.canonical.json  (11,034 schools, ~19MB; server pages)
+            → public/data/schools.canonical.json  (11,034 schools, ~24MB; server pages)
             → public/data/schools.metadata.json   (provenance + coverage counts)
             └─ scripts/build-client-schools.mjs
                  → public/data/schools.client.json (map app's fields only, ~9MB)
@@ -161,6 +161,21 @@ longer had.
   layout renders `<html>`, and reading the locale there would force every page
   out of static rendering. `PageShell` sets `lang` on its wrapper instead, which
   scopes correctly for screen readers; hreflang is what search engines target.
+
+### School pages
+
+`SchoolBody` is built so 11,034 pages do not read as one template. What varies
+is real data, not reworded boilerplate: per-year enrolments, staffing and SEA
+quarters (`grade_enrolments`, `staff`, `sea_quarters` — official ACARA fields,
+canonical only, not in the client projection), a neighbourhood diagram drawn
+from the school's own coordinates and zone, and a "what stands out" list.
+`lib/schoolInsights.ts::schoolHighlights` picks that list by rule (single-sex
+roll, only school in the suburb, a Year 7 intake step, size at the extremes of
+its state and type, remoteness…) and returns nothing for an unremarkable
+school — the section is then omitted, never padded. Every rule is a count,
+share or size comparison; none may read `legacy_score`, rank ICSEA, or
+otherwise say a school is better. Students-per-teacher is calculated on the
+page and labelled as calculated.
 
 Slugs come from `lib/slug.ts`: `<name>-<suburb>`, because school names repeat
 heavily inside a state (NSW has 47 "St Joseph's Primary School"). Only a genuine

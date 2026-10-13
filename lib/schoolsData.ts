@@ -228,6 +228,52 @@ export function getNearbySchools(school: School, limit = 8): NearbySchool[] {
   return scored.sort((a, b) => a.km - b.km).slice(0, limit);
 }
 
+/**
+ * The nearest schools in the state regardless of suburb, for the neighbourhood
+ * diagram — which draws distance and direction, so a same-suburb school two
+ * streets away belongs on it as much as one across the boundary.
+ */
+export function getNearestSchools(school: School, limit = 14): NearbySchool[] {
+  const dataset = getSchoolsDataset();
+  const scored: NearbySchool[] = [];
+
+  for (const candidate of getSchoolsForState(school.state)) {
+    if (candidate.id === school.id) continue;
+    const slug = dataset.slugs.get(candidate.id);
+    if (!slug) continue;
+    scored.push({
+      school: candidate,
+      slug,
+      km: distanceKm(Number(school.lat), Number(school.lng), Number(candidate.lat), Number(candidate.lng)),
+    });
+  }
+
+  return scored.sort((a, b) => a.km - b.km).slice(0, limit);
+}
+
+const cachedSizePools = new Map<string, number[]>();
+
+/**
+ * Enrolments of every school of one type in one state, ascending.
+ *
+ * Size is only comparable like with like: a 600-student primary is large and a
+ * 600-student secondary is not, and school sizes differ systematically between
+ * states. This is a comparison of size, never of quality.
+ */
+export function getSizePool(state: string, schoolType: string | undefined): number[] {
+  if (!schoolType) return [];
+  const key = `${state}/${schoolType}`;
+  let pool = cachedSizePools.get(key);
+  if (!pool) {
+    pool = getSchoolsForState(state)
+      .filter(school => school.school_type === schoolType && Number.isFinite(school.total_enrolments))
+      .map(school => Number(school.total_enrolments))
+      .sort((a, b) => a - b);
+    cachedSizePools.set(key, pool);
+  }
+  return pool;
+}
+
 // --- Catchments -------------------------------------------------------------
 
 let cachedCatchmentEntries: CatchmentIndexEntry[] | undefined;

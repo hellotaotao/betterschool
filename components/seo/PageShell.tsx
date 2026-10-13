@@ -41,7 +41,7 @@ export default function PageShell({
   const other: Locale = locale === 'zh' ? 'en' : 'zh';
 
   return (
-    <div lang={htmlLang(locale)} className="min-h-screen bg-white text-gray-900">
+    <div lang={htmlLang(locale)} className="min-h-screen bg-white font-sans text-gray-900 antialiased">
       <header className="border-b border-gray-200">
         <div className="mx-auto max-w-3xl px-4 py-3 flex items-center justify-between gap-4">
           <Link href={mapUrl({ locale })} className="text-sm font-bold text-indigo-700 hover:underline">

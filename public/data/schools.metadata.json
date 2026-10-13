@@ -42,7 +42,10 @@
     "religion_source": "sector | governing_body | name_explicit | manual; absent when Unknown.",
     "myschool_url": "Deep link to the school My School page, built from acara_sml_id (verified pattern).",
     "fees": "Tuition fees: free for Government; other sectors pending collection. Precise amount preferred, else band; always with fee_source.",
-    "catchments": "NSW, SA, VIC, QLD, TAS and ACT, Government schools only. Each distinct boundary variant carries zone_id, geometry_url (loaded on demand), catch_type, data_year and source. year_levels are exact source-published levels where available (NSW, VIC, QLD and ACT); ACT also applies the official 2027 transition ranges for two opening schools. SA and TAS publish none per zone. Year/stage variants with different geometry remain separate. Absent means no catchment data for that school, and what that means differs by state — see provenance.catchment."
+    "catchments": "NSW, SA, VIC, QLD, TAS and ACT, Government schools only. Each distinct boundary variant carries zone_id, geometry_url (loaded on demand), catch_type, data_year and source. year_levels are exact source-published levels where available (NSW, VIC, QLD and ACT); ACT also applies the official 2027 transition ranges for two opening schools. SA and TAS publish none per zone. Year/stage variants with different geometry remain separate. Absent means no catchment data for that school, and what that means differs by state — see provenance.catchment.",
+    "grade_enrolments": "Official ACARA Enrolments by Grade 2025: one entry per year level the school offers. null means the level is offered but ACARA publishes no count. Absent means no record joined on location_age_id.",
+    "staff": "Official ACARA School Profile 2025 staff headcount and FTE (teaching / non-teaching). Any ratio shown from these is calculated on the page and labelled as such.",
+    "sea_quarters": "Official ACARA School Profile 2025 distribution of students across socio-educational advantage quarters. Describes student background, not school performance."
   },
   "generated_from": {
     "canonical_builder": "scripts/build-canonical-schools.mjs",
@@ -87,9 +90,18 @@
       "schools_with_catchment": 5135,
       "secondary": 2162,
       "future": 61
+    },
+    "profile_layer_counts": {
+      "schools": 11034,
+      "with_grade_enrolments": 9649,
+      "with_staff": 10015,
+      "with_sea_quarters": 9892,
+      "without_grade_enrolments": 1385,
+      "without_staff": 1019,
+      "without_sea_quarters": 1142
     }
   },
-  "generated_at": "2026-08-24T17:09:08.340Z",
+  "generated_at": "2026-10-13T15:52:16.703Z",
   "client_dataset": {
     "path": "/data/schools.client.json",
     "schools": 11034,

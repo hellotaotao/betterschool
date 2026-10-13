@@ -15,6 +15,7 @@ const catchmentLayerPaths = {
   ACT: 'data/catchment/act/processed/catchment-layer.json',
 };
 const locationPath = 'data/acara/processed/school-location-2025.json';
+const gradesPath = 'data/acara/processed/enrolments-by-grade-2025.json';
 const legacyPath = 'public/data/schools.json';
 const matchesPath = 'data/acara/processed/betterschool-acara-matches.json';
 const outputPath = 'public/data/schools.canonical.json';
@@ -62,6 +63,40 @@ for (const layer of Object.values(catchmentLayers)) {
 }
 
 const profilesByLocationAgeId = new Map(profilePayload.records.map(record => [record.location_age_id, record]));
+
+// Per-year enrolments join on location_age_id alone, so a record without one,
+// or an id the source repeats, is left out rather than attached to a guess.
+const gradesPayload = readJson(gradesPath);
+const gradeRecordCounts = new Map();
+for (const record of gradesPayload.records) {
+  gradeRecordCounts.set(record.location_age_id, (gradeRecordCounts.get(record.location_age_id) ?? 0) + 1);
+}
+const gradesByLocationAgeId = new Map(
+  gradesPayload.records
+    .filter(record => record.location_age_id != null && gradeRecordCounts.get(record.location_age_id) === 1)
+    .map(record => [record.location_age_id, record]),
+);
+
+/**
+ * Offered year levels only, in the source's own order. null keeps "offered,
+ * count not published" distinct from a year the school does not teach.
+ */
+function gradeEnrolments(record) {
+  if (!record) return undefined;
+  const offered = gradesPayload.grade_keys
+    .filter(key => record.enrolments_by_grade?.[key]?.offered)
+    .map(key => {
+      const count = record.enrolments_by_grade[key].enrolments;
+      return [key, Number.isFinite(count) ? count : null];
+    });
+  return offered.length > 0 ? Object.fromEntries(offered) : undefined;
+}
+
+function finiteFields(record, keys) {
+  if (!record) return undefined;
+  const entries = keys.filter(key => Number.isFinite(record[key])).map(key => [key, record[key]]);
+  return entries.length > 0 ? Object.fromEntries(entries) : undefined;
+}
 const legacyByLocalId = new Map(legacySchools.map(record => [record.local_id, record]));
 const matchedByLocationAgeId = new Map();
 const ambiguousCandidateKeys = new Set();
@@ -148,6 +183,9 @@ for (const location of locationPayload.records) {
     lbote_no_percent: profile?.enrolments?.lbote_no_percent,
     lbote_not_stated_percent: profile?.enrolments?.lbote_not_stated_percent,
     indigenous_percent: profile?.enrolments?.indigenous_percent,
+    grade_enrolments: gradeEnrolments(gradesByLocationAgeId.get(location.location_age_id)),
+    staff: finiteFields(profile?.staff, ['teaching', 'teaching_fte', 'non_teaching', 'non_teaching_fte']),
+    sea_quarters: finiteFields(profile?.sea_quarters, ['bottom_percent', 'lower_middle_percent', 'upper_middle_percent', 'top_percent']),
     school_url: profile?.school_url,
     myschool_url: myschoolUrl,
     governing_body: profile?.governing_body,
@@ -218,7 +256,20 @@ const catchmentCounts = schools.reduce((acc, school) => {
   return acc;
 }, {});
 
+const profileLayerCounts = {
+  schools: schools.length,
+  with_grade_enrolments: schools.filter(school => school.grade_enrolments).length,
+  with_staff: schools.filter(school => school.staff).length,
+  with_sea_quarters: schools.filter(school => school.sea_quarters).length,
+};
+profileLayerCounts.without_grade_enrolments = schools.length - profileLayerCounts.with_grade_enrolments;
+profileLayerCounts.without_staff = schools.length - profileLayerCounts.with_staff;
+profileLayerCounts.without_sea_quarters = schools.length - profileLayerCounts.with_sea_quarters;
+
 const metadata = readJson(metadataPath);
+metadata.fields.grade_enrolments = 'Official ACARA Enrolments by Grade 2025: one entry per year level the school offers. null means the level is offered but ACARA publishes no count. Absent means no record joined on location_age_id.';
+metadata.fields.staff = 'Official ACARA School Profile 2025 staff headcount and FTE (teaching / non-teaching). Any ratio shown from these is calculated on the page and labelled as such.';
+metadata.fields.sea_quarters = 'Official ACARA School Profile 2025 distribution of students across socio-educational advantage quarters. Describes student background, not school performance.';
 metadata.dataset_status = 'canonical_acara_base_with_legacy_metric_layer';
 metadata.coverage_note = 'Canonical public app dataset is ACARA 2025 official public School Location/Profile records with valid coordinates. Legacy score/rank are optional attached metrics only.';
 metadata.provenance.source = 'ACARA Data Access Program public School Location/Profile 2025 is the canonical base/map layer.';
@@ -268,6 +319,7 @@ metadata.generated_from = {
   religion_source_counts: religionSourceCounts,
   fees_band_counts: feesBandCounts,
   catchment_counts: catchmentCounts,
+  profile_layer_counts: profileLayerCounts,
 };
 metadata.generated_at = new Date().toISOString();
 
