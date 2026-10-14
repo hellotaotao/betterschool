@@ -1,9 +1,9 @@
 import { GRADE_KEYS, type GradeKey, type School } from '@/types/school';
 
 // What a school page says beyond the bare profile fields. Everything here is
-// arithmetic over official ACARA values — counts, shares and comparisons of
-// size. Nothing ranks a school or scores its quality, and a rule that cannot
-// be decided from the data returns nothing rather than a softened guess.
+// arithmetic over official ACARA values — counts, shares and comparisons with
+// the school's suburb, state or type. A rule that cannot be decided from the
+// data returns nothing rather than a softened guess.
 
 export interface Cohort {
   key: GradeKey;

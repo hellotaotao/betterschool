@@ -172,10 +172,12 @@ from the school's own coordinates and zone, and a "what stands out" list.
 `lib/schoolInsights.ts::schoolHighlights` picks that list by rule (single-sex
 roll, only school in the suburb, a Year 7 intake step, size at the extremes of
 its state and type, remoteness…) and returns nothing for an unremarkable
-school — the section is then omitted, never padded. Every rule is a count,
-share or size comparison; none may read `legacy_score`, rank ICSEA, or
-otherwise say a school is better. Students-per-teacher is calculated on the
-page and labelled as calculated.
+school — the section is then omitted, never padded. Rules may compare a school
+with its suburb, state or type on any sourced field (ICSEA percentile, size,
+staffing, intake mix). What they must get right is what the field measures:
+ICSEA describes student background, so it is never worded as school quality.
+`legacy_score` stays out because it covers only 911 schools. Students-per-teacher
+is calculated on the page and labelled as calculated.
 
 Slugs come from `lib/slug.ts`: `<name>-<suburb>`, because school names repeat
 heavily inside a state (NSW has 47 "St Joseph's Primary School"). Only a genuine
@@ -249,9 +251,14 @@ These are the project's core commitments. They matter more than any feature.
    counts (including the unknown count) into `schools.metadata.json`.
 4. **NAPLAN scores are never stored.** My School's terms forbid bulk scraping and
    league tables. Link out via `myschool_url`, built from `acara_sml_id`.
-5. **No public ranking or composite quality score.** Not a league table, and not
-   a single blended number. This is a deliberate differentiator against
-   competitors whose composite scores are unauditable.
+5. **Compare and rank freely; show the working.** Any sourced field can rank or
+   compare schools, as long as the page names the field, the year and the
+   group compared against. A blended score is fine when its inputs and weights
+   are published: competitors' composite scores are criticised for being
+   unauditable, not for existing. The external limits are NAPLAN (above) and,
+   for NSW, the Education Act 1990 s18A restriction on league tables of
+   NAPLAN/HSC results — check its scope before ranking NSW schools on exam
+   results.
 6. **Never invent precision.** Fees store an exact figure when a source publishes
    one, otherwise a band — always with `fee_source` + `source_url` + `fee_year`.
    Catchment geometry is likewise stored unsimplified, so the reverse lookup runs
