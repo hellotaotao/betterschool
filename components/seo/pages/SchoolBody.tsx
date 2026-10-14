@@ -6,7 +6,6 @@ import {
   getNearbySchools,
   getNearestSchools,
   getSchoolBySlug,
-  getSchoolsDataset,
   getSchoolSlug,
   getSizePool,
   getSuburb,
@@ -123,7 +122,6 @@ export default function SchoolBody({ locale, state, slug }: { locale: Locale; st
   const t = getSeo(locale).school;
   const shell = getSeo(locale).shell;
   const dictionary = getMessages(locale);
-  const dataset = getSchoolsDataset();
   const peers = getSuburbPeers(school);
   const nearby = getNearbySchools(school);
   const catchments = school.catchments ?? [];
@@ -655,9 +653,9 @@ export default function SchoolBody({ locale, state, slug }: { locale: Locale; st
       </section>
 
       <section className="mt-10 rounded-lg bg-gray-50 p-4">
-        <h2 className="text-sm font-semibold">{t.notShownHeading}</h2>
+        <h2 className="text-sm font-semibold">{t.naplanHeading}</h2>
         <p className="mt-1 text-xs text-gray-600">
-          {formatMessage(t.notShownBody, { total: dataset.schools.length.toLocaleString() })}
+          {t.naplanBody}
         </p>
       </section>
     </PageShell>

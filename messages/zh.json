@@ -148,14 +148,14 @@
   },
   "dataNotice": {
     "title": "ACARA 官方基础数据",
-    "body": "地图与列表使用 ACARA {year} 官方公开学校资料和位置数据。标记颜色 = 办学性质，大小 = 在校人数，均为 ACARA 官方字段。本站不发布任何排名或综合评分。"
+    "body": "地图与列表使用 ACARA {year} 官方公开学校资料和位置数据。标记颜色 = 办学性质，大小 = 在校人数，均为 ACARA 官方字段。"
   },
   "seo": {
     "shell": {
       "browseByState": "按州浏览",
       "openMap": "打开地图",
       "footerData": "学校名称、位置与办学资料来自 ACARA Data Access Program。页面使用学区边界数据时，官方来源链接会列在下方。",
-      "footerStance": "BetterSchool.au 不发布任何学校排名，也不发布综合评分。凡是推断得出而非官方公布的字段，页面会写明；没有采集到的，页面也会写明，而不是留一片空白。",
+      "footerStance": "BetterSchool.au 上的每一个数字都注明来源。凡是推断得出而非官方公布的字段，页面会写明；没有采集到的，页面也会写明，而不是留一片空白。",
       "acaraLinkText": "ACARA Data Access Program",
       "nswLinkText": "Data.NSW",
       "otherLanguage": "English",
@@ -163,7 +163,7 @@
     },
     "browse": {
       "metaTitle": "按州和城区浏览澳洲学校",
-      "metaDescription": "按州和城区浏览全澳学校：{schools} 所学校的 ACARA 官方资料，以及{states}的公立学校学区边界。不排名，不打综合分。",
+      "metaDescription": "按州和城区浏览全澳学校：{schools} 所学校的 ACARA 官方资料，以及{states}的公立学校学区边界。",
       "heading": "浏览澳洲学校",
       "intro": "{suburbs} 个城区、{schools} 所学校，数据来自 ACARA {year} 官方采集。选一个州查看它的城区，或者直接打开地图按地址查。",
       "statesHeading": "各州与领地",
@@ -176,7 +176,7 @@
     },
     "stateIndex": {
       "metaTitle": "{state}学校一览（按城区）",
-      "metaDescription": "{state}每一个有学校的城区——{suburbs} 个城区共 {schools} 所学校，数据来自 ACARA {year} 官方采集。不排名。",
+      "metaDescription": "{state}每一个有学校的城区——{suburbs} 个城区共 {schools} 所学校，数据来自 ACARA {year} 官方采集。",
       "heading": "{state}学校一览（按城区）",
       "counts": "{schools} 所学校 · {suburbs} 个城区",
       "zonedNote": "{state}有 {count} 所公立学校公布了学区。学区按地址划定，边界可能从一条街中间穿过——请核对具体地址，不要只看城区。",
@@ -188,7 +188,7 @@
     },
     "suburb": {
       "metaTitle": "{suburb}（{state}）的学校",
-      "metaDescription": "{suburb}（{state}）共 {count} 所学校。ACARA 官方资料，含办学性质、规模与年级范围。不排名。",
+      "metaDescription": "{suburb}（{state}）共 {count} 所学校。ACARA 官方资料，含办学性质、规模与年级范围。",
       "heading": "{suburb}（{state}）的学校",
       "schoolCount": "{count} 所学校",
       "postcode": "邮编 {postcodes}",
@@ -206,7 +206,7 @@
     },
     "school": {
       "metaTitle": "{school}（{suburb}，{state}）学校资料",
-      "metaDescription": "位于 {suburb}（{state}）的{sector}{type}。ACARA 官方办学资料、在校人数与位置数据——不排名，不打综合分。",
+      "metaDescription": "位于 {suburb}（{state}）的{sector}{type}。ACARA 官方办学资料、在校人数与位置数据。",
       "viewOnMap": "在地图上查看",
       "naplanLink": "在 My School 查看 NAPLAN",
       "websiteLink": "学校官网",
@@ -247,11 +247,11 @@
       "nearbyHeading": "{suburb} 附近的学校",
       "nearbyHint": "{suburb} 之外最近的学校，按直线距离排序。城区边界只是行政划分，不是孩子能读哪些学校的边界。",
       "nearbyDistance": "距 {school} {km} 公里",
-      "notShownHeading": "这个页面不提供什么",
-      "notShownBody": "没有排名、没有评级、没有综合评分——这所学校没有，本站 {total} 所学校都没有。NAPLAN 成绩不在本站转载，上面的 My School 链接指向官方来源。",
+      "naplanHeading": "NAPLAN 成绩",
+      "naplanBody": "ACARA 在 My School 上公布这所学校的 NAPLAN 成绩，页面顶部的链接直达官方页面。",
       "zoneLineNoYears": "{kind}",
       "zonePartialState": "{state}只给一部分公立学校划定了学区，而公开数据没有说明依据是什么。该校没有公布学区 —— 这跟该校没有学区不是一回事。",
-      "metaDescriptionFull": "位于 {suburb}（{state}）的{sector}{type}：{years} 年级，在校 {count} 人。各年级人数、师资、学区和周边学校，全部来自 ACARA 官方数据——不排名。",
+      "metaDescriptionFull": "位于 {suburb}（{state}）的{sector}{type}：{years} 年级，在校 {count} 人。各年级人数、师资、学区和周边学校，全部来自 ACARA 官方数据。",
       "lead": "{school} 位于{state} {suburb}，是一所{type}，办学性质为{sector}。开设 {years} 年级，在校 {count} 人（ACARA {year} 年数据）。",
       "leadBasic": "{school} 位于{state} {suburb}，是一所{type}，办学性质为{sector}。ACARA 没有公布它 {year} 年的办学资料，所以这里不显示在校人数和师资，也不做估算。",
       "statStudents": "在校人数",

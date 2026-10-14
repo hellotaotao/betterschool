@@ -148,14 +148,14 @@
   },
   "dataNotice": {
     "title": "ACARA canonical base",
-    "body": "Map and list use official ACARA {year} public school profile and location data. Marker colour = sector, size = enrolments — both official ACARA fields. This site publishes no ranking or composite quality score."
+    "body": "Map and list use official ACARA {year} public school profile and location data. Marker colour = sector, size = enrolments — both official ACARA fields."
   },
   "seo": {
     "shell": {
       "browseByState": "Browse by state",
       "openMap": "Open the map",
       "footerData": "School identity, location and profile data comes from the ACARA Data Access Program. Official catchment source links appear below when this page uses boundary data.",
-      "footerStance": "BetterSchool.au publishes no school ranking and no composite quality score. Where a value is inferred rather than official, the page says so; where it is not collected, the page says that too rather than showing a blank.",
+      "footerStance": "Every figure on BetterSchool.au names its source. Where a value is inferred rather than official, the page says so; where it is not collected, the page says that too rather than showing a blank.",
       "acaraLinkText": "ACARA Data Access Program",
       "nswLinkText": "Data.NSW",
       "otherLanguage": "中文",
@@ -163,7 +163,7 @@
     },
     "browse": {
       "metaTitle": "Browse Australian schools by state and suburb",
-      "metaDescription": "Browse every Australian school by state and suburb: official ACARA profiles for {schools} schools plus government intake zones for {states}. No ranking, no composite score.",
+      "metaDescription": "Browse every Australian school by state and suburb: official ACARA profiles for {schools} schools plus government intake zones for {states}.",
       "heading": "Browse Australian schools",
       "intro": "{schools} schools across {suburbs} suburbs, from the official ACARA {year} collection. Pick a state to see its suburbs, or go straight to the map to search by address.",
       "statesHeading": "States and territories",
@@ -176,7 +176,7 @@
     },
     "stateIndex": {
       "metaTitle": "Schools in {state}, by suburb",
-      "metaDescription": "Every suburb in {state} with a school — {schools} schools across {suburbs} suburbs, from the official ACARA {year} collection. No ranking.",
+      "metaDescription": "Every suburb in {state} with a school — {schools} schools across {suburbs} suburbs, from the official ACARA {year} collection.",
       "heading": "Schools in {state}, by suburb",
       "counts": "{schools} schools · {suburbs} suburbs",
       "zonedNote": "{count} government schools in {state} publish an intake zone. A zone is set by address, and boundaries can run through the middle of a street — check the address itself rather than the suburb.",
@@ -188,7 +188,7 @@
     },
     "suburb": {
       "metaTitle": "Schools in {suburb}, {state}",
-      "metaDescription": "{count} schools in {suburb}, {state}. Official ACARA profiles with sector, size and year levels. No ranking.",
+      "metaDescription": "{count} schools in {suburb}, {state}. Official ACARA profiles with sector, size and year levels.",
       "heading": "Schools in {suburb}, {state}",
       "schoolCount": "{count} schools",
       "postcode": "postcode {postcodes}",
@@ -206,7 +206,7 @@
     },
     "school": {
       "metaTitle": "{school}, {suburb} {state}",
-      "metaDescription": "{sector} {type} school in {suburb}, {state}. Official ACARA profile, enrolment and location data — no ranking, no composite score.",
+      "metaDescription": "{sector} {type} school in {suburb}, {state}. Official ACARA profile, enrolment and location data.",
       "viewOnMap": "View on the map",
       "naplanLink": "NAPLAN on My School",
       "websiteLink": "School website",
@@ -247,11 +247,11 @@
       "nearbyHeading": "Schools near {suburb}",
       "nearbyHint": "Closest schools outside {suburb}, by straight-line distance. A suburb boundary is an administrative line, not the limit of what your child can attend.",
       "nearbyDistance": "{km} km from {school}",
-      "notShownHeading": "What this page does not show",
-      "notShownBody": "No rank, no rating and no composite quality score — not for this school and not for any of the {total} schools on this site. NAPLAN results are not republished here; the My School link above goes to the official source.",
+      "naplanHeading": "NAPLAN results",
+      "naplanBody": "ACARA publishes this school's NAPLAN results on My School. The link at the top of the page opens its official page.",
       "zoneLineNoYears": "{kind}",
       "zonePartialState": "{state} publishes intake zones for only some of its government schools, and the published data does not say which rule decides. None is published for this school — that is not the same as this school having no zone.",
-      "metaDescriptionFull": "{sector} {type} school in {suburb}, {state}: {years}, {count} students. Year-by-year enrolments, staffing, intake zone and nearby schools from official ACARA data — no ranking.",
+      "metaDescriptionFull": "{sector} {type} school in {suburb}, {state}: {years}, {count} students. Year-by-year enrolments, staffing, intake zone and nearby schools from official ACARA data.",
       "lead": "{school} is a {type} school in {suburb}, {state}, in the {sector} sector. It teaches {years} to {count} students (ACARA, {year}).",
       "leadBasic": "{school} is a {type} school in {suburb}, {state}, in the {sector} sector. ACARA publishes no {year} profile for it, so enrolment and staffing figures are left out here rather than estimated.",
       "statStudents": "Students",

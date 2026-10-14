@@ -58,8 +58,6 @@ export default function SchoolDetail({
       </div>
 
       <div className="flex-1 overflow-y-auto p-3">
-        {/* No headline score: a single number per school is the league-table
-            framing this project deliberately avoids. */}
         <div className="mb-3">
           <h2 className="text-sm font-bold text-gray-900 leading-tight">
             {school.school_name}

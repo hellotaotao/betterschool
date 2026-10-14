@@ -54,9 +54,7 @@ function getSchoolIcon(school: MapSchool, isSelected: boolean): L.DivIcon {
  * Create a Leaflet DivIcon from school data and selection state.
  *
  * Color = official ACARA sector, size = official ACARA enrolments. Both are
- * facts present for ~100% / ~90% of schools respectively. No number is drawn
- * inside the marker: a single headline score per school is exactly the
- * league-table framing this project deliberately avoids.
+ * facts present for ~100% / ~90% of schools respectively.
  *
  * Selecting a school never recolours it. The fill used to flip to indigo, which
  * sits 19 degrees of hue from the Catholic violet — so clicking a green

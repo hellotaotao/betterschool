@@ -17,7 +17,7 @@ export const metadata: Metadata = {
     // States come from the published layers, so adding one cannot leave this
     // describing a smaller site than the one that ships.
     description:
-        `Find the schools around an address: official ACARA profiles for 11,034 Australian schools and government intake zones for ${coveredCatchmentStates(getMessages("en"), "en")}. No ranking, no composite score.`,
+        `Find the schools around an address: official ACARA profiles for 11,034 Australian schools and government intake zones for ${coveredCatchmentStates(getMessages("en"), "en")}.`,
 };
 
 export default function RootLayout({
