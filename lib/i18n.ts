@@ -49,11 +49,29 @@ export function resolveInitialLocale({
   return detectBrowserLocale(languages);
 }
 
+/**
+ * Fill `{name}` placeholders. Every occurrence is replaced, and the value is
+ * inserted literally: a function replacement keeps a school name containing
+ * `$&` or `$1` from being read as a regex back-reference. A placeholder with
+ * no value is left in place so the gap shows up rather than vanishing.
+ */
 export function formatMessage(template: string, values: Record<string, string | number>): string {
-  return Object.entries(values).reduce(
-    (message, [key, value]) => message.replace(`{${key}}`, String(value)),
-    template
-  );
+  return template.replace(/\{(\w+)\}/g, (placeholder, key: string) => (
+    Object.prototype.hasOwnProperty.call(values, key) ? String(values[key]) : placeholder
+  ));
+}
+
+/**
+ * A number as the ordinal its locale writes before "percentile": "93rd" in
+ * English (11th-13th are the exceptions to the last-digit rule); Chinese puts
+ * 第 in the message itself and takes the bare number.
+ */
+export function ordinalNumber(value: number, locale: Locale): string {
+  if (locale !== 'en') return String(value);
+  const lastTwo = Math.abs(value) % 100;
+  if (lastTwo >= 11 && lastTwo <= 13) return `${value}th`;
+  const suffix = ({ 1: 'st', 2: 'nd', 3: 'rd' } as Record<number, string>)[lastTwo % 10] ?? 'th';
+  return `${value}${suffix}`;
 }
 
 export function getSectorLabel(sector: string, dictionary: Messages): string {

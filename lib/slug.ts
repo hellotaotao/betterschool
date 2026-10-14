@@ -41,7 +41,7 @@ function baseSchoolSlug(school: MapSchool): string {
 export function buildSchoolSlugs(schools: MapSchool[]): Map<string, string> {
   const byKey = new Map<string, MapSchool[]>();
   for (const school of schools) {
-    const key = `${stateSlug(school.state)}/${baseSchoolSlug(school)}`;
+    const key = schoolSlugKey(school);
     const bucket = byKey.get(key);
     if (bucket) bucket.push(school);
     else byKey.set(key, [school]);
@@ -122,20 +122,41 @@ export function toLocalePath(path: string, locale: Locale): string {
 }
 
 /**
+ * `<state>/<base slug>` keys shared by more than one school, per school list.
+ *
+ * Built once per list and reused, so linking out of the detail panel costs a
+ * set lookup rather than a scan of all 11,034 schools on every selection. Keyed
+ * weakly by the array: the map app keeps one dataset array for the session,
+ * and a new array (a fresh fetch, a test fixture) gets its own entry.
+ */
+const collidingKeysCache = new WeakMap<readonly MapSchool[], Set<string>>();
+
+function schoolSlugKey(school: MapSchool): string {
+  return `${stateSlug(school.state)}/${baseSchoolSlug(school)}`;
+}
+
+function collidingKeys(allSchools: readonly MapSchool[]): Set<string> {
+  const cached = collidingKeysCache.get(allSchools);
+  if (cached) return cached;
+
+  const seen = new Set<string>();
+  const colliding = new Set<string>();
+  for (const school of allSchools) {
+    const key = schoolSlugKey(school);
+    if (seen.has(key)) colliding.add(key);
+    else seen.add(key);
+  }
+  collidingKeysCache.set(allSchools, colliding);
+  return colliding;
+}
+
+/**
  * Slug for a single school, resolved against the full set.
  *
- * The client only ever needs one school's URL at a time, so this avoids
- * building all 11,034 slugs up front just to link out of the detail panel.
  * Same rule as buildSchoolSlugs: the plain `<name>-<suburb>` slug unless
  * another school in the same state would collide with it.
  */
-export function schoolSlugFor(school: MapSchool, allSchools: MapSchool[]): string {
+export function schoolSlugFor(school: MapSchool, allSchools: readonly MapSchool[]): string {
   const base = baseSchoolSlug(school);
-  const state = stateSlug(school.state);
-  const collides = allSchools.some(
-    other => other.id !== school.id
-      && stateSlug(other.state) === state
-      && baseSchoolSlug(other) === base,
-  );
-  return collides ? `${base}-${school.acara_sml_id}` : base;
+  return collidingKeys(allSchools).has(schoolSlugKey(school)) ? `${base}-${school.acara_sml_id}` : base;
 }

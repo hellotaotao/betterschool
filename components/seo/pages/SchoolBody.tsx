@@ -26,15 +26,14 @@ import { getMarkerColor, sectorBadgeClass } from '@/utils/schoolFilters';
 import EnrolmentChart, { type CohortBar } from '@/components/seo/school/EnrolmentChart';
 import NeighbourhoodDiagram, { layoutDiagram } from '@/components/seo/school/NeighbourhoodDiagram';
 import { safeSchoolWebsiteUrl } from '@/lib/schoolUrl';
-import { formatMessage, getMessages, getReligionLabel, getSchoolTypeLabel, getSectorLabel } from '@/lib/i18n';
+import { formatMessage, getMessages, getReligionLabel, getSchoolTypeLabel, getSectorLabel, ordinalNumber } from '@/lib/i18n';
 import { buildPageMetadata, getSeo, htmlLang, localeKind, localeStateLabel, localeStateName, type Locale } from '@/lib/seoLocale';
 import { absoluteUrl } from '@/lib/site';
 import { browsePath, catchmentPath, mapUrl, schoolPath, stateIndexPath, suburbPath } from '@/lib/slug';
 import { catchmentStateCodes, catchmentStateInfo } from '@/lib/catchmentStates';
 import PageShell from '@/components/seo/PageShell';
 import SchoolLinkCard from '@/components/seo/SchoolLinkCard';
-
-const DATA_YEAR = 2025;
+import { ACARA_DATA_YEAR } from '@/lib/dataYear';
 
 /** English reads "a primary school"; Chinese labels have no case to change. */
 function typeLabel(locale: Locale, school: School): string {
@@ -245,7 +244,7 @@ export default function SchoolBody({ locale, state, slug }: { locale: Locale; st
     <PageShell
       locale={locale}
       bareEnglishPath={schoolPath(school.state, slug)}
-      dataYear={2025}
+      dataYear={ACARA_DATA_YEAR}
       sourceLinks={[...new Map(catchments.map(catchment => [
         catchment.source_url,
         { url: catchment.source_url, label: catchment.source },
@@ -288,7 +287,7 @@ export default function SchoolBody({ locale, state, slug }: { locale: Locale; st
             sector: sectorLabel,
             years: school.year_range ?? '',
             count: number(Number(school.total_enrolments)),
-            year: DATA_YEAR,
+            year: ACARA_DATA_YEAR,
           })}
         </p>
         <div className="mt-5 flex flex-wrap gap-2">
@@ -355,7 +354,7 @@ export default function SchoolBody({ locale, state, slug }: { locale: Locale; st
             <Stat label={t.fieldIcsea} value={school.icsea}>
               {Number.isFinite(school.icsea_percentile) && (
                 <span className="mt-1 block text-xs text-gray-500">
-                  {formatMessage(t.icseaPercentile, { value: Number(school.icsea_percentile) })}
+                  {formatMessage(t.icseaPercentile, { value: ordinalNumber(Number(school.icsea_percentile), locale) })}
                 </span>
               )}
             </Stat>
@@ -384,7 +383,7 @@ export default function SchoolBody({ locale, state, slug }: { locale: Locale; st
       {cohortBars.length > 1 && (
         <section className="mt-10" aria-labelledby="cohorts">
           <h2 id="cohorts" className="text-lg font-semibold tracking-tight">{t.cohortHeading}</h2>
-          <p className="mt-1 text-xs text-gray-500">{formatMessage(t.cohortSource, { year: DATA_YEAR })}</p>
+          <p className="mt-1 text-xs text-gray-500">{formatMessage(t.cohortSource, { year: ACARA_DATA_YEAR })}</p>
           <EnrolmentChart
             bars={cohortBars}
             color={sectorColor}
@@ -580,7 +579,7 @@ export default function SchoolBody({ locale, state, slug }: { locale: Locale; st
 
       <section className="mt-10" aria-labelledby="profile">
         <h2 id="profile" className="text-lg font-semibold tracking-tight">{t.profileHeading}</h2>
-        <p className="mt-1 text-xs text-gray-500">{t.profileSource}</p>
+        <p className="mt-1 text-xs text-gray-500">{formatMessage(t.profileSource, { year: ACARA_DATA_YEAR })}</p>
         <dl className="mt-3 rounded-lg border border-gray-200 px-3">
           <Fact label={t.fieldSector} value={getSectorLabel(school.sector, dictionary)} />
           {school.school_type && (
@@ -608,7 +607,7 @@ export default function SchoolBody({ locale, state, slug }: { locale: Locale; st
                   {Number.isFinite(school.icsea_percentile) && (
                     <span className="text-gray-500">
                       {' · '}
-                      {formatMessage(t.icseaPercentile, { value: Number(school.icsea_percentile) })}
+                      {formatMessage(t.icseaPercentile, { value: ordinalNumber(Number(school.icsea_percentile), locale) })}
                     </span>
                   )}
                 </>

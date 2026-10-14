@@ -70,6 +70,12 @@ from `public/data/`. The only request-time code is `proxy.ts`, scoped to
 `/schools`: it copies the edge's own `x-vercel-ip-*` geolocation into a
 short-lived cookie for the map's opening view (Australian positions only), so
 no third-party IP service ever sees a visitor. The page itself stays static.
+Without the cookie the map opens on all of Australia; it never prompts for the
+browser's geolocation on load.
+
+Production is served from `www.betterschool.au`; the apex 308s to it.
+`SITE_URL` (`lib/site.ts`) is the origin of every canonical, hreflang and
+sitemap URL, so it must stay on the serving host, never the redirecting one.
 
 ```
 ACARA/*.xlsx

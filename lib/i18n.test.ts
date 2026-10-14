@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import en from '@/messages/en.json';
 import zh from '@/messages/zh.json';
-import { formatMessage, getMessages, detectBrowserLocale, resolveInitialLocale } from './i18n';
+import { formatMessage, getMessages, detectBrowserLocale, ordinalNumber, resolveInitialLocale } from './i18n';
 
 function flatten(value: unknown, prefix = ''): string[] {
   if (typeof value !== 'object' || value === null) return [prefix];
@@ -56,6 +56,38 @@ describe('formatMessage', () => {
 
   it('leaves unknown placeholders alone rather than printing undefined', () => {
     expect(formatMessage('{a} and {b}', { a: '1' })).toBe('1 and {b}');
+  });
+
+  it('replaces a placeholder that appears more than once', () => {
+    expect(formatMessage('{name} — see {name}', { name: 'Chatswood' })).toBe('Chatswood — see Chatswood');
+  });
+
+  it('inserts values literally, without regex replacement patterns', () => {
+    expect(formatMessage('{school}', { school: "St Mary's $& $1 $$" })).toBe("St Mary's $& $1 $$");
+  });
+
+  it('does not let a value introduce another substitution', () => {
+    expect(formatMessage('{a} {b}', { a: '{b}', b: 'x' })).toBe('{b} x');
+  });
+
+  it('ignores inherited keys', () => {
+    expect(formatMessage('{toString}', {})).toBe('{toString}');
+  });
+});
+
+describe('ordinalNumber', () => {
+  it('uses the English suffix for the last digit', () => {
+    expect([1, 2, 3, 4, 21, 22, 23, 93, 100, 101].map(n => ordinalNumber(n, 'en')))
+      .toEqual(['1st', '2nd', '3rd', '4th', '21st', '22nd', '23rd', '93rd', '100th', '101st']);
+  });
+
+  it('keeps th for 11 to 13, including 111 to 113', () => {
+    expect([11, 12, 13, 111, 112, 113].map(n => ordinalNumber(n, 'en')))
+      .toEqual(['11th', '12th', '13th', '111th', '112th', '113th']);
+  });
+
+  it('leaves the number bare in Chinese, where the message carries 第', () => {
+    expect(ordinalNumber(93, 'zh')).toBe('93');
   });
 });
 

@@ -8,7 +8,7 @@ import 'leaflet/dist/leaflet.css';
 import { MapSchool } from '@/types/school';
 import { getMarkerRadius, getMarkerColor, CATCHMENT_COLORS, SECTOR_COLORS } from '@/utils/schoolFilters';
 import { zoneKey, type CatchmentFeature, type ViewportBounds } from '@/lib/catchmentLookup';
-import { isAustralian, readGeoCookie } from '@/lib/ipGeo';
+import { readGeoCookie } from '@/lib/ipGeo';
 
 
 /**
@@ -280,42 +280,22 @@ function BoundsTracker({
  * Center the map around the visitor's approximate location after mount.
  *
  * The position comes from the cookie proxy.ts sets from the edge's own
- * geolocation, so no third party sees the visitor's IP. Without one (local
- * dev, an overseas visitor) it falls back to the browser's geolocation, and
- * keeps that only when it lands in Australia.
+ * geolocation, so no third party sees the visitor's IP. Without one (an
+ * overseas visitor, local dev) the default whole-of-Australia view stands.
+ * The browser's own geolocation is deliberately not asked for on load: the
+ * visitors who reach this branch are mostly overseas, so a permission prompt
+ * would interrupt them for a position the map would then discard.
  *
  * Skipped when the page already has an explicit target (a /schools?school=
- * deep link): a late-arriving position would otherwise yank the view away
- * from the school the visitor asked for.
+ * deep link), which decides the view instead.
  */
 function GeoLocator({ enabled = true }: { enabled?: boolean }) {
   const map = useMap();
 
   useEffect(() => {
     if (!enabled) return;
-
     const edge = readGeoCookie(document.cookie);
-    if (edge) {
-      map.setView(edge, 10);
-      return;
-    }
-    if (!navigator.geolocation) return;
-
-    let cancelled = false;
-    navigator.geolocation.getCurrentPosition(
-      ({ coords }) => {
-        if (!cancelled && isAustralian(coords.latitude, coords.longitude)) {
-          map.setView([coords.latitude, coords.longitude], 10);
-        }
-      },
-      () => {
-        // Denied or timed out: the default whole-of-Australia view stands.
-      },
-      { enableHighAccuracy: false, timeout: 3000, maximumAge: 300000 },
-    );
-    return () => {
-      cancelled = true;
-    };
+    if (edge) map.setView(edge, 10);
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 

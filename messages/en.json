@@ -148,7 +148,7 @@
   },
   "dataNotice": {
     "title": "ACARA canonical base",
-    "body": "Map and list use official ACARA 2025 public school profile and location data. Marker colour = sector, size = enrolments — both official ACARA fields. This site publishes no ranking or composite quality score."
+    "body": "Map and list use official ACARA {year} public school profile and location data. Marker colour = sector, size = enrolments — both official ACARA fields. This site publishes no ranking or composite quality score."
   },
   "seo": {
     "shell": {
@@ -165,7 +165,7 @@
       "metaTitle": "Browse Australian schools by state and suburb",
       "metaDescription": "Browse every Australian school by state and suburb: official ACARA profiles for {schools} schools plus government intake zones for {states}. No ranking, no composite score.",
       "heading": "Browse Australian schools",
-      "intro": "{schools} schools across {suburbs} suburbs, from the official ACARA 2025 collection. Pick a state to see its suburbs, or go straight to the map to search by address.",
+      "intro": "{schools} schools across {suburbs} suburbs, from the official ACARA {year} collection. Pick a state to see its suburbs, or go straight to the map to search by address.",
       "statesHeading": "States and territories",
       "stateMeta": "{schools} schools · {suburbs} suburbs",
       "stateZoned": "{count} with an intake zone",
@@ -176,7 +176,7 @@
     },
     "stateIndex": {
       "metaTitle": "Schools in {state}, by suburb",
-      "metaDescription": "Every suburb in {state} with a school — {schools} schools across {suburbs} suburbs, from the official ACARA 2025 collection. No ranking.",
+      "metaDescription": "Every suburb in {state} with a school — {schools} schools across {suburbs} suburbs, from the official ACARA {year} collection. No ranking.",
       "heading": "Schools in {state}, by suburb",
       "counts": "{schools} schools · {suburbs} suburbs",
       "zonedNote": "{count} government schools in {state} publish an intake zone. A zone is set by address, and boundaries can run through the middle of a street — check the address itself rather than the suburb.",
@@ -211,7 +211,7 @@
       "naplanLink": "NAPLAN on My School",
       "websiteLink": "School website",
       "profileHeading": "Official profile",
-      "profileSource": "From the ACARA Data Access Program, 2025 collection.",
+      "profileSource": "From the ACARA Data Access Program, {year} collection.",
       "fieldSector": "Sector",
       "fieldType": "School type",
       "fieldYearLevels": "Year levels",
@@ -220,7 +220,7 @@
       "enrolmentsValue": "{count} students",
       "enrolmentsSplit": "{girls} girls · {boys} boys",
       "fieldIcsea": "ICSEA",
-      "icseaPercentile": "{value}th percentile",
+      "icseaPercentile": "{value} percentile",
       "icseaNote": "Index of Community Socio-Educational Advantage: it describes the socio-educational background of the students, not how the school performs.",
       "fieldLbote": "Language other than English at home",
       "fieldIndigenous": "Indigenous students",

@@ -9,6 +9,7 @@ import { browsePath, catchmentPath, mapUrl, stateIndexPath, suburbPath } from '@
 import { catchmentStateCodes, catchmentStateInfo } from '@/lib/catchmentStates';
 import PageShell from '@/components/seo/PageShell';
 import SchoolLinkCard from '@/components/seo/SchoolLinkCard';
+import { ACARA_DATA_YEAR } from '@/lib/dataYear';
 
 /** Group order matches how a parent thinks about stages, not alphabetical. */
 const TYPE_ORDER = ['Primary', 'Combined', 'Secondary', 'Special'];
@@ -68,7 +69,7 @@ export default function SuburbBody({ locale, state, slug }: { locale: Locale; st
     <PageShell
       locale={locale}
       bareEnglishPath={suburbPath(group.state, group.suburb)}
-      dataYear={2025}
+      dataYear={ACARA_DATA_YEAR}
       crumbs={[
         { label: shell.browseByState, href: browsePath(locale) },
         { label: full, href: stateIndexPath(group.state, locale) },

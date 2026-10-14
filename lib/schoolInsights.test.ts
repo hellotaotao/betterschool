@@ -10,6 +10,7 @@ import {
   ringStepKm,
   schoolHighlights,
   studentsPerTeacher,
+  type HighlightContext,
 } from './schoolInsights';
 
 function school(overrides: Partial<School> = {}): School {
@@ -29,7 +30,7 @@ function school(overrides: Partial<School> = {}): School {
   };
 }
 
-const ordinaryContext = {
+const ordinaryContext: HighlightContext = {
   suburbSchools: [{ id: 'acara-1-1-1', sector: 'Government' }, { id: 'b', sector: 'Government' }],
   sizePool: [],
 };

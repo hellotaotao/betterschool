@@ -132,6 +132,14 @@ describe('schoolSlugFor', () => {
     const tas = school({ id: 'e', acara_sml_id: 2, school_name: 'Trinity College', suburb: 'Perth', state: 'TAS' });
     expect(schoolSlugFor(wa, [wa, tas])).toBe('trinity-college-perth');
   });
+
+  it('agrees with buildSchoolSlugs across the whole list on repeated calls', () => {
+    const list = [...all, school({ id: 'f', acara_sml_id: 7, school_name: 'Chatswood Public School', suburb: 'Chatswood', state: 'VIC' })];
+    const bulk = buildSchoolSlugs(list);
+    for (let round = 0; round < 2; round++) {
+      for (const s of list) expect(schoolSlugFor(s, list)).toBe(bulk.get(s.id));
+    }
+  });
 });
 
 describe('locale-aware paths', () => {

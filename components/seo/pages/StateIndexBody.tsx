@@ -6,6 +6,7 @@ import { formatMessage } from '@/lib/i18n';
 import { buildPageMetadata, getSeo, localeStateName, type Locale } from '@/lib/seoLocale';
 import { browsePath, mapUrl, stateIndexPath, suburbPath } from '@/lib/slug';
 import PageShell from '@/components/seo/PageShell';
+import { ACARA_DATA_YEAR } from '@/lib/dataYear';
 
 export function stateIndexMetadata(locale: Locale, state: string): Metadata {
   const summary = getStateSummary(state);
@@ -16,6 +17,7 @@ export function stateIndexMetadata(locale: Locale, state: string): Metadata {
     state: localeStateName(locale, summary.state),
     schools: summary.schools.toLocaleString(),
     suburbs: summary.suburbs.length.toLocaleString(),
+    year: ACARA_DATA_YEAR,
   };
 
   return buildPageMetadata({
@@ -41,7 +43,7 @@ export default function StateIndexBody({ locale, state }: { locale: Locale; stat
     <PageShell
       locale={locale}
       bareEnglishPath={stateIndexPath(summary.state)}
-      dataYear={2025}
+      dataYear={ACARA_DATA_YEAR}
       crumbs={[{ label: shell.browseByState, href: browsePath(locale) }, { label: full }]}
     >
       <h1 className="text-2xl font-bold tracking-tight">

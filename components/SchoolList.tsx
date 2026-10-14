@@ -5,6 +5,7 @@ import { MapSchool } from '@/types/school';
 import { getSchoolTypeLabel, getSectorLabel, formatMessage, Locale, Messages } from '@/lib/i18n';
 import DirectoryLinks from './DirectoryLinks';
 import { sectorBadgeClass } from '@/utils/schoolFilters';
+import { ACARA_DATA_YEAR } from '@/lib/dataYear';
 
 type SortKey = 'name' | 'icsea' | 'enrolments';
 
@@ -78,7 +79,7 @@ export default function SchoolList({
 
       <div className="px-3 py-2 border-b border-gray-100 bg-amber-50/70 text-[10px] text-amber-900 leading-snug shrink-0">
         <div className="font-semibold">{dictionary.dataNotice.title}</div>
-        <div>{dictionary.dataNotice.body}</div>
+        <div>{formatMessage(dictionary.dataNotice.body, { year: ACARA_DATA_YEAR })}</div>
       </div>
 
       <div className="flex-1 overflow-y-auto p-2 space-y-1.5">

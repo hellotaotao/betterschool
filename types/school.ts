@@ -1,13 +1,22 @@
-export type SchoolSector = 'Government' | 'Catholic' | 'Independent' | string;
+// Closed sets: every value the canonical build emits. The dataset is read as
+// JSON and cast, so types/school.test.ts checks the shipped file against these
+// lists; a new value from a source fails there instead of silently falling
+// through a label lookup.
+export const SCHOOL_SECTORS = ['Government', 'Catholic', 'Independent'] as const;
+export type SchoolSector = typeof SCHOOL_SECTORS[number];
 
-export type SchoolType = 'Primary' | 'Combined' | 'Secondary' | 'Special' | string;
+export const SCHOOL_TYPES = ['Primary', 'Combined', 'Secondary', 'Special'] as const;
+export type SchoolType = typeof SCHOOL_TYPES[number];
 
-export type LegacyMetricStatus = 'available' | 'unavailable' | 'ambiguous_unmatched' | string;
+export const LEGACY_METRIC_STATUSES = ['available', 'unavailable', 'ambiguous_unmatched'] as const;
+export type LegacyMetricStatus = typeof LEGACY_METRIC_STATUSES[number];
 
-export type ReligiousAffiliation =
-  | 'Catholic' | 'Anglican' | 'Lutheran' | 'Islamic' | 'Jewish' | 'Christian'
-  | 'Adventist' | 'Baptist' | 'Uniting' | 'Presbyterian' | 'Orthodox'
-  | 'Secular' | 'Unknown' | string;
+export const RELIGIOUS_AFFILIATIONS = [
+  'Catholic', 'Anglican', 'Lutheran', 'Islamic', 'Jewish', 'Christian',
+  'Adventist', 'Baptist', 'Uniting', 'Presbyterian', 'Orthodox',
+  'Secular', 'Unknown',
+] as const;
+export type ReligiousAffiliation = typeof RELIGIOUS_AFFILIATIONS[number];
 
 export type ReligionSource = 'sector' | 'governing_body' | 'name_explicit' | 'manual';
 

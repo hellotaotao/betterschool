@@ -5,6 +5,7 @@ import { coveredCatchmentStates, formatMessage, getMessages } from '@/lib/i18n';
 import { buildPageMetadata, getSeo, localeStateName, type Locale } from '@/lib/seoLocale';
 import { mapUrl, stateIndexPath, suburbPath } from '@/lib/slug';
 import PageShell from '@/components/seo/PageShell';
+import { ACARA_DATA_YEAR } from '@/lib/dataYear';
 
 const BARE_PATH = '/browse';
 
@@ -33,7 +34,7 @@ export default function BrowseBody({ locale }: { locale: Locale }) {
     <PageShell
       locale={locale}
       bareEnglishPath={BARE_PATH}
-      dataYear={2025}
+      dataYear={ACARA_DATA_YEAR}
       crumbs={[{ label: t.heading }]}
     >
       <h1 className="text-2xl font-bold tracking-tight">{t.heading}</h1>
@@ -41,6 +42,7 @@ export default function BrowseBody({ locale }: { locale: Locale }) {
         {formatMessage(t.intro, {
           schools: dataset.schools.length.toLocaleString(),
           suburbs: dataset.suburbs.size.toLocaleString(),
+          year: ACARA_DATA_YEAR,
         })}
       </p>
 
