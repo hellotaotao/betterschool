@@ -24,6 +24,7 @@ import { suburbSlug } from '@/lib/slug';
 import { getMarkerColor, sectorBadgeClass } from '@/utils/schoolFilters';
 import EnrolmentChart, { type CohortBar } from '@/components/seo/school/EnrolmentChart';
 import NeighbourhoodDiagram, { layoutDiagram } from '@/components/seo/school/NeighbourhoodDiagram';
+import ComparisonSection from '@/components/seo/school/ComparisonSection';
 import { safeSchoolWebsiteUrl } from '@/lib/schoolUrl';
 import { formatMessage, getMessages, getReligionLabel, getSchoolTypeLabel, getSectorLabel, ordinalNumber } from '@/lib/i18n';
 import { buildPageMetadata, getSeo, htmlLang, localeKind, localeStateLabel, localeStateName, type Locale } from '@/lib/seoLocale';
@@ -377,6 +378,8 @@ export default function SchoolBody({ locale, state, slug }: { locale: Locale; st
           </ul>
         </section>
       )}
+
+      <ComparisonSection school={school} locale={locale} />
 
       {cohortBars.length > 1 && (
         <section className="mt-10" aria-labelledby="cohorts">

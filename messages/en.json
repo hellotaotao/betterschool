@@ -202,7 +202,9 @@
       "catchmentLink": "{school} catchment",
       "relatedHeading": "Nearby suburbs",
       "relatedHint": "Closest suburbs to {suburb}, by straight-line distance.",
-      "zonesNonePartial": "No government school based in {suburb} publishes an intake zone. {state} zones only part of its government system, so this says little either way — the suburb may still sit inside the zone of a school based elsewhere."
+      "zonesNonePartial": "No government school based in {suburb} publishes an intake zone. {state} zones only part of its government system, so this says little either way — the suburb may still sit inside the zone of a school based elsewhere.",
+      "compareHeading": "Schools in {suburb} side by side",
+      "compareNote": "Sorted by ICSEA, highest first. ICSEA describes the socio-educational background of a school's students, not how the school performs. ACARA {year} data; students per teacher calculated by BetterSchool."
     },
     "school": {
       "metaTitle": "{school}, {suburb} {state}",
@@ -298,7 +300,30 @@
       "diagramZone": "The outline is this school's published intake zone.",
       "diagramThisSchool": "This school",
       "diagramKm": "{km} km",
-      "diagramNorth": "N"
+      "diagramNorth": "N",
+      "compareHeading": "How {school} compares",
+      "compareColMeasure": "Measure",
+      "compareColSchool": "This school",
+      "compareTopHigh": "Highest of {count}",
+      "compareRankHigh": "{rank} highest of {count}",
+      "compareTopLarge": "Largest of {count}",
+      "compareRankLarge": "{rank} largest of {count}",
+      "compareTopLow": "Lowest of {count}",
+      "compareRankLow": "{rank} lowest of {count}",
+      "comparePctHigher": "Higher than {percent}%",
+      "comparePctLarger": "Larger than {percent}%",
+      "comparePctLower": "Lower than {percent}%",
+      "compareListHeading": "{type} schools nearby, by ICSEA",
+      "compareColName": "School",
+      "compareColDistance": "Distance",
+      "compareThisSchool": "this school",
+      "compareIntroNearby": "Nearby: the {count} nearest {type} schools within {km} km, of any sector.",
+      "compareIntroState": "State: every {type} school in {state} with a published figure.",
+      "compareSource": "ACARA {year} data; ranks and percentages calculated by BetterSchool.",
+      "compareColNearby": "Nearby",
+      "compareColState": "In {state}",
+      "compareBottomLarge": "Smallest of {count}",
+      "comparePctSmaller": "Smaller than {percent}%"
     },
     "catchment": {
       "metaTitle": "{school} catchment area, {suburb} {state}",

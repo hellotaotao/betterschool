@@ -10,6 +10,7 @@ import {
   type CatchmentIndexEntry,
 } from './catchmentLookup';
 import { buildSchoolSlugs, stateSlug, suburbSlug } from './slug';
+import { metricValue, type CompareMetric } from './schoolCompare';
 
 // Server-only: build-time sitemap generation and on-demand ISR pages read the
 // dataset straight off disk rather than fetching it. Never import this from a
@@ -272,6 +273,53 @@ export function getSizePool(state: string, schoolType: string | undefined): numb
     cachedSizePools.set(key, pool);
   }
   return pool;
+}
+
+const cachedMetricPools = new Map<string, number[]>();
+
+/**
+ * One metric's values across every school of one type in one state, ascending
+ * — the denominator for "higher than N% of NSW secondary schools". Like size,
+ * these are compared like with like: the pool is the school's own type.
+ */
+export function getMetricPool(state: string, schoolType: string | undefined, metric: CompareMetric): number[] {
+  if (!schoolType) return [];
+  const key = `${state}/${schoolType}/${metric}`;
+  let pool = cachedMetricPools.get(key);
+  if (!pool) {
+    pool = getSchoolsForState(state)
+      .filter(school => school.school_type === schoolType)
+      .map(school => metricValue(school, metric))
+      .filter((value): value is number => value !== null)
+      .sort((a, b) => a - b);
+    cachedMetricPools.set(key, pool);
+  }
+  return pool;
+}
+
+/**
+ * The nearest schools of the same type, this one excluded, for "2nd highest of
+ * the 10 nearest secondary schools".
+ *
+ * Same type because a primary and a secondary school do not compete for the
+ * same child; any sector, because a parent weighing a government high school
+ * is weighing the private ones down the road too. Capped by distance so a
+ * remote school is not ranked against towns two hours away.
+ */
+export function getComparisonGroup(school: School, size = 10, maxKm = 15): NearbySchool[] {
+  if (!school.school_type || !Number.isFinite(school.lat) || !Number.isFinite(school.lng)) return [];
+  const dataset = getSchoolsDataset();
+  const scored: NearbySchool[] = [];
+
+  for (const candidate of getSchoolsForState(school.state)) {
+    if (candidate.id === school.id || candidate.school_type !== school.school_type) continue;
+    const slug = dataset.slugs.get(candidate.id);
+    if (!slug) continue;
+    const km = distanceKm(Number(school.lat), Number(school.lng), Number(candidate.lat), Number(candidate.lng));
+    if (km <= maxKm) scored.push({ school: candidate, slug, km });
+  }
+
+  return scored.sort((a, b) => a.km - b.km).slice(0, size - 1);
 }
 
 // --- Catchments -------------------------------------------------------------

@@ -5,7 +5,9 @@ import { School } from '@/types/school';
 import { getRelatedSuburbs, getSchoolSlug, getSuburb } from '@/lib/schoolsData';
 import { formatMessage, getMessages, getSchoolTypeLabel, getSectorLabel } from '@/lib/i18n';
 import { buildPageMetadata, getSeo, localeStateLabel, localeStateName, type Locale } from '@/lib/seoLocale';
-import { browsePath, catchmentPath, mapUrl, stateIndexPath, suburbPath } from '@/lib/slug';
+import { browsePath, catchmentPath, mapUrl, schoolPath, stateIndexPath, suburbPath } from '@/lib/slug';
+import { displayRanks, metricValue, sortByMetric } from '@/lib/schoolCompare';
+import { sectorBadgeClass } from '@/utils/schoolFilters';
 import { catchmentStateCodes, catchmentStateInfo } from '@/lib/catchmentStates';
 import PageShell from '@/components/seo/PageShell';
 import SchoolLinkCard from '@/components/seo/SchoolLinkCard';
@@ -55,7 +57,10 @@ export default function SuburbBody({ locale, state, slug }: { locale: Locale; st
   const dictionary = getMessages(locale);
   const full = localeStateName(locale, group.state);
 
+  const st = getSeo(locale).school;
   const byType = groupByType(group.schools);
+  const ranked = sortByMetric(group.schools, 'icsea');
+  const rankedPositions = displayRanks(ranked, 'icsea');
   const related = getRelatedSuburbs(group);
   const sectorCounts = group.schools.reduce<Record<string, number>>((acc, school) => {
     acc[school.sector] = (acc[school.sector] ?? 0) + 1;
@@ -100,6 +105,56 @@ export default function SuburbBody({ locale, state, slug }: { locale: Locale; st
           {formatMessage(t.exploreOnMap, { suburb: group.suburb })}
         </Link>
       </div>
+
+      {ranked.length >= 2 && (
+        <section className="mt-8" aria-labelledby="compare">
+          <h2 id="compare" className="text-base font-semibold">
+            {formatMessage(t.compareHeading, { suburb: group.suburb })}
+          </h2>
+          <div className="mt-3 overflow-x-auto">
+            <table className="w-full min-w-[36rem] text-sm">
+              <thead>
+                <tr className="border-b border-gray-200 text-left text-xs text-gray-500">
+                  <th scope="col" className="w-8 py-2 pr-2 font-medium">#</th>
+                  <th scope="col" className="py-2 pr-3 font-medium">{st.compareColName}</th>
+                  <th scope="col" className="py-2 pr-3 font-medium">{st.fieldType}</th>
+                  <th scope="col" className="py-2 pr-3 font-medium">{st.fieldSector}</th>
+                  <th scope="col" className="py-2 pr-3 text-right font-medium">{st.fieldIcsea}</th>
+                  <th scope="col" className="py-2 pr-3 text-right font-medium">{st.statStudents}</th>
+                  <th scope="col" className="py-2 text-right font-medium">{st.statRatio}</th>
+                </tr>
+              </thead>
+              <tbody>
+                {ranked.map((school, index) => {
+                  const icsea = metricValue(school, 'icsea');
+                  const students = metricValue(school, 'enrolments');
+                  const ratio = metricValue(school, 'ratio');
+                  return (
+                    <tr key={school.id} className="border-b border-gray-100">
+                      <td className="py-2 pr-2 tabular-nums text-gray-500">{rankedPositions[index] ?? '—'}</td>
+                      <td className="py-2 pr-3">
+                        <Link href={schoolPath(school.state, getSchoolSlug(school), locale)} className="text-indigo-700 hover:underline">
+                          {school.school_name}
+                        </Link>
+                      </td>
+                      <td className="py-2 pr-3 text-gray-600">{school.school_type ? getSchoolTypeLabel(school.school_type, dictionary) : '—'}</td>
+                      <td className="py-2 pr-3">
+                        <span className={`rounded-full px-2 py-0.5 text-[10px] font-medium ${sectorBadgeClass(school.sector)}`}>
+                          {getSectorLabel(school.sector, dictionary)}
+                        </span>
+                      </td>
+                      <td className="py-2 pr-3 text-right tabular-nums">{icsea ?? '—'}</td>
+                      <td className="py-2 pr-3 text-right tabular-nums">{students === null ? '—' : students.toLocaleString('en-AU')}</td>
+                      <td className="py-2 text-right tabular-nums">{ratio === null ? '—' : ratio.toFixed(1)}</td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
+          </div>
+          <p className="mt-2 text-xs text-gray-500">{formatMessage(t.compareNote, { year: ACARA_DATA_YEAR })}</p>
+        </section>
+      )}
 
       {byType.map(([type, schools]) => (
         <section key={type} className="mt-8" aria-labelledby={`type-${type}`}>

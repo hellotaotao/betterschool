@@ -202,7 +202,9 @@
       "catchmentLink": "{school} 的学区",
       "relatedHeading": "邻近城区",
       "relatedHint": "离 {suburb} 最近的城区，按直线距离排序。",
-      "zonesNonePartial": "没有以 {suburb} 为校址的公立学校公布学区。{state}只给一部分公立学校划片，所以这一点说明不了什么 —— 这个城区仍可能落在别处某所学校的学区范围内。"
+      "zonesNonePartial": "没有以 {suburb} 为校址的公立学校公布学区。{state}只给一部分公立学校划片，所以这一点说明不了什么 —— 这个城区仍可能落在别处某所学校的学区范围内。",
+      "compareHeading": "{suburb} 学校并排对比",
+      "compareNote": "按 ICSEA 从高到低排序。ICSEA 反映的是学生的社会教育背景，而不是学校的教学表现。数据来自 ACARA {year}，师生比由 BetterSchool 计算。"
     },
     "school": {
       "metaTitle": "{school}（{suburb}，{state}）学校资料",
@@ -298,7 +300,30 @@
       "diagramZone": "轮廓线是这所学校公布的学区范围。",
       "diagramThisSchool": "本校",
       "diagramKm": "{km} 公里",
-      "diagramNorth": "北"
+      "diagramNorth": "北",
+      "compareHeading": "{school} 与周边学校比较",
+      "compareColMeasure": "指标",
+      "compareColSchool": "本校",
+      "compareTopHigh": "{count} 所中最高",
+      "compareRankHigh": "{count} 所中第 {rank} 高",
+      "compareTopLarge": "{count} 所中最大",
+      "compareRankLarge": "{count} 所中第 {rank} 大",
+      "compareTopLow": "{count} 所中最低",
+      "compareRankLow": "{count} 所中第 {rank} 低",
+      "comparePctHigher": "高于 {percent}%",
+      "comparePctLarger": "大于 {percent}%",
+      "comparePctLower": "低于 {percent}%",
+      "compareListHeading": "附近的{type}，按 ICSEA 排序",
+      "compareColName": "学校",
+      "compareColDistance": "距离",
+      "compareThisSchool": "本校",
+      "compareIntroNearby": "周边：{km} 公里内最近的 {count} 所{type}，不分办学性质。",
+      "compareIntroState": "全州：{state}所有公布了该项数据的{type}。",
+      "compareSource": "数据来自 ACARA {year}，名次和百分比由 BetterSchool 计算。",
+      "compareColNearby": "周边",
+      "compareColState": "{state}",
+      "compareBottomLarge": "{count} 所中最小",
+      "comparePctSmaller": "小于 {percent}%"
     },
     "catchment": {
       "metaTitle": "{school} 学区范围（{suburb}，{state}）",
