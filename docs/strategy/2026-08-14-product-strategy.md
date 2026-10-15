@@ -164,7 +164,9 @@ Better Education 的十年会考成绩库正面拼不过，所以不拿成绩榜
 
 **把 SchoolRank 的综合分当成攻击面**：他们的问题是把 wellbeing、课外活动、性价比揉成一个不可核验的数，而不是"打了分"。BetterSchool 要做综合分也可以，前提是公开输入和权重；每个字段标来源、判不准就写 `Unknown`。在一个全是黑箱评分的市场里，**透明本身就是定位**。
 
-外部硬限制只有两条：NAPLAN 不入库、不批量抓 My School（ToS）；NSW Education Act 1990 s18A 对按 NAPLAN/HSC 成绩发布 league table 的限制，做 NSW 成绩类排名前先核实适用范围。
+已知外部条款（记录在案，不阻挡功能）：网站使用的 ACARA 数据按 My School 使用条款发布，字面上公开展示、商业化和「为商业目的做学校比较排名」都需要 ACARA 书面同意，目前未申请，商业化前再处理；NSW Education Act 1990 s18A 限制按 NAPLAN/HSC 成绩发布 league table，只与成绩类排名有关。详见 CLAUDE.md。
+
+长期方向：在页内比较之外，做全市 / 全州排名页（对应「悉尼小学排名」类搜索词）。
 
 ### 5.2 中文家长是被低估的楔子
 

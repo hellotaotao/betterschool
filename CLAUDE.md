@@ -185,6 +185,14 @@ ICSEA describes student background, so it is never worded as school quality.
 `legacy_score` stays out because it covers only 911 schools. Students-per-teacher
 is calculated on the page and labelled as calculated.
 
+`components/seo/school/ComparisonSection.tsx` ranks the school on ICSEA,
+enrolments and students per teacher against two named groups: the nearest
+same-type schools within 15 km, any sector (`getComparisonGroup`), and every
+same-type school in its state (`getMetricPool`). Suburb pages list their
+schools side by side ranked by ICSEA. The arithmetic is in
+`lib/schoolCompare.ts`; a rank needs three schools with a value and a state
+percentage twenty, below which the column is omitted rather than shown thin.
+
 Slugs come from `lib/slug.ts`: `<name>-<suburb>`, because school names repeat
 heavily inside a state (NSW has 47 "St Joseph's Primary School"). Only a genuine
 same-suburb duplicate gets an `-<acara_sml_id>` suffix, so URLs stay stable.
@@ -255,16 +263,26 @@ These are the project's core commitments. They matter more than any feature.
 3. **Provenance on everything**: new sources go `data/<source>/raw → processed`
    with `parse-* / build-* / validate-*` scripts, and the build writes coverage
    counts (including the unknown count) into `schools.metadata.json`.
-4. **NAPLAN scores are never stored.** My School's terms forbid bulk scraping and
-   league tables. Link out via `myschool_url`, built from `acara_sml_id`.
+4. **NAPLAN scores are not stored.** Link out via `myschool_url`, built from
+   `acara_sml_id`.
 5. **Compare and rank freely; show the working.** Any sourced field can rank or
    compare schools, as long as the page names the field, the year and the
    group compared against. A blended score is fine when its inputs and weights
    are published: competitors' composite scores are criticised for being
-   unauditable, not for existing. The external limits are NAPLAN (above) and,
-   for NSW, the Education Act 1990 s18A restriction on league tables of
-   NAPLAN/HSC results — check its scope before ranking NSW schools on exam
-   results.
+   unauditable, not for existing.
+
+**Known external terms — recorded, not blocking.** This is a startup: these
+are risks to weigh when a decision touches them, not reasons to skip a feature.
+- The ACARA download files (School Profile, Location, Enrolments by Grade) are
+  issued under the My School terms of use (July 2020). Read literally, they
+  license only private or in-house non-commercial use; public-website
+  reproduction (cl. 6.4, 7.1(a)), commercial use (7.1(b)) and "lists of
+  comparative school performance … for a commercial purpose" need ACARA's
+  written consent (copyright@acara.edu.au). No consent has been sought;
+  revisit before monetising or if ACARA makes contact. ACARA's public
+  objections so far have targeted NAPLAN league tables.
+- NSW Education Act 1990 s18A restricts league tables of NSW schools' NAPLAN
+  and HSC results; scope unverified, relevant only to exam-result rankings.
 6. **Never invent precision.** Fees store an exact figure when a source publishes
    one, otherwise a band — always with `fee_source` + `source_url` + `fee_year`.
    Catchment geometry is likewise stored unsimplified, so the reverse lookup runs
