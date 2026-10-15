@@ -23,9 +23,9 @@ describe('catchmentStateInfo', () => {
   });
 
   /**
-   * The distinction the pages hang their copy on. NSW zones 2,029 of 2,223
+   * The distinction the pages hang their copy on. NSW zones 2,029 of 2,225
    * government schools, so silence there means "none published for this
-   * school". SA zones 124 of 521 and does not publish the rule, so the same
+   * school". SA zones 124 of 526 and does not publish the rule, so the same
    * silence says almost nothing — and a page that phrased it the NSW way would
    * invite a reader to conclude the school is unzoned.
    */

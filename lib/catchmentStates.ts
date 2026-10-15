@@ -10,9 +10,9 @@ import { CATCHMENT_STATES } from './catchmentLookup';
  *
  * `complete` records whether the state's published layer represents its zoned
  * government system. NSW
- * publishes a zone for 2,029 of 2,223 government schools, so a NSW school
+ * publishes a zone for 2,029 of 2,225 government schools, so a NSW school
  * without one has genuinely had none published. South Australia publishes 124
- * of 521, and the published data gives no rule for which — so "no zone here"
+ * of 526, and the published data gives no rule for which — so "no zone here"
  * carries much less information there, and the page has to say so rather than
  * letting a reader infer the school is unzoned. Victoria publishes its
  * designated-neighbourhood zones comprehensively, although specialist,

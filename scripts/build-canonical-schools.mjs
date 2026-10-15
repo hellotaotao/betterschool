@@ -62,20 +62,28 @@ for (const layer of Object.values(catchmentLayers)) {
   }
 }
 
-const profilesByLocationAgeId = new Map(profilePayload.records.map(record => [record.location_age_id, record]));
-
-// Per-year enrolments join on location_age_id alone, so a record without one,
-// or an id the source repeats, is left out rather than attached to a guess.
-const gradesPayload = readJson(gradesPath);
-const gradeRecordCounts = new Map();
-for (const record of gradesPayload.records) {
-  gradeRecordCounts.set(record.location_age_id, (gradeRecordCounts.get(record.location_age_id) ?? 0) + 1);
+// Profiles join on acara_sml_id, which ACARA gives every record exactly once.
+// location_age_id is missing on 283 locations and 16 profiles, and six ids are
+// shared by two locations (a renamed school, a new campus), so joining on it
+// once handed one profile's ICSEA, enrolments and staffing to 283 schools and
+// gave Randwick Boys High the figures of Randwick High.
+const profilesBySmlId = new Map();
+for (const record of profilePayload.records) {
+  if (profilesBySmlId.has(record.acara_sml_id)) {
+    throw new Error(`Two profile records share ACARA SML ID ${record.acara_sml_id}`);
+  }
+  profilesBySmlId.set(record.acara_sml_id, record);
 }
-const gradesByLocationAgeId = new Map(
-  gradesPayload.records
-    .filter(record => record.location_age_id != null && gradeRecordCounts.get(record.location_age_id) === 1)
-    .map(record => [record.location_age_id, record]),
-);
+
+// Per-year enrolments join on acara_sml_id for the same reason as profiles.
+const gradesPayload = readJson(gradesPath);
+const gradesBySmlId = new Map();
+for (const record of gradesPayload.records) {
+  if (gradesBySmlId.has(record.acara_sml_id)) {
+    throw new Error(`Two enrolments-by-grade records share ACARA SML ID ${record.acara_sml_id}`);
+  }
+  gradesBySmlId.set(record.acara_sml_id, record);
+}
 
 /**
  * Offered year levels only, in the source's own order. null keeps "offered,
@@ -117,7 +125,7 @@ for (const location of locationPayload.records) {
   const lng = Number(location.longitude);
   if (!validCoordinate(lat, lng)) continue;
 
-  const profile = profilesByLocationAgeId.get(location.location_age_id);
+  const profile = profilesBySmlId.get(location.acara_sml_id);
   const match = matchedByLocationAgeId.get(location.location_age_id);
   const legacy = match ? legacyByLocalId.get(match.local_id) : undefined;
   const ambiguousKey = `${location.acara_sml_id}:${location.location_age_id}:${location.school_age_id}`;
@@ -183,7 +191,7 @@ for (const location of locationPayload.records) {
     lbote_no_percent: profile?.enrolments?.lbote_no_percent,
     lbote_not_stated_percent: profile?.enrolments?.lbote_not_stated_percent,
     indigenous_percent: profile?.enrolments?.indigenous_percent,
-    grade_enrolments: gradeEnrolments(gradesByLocationAgeId.get(location.location_age_id)),
+    grade_enrolments: gradeEnrolments(gradesBySmlId.get(location.acara_sml_id)),
     staff: finiteFields(profile?.staff, ['teaching', 'teaching_fte', 'non_teaching', 'non_teaching_fte']),
     sea_quarters: finiteFields(profile?.sea_quarters, ['bottom_percent', 'lower_middle_percent', 'upper_middle_percent', 'top_percent']),
     school_url: profile?.school_url,
@@ -267,7 +275,7 @@ profileLayerCounts.without_staff = schools.length - profileLayerCounts.with_staf
 profileLayerCounts.without_sea_quarters = schools.length - profileLayerCounts.with_sea_quarters;
 
 const metadata = readJson(metadataPath);
-metadata.fields.grade_enrolments = 'Official ACARA Enrolments by Grade 2025: one entry per year level the school offers. null means the level is offered but ACARA publishes no count. Absent means no record joined on location_age_id.';
+metadata.fields.grade_enrolments = 'Official ACARA Enrolments by Grade 2025: one entry per year level the school offers. null means the level is offered but ACARA publishes no count. Absent means no record joined on acara_sml_id.';
 metadata.fields.staff = 'Official ACARA School Profile 2025 staff headcount and FTE (teaching / non-teaching). Any ratio shown from these is calculated on the page and labelled as such.';
 metadata.fields.sea_quarters = 'Official ACARA School Profile 2025 distribution of students across socio-educational advantage quarters. Describes student background, not school performance.';
 metadata.dataset_status = 'canonical_acara_base_with_legacy_metric_layer';
@@ -291,8 +299,8 @@ metadata.provenance.fees = 'Government schools are marked free (no tuition; volu
 metadata.fields.myschool_url = 'Deep link to the school My School page, built from acara_sml_id (verified pattern).';
 metadata.fields.fees = 'Tuition fees: free for Government; other sectors pending collection. Precise amount preferred, else band; always with fee_source.';
 const catchmentProvenance = {
-  NSW: (layer) => `NSW government school intake zones from data.nsw.gov.au (CC-BY, ${layer.data_year} enrolment year), joined by USE_ID -> master dataset School_code -> AgeID -> location_age_id. Deterministic ID join only; unjoined polygons are recorded in data/catchment/nsw/processed/unmatched.json rather than name-matched. Covers 2,029 of 2,223 NSW government schools. Boundaries are a guide, not a legal instrument — NSW Department of Education disclaims responsibility where this data informs property decisions, and the official School Finder is authoritative.`,
-  SA: (layer) => `SA government school zones from data.sa.gov.au (CC-BY, ${layer.data_year} enrolment year), joined by org_num -> Government Education Sites -> the one ACARA school that is both within ${(layer.join.max_allowed_km * 1000).toFixed(0)} m of the published site and named the same (observed max ${(layer.join.max_distance_km * 1000).toFixed(0)} m). Name and distance both select the match, because co-located campuses make either alone wrong. Unconfirmed polygons are recorded in data/catchment/sa/processed/unmatched.json. South Australia publishes zones for only part of its government system — 124 of 521 schools — and the published data does not say why, so a South Australian school without a zone must not be read as "no zone published for a school that has one". No year levels: the SA source carries none per zone.`,
+  NSW: (layer) => `NSW government school intake zones from data.nsw.gov.au (CC-BY, ${layer.data_year} enrolment year), joined by USE_ID -> master dataset School_code -> AgeID -> location_age_id. Deterministic ID join only; unjoined polygons are recorded in data/catchment/nsw/processed/unmatched.json rather than name-matched. Covers 2,029 of 2,225 NSW government schools. Boundaries are a guide, not a legal instrument — NSW Department of Education disclaims responsibility where this data informs property decisions, and the official School Finder is authoritative.`,
+  SA: (layer) => `SA government school zones from data.sa.gov.au (CC-BY, ${layer.data_year} enrolment year), joined by org_num -> Government Education Sites -> the one ACARA school that is both within ${(layer.join.max_allowed_km * 1000).toFixed(0)} m of the published site and named the same (observed max ${(layer.join.max_distance_km * 1000).toFixed(0)} m). Name and distance both select the match, because co-located campuses make either alone wrong. Unconfirmed polygons are recorded in data/catchment/sa/processed/unmatched.json. South Australia publishes zones for only part of its government system — 124 of 526 schools — and the published data does not say why, so a South Australian school without a zone must not be read as "no zone published for a school that has one". No year levels: the SA source carries none per zone.`,
   VIC: (layer) => `Victorian government school zones from discover.data.vic.gov.au (CC BY 4.0, ${layer.data_year} enrolment year), joined from the exact ENTITY_CODE school number to the official Victorian school identity, then to one exact ACARA base or campus name whose coordinates fall inside the published polygon. When the older site register has no row, the exact source identity plus polygon containment is required. ${layer.join.joined_entities} of ${layer.join.entities} source entities joined; the rest are recorded in data/catchment/vic/processed/unmatched.json, with no fuzzy or nearest-school fallback. Secondary boundaries remain distinct by published year level: only byte-identical 6-decimal geometries are coalesced, and their year labels are unioned.`,
   QLD: (layer) => `Queensland government school negotiated catchments from data.qld.gov.au (CC BY 4.0, ${layer.data_year}), published separately for primary (Prep-6), junior secondary (Years 7-10) and senior secondary (Years 11-12). Centre_code joins each boundary to the official site, then one exact expanded ACARA school identity must be within ${(layer.join.max_allowed_km * 1000).toFixed(0)} m and inside the polygon (observed max ${(layer.join.max_distance_km * 1000).toFixed(0)} m). One audited official campus rename and exact base-campus fallbacks are explicit; a missing site row may use only one exact source identity inside the polygon. ${layer.join.matched_source_entities} source records joined and ${layer.join.unmatched_source_entities} are recorded in data/catchment/qld/processed/unmatched.json. Junior and senior geometries stay distinct unless their rounded coordinates are byte-identical.`,
   TAS: (layer) => `Tasmanian government primary and district-school intake areas from LISTdata (CC BY 3.0 AU, ${layer.data_year} open-data snapshot), joined to one exact ACARA school name inside each published polygon. Four checked-in exact rename aliases and one explicitly shared two-school zone are auditable; ${layer.stats.primary.joined} of ${layer.stats.primary.polygons} source polygons joined, with failures recorded in data/catchment/tas/processed/unmatched.json. The source carries no per-zone year fields, so year_levels is empty. Tasmania's high-school placement follows the primary feeder school attended at the end of Year 6 rather than residence alone, so the feeder district layer is deliberately not represented as an address catchment.`,
