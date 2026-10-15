@@ -87,6 +87,11 @@ export function stateIndexPath(state: string, locale: Locale = 'en'): string {
   return `${localePrefix(locale)}/suburb/${stateSlug(state)}`;
 }
 
+/** `slug` comes from `rankingSlug` (lib/rankings.ts). */
+export function rankingPath(state: string, slug: string, locale: Locale = 'en'): string {
+  return `${localePrefix(locale)}/ranking/${stateSlug(state)}/${slug}`;
+}
+
 /**
  * Link into the map app.
  *

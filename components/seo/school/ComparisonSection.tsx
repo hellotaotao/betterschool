@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import type { School } from '@/types/school';
-import { getComparisonGroup, getMetricPool } from '@/lib/schoolsData';
+import { getComparisonGroup, getMetricPool, getRanking } from '@/lib/schoolsData';
 import {
   COMPARE_METRICS,
   METRIC_ORDER,
@@ -13,8 +13,9 @@ import {
 } from '@/lib/schoolCompare';
 import { percentAbove, percentBelow } from '@/lib/schoolInsights';
 import { formatMessage, getMessages, getSchoolTypeLabel, getSectorLabel, ordinalNumber } from '@/lib/i18n';
-import { getSeo, localeStateLabel, type Locale } from '@/lib/seoLocale';
-import { schoolPath } from '@/lib/slug';
+import { getSeo, localeRankingGroup, localeStateLabel, type Locale } from '@/lib/seoLocale';
+import { rankingPath, schoolPath } from '@/lib/slug';
+import { rankingSlug, RANKING_TYPES, type RankingType } from '@/lib/rankings';
 import { sectorBadgeClass } from '@/utils/schoolFilters';
 import { ACARA_DATA_YEAR } from '@/lib/dataYear';
 
@@ -96,6 +97,9 @@ export default function ComparisonSection({ school, locale }: { school: School; 
   if (rows.length === 0) return null;
 
   const showNearbyColumn = rows.some(row => row.nearby !== '—');
+  const stateRanking = (RANKING_TYPES as readonly string[]).includes(school.school_type)
+    ? getRanking(school.state, rankingSlug({ schoolType: school.school_type as RankingType, sector: null }))
+    : undefined;
   const listed = hasNearby ? sortByMetric(group, 'icsea') : [];
   const listRanks = displayRanks(listed, 'icsea');
 
@@ -131,6 +135,16 @@ export default function ComparisonSection({ school, locale }: { school: School; 
         {formatMessage(t.compareIntroState, { type: noun, state: stateLabel })}{' '}
         {formatMessage(t.compareSource, { year: ACARA_DATA_YEAR })}
       </p>
+      {stateRanking && (
+        <p className="mt-2 text-xs">
+          <Link href={rankingPath(stateRanking.state, stateRanking.slug, locale)} className="text-indigo-700 hover:underline">
+            {formatMessage(t.compareRankingLink, {
+              group: localeRankingGroup(locale, stateRanking.schoolType, null),
+              state: stateLabel,
+            })}{' '}→
+          </Link>
+        </p>
+      )}
 
       {listed.length >= 3 && (
         <>

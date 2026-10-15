@@ -7,6 +7,8 @@ import * as zhSchool from './zh/school/[state]/[slug]/page';
 import * as zhSuburb from './zh/suburb/[state]/[slug]/page';
 import * as enStateIndex from './suburb/[state]/page';
 import * as zhStateIndex from './zh/suburb/[state]/page';
+import * as enRanking from './ranking/[state]/[slug]/page';
+import * as zhRanking from './zh/ranking/[state]/[slug]/page';
 
 describe('SEO route ISR policy', () => {
   it.each([
@@ -30,5 +32,14 @@ describe('SEO route ISR policy', () => {
   ])('%s is prerendered for every state', (_name, page) => {
     expect(page.dynamicParams).toBe(false);
     expect(page.generateStaticParams().length).toBe(8);
+  });
+
+  it.each([
+    ['ranking (en)', enRanking],
+    ['ranking (zh)', zhRanking],
+  ])('%s pages are prerendered, every state included', (_name, page) => {
+    expect(page.dynamicParams).toBe(false);
+    const states = new Set(page.generateStaticParams().map(params => params.state));
+    expect(states.size).toBe(8);
   });
 });

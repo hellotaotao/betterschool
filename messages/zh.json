@@ -184,7 +184,9 @@
       "jumpToLetter": "按字母跳转",
       "largestHeading": "{state}学校最多的城区",
       "otherStatesHeading": "其他州与领地",
-      "allSuburbsHeading": "{state}全部城区（A–Z）"
+      "allSuburbsHeading": "{state}全部城区（A–Z）",
+      "rankingsHeading": "{state}学校 ICSEA 排名",
+      "rankingsHint": "ICSEA 描述的是学生的家庭背景，不是学校的教学表现。每个排名都写明比较组和数据年份。"
     },
     "suburb": {
       "metaTitle": "{suburb}（{state}）的学校",
@@ -323,7 +325,8 @@
       "compareColNearby": "周边",
       "compareColState": "{state}",
       "compareBottomLarge": "{count} 所中最小",
-      "comparePctSmaller": "小于 {percent}%"
+      "comparePctSmaller": "小于 {percent}%",
+      "compareRankingLink": "完整排名：{state}{group}（按 ICSEA）"
     },
     "catchment": {
       "metaTitle": "{school} 学区范围（{suburb}，{state}）",
@@ -352,6 +355,31 @@
       "insideHeadingKind": "{kind}学区范围内的其他学校",
       "insideNone": "在这条公布的边界内，没有找到其他带坐标的学校。",
       "zoneYearsUnknown": "该州未按学区公布适用年级"
+    },
+    "ranking": {
+      "metaTitle": "{state}{group}排名：按 ICSEA（{year}）",
+      "metaDescription": "{state}{ranked} 所公布了 ICSEA 的{group}中，ICSEA 最高的前 {shown} 所。ACARA {year} 官方数据，并列出每所学校的在校人数和师生比。",
+      "heading": "{state}{group} ICSEA 排名",
+      "crumb": "排名",
+      "introTop": "{state}有 {ranked} 所{group}公布了 ICSEA，这里列出前 {shown} 所。每所学校自己的页面都会显示它在全州的位置。",
+      "introAll": "{state}有 {ranked} 所{group}公布了 ICSEA，这里全部列出。",
+      "unranked": "另有 {count} 所没有公布 ICSEA，不参与排名。",
+      "filterType": "学校类型",
+      "filterSector": "办学类别",
+      "allSectors": "全部",
+      "colSuburb": "城区",
+      "method": "在{state}公布了 ICSEA 的{group}中按 ICSEA 从高到低排序，数值相同的名次并列。ICSEA 描述的是学生家庭的社会经济与教育背景，不是学校的教学表现。数据来自 ACARA {year}，师生比由 BetterSchool 计算。",
+      "naplan": "NAPLAN 成绩按学校公布在 {link} 网站上。",
+      "naplanLink": "My School",
+      "otherStatesHeading": "其他州的同类排名",
+      "groupAll": "{type}",
+      "groupSector": "{sector}{type}",
+      "typePrimary": "小学",
+      "typeSecondary": "中学",
+      "typeCombined": "综合学校",
+      "sectorGovernment": "公立",
+      "sectorCatholic": "天主教",
+      "sectorIndependent": "独立"
     },
     "kinds": {
       "primary": "小学",

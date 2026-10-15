@@ -184,7 +184,9 @@
       "jumpToLetter": "Jump to letter",
       "largestHeading": "Biggest suburbs in {state}",
       "otherStatesHeading": "Other states and territories",
-      "allSuburbsHeading": "Every suburb in {state}, A–Z"
+      "allSuburbsHeading": "Every suburb in {state}, A–Z",
+      "rankingsHeading": "{state} schools ranked by ICSEA",
+      "rankingsHint": "ICSEA describes students' family background, not school performance. Each ranking names its group and data year."
     },
     "suburb": {
       "metaTitle": "Schools in {suburb}, {state}",
@@ -323,7 +325,8 @@
       "compareColNearby": "Nearby",
       "compareColState": "In {state}",
       "compareBottomLarge": "Smallest of {count}",
-      "comparePctSmaller": "Smaller than {percent}%"
+      "comparePctSmaller": "Smaller than {percent}%",
+      "compareRankingLink": "Full ranking of {group} in {state} by ICSEA"
     },
     "catchment": {
       "metaTitle": "{school} catchment area, {suburb} {state}",
@@ -352,6 +355,31 @@
       "insideHeadingKind": "Other schools inside the {kind} zone",
       "insideNone": "No other geocoded schools were found inside this published boundary.",
       "zoneYearsUnknown": "Year levels not published per zone"
+    },
+    "ranking": {
+      "metaTitle": "{state} {group} ranked by ICSEA ({year})",
+      "metaDescription": "The {shown} {group} in {state} with the highest ICSEA, out of {ranked} with a published figure. Official ACARA {year} data, with enrolments and students per teacher for each school.",
+      "heading": "{group} in {state}, ranked by ICSEA",
+      "crumb": "Rankings",
+      "introTop": "{ranked} {group} in {state} have a published ICSEA. The top {shown} are listed here; every school's own page shows where it sits in the state.",
+      "introAll": "{ranked} {group} in {state} have a published ICSEA, and all of them are listed here.",
+      "unranked": "{count} more have no published ICSEA and are not ranked.",
+      "filterType": "School type",
+      "filterSector": "Sector",
+      "allSectors": "All sectors",
+      "colSuburb": "Suburb",
+      "method": "Ranked by ICSEA, highest first, among {group} in {state} with a published figure; tied values share a rank. ICSEA describes the socio-educational background of a school's students, not how the school performs. ACARA {year} data; students per teacher calculated by BetterSchool.",
+      "naplan": "NAPLAN results are published school by school on {link}.",
+      "naplanLink": "My School",
+      "otherStatesHeading": "The same ranking in other states",
+      "groupAll": "{type} schools",
+      "groupSector": "{sector} {type} schools",
+      "typePrimary": "primary",
+      "typeSecondary": "secondary",
+      "typeCombined": "combined",
+      "sectorGovernment": "government",
+      "sectorCatholic": "Catholic",
+      "sectorIndependent": "independent"
     },
     "kinds": {
       "primary": "Primary",

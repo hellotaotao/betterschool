@@ -97,6 +97,10 @@ data.nsw.gov.au / data.sa.gov.au / discover.data.vic.gov.au / data.qld.gov.au / 
             → public/data/catchment/act/*.json    (93 exact variants, loaded on demand)
 ```
 
+ACARA layers join to the location layer on `acara_sml_id`, which every record
+carries exactly once. `location_age_id` is absent on 283 locations and shared by
+six pairs, and a Map keyed on it once gave 286 schools another school's profile.
+
 The catchment builds read the ACARA *location* layer rather than
 `schools.canonical.json`, because canonical consumes the catchment layers —
 depending on them there would be circular.
@@ -117,12 +121,13 @@ the first two disagree.
 | `/schools` | client-only map app | 1 |
 | `/browse` | prerendered | 1 |
 | `/suburb/[state]` | prerendered | 8 |
+| `/ranking/[state]/[slug]` | prerendered | 72 |
 | `/school/[state]/[slug]` | on-demand ISR | 11,034 |
 | `/suburb/[state]/[slug]` | on-demand ISR | 4,799 |
 | `/catchment/[state]/[slug]` | on-demand ISR | 5,135 |
 
 Every route above except the map exists twice: bare for English and under `/zh`
-for Chinese — 41,955 canonical URLs in total. English keeps the unprefixed paths
+for Chinese — 42,099 canonical URLs in total. English keeps the unprefixed paths
 it already publishes; those must not move.
 
 The long-tail routes are the SEO surface — the map app is one client-rendered URL
@@ -192,6 +197,14 @@ same-type school in its state (`getMetricPool`). Suburb pages list their
 schools side by side ranked by ICSEA. The arithmetic is in
 `lib/schoolCompare.ts`; a rank needs three schools with a value and a state
 percentage twenty, below which the column is omitted rather than shown thin.
+
+State ranking pages (`/ranking/<state>/<type>[-<sector>]`, `RankingBody`) rank
+one ACARA school type — Primary, Secondary or Combined, the same pools as the
+state percentage on school pages — by ICSEA, all sectors and then each sector.
+`lib/rankings.ts` holds the slugs and the cut: the top 100 by rank, ties at the
+cut kept, and no page for a group with fewer than twenty ICSEA values. There
+are no city rankings: the data holds no city boundary, and drawing one needs an
+official source such as ABS Greater Capital City areas.
 
 Slugs come from `lib/slug.ts`: `<name>-<suburb>`, because school names repeat
 heavily inside a state (NSW has 47 "St Joseph's Primary School"). Only a genuine
@@ -291,9 +304,9 @@ are risks to weigh when a decision touches them, not reasons to skip a feature.
    which every time rather than rendering a bare empty state:
    - Catholic or Independent school → "zones do not apply to this sector".
    - NSW government school with no zone → "none published". NSW zones 2,029 of
-     its 2,223 government schools, so the silence is informative.
+     its 2,225 government schools, so the silence is informative.
    - SA government school with no zone → says almost nothing. SA publishes zones
-     for 124 of 521 government schools and the published data gives no rule for
+     for 124 of 526 government schools and the published data gives no rule for
      which, so the page must not let a reader infer the school is unzoned.
    - VIC government school with no attached zone → "none published". The
      official dataset covers the designated-neighbourhood system; 27 source

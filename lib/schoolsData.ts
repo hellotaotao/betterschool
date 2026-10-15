@@ -11,6 +11,14 @@ import {
 } from './catchmentLookup';
 import { buildSchoolSlugs, stateSlug, suburbSlug } from './slug';
 import { metricValue, type CompareMetric } from './schoolCompare';
+import {
+  RANKING_SECTORS,
+  RANKING_TYPES,
+  rankingSlug,
+  topByIcsea,
+  type RankingSector,
+  type RankingType,
+} from './rankings';
 
 // Server-only: build-time sitemap generation and on-demand ISR pages read the
 // dataset straight off disk rather than fetching it. Never import this from a
@@ -511,6 +519,68 @@ export function getStateSummaries(): StateSummary[] {
 export function getStateSummary(state: string): StateSummary | undefined {
   const wanted = stateSlug(state);
   return getStateSummaries().find(summary => summary.slug === wanted);
+}
+
+// --- State rankings ---------------------------------------------------------
+
+export interface RankingGroup {
+  state: string;
+  slug: string;
+  schoolType: RankingType;
+  sector: RankingSector | null;
+  /** Schools in the group with an ICSEA value — the denominator of every rank. */
+  ranked: number;
+  /** Schools in the group without one, so the page can say they exist. */
+  unranked: number;
+  rows: { school: School; slug: string; rank: number }[];
+}
+
+let cachedRankingGroups: RankingGroup[] | null = null;
+
+/**
+ * Every ranking page that has enough schools to rank: per state, each school
+ * type across all sectors and then each sector on its own. Uses the same
+ * per-state pool as getMetricPool, so the ranks agree with the percentages on
+ * school pages.
+ */
+export function getRankingGroups(): RankingGroup[] {
+  if (cachedRankingGroups) return cachedRankingGroups;
+
+  const dataset = getSchoolsDataset();
+  const groups: RankingGroup[] = [];
+  for (const { state } of getStateSummaries()) {
+    const stateSchools = getSchoolsForState(state);
+    for (const schoolType of RANKING_TYPES) {
+      const ofType = stateSchools.filter(school => school.school_type === schoolType);
+      for (const sector of [null, ...RANKING_SECTORS]) {
+        const pool = sector ? ofType.filter(school => school.sector === sector) : ofType;
+        const top = topByIcsea(pool);
+        if (!top) continue;
+        groups.push({
+          state,
+          slug: rankingSlug({ schoolType, sector }),
+          schoolType,
+          sector,
+          ranked: top.ranked,
+          unranked: pool.length - top.ranked,
+          rows: top.rows.map(row => ({ school: row.school, slug: dataset.slugs.get(row.school.id) ?? '', rank: row.rank })),
+        });
+      }
+    }
+  }
+
+  cachedRankingGroups = groups;
+  return groups;
+}
+
+export function getRanking(state: string, slug: string): RankingGroup | undefined {
+  const wanted = stateSlug(state);
+  return getRankingGroups().find(group => stateSlug(group.state) === wanted && group.slug === slug);
+}
+
+export function getStateRankings(state: string): RankingGroup[] {
+  const wanted = stateSlug(state);
+  return getRankingGroups().filter(group => stateSlug(group.state) === wanted);
 }
 
 /** Group suburbs under their first character, so an index can be scanned. */

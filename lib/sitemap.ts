@@ -15,6 +15,7 @@ import { toLocalePath } from './slug';
 export const CHILD_SITEMAPS = [
   '/browse/sitemap.xml',
   '/suburb/sitemap.xml',
+  '/ranking/sitemap.xml',
   '/school/sitemap.xml',
   '/catchment/sitemap.xml',
 ] as const;

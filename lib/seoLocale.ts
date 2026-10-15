@@ -1,7 +1,8 @@
 import type { Metadata } from 'next';
-import { getMessages, type Locale, type Messages } from './i18n';
+import { formatMessage, getMessages, type Locale, type Messages } from './i18n';
 import { absoluteUrl, SITE_NAME } from './site';
 import { toLocalePath } from './slug';
+import type { RankingSector, RankingType } from './rankings';
 
 export type { Locale };
 
@@ -42,6 +43,22 @@ export function localeStateLabel(locale: Locale, state: string): string {
 export function localeKind(locale: Locale, kind: string): string {
   const kinds = getSeo(locale).kinds as Record<string, string>;
   return kinds[kind] ?? kind;
+}
+
+/**
+ * A ranking's group as a phrase: "government primary schools" / "公立小学".
+ * Lowercase in English so it sits mid-sentence; `capitalize` it for a heading.
+ */
+export function localeRankingGroup(locale: Locale, schoolType: RankingType, sector: RankingSector | null): string {
+  const t = getSeo(locale).ranking;
+  const type = t[`type${schoolType}`];
+  return sector
+    ? formatMessage(t.groupSector, { sector: t[`sector${sector}`], type })
+    : formatMessage(t.groupAll, { type });
+}
+
+export function capitalize(text: string): string {
+  return text.charAt(0).toUpperCase() + text.slice(1);
 }
 
 /**

@@ -3,6 +3,7 @@ import { bilingualEntries, CHILD_SITEMAPS, sitemapIndexXml } from './sitemap';
 import { absoluteUrl } from './site';
 import browseSitemap from '@/app/browse/sitemap';
 import suburbSitemap from '@/app/suburb/sitemap';
+import rankingSitemap from '@/app/ranking/sitemap';
 import schoolSitemap from '@/app/school/sitemap';
 import catchmentSitemap from '@/app/catchment/sitemap';
 
@@ -31,7 +32,7 @@ describe('sitemap index', () => {
   });
 
   it('keeps every child under the 50,000-URL limit, with no URL listed twice', () => {
-    const children = [browseSitemap(), suburbSitemap(), schoolSitemap(), catchmentSitemap()];
+    const children = [browseSitemap(), suburbSitemap(), rankingSitemap(), schoolSitemap(), catchmentSitemap()];
     for (const child of children) expect(child.length).toBeLessThan(50_000);
 
     const urls = children.flat().map(entry => entry.url);
