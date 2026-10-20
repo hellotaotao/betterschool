@@ -1,11 +1,12 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import { getLargestSuburbs, getSchoolsDataset, getStateSummaries } from '@/lib/schoolsData';
+import { getLargestSuburbs, getSchoolsDataset, getStateRankings, getStateSummaries } from '@/lib/schoolsData';
 import { coveredCatchmentStates, formatMessage, getMessages } from '@/lib/i18n';
 import { buildPageMetadata, getSeo, localeStateName, type Locale } from '@/lib/seoLocale';
 import { mapUrl, stateIndexPath, suburbPath } from '@/lib/slug';
 import PageShell from '@/components/seo/PageShell';
 import { ACARA_DATA_YEAR } from '@/lib/dataYear';
+import RankingLinks from '@/components/seo/RankingLinks';
 
 const BARE_PATH = '/browse';
 
@@ -78,6 +79,24 @@ export default function BrowseBody({ locale }: { locale: Locale }) {
             </li>
           ))}
         </ul>
+      </section>
+
+      <section className="mt-8" aria-labelledby="rankings">
+        <h2 id="rankings" className="text-base font-semibold">{t.rankingsHeading}</h2>
+        <p className="mt-1 text-xs text-gray-500">{t.rankingsHint}</p>
+        <div className="mt-2 space-y-3">
+          {states.map(summary => {
+            // All-sector views only: the sector cuts are one click away on each page.
+            const rankings = getStateRankings(summary.state).filter(ranking => ranking.sector === null);
+            if (rankings.length === 0) return null;
+            return (
+              <div key={summary.slug}>
+                <h3 className="text-xs font-semibold text-gray-700">{localeStateName(locale, summary.state)}</h3>
+                <RankingLinks rankings={rankings} locale={locale} />
+              </div>
+            );
+          })}
+        </div>
       </section>
 
       <section className="mt-8" aria-labelledby="largest">

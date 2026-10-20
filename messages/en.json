@@ -172,7 +172,9 @@
       "zonesHeading": "Intake zones",
       "zonesBody": "Zone boundaries currently cover NSW government schools only. Zones apply to government schools alone — Catholic and Independent schools admit on their own criteria and have no geographic zone. Other states are not yet collected, which is different from having none.",
       "largestHeading": "Suburbs with the most schools",
-      "largestHint": "A shortcut into the biggest suburb pages. Every suburb is reachable through its state above."
+      "largestHint": "A shortcut into the biggest suburb pages. Every suburb is reachable through its state above.",
+      "rankingsHeading": "School rankings by state",
+      "rankingsHint": "VCE results where VCAA publishes them; ICSEA, which describes students' background, for every school type."
     },
     "stateIndex": {
       "metaTitle": "Schools in {state}, by suburb",
@@ -185,8 +187,8 @@
       "largestHeading": "Biggest suburbs in {state}",
       "otherStatesHeading": "Other states and territories",
       "allSuburbsHeading": "Every suburb in {state}, A–Z",
-      "rankingsHeading": "{state} schools ranked by ICSEA",
-      "rankingsHint": "ICSEA describes students' family background, not school performance. Each ranking names its group and data year."
+      "rankingsHeading": "{state} school rankings",
+      "rankingsHint": "VCE results where VCAA publishes them; ICSEA, which describes students' background rather than school performance, for every school type. Each ranking names its group and data year."
     },
     "suburb": {
       "metaTitle": "Schools in {suburb}, {state}",
@@ -206,7 +208,8 @@
       "relatedHint": "Closest suburbs to {suburb}, by straight-line distance.",
       "zonesNonePartial": "No government school based in {suburb} publishes an intake zone. {state} zones only part of its government system, so this says little either way — the suburb may still sit inside the zone of a school based elsewhere.",
       "compareHeading": "Schools in {suburb} side by side",
-      "compareNote": "Sorted by ICSEA, highest first. ICSEA describes the socio-educational background of a school's students, not how the school performs. ACARA {year} data; students per teacher calculated by BetterSchool."
+      "compareNote": "Sorted by ICSEA, highest first. ICSEA describes the socio-educational background of a school's students, not how the school performs. ACARA {year} data; students per teacher calculated by BetterSchool.",
+      "rankingsHeading": "How {suburb}'s schools rank in {state}"
     },
     "school": {
       "metaTitle": "{school}, {suburb} {state}",
@@ -326,7 +329,19 @@
       "compareColState": "In {state}",
       "compareBottomLarge": "Smallest of {count}",
       "comparePctSmaller": "Smaller than {percent}%",
-      "compareRankingLink": "Full ranking of {group} in {state} by ICSEA"
+      "compareRankingLink": "Full ranking of {group} in {state} by ICSEA",
+      "y12Heading": "VCE results",
+      "y12ColYear": "Year",
+      "y12ColMedian": "Median study score",
+      "y12Col40": "Study scores of 40+",
+      "y12ColStudents": "VCE students",
+      "y12ColCompletion": "Completed VCE",
+      "y12Rank": "{rank} of {count} Victorian schools by median VCE study score in {year}, among schools with at least {min} VCE students.",
+      "y12Small": "Fewer than {min} VCE students in {year}, where a handful of results moves the median, so this school is not ranked by default.",
+      "y12Link": "See the VCE ranking for {state}",
+      "y12Withheld": "— means VCAA did not publish the figure: fewer than four students, or the program is not offered.",
+      "y12Source": "VCAA Senior Secondary Completion and Achievement Information. © Victorian Curriculum and Assessment Authority.",
+      "y12EarlyOnly": "No student completed the VCE here in {year}: these results come from students taking Units 3–4 studies early, before the school has a Year 12, so it is not ranked."
     },
     "catchment": {
       "metaTitle": "{school} catchment area, {suburb} {state}",
@@ -379,7 +394,26 @@
       "typeCombined": "combined",
       "sectorGovernment": "government",
       "sectorCatholic": "Catholic",
-      "sectorIndependent": "independent"
+      "sectorIndependent": "independent",
+      "typeVCE": "VCE",
+      "filterView": "Ranking",
+      "viewVce": "VCE results",
+      "metaTitleVce": "Best {group} in {state} {year}: ranked by VCE median study score",
+      "metaDescriptionVce": "{ranked} {group} in {state} ranked by their {year} median VCE study score and share of study scores of 40 and over, from official VCAA data, with ICSEA, enrolments and students per teacher. Sort by any column or set your own weights.",
+      "headingVce": "{group} in {state}, ranked by VCE results",
+      "introVce": "{ranked} {group} in {state} published a median VCE study score for {year} and had at least {min} VCE students. Click a column to re-sort, or weight the columns yourself.",
+      "smallCohort": "{count} more had fewer than {min} VCE students, where a handful of results moves the median, and are hidden by default.",
+      "includeSmall": "Include schools with fewer than {min} VCE students",
+      "methodVce": "Default order: median VCE study score, highest first; schools on the same median are separated by their share of study scores of 40 and over. VCE results: VCAA Senior Secondary Completion and Achievement Information {year}, © Victorian Curriculum and Assessment Authority. ICSEA, enrolments and staff: ACARA {acaraYear}; students per teacher calculated by BetterSchool. Campuses that report VCE results separately are listed separately, and a campus without its own ACARA profile shows no ICSEA.",
+      "colVceMedian": "VCE median",
+      "colVce40": "40+ scores",
+      "sortBy": "Sort by",
+      "sortMix": "Your own mix",
+      "mixScore": "Mix",
+      "weightsHint": "Each weight applies to a school's percentile on that figure within this table. Only schools with every weighted figure take part: {count} here.",
+      "showAll": "Show all {count}",
+      "showTop": "Show the top {count}",
+      "earlyOnly": "{count} schools that have not yet reached Year 12 also published a median, from students taking Units 3–4 studies early; they are not ranked."
     },
     "kinds": {
       "primary": "Primary",

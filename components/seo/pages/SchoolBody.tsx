@@ -25,6 +25,7 @@ import { getMarkerColor, sectorBadgeClass } from '@/utils/schoolFilters';
 import EnrolmentChart, { type CohortBar } from '@/components/seo/school/EnrolmentChart';
 import NeighbourhoodDiagram, { layoutDiagram } from '@/components/seo/school/NeighbourhoodDiagram';
 import ComparisonSection from '@/components/seo/school/ComparisonSection';
+import Year12Section from '@/components/seo/school/Year12Section';
 import { safeSchoolWebsiteUrl } from '@/lib/schoolUrl';
 import { formatMessage, getMessages, getReligionLabel, getSchoolTypeLabel, getSectorLabel, ordinalNumber } from '@/lib/i18n';
 import { buildPageMetadata, getSeo, htmlLang, localeKind, localeStateLabel, localeStateName, type Locale } from '@/lib/seoLocale';
@@ -380,6 +381,8 @@ export default function SchoolBody({ locale, state, slug }: { locale: Locale; st
       )}
 
       <ComparisonSection school={school} locale={locale} />
+
+      <Year12Section school={school} locale={locale} />
 
       {cohortBars.length > 1 && (
         <section className="mt-10" aria-labelledby="cohorts">

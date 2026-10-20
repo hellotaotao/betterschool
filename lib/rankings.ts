@@ -7,6 +7,18 @@ import { displayRanks, metricValue, sortByMetric } from './schoolCompare';
 export const RANKING_TYPES = ['Primary', 'Secondary', 'Combined'] as const;
 export type RankingType = typeof RANKING_TYPES[number];
 
+/**
+ * What a ranking page ranks. The ACARA types rank by ICSEA; `VCE` ranks every
+ * school with published VCE results by those results, whatever its ACARA type,
+ * because a parent comparing Year 12 outcomes compares a 7-12 and a K-12
+ * school alike.
+ */
+export const RANKING_VIEWS = ['VCE', ...RANKING_TYPES] as const;
+export type RankingView = typeof RANKING_VIEWS[number];
+
+/** Fewer VCE students than this and one or two results swing the median. */
+export const VCE_MIN_STUDENTS = 50;
+
 export const RANKING_SECTORS = ['Government', 'Catholic', 'Independent'] as const;
 export type RankingSector = typeof RANKING_SECTORS[number];
 
@@ -16,7 +28,7 @@ export const RANKING_MIN_SCHOOLS = 20;
 export const RANKING_LIMIT = 100;
 
 export interface RankingKey {
-  schoolType: RankingType;
+  schoolType: RankingView;
   /** null = every sector. */
   sector: RankingSector | null;
 }
@@ -29,7 +41,7 @@ export function rankingSlug({ schoolType, sector }: RankingKey): string {
 export function parseRankingSlug(slug: string): RankingKey | null {
   const [typePart, sectorPart, ...rest] = slug.split('-');
   if (rest.length > 0) return null;
-  const schoolType = RANKING_TYPES.find(type => type.toLowerCase() === typePart);
+  const schoolType = RANKING_VIEWS.find(type => type.toLowerCase() === typePart);
   if (!schoolType) return null;
   if (sectorPart === undefined) return { schoolType, sector: null };
   const sector = RANKING_SECTORS.find(entry => entry.toLowerCase() === sectorPart);

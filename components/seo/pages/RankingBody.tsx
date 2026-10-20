@@ -1,10 +1,12 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import { getRanking, getRankingGroups, getStateRankings } from '@/lib/schoolsData';
+import { getRanking, getRankingGroups, getStateRankings, latestYear12, type RankingGroup } from '@/lib/schoolsData';
 import { metricValue } from '@/lib/schoolCompare';
-import { RANKING_SECTORS, RANKING_TYPES, rankingSlug } from '@/lib/rankings';
-import { formatMessage, getMessages, getSectorLabel } from '@/lib/i18n';
+import { RANKING_SECTORS, RANKING_VIEWS, VCE_MIN_STUDENTS, rankingSlug } from '@/lib/rankings';
+import type { TableMetric, TableRow, Weights } from '@/lib/rankingTable';
+import RankingTable, { type RankingTableLabels } from '@/components/seo/RankingTable';
+import { formatMessage, getMessages } from '@/lib/i18n';
 import {
   buildPageMetadata,
   capitalize,
@@ -15,29 +17,55 @@ import {
   type Locale,
 } from '@/lib/seoLocale';
 import { browsePath, rankingPath, schoolPath, stateIndexPath, suburbPath } from '@/lib/slug';
-import { sectorBadgeClass } from '@/utils/schoolFilters';
 import PageShell from '@/components/seo/PageShell';
 import { ACARA_DATA_YEAR } from '@/lib/dataYear';
 
 const MY_SCHOOL_URL = 'https://www.myschool.edu.au/';
+/** Rows rendered before "show all"; the server renders these for crawlers. */
+const DEFAULT_ROWS = 100;
+const VCE_WEIGHTS: Weights = { vce_median: 50, vce_40: 30, icsea: 20 };
+const ICSEA_WEIGHTS: Weights = { icsea: 100 };
+
+function tableRows(ranking: RankingGroup, locale: Locale): TableRow[] {
+  return ranking.members.map(({ school, slug, smallCohort }) => {
+    const results = latestYear12(school, ranking.resultsYear ?? null);
+    return {
+      id: school.id,
+      name: school.school_name,
+      href: schoolPath(school.state, slug, locale),
+      suburb: school.suburb,
+      suburbHref: suburbPath(school.state, school.suburb, locale),
+      sector: school.sector,
+      ...(smallCohort ? { smallCohort } : {}),
+      values: {
+        vce_median: results?.median_study_score ?? null,
+        vce_40: results?.pct_study_scores_40_plus ?? null,
+        icsea: metricValue(school, 'icsea'),
+        enrolments: metricValue(school, 'enrolments'),
+        ratio: metricValue(school, 'ratio'),
+      },
+    };
+  });
+}
 
 export function rankingMetadata(locale: Locale, state: string, slug: string): Metadata {
   const ranking = getRanking(state, slug);
   if (!ranking) return {};
 
   const t = getSeo(locale).ranking;
+  const isVce = ranking.schoolType === 'VCE';
   const values = {
     state: localeStateLabel(locale, ranking.state),
     group: localeRankingGroup(locale, ranking.schoolType, ranking.sector),
-    shown: ranking.rows.length,
+    shown: Math.min(ranking.ranked, DEFAULT_ROWS),
     ranked: ranking.ranked.toLocaleString('en-AU'),
-    year: ACARA_DATA_YEAR,
+    year: isVce ? ranking.resultsYear ?? ACARA_DATA_YEAR : ACARA_DATA_YEAR,
   };
 
   return buildPageMetadata({
     locale,
-    title: formatMessage(t.metaTitle, values),
-    description: formatMessage(t.metaDescription, values),
+    title: formatMessage(isVce ? t.metaTitleVce : t.metaTitle, values),
+    description: formatMessage(isVce ? t.metaDescriptionVce : t.metaDescription, values),
     bareEnglishPath: rankingPath(ranking.state, ranking.slug),
   });
 }
@@ -61,14 +89,53 @@ export default function RankingBody({ locale, state, slug }: { locale: Locale; s
   const st = getSeo(locale).school;
   const shell = getSeo(locale).shell;
   const dictionary = getMessages(locale);
+  const isVce = ranking.schoolType === 'VCE';
   const full = localeStateName(locale, ranking.state);
   const group = localeRankingGroup(locale, ranking.schoolType, ranking.sector);
-  const available = new Set(getStateRankings(ranking.state).map(entry => entry.slug));
+  const stateRankings = getStateRankings(ranking.state);
+  const available = new Set(stateRankings.map(entry => entry.slug));
   const pathIfExists = (candidate: string) => (available.has(candidate) ? rankingPath(ranking.state, candidate, locale) : undefined);
   const otherStates = getRankingGroups().filter(entry => entry.slug === ranking.slug && entry.state !== ranking.state);
-  const showSector = ranking.sector === null;
   const [naplanBefore, naplanAfter] = t.naplan.split('{link}');
-  const values = { state: full, group, ranked: ranking.ranked.toLocaleString('en-AU'), shown: ranking.rows.length };
+  const resultsYear = ranking.resultsYear ?? ACARA_DATA_YEAR;
+  const values = {
+    state: full,
+    group,
+    ranked: ranking.ranked.toLocaleString('en-AU'),
+    shown: Math.min(ranking.ranked, DEFAULT_ROWS),
+    year: resultsYear,
+    min: VCE_MIN_STUDENTS,
+  };
+
+  const rows = tableRows(ranking, locale);
+  // A column is offered only when some school in this table has the figure.
+  const columns = (['vce_median', 'vce_40', 'icsea', 'enrolments', 'ratio'] as TableMetric[])
+    .filter(metric => rows.some(row => row.values[metric] !== null));
+  const labels: RankingTableLabels = {
+    rank: '#',
+    school: st.compareColName,
+    suburb: t.colSuburb,
+    sector: st.fieldSector,
+    columns: {
+      vce_median: t.colVceMedian,
+      vce_40: t.colVce40,
+      icsea: st.fieldIcsea,
+      enrolments: st.statStudents,
+      ratio: st.statRatio,
+    },
+    sortBy: t.sortBy,
+    sortMix: t.sortMix,
+    mixScore: t.mixScore,
+    weightsHint: t.weightsHint,
+    includeSmall: ranking.smallCohort > 0 ? formatMessage(t.includeSmall, values) : undefined,
+    showAll: t.showAll,
+    showTop: t.showTop,
+    sectors: {
+      Government: dictionary.filters.government,
+      Catholic: dictionary.filters.catholic,
+      Independent: dictionary.filters.independent,
+    },
+  };
 
   return (
     <PageShell
@@ -81,25 +148,30 @@ export default function RankingBody({ locale, state, slug }: { locale: Locale; s
         { label: t.crumb },
       ]}
     >
-      <h1 className="text-2xl font-bold tracking-tight">{capitalize(formatMessage(t.heading, values))}</h1>
+      <h1 className="text-2xl font-bold tracking-tight">{capitalize(formatMessage(isVce ? t.headingVce : t.heading, values))}</h1>
       <p className="mt-2 text-sm text-gray-600">
-        {formatMessage(ranking.rows.length < ranking.ranked ? t.introTop : t.introAll, values)}
+        {isVce
+          ? formatMessage(t.introVce, values)
+          : formatMessage(ranking.ranked > DEFAULT_ROWS ? t.introTop : t.introAll, values)}
         {ranking.unranked > 0 && <> {formatMessage(t.unranked, { count: ranking.unranked })}</>}
+        {ranking.smallCohort > 0 && <> {formatMessage(t.smallCohort, { ...values, count: ranking.smallCohort })}</>}
+        {ranking.earlyOnly > 0 && <> {formatMessage(t.earlyOnly, { ...values, count: ranking.earlyOnly })}</>}
       </p>
 
       <div className="mt-4 space-y-2">
         <div className="flex flex-wrap items-center gap-2">
-          <span className="w-20 text-xs text-gray-500">{t.filterType}</span>
-          {RANKING_TYPES.map(type => (
-            <Pill
-              key={type}
-              active={type === ranking.schoolType}
-              href={pathIfExists(rankingSlug({ schoolType: type, sector: ranking.sector }))
-                ?? pathIfExists(rankingSlug({ schoolType: type, sector: null }))}
-            >
-              {capitalize(t[`type${type}`])}
-            </Pill>
-          ))}
+          <span className="w-20 text-xs text-gray-500">{t.filterView}</span>
+          {RANKING_VIEWS.map(view => {
+            const href = pathIfExists(rankingSlug({ schoolType: view, sector: ranking.sector }))
+              ?? pathIfExists(rankingSlug({ schoolType: view, sector: null }));
+            // A view this state has no data for is left out rather than shown dead.
+            if (!href && view !== ranking.schoolType) return null;
+            return (
+              <Pill key={view} active={view === ranking.schoolType} href={href}>
+                {view === 'VCE' ? t.viewVce : capitalize(t[`type${view}`])}
+              </Pill>
+            );
+          })}
         </div>
         <div className="flex flex-wrap items-center gap-2">
           <span className="w-20 text-xs text-gray-500">{t.filterSector}</span>
@@ -115,55 +187,22 @@ export default function RankingBody({ locale, state, slug }: { locale: Locale; s
         </div>
       </div>
 
-      <div className="mt-6 overflow-x-auto">
-        <table className="w-full text-sm sm:min-w-[36rem]">
-          <thead>
-            <tr className="border-b border-gray-200 text-left text-xs text-gray-500 [&>th]:whitespace-nowrap">
-              <th scope="col" className="w-10 py-2 pr-2 font-medium">#</th>
-              <th scope="col" className="py-2 pr-3 font-medium">{st.compareColName}</th>
-              <th scope="col" className="hidden py-2 pr-3 font-medium sm:table-cell">{t.colSuburb}</th>
-              {showSector && <th scope="col" className="py-2 pr-3 font-medium">{st.fieldSector}</th>}
-              <th scope="col" className="py-2 pr-3 text-right font-medium">{st.fieldIcsea}</th>
-              <th scope="col" className="py-2 pr-3 text-right font-medium">{st.statStudents}</th>
-              <th scope="col" className="py-2 text-right font-medium">{st.statRatio}</th>
-            </tr>
-          </thead>
-          <tbody>
-            {ranking.rows.map(({ school, slug: schoolSlug, rank }) => {
-              const students = metricValue(school, 'enrolments');
-              const ratio = metricValue(school, 'ratio');
-              return (
-                <tr key={school.id} className="border-b border-gray-100">
-                  <td className="py-2 pr-2 tabular-nums text-gray-500">{rank}</td>
-                  <td className="py-2 pr-3">
-                    <Link href={schoolPath(school.state, schoolSlug, locale)} className="text-indigo-700 hover:underline">
-                      {school.school_name}
-                    </Link>
-                    {/* Narrow screens fold the suburb under the name so ICSEA stays in view. */}
-                    <span className="block text-xs text-gray-500 sm:hidden">{school.suburb}</span>
-                  </td>
-                  <td className="hidden py-2 pr-3 sm:table-cell">
-                    <Link href={suburbPath(school.state, school.suburb, locale)} className="text-gray-600 hover:text-indigo-700 hover:underline">
-                      {school.suburb}
-                    </Link>
-                  </td>
-                  {showSector && (
-                    <td className="py-2 pr-3">
-                      <span className={`whitespace-nowrap rounded-full px-2 py-0.5 text-[10px] font-medium ${sectorBadgeClass(school.sector)}`}>
-                        {getSectorLabel(school.sector, dictionary)}
-                      </span>
-                    </td>
-                  )}
-                  <td className="py-2 pr-3 text-right tabular-nums">{metricValue(school, 'icsea')}</td>
-                  <td className="py-2 pr-3 text-right tabular-nums">{students === null ? '—' : students.toLocaleString('en-AU')}</td>
-                  <td className="py-2 text-right tabular-nums">{ratio === null ? '—' : ratio.toFixed(1)}</td>
-                </tr>
-              );
-            })}
-          </tbody>
-        </table>
+      <div className="mt-6">
+        <RankingTable
+          rows={rows}
+          columns={columns}
+          defaultSort={isVce ? 'vce_median' : 'icsea'}
+          defaultWeights={isVce ? VCE_WEIGHTS : ICSEA_WEIGHTS}
+          showSector={ranking.sector === null}
+          labels={labels}
+          limit={DEFAULT_ROWS}
+        />
       </div>
-      <p className="mt-2 text-xs text-gray-500">{formatMessage(t.method, { ...values, year: ACARA_DATA_YEAR })}</p>
+      <p className="mt-3 text-xs text-gray-500">
+        {isVce
+          ? formatMessage(t.methodVce, { year: resultsYear, acaraYear: ACARA_DATA_YEAR })
+          : formatMessage(t.method, { ...values, year: ACARA_DATA_YEAR })}
+      </p>
       <p className="mt-1 text-xs text-gray-500">
         {naplanBefore}
         <a href={MY_SCHOOL_URL} rel="noopener" className="text-indigo-700 hover:underline">{t.naplanLink}</a>

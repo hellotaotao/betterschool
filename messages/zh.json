@@ -172,7 +172,9 @@
       "zonesHeading": "关于学区",
       "zonesBody": "目前只收录了新南威尔士州公立学校的学区边界。学区只适用于公立学校——天主教学校和独立学校按各自的标准招生，没有地理学区。其他州还没有采集，这跟「没有学区」是两回事。",
       "largestHeading": "学校最多的城区",
-      "largestHint": "直接进入学校最多的几个城区页面。全部城区都可以通过上面的州索引找到。"
+      "largestHint": "直接进入学校最多的几个城区页面。全部城区都可以通过上面的州索引找到。",
+      "rankingsHeading": "各州学校排名",
+      "rankingsHint": "有 VCAA 数据的按 VCE 成绩排名；各类学校都可按 ICSEA（反映学生背景）排名。"
     },
     "stateIndex": {
       "metaTitle": "{state}学校一览（按城区）",
@@ -185,8 +187,8 @@
       "largestHeading": "{state}学校最多的城区",
       "otherStatesHeading": "其他州与领地",
       "allSuburbsHeading": "{state}全部城区（A–Z）",
-      "rankingsHeading": "{state}学校 ICSEA 排名",
-      "rankingsHint": "ICSEA 描述的是学生的家庭背景，不是学校的教学表现。每个排名都写明比较组和数据年份。"
+      "rankingsHeading": "{state}学校排名",
+      "rankingsHint": "有 VCAA 数据的按 VCE 成绩排名；各类学校都可按 ICSEA 排名，ICSEA 反映学生背景，不是学校表现。每个排名都注明比较范围和数据年份。"
     },
     "suburb": {
       "metaTitle": "{suburb}（{state}）的学校",
@@ -206,7 +208,8 @@
       "relatedHint": "离 {suburb} 最近的城区，按直线距离排序。",
       "zonesNonePartial": "没有以 {suburb} 为校址的公立学校公布学区。{state}只给一部分公立学校划片，所以这一点说明不了什么 —— 这个城区仍可能落在别处某所学校的学区范围内。",
       "compareHeading": "{suburb} 学校并排对比",
-      "compareNote": "按 ICSEA 从高到低排序。ICSEA 反映的是学生的社会教育背景，而不是学校的教学表现。数据来自 ACARA {year}，师生比由 BetterSchool 计算。"
+      "compareNote": "按 ICSEA 从高到低排序。ICSEA 反映的是学生的社会教育背景，而不是学校的教学表现。数据来自 ACARA {year}，师生比由 BetterSchool 计算。",
+      "rankingsHeading": "{suburb} 的学校在{state}的排名"
     },
     "school": {
       "metaTitle": "{school}（{suburb}，{state}）学校资料",
@@ -326,7 +329,19 @@
       "compareColState": "{state}",
       "compareBottomLarge": "{count} 所中最小",
       "comparePctSmaller": "小于 {percent}%",
-      "compareRankingLink": "完整排名：{state}{group}（按 ICSEA）"
+      "compareRankingLink": "完整排名：{state}{group}（按 ICSEA）",
+      "y12Heading": "VCE 成绩",
+      "y12ColYear": "年份",
+      "y12ColMedian": "中位学科分",
+      "y12Col40": "40 分以上占比",
+      "y12ColStudents": "VCE 学生",
+      "y12ColCompletion": "完成 VCE",
+      "y12Rank": "{year} 年按 VCE 中位学科分，在 VCE 学生不少于 {min} 人的 {count} 所维州学校中排第 {rank}。",
+      "y12Small": "{year} 年 VCE 学生少于 {min} 人，几个学生的成绩就能大幅改变中位分，因此默认不参与排名。",
+      "y12Link": "查看{state} VCE 成绩排名",
+      "y12Withheld": "“—”表示 VCAA 未公布该数字：人数少于四人，或学校没有开设该课程。",
+      "y12Source": "VCAA《Senior Secondary Completion and Achievement Information》。© Victorian Curriculum and Assessment Authority。",
+      "y12EarlyOnly": "{year} 年这里没有学生完成 VCE：这些成绩来自学校开出 Year 12 之前提前修读 Units 3–4 科目的学生，因此不参与排名。"
     },
     "catchment": {
       "metaTitle": "{school} 学区范围（{suburb}，{state}）",
@@ -379,7 +394,26 @@
       "typeCombined": "综合学校",
       "sectorGovernment": "公立",
       "sectorCatholic": "天主教",
-      "sectorIndependent": "独立"
+      "sectorIndependent": "独立",
+      "typeVCE": "VCE 学校",
+      "filterView": "排名",
+      "viewVce": "VCE 成绩",
+      "metaTitleVce": "{state} {group}排名 {year}：按 VCE 中位学科分",
+      "metaDescriptionVce": "{state} {ranked} 所 {group}按 {year} 年 VCE 中位学科分和 40 分以上占比排名，数据来自 VCAA 官方发布，并附 ICSEA、在校人数和生师比。可按任意一列排序，也可以自己设权重。",
+      "headingVce": "{state} {group}成绩排名",
+      "introVce": "{state}有 {ranked} 所 {group}公布了 {year} 年 VCE 中位学科分，且 VCE 学生不少于 {min} 人。点击任意一列可重新排序，也可以自己给各列设权重。",
+      "smallCohort": "另有 {count} 所 VCE 学生少于 {min} 人，几个学生的成绩就能大幅改变中位分，默认不显示。",
+      "includeSmall": "包括 VCE 学生少于 {min} 人的学校",
+      "methodVce": "默认按 VCE 中位学科分从高到低排序；中位分相同的学校按 40 分以上占比区分。VCE 成绩：VCAA《Senior Secondary Completion and Achievement Information》{year}，© Victorian Curriculum and Assessment Authority。ICSEA、在校人数和师资：ACARA {acaraYear}；生师比由 BetterSchool 计算。分校区单独公布 VCE 成绩的，单独列出；没有独立 ACARA 资料的校区不显示 ICSEA。",
+      "colVceMedian": "VCE 中位分",
+      "colVce40": "40 分以上占比",
+      "sortBy": "排序",
+      "sortMix": "自定义综合",
+      "mixScore": "综合",
+      "weightsHint": "每项权重作用于学校在本表中该项指标的百分位。只有各项加权指标都有数据的学校参与综合排序：本表共 {count} 所。",
+      "showAll": "显示全部 {count} 所",
+      "showTop": "只显示前 {count} 名",
+      "earlyOnly": "另有 {count} 所学校还没有 Year 12，公布的中位分来自提前修读 Units 3–4 科目的学生，不参与排名。"
     },
     "kinds": {
       "primary": "小学",

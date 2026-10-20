@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import { formatMessage, getMessages, type Locale, type Messages } from './i18n';
 import { absoluteUrl, SITE_NAME } from './site';
 import { toLocalePath } from './slug';
-import type { RankingSector, RankingType } from './rankings';
+import type { RankingSector, RankingView } from './rankings';
 
 export type { Locale };
 
@@ -49,7 +49,7 @@ export function localeKind(locale: Locale, kind: string): string {
  * A ranking's group as a phrase: "government primary schools" / "公立小学".
  * Lowercase in English so it sits mid-sentence; `capitalize` it for a heading.
  */
-export function localeRankingGroup(locale: Locale, schoolType: RankingType, sector: RankingSector | null): string {
+export function localeRankingGroup(locale: Locale, schoolType: RankingView, sector: RankingSector | null): string {
   const t = getSeo(locale).ranking;
   const type = t[`type${schoolType}`];
   return sector

@@ -11,13 +11,16 @@ import {
 } from './catchmentLookup';
 import { buildSchoolSlugs, stateSlug, suburbSlug } from './slug';
 import { metricValue, type CompareMetric } from './schoolCompare';
+import { assignRanks, sortRows } from './rankingTable';
 import {
+  RANKING_MIN_SCHOOLS,
   RANKING_SECTORS,
   RANKING_TYPES,
+  VCE_MIN_STUDENTS,
   rankingSlug,
   topByIcsea,
   type RankingSector,
-  type RankingType,
+  type RankingView,
 } from './rankings';
 
 // Server-only: build-time sitemap generation and on-demand ISR pages read the
@@ -523,33 +526,109 @@ export function getStateSummary(state: string): StateSummary | undefined {
 
 // --- State rankings ---------------------------------------------------------
 
+export interface RankingMember {
+  school: School;
+  slug: string;
+  /** For VCE rankings: under VCE_MIN_STUDENTS, listed only when the reader asks. */
+  smallCohort?: boolean;
+}
+
 export interface RankingGroup {
   state: string;
   slug: string;
-  schoolType: RankingType;
+  /** An ACARA school type ranked by ICSEA, or `VCE`. */
+  schoolType: RankingView;
   sector: RankingSector | null;
-  /** Schools in the group with an ICSEA value — the denominator of every rank. */
+  /** Schools ranked by default — the denominator of every default rank. */
   ranked: number;
-  /** Schools in the group without one, so the page can say they exist. */
+  /** Schools in the group without the ranking figure, so the page can say they exist. */
   unranked: number;
-  rows: { school: School; slug: string; rank: number }[];
+  /** VCE only: schools with results but too few VCE students to rank by default. */
+  smallCohort: number;
+  /**
+   * VCE only: schools whose results come from no Year 12 cohort at all —
+   * Year 10 and 11 students taking Units 3-4 studies early at a school that
+   * has not reached Year 12. VCAA marks their completion rate not applicable.
+   * Their medians are a few accelerated students, so they are never ranked.
+   */
+  earlyOnly: number;
+  /** Every school the table can show, the small cohorts included. */
+  members: RankingMember[];
+  /** Results year behind a VCE ranking. */
+  resultsYear?: number;
+}
+
+/** The newest VCE results year in the dataset, or null when no school has any. */
+export function getLatestYear12Year(): number | null {
+  let latest: number | null = null;
+  for (const school of getSchoolsDataset().schools) {
+    const year = school.year12?.[0]?.year;
+    if (year !== undefined && (latest === null || year > latest)) latest = year;
+  }
+  return latest;
+}
+
+/** This year's VCE results for a school, or null when it has none for that year. */
+export function latestYear12(school: School, year: number | null = getLatestYear12Year()) {
+  const result = school.year12?.[0];
+  return result && result.year === year ? result : null;
+}
+
+/** Results with no VCE completions behind them: see RankingGroup.earlyOnly. */
+export function isEarlyOnly(result: NonNullable<School['year12']>[number]): boolean {
+  return result.vce_completion_pct === null && result.withheld?.vce_completion_pct === 'not_applicable';
 }
 
 let cachedRankingGroups: RankingGroup[] | null = null;
 
 /**
  * Every ranking page that has enough schools to rank: per state, each school
- * type across all sectors and then each sector on its own. Uses the same
- * per-state pool as getMetricPool, so the ranks agree with the percentages on
- * school pages.
+ * type across all sectors and then each sector on its own, ranked by ICSEA;
+ * and where VCE results exist, every school with a median study score, ranked
+ * by those results. ICSEA groups use the same per-state pool as
+ * getMetricPool, so the ranks agree with the percentages on school pages.
  */
 export function getRankingGroups(): RankingGroup[] {
   if (cachedRankingGroups) return cachedRankingGroups;
 
   const dataset = getSchoolsDataset();
+  const member = (school: School, smallCohort?: boolean): RankingMember => ({
+    school,
+    slug: dataset.slugs.get(school.id) ?? '',
+    ...(smallCohort ? { smallCohort } : {}),
+  });
+  const resultsYear = getLatestYear12Year();
   const groups: RankingGroup[] = [];
+
   for (const { state } of getStateSummaries()) {
     const stateSchools = getSchoolsForState(state);
+
+    if (resultsYear !== null) {
+      const withMedian = stateSchools.filter(school => latestYear12(school, resultsYear)?.median_study_score != null);
+      const withResults = withMedian.filter(school => !isEarlyOnly(latestYear12(school, resultsYear)!));
+      for (const sector of [null, ...RANKING_SECTORS]) {
+        const pool = sector ? withResults.filter(school => school.sector === sector) : withResults;
+        const isSmall = (school: School) => {
+          const result = latestYear12(school, resultsYear)!;
+          return result.small_school || (result.vce_students ?? 0) < VCE_MIN_STUDENTS;
+        };
+        const ranked = pool.filter(school => !isSmall(school));
+        if (ranked.length < RANKING_MIN_SCHOOLS) continue;
+        groups.push({
+          state,
+          slug: rankingSlug({ schoolType: 'VCE', sector }),
+          schoolType: 'VCE',
+          sector,
+          ranked: ranked.length,
+          unranked: 0,
+          smallCohort: pool.length - ranked.length,
+          earlyOnly: (sector ? withMedian.filter(school => school.sector === sector) : withMedian).length - pool.length,
+          members: pool.map(school => member(school, isSmall(school))),
+          resultsYear,
+        });
+      }
+    }
+
     for (const schoolType of RANKING_TYPES) {
       const ofType = stateSchools.filter(school => school.school_type === schoolType);
       for (const sector of [null, ...RANKING_SECTORS]) {
@@ -563,7 +642,9 @@ export function getRankingGroups(): RankingGroup[] {
           sector,
           ranked: top.ranked,
           unranked: pool.length - top.ranked,
-          rows: top.rows.map(row => ({ school: row.school, slug: dataset.slugs.get(row.school.id) ?? '', rank: row.rank })),
+          smallCohort: 0,
+          earlyOnly: 0,
+          members: pool.filter(school => metricValue(school, 'icsea') !== null).map(school => member(school)),
         });
       }
     }
@@ -593,4 +674,34 @@ export function groupSuburbsByInitial(suburbs: SuburbGroup[]): [string, SuburbGr
     else groups.set(initial, [suburb]);
   }
   return [...groups.entries()].sort((a, b) => a[0].localeCompare(b[0]));
+}
+
+/**
+ * Where a school's latest VCE results place it in its state's VCE ranking, in
+ * the ranking page's default order, or why it is not ranked. Null when it has
+ * no results for the latest year.
+ */
+export function getVceStateRank(school: School):
+  | { rank: number; of: number; slug: string }
+  | { excluded: 'small_cohort' | 'early_only' }
+  | null {
+  const latest = latestYear12(school);
+  if (!latest || latest.median_study_score === null) return null;
+  if (isEarlyOnly(latest)) return { excluded: 'early_only' };
+  const ranking = getRanking(school.state, rankingSlug({ schoolType: 'VCE', sector: null }));
+  const member = ranking?.members.find(entry => entry.school.id === school.id);
+  if (!ranking || !member) return null;
+  if (member.smallCohort) return { excluded: 'small_cohort' };
+  const year = ranking.resultsYear ?? null;
+  const rows = ranking.members.filter(entry => !entry.smallCohort).map(({ school: candidate }) => {
+    const results = latestYear12(candidate, year);
+    return {
+      id: candidate.id, name: candidate.school_name, href: '', suburb: '', suburbHref: '', sector: candidate.sector,
+      values: { vce_median: results?.median_study_score ?? null, vce_40: results?.pct_study_scores_40_plus ?? null },
+    };
+  });
+  const sorted = sortRows(rows, 'vce_median');
+  const ranks = assignRanks(sorted, 'vce_median');
+  const rank = ranks[sorted.findIndex(row => row.id === school.id)];
+  return rank == null ? null : { rank, of: rows.length, slug: ranking.slug };
 }

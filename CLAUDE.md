@@ -27,6 +27,10 @@ npm run test:watch       # vitest watch
 npm run acara:parse      # ACARA xlsx -> data/acara/processed/*.json
 npm run acara:match      # match legacy BetterSchool records to ACARA records
 npm run acara:validate   # sanity-check the parsed ACARA layer
+npm run vcaa:fetch       # VCAA SSCAI workbooks 2022-2025 (VIC VCE results)
+npm run vcaa:parse       # workbooks -> data/vcaa/processed/sscai-<year>.json
+npm run vcaa:match       # exact name+locality / audited alias -> year12-layer.json
+npm run vcaa:validate    # join-rate floor, value ranges, withheld never a number
 npm run canonical:build  # merge all layers -> public/data/schools.canonical.json
                          # (also runs client:build: the map's slimmer copy)
 npm run canonical:validate
@@ -82,6 +86,8 @@ ACARA/*.xlsx
   └─ scripts/parse-acara-*.mjs      → data/acara/processed/*.json
   └─ scripts/religion-classify.mjs  → religion layer
   └─ scripts/match-betterschool-acara.mjs → legacy metric layer
+vcaa.vic.edu.au SSCAI (VCE results)
+  └─ scripts/{fetch,parse}-vcaa-sscai.mjs, match-vcaa-acara.mjs → data/vcaa/processed/year12-layer.json
 data.nsw.gov.au / data.sa.gov.au / discover.data.vic.gov.au / data.qld.gov.au / LISTdata / ACTmapi
   └─ scripts/{fetch,parse,build,validate}-<state>-catchment.mjs → catchment layers
        └─ scripts/build-canonical-schools.mjs
@@ -121,20 +127,20 @@ the first two disagree.
 | `/schools` | client-only map app | 1 |
 | `/browse` | prerendered | 1 |
 | `/suburb/[state]` | prerendered | 8 |
-| `/ranking/[state]/[slug]` | prerendered | 72 |
+| `/ranking/[state]/[slug]` | prerendered | 76 |
 | `/school/[state]/[slug]` | on-demand ISR | 11,034 |
 | `/suburb/[state]/[slug]` | on-demand ISR | 4,799 |
 | `/catchment/[state]/[slug]` | on-demand ISR | 5,135 |
 
 Every route above except the map exists twice: bare for English and under `/zh`
-for Chinese — 42,099 canonical URLs in total. English keeps the unprefixed paths
+for Chinese — 42,107 canonical URLs in total. English keeps the unprefixed paths
 it already publishes; those must not move.
 
 The long-tail routes are the SEO surface — the map app is one client-rendered URL
 and is invisible to search. The build emits zero school, suburb or catchment
 pages, but the sitemap still lists every canonical URL: `/sitemap.xml` is an
 index (`app/sitemap.xml/route.ts`) over one child per page family —
-`/browse`, `/suburb`, `/school`, `/catchment` `…/sitemap.xml` — each far below
+`/browse`, `/suburb`, `/ranking`, `/school`, `/catchment` `…/sitemap.xml` — each far below
 the 50,000-URL limit, which `lib/sitemap.test.ts` checks. The first request for a
 valid URL generates the page and caches it for the rest of the deployment.
 These server-only routes read the prebuilt dataset off disk via
@@ -198,13 +204,32 @@ schools side by side ranked by ICSEA. The arithmetic is in
 `lib/schoolCompare.ts`; a rank needs three schools with a value and a state
 percentage twenty, below which the column is omitted rather than shown thin.
 
-State ranking pages (`/ranking/<state>/<type>[-<sector>]`, `RankingBody`) rank
-one ACARA school type — Primary, Secondary or Combined, the same pools as the
-state percentage on school pages — by ICSEA, all sectors and then each sector.
-`lib/rankings.ts` holds the slugs and the cut: the top 100 by rank, ties at the
-cut kept, and no page for a group with fewer than twenty ICSEA values. There
-are no city rankings: the data holds no city boundary, and drawing one needs an
-official source such as ABS Greater Capital City areas.
+State ranking pages (`/ranking/<state>/<view>[-<sector>]`, `RankingBody`) are
+one sortable table (`components/seo/RankingTable.tsx`, logic in
+`lib/rankingTable.ts`): the server renders the default order for crawlers, the
+browser re-sorts by any column or by the reader's own weighted mix (weighted
+mean of in-table percentiles, only over schools with every weighted figure),
+and mirrors the view into `?sort=&w=&small=`. Views (`RANKING_VIEWS`): `vce`
+ranks every school with VCE results by median study score, 40+ share as the
+tie-break, whatever its ACARA type; `primary`/`secondary`/`combined` rank that
+ACARA type by ICSEA. A VCE school with fewer than `VCE_MIN_STUDENTS` (50) VCE
+students is hidden by default, and one with no VCE completions at all (a new
+school whose Year 10-11 students took Units 3-4 early, VCAA completion "not
+applicable") is never ranked: such schools topped the table at a median of 39.
+No page for a group with fewer than twenty ranked schools. There are no city
+rankings: the data holds no city boundary, and drawing one needs an official
+source such as ABS Greater Capital City areas.
+
+VCE results come from VCAA's Senior Secondary Completion and Achievement
+Information, which names schools and localities but carries no ACARA id.
+`match-vcaa-acara.mjs` accepts an exact normalised name + locality, a name
+unique on both sides within 12 km (the guard that stopped St Margaret's School,
+Berwick, landing on St Margaret's School, East Geelong), or an audited alias in
+`data/vcaa/processed/aliases.json`; everything else, TAFEs included, stays in
+`unmatched.json`. VCAA reports multi-campus schools per campus, so results
+attach per campus, and a sub-campus without its own ACARA profile shows no
+ICSEA rather than the head campus's. School pages show the last four years
+(`Year12Section`) and the state rank.
 
 Slugs come from `lib/slug.ts`: `<name>-<suburb>`, because school names repeat
 heavily inside a state (NSW has 47 "St Joseph's Primary School"). Only a genuine

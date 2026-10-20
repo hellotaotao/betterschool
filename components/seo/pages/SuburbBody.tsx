@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { School } from '@/types/school';
-import { getRelatedSuburbs, getSchoolSlug, getSuburb } from '@/lib/schoolsData';
+import { getLatestYear12Year, getRelatedSuburbs, getSchoolSlug, getStateRankings, getSuburb, latestYear12 } from '@/lib/schoolsData';
 import { formatMessage, getMessages, getSchoolTypeLabel, getSectorLabel } from '@/lib/i18n';
 import { buildPageMetadata, getSeo, localeStateLabel, localeStateName, type Locale } from '@/lib/seoLocale';
 import { browsePath, catchmentPath, mapUrl, schoolPath, stateIndexPath, suburbPath } from '@/lib/slug';
@@ -12,6 +12,7 @@ import { catchmentStateCodes, catchmentStateInfo } from '@/lib/catchmentStates';
 import PageShell from '@/components/seo/PageShell';
 import SchoolLinkCard from '@/components/seo/SchoolLinkCard';
 import { ACARA_DATA_YEAR } from '@/lib/dataYear';
+import RankingLinks from '@/components/seo/RankingLinks';
 
 /** Group order matches how a parent thinks about stages, not alphabetical. */
 const TYPE_ORDER = ['Primary', 'Combined', 'Secondary', 'Special'];
@@ -59,6 +60,14 @@ export default function SuburbBody({ locale, state, slug }: { locale: Locale; st
 
   const st = getSeo(locale).school;
   const byType = groupByType(group.schools);
+  // Only the rankings these schools appear in: their types, and VCE where one
+  // of them published results.
+  const resultsYear = getLatestYear12Year();
+  const suburbRankings = getStateRankings(group.state).filter(ranking => ranking.sector === null && (
+    ranking.schoolType === 'VCE'
+      ? group.schools.some(school => latestYear12(school, resultsYear)?.median_study_score != null)
+      : group.schools.some(school => school.school_type === ranking.schoolType)
+  ));
   const ranked = sortByMetric(group.schools, 'icsea');
   const rankedPositions = displayRanks(ranked, 'icsea');
   const related = getRelatedSuburbs(group);
@@ -153,6 +162,15 @@ export default function SuburbBody({ locale, state, slug }: { locale: Locale; st
             </table>
           </div>
           <p className="mt-2 text-xs text-gray-500">{formatMessage(t.compareNote, { year: ACARA_DATA_YEAR })}</p>
+        </section>
+      )}
+
+      {suburbRankings.length > 0 && (
+        <section className="mt-6" aria-labelledby="rankings">
+          <h2 id="rankings" className="text-sm font-semibold">
+            {formatMessage(t.rankingsHeading, { suburb: group.suburb, state: full })}
+          </h2>
+          <RankingLinks rankings={suburbRankings} locale={locale} />
         </section>
       )}
 

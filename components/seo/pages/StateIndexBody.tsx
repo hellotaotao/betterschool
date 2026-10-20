@@ -3,10 +3,11 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { getLargestSuburbs, getStateRankings, getStateSummaries, getStateSummary, groupSuburbsByInitial } from '@/lib/schoolsData';
 import { formatMessage } from '@/lib/i18n';
-import { buildPageMetadata, capitalize, getSeo, localeRankingGroup, localeStateName, type Locale } from '@/lib/seoLocale';
-import { browsePath, mapUrl, rankingPath, stateIndexPath, suburbPath } from '@/lib/slug';
+import { buildPageMetadata, getSeo, localeStateName, type Locale } from '@/lib/seoLocale';
+import { browsePath, mapUrl, stateIndexPath, suburbPath } from '@/lib/slug';
 import PageShell from '@/components/seo/PageShell';
 import { ACARA_DATA_YEAR } from '@/lib/dataYear';
+import RankingLinks from '@/components/seo/RankingLinks';
 
 export function stateIndexMetadata(locale: Locale, state: string): Metadata {
   const summary = getStateSummary(state);
@@ -82,19 +83,7 @@ export default function StateIndexBody({ locale, state }: { locale: Locale; stat
             {formatMessage(t.rankingsHeading, { state: full })}
           </h2>
           <p className="mt-1 text-xs text-gray-500">{t.rankingsHint}</p>
-          <ul className="mt-3 flex flex-wrap gap-2">
-            {rankings.map(ranking => (
-              <li key={ranking.slug}>
-                <Link
-                  href={rankingPath(ranking.state, ranking.slug, locale)}
-                  className="inline-flex items-baseline gap-1.5 rounded-full border border-gray-200 px-3 py-1 text-xs text-gray-700 hover:border-indigo-400 hover:text-indigo-700"
-                >
-                  {capitalize(localeRankingGroup(locale, ranking.schoolType, ranking.sector))}
-                  <span className="text-[10px] text-gray-400">{ranking.ranked.toLocaleString('en-AU')}</span>
-                </Link>
-              </li>
-            ))}
-          </ul>
+          <RankingLinks rankings={rankings} locale={locale} />
         </section>
       )}
 
