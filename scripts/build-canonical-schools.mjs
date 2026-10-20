@@ -18,6 +18,8 @@ const locationPath = 'data/acara/processed/school-location-2025.json';
 const gradesPath = 'data/acara/processed/enrolments-by-grade-2025.json';
 const legacyPath = 'public/data/schools.json';
 const matchesPath = 'data/acara/processed/betterschool-acara-matches.json';
+// Optional: absent until npm run vcaa:fetch/parse/match has run.
+const year12Path = 'data/vcaa/processed/year12-layer.json';
 const outputPath = 'public/data/schools.canonical.json';
 const metadataPath = 'public/data/schools.metadata.json';
 
@@ -119,6 +121,13 @@ for (const match of matchesPayload.matches) {
   }
 }
 
+// Keyed on acara_sml_id, which the VCAA matcher resolved each row to.
+const year12Layer = fs.existsSync(year12Path) ? readJson(year12Path) : null;
+function year12Results(smlId) {
+  const results = year12Layer?.results?.[smlId];
+  return results ? results.map(result => ({ system: 'VCE', ...result })) : undefined;
+}
+
 const schools = [];
 for (const location of locationPayload.records) {
   const lat = Number(location.latitude);
@@ -194,6 +203,7 @@ for (const location of locationPayload.records) {
     grade_enrolments: gradeEnrolments(gradesBySmlId.get(location.acara_sml_id)),
     staff: finiteFields(profile?.staff, ['teaching', 'teaching_fte', 'non_teaching', 'non_teaching_fte']),
     sea_quarters: finiteFields(profile?.sea_quarters, ['bottom_percent', 'lower_middle_percent', 'upper_middle_percent', 'top_percent']),
+    year12: year12Results(location.acara_sml_id),
     school_url: profile?.school_url,
     myschool_url: myschoolUrl,
     governing_body: profile?.governing_body,
@@ -274,10 +284,23 @@ profileLayerCounts.without_grade_enrolments = schools.length - profileLayerCount
 profileLayerCounts.without_staff = schools.length - profileLayerCounts.with_staff;
 profileLayerCounts.without_sea_quarters = schools.length - profileLayerCounts.with_sea_quarters;
 
+const year12Counts = year12Layer
+  ? {
+    schools_with_results: schools.filter(school => school.year12).length,
+    with_latest_median: schools.filter(school => school.year12?.[0]?.year === Math.max(...year12Layer.years)
+      && school.year12[0].median_study_score !== null).length,
+    join_by_year: year12Layer.join,
+  }
+  : null;
+
 const metadata = readJson(metadataPath);
 metadata.fields.grade_enrolments = 'Official ACARA Enrolments by Grade 2025: one entry per year level the school offers. null means the level is offered but ACARA publishes no count. Absent means no record joined on acara_sml_id.';
 metadata.fields.staff = 'Official ACARA School Profile 2025 staff headcount and FTE (teaching / non-teaching). Any ratio shown from these is calculated on the page and labelled as such.';
 metadata.fields.sea_quarters = 'Official ACARA School Profile 2025 distribution of students across socio-educational advantage quarters. Describes student background, not school performance.';
+if (year12Layer) {
+  metadata.fields.year12 = 'Victorian VCE results from the VCAA Senior Secondary Completion and Achievement Information, one entry per results year, newest first: median study score, share of study scores of 40 and over, VCE students, satisfactory completion and VTAC application rates. null with a withheld reason where VCAA prints I/D (fewer than four students), < 4 or -. Absent means no VCAA row joined to this ACARA location.';
+  metadata.provenance.year12 = `VCAA SSCAI ${year12Layer.years.join(', ')} (${year12Layer.source_page}), ${year12Layer.attribution}. VCAA publishes a name and locality, not an ACARA id: each row joins by exact normalised name and locality, by a name unique on both sides within 12 km of the locality, or by an audited alias in data/vcaa/processed/aliases.json. Rows that do not join, and providers that are not schools (TAFEs), are recorded in data/vcaa/processed/unmatched.json. Multi-campus schools are reported per campus and attached per campus.`;
+}
 metadata.dataset_status = 'canonical_acara_base_with_legacy_metric_layer';
 metadata.coverage_note = 'Canonical public app dataset is ACARA 2025 official public School Location/Profile records with valid coordinates. Legacy score/rank are optional attached metrics only.';
 metadata.provenance.source = 'ACARA Data Access Program public School Location/Profile 2025 is the canonical base/map layer.';
@@ -328,6 +351,7 @@ metadata.generated_from = {
   fees_band_counts: feesBandCounts,
   catchment_counts: catchmentCounts,
   profile_layer_counts: profileLayerCounts,
+  ...(year12Counts ? { year12_counts: year12Counts } : {}),
 };
 metadata.generated_at = new Date().toISOString();
 

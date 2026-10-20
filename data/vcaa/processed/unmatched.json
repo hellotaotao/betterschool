@@ -1,0 +1,1895 @@
+{
+  "2022": [
+    {
+      "school": "Berry Street Victoria",
+      "locality": "SEBASTOPOL",
+      "small_school": true,
+      "adult_school": false,
+      "vce_students": 9,
+      "vtac_application_pct": null,
+      "vce_completion_pct": null,
+      "median_study_score": null,
+      "pct_study_scores_40_plus": null,
+      "withheld": {
+        "vtac_application_pct": "not_applicable",
+        "vce_completion_pct": "not_applicable",
+        "median_study_score": "not_applicable",
+        "pct_study_scores_40_plus": "not_applicable"
+      },
+      "reason": "no_acara_match",
+      "candidates": 0
+    },
+    {
+      "school": "Catholic Regional College",
+      "locality": "MELTON WEST",
+      "small_school": false,
+      "adult_school": false,
+      "vce_students": 231,
+      "vtac_application_pct": 83.7,
+      "vce_completion_pct": 99,
+      "median_study_score": 28,
+      "pct_study_scores_40_plus": 1.8,
+      "withheld": {},
+      "reason": "no_acara_match",
+      "candidates": 0
+    },
+    {
+      "school": "Charles La Trobe P-12 College",
+      "locality": "PRESTON",
+      "small_school": false,
+      "adult_school": false,
+      "vce_students": 27,
+      "vtac_application_pct": null,
+      "vce_completion_pct": null,
+      "median_study_score": null,
+      "pct_study_scores_40_plus": null,
+      "withheld": {
+        "vtac_application_pct": "not_applicable",
+        "vce_completion_pct": "not_applicable",
+        "median_study_score": "insufficient_data",
+        "pct_study_scores_40_plus": "insufficient_data"
+      },
+      "reason": "no_acara_match",
+      "candidates": 1
+    },
+    {
+      "school": "Community College Gippsland",
+      "locality": "WARRAGUL",
+      "small_school": true,
+      "adult_school": false,
+      "vce_students": 6,
+      "vtac_application_pct": null,
+      "vce_completion_pct": null,
+      "median_study_score": null,
+      "pct_study_scores_40_plus": null,
+      "withheld": {
+        "vtac_application_pct": "not_applicable",
+        "vce_completion_pct": "not_applicable",
+        "median_study_score": "not_applicable",
+        "pct_study_scores_40_plus": "not_applicable"
+      },
+      "reason": "no_acara_match",
+      "candidates": 0
+    },
+    {
+      "school": "Foundation Learning Centre",
+      "locality": "NARRE WARREN",
+      "small_school": true,
+      "adult_school": true,
+      "vce_students": 20,
+      "vtac_application_pct": null,
+      "vce_completion_pct": null,
+      "median_study_score": null,
+      "pct_study_scores_40_plus": null,
+      "withheld": {
+        "vtac_application_pct": "not_applicable",
+        "vce_completion_pct": "not_applicable",
+        "median_study_score": "not_applicable",
+        "pct_study_scores_40_plus": "not_applicable"
+      },
+      "reason": "no_acara_match",
+      "candidates": 0
+    },
+    {
+      "school": "Haileybury Rendall School",
+      "locality": "BERRIMAH",
+      "small_school": false,
+      "adult_school": false,
+      "vce_students": 70,
+      "vtac_application_pct": 24.1,
+      "vce_completion_pct": 100,
+      "median_study_score": 29,
+      "pct_study_scores_40_plus": 5.4,
+      "withheld": {},
+      "reason": "no_acara_match",
+      "candidates": 0
+    },
+    {
+      "school": "Hallam Senior Sec College",
+      "locality": "HALLAM",
+      "small_school": false,
+      "adult_school": false,
+      "vce_students": 228,
+      "vtac_application_pct": 42.3,
+      "vce_completion_pct": 85,
+      "median_study_score": 25,
+      "pct_study_scores_40_plus": 0,
+      "withheld": {},
+      "reason": "no_acara_match",
+      "candidates": 0
+    },
+    {
+      "school": "Lynall Hall Community School",
+      "locality": "RICHMOND",
+      "small_school": false,
+      "adult_school": false,
+      "vce_students": 33,
+      "vtac_application_pct": 0,
+      "vce_completion_pct": null,
+      "median_study_score": null,
+      "pct_study_scores_40_plus": null,
+      "withheld": {
+        "vce_completion_pct": "insufficient_data",
+        "median_study_score": "not_applicable",
+        "pct_study_scores_40_plus": "not_applicable"
+      },
+      "reason": "no_acara_match",
+      "candidates": 0
+    },
+    {
+      "school": "Melbourne Polytechnic",
+      "locality": "PRESTON",
+      "small_school": true,
+      "adult_school": true,
+      "vce_students": 11,
+      "vtac_application_pct": null,
+      "vce_completion_pct": null,
+      "median_study_score": null,
+      "pct_study_scores_40_plus": null,
+      "withheld": {
+        "vtac_application_pct": "not_applicable",
+        "vce_completion_pct": "not_applicable",
+        "median_study_score": "not_applicable",
+        "pct_study_scores_40_plus": "not_applicable"
+      },
+      "reason": "no_acara_match",
+      "candidates": 0
+    },
+    {
+      "school": "Mountain District Christian SC",
+      "locality": "MONBULK",
+      "small_school": false,
+      "adult_school": false,
+      "vce_students": 22,
+      "vtac_application_pct": 75,
+      "vce_completion_pct": 100,
+      "median_study_score": 29,
+      "pct_study_scores_40_plus": 4.7,
+      "withheld": {},
+      "reason": "no_acara_match",
+      "candidates": 0
+    },
+    {
+      "school": "Mountain District Comm College",
+      "locality": "FERNTREE GULLY",
+      "small_school": true,
+      "adult_school": false,
+      "vce_students": null,
+      "vtac_application_pct": null,
+      "vce_completion_pct": null,
+      "median_study_score": null,
+      "pct_study_scores_40_plus": null,
+      "withheld": {
+        "vce_students": "fewer_than_4",
+        "vtac_application_pct": "insufficient_data",
+        "vce_completion_pct": "insufficient_data",
+        "median_study_score": "insufficient_data",
+        "pct_study_scores_40_plus": "insufficient_data"
+      },
+      "reason": "no_acara_match",
+      "candidates": 0
+    },
+    {
+      "school": "Preston Reservoir ACE",
+      "locality": "RESERVOIR",
+      "small_school": false,
+      "adult_school": false,
+      "vce_students": null,
+      "vtac_application_pct": null,
+      "vce_completion_pct": null,
+      "median_study_score": null,
+      "pct_study_scores_40_plus": null,
+      "withheld": {
+        "vce_students": "not_applicable",
+        "vtac_application_pct": "not_applicable",
+        "vce_completion_pct": "not_applicable",
+        "median_study_score": "not_applicable",
+        "pct_study_scores_40_plus": "not_applicable"
+      },
+      "reason": "no_acara_match",
+      "candidates": 0
+    },
+    {
+      "school": "SEDA College",
+      "locality": "HAWTHORN EAST",
+      "small_school": false,
+      "adult_school": false,
+      "vce_students": 301,
+      "vtac_application_pct": null,
+      "vce_completion_pct": null,
+      "median_study_score": null,
+      "pct_study_scores_40_plus": null,
+      "withheld": {
+        "vtac_application_pct": "not_applicable",
+        "vce_completion_pct": "not_applicable",
+        "median_study_score": "not_applicable",
+        "pct_study_scores_40_plus": "not_applicable"
+      },
+      "reason": "no_acara_match",
+      "candidates": 0
+    },
+    {
+      "school": "The David Scott School",
+      "locality": "FRANKSTON",
+      "small_school": true,
+      "adult_school": false,
+      "vce_students": 6,
+      "vtac_application_pct": null,
+      "vce_completion_pct": null,
+      "median_study_score": null,
+      "pct_study_scores_40_plus": null,
+      "withheld": {
+        "vtac_application_pct": "not_applicable",
+        "vce_completion_pct": "not_applicable",
+        "median_study_score": "not_applicable",
+        "pct_study_scores_40_plus": "not_applicable"
+      },
+      "reason": "no_acara_match",
+      "candidates": 0
+    },
+    {
+      "school": "Wyndham Comm & Educ Centre",
+      "locality": "WERRIBEE",
+      "small_school": true,
+      "adult_school": true,
+      "vce_students": 10,
+      "vtac_application_pct": null,
+      "vce_completion_pct": null,
+      "median_study_score": null,
+      "pct_study_scores_40_plus": null,
+      "withheld": {
+        "vtac_application_pct": "not_applicable",
+        "vce_completion_pct": "not_applicable",
+        "median_study_score": "not_applicable",
+        "pct_study_scores_40_plus": "not_applicable"
+      },
+      "reason": "no_acara_match",
+      "candidates": 0
+    },
+    {
+      "school": "Bendigo TAFE",
+      "locality": "BENDIGO",
+      "small_school": false,
+      "adult_school": true,
+      "vce_students": 21,
+      "vtac_application_pct": null,
+      "vce_completion_pct": null,
+      "median_study_score": null,
+      "pct_study_scores_40_plus": null,
+      "withheld": {
+        "vtac_application_pct": "not_applicable",
+        "vce_completion_pct": "not_applicable",
+        "median_study_score": "not_applicable",
+        "pct_study_scores_40_plus": "not_applicable"
+      },
+      "reason": "not_an_acara_school",
+      "note": "TAFE institute; no ACARA school record"
+    },
+    {
+      "school": "Box Hill Institute",
+      "locality": "BOX HILL",
+      "small_school": false,
+      "adult_school": true,
+      "vce_students": 84,
+      "vtac_application_pct": null,
+      "vce_completion_pct": null,
+      "median_study_score": null,
+      "pct_study_scores_40_plus": null,
+      "withheld": {
+        "vtac_application_pct": "not_applicable",
+        "vce_completion_pct": "not_applicable",
+        "median_study_score": "not_applicable",
+        "pct_study_scores_40_plus": "not_applicable"
+      },
+      "reason": "not_an_acara_school",
+      "note": "TAFE institute; no ACARA school record"
+    },
+    {
+      "school": "Box Hill Institute - CAE campus",
+      "locality": "MELBOURNE",
+      "small_school": false,
+      "adult_school": true,
+      "vce_students": 117,
+      "vtac_application_pct": 50,
+      "vce_completion_pct": 76,
+      "median_study_score": 24,
+      "pct_study_scores_40_plus": 0.5,
+      "withheld": {},
+      "reason": "not_an_acara_school",
+      "note": "TAFE adult education campus; no ACARA school record"
+    },
+    {
+      "school": "Chisholm Institute",
+      "locality": "FRANKSTON",
+      "small_school": false,
+      "adult_school": true,
+      "vce_students": 79,
+      "vtac_application_pct": 45.9,
+      "vce_completion_pct": 100,
+      "median_study_score": 23,
+      "pct_study_scores_40_plus": 0,
+      "withheld": {},
+      "reason": "not_an_acara_school",
+      "note": "TAFE institute; no ACARA school record"
+    },
+    {
+      "school": "Chisholm Institute of TAFE",
+      "locality": "DANDENONG",
+      "small_school": false,
+      "adult_school": true,
+      "vce_students": 138,
+      "vtac_application_pct": 65.2,
+      "vce_completion_pct": 93,
+      "median_study_score": 24,
+      "pct_study_scores_40_plus": 0.6,
+      "withheld": {},
+      "reason": "not_an_acara_school",
+      "note": "TAFE institute; no ACARA school record"
+    },
+    {
+      "school": "Federation University Australia",
+      "locality": "BALLARAT",
+      "small_school": true,
+      "adult_school": true,
+      "vce_students": 13,
+      "vtac_application_pct": null,
+      "vce_completion_pct": null,
+      "median_study_score": null,
+      "pct_study_scores_40_plus": null,
+      "withheld": {
+        "vtac_application_pct": "not_applicable",
+        "vce_completion_pct": "not_applicable",
+        "median_study_score": "not_applicable",
+        "pct_study_scores_40_plus": "not_applicable"
+      },
+      "reason": "not_an_acara_school",
+      "note": "University TAFE division; no ACARA school record"
+    },
+    {
+      "school": "Gordon Institute of TAFE",
+      "locality": "GEELONG",
+      "small_school": false,
+      "adult_school": true,
+      "vce_students": 69,
+      "vtac_application_pct": 42.1,
+      "vce_completion_pct": 89,
+      "median_study_score": 28,
+      "pct_study_scores_40_plus": 0,
+      "withheld": {},
+      "reason": "not_an_acara_school",
+      "note": "TAFE institute; no ACARA school record"
+    },
+    {
+      "school": "Goulburn Ovens Inst of TAFE",
+      "locality": "SHEPPARTON",
+      "small_school": false,
+      "adult_school": true,
+      "vce_students": 30,
+      "vtac_application_pct": null,
+      "vce_completion_pct": null,
+      "median_study_score": null,
+      "pct_study_scores_40_plus": null,
+      "withheld": {
+        "vtac_application_pct": "not_applicable",
+        "vce_completion_pct": "not_applicable",
+        "median_study_score": "not_applicable",
+        "pct_study_scores_40_plus": "not_applicable"
+      },
+      "reason": "not_an_acara_school",
+      "note": "TAFE institute; no ACARA school record"
+    },
+    {
+      "school": "Holmesglen Institute",
+      "locality": "MOORABBIN",
+      "small_school": false,
+      "adult_school": true,
+      "vce_students": 21,
+      "vtac_application_pct": 0,
+      "vce_completion_pct": 100,
+      "median_study_score": null,
+      "pct_study_scores_40_plus": null,
+      "withheld": {
+        "median_study_score": "not_applicable",
+        "pct_study_scores_40_plus": "not_applicable"
+      },
+      "reason": "not_an_acara_school",
+      "note": "TAFE institute; no ACARA school record"
+    },
+    {
+      "school": "South West Institute of TAFE",
+      "locality": "WARRNAMBOOL",
+      "small_school": false,
+      "adult_school": true,
+      "vce_students": 37,
+      "vtac_application_pct": null,
+      "vce_completion_pct": null,
+      "median_study_score": null,
+      "pct_study_scores_40_plus": null,
+      "withheld": {
+        "vtac_application_pct": "not_applicable",
+        "vce_completion_pct": "not_applicable",
+        "median_study_score": "not_applicable",
+        "pct_study_scores_40_plus": "not_applicable"
+      },
+      "reason": "not_an_acara_school",
+      "note": "TAFE institute; no ACARA school record"
+    },
+    {
+      "school": "Sunraysia Institute of TAFE",
+      "locality": "MILDURA",
+      "small_school": true,
+      "adult_school": true,
+      "vce_students": 4,
+      "vtac_application_pct": null,
+      "vce_completion_pct": null,
+      "median_study_score": null,
+      "pct_study_scores_40_plus": null,
+      "withheld": {
+        "vtac_application_pct": "not_applicable",
+        "vce_completion_pct": "not_applicable",
+        "median_study_score": "not_applicable",
+        "pct_study_scores_40_plus": "not_applicable"
+      },
+      "reason": "not_an_acara_school",
+      "note": "TAFE institute; no ACARA school record"
+    },
+    {
+      "school": "Swinburne Uni of Tech - TAFE",
+      "locality": "CROYDON",
+      "small_school": false,
+      "adult_school": true,
+      "vce_students": 43,
+      "vtac_application_pct": 52.6,
+      "vce_completion_pct": 74,
+      "median_study_score": 20,
+      "pct_study_scores_40_plus": 0,
+      "withheld": {},
+      "reason": "not_an_acara_school",
+      "note": "University TAFE division; no ACARA school record"
+    },
+    {
+      "school": "TAFE Gippsland",
+      "locality": "SALE",
+      "small_school": false,
+      "adult_school": true,
+      "vce_students": 29,
+      "vtac_application_pct": 7.1,
+      "vce_completion_pct": 79,
+      "median_study_score": 28,
+      "pct_study_scores_40_plus": 0,
+      "withheld": {},
+      "reason": "not_an_acara_school",
+      "note": "TAFE institute; no ACARA school record"
+    },
+    {
+      "school": "The Bendigo Kangan Institute",
+      "locality": "BROADMEADOWS",
+      "small_school": true,
+      "adult_school": true,
+      "vce_students": 9,
+      "vtac_application_pct": null,
+      "vce_completion_pct": null,
+      "median_study_score": null,
+      "pct_study_scores_40_plus": null,
+      "withheld": {
+        "vtac_application_pct": "not_applicable",
+        "vce_completion_pct": "not_applicable",
+        "median_study_score": "not_applicable",
+        "pct_study_scores_40_plus": "not_applicable"
+      },
+      "reason": "not_an_acara_school",
+      "note": "TAFE institute; no ACARA school record"
+    },
+    {
+      "school": "Victoria University Polytechnic",
+      "locality": "FOOTSCRAY",
+      "small_school": false,
+      "adult_school": true,
+      "vce_students": 21,
+      "vtac_application_pct": 64.3,
+      "vce_completion_pct": 100,
+      "median_study_score": 22,
+      "pct_study_scores_40_plus": 0,
+      "withheld": {},
+      "reason": "not_an_acara_school",
+      "note": "University TAFE division; no ACARA school record"
+    },
+    {
+      "school": "Cire Community School",
+      "locality": "YARRA JUNCTION",
+      "small_school": false,
+      "adult_school": false,
+      "vce_students": 31,
+      "vtac_application_pct": null,
+      "vce_completion_pct": null,
+      "median_study_score": null,
+      "pct_study_scores_40_plus": null,
+      "withheld": {
+        "vtac_application_pct": "not_applicable",
+        "vce_completion_pct": "not_applicable",
+        "median_study_score": "not_applicable",
+        "pct_study_scores_40_plus": "not_applicable"
+      },
+      "reason": "same_name_too_far",
+      "km": 25
+    }
+  ],
+  "2023": [
+    {
+      "school": "Bendigo South East 7-10 SC",
+      "locality": "BENDIGO",
+      "small_school": false,
+      "adult_school": null,
+      "vce_students": null,
+      "vtac_application_pct": null,
+      "vce_completion_pct": null,
+      "median_study_score": null,
+      "pct_study_scores_40_plus": null,
+      "withheld": {
+        "vce_students": "not_applicable",
+        "vtac_application_pct": "not_applicable",
+        "vce_completion_pct": "not_applicable",
+        "median_study_score": "not_applicable",
+        "pct_study_scores_40_plus": "not_applicable"
+      },
+      "reason": "no_acara_match",
+      "candidates": 0
+    },
+    {
+      "school": "Catholic Regional College",
+      "locality": "ST ALBANS",
+      "small_school": true,
+      "adult_school": null,
+      "vce_students": null,
+      "vtac_application_pct": null,
+      "vce_completion_pct": null,
+      "median_study_score": null,
+      "pct_study_scores_40_plus": null,
+      "withheld": {
+        "vce_students": "fewer_than_4",
+        "vtac_application_pct": "insufficient_data",
+        "vce_completion_pct": "insufficient_data",
+        "median_study_score": "insufficient_data",
+        "pct_study_scores_40_plus": "insufficient_data"
+      },
+      "reason": "no_acara_match",
+      "candidates": 0
+    },
+    {
+      "school": "Catholic Regional College",
+      "locality": "MELTON WEST",
+      "small_school": false,
+      "adult_school": null,
+      "vce_students": 221,
+      "vtac_application_pct": 67.7,
+      "vce_completion_pct": 98,
+      "median_study_score": 27,
+      "pct_study_scores_40_plus": 1.4,
+      "withheld": {},
+      "reason": "no_acara_match",
+      "candidates": 0
+    },
+    {
+      "school": "Charles La Trobe P-12 College",
+      "locality": "PRESTON",
+      "small_school": false,
+      "adult_school": null,
+      "vce_students": 29,
+      "vtac_application_pct": 14.3,
+      "vce_completion_pct": 71,
+      "median_study_score": null,
+      "pct_study_scores_40_plus": null,
+      "withheld": {
+        "median_study_score": "not_applicable",
+        "pct_study_scores_40_plus": "not_applicable"
+      },
+      "reason": "no_acara_match",
+      "candidates": 1
+    },
+    {
+      "school": "Community College Gippsland",
+      "locality": "WARRAGUL",
+      "small_school": false,
+      "adult_school": null,
+      "vce_students": 40,
+      "vtac_application_pct": null,
+      "vce_completion_pct": 44,
+      "median_study_score": null,
+      "pct_study_scores_40_plus": null,
+      "withheld": {
+        "vtac_application_pct": "not_applicable",
+        "median_study_score": "not_applicable",
+        "pct_study_scores_40_plus": "not_applicable"
+      },
+      "reason": "no_acara_match",
+      "candidates": 0
+    },
+    {
+      "school": "Foundation Learning Centre",
+      "locality": "NARRE WARREN",
+      "small_school": true,
+      "adult_school": null,
+      "vce_students": 18,
+      "vtac_application_pct": null,
+      "vce_completion_pct": 58,
+      "median_study_score": null,
+      "pct_study_scores_40_plus": null,
+      "withheld": {
+        "vtac_application_pct": "not_applicable",
+        "median_study_score": "not_applicable",
+        "pct_study_scores_40_plus": "not_applicable"
+      },
+      "reason": "no_acara_match",
+      "candidates": 0
+    },
+    {
+      "school": "Haileybury Rendall School",
+      "locality": "BERRIMAH",
+      "small_school": false,
+      "adult_school": null,
+      "vce_students": 81,
+      "vtac_application_pct": 47.2,
+      "vce_completion_pct": 97,
+      "median_study_score": 32,
+      "pct_study_scores_40_plus": 13.1,
+      "withheld": {},
+      "reason": "no_acara_match",
+      "candidates": 0
+    },
+    {
+      "school": "Hallam Senior Sec College",
+      "locality": "HALLAM",
+      "small_school": false,
+      "adult_school": null,
+      "vce_students": 144,
+      "vtac_application_pct": 24.3,
+      "vce_completion_pct": 95,
+      "median_study_score": 23,
+      "pct_study_scores_40_plus": 1.3,
+      "withheld": {},
+      "reason": "no_acara_match",
+      "candidates": 0
+    },
+    {
+      "school": "Lynall Hall Community School",
+      "locality": "RICHMOND",
+      "small_school": true,
+      "adult_school": null,
+      "vce_students": 18,
+      "vtac_application_pct": null,
+      "vce_completion_pct": 67,
+      "median_study_score": null,
+      "pct_study_scores_40_plus": null,
+      "withheld": {
+        "vtac_application_pct": "not_applicable",
+        "median_study_score": "insufficient_data",
+        "pct_study_scores_40_plus": "insufficient_data"
+      },
+      "reason": "no_acara_match",
+      "candidates": 0
+    },
+    {
+      "school": "Melbourne Polytechnic",
+      "locality": "PRESTON",
+      "small_school": true,
+      "adult_school": null,
+      "vce_students": 17,
+      "vtac_application_pct": 12.5,
+      "vce_completion_pct": 63,
+      "median_study_score": null,
+      "pct_study_scores_40_plus": null,
+      "withheld": {
+        "median_study_score": "not_applicable",
+        "pct_study_scores_40_plus": "not_applicable"
+      },
+      "reason": "no_acara_match",
+      "candidates": 0
+    },
+    {
+      "school": "Mountain District Comm College",
+      "locality": "FERNTREE GULLY",
+      "small_school": true,
+      "adult_school": null,
+      "vce_students": 18,
+      "vtac_application_pct": null,
+      "vce_completion_pct": 64,
+      "median_study_score": null,
+      "pct_study_scores_40_plus": null,
+      "withheld": {
+        "vtac_application_pct": "not_applicable",
+        "median_study_score": "not_applicable",
+        "pct_study_scores_40_plus": "not_applicable"
+      },
+      "reason": "no_acara_match",
+      "candidates": 0
+    },
+    {
+      "school": "Preston Reservoir ACE",
+      "locality": "RESERVOIR",
+      "small_school": true,
+      "adult_school": null,
+      "vce_students": null,
+      "vtac_application_pct": null,
+      "vce_completion_pct": null,
+      "median_study_score": null,
+      "pct_study_scores_40_plus": null,
+      "withheld": {
+        "vce_students": "fewer_than_4",
+        "vtac_application_pct": "insufficient_data",
+        "vce_completion_pct": "insufficient_data",
+        "median_study_score": "insufficient_data",
+        "pct_study_scores_40_plus": "insufficient_data"
+      },
+      "reason": "no_acara_match",
+      "candidates": 0
+    },
+    {
+      "school": "SEDA College",
+      "locality": "HAWTHORN EAST",
+      "small_school": false,
+      "adult_school": null,
+      "vce_students": 682,
+      "vtac_application_pct": 4.9,
+      "vce_completion_pct": 100,
+      "median_study_score": null,
+      "pct_study_scores_40_plus": null,
+      "withheld": {
+        "median_study_score": "not_applicable",
+        "pct_study_scores_40_plus": "not_applicable"
+      },
+      "reason": "no_acara_match",
+      "candidates": 0
+    },
+    {
+      "school": "The David Scott School",
+      "locality": "FRANKSTON",
+      "small_school": false,
+      "adult_school": null,
+      "vce_students": 33,
+      "vtac_application_pct": 3.8,
+      "vce_completion_pct": 65,
+      "median_study_score": null,
+      "pct_study_scores_40_plus": null,
+      "withheld": {
+        "median_study_score": "not_applicable",
+        "pct_study_scores_40_plus": "not_applicable"
+      },
+      "reason": "no_acara_match",
+      "candidates": 0
+    },
+    {
+      "school": "Wyndham Comm & Educ Centre",
+      "locality": "WERRIBEE",
+      "small_school": true,
+      "adult_school": null,
+      "vce_students": 6,
+      "vtac_application_pct": 20,
+      "vce_completion_pct": 100,
+      "median_study_score": null,
+      "pct_study_scores_40_plus": null,
+      "withheld": {
+        "median_study_score": "not_applicable",
+        "pct_study_scores_40_plus": "not_applicable"
+      },
+      "reason": "no_acara_match",
+      "candidates": 0
+    },
+    {
+      "school": "Bendigo TAFE",
+      "locality": "BENDIGO",
+      "small_school": false,
+      "adult_school": null,
+      "vce_students": 28,
+      "vtac_application_pct": 6.7,
+      "vce_completion_pct": 47,
+      "median_study_score": null,
+      "pct_study_scores_40_plus": null,
+      "withheld": {
+        "median_study_score": "not_applicable",
+        "pct_study_scores_40_plus": "not_applicable"
+      },
+      "reason": "not_an_acara_school",
+      "note": "TAFE institute; no ACARA school record"
+    },
+    {
+      "school": "Box Hill Institute",
+      "locality": "BOX HILL",
+      "small_school": false,
+      "adult_school": null,
+      "vce_students": 119,
+      "vtac_application_pct": 5.2,
+      "vce_completion_pct": 83,
+      "median_study_score": null,
+      "pct_study_scores_40_plus": null,
+      "withheld": {
+        "median_study_score": "not_applicable",
+        "pct_study_scores_40_plus": "not_applicable"
+      },
+      "reason": "not_an_acara_school",
+      "note": "TAFE institute; no ACARA school record"
+    },
+    {
+      "school": "Box Hill Institute - CAE campus",
+      "locality": "MELBOURNE",
+      "small_school": false,
+      "adult_school": null,
+      "vce_students": 113,
+      "vtac_application_pct": 43.8,
+      "vce_completion_pct": 81,
+      "median_study_score": 26,
+      "pct_study_scores_40_plus": 2.3,
+      "withheld": {},
+      "reason": "not_an_acara_school",
+      "note": "TAFE adult education campus; no ACARA school record"
+    },
+    {
+      "school": "Chisholm Institute",
+      "locality": "FRANKSTON",
+      "small_school": false,
+      "adult_school": null,
+      "vce_students": 103,
+      "vtac_application_pct": 25.3,
+      "vce_completion_pct": 89,
+      "median_study_score": 22,
+      "pct_study_scores_40_plus": 3,
+      "withheld": {},
+      "reason": "not_an_acara_school",
+      "note": "TAFE institute; no ACARA school record"
+    },
+    {
+      "school": "Chisholm Institute of TAFE",
+      "locality": "DANDENONG",
+      "small_school": false,
+      "adult_school": null,
+      "vce_students": 194,
+      "vtac_application_pct": 28.6,
+      "vce_completion_pct": 86,
+      "median_study_score": 20,
+      "pct_study_scores_40_plus": 0.4,
+      "withheld": {},
+      "reason": "not_an_acara_school",
+      "note": "TAFE institute; no ACARA school record"
+    },
+    {
+      "school": "Federation University Australia",
+      "locality": "BALLARAT",
+      "small_school": false,
+      "adult_school": null,
+      "vce_students": 24,
+      "vtac_application_pct": null,
+      "vce_completion_pct": 50,
+      "median_study_score": null,
+      "pct_study_scores_40_plus": null,
+      "withheld": {
+        "vtac_application_pct": "not_applicable",
+        "median_study_score": "not_applicable",
+        "pct_study_scores_40_plus": "not_applicable"
+      },
+      "reason": "not_an_acara_school",
+      "note": "University TAFE division; no ACARA school record"
+    },
+    {
+      "school": "Gordon Institute of TAFE",
+      "locality": "GEELONG",
+      "small_school": false,
+      "adult_school": null,
+      "vce_students": 72,
+      "vtac_application_pct": 20.7,
+      "vce_completion_pct": 90,
+      "median_study_score": 22,
+      "pct_study_scores_40_plus": null,
+      "withheld": {
+        "pct_study_scores_40_plus": "not_applicable"
+      },
+      "reason": "not_an_acara_school",
+      "note": "TAFE institute; no ACARA school record"
+    },
+    {
+      "school": "Goulburn Ovens Inst of TAFE",
+      "locality": "SHEPPARTON",
+      "small_school": false,
+      "adult_school": null,
+      "vce_students": 52,
+      "vtac_application_pct": 5.9,
+      "vce_completion_pct": 86,
+      "median_study_score": null,
+      "pct_study_scores_40_plus": null,
+      "withheld": {
+        "median_study_score": "not_applicable",
+        "pct_study_scores_40_plus": "not_applicable"
+      },
+      "reason": "not_an_acara_school",
+      "note": "TAFE institute; no ACARA school record"
+    },
+    {
+      "school": "Holmesglen Institute",
+      "locality": "MOORABBIN",
+      "small_school": false,
+      "adult_school": null,
+      "vce_students": 92,
+      "vtac_application_pct": 3,
+      "vce_completion_pct": 78,
+      "median_study_score": null,
+      "pct_study_scores_40_plus": null,
+      "withheld": {
+        "median_study_score": "not_applicable",
+        "pct_study_scores_40_plus": "not_applicable"
+      },
+      "reason": "not_an_acara_school",
+      "note": "TAFE institute; no ACARA school record"
+    },
+    {
+      "school": "South West Institute of TAFE",
+      "locality": "WARRNAMBOOL",
+      "small_school": false,
+      "adult_school": null,
+      "vce_students": 23,
+      "vtac_application_pct": null,
+      "vce_completion_pct": 57,
+      "median_study_score": null,
+      "pct_study_scores_40_plus": null,
+      "withheld": {
+        "vtac_application_pct": "not_applicable",
+        "median_study_score": "not_applicable",
+        "pct_study_scores_40_plus": "not_applicable"
+      },
+      "reason": "not_an_acara_school",
+      "note": "TAFE institute; no ACARA school record"
+    },
+    {
+      "school": "Sunraysia Institute of TAFE",
+      "locality": "MILDURA",
+      "small_school": true,
+      "adult_school": null,
+      "vce_students": 10,
+      "vtac_application_pct": null,
+      "vce_completion_pct": 80,
+      "median_study_score": null,
+      "pct_study_scores_40_plus": null,
+      "withheld": {
+        "vtac_application_pct": "not_applicable",
+        "median_study_score": "not_applicable",
+        "pct_study_scores_40_plus": "not_applicable"
+      },
+      "reason": "not_an_acara_school",
+      "note": "TAFE institute; no ACARA school record"
+    },
+    {
+      "school": "Swinburne Uni of Tech - TAFE",
+      "locality": "CROYDON",
+      "small_school": false,
+      "adult_school": null,
+      "vce_students": 31,
+      "vtac_application_pct": 3.8,
+      "vce_completion_pct": 46,
+      "median_study_score": null,
+      "pct_study_scores_40_plus": null,
+      "withheld": {
+        "median_study_score": "not_applicable",
+        "pct_study_scores_40_plus": "not_applicable"
+      },
+      "reason": "not_an_acara_school",
+      "note": "University TAFE division; no ACARA school record"
+    },
+    {
+      "school": "TAFE Gippsland",
+      "locality": "SALE",
+      "small_school": false,
+      "adult_school": null,
+      "vce_students": 30,
+      "vtac_application_pct": 6.7,
+      "vce_completion_pct": 60,
+      "median_study_score": 26,
+      "pct_study_scores_40_plus": null,
+      "withheld": {
+        "pct_study_scores_40_plus": "not_applicable"
+      },
+      "reason": "not_an_acara_school",
+      "note": "TAFE institute; no ACARA school record"
+    },
+    {
+      "school": "The Bendigo Kangan Institute",
+      "locality": "BROADMEADOWS",
+      "small_school": false,
+      "adult_school": null,
+      "vce_students": 56,
+      "vtac_application_pct": 38.6,
+      "vce_completion_pct": 73,
+      "median_study_score": null,
+      "pct_study_scores_40_plus": null,
+      "withheld": {
+        "median_study_score": "not_applicable",
+        "pct_study_scores_40_plus": "not_applicable"
+      },
+      "reason": "not_an_acara_school",
+      "note": "TAFE institute; no ACARA school record"
+    },
+    {
+      "school": "Victoria University Polytechnic",
+      "locality": "FOOTSCRAY",
+      "small_school": false,
+      "adult_school": null,
+      "vce_students": 21,
+      "vtac_application_pct": 6.7,
+      "vce_completion_pct": 67,
+      "median_study_score": null,
+      "pct_study_scores_40_plus": null,
+      "withheld": {
+        "median_study_score": "not_applicable",
+        "pct_study_scores_40_plus": "not_applicable"
+      },
+      "reason": "not_an_acara_school",
+      "note": "University TAFE division; no ACARA school record"
+    },
+    {
+      "school": "Cire Community School",
+      "locality": "YARRA JUNCTION",
+      "small_school": false,
+      "adult_school": null,
+      "vce_students": 81,
+      "vtac_application_pct": null,
+      "vce_completion_pct": 31,
+      "median_study_score": null,
+      "pct_study_scores_40_plus": null,
+      "withheld": {
+        "vtac_application_pct": "not_applicable",
+        "median_study_score": "not_applicable",
+        "pct_study_scores_40_plus": "not_applicable"
+      },
+      "reason": "same_name_too_far",
+      "km": 25
+    }
+  ],
+  "2024": [
+    {
+      "school": "Catholic Regional College",
+      "locality": "ST ALBANS",
+      "small_school": true,
+      "adult_school": null,
+      "vce_students": null,
+      "vtac_application_pct": null,
+      "vce_completion_pct": null,
+      "median_study_score": null,
+      "pct_study_scores_40_plus": null,
+      "withheld": {
+        "vce_students": "fewer_than_4",
+        "vtac_application_pct": "insufficient_data",
+        "vce_completion_pct": "insufficient_data",
+        "median_study_score": "insufficient_data",
+        "pct_study_scores_40_plus": "insufficient_data"
+      },
+      "reason": "no_acara_match",
+      "candidates": 0
+    },
+    {
+      "school": "Charles La Trobe P-12 College",
+      "locality": "PRESTON",
+      "small_school": false,
+      "adult_school": null,
+      "vce_students": 42,
+      "vtac_application_pct": 17.9,
+      "vce_completion_pct": 68,
+      "median_study_score": null,
+      "pct_study_scores_40_plus": null,
+      "withheld": {
+        "median_study_score": "not_applicable",
+        "pct_study_scores_40_plus": "not_applicable"
+      },
+      "reason": "no_acara_match",
+      "candidates": 1
+    },
+    {
+      "school": "Community College Gippsland",
+      "locality": "WARRAGUL",
+      "small_school": false,
+      "adult_school": null,
+      "vce_students": 66,
+      "vtac_application_pct": null,
+      "vce_completion_pct": 51,
+      "median_study_score": null,
+      "pct_study_scores_40_plus": null,
+      "withheld": {
+        "vtac_application_pct": "not_applicable",
+        "median_study_score": "not_applicable",
+        "pct_study_scores_40_plus": "not_applicable"
+      },
+      "reason": "no_acara_match",
+      "candidates": 0
+    },
+    {
+      "school": "Foundation College",
+      "locality": "FRANKSTON",
+      "small_school": true,
+      "adult_school": null,
+      "vce_students": 4,
+      "vtac_application_pct": 100,
+      "vce_completion_pct": 100,
+      "median_study_score": null,
+      "pct_study_scores_40_plus": null,
+      "withheld": {
+        "median_study_score": "not_applicable",
+        "pct_study_scores_40_plus": "not_applicable"
+      },
+      "reason": "no_acara_match",
+      "candidates": 0
+    },
+    {
+      "school": "Foundation Learning Centre",
+      "locality": "NARRE WARREN",
+      "small_school": true,
+      "adult_school": null,
+      "vce_students": 6,
+      "vtac_application_pct": null,
+      "vce_completion_pct": 50,
+      "median_study_score": null,
+      "pct_study_scores_40_plus": null,
+      "withheld": {
+        "vtac_application_pct": "not_applicable",
+        "median_study_score": "not_applicable",
+        "pct_study_scores_40_plus": "not_applicable"
+      },
+      "reason": "no_acara_match",
+      "candidates": 0
+    },
+    {
+      "school": "Haileybury Rendall School",
+      "locality": "BERRIMAH",
+      "small_school": false,
+      "adult_school": null,
+      "vce_students": 106,
+      "vtac_application_pct": 55.1,
+      "vce_completion_pct": 98,
+      "median_study_score": 31,
+      "pct_study_scores_40_plus": 11,
+      "withheld": {},
+      "reason": "no_acara_match",
+      "candidates": 0
+    },
+    {
+      "school": "Hallam Senior Sec College",
+      "locality": "HALLAM",
+      "small_school": false,
+      "adult_school": null,
+      "vce_students": 185,
+      "vtac_application_pct": 30.7,
+      "vce_completion_pct": 92,
+      "median_study_score": 25,
+      "pct_study_scores_40_plus": 0.6,
+      "withheld": {},
+      "reason": "no_acara_match",
+      "candidates": 0
+    },
+    {
+      "school": "Melbourne Polytechnic",
+      "locality": "PRESTON",
+      "small_school": true,
+      "adult_school": null,
+      "vce_students": 10,
+      "vtac_application_pct": 28.6,
+      "vce_completion_pct": 86,
+      "median_study_score": null,
+      "pct_study_scores_40_plus": null,
+      "withheld": {
+        "median_study_score": "not_applicable",
+        "pct_study_scores_40_plus": "not_applicable"
+      },
+      "reason": "no_acara_match",
+      "candidates": 0
+    },
+    {
+      "school": "Mountain District Comm College",
+      "locality": "BORONIA",
+      "small_school": false,
+      "adult_school": null,
+      "vce_students": 29,
+      "vtac_application_pct": 3.7,
+      "vce_completion_pct": 89,
+      "median_study_score": null,
+      "pct_study_scores_40_plus": null,
+      "withheld": {
+        "median_study_score": "not_applicable",
+        "pct_study_scores_40_plus": "not_applicable"
+      },
+      "reason": "no_acara_match",
+      "candidates": 0
+    },
+    {
+      "school": "Preston Reservoir ACE",
+      "locality": "RESERVOIR",
+      "small_school": false,
+      "adult_school": null,
+      "vce_students": 54,
+      "vtac_application_pct": 4,
+      "vce_completion_pct": 80,
+      "median_study_score": null,
+      "pct_study_scores_40_plus": null,
+      "withheld": {
+        "median_study_score": "not_applicable",
+        "pct_study_scores_40_plus": "not_applicable"
+      },
+      "reason": "no_acara_match",
+      "candidates": 0
+    },
+    {
+      "school": "The David Scott School",
+      "locality": "FRANKSTON",
+      "small_school": false,
+      "adult_school": null,
+      "vce_students": 50,
+      "vtac_application_pct": 3.7,
+      "vce_completion_pct": 67,
+      "median_study_score": null,
+      "pct_study_scores_40_plus": null,
+      "withheld": {
+        "median_study_score": "not_applicable",
+        "pct_study_scores_40_plus": "not_applicable"
+      },
+      "reason": "no_acara_match",
+      "candidates": 0
+    },
+    {
+      "school": "Wyndham Comm & Educ Centre",
+      "locality": "WERRIBEE",
+      "small_school": true,
+      "adult_school": null,
+      "vce_students": 10,
+      "vtac_application_pct": null,
+      "vce_completion_pct": 88,
+      "median_study_score": null,
+      "pct_study_scores_40_plus": null,
+      "withheld": {
+        "vtac_application_pct": "not_applicable",
+        "median_study_score": "not_applicable",
+        "pct_study_scores_40_plus": "not_applicable"
+      },
+      "reason": "no_acara_match",
+      "candidates": 0
+    },
+    {
+      "school": "Bendigo TAFE",
+      "locality": "BENDIGO",
+      "small_school": false,
+      "adult_school": null,
+      "vce_students": 22,
+      "vtac_application_pct": null,
+      "vce_completion_pct": 50,
+      "median_study_score": null,
+      "pct_study_scores_40_plus": null,
+      "withheld": {
+        "vtac_application_pct": "not_applicable",
+        "median_study_score": "not_applicable",
+        "pct_study_scores_40_plus": "not_applicable"
+      },
+      "reason": "not_an_acara_school",
+      "note": "TAFE institute; no ACARA school record"
+    },
+    {
+      "school": "Box Hill Institute",
+      "locality": "BOX HILL",
+      "small_school": false,
+      "adult_school": null,
+      "vce_students": 101,
+      "vtac_application_pct": 1.6,
+      "vce_completion_pct": 95,
+      "median_study_score": null,
+      "pct_study_scores_40_plus": null,
+      "withheld": {
+        "median_study_score": "not_applicable",
+        "pct_study_scores_40_plus": "not_applicable"
+      },
+      "reason": "not_an_acara_school",
+      "note": "TAFE institute; no ACARA school record"
+    },
+    {
+      "school": "Box Hill Institute - CAE campus",
+      "locality": "MELBOURNE",
+      "small_school": false,
+      "adult_school": null,
+      "vce_students": 107,
+      "vtac_application_pct": 46.5,
+      "vce_completion_pct": 81,
+      "median_study_score": 27,
+      "pct_study_scores_40_plus": 3.1,
+      "withheld": {},
+      "reason": "not_an_acara_school",
+      "note": "TAFE adult education campus; no ACARA school record"
+    },
+    {
+      "school": "Chisholm Institute",
+      "locality": "FRANKSTON",
+      "small_school": false,
+      "adult_school": null,
+      "vce_students": 63,
+      "vtac_application_pct": 31.5,
+      "vce_completion_pct": 96,
+      "median_study_score": 24,
+      "pct_study_scores_40_plus": 0,
+      "withheld": {},
+      "reason": "not_an_acara_school",
+      "note": "TAFE institute; no ACARA school record"
+    },
+    {
+      "school": "Chisholm Institute of TAFE",
+      "locality": "DANDENONG",
+      "small_school": false,
+      "adult_school": null,
+      "vce_students": 152,
+      "vtac_application_pct": 39.3,
+      "vce_completion_pct": 88,
+      "median_study_score": 21,
+      "pct_study_scores_40_plus": 0.3,
+      "withheld": {},
+      "reason": "not_an_acara_school",
+      "note": "TAFE institute; no ACARA school record"
+    },
+    {
+      "school": "Federation University Australia",
+      "locality": "BALLARAT",
+      "small_school": false,
+      "adult_school": null,
+      "vce_students": 22,
+      "vtac_application_pct": null,
+      "vce_completion_pct": 88,
+      "median_study_score": null,
+      "pct_study_scores_40_plus": null,
+      "withheld": {
+        "vtac_application_pct": "not_applicable",
+        "median_study_score": "not_applicable",
+        "pct_study_scores_40_plus": "not_applicable"
+      },
+      "reason": "not_an_acara_school",
+      "note": "University TAFE division; no ACARA school record"
+    },
+    {
+      "school": "Gordon Institute of TAFE",
+      "locality": "GEELONG",
+      "small_school": false,
+      "adult_school": null,
+      "vce_students": 58,
+      "vtac_application_pct": 33.3,
+      "vce_completion_pct": 92,
+      "median_study_score": 24,
+      "pct_study_scores_40_plus": 1.6,
+      "withheld": {},
+      "reason": "not_an_acara_school",
+      "note": "TAFE institute; no ACARA school record"
+    },
+    {
+      "school": "Goulburn Ovens Inst of TAFE",
+      "locality": "SHEPPARTON",
+      "small_school": true,
+      "adult_school": null,
+      "vce_students": 13,
+      "vtac_application_pct": null,
+      "vce_completion_pct": 69,
+      "median_study_score": null,
+      "pct_study_scores_40_plus": null,
+      "withheld": {
+        "vtac_application_pct": "not_applicable",
+        "median_study_score": "not_applicable",
+        "pct_study_scores_40_plus": "not_applicable"
+      },
+      "reason": "not_an_acara_school",
+      "note": "TAFE institute; no ACARA school record"
+    },
+    {
+      "school": "Holmesglen Institute",
+      "locality": "MOORABBIN",
+      "small_school": false,
+      "adult_school": null,
+      "vce_students": 58,
+      "vtac_application_pct": 4.9,
+      "vce_completion_pct": 80,
+      "median_study_score": null,
+      "pct_study_scores_40_plus": null,
+      "withheld": {
+        "median_study_score": "not_applicable",
+        "pct_study_scores_40_plus": "not_applicable"
+      },
+      "reason": "not_an_acara_school",
+      "note": "TAFE institute; no ACARA school record"
+    },
+    {
+      "school": "South West Institute of TAFE",
+      "locality": "WARRNAMBOOL",
+      "small_school": false,
+      "adult_school": null,
+      "vce_students": 23,
+      "vtac_application_pct": null,
+      "vce_completion_pct": 89,
+      "median_study_score": null,
+      "pct_study_scores_40_plus": null,
+      "withheld": {
+        "vtac_application_pct": "not_applicable",
+        "median_study_score": "insufficient_data",
+        "pct_study_scores_40_plus": "insufficient_data"
+      },
+      "reason": "not_an_acara_school",
+      "note": "TAFE institute; no ACARA school record"
+    },
+    {
+      "school": "Sunraysia Institute of TAFE",
+      "locality": "MILDURA",
+      "small_school": true,
+      "adult_school": null,
+      "vce_students": 12,
+      "vtac_application_pct": null,
+      "vce_completion_pct": 50,
+      "median_study_score": null,
+      "pct_study_scores_40_plus": null,
+      "withheld": {
+        "vtac_application_pct": "not_applicable",
+        "median_study_score": "not_applicable",
+        "pct_study_scores_40_plus": "not_applicable"
+      },
+      "reason": "not_an_acara_school",
+      "note": "TAFE institute; no ACARA school record"
+    },
+    {
+      "school": "Swinburne Uni of Tech - TAFE",
+      "locality": "CROYDON",
+      "small_school": false,
+      "adult_school": null,
+      "vce_students": 27,
+      "vtac_application_pct": 9.1,
+      "vce_completion_pct": 45,
+      "median_study_score": null,
+      "pct_study_scores_40_plus": null,
+      "withheld": {
+        "median_study_score": "not_applicable",
+        "pct_study_scores_40_plus": "not_applicable"
+      },
+      "reason": "not_an_acara_school",
+      "note": "University TAFE division; no ACARA school record"
+    },
+    {
+      "school": "TAFE Gippsland",
+      "locality": "SALE",
+      "small_school": false,
+      "adult_school": null,
+      "vce_students": 51,
+      "vtac_application_pct": 14.3,
+      "vce_completion_pct": 79,
+      "median_study_score": 21,
+      "pct_study_scores_40_plus": 0,
+      "withheld": {},
+      "reason": "not_an_acara_school",
+      "note": "TAFE institute; no ACARA school record"
+    },
+    {
+      "school": "The Bendigo Kangan Institute",
+      "locality": "BROADMEADOWS",
+      "small_school": false,
+      "adult_school": null,
+      "vce_students": 63,
+      "vtac_application_pct": 7,
+      "vce_completion_pct": 65,
+      "median_study_score": null,
+      "pct_study_scores_40_plus": null,
+      "withheld": {
+        "median_study_score": "not_applicable",
+        "pct_study_scores_40_plus": "not_applicable"
+      },
+      "reason": "not_an_acara_school",
+      "note": "TAFE institute; no ACARA school record"
+    },
+    {
+      "school": "Victoria University Polytechnic",
+      "locality": "FOOTSCRAY",
+      "small_school": true,
+      "adult_school": null,
+      "vce_students": 6,
+      "vtac_application_pct": null,
+      "vce_completion_pct": 100,
+      "median_study_score": null,
+      "pct_study_scores_40_plus": null,
+      "withheld": {
+        "vtac_application_pct": "not_applicable",
+        "median_study_score": "not_applicable",
+        "pct_study_scores_40_plus": "not_applicable"
+      },
+      "reason": "not_an_acara_school",
+      "note": "University TAFE division; no ACARA school record"
+    }
+  ],
+  "2025": [
+    {
+      "school": "Charles La Trobe P-12 College",
+      "locality": "PRESTON",
+      "small_school": false,
+      "adult_school": null,
+      "vce_students": 50,
+      "vtac_application_pct": 9.1,
+      "vce_completion_pct": 68,
+      "median_study_score": null,
+      "pct_study_scores_40_plus": null,
+      "withheld": {
+        "median_study_score": "insufficient_data",
+        "pct_study_scores_40_plus": "insufficient_data"
+      },
+      "reason": "no_acara_match",
+      "candidates": 1
+    },
+    {
+      "school": "Community College Gippsland",
+      "locality": "WARRAGUL",
+      "small_school": false,
+      "adult_school": null,
+      "vce_students": 62,
+      "vtac_application_pct": null,
+      "vce_completion_pct": 60,
+      "median_study_score": null,
+      "pct_study_scores_40_plus": null,
+      "withheld": {
+        "vtac_application_pct": "not_applicable",
+        "median_study_score": "not_applicable",
+        "pct_study_scores_40_plus": "not_applicable"
+      },
+      "reason": "no_acara_match",
+      "candidates": 0
+    },
+    {
+      "school": "Foundation College",
+      "locality": "FRANKSTON",
+      "small_school": false,
+      "adult_school": null,
+      "vce_students": 29,
+      "vtac_application_pct": null,
+      "vce_completion_pct": 89,
+      "median_study_score": null,
+      "pct_study_scores_40_plus": null,
+      "withheld": {
+        "vtac_application_pct": "not_applicable",
+        "median_study_score": "not_applicable",
+        "pct_study_scores_40_plus": "not_applicable"
+      },
+      "reason": "no_acara_match",
+      "candidates": 0
+    },
+    {
+      "school": "Haileybury Rendall School",
+      "locality": "BERRIMAH",
+      "small_school": false,
+      "adult_school": null,
+      "vce_students": 97,
+      "vtac_application_pct": 50.8,
+      "vce_completion_pct": 100,
+      "median_study_score": 33,
+      "pct_study_scores_40_plus": 16.8,
+      "withheld": {},
+      "reason": "no_acara_match",
+      "candidates": 0
+    },
+    {
+      "school": "Hallam Senior Sec College",
+      "locality": "HALLAM",
+      "small_school": false,
+      "adult_school": null,
+      "vce_students": 186,
+      "vtac_application_pct": 25.6,
+      "vce_completion_pct": 94,
+      "median_study_score": 24,
+      "pct_study_scores_40_plus": 0.7,
+      "withheld": {},
+      "reason": "no_acara_match",
+      "candidates": 0
+    },
+    {
+      "school": "Julia Gillard Community College",
+      "locality": "WERRIBEE",
+      "small_school": true,
+      "adult_school": null,
+      "vce_students": 11,
+      "vtac_application_pct": null,
+      "vce_completion_pct": 100,
+      "median_study_score": null,
+      "pct_study_scores_40_plus": null,
+      "withheld": {
+        "vtac_application_pct": "not_applicable",
+        "median_study_score": "not_applicable",
+        "pct_study_scores_40_plus": "not_applicable"
+      },
+      "reason": "no_acara_match",
+      "candidates": 0
+    },
+    {
+      "school": "Prace College",
+      "locality": "RESERVOIR",
+      "small_school": true,
+      "adult_school": null,
+      "vce_students": null,
+      "vtac_application_pct": null,
+      "vce_completion_pct": null,
+      "median_study_score": null,
+      "pct_study_scores_40_plus": null,
+      "withheld": {
+        "vce_students": "fewer_than_4",
+        "vtac_application_pct": "insufficient_data",
+        "vce_completion_pct": "insufficient_data",
+        "median_study_score": "insufficient_data",
+        "pct_study_scores_40_plus": "insufficient_data"
+      },
+      "reason": "no_acara_match",
+      "candidates": 0
+    },
+    {
+      "school": "The David Scott School",
+      "locality": "FRANKSTON",
+      "small_school": false,
+      "adult_school": null,
+      "vce_students": 40,
+      "vtac_application_pct": 10,
+      "vce_completion_pct": 70,
+      "median_study_score": null,
+      "pct_study_scores_40_plus": null,
+      "withheld": {
+        "median_study_score": "not_applicable",
+        "pct_study_scores_40_plus": "not_applicable"
+      },
+      "reason": "no_acara_match",
+      "candidates": 0
+    },
+    {
+      "school": "Bendigo TAFE",
+      "locality": "BENDIGO",
+      "small_school": false,
+      "adult_school": null,
+      "vce_students": 46,
+      "vtac_application_pct": 10.3,
+      "vce_completion_pct": 66,
+      "median_study_score": null,
+      "pct_study_scores_40_plus": null,
+      "withheld": {
+        "median_study_score": "not_applicable",
+        "pct_study_scores_40_plus": "not_applicable"
+      },
+      "reason": "not_an_acara_school",
+      "note": "TAFE institute; no ACARA school record"
+    },
+    {
+      "school": "Box Hill Institute",
+      "locality": "BOX HILL",
+      "small_school": false,
+      "adult_school": null,
+      "vce_students": 84,
+      "vtac_application_pct": 1.5,
+      "vce_completion_pct": 91,
+      "median_study_score": null,
+      "pct_study_scores_40_plus": null,
+      "withheld": {
+        "median_study_score": "insufficient_data",
+        "pct_study_scores_40_plus": "insufficient_data"
+      },
+      "reason": "not_an_acara_school",
+      "note": "TAFE institute; no ACARA school record"
+    },
+    {
+      "school": "Box Hill Institute - CAE campus",
+      "locality": "MELBOURNE",
+      "small_school": false,
+      "adult_school": null,
+      "vce_students": 123,
+      "vtac_application_pct": 48.5,
+      "vce_completion_pct": 88,
+      "median_study_score": 25,
+      "pct_study_scores_40_plus": 1.8,
+      "withheld": {},
+      "reason": "not_an_acara_school",
+      "note": "TAFE adult education campus; no ACARA school record"
+    },
+    {
+      "school": "Chisholm Institute",
+      "locality": "FRANKSTON",
+      "small_school": false,
+      "adult_school": null,
+      "vce_students": 90,
+      "vtac_application_pct": 21.1,
+      "vce_completion_pct": 92,
+      "median_study_score": 24,
+      "pct_study_scores_40_plus": 1.6,
+      "withheld": {},
+      "reason": "not_an_acara_school",
+      "note": "TAFE institute; no ACARA school record"
+    },
+    {
+      "school": "Chisholm Institute of TAFE",
+      "locality": "DANDENONG",
+      "small_school": false,
+      "adult_school": null,
+      "vce_students": 147,
+      "vtac_application_pct": 43.1,
+      "vce_completion_pct": 92,
+      "median_study_score": 20,
+      "pct_study_scores_40_plus": 0,
+      "withheld": {},
+      "reason": "not_an_acara_school",
+      "note": "TAFE institute; no ACARA school record"
+    },
+    {
+      "school": "Federation University Australia",
+      "locality": "BALLARAT",
+      "small_school": false,
+      "adult_school": null,
+      "vce_students": 27,
+      "vtac_application_pct": 4.3,
+      "vce_completion_pct": 83,
+      "median_study_score": null,
+      "pct_study_scores_40_plus": null,
+      "withheld": {
+        "median_study_score": "not_applicable",
+        "pct_study_scores_40_plus": "not_applicable"
+      },
+      "reason": "not_an_acara_school",
+      "note": "University TAFE division; no ACARA school record"
+    },
+    {
+      "school": "Gordon Institute of TAFE",
+      "locality": "GEELONG",
+      "small_school": false,
+      "adult_school": null,
+      "vce_students": 71,
+      "vtac_application_pct": 25.5,
+      "vce_completion_pct": 90,
+      "median_study_score": 23,
+      "pct_study_scores_40_plus": 1.1,
+      "withheld": {},
+      "reason": "not_an_acara_school",
+      "note": "TAFE institute; no ACARA school record"
+    },
+    {
+      "school": "Goulburn Ovens Inst of TAFE",
+      "locality": "SHEPPARTON",
+      "small_school": true,
+      "adult_school": null,
+      "vce_students": 9,
+      "vtac_application_pct": 14.3,
+      "vce_completion_pct": 100,
+      "median_study_score": null,
+      "pct_study_scores_40_plus": null,
+      "withheld": {
+        "median_study_score": "not_applicable",
+        "pct_study_scores_40_plus": "not_applicable"
+      },
+      "reason": "not_an_acara_school",
+      "note": "TAFE institute; no ACARA school record"
+    },
+    {
+      "school": "Holmesglen Institute",
+      "locality": "MOORABBIN",
+      "small_school": false,
+      "adult_school": null,
+      "vce_students": 73,
+      "vtac_application_pct": 5.3,
+      "vce_completion_pct": 79,
+      "median_study_score": null,
+      "pct_study_scores_40_plus": null,
+      "withheld": {
+        "median_study_score": "insufficient_data",
+        "pct_study_scores_40_plus": "insufficient_data"
+      },
+      "reason": "not_an_acara_school",
+      "note": "TAFE institute; no ACARA school record"
+    },
+    {
+      "school": "Melbourne Polytechnic",
+      "locality": "EPPING",
+      "small_school": true,
+      "adult_school": null,
+      "vce_students": 18,
+      "vtac_application_pct": 14.3,
+      "vce_completion_pct": 71,
+      "median_study_score": null,
+      "pct_study_scores_40_plus": null,
+      "withheld": {
+        "median_study_score": "not_applicable",
+        "pct_study_scores_40_plus": "not_applicable"
+      },
+      "reason": "not_an_acara_school",
+      "note": "TAFE institute; no ACARA school record"
+    },
+    {
+      "school": "South West Institute of TAFE",
+      "locality": "WARRNAMBOOL",
+      "small_school": true,
+      "adult_school": null,
+      "vce_students": 17,
+      "vtac_application_pct": null,
+      "vce_completion_pct": 85,
+      "median_study_score": null,
+      "pct_study_scores_40_plus": null,
+      "withheld": {
+        "vtac_application_pct": "not_applicable",
+        "median_study_score": "insufficient_data",
+        "pct_study_scores_40_plus": "insufficient_data"
+      },
+      "reason": "not_an_acara_school",
+      "note": "TAFE institute; no ACARA school record"
+    },
+    {
+      "school": "Sunraysia Institute of TAFE",
+      "locality": "MILDURA",
+      "small_school": true,
+      "adult_school": null,
+      "vce_students": 9,
+      "vtac_application_pct": null,
+      "vce_completion_pct": 100,
+      "median_study_score": null,
+      "pct_study_scores_40_plus": null,
+      "withheld": {
+        "vtac_application_pct": "not_applicable",
+        "median_study_score": "not_applicable",
+        "pct_study_scores_40_plus": "not_applicable"
+      },
+      "reason": "not_an_acara_school",
+      "note": "TAFE institute; no ACARA school record"
+    },
+    {
+      "school": "Swinburne Uni of Tech - TAFE",
+      "locality": "CROYDON",
+      "small_school": true,
+      "adult_school": null,
+      "vce_students": 19,
+      "vtac_application_pct": 15.8,
+      "vce_completion_pct": 95,
+      "median_study_score": null,
+      "pct_study_scores_40_plus": null,
+      "withheld": {
+        "median_study_score": "not_applicable",
+        "pct_study_scores_40_plus": "not_applicable"
+      },
+      "reason": "not_an_acara_school",
+      "note": "University TAFE division; no ACARA school record"
+    },
+    {
+      "school": "TAFE Gippsland",
+      "locality": "SALE",
+      "small_school": false,
+      "adult_school": null,
+      "vce_students": 56,
+      "vtac_application_pct": 33.3,
+      "vce_completion_pct": 89,
+      "median_study_score": 24,
+      "pct_study_scores_40_plus": 0,
+      "withheld": {},
+      "reason": "not_an_acara_school",
+      "note": "TAFE institute; no ACARA school record"
+    },
+    {
+      "school": "The Bendigo Kangan Institute",
+      "locality": "BROADMEADOWS",
+      "small_school": false,
+      "adult_school": null,
+      "vce_students": 54,
+      "vtac_application_pct": 6,
+      "vce_completion_pct": 62,
+      "median_study_score": null,
+      "pct_study_scores_40_plus": null,
+      "withheld": {
+        "median_study_score": "not_applicable",
+        "pct_study_scores_40_plus": "not_applicable"
+      },
+      "reason": "not_an_acara_school",
+      "note": "TAFE institute; no ACARA school record"
+    }
+  ]
+}

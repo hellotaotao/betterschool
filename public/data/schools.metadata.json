@@ -25,7 +25,8 @@
       "note": "Official ACARA identity, profile and location data is the canonical base table/map layer. Legacy score/rank is retained only as an optional metric layer for matched schools."
     },
     "religion": "Religious affiliation is INFERRED, not an official ACARA field. Catholic/Government come from sector (high confidence); Independent schools are classified only from religious governing bodies or a conservative explicit-name match, and are left Unknown rather than guessed when signals are weak.",
-    "catchment": "NSW government school intake zones from data.nsw.gov.au (CC-BY, 2026 enrolment year), joined by USE_ID -> master dataset School_code -> AgeID -> location_age_id. Deterministic ID join only; unjoined polygons are recorded in data/catchment/nsw/processed/unmatched.json rather than name-matched. Covers 2,029 of 2,225 NSW government schools. Boundaries are a guide, not a legal instrument — NSW Department of Education disclaims responsibility where this data informs property decisions, and the official School Finder is authoritative. SA government school zones from data.sa.gov.au (CC-BY, 2025 enrolment year), joined by org_num -> Government Education Sites -> the one ACARA school that is both within 1500 m of the published site and named the same (observed max 522 m). Name and distance both select the match, because co-located campuses make either alone wrong. Unconfirmed polygons are recorded in data/catchment/sa/processed/unmatched.json. South Australia publishes zones for only part of its government system — 124 of 526 schools — and the published data does not say why, so a South Australian school without a zone must not be read as \"no zone published for a school that has one\". No year levels: the SA source carries none per zone. Victorian government school zones from discover.data.vic.gov.au (CC BY 4.0, 2027 enrolment year), joined from the exact ENTITY_CODE school number to the official Victorian school identity, then to one exact ACARA base or campus name whose coordinates fall inside the published polygon. When the older site register has no row, the exact source identity plus polygon containment is required. 1530 of 1557 source entities joined; the rest are recorded in data/catchment/vic/processed/unmatched.json, with no fuzzy or nearest-school fallback. Secondary boundaries remain distinct by published year level: only byte-identical 6-decimal geometries are coalesced, and their year labels are unioned. Queensland government school negotiated catchments from data.qld.gov.au (CC BY 4.0, 2026), published separately for primary (Prep-6), junior secondary (Years 7-10) and senior secondary (Years 11-12). Centre_code joins each boundary to the official site, then one exact expanded ACARA school identity must be within 1500 m and inside the polygon (observed max 1143 m). One audited official campus rename and exact base-campus fallbacks are explicit; a missing site row may use only one exact source identity inside the polygon. 1530 source records joined and 5 are recorded in data/catchment/qld/processed/unmatched.json. Junior and senior geometries stay distinct unless their rounded coordinates are byte-identical. Tasmanian government primary and district-school intake areas from LISTdata (CC BY 3.0 AU, 2025 open-data snapshot), joined to one exact ACARA school name inside each published polygon. Four checked-in exact rename aliases and one explicitly shared two-school zone are auditable; 149 of 149 source polygons joined, with failures recorded in data/catchment/tas/processed/unmatched.json. The source carries no per-zone year fields, so year_levels is empty. Tasmania's high-school placement follows the primary feeder school attended at the end of Year 6 rather than residence alone, so the feeder district layer is deliberately not represented as an address catchment. ACT Government Priority Enrolment Areas from ACTmapi (CC BY 4.0, 2027 enrolments), joined to exact ACARA base or campus identities whose coordinates fall inside each published polygon. 92 of 94 source features joined, producing 93 attachments across 83 ACARA locations and 93 exact variants; two new-school identities without an ACARA 2025 location_age_id remain explicit in data/catchment/act/processed/unmatched.json. Audited exact aliases and Melba Copland stage-to-campus mappings are checked in, with no fuzzy or nearest-school fallback. Per-zone year levels come from the source except where the official 2027 transition page narrows Aunty Agnes Shea High School to Years 7-9 and Whitlam Primary School to Preschool-Year 2."
+    "catchment": "NSW government school intake zones from data.nsw.gov.au (CC-BY, 2026 enrolment year), joined by USE_ID -> master dataset School_code -> AgeID -> location_age_id. Deterministic ID join only; unjoined polygons are recorded in data/catchment/nsw/processed/unmatched.json rather than name-matched. Covers 2,029 of 2,225 NSW government schools. Boundaries are a guide, not a legal instrument — NSW Department of Education disclaims responsibility where this data informs property decisions, and the official School Finder is authoritative. SA government school zones from data.sa.gov.au (CC-BY, 2025 enrolment year), joined by org_num -> Government Education Sites -> the one ACARA school that is both within 1500 m of the published site and named the same (observed max 522 m). Name and distance both select the match, because co-located campuses make either alone wrong. Unconfirmed polygons are recorded in data/catchment/sa/processed/unmatched.json. South Australia publishes zones for only part of its government system — 124 of 526 schools — and the published data does not say why, so a South Australian school without a zone must not be read as \"no zone published for a school that has one\". No year levels: the SA source carries none per zone. Victorian government school zones from discover.data.vic.gov.au (CC BY 4.0, 2027 enrolment year), joined from the exact ENTITY_CODE school number to the official Victorian school identity, then to one exact ACARA base or campus name whose coordinates fall inside the published polygon. When the older site register has no row, the exact source identity plus polygon containment is required. 1530 of 1557 source entities joined; the rest are recorded in data/catchment/vic/processed/unmatched.json, with no fuzzy or nearest-school fallback. Secondary boundaries remain distinct by published year level: only byte-identical 6-decimal geometries are coalesced, and their year labels are unioned. Queensland government school negotiated catchments from data.qld.gov.au (CC BY 4.0, 2026), published separately for primary (Prep-6), junior secondary (Years 7-10) and senior secondary (Years 11-12). Centre_code joins each boundary to the official site, then one exact expanded ACARA school identity must be within 1500 m and inside the polygon (observed max 1143 m). One audited official campus rename and exact base-campus fallbacks are explicit; a missing site row may use only one exact source identity inside the polygon. 1530 source records joined and 5 are recorded in data/catchment/qld/processed/unmatched.json. Junior and senior geometries stay distinct unless their rounded coordinates are byte-identical. Tasmanian government primary and district-school intake areas from LISTdata (CC BY 3.0 AU, 2025 open-data snapshot), joined to one exact ACARA school name inside each published polygon. Four checked-in exact rename aliases and one explicitly shared two-school zone are auditable; 149 of 149 source polygons joined, with failures recorded in data/catchment/tas/processed/unmatched.json. The source carries no per-zone year fields, so year_levels is empty. Tasmania's high-school placement follows the primary feeder school attended at the end of Year 6 rather than residence alone, so the feeder district layer is deliberately not represented as an address catchment. ACT Government Priority Enrolment Areas from ACTmapi (CC BY 4.0, 2027 enrolments), joined to exact ACARA base or campus identities whose coordinates fall inside each published polygon. 92 of 94 source features joined, producing 93 attachments across 83 ACARA locations and 93 exact variants; two new-school identities without an ACARA 2025 location_age_id remain explicit in data/catchment/act/processed/unmatched.json. Audited exact aliases and Melba Copland stage-to-campus mappings are checked in, with no fuzzy or nearest-school fallback. Per-zone year levels come from the source except where the official 2027 transition page narrows Aunty Agnes Shea High School to Years 7-9 and Whitlam Primary School to Preschool-Year 2.",
+    "year12": "VCAA SSCAI 2022, 2023, 2024, 2025 (https://vcaa.vic.edu.au/administration/school-administration/performance-senior-secondary/senior-secondary-completion-and-achievement-information), © Victorian Curriculum and Assessment Authority. For current versions and related content visit www.vcaa.vic.edu.au. VCAA publishes a name and locality, not an ACARA id: each row joins by exact normalised name and locality, by a name unique on both sides within 12 km of the locality, or by an audited alias in data/vcaa/processed/aliases.json. Rows that do not join, and providers that are not schools (TAFEs), are recorded in data/vcaa/processed/unmatched.json. Multi-campus schools are reported per campus and attached per campus."
   },
   "fields": {
     "local_id": "Legacy BetterSchool local_id, present only when a legacy record was deterministically matched to ACARA.",
@@ -45,7 +46,8 @@
     "catchments": "NSW, SA, VIC, QLD, TAS and ACT, Government schools only. Each distinct boundary variant carries zone_id, geometry_url (loaded on demand), catch_type, data_year and source. year_levels are exact source-published levels where available (NSW, VIC, QLD and ACT); ACT also applies the official 2027 transition ranges for two opening schools. SA and TAS publish none per zone. Year/stage variants with different geometry remain separate. Absent means no catchment data for that school, and what that means differs by state — see provenance.catchment.",
     "grade_enrolments": "Official ACARA Enrolments by Grade 2025: one entry per year level the school offers. null means the level is offered but ACARA publishes no count. Absent means no record joined on acara_sml_id.",
     "staff": "Official ACARA School Profile 2025 staff headcount and FTE (teaching / non-teaching). Any ratio shown from these is calculated on the page and labelled as such.",
-    "sea_quarters": "Official ACARA School Profile 2025 distribution of students across socio-educational advantage quarters. Describes student background, not school performance."
+    "sea_quarters": "Official ACARA School Profile 2025 distribution of students across socio-educational advantage quarters. Describes student background, not school performance.",
+    "year12": "Victorian VCE results from the VCAA Senior Secondary Completion and Achievement Information, one entry per results year, newest first: median study score, share of study scores of 40 and over, VCE students, satisfactory completion and VTAC application rates. null with a withheld reason where VCAA prints I/D (fewer than four students), < 4 or -. Absent means no VCAA row joined to this ACARA location."
   },
   "generated_from": {
     "canonical_builder": "scripts/build-canonical-schools.mjs",
@@ -99,9 +101,73 @@
       "without_grade_enrolments": 1374,
       "without_staff": 1289,
       "without_sea_quarters": 1415
+    },
+    "year12_counts": {
+      "schools_with_results": 593,
+      "with_latest_median": 548,
+      "join_by_year": {
+        "2022": {
+          "source_rows": 587,
+          "matched": 556,
+          "matched_with_median": 527,
+          "methods": {
+            "exact_name_and_locality": 444,
+            "audited_alias": 97,
+            "exact_name_unique_both_sides": 15
+          },
+          "unmatched": {
+            "not_an_acara_school": 15,
+            "no_acara_match": 15,
+            "same_name_too_far": 1
+          }
+        },
+        "2023": {
+          "source_rows": 598,
+          "matched": 567,
+          "matched_with_median": 531,
+          "methods": {
+            "exact_name_and_locality": 454,
+            "audited_alias": 100,
+            "exact_name_unique_both_sides": 13
+          },
+          "unmatched": {
+            "no_acara_match": 15,
+            "not_an_acara_school": 15,
+            "same_name_too_far": 1
+          }
+        },
+        "2024": {
+          "source_rows": 602,
+          "matched": 575,
+          "matched_with_median": 536,
+          "methods": {
+            "exact_name_and_locality": 455,
+            "audited_alias": 106,
+            "exact_name_unique_both_sides": 14
+          },
+          "unmatched": {
+            "not_an_acara_school": 15,
+            "no_acara_match": 12
+          }
+        },
+        "2025": {
+          "source_rows": 607,
+          "matched": 584,
+          "matched_with_median": 548,
+          "methods": {
+            "exact_name_and_locality": 467,
+            "audited_alias": 105,
+            "exact_name_unique_both_sides": 12
+          },
+          "unmatched": {
+            "not_an_acara_school": 15,
+            "no_acara_match": 8
+          }
+        }
+      }
     }
   },
-  "generated_at": "2026-10-15T14:42:25.418Z",
+  "generated_at": "2026-10-20T23:04:03.101Z",
   "client_dataset": {
     "path": "/data/schools.client.json",
     "schools": 11034,

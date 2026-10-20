@@ -1,0 +1,26 @@
+{
+  "fetched_at": "2026-10-20T22:58:23.072Z",
+  "source_page": "https://vcaa.vic.edu.au/administration/school-administration/performance-senior-secondary/senior-secondary-completion-and-achievement-information",
+  "files": {
+    "2022": {
+      "url": "https://www.vcaa.vic.edu.au/sites/default/files/Documents/statistics/2022/2022SeniorSecondaryCompletionAndAchievementInformation.xlsx",
+      "bytes": 209095,
+      "last_modified": "Mon, 12 Dec 2022 00:42:44 GMT"
+    },
+    "2023": {
+      "url": "https://www.vcaa.vic.edu.au/sites/default/files/Documents/statistics/2023/2023SeniorSecondaryCompletionAndAchievementInformation.xlsx",
+      "bytes": 177959,
+      "last_modified": "Tue, 12 Dec 2023 08:41:10 GMT"
+    },
+    "2024": {
+      "url": "https://www.vcaa.vic.edu.au/sites/default/files/Documents/statistics/2024/2024SeniorSecondaryCompletionAndAchievementInformation.xlsx",
+      "bytes": 173914,
+      "last_modified": "Mon, 23 Dec 2024 08:57:44 GMT"
+    },
+    "2025": {
+      "url": "https://vcaacorporateprod.prod.acquia-sites.com/sites/default/files/2025-12/2025-SeniorSecondaryCompletionandAchievementInformation.xlsx",
+      "bytes": 165023,
+      "last_modified": "Fri, 12 Dec 2025 03:50:12 GMT"
+    }
+  }
+}

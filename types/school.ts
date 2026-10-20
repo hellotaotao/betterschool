@@ -93,6 +93,23 @@ export interface SeaQuarters {
   top_percent?: number;
 }
 
+export type Year12Withheld = 'insufficient_data' | 'fewer_than_4' | 'not_applicable' | 'blank' | 'invalid';
+
+/** One results year from VCAA's Senior Secondary Completion and Achievement Information. */
+export interface Year12Result {
+  system: 'VCE';
+  year: number;
+  vce_students: number | null;
+  vtac_application_pct: number | null;
+  vce_completion_pct: number | null;
+  median_study_score: number | null;
+  pct_study_scores_40_plus: number | null;
+  /** VCAA's own flag: 20 or fewer students in a Units 3-4 study. */
+  small_school: boolean;
+  /** Why a null field is null, as VCAA printed it. */
+  withheld?: Partial<Record<'vce_students' | 'vtac_application_pct' | 'vce_completion_pct' | 'median_study_score' | 'pct_study_scores_40_plus', Year12Withheld>>;
+}
+
 export interface School {
   /** Canonical deterministic app ID based on ACARA IDs. */
   id: string;
@@ -131,6 +148,8 @@ export interface School {
   grade_enrolments?: Partial<Record<GradeKey, number | null>>;
   staff?: SchoolStaff;
   sea_quarters?: SeaQuarters;
+  /** VCE results by year, newest first; Victorian schools only. Canonical only. */
+  year12?: Year12Result[];
   school_url?: string;
   /** Deep link to the school's My School page (NAPLAN etc.); built from acara_sml_id. */
   myschool_url?: string;
