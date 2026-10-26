@@ -230,7 +230,10 @@ export default function SchoolsPage() {
     return { government, catholic, independent, averageIcsea };
   }, [visibleSchools]);
 
-  const areaLabel = formatMessage(dictionary.sidebar.areaCount, { count: displayedSchools.length });
+  const areaLabel = formatMessage(
+    displayedSchools.length === 1 ? dictionary.sidebar.areaCountOne : dictionary.sidebar.areaCount,
+    { count: displayedSchools.length },
+  );
   const zoneStatus = zoneOverlay === 'off' ? null : zoneOverlayStatus(overlayState, dictionary);
   const zoneLegendLabel = zoneOverlay === 'off'
     ? null

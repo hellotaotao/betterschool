@@ -44,7 +44,7 @@ export function suburbMetadata(locale: Locale, state: string, slug: string): Met
   return buildPageMetadata({
     locale,
     title: formatMessage(t.metaTitle, values),
-    description: formatMessage(t.metaDescription, values),
+    description: formatMessage(values.count === 1 ? t.metaDescriptionOne : t.metaDescription, values),
     bareEnglishPath: suburbPath(group.state, group.suburb),
   });
 }
@@ -94,7 +94,7 @@ export default function SuburbBody({ locale, state, slug }: { locale: Locale; st
         {formatMessage(t.heading, { suburb: group.suburb, state: full })}
       </h1>
       <p className="mt-1 text-sm text-gray-500">
-        {formatMessage(t.schoolCount, { count: group.schools.length })}
+        {formatMessage(group.schools.length === 1 ? t.schoolCountOne : t.schoolCount, { count: group.schools.length })}
         {group.postcodes.length > 0 && ` · ${formatMessage(t.postcode, { postcodes: group.postcodes.join(', ') })}`}
       </p>
 
@@ -199,7 +199,7 @@ export default function SuburbBody({ locale, state, slug }: { locale: Locale; st
         ) : zoned.length > 0 ? (
           <>
             <p className="mt-2 text-sm text-gray-600">
-              {formatMessage(t.zonesPresent, { count: zoned.length, suburb: group.suburb })}
+              {formatMessage(zoned.length === 1 ? t.zonesPresentOne : t.zonesPresent, { count: zoned.length, suburb: group.suburb })}
             </p>
             <ul className="mt-2 list-disc pl-5 text-sm">
               {zoned.map(school => (

@@ -189,7 +189,7 @@ export default function SearchBox({ allSchools, dictionary, onPickSchool, onPick
               >
                 <span aria-hidden="true" className="w-5 h-5 rounded bg-indigo-100 flex items-center justify-center text-[10px] shrink-0">📍</span>
                 <span className="flex-1 text-xs font-semibold text-gray-800 truncate">{r.label}</span>
-                <span className="text-[10px] text-gray-400 shrink-0">{formatMessage(dictionary.search.placeCount, { count: r.schools.length })}</span>
+                <span className="text-[10px] text-gray-400 shrink-0">{formatMessage(r.schools.length === 1 ? dictionary.search.placeCountOne : dictionary.search.placeCount, { count: r.schools.length })}</span>
               </div>
             );
           })}
