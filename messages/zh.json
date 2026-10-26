@@ -163,7 +163,7 @@
     },
     "browse": {
       "metaTitle": "按州和城区浏览澳洲学校",
-      "metaDescription": "按州和城区浏览全澳学校：{schools} 所学校的 ACARA 官方资料，以及{states}的公立学校学区边界。",
+      "metaDescription": "按州和城区浏览全澳 {schools} 所学校，{states}还可以在地图上查看公立学校的学区边界。",
       "heading": "浏览澳洲学校",
       "intro": "{suburbs} 个城区、{schools} 所学校，数据来自 ACARA {year} 官方采集。选一个州查看它的城区，或者直接打开地图按地址查。",
       "statesHeading": "各州与领地",

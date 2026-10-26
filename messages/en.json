@@ -163,7 +163,7 @@
     },
     "browse": {
       "metaTitle": "Browse Australian schools by state and suburb",
-      "metaDescription": "Browse every Australian school by state and suburb: official ACARA profiles for {schools} schools plus government intake zones for {states}.",
+      "metaDescription": "Browse all {schools} Australian schools by state and suburb, with school zone and catchment maps for {states}.",
       "heading": "Browse Australian schools",
       "intro": "{schools} schools across {suburbs} suburbs, from the official ACARA {year} collection. Pick a state to see its suburbs, or go straight to the map to search by address.",
       "statesHeading": "States and territories",

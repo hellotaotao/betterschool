@@ -10,14 +10,27 @@ const inter = Inter({ subsets: ["latin"] });
 export const metadata: Metadata = {
     // Needed for the prerendered pages to emit absolute canonical/OG URLs.
     metadataBase: new URL(SITE_URL),
+    // Leads with the zone lookup, in the words parents search with ("school
+    // zone", "catchment"); the data source belongs on the page, not here.
     title: {
-        default: `${SITE_NAME} — Australian schools, by where you live`,
+        default: `${SITE_NAME} — Australian school zone & catchment map`,
         template: `%s | ${SITE_NAME}`,
     },
     // States come from the published layers, so adding one cannot leave this
     // describing a smaller site than the one that ships.
     description:
-        `Find the schools around an address: official ACARA profiles for 11,034 Australian schools and government intake zones for ${coveredCatchmentStates(getMessages("en"), "en")}.`,
+        `Check which school zone an address falls in and compare the schools nearby. Catchment maps for ${coveredCatchmentStates(getMessages("en"), "en")}, plus 11,034 schools Australia-wide.`,
+};
+
+// The root URL only redirects to the map, so the site identity rides on every
+// page. Without it Google labels results with the bare lowercase domain.
+const websiteJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    name: SITE_NAME,
+    alternateName: ["BetterSchool", "betterschool.au"],
+    url: `${SITE_URL}/`,
+    inLanguage: ["en-AU", "zh-Hans"],
 };
 
 export default function RootLayout({
@@ -28,6 +41,10 @@ export default function RootLayout({
     return (
         <html lang="en">
             <body className={`antialiased ${inter.className}`}>
+                <script
+                    type="application/ld+json"
+                    dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }}
+                />
                 {children}
                 <Analytics />
             </body>
