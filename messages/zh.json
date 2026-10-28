@@ -1,5 +1,5 @@
 {
-  "loadingMap": "加载地图中...",
+  "loadingSchools": "正在加载学校...",
   "loadError": "学校数据加载失败，请检查网络后刷新页面。",
   "close": "关闭",
   "search": {

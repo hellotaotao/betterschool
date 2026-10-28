@@ -96,6 +96,11 @@ function createSchoolIcon(school: MapSchool, isSelected: boolean): L.DivIcon {
   });
 }
 
+/** Main-thread budget per clustering slice, under the 50 ms long-task line. */
+const CLUSTER_SLICE_MS = 12;
+/** Markers per addLayers call; each call also refreshes the visible clusters. */
+const CLUSTER_BATCH = 250;
+
 /** A school marker carries its sector so cluster bubbles can show the real mix. */
 type SchoolMarker = L.Marker & { schoolSector?: string };
 
@@ -175,6 +180,8 @@ interface SchoolMapProps {
   onBoundsChange: (visibleSchools: MapSchool[]) => void;
   onMapClick: () => void;
   flyToSchool?: MapSchool | null;
+  /** False jumps straight to flyToSchool, for a deep link landing on it. */
+  animateFly?: boolean;
   fitToSchools?: MapSchool[] | null;
   /** Catchment polygons to draw, if any. */
   catchmentFeatures?: CatchmentFeature[] | null;
@@ -188,6 +195,8 @@ interface SchoolMapProps {
   lookupPin?: [number, number] | null;
   /** False when a deep link already decided where the map should sit. */
   autoLocate?: boolean;
+  /** Fires whenever the visible basemap tiles finish loading. */
+  onBasemapLoad?: () => void;
 }
 
 /**
@@ -289,32 +298,37 @@ function BoundsTracker({
  */
 function GeoLocator({ enabled = true }: { enabled?: boolean }) {
   const map = useMap();
+  const applied = useRef(false);
 
+  // Runs once, but not necessarily at mount: a deep link that matches nothing
+  // turns this on only after the dataset has loaded.
   useEffect(() => {
-    if (!enabled) return;
+    if (!enabled || applied.current) return;
+    applied.current = true;
     const edge = readGeoCookie(document.cookie);
     if (edge) map.setView(edge, 10);
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [enabled, map]);
 
   return null;
 }
 
 /** Fly to the selected school after selection changes. */
-function FlyToTracker({ school }: { school: MapSchool | null | undefined }) {
+function FlyToTracker({ school, animate }: { school: MapSchool | null | undefined; animate: boolean }) {
   const map = useMap();
   useEffect(() => {
     if (!school || !Number.isFinite(school.lat) || !Number.isFinite(school.lng)) return;
 
+    // Arriving from a landing page should land on the school, not animate
+    // across the country.
+    if (!animate) {
+      map.setView([school.lat, school.lng], 14);
+      return;
+    }
+
     // flyTo's easing solves for the viewport size, dividing by it. On a
     // zero-sized container that divide yields NaN and the animation lands on
     // "Invalid LatLng object: (NaN, NaN)" several frames later, nowhere near
-    // the cause. The map only mounts once the dataset resolves, and a
-    // /schools?school= deep link selects a school in that same commit, so this
-    // effect can run before Leaflet has measured the container.
-    //
-    // setView is the right call in that state regardless: arriving from a
-    // landing page should land on the school, not animate across the country.
+    // the cause, so fall back to setView until Leaflet has measured it.
     let animatable = false;
     try {
       const size = map.getSize();
@@ -388,16 +402,19 @@ function ClusterLayer({
   const groupRef = useRef<L.MarkerClusterGroup | null>(null);
   const markersRef = useRef<Map<string, L.Marker>>(new Map());
   const prevSelectedRef = useRef<string | null>(null);
+  const selectedRef = useRef(selectedId);
+  selectedRef.current = selectedId;
   const clickRef = useRef(onSchoolClick);
   clickRef.current = onSchoolClick;
 
   // Create the cluster group once and attach it to the map.
   useEffect(() => {
     const group = L.markerClusterGroup({
-      // Insert markers synchronously: chunked (async) loading can fire a deferred
-      // chunk after the group has been removed from the map (StrictMode remount or
-      // a real unmount), dereferencing a null map. The one-time synchronous cost is
-      // negligible next to loading the dataset.
+      // The plugin's own chunkedLoading stays off: its deferred chunks cannot be
+      // cancelled, so one firing after the group has left the map (StrictMode
+      // remount or a real unmount) dereferences a null map, and one firing after
+      // a filter change re-adds markers from the old set. The rebuild below
+      // slices the work itself instead.
       showCoverageOnHover: false,
       // 48 merged schools that were only just touching (markers run to 36px
       // wide), so pairs and triples clustered far more than density warranted.
@@ -415,30 +432,48 @@ function ClusterLayer({
   }, [map]);
 
   // Rebuild markers when the school set changes (e.g. a filter is applied).
+  //
+  // Time-sliced: clustering all 11,034 schools in one go was a single ~450 ms
+  // task on a desktop, several times that on a mid-range phone, during which
+  // the map ignored every pan and tap. Slices yield between them and stop when
+  // the set changes again. A slice skips whichever school is selected at that
+  // moment, since the selection effect below may already have pulled it out.
   useEffect(() => {
     const group = groupRef.current;
     if (!group) return;
 
     group.clearLayers();
     const markers = new Map<string, L.Marker>();
-    const layers: L.Marker[] = [];
-
-    for (const school of schools) {
-      if (!school.lat || !school.lng) continue;
-      const marker: SchoolMarker = L.marker([school.lat, school.lng], {
-        icon: getSchoolIcon(school, false),
-      });
-      marker.schoolSector = school.sector;
-      marker.on('click', () => clickRef.current(school));
-      markers.set(school.id, marker);
-      if (school.id !== selectedId) layers.push(marker);
-    }
-
     markersRef.current = markers;
-    prevSelectedRef.current = selectedId;
-    group.addLayers(layers);
-  // Rebuild only when the data changes; selection is handled below.
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    prevSelectedRef.current = selectedRef.current;
+
+    let next = 0;
+    let timer: ReturnType<typeof setTimeout> | undefined;
+    const addSlice = () => {
+      const started = performance.now();
+      while (next < schools.length && performance.now() - started < CLUSTER_SLICE_MS) {
+        const batch: L.Marker[] = [];
+        const end = Math.min(next + CLUSTER_BATCH, schools.length);
+        for (; next < end; next++) {
+          const school = schools[next];
+          if (!school.lat || !school.lng) continue;
+          const marker: SchoolMarker = L.marker([school.lat, school.lng], {
+            icon: getSchoolIcon(school, false),
+            // Leaflet makes the icon a focusable role=button; the title is its
+            // only accessible name, and doubles as a hover label.
+            title: school.school_name,
+          });
+          marker.schoolSector = school.sector;
+          marker.on('click', () => clickRef.current(school));
+          markers.set(school.id, marker);
+          if (school.id !== selectedRef.current) batch.push(marker);
+        }
+        group.addLayers(batch);
+      }
+      if (next < schools.length) timer = setTimeout(addSlice, 0);
+    };
+    addSlice();
+    return () => clearTimeout(timer);
   }, [schools]);
 
   // Pull the selected school out of the cluster; return the previous one.
@@ -469,6 +504,7 @@ export default function SchoolMap({
   onBoundsChange,
   onMapClick,
   flyToSchool,
+  animateFly = true,
   fitToSchools,
   catchmentFeatures,
   overlayFeatures,
@@ -477,6 +513,7 @@ export default function SchoolMap({
   onPickLocation,
   lookupPin,
   autoLocate = true,
+  onBasemapLoad,
 }: SchoolMapProps) {
   const defaultCenter: [number, number] = [-25.2744, 133.7751];
 
@@ -489,13 +526,16 @@ export default function SchoolMap({
         scrollWheelZoom={true}
         zoomControl={true}
       >
+        {/* One host, as OSM now asks (the a/b/c subdomains predate HTTP/2),
+            which also lets app/schools/layout.tsx preconnect to it. */}
         <TileLayer
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+          url="https://tile.openstreetmap.org/{z}/{x}/{y}.png"
+          eventHandlers={onBasemapLoad ? { load: onBasemapLoad } : undefined}
         />
 
         <GeoLocator enabled={autoLocate} />
-        <FlyToTracker school={flyToSchool} />
+        <FlyToTracker school={flyToSchool} animate={animateFly} />
         <FitToSchools focus={fitToSchools ?? null} schools={schools} onBoundsChange={onBoundsChange} />
         <MapClickTracker onMapClick={onMapClick} pickMode={pickMode} onPickLocation={onPickLocation} />
         <BoundsTracker schools={schools} onBoundsChange={onBoundsChange} onViewportChange={onViewportChange} />
@@ -571,6 +611,7 @@ export default function SchoolMap({
             key="selected"
             position={[selectedSchool.lat, selectedSchool.lng]}
             icon={getSchoolIcon(selectedSchool, true)}
+            title={selectedSchool.school_name}
             eventHandlers={{ click: () => onSchoolClick(selectedSchool) }}
             zIndexOffset={1000}
           />

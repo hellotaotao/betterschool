@@ -1,5 +1,5 @@
 {
-  "loadingMap": "Loading map...",
+  "loadingSchools": "Loading schools...",
   "loadError": "Couldn't load the school data. Check your connection and refresh the page.",
   "close": "Close",
   "search": {

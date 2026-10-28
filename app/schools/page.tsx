@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useMemo, useRef, useCallback } from 'react';
+import { useState, useEffect, useMemo, useRef, useCallback, useSyncExternalStore } from 'react';
 import dynamic from 'next/dynamic';
 import { formatMessage, getMessages } from '@/lib/i18n';
 import type { MapSchool } from '@/types/school';
@@ -42,6 +42,15 @@ const DATA_VERSION = [
   schoolsMetadata.client_dataset?.sha256 ?? '',
 ].filter(Boolean).join('-') || 'v1';
 
+// Deep links from the prerendered pages: /schools?school=<acara_sml_id>
+// [&catchment=1] from school and catchment pages, ?suburb=&state= from suburb
+// pages. The URL does not change while the app runs, so nothing to subscribe to.
+const subscribeNever = () => () => {};
+function readDeepLinkInUrl(): boolean {
+  const query = new URLSearchParams(window.location.search);
+  return query.has('school') || (query.has('suburb') && query.has('state'));
+}
+
 export default function SchoolsPage() {
   const [allSchools, setAllSchools] = useState<MapSchool[]>([]);
   const [loading, setLoading] = useState(true);
@@ -61,7 +70,15 @@ export default function SchoolsPage() {
   const [sheetSnap, setSheetSnap] = useState<SheetSnap>('peek');
   const [viewport, setViewport] = useState<ViewportBounds | null>(null);
   // A deep link decides the initial view; IP geolocation must not override it.
-  const [deepLinked, setDeepLinked] = useState(false);
+  // Read from the URL before the map mounts (null while prerendering), because
+  // the map no longer waits for the dataset: by the time a deep link resolves
+  // against the data the opening view has long been set. A link that matches
+  // nothing falls back to geolocation once the data says so.
+  const deepLinkInUrl = useSyncExternalStore(subscribeNever, readDeepLinkInUrl, () => null);
+  const [deepLinkMissed, setDeepLinkMissed] = useState(false);
+  const autoLocate = deepLinkInUrl === null ? null : !deepLinkInUrl || deepLinkMissed;
+  // A deep-linked school is jumped to, not flown to across the country.
+  const [landOnSchool, setLandOnSchool] = useState(false);
   const selectedCardRef = useRef<HTMLDivElement>(null);
   const topBarRef = useRef<HTMLDivElement>(null);
   const [topBarBottom, setTopBarBottom] = useState(56);
@@ -74,7 +91,57 @@ export default function SchoolsPage() {
   // Stable across renders, so the one-shot dataset effect can depend on it.
   const showCatchment = catchment.show;
 
+  // The dataset waits for the first basemap tiles. Fetched in parallel it took
+  // the bandwidth the tiles needed (it is ~650 KB compressed against ~70 KB of
+  // tiles) and its 9 MB parse held up their paint, so on a slow phone the map
+  // stayed blank for seconds while markers were not much sooner either: the
+  // connection is the bottleneck, and serialising it only reorders who goes
+  // first. Leaflet reports the tiles loaded before they are painted, so wait
+  // out one frame; the timer covers a tile server that is slow or unreachable.
+  const [basemapReady, setBasemapReady] = useState(false);
+  const handleBasemapLoad = useCallback(() => {
+    requestAnimationFrame(() => setTimeout(() => setBasemapReady(true), 0));
+  }, []);
   useEffect(() => {
+    const fallback = setTimeout(() => setBasemapReady(true), 3000);
+    return () => clearTimeout(fallback);
+  }, []);
+
+  useEffect(() => {
+    if (!basemapReady) return;
+    // Read from location rather than useSearchParams so this client-only
+    // route keeps prerendering without a Suspense bailout.
+    const query = new URLSearchParams(window.location.search);
+
+    // Returns whether the link resolved to something to show.
+    const applyDeepLink = (data: MapSchool[]): boolean => {
+      // A suburb page's "explore on the map" link. Reuses the same place
+      // focus the search box produces, so the map fits the suburb's actual
+      // schools rather than guessing a centre and a zoom.
+      const suburbParam = query.get('suburb');
+      const stateParam = query.get('state');
+      if (suburbParam && stateParam) {
+        const matches = data.filter(school => (
+          suburbSlug(school.suburb) === suburbParam && stateSlug(school.state) === stateParam
+        ));
+        if (matches.length > 0) {
+          setPlaceFocus(matches);
+          return true;
+        }
+      }
+
+      const requested = Number(query.get('school'));
+      if (!Number.isFinite(requested) || requested === 0) return false;
+      const match = data.find(school => school.acara_sml_id === requested);
+      if (!match) return false;
+      setSelectedSchool(match);
+      setLandOnSchool(true);
+      if (query.get('catchment') === '1' && match.catchments?.length) {
+        showCatchment(match, match.catchments[0]);
+      }
+      return true;
+    };
+
     fetch(`/data/schools.client.json?v=${DATA_VERSION}`)
       .then(res => {
         if (!res.ok) throw new Error(`School dataset unavailable (HTTP ${res.status})`);
@@ -83,44 +150,14 @@ export default function SchoolsPage() {
       .then((data: MapSchool[]) => {
         setAllSchools(data);
         setLoading(false);
-        // Deep link from a prerendered school or catchment page:
-        // /schools?school=<acara_sml_id>[&catchment=1]. Read from location
-        // rather than useSearchParams so this client-only route keeps
-        // prerendering without a Suspense bailout.
-        const query = new URLSearchParams(window.location.search);
-
-        // A suburb page's "explore on the map" link. Reuses the same place
-        // focus the search box produces, so the map fits the suburb's actual
-        // schools rather than guessing a centre and a zoom.
-        const suburbParam = query.get('suburb');
-        const stateParam = query.get('state');
-        if (suburbParam && stateParam) {
-          const matches = data.filter(school => (
-            suburbSlug(school.suburb) === suburbParam && stateSlug(school.state) === stateParam
-          ));
-          if (matches.length > 0) {
-            setPlaceFocus(matches);
-            setDeepLinked(true);
-            return;
-          }
-        }
-
-        const requested = Number(query.get('school'));
-        if (!Number.isFinite(requested) || requested === 0) return;
-        const match = data.find(school => school.acara_sml_id === requested);
-        if (!match) return;
-        setSelectedSchool(match);
-        setDeepLinked(true);
-        if (query.get('catchment') !== '1' || !match.catchments?.length) return;
-
-        showCatchment(match, match.catchments[0]);
+        if (!applyDeepLink(data)) setDeepLinkMissed(true);
       })
       .catch(() => {
         // An empty map would read as "no schools here", so say it failed.
         setLoadError(true);
         setLoading(false);
       });
-  }, [showCatchment]);
+  }, [basemapReady, showCatchment]);
 
   // The desktop top bar (search + filters) wraps to a variable number of rows
   // depending on viewport width and locale, so track its bottom edge and offset
@@ -166,6 +203,7 @@ export default function SchoolsPage() {
   function handleSchoolClick(school: MapSchool) {
     const isDeselect = selectedSchool?.id === school.id;
     setSelectedSchool(isDeselect ? null : school);
+    setLandOnSchool(false);
     if (!isDeselect && isMobile) setSheetSnap('expanded');
   }
 
@@ -183,6 +221,7 @@ export default function SchoolsPage() {
   const handlePickSchool = useCallback((s: MapSchool) => {
     setPlaceFocus(null);
     setSelectedSchool(s);
+    setLandOnSchool(false);
     if (isMobile) setSheetSnap('expanded');
   }, [isMobile]);
 
@@ -258,11 +297,15 @@ export default function SchoolsPage() {
   return (
     <div className="relative w-screen h-screen overflow-hidden">
       <div className={`absolute inset-0 z-0 bg-gray-100${overlayState?.features.length ? ' zone-overlay-active' : ''}`}>
-        {loading || loadError ? (
+        {/* The map mounts without waiting for the dataset: the basemap tiles
+            are the page's largest paint, and the dataset now follows them
+            (see basemapReady). A failed load still replaces the map, since an
+            empty map would read as "no schools here". */}
+        {loadError ? (
           <div className="w-full h-full flex items-center justify-center text-gray-500">
-            {loadError ? dictionary.loadError : dictionary.loadingMap}
+            {dictionary.loadError}
           </div>
-        ) : (
+        ) : autoLocate !== null && (
           <SchoolMap
             schools={filteredSchools}
             selectedSchool={selectedSchool}
@@ -270,15 +313,23 @@ export default function SchoolsPage() {
             onBoundsChange={setVisibleSchools}
             onMapClick={handleMapClick}
             flyToSchool={selectedSchool}
+            animateFly={!landOnSchool}
             fitToSchools={placeFocus}
             catchmentFeatures={mapCatchments}
             overlayFeatures={overlayState?.features ?? null}
             onViewportChange={setViewport}
-            autoLocate={!deepLinked}
+            autoLocate={autoLocate}
             pickMode={lookup.pickMode}
             onPickLocation={handlePickLocation}
             lookupPin={lookup.pin}
+            onBasemapLoad={handleBasemapLoad}
           />
+        )}
+        {/* Mobile already says so in the bottom sheet, which covers this spot. */}
+        {loading && !isMobile && (
+          <div className="absolute left-1/2 bottom-6 -translate-x-1/2 z-[500] pointer-events-none rounded-full bg-white/95 px-4 py-1.5 text-xs text-gray-600 shadow-md">
+            {dictionary.loadingSchools}
+          </div>
         )}
       </div>
 
