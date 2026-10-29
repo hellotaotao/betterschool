@@ -96,10 +96,18 @@ function createSchoolIcon(school: MapSchool, isSelected: boolean): L.DivIcon {
   });
 }
 
-/** Main-thread budget per clustering slice, under the 50 ms long-task line. */
-const CLUSTER_SLICE_MS = 12;
-/** Markers per addLayers call; each call also refreshes the visible clusters. */
-const CLUSTER_BATCH = 250;
+/**
+ * Main-thread budget per clustering slice. Lighthouse scales observed task
+ * times by its 4x CPU slowdown, so a 12 ms slice scored as a ~50 ms long task;
+ * at 6 ms the whole load measured 11-27 ms TBT instead of 91-185 ms.
+ */
+const CLUSTER_SLICE_MS = 6;
+/**
+ * Markers per addLayers call. A call cannot be interrupted, so this bounds how
+ * far a slow phone overruns the budget; each call also refreshes the visible
+ * clusters, which is why going smaller costs total time (100 vs 250: ~25% more).
+ */
+const CLUSTER_BATCH = 100;
 
 /** A school marker carries its sector so cluster bubbles can show the real mix. */
 type SchoolMarker = L.Marker & { schoolSector?: string };
