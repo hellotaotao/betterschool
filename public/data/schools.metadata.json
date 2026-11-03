@@ -169,9 +169,16 @@
   },
   "generated_at": "2026-10-20T23:04:03.101Z",
   "client_dataset": {
-    "path": "/data/schools.client.json",
+    "parts": [
+      "/data/schools.client.0.json",
+      "/data/schools.client.1.json",
+      "/data/schools.client.2.json",
+      "/data/schools.client.3.json",
+      "/data/schools.client.4.json",
+      "/data/schools.client.5.json"
+    ],
     "schools": 11034,
-    "bytes": 9172283,
-    "sha256": "1232c2fe00df"
+    "bytes": 9172288,
+    "sha256": "bc93338561ff"
   }
 }

@@ -186,7 +186,7 @@ export type MapSchoolCatchment = Pick<
 >;
 
 /**
- * A school as the map app receives it: `/data/schools.client.json`, projected
+ * A school as the map app receives it: `/data/schools.client.<n>.json`, projected
  * from canonical by scripts/client-schools.mjs. Keep the two in step — a field
  * the app starts reading has to be added to that allowlist too, or it arrives
  * undefined. A full `School` is assignable to this, so shared helpers typed on

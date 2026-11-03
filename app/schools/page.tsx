@@ -41,6 +41,7 @@ const DATA_VERSION = [
   String(schoolsMetadata.generated_at ?? '').replace(/\D/g, ''),
   schoolsMetadata.client_dataset?.sha256 ?? '',
 ].filter(Boolean).join('-') || 'v1';
+const DATA_PARTS: string[] = schoolsMetadata.client_dataset.parts;
 
 // Deep links from the prerendered pages: /schools?school=<acara_sml_id>
 // [&catchment=1] from school and catchment pages, ?suburb=&state= from suburb
@@ -142,12 +143,16 @@ export default function SchoolsPage() {
       return true;
     };
 
-    fetch(`/data/schools.client.json?v=${DATA_VERSION}`)
-      .then(res => {
+    // The dataset ships in parts so each parses in its own short task rather
+    // than one long one; scripts/build-client-schools.mjs says why.
+    Promise.all(DATA_PARTS.map(part =>
+      fetch(`${part}?v=${DATA_VERSION}`).then(res => {
         if (!res.ok) throw new Error(`School dataset unavailable (HTTP ${res.status})`);
-        return res.json();
-      })
-      .then((data: MapSchool[]) => {
+        return res.json() as Promise<MapSchool[]>;
+      }),
+    ))
+      .then(parts => {
+        const data = parts.flat();
         setAllSchools(data);
         setLoading(false);
         if (!applyDeepLink(data)) setDeepLinkMissed(true);

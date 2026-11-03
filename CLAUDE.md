@@ -94,7 +94,7 @@ data.nsw.gov.au / data.sa.gov.au / discover.data.vic.gov.au / data.qld.gov.au / 
             → public/data/schools.canonical.json  (11,034 schools, ~24MB; server pages)
             → public/data/schools.metadata.json   (provenance + coverage counts)
             └─ scripts/build-client-schools.mjs
-                 → public/data/schools.client.json (map app's fields only, ~9MB)
+                 → public/data/schools.client.<0-5>.json (map app's fields only, ~9MB in 6 parts)
             → public/data/catchment/nsw/*.json    (2,152 zones, loaded on demand)
             → public/data/catchment/sa/*.json     (130 zones, loaded on demand)
             → public/data/catchment/vic/*.json    (2,560 exact variants, loaded on demand)
@@ -238,8 +238,10 @@ same-suburb duplicate gets an `-<acara_sml_id>` suffix, so URLs stay stable.
 ### Runtime
 
 - `app/page.tsx` redirects to `/schools`; `app/schools/page.tsx` is the whole app.
-- It client-fetches `schools.client.json`, cache-busted by the metadata's
-  `generated_at` plus that file's own hash (`DATA_VERSION`). The client file is
+- It client-fetches the `schools.client.<n>.json` parts listed in the metadata's
+  `client_dataset.parts` and concatenates them; one file was a single long parse
+  task. Cache-busted by the metadata's `generated_at` plus the parts' own hash
+  (`DATA_VERSION`). The client file is
   an allowlist projection (`scripts/client-schools.mjs`) typed as `MapSchool`;
   a field the app starts reading must be added to both, and
   `types/school.test.ts` fails if they disagree. Client code takes `MapSchool`,
