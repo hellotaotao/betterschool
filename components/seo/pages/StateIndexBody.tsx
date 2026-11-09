@@ -48,47 +48,49 @@ export default function StateIndexBody({ locale, state }: { locale: Locale; stat
       dataYear={ACARA_DATA_YEAR}
       crumbs={[{ label: shell.browseByState, href: browsePath(locale) }, { label: full }]}
     >
-      <h1 className="text-2xl font-bold tracking-tight">
+      <header className="bs-hero">
+      <h1 className="bs-h1">
         {formatMessage(t.heading, { state: full })}
       </h1>
-      <p className="mt-1 text-sm text-gray-500">
+      <p className="mt-2 text-[15px] text-muted">
         {formatMessage(t.counts, {
           schools: summary.schools.toLocaleString(),
           suburbs: summary.suburbs.length.toLocaleString(),
         })}
       </p>
 
-      <div className="mt-4 flex flex-wrap gap-2">
+      <div className="mt-6 flex flex-wrap gap-2">
         <Link
           href={mapUrl({ locale })}
-          className="rounded-full bg-indigo-600 px-4 py-1.5 text-xs font-medium text-white hover:bg-indigo-700"
+          className="bs-btn"
         >
           {shell.openMap}
         </Link>
       </div>
 
       {summary.zoned > 0 ? (
-        <p className="mt-4 rounded-lg border border-blue-200 bg-blue-50/50 p-3 text-xs text-blue-900">
+        <p className="mt-6 max-w-2xl text-[15px] text-ink-2">
           {formatMessage(t.zonedNote, { count: summary.zoned.toLocaleString(), state: full })}
         </p>
       ) : (
-        <p className="mt-4 rounded-lg bg-gray-50 p-3 text-xs text-gray-600">
+        <p className="mt-6 max-w-2xl text-[15px] text-ink-2">
           {formatMessage(t.notCollectedNote, { state: full })}
         </p>
       )}
+      </header>
 
       {rankings.length > 0 && (
-        <section className="mt-8" aria-labelledby="rankings">
-          <h2 id="rankings" className="text-base font-semibold">
+        <section className="bs-section" aria-labelledby="rankings">
+          <h2 id="rankings" className="bs-h2">
             {formatMessage(t.rankingsHeading, { state: full })}
           </h2>
-          <p className="mt-1 text-xs text-gray-500">{t.rankingsHint}</p>
+          <p className="mt-1.5 text-sm text-muted">{t.rankingsHint}</p>
           <RankingLinks rankings={rankings} locale={locale} />
         </section>
       )}
 
-      <section className="mt-8" aria-labelledby="largest">
-        <h2 id="largest" className="text-base font-semibold">
+      <section className="bs-section" aria-labelledby="largest">
+        <h2 id="largest" className="bs-h2">
           {formatMessage(t.largestHeading, { state: full })}
         </h2>
         <ul className="mt-3 flex flex-wrap gap-2">
@@ -96,17 +98,18 @@ export default function StateIndexBody({ locale, state }: { locale: Locale; stat
             <li key={group.slug}>
               <Link
                 href={suburbPath(group.state, group.suburb, locale)}
-                className="inline-flex items-baseline gap-1.5 rounded-full border border-gray-200 px-3 py-1 text-xs text-gray-700 hover:border-indigo-400 hover:text-indigo-700"
+                className="bs-chip hover:text-link"
               >
                 {group.suburb}
-                <span className="text-[10px] text-gray-400">{group.schools.length}</span>
+                <span className="text-xs text-muted">{group.schools.length}</span>
               </Link>
             </li>
           ))}
         </ul>
       </section>
 
-      <h2 className="mt-8 text-base font-semibold">
+      <section className="bs-section" aria-labelledby="all-suburbs">
+      <h2 id="all-suburbs" className="bs-h2">
         {formatMessage(t.allSuburbsHeading, { state: full })}
       </h2>
 
@@ -115,7 +118,7 @@ export default function StateIndexBody({ locale, state }: { locale: Locale; stat
           <a
             key={initial}
             href={`#letter-${initial}`}
-            className="rounded border border-gray-200 px-2 py-0.5 text-xs text-gray-600 hover:border-indigo-400 hover:text-indigo-700"
+            className="inline-flex h-9 min-w-9 items-center justify-center rounded-inner bg-soft px-2 text-sm font-semibold text-ink-2 hover:text-link"
           >
             {initial}
           </a>
@@ -124,34 +127,35 @@ export default function StateIndexBody({ locale, state }: { locale: Locale; stat
 
       {groups.map(([initial, suburbs]) => (
         <section key={initial} id={`letter-${initial}`} className="mt-6 scroll-mt-4">
-          <h3 className="text-sm font-semibold border-b border-gray-100 pb-1">{initial}</h3>
+          <h3 className="border-b border-line pb-1 font-display text-lg font-bold text-ink">{initial}</h3>
           <ul className="mt-2 grid gap-x-4 gap-y-1 sm:grid-cols-2">
             {suburbs.map(group => (
-              <li key={group.slug} className="text-sm">
+              <li key={group.slug} className="text-[15px]">
                 <Link
                   href={suburbPath(group.state, group.suburb, locale)}
-                  className="text-indigo-700 hover:underline"
+                  className="text-link hover:underline"
                 >
                   {group.suburb}
                 </Link>
-                <span className="text-gray-400 text-xs"> ({group.schools.length})</span>
+                <span className="text-muted text-[13px]"> ({group.schools.length})</span>
               </li>
             ))}
           </ul>
         </section>
       ))}
+      </section>
 
-      <section className="mt-10 border-t border-gray-100 pt-5" aria-labelledby="other-states">
-        <h2 id="other-states" className="text-base font-semibold">{t.otherStatesHeading}</h2>
+      <section className="bs-section" aria-labelledby="other-states">
+        <h2 id="other-states" className="bs-h2">{t.otherStatesHeading}</h2>
         <ul className="mt-3 flex flex-wrap gap-2">
           {siblings.map(other => (
             <li key={other.state}>
               <Link
                 href={stateIndexPath(other.state, locale)}
-                className="inline-flex items-baseline gap-1.5 rounded-full border border-gray-200 px-3 py-1 text-xs text-gray-700 hover:border-indigo-400 hover:text-indigo-700"
+                className="bs-chip hover:text-link"
               >
                 {localeStateName(locale, other.state)}
-                <span className="text-[10px] text-gray-400">{other.schools.toLocaleString()}</span>
+                <span className="text-xs text-muted">{other.schools.toLocaleString()}</span>
               </Link>
             </li>
           ))}

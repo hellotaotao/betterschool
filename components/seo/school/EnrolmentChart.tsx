@@ -37,7 +37,7 @@ export default function EnrolmentChart({
                       the bar is sized inside a fixed-height flex box. */}
                   <div className="flex h-32 items-end">
                     {bar.count === null ? (
-                      <div className="h-2 w-full rounded-t border border-dashed border-gray-300" />
+                      <div className="h-2 w-full rounded-t border border-dashed border-line-strong" />
                     ) : (
                       <div
                         className="w-full rounded-t"
@@ -50,7 +50,7 @@ export default function EnrolmentChart({
             </tr>
             <tr>
               {bars.map(bar => (
-                <td key={bar.key} className="pt-1.5 text-sm font-semibold tabular-nums text-gray-900">
+                <td key={bar.key} className="pt-1.5 text-sm font-semibold tabular-nums text-ink">
                   {bar.count ?? '–'}
                 </td>
               ))}
@@ -59,7 +59,7 @@ export default function EnrolmentChart({
           <tfoot>
             <tr>
               {bars.map(bar => (
-                <th key={bar.key} scope="col" className="text-[11px] font-normal text-gray-500 whitespace-nowrap">
+                <th key={bar.key} scope="col" className="text-xs font-normal text-muted whitespace-nowrap">
                   {bar.label}
                 </th>
               ))}

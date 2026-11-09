@@ -90,40 +90,42 @@ export default function SuburbBody({ locale, state, slug }: { locale: Locale; st
         { label: group.suburb },
       ]}
     >
-      <h1 className="text-2xl font-bold tracking-tight">
+      <header className="bs-hero">
+      <h1 className="bs-h1">
         {formatMessage(t.heading, { suburb: group.suburb, state: full })}
       </h1>
-      <p className="mt-1 text-sm text-gray-500">
+      <p className="mt-2 text-[15px] text-muted">
         {formatMessage(group.schools.length === 1 ? t.schoolCountOne : t.schoolCount, { count: group.schools.length })}
         {group.postcodes.length > 0 && ` · ${formatMessage(t.postcode, { postcodes: group.postcodes.join(', ') })}`}
       </p>
 
-      <div className="mt-3 flex flex-wrap gap-2 text-xs">
+      <div className="mt-4 flex flex-wrap gap-2">
         {Object.entries(sectorCounts).map(([sector, count]) => (
-          <span key={sector} className="rounded-full bg-gray-100 px-3 py-1 text-gray-700">
+          <span key={sector} className={`rounded-full px-3 py-1 text-[13px] font-semibold ${sectorBadgeClass(sector)}`}>
             {count} {getSectorLabel(sector, dictionary)}
           </span>
         ))}
       </div>
 
-      <div className="mt-4">
+      <div className="mt-6">
         <Link
           href={mapUrl({ locale, suburb: { state: group.state, suburb: group.suburb } })}
-          className="rounded-full bg-indigo-600 px-4 py-1.5 text-xs font-medium text-white hover:bg-indigo-700"
+          className="bs-btn"
         >
           {formatMessage(t.exploreOnMap, { suburb: group.suburb })}
         </Link>
       </div>
+      </header>
 
       {ranked.length >= 2 && (
-        <section className="mt-8" aria-labelledby="compare">
-          <h2 id="compare" className="text-base font-semibold">
+        <section className="bs-section" aria-labelledby="compare">
+          <h2 id="compare" className="bs-h2">
             {formatMessage(t.compareHeading, { suburb: group.suburb })}
           </h2>
           <div className="mt-3 overflow-x-auto scroll-shadow-x">
-            <table className="w-full min-w-[36rem] text-sm">
+            <table className="w-full min-w-[36rem] text-[15px]">
               <thead>
-                <tr className="border-b border-gray-200 text-left text-xs text-gray-500">
+                <tr className="border-b border-line-strong text-left text-[13px] text-muted">
                   <th scope="col" className="w-8 py-2 pr-2 font-medium">#</th>
                   <th scope="col" className="py-2 pr-3 font-medium">{st.compareColName}</th>
                   <th scope="col" className="py-2 pr-3 font-medium">{st.fieldType}</th>
@@ -139,16 +141,16 @@ export default function SuburbBody({ locale, state, slug }: { locale: Locale; st
                   const students = metricValue(school, 'enrolments');
                   const ratio = metricValue(school, 'ratio');
                   return (
-                    <tr key={school.id} className="border-b border-gray-100">
-                      <td className="py-2 pr-2 tabular-nums text-gray-500">{rankedPositions[index] ?? '—'}</td>
+                    <tr key={school.id} className="border-b border-line">
+                      <td className="py-2 pr-2 tabular-nums text-muted">{rankedPositions[index] ?? '—'}</td>
                       <td className="py-2 pr-3">
-                        <Link href={schoolPath(school.state, getSchoolSlug(school), locale)} className="text-indigo-700 hover:underline">
+                        <Link href={schoolPath(school.state, getSchoolSlug(school), locale)} className="bs-link">
                           {school.school_name}
                         </Link>
                       </td>
-                      <td className="py-2 pr-3 text-gray-600">{school.school_type ? getSchoolTypeLabel(school.school_type, dictionary) : '—'}</td>
+                      <td className="py-2 pr-3 text-ink-2">{school.school_type ? getSchoolTypeLabel(school.school_type, dictionary) : '—'}</td>
                       <td className="py-2 pr-3">
-                        <span className={`whitespace-nowrap rounded-full px-2 py-0.5 text-[10px] font-medium ${sectorBadgeClass(school.sector)}`}>
+                        <span className={`whitespace-nowrap rounded-full px-2 py-0.5 text-xs font-medium ${sectorBadgeClass(school.sector)}`}>
                           {getSectorLabel(school.sector, dictionary)}
                         </span>
                       </td>
@@ -161,13 +163,13 @@ export default function SuburbBody({ locale, state, slug }: { locale: Locale; st
               </tbody>
             </table>
           </div>
-          <p className="mt-2 text-xs text-gray-500">{formatMessage(t.compareNote, { year: ACARA_DATA_YEAR })}</p>
+          <p className="mt-2 text-[13px] text-muted">{formatMessage(t.compareNote, { year: ACARA_DATA_YEAR })}</p>
         </section>
       )}
 
       {suburbRankings.length > 0 && (
-        <section className="mt-6" aria-labelledby="rankings">
-          <h2 id="rankings" className="text-sm font-semibold">
+        <section className="bs-section" aria-labelledby="rankings">
+          <h2 id="rankings" className="bs-h2 text-xl">
             {formatMessage(t.rankingsHeading, { suburb: group.suburb, state: full })}
           </h2>
           <RankingLinks rankings={suburbRankings} locale={locale} />
@@ -175,8 +177,8 @@ export default function SuburbBody({ locale, state, slug }: { locale: Locale; st
       )}
 
       {byType.map(([type, schools]) => (
-        <section key={type} className="mt-8" aria-labelledby={`type-${type}`}>
-          <h2 id={`type-${type}`} className="text-base font-semibold">
+        <section key={type} className="bs-section" aria-labelledby={`type-${type}`}>
+          <h2 id={`type-${type}`} className="bs-h2">
             {formatMessage(t.typeHeading, {
               type: getSchoolTypeLabel(type, dictionary),
               count: schools.length,
@@ -190,23 +192,23 @@ export default function SuburbBody({ locale, state, slug }: { locale: Locale; st
         </section>
       ))}
 
-      <section className="mt-8" aria-labelledby="zones">
-        <h2 id="zones" className="text-base font-semibold">{t.zonesHeading}</h2>
+      <section className="bs-section" aria-labelledby="zones">
+        <h2 id="zones" className="bs-h2">{t.zonesHeading}</h2>
         {!zoneState ? (
-          <p className="mt-2 text-sm text-gray-600">
+          <p className="mt-2 text-[15px] text-ink-2">
             {formatMessage(t.zonesOtherState, { state: full, states: coveredStates })}
           </p>
         ) : zoned.length > 0 ? (
           <>
-            <p className="mt-2 text-sm text-gray-600">
+            <p className="mt-2 text-[15px] text-ink-2">
               {formatMessage(zoned.length === 1 ? t.zonesPresentOne : t.zonesPresent, { count: zoned.length, suburb: group.suburb })}
             </p>
-            <ul className="mt-2 list-disc pl-5 text-sm">
+            <ul className="mt-2 list-disc pl-5 text-[15px]">
               {zoned.map(school => (
                 <li key={school.id}>
                   <Link
                     href={catchmentPath(school.state, getSchoolSlug(school), locale)}
-                    className="text-indigo-700 hover:underline"
+                    className="bs-link"
                   >
                     {formatMessage(usesSchoolZone(school.state) ? t.catchmentLinkZone : t.catchmentLink, { school: school.school_name })}
                   </Link>
@@ -215,13 +217,13 @@ export default function SuburbBody({ locale, state, slug }: { locale: Locale; st
             </ul>
           </>
         ) : (
-          <p className="mt-2 text-sm text-gray-600">
+          <p className="mt-2 text-[15px] text-ink-2">
             {zoneState.complete
               ? formatMessage(t.zonesNone, { suburb: group.suburb })
               : formatMessage(t.zonesNonePartial, { suburb: group.suburb, state: full })}{' '}
             <Link
               href={mapUrl({ locale, suburb: { state: group.state, suburb: group.suburb } })}
-              className="text-indigo-700 hover:underline"
+              className="bs-link"
             >
               {t.zonesNoneCta}
             </Link>
@@ -230,9 +232,9 @@ export default function SuburbBody({ locale, state, slug }: { locale: Locale; st
       </section>
 
       {related.length > 0 && (
-        <section className="mt-8" aria-labelledby="related">
-          <h2 id="related" className="text-base font-semibold">{t.relatedHeading}</h2>
-          <p className="mt-1 text-xs text-gray-500">
+        <section className="bs-section" aria-labelledby="related">
+          <h2 id="related" className="bs-h2">{t.relatedHeading}</h2>
+          <p className="mt-1.5 text-sm text-muted">
             {formatMessage(t.relatedHint, { suburb: group.suburb })}
           </p>
           <ul className="mt-2 flex flex-wrap gap-2">
@@ -240,10 +242,10 @@ export default function SuburbBody({ locale, state, slug }: { locale: Locale; st
               <li key={`${other.state}-${other.slug}`}>
                 <Link
                   href={suburbPath(other.state, other.suburb, locale)}
-                  className="inline-flex items-baseline gap-1.5 rounded-full border border-gray-200 px-3 py-1 text-xs text-gray-700 hover:border-indigo-400 hover:text-indigo-700"
+                  className="bs-chip hover:text-link"
                 >
                   {other.suburb}
-                  <span className="text-[10px] text-gray-400">{km < 10 ? km.toFixed(1) : Math.round(km)} km</span>
+                  <span className="text-xs text-muted">{km < 10 ? km.toFixed(1) : Math.round(km)} km</span>
                 </Link>
               </li>
             ))}

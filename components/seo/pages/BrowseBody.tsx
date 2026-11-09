@@ -46,8 +46,9 @@ export default function BrowseBody({ locale }: { locale: Locale }) {
       dataYear={ACARA_DATA_YEAR}
       crumbs={[{ label: t.heading }]}
     >
-      <h1 className="text-2xl font-bold tracking-tight">{t.heading}</h1>
-      <p className="mt-2 text-sm text-gray-600">
+      <header className="bs-hero">
+      <h1 className="bs-h1">{t.heading}</h1>
+      <p className="mt-3 max-w-2xl text-lg leading-relaxed text-ink-2">
         {formatMessage(t.intro, {
           schools: dataset.schools.length.toLocaleString(),
           suburbs: dataset.suburbs.size.toLocaleString(),
@@ -55,28 +56,29 @@ export default function BrowseBody({ locale }: { locale: Locale }) {
         })}
       </p>
 
-      <div className="mt-4">
+      <div className="mt-6">
         <Link
           href={mapUrl({ locale })}
-          className="rounded-full bg-indigo-600 px-4 py-1.5 text-xs font-medium text-white hover:bg-indigo-700"
+          className="bs-btn"
         >
           {getSeo(locale).shell.openMap}
         </Link>
       </div>
+      </header>
 
-      <section className="mt-8" aria-labelledby="states">
-        <h2 id="states" className="text-base font-semibold">{t.statesHeading}</h2>
+      <section className="bs-section" aria-labelledby="states">
+        <h2 id="states" className="bs-h2">{t.statesHeading}</h2>
         <ul className="mt-3 grid gap-2 sm:grid-cols-2">
           {states.map(summary => (
             <li key={summary.slug}>
               <Link
                 href={stateIndexPath(summary.state, locale)}
-                className="block rounded-lg border border-gray-200 p-3 hover:border-indigo-400 hover:bg-indigo-50/40 transition-colors"
+                className="bs-tile h-full"
               >
-                <span className="block text-sm font-semibold text-gray-900">
+                <span className="block font-display text-lg font-bold tracking-tight text-ink">
                   {localeStateName(locale, summary.state)}
                 </span>
-                <span className="block text-xs text-gray-500 mt-0.5">
+                <span className="block text-[13px] text-muted mt-0.5">
                   {formatMessage(t.stateMeta, {
                     schools: summary.schools.toLocaleString(),
                     suburbs: summary.suburbs.length.toLocaleString(),
@@ -89,9 +91,9 @@ export default function BrowseBody({ locale }: { locale: Locale }) {
         </ul>
       </section>
 
-      <section className="mt-8" aria-labelledby="rankings">
-        <h2 id="rankings" className="text-base font-semibold">{t.rankingsHeading}</h2>
-        <p className="mt-1 text-xs text-gray-500">{t.rankingsHint}</p>
+      <section className="bs-section" aria-labelledby="rankings">
+        <h2 id="rankings" className="bs-h2">{t.rankingsHeading}</h2>
+        <p className="mt-1.5 text-sm text-muted">{t.rankingsHint}</p>
         <div className="mt-2 space-y-3">
           {states.map(summary => {
             // All-sector views only: the sector cuts are one click away on each page.
@@ -99,7 +101,7 @@ export default function BrowseBody({ locale }: { locale: Locale }) {
             if (rankings.length === 0) return null;
             return (
               <div key={summary.slug}>
-                <h3 className="text-xs font-semibold text-gray-700">{localeStateName(locale, summary.state)}</h3>
+                <h3 className="bs-label">{localeStateName(locale, summary.state)}</h3>
                 <RankingLinks rankings={rankings} locale={locale} />
               </div>
             );
@@ -107,27 +109,27 @@ export default function BrowseBody({ locale }: { locale: Locale }) {
         </div>
       </section>
 
-      <section className="mt-8" aria-labelledby="largest">
-        <h2 id="largest" className="text-base font-semibold">{t.largestHeading}</h2>
-        <p className="mt-1 text-xs text-gray-500">{t.largestHint}</p>
+      <section className="bs-section" aria-labelledby="largest">
+        <h2 id="largest" className="bs-h2">{t.largestHeading}</h2>
+        <p className="mt-1.5 text-sm text-muted">{t.largestHint}</p>
         <ul className="mt-3 flex flex-wrap gap-2">
           {largest.map(group => (
             <li key={`${group.state}-${group.slug}`}>
               <Link
                 href={suburbPath(group.state, group.suburb, locale)}
-                className="inline-flex items-baseline gap-1.5 rounded-full border border-gray-200 px-3 py-1 text-xs text-gray-700 hover:border-indigo-400 hover:text-indigo-700"
+                className="bs-chip hover:text-link"
               >
                 {group.suburb}
-                <span className="text-[10px] text-gray-400">{group.state} · {group.schools.length}</span>
+                <span className="text-xs text-muted">{group.state} · {group.schools.length}</span>
               </Link>
             </li>
           ))}
         </ul>
       </section>
 
-      <section className="mt-8 rounded-lg bg-gray-50 p-3">
-        <h2 className="text-sm font-semibold">{t.zonesHeading}</h2>
-        <p className="mt-1 text-xs text-gray-600">
+      <section className="bs-section">
+        <h2 className="bs-h2 text-xl">{t.zonesHeading}</h2>
+        <p className="mt-1.5 text-[15px] text-ink-2">
           {formatMessage(t.zonesBody, { covered: coveredCatchmentStates(getMessages(locale), locale) })}
           {uncovered && `${locale === 'zh' ? '' : ' '}${formatMessage(t.zonesUncovered, { uncovered })}`}
         </p>

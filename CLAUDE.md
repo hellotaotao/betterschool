@@ -179,6 +179,26 @@ longer had.
   out of static rendering. `PageShell` sets `lang` on its wrapper instead, which
   scopes correctly for screen readers; hreflang is what search engines target.
 
+### Themes
+
+The SEO pages render in three themes — `bright` (default), `atlas`, `harbour`
+— chosen by `<html data-theme>`; the HTML is identical in all three
+([spec](docs/specs/2026-11-10-multi-theme-design.md)). A blocking script from
+`lib/theme.ts` sets the attribute before first paint from `?theme=` or the
+remembered choice, so pages stay static (no cookie read on the server).
+Preview any page with `?theme=atlas` etc.
+
+Components under `components/seo/` use only the semantic utilities
+(`text-ink`, `text-muted`, `text-link`, `bg-soft`, `border-line`, `bg-brand`…)
+and the `bs-*` component classes (`bs-hero`, `bs-section`, `bs-h1`, `bs-h2`,
+`bs-label`, `bs-figure`, `bs-stat`, `bs-btn`, `bs-chip`, `bs-tile`,
+`bs-note`) defined in `app/globals.css` — never a raw palette class such as
+`text-gray-500` or `bg-indigo-600`, which would not follow the theme. The one
+exception is `sectorBadgeClass`: sector hues are shared with the map and never
+change with the theme. SVG reads tokens through `style={{ fill: 'var(--bs-…)' }}`,
+since presentation attributes do not reliably resolve `var()`. The map app
+(`/schools`) is not themed yet.
+
 ### School pages
 
 `SchoolBody` is built so 11,034 pages do not read as one template. What varies

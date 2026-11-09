@@ -27,10 +27,10 @@ export default function Year12Section({ school, locale }: { school: School; loca
   const anyWithheld = results.some(result => Object.keys(result.withheld ?? {}).length > 0);
 
   return (
-    <section className="mt-10" aria-labelledby="year12">
-      <h2 id="year12" className="text-lg font-semibold tracking-tight">{t.y12Heading}</h2>
+    <section className="bs-section" aria-labelledby="year12">
+      <h2 id="year12" className="bs-h2">{t.y12Heading}</h2>
       {stateRank && (
-        <p className="mt-2 text-sm text-gray-700">
+        <p className="mt-2 text-sm text-ink-2">
           {formatMessage(t.y12Rank, {
             rank: ordinalNumber(stateRank.rank, locale),
             count: stateRank.of,
@@ -40,14 +40,14 @@ export default function Year12Section({ school, locale }: { school: School; loca
         </p>
       )}
       {latest && excluded && (
-        <p className="mt-2 text-sm text-gray-700">
+        <p className="mt-2 text-sm text-ink-2">
           {formatMessage(excluded === 'early_only' ? t.y12EarlyOnly : t.y12Small, { year: latest.year, min: VCE_MIN_STUDENTS })}
         </p>
       )}
       <div className="mt-3 overflow-x-auto scroll-shadow-x">
         <table className="w-full min-w-[30rem] text-sm">
           <thead>
-            <tr className="border-b border-gray-200 text-left text-xs text-gray-500">
+            <tr className="border-b border-line-strong text-left text-[13px] text-muted">
               <th scope="col" className="py-2 pr-3 font-medium">{t.y12ColYear}</th>
               <th scope="col" className="py-2 pr-3 text-right font-medium">{t.y12ColMedian}</th>
               <th scope="col" className="py-2 pr-3 text-right font-medium">{t.y12Col40}</th>
@@ -57,8 +57,8 @@ export default function Year12Section({ school, locale }: { school: School; loca
           </thead>
           <tbody>
             {results.map(result => (
-              <tr key={result.year} className="border-b border-gray-100">
-                <th scope="row" className="py-2 pr-3 text-left font-normal text-gray-600">{result.year}</th>
+              <tr key={result.year} className="border-b border-line">
+                <th scope="row" className="py-2 pr-3 text-left font-normal text-ink-2">{result.year}</th>
                 <td className="py-2 pr-3 text-right font-semibold tabular-nums">{dash(result.median_study_score)}</td>
                 <td className="py-2 pr-3 text-right tabular-nums">{dash(result.pct_study_scores_40_plus, '%')}</td>
                 <td className="py-2 pr-3 text-right tabular-nums">{dash(result.vce_students)}</td>
@@ -68,13 +68,13 @@ export default function Year12Section({ school, locale }: { school: School; loca
           </tbody>
         </table>
       </div>
-      <p className="mt-2 text-xs text-gray-500">
+      <p className="mt-2 text-[13px] text-muted">
         {anyWithheld && <>{t.y12Withheld} </>}
         {t.y12Source}
       </p>
       {stateRank && (
-        <p className="mt-2 text-xs">
-          <Link href={rankingPath(school.state, stateRank.slug, locale)} className="text-indigo-700 hover:underline">
+        <p className="mt-2 text-[13px]">
+          <Link href={rankingPath(school.state, stateRank.slug, locale)} className="text-link hover:underline">
             {formatMessage(t.y12Link, { state: stateLabel })} →
           </Link>
         </p>

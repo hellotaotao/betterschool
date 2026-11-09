@@ -80,11 +80,11 @@ export function schoolMetadata(locale: Locale, state: string, slug: string): Met
 /** A labelled fact. `note` marks values that are inferred or absent rather than official. */
 function Fact({ label, value, note }: { label: string; value: React.ReactNode; note?: string }) {
   return (
-    <div className="py-2 border-b border-gray-100 last:border-0 sm:grid sm:grid-cols-3 sm:gap-3">
-      <dt className="text-xs text-gray-500 sm:col-span-1">{label}</dt>
-      <dd className="text-sm text-gray-900 sm:col-span-2">
+    <div className="border-b border-line py-2.5 last:border-0 sm:grid sm:grid-cols-3 sm:gap-3">
+      <dt className="text-sm text-muted sm:col-span-1">{label}</dt>
+      <dd className="text-[15px] text-ink sm:col-span-2">
         {value}
-        {note && <span className="block text-[11px] text-gray-400 mt-0.5">{note}</span>}
+        {note && <span className="mt-0.5 block text-[13px] text-muted">{note}</span>}
       </dd>
     </div>
   );
@@ -92,26 +92,26 @@ function Fact({ label, value, note }: { label: string; value: React.ReactNode; n
 
 function Stat({ label, value, children }: { label: string; value: React.ReactNode; children?: React.ReactNode }) {
   return (
-    <div className="rounded-xl border border-gray-200 bg-white p-4">
-      <dt className="text-xs font-medium text-gray-500">{label}</dt>
-      <dd className="mt-1">
-        <span className="block text-2xl font-semibold tracking-tight tabular-nums text-gray-900">{value}</span>
+    <div className="bs-stat">
+      <dt className="bs-label">{label}</dt>
+      <dd className="mt-1.5">
+        <span className="bs-figure block">{value}</span>
         {children}
       </dd>
     </div>
   );
 }
 
-/** A share out of 100 as a labelled bar. Neutral tone: hue is reserved for sector. */
+/** A share out of 100 as a labelled bar. Brand tone, never a sector hue. */
 function Meter({ label, percent }: { label: string; percent: number }) {
   return (
     <div>
       <div className="flex items-baseline justify-between gap-3 text-sm">
-        <span className="text-gray-700">{label}</span>
-        <span className="font-semibold tabular-nums text-gray-900">{percent}%</span>
+        <span className="text-ink-2">{label}</span>
+        <span className="font-semibold tabular-nums text-ink">{percent}%</span>
       </div>
-      <div className="mt-1 h-2 overflow-hidden rounded-full bg-slate-100" aria-hidden="true">
-        <div className="h-full rounded-full bg-slate-600" style={{ width: `${Math.min(100, percent)}%` }} />
+      <div className="mt-1.5 h-2 overflow-hidden rounded-full bg-soft-strong" aria-hidden="true">
+        <div className="h-full rounded-full bg-data-3" style={{ width: `${Math.min(100, percent)}%` }} />
       </div>
     </div>
   );
@@ -181,10 +181,10 @@ export default function SchoolBody({ locale, state, slug }: { locale: Locale; st
   const sea = school.sea_quarters;
   const seaSegments = sea
     ? [
-      { label: t.seaBottom, percent: sea.bottom_percent, tone: 'bg-slate-300' },
-      { label: t.seaLowerMiddle, percent: sea.lower_middle_percent, tone: 'bg-slate-400' },
-      { label: t.seaUpperMiddle, percent: sea.upper_middle_percent, tone: 'bg-slate-600' },
-      { label: t.seaTop, percent: sea.top_percent, tone: 'bg-slate-800' },
+      { label: t.seaBottom, percent: sea.bottom_percent, tone: 'bg-data-1' },
+      { label: t.seaLowerMiddle, percent: sea.lower_middle_percent, tone: 'bg-data-2' },
+      { label: t.seaUpperMiddle, percent: sea.upper_middle_percent, tone: 'bg-data-3' },
+      { label: t.seaTop, percent: sea.top_percent, tone: 'bg-data-4' },
     ].filter((segment): segment is { label: string; percent: number; tone: string } => Number.isFinite(segment.percent))
     : [];
   // Drawn only as a complete set: three of four quarters would look like a
@@ -262,23 +262,21 @@ export default function SchoolBody({ locale, state, slug }: { locale: Locale; st
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, '\\u003c') }}
       />
 
-      <header>
-        <div className="flex flex-wrap items-center gap-2 text-xs">
-          <span className={`rounded-full px-2.5 py-1 font-medium ${sectorBadgeClass(school.sector)}`}>{sectorLabel}</span>
+      <header className="bs-hero">
+        <div className="flex flex-wrap items-center gap-2">
+          <span className={`rounded-full px-3 py-1 text-[13px] font-semibold ${sectorBadgeClass(school.sector)}`}>{sectorLabel}</span>
           {school.school_type && (
-            <span className="rounded-full bg-gray-100 px-2.5 py-1 text-gray-700">
+            <span className="bs-chip">
               {getSchoolTypeLabel(school.school_type, dictionary)}
             </span>
           )}
-          {school.year_range && (
-            <span className="rounded-full bg-gray-100 px-2.5 py-1 text-gray-700">{school.year_range}</span>
-          )}
+          {school.year_range && <span className="bs-chip">{school.year_range}</span>}
         </div>
-        <h1 className="mt-3 text-3xl font-bold tracking-tight text-balance sm:text-4xl">{school.school_name}</h1>
-        <p className="mt-2 text-sm text-gray-500">
+        <h1 className="bs-h1 mt-4">{school.school_name}</h1>
+        <p className="mt-2 text-[15px] text-muted">
           {school.suburb}, {full} {school.postcode}
         </p>
-        <p className="mt-4 max-w-2xl text-base leading-relaxed text-gray-700">
+        <p className="mt-4 max-w-2xl text-lg leading-relaxed text-ink-2">
           {formatMessage(hasProfile ? t.lead : t.leadBasic, {
             school: school.school_name,
             type: typeLabel(locale, school),
@@ -290,10 +288,10 @@ export default function SchoolBody({ locale, state, slug }: { locale: Locale; st
             year: ACARA_DATA_YEAR,
           })}
         </p>
-        <div className="mt-5 flex flex-wrap gap-2">
+        <div className="mt-6 flex flex-wrap gap-2">
           <Link
             href={mapUrl({ locale, school: school.acara_sml_id })}
-            className="rounded-full bg-indigo-600 px-4 py-2 text-sm font-medium text-white hover:bg-indigo-700"
+            className="bs-btn"
           >
             {t.viewOnMap}
           </Link>
@@ -302,7 +300,7 @@ export default function SchoolBody({ locale, state, slug }: { locale: Locale; st
               href={school.myschool_url}
               target="_blank"
               rel="noreferrer"
-              className="rounded-full border border-gray-300 px-4 py-2 text-sm font-medium text-gray-700 hover:border-indigo-400 hover:text-indigo-700"
+              className="bs-btn-quiet"
             >
               {t.naplanLink} →
             </a>
@@ -312,24 +310,23 @@ export default function SchoolBody({ locale, state, slug }: { locale: Locale; st
               href={schoolWebsiteUrl}
               target="_blank"
               rel="noreferrer"
-              className="rounded-full border border-gray-300 px-4 py-2 text-sm font-medium text-gray-700 hover:border-indigo-400 hover:text-indigo-700"
+              className="bs-btn-quiet"
             >
               {t.websiteLink} →
             </a>
           )}
         </div>
-      </header>
 
       {hasProfile && (
         <dl className="mt-8 grid grid-cols-2 gap-3 lg:grid-cols-4">
           <Stat label={t.statStudents} value={number(Number(school.total_enrolments))}>
             {Number.isFinite(school.girls) && Number.isFinite(school.boys) && (
-              <span className="mt-1 block text-xs text-gray-500">
+              <span className="mt-1 block text-[13px] text-muted">
                 {formatMessage(t.enrolmentsSplit, { girls: number(Number(school.girls)), boys: number(Number(school.boys)) })}
               </span>
             )}
             {sizePool.length >= 20 && (
-              <span className="mt-1 block text-xs text-gray-500">
+              <span className="mt-1 block text-[13px] text-muted">
                 {formatMessage(t.statSizeContext, {
                   percent: percentBelow(sizePool, Number(school.total_enrolments)),
                   type: typeLabel(locale, school),
@@ -340,12 +337,12 @@ export default function SchoolBody({ locale, state, slug }: { locale: Locale; st
           </Stat>
           <Stat label={t.statYears} value={school.year_range}>
             {school.school_type && (
-              <span className="mt-1 block text-xs text-gray-500">{getSchoolTypeLabel(school.school_type, dictionary)}</span>
+              <span className="mt-1 block text-[13px] text-muted">{getSchoolTypeLabel(school.school_type, dictionary)}</span>
             )}
           </Stat>
           {ratio !== null && (
             <Stat label={t.statRatio} value={ratio.toFixed(1)}>
-              <span className="mt-1 block text-xs text-gray-500">
+              <span className="mt-1 block text-[13px] text-muted">
                 {formatMessage(t.statRatioNote, { teachers: Number(school.staff?.teaching_fte) })}
               </span>
             </Stat>
@@ -353,7 +350,7 @@ export default function SchoolBody({ locale, state, slug }: { locale: Locale; st
           {Number.isFinite(school.icsea) && (
             <Stat label={t.fieldIcsea} value={school.icsea}>
               {Number.isFinite(school.icsea_percentile) && (
-                <span className="mt-1 block text-xs text-gray-500">
+                <span className="mt-1 block text-[13px] text-muted">
                   {formatMessage(t.icseaPercentile, { value: ordinalNumber(Number(school.icsea_percentile), locale) })}
                 </span>
               )}
@@ -361,18 +358,15 @@ export default function SchoolBody({ locale, state, slug }: { locale: Locale; st
           )}
         </dl>
       )}
+      </header>
 
       {highlights.length > 0 && (
-        <section
-          className="mt-8 rounded-xl border-l-4 bg-slate-50 px-5 py-4"
-          style={{ borderLeftColor: sectorColor }}
-          aria-labelledby="highlights"
-        >
-          <h2 id="highlights" className="text-sm font-semibold text-gray-900">{t.highlightsHeading}</h2>
-          <ul className="mt-2 space-y-1.5 text-sm leading-relaxed text-gray-700">
+        <section className="bs-section" aria-labelledby="highlights">
+          <h2 id="highlights" className="bs-h2">{t.highlightsHeading}</h2>
+          <ul className="mt-3 space-y-2 text-[15px] leading-relaxed text-ink-2">
             {highlights.map(highlight => (
-              <li key={highlight.kind} className="flex gap-2">
-                <span aria-hidden="true" className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-slate-400" />
+              <li key={highlight.kind} className="flex gap-3">
+                <span aria-hidden="true" className="mt-2.5 h-1.5 w-1.5 shrink-0 rounded-full bg-brand" />
                 <span>{highlightText(highlight)}</span>
               </li>
             ))}
@@ -385,31 +379,31 @@ export default function SchoolBody({ locale, state, slug }: { locale: Locale; st
       <Year12Section school={school} locale={locale} />
 
       {cohortBars.length > 1 && (
-        <section className="mt-10" aria-labelledby="cohorts">
-          <h2 id="cohorts" className="text-lg font-semibold tracking-tight">{t.cohortHeading}</h2>
-          <p className="mt-1 text-xs text-gray-500">{formatMessage(t.cohortSource, { year: ACARA_DATA_YEAR })}</p>
+        <section className="bs-section" aria-labelledby="cohorts">
+          <h2 id="cohorts" className="bs-h2">{t.cohortHeading}</h2>
+          <p className="mt-1.5 text-sm text-muted">{formatMessage(t.cohortSource, { year: ACARA_DATA_YEAR })}</p>
           <EnrolmentChart
             bars={cohortBars}
-            color={sectorColor}
+            color="var(--bs-brand)"
             caption={formatMessage(t.cohortCaption, { school: school.school_name })}
           />
           {cohortBars.some(bar => bar.count === null) && (
-            <p className="mt-2 text-[11px] text-gray-400">{t.cohortUnpublished}</p>
+            <p className="mt-2 text-[13px] text-muted">{t.cohortUnpublished}</p>
           )}
           {cohortBars.some(bar => bar.key === 'two_years_before_year_1') && (
-            <p className="mt-1 text-[11px] text-gray-400">{t.cohortPreNote}</p>
+            <p className="mt-1 text-[13px] text-muted">{t.cohortPreNote}</p>
           )}
         </section>
       )}
 
       {showBackground && (
-        <section className="mt-10" aria-labelledby="background">
-          <h2 id="background" className="text-lg font-semibold tracking-tight">{t.backgroundHeading}</h2>
-          <p className="mt-1 max-w-2xl text-xs text-gray-500">{t.icseaNote}</p>
+        <section className="bs-section" aria-labelledby="background">
+          <h2 id="background" className="bs-h2">{t.backgroundHeading}</h2>
+          <p className="mt-1.5 max-w-2xl text-sm text-muted">{t.icseaNote}</p>
           <div className="mt-4 grid gap-6 sm:grid-cols-2">
             {showSea && (
               <div>
-                <h3 className="text-sm font-medium text-gray-900">{t.seaHeading}</h3>
+                <h3 className="text-[15px] font-semibold text-ink">{t.seaHeading}</h3>
                 <div className="mt-2 flex h-3 overflow-hidden rounded-full" aria-hidden="true">
                   {seaSegments.map(segment => (
                     <div key={segment.label} className={segment.tone} style={{ width: `${segment.percent}%` }} />
@@ -418,15 +412,15 @@ export default function SchoolBody({ locale, state, slug }: { locale: Locale; st
                 <dl className="mt-2 grid grid-cols-4 gap-2">
                   {seaSegments.map(segment => (
                     <div key={segment.label}>
-                      <dd className="flex items-center gap-1.5 text-sm font-semibold tabular-nums text-gray-900">
+                      <dd className="flex items-center gap-1.5 text-base font-semibold tabular-nums text-ink">
                         <span aria-hidden="true" className={`h-2 w-2 rounded-full ${segment.tone}`} />
                         {segment.percent}%
                       </dd>
-                      <dt className="text-[11px] leading-tight text-gray-500">{segment.label}</dt>
+                      <dt className="text-[13px] leading-tight text-muted">{segment.label}</dt>
                     </div>
                   ))}
                 </dl>
-                <p className="mt-2 text-[11px] text-gray-400">{t.seaNote}</p>
+                <p className="mt-2 text-[13px] text-muted">{t.seaNote}</p>
               </div>
             )}
             <div className="space-y-4">
@@ -441,11 +435,11 @@ export default function SchoolBody({ locale, state, slug }: { locale: Locale; st
         </section>
       )}
 
-      <section className="mt-10" aria-labelledby="zone">
-        <h2 id="zone" className="text-lg font-semibold tracking-tight">{t.zoneHeading}</h2>
+      <section className="bs-section" aria-labelledby="zone">
+        <h2 id="zone" className="bs-h2">{t.zoneHeading}</h2>
         {catchments.length > 0 ? (
-          <div className="mt-2 rounded-lg border border-blue-200 bg-blue-50/50 p-3">
-            <ul className="space-y-1 text-sm">
+          <div className="mt-3 rounded-inner bg-soft p-4">
+            <ul className="space-y-1 text-[15px] text-ink">
               {catchments.map(catchment => (
                 <li key={catchment.geometry_url}>
                   {catchment.year_levels.length > 0
@@ -454,7 +448,7 @@ export default function SchoolBody({ locale, state, slug }: { locale: Locale; st
                       levels: catchment.year_levels.join(', '),
                     })
                     : formatMessage(t.zoneLineNoYears, { kind: localeKind(locale, catchment.kind) })}
-                  <span className="text-gray-500">
+                  <span className="text-muted">
                     {' ('}
                     {formatMessage(t.zoneDataYear, { year: catchment.data_year })}
                     {')'}
@@ -464,13 +458,13 @@ export default function SchoolBody({ locale, state, slug }: { locale: Locale; st
             </ul>
             <Link
               href={catchmentPath(school.state, slug, locale)}
-              className="mt-3 inline-block text-xs font-medium text-blue-700 hover:underline"
+              className="bs-link mt-3 inline-block text-sm"
             >
               {formatMessage(usesSchoolZone(school.state) ? t.zoneLinkZone : t.zoneLink, { school: school.school_name })} →
             </Link>
           </div>
         ) : (
-          <p className="mt-2 text-sm text-gray-600">
+          <p className="mt-3 text-[15px] text-ink-2">
             {/* Three different absences, and the page must not blur them: zones
                 do not apply, none was published for a school in a state that
                 zones everything, or the state only zones part of its system so
@@ -487,8 +481,8 @@ export default function SchoolBody({ locale, state, slug }: { locale: Locale; st
       </section>
 
       {neighbours.length > 0 && (
-        <section className="mt-10" aria-labelledby="around">
-          <h2 id="around" className="text-lg font-semibold tracking-tight">
+        <section className="bs-section" aria-labelledby="around">
+          <h2 id="around" className="bs-h2">
             {formatMessage(t.aroundHeading, { school: school.school_name })}
           </h2>
           <div className="mt-4 grid items-start gap-5 sm:grid-cols-[minmax(0,360px)_1fr]">
@@ -501,16 +495,16 @@ export default function SchoolBody({ locale, state, slug }: { locale: Locale; st
               kmLabel={km => formatMessage(t.diagramKm, { km })}
               northLabel={t.diagramNorth}
             />
-            <div className="text-sm text-gray-600">
+            <div className="text-[15px] text-ink-2">
               <p className="leading-relaxed">
                 {formatMessage(t.diagramCaption, { count: neighbours.length, step: diagram.stepKm })}
                 {diagram.drawable.length > 0 && ` ${t.diagramZone}`}
               </p>
-              <ul className="mt-3 space-y-1.5 text-xs text-gray-600">
+              <ul className="mt-3 space-y-1.5 text-sm text-ink-2">
                 <li className="flex items-center gap-2">
                   <span
                     aria-hidden="true"
-                    className="h-3 w-3 rounded-full ring-1 ring-slate-900 ring-offset-2"
+                    className="h-3 w-3 rounded-full ring-1 ring-ink ring-offset-2"
                     style={{ backgroundColor: sectorColor }}
                   />
                   {t.diagramThisSchool}
@@ -528,7 +522,7 @@ export default function SchoolBody({ locale, state, slug }: { locale: Locale; st
               </ul>
               <Link
                 href={mapUrl({ locale, school: school.acara_sml_id })}
-                className="mt-4 inline-block text-xs font-medium text-indigo-700 hover:underline"
+                className="bs-link mt-4 inline-block text-sm"
               >
                 {t.viewOnMap} →
               </Link>
@@ -538,10 +532,10 @@ export default function SchoolBody({ locale, state, slug }: { locale: Locale; st
       )}
 
       {peers.length > 0 && (
-        <section className="mt-8" aria-labelledby="nearby">
-          <h3 id="nearby" className="text-base font-semibold">
+        <section className="bs-section" aria-labelledby="nearby">
+          <h2 id="nearby" className="bs-h2">
             {formatMessage(t.peersHeading, { suburb: school.suburb })}
-          </h3>
+          </h2>
           <ul className="mt-3 grid gap-2 sm:grid-cols-2">
             {peers.map(peer => (
               <SchoolLinkCard key={peer.id} school={peer} slug={getSchoolSlug(peer)} locale={locale} />
@@ -549,7 +543,7 @@ export default function SchoolBody({ locale, state, slug }: { locale: Locale; st
           </ul>
           <Link
             href={suburbPath(school.state, school.suburb, locale)}
-            className="mt-3 inline-block text-xs font-medium text-indigo-700 hover:underline"
+            className="bs-link mt-3 inline-block text-sm"
           >
             {formatMessage(t.peersAll, { suburb: school.suburb })} →
           </Link>
@@ -557,11 +551,11 @@ export default function SchoolBody({ locale, state, slug }: { locale: Locale; st
       )}
 
       {nearby.length > 0 && (
-        <section className="mt-8" aria-labelledby="nearby-schools">
-          <h3 id="nearby-schools" className="text-base font-semibold">
+        <section className="bs-section" aria-labelledby="nearby-schools">
+          <h2 id="nearby-schools" className="bs-h2">
             {formatMessage(t.nearbyHeading, { suburb: school.suburb })}
-          </h3>
-          <p className="mt-1 text-xs text-gray-500">
+          </h2>
+          <p className="mt-1.5 text-sm text-muted">
             {formatMessage(t.nearbyHint, { suburb: school.suburb })}
           </p>
           <ul className="mt-3 grid gap-2 sm:grid-cols-2">
@@ -581,10 +575,10 @@ export default function SchoolBody({ locale, state, slug }: { locale: Locale; st
         </section>
       )}
 
-      <section className="mt-10" aria-labelledby="profile">
-        <h2 id="profile" className="text-lg font-semibold tracking-tight">{t.profileHeading}</h2>
-        <p className="mt-1 text-xs text-gray-500">{formatMessage(t.profileSource, { year: ACARA_DATA_YEAR })}</p>
-        <dl className="mt-3 rounded-lg border border-gray-200 px-3">
+      <section className="bs-section" aria-labelledby="profile">
+        <h2 id="profile" className="bs-h2">{t.profileHeading}</h2>
+        <p className="mt-1.5 text-sm text-muted">{formatMessage(t.profileSource, { year: ACARA_DATA_YEAR })}</p>
+        <dl className="mt-3">
           <Fact label={t.fieldSector} value={getSectorLabel(school.sector, dictionary)} />
           {school.school_type && (
             <Fact label={t.fieldType} value={getSchoolTypeLabel(school.school_type, dictionary)} />
@@ -609,7 +603,7 @@ export default function SchoolBody({ locale, state, slug }: { locale: Locale; st
                 <>
                   {school.icsea}
                   {Number.isFinite(school.icsea_percentile) && (
-                    <span className="text-gray-500">
+                    <span className="text-muted">
                       {' · '}
                       {formatMessage(t.icseaPercentile, { value: ordinalNumber(Number(school.icsea_percentile), locale) })}
                     </span>
@@ -658,9 +652,9 @@ export default function SchoolBody({ locale, state, slug }: { locale: Locale; st
         </dl>
       </section>
 
-      <section className="mt-10 rounded-lg bg-gray-50 p-4">
-        <h2 className="text-sm font-semibold">{t.naplanHeading}</h2>
-        <p className="mt-1 text-xs text-gray-600">
+      <section className="bs-section">
+        <h2 className="bs-h2 text-xl">{t.naplanHeading}</h2>
+        <p className="mt-1.5 text-[15px] text-ink-2">
           {t.naplanBody}
         </p>
       </section>

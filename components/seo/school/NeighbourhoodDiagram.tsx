@@ -4,6 +4,17 @@ import type { NearbySchool } from '@/lib/schoolsData';
 import { kmOffset, ringStepKm } from '@/lib/schoolInsights';
 import { CATCHMENT_COLORS, getMarkerColor, getMarkerRadius } from '@/utils/schoolFilters';
 
+// Theme tokens (globals.css). Set through `style` because SVG presentation
+// attributes do not reliably resolve var().
+const ZONE = 'var(--bs-zone)';
+const RING = 'var(--bs-soft-strong)';
+const LABEL = 'var(--bs-muted)';
+const HALO = 'var(--bs-soft)';
+const INK = 'var(--bs-ink)';
+// Secondary zones are dashed so a school with both kinds still shows two
+// outlines without spending a second hue.
+const KIND_DASH: Record<string, string | undefined> = { secondary: '5 3' };
+
 const SIZE = 360;
 const CENTRE = SIZE / 2;
 const PLOT_RADIUS = 150;
@@ -118,22 +129,21 @@ export default function NeighbourhoodDiagram({
       viewBox={`0 0 ${SIZE} ${SIZE}`}
       role="img"
       aria-label={title}
-      className="w-full max-w-[360px] rounded-xl border border-gray-200 bg-slate-50"
+      className="w-full max-w-[360px] rounded-inner bg-soft"
     >
       <title>{title}</title>
 
       {rings.map(km => (
         <g key={km}>
-          <circle cx={CENTRE} cy={CENTRE} r={km * pxPerKm} fill="none" stroke="#cbd5e1" strokeWidth="1" />
+          <circle cx={CENTRE} cy={CENTRE} r={km * pxPerKm} fill="none" strokeWidth="1" style={{ stroke: RING }} />
           <text
             x={CENTRE}
             y={CENTRE - km * pxPerKm - 3}
             textAnchor="middle"
             fontSize="9"
-            fill="#64748b"
-            stroke="#f8fafc"
             strokeWidth="3"
             paintOrder="stroke"
+            style={{ fill: LABEL, stroke: HALO }}
           >
             {kmLabel(formatKm(km))}
           </text>
@@ -141,18 +151,17 @@ export default function NeighbourhoodDiagram({
       ))}
 
       {drawable.map(zone => {
-        const style = CATCHMENT_COLORS[zone.properties.kind] ?? CATCHMENT_COLORS.primary;
+        const kind = zone.properties.kind;
         return (
           <path
-            key={zone.properties.zone_id ?? zone.properties.kind}
+            key={zone.properties.zone_id ?? kind}
             d={zonePath(zone, school, pxPerKm)}
-            fill={style.color}
-            fillOpacity="0.07"
+            fillOpacity="0.1"
             fillRule="evenodd"
-            stroke={style.color}
-            strokeWidth="1.5"
-            strokeDasharray={style.dashArray}
+            strokeWidth="1.75"
+            strokeDasharray={KIND_DASH[kind] ?? CATCHMENT_COLORS[kind]?.dashArray}
             strokeLinejoin="round"
+            style={{ fill: ZONE, stroke: ZONE }}
           />
         );
       })}
@@ -175,10 +184,10 @@ export default function NeighbourhoodDiagram({
 
       {/* Selection is drawn the way the map draws it: sector fill kept, picked
           out by a white gap and a neutral slate ring rather than another hue. */}
-      <circle cx={CENTRE} cy={CENTRE} r={ownRadius + 4} fill="#ffffff" stroke="#0f172a" strokeWidth="1.5" />
+      <circle cx={CENTRE} cy={CENTRE} r={ownRadius + 4} fill="#ffffff" strokeWidth="1.5" style={{ stroke: INK }} />
       <circle cx={CENTRE} cy={CENTRE} r={ownRadius} fill={getMarkerColor(school.sector)} />
 
-      <g transform={`translate(${SIZE - 22}, 26)`} fill="#64748b">
+      <g transform={`translate(${SIZE - 22}, 26)`} style={{ fill: LABEL }}>
         <path d="M0,-12 L4,0 L0,-3 L-4,0 Z" />
         <text y="11" textAnchor="middle" fontSize="9">{northLabel}</text>
       </g>

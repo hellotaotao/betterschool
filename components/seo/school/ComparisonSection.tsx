@@ -104,14 +104,14 @@ export default function ComparisonSection({ school, locale }: { school: School; 
   const listRanks = displayRanks(listed, 'icsea');
 
   return (
-    <section className="mt-10" aria-labelledby="compare">
-      <h2 id="compare" className="text-lg font-semibold tracking-tight">
+    <section className="bs-section" aria-labelledby="compare">
+      <h2 id="compare" className="bs-h2">
         {formatMessage(t.compareHeading, { school: school.school_name })}
       </h2>
       <div className="mt-3 overflow-x-auto scroll-shadow-x">
         <table className="w-full min-w-[28rem] text-sm">
           <thead>
-            <tr className="border-b border-gray-200 text-left text-xs text-gray-500">
+            <tr className="border-b border-line-strong text-left text-[13px] text-muted">
               <th scope="col" className="py-2 pr-3 font-medium">{t.compareColMeasure}</th>
               <th scope="col" className="py-2 pr-3 font-medium">{t.compareColSchool}</th>
               {showNearbyColumn && <th scope="col" className="py-2 pr-3 font-medium">{t.compareColNearby}</th>}
@@ -120,8 +120,8 @@ export default function ComparisonSection({ school, locale }: { school: School; 
           </thead>
           <tbody>
             {rows.map(row => (
-              <tr key={row.metric} className="border-b border-gray-100">
-                <th scope="row" className="py-2 pr-3 text-left font-normal text-gray-600">{label[row.metric]}</th>
+              <tr key={row.metric} className="border-b border-line">
+                <th scope="row" className="py-2 pr-3 text-left font-normal text-ink-2">{label[row.metric]}</th>
                 <td className="py-2 pr-3 font-semibold tabular-nums">{row.value}</td>
                 {showNearbyColumn && <td className="py-2 pr-3">{row.nearby}</td>}
                 <td className="py-2">{row.state}</td>
@@ -130,14 +130,14 @@ export default function ComparisonSection({ school, locale }: { school: School; 
           </tbody>
         </table>
       </div>
-      <p className="mt-2 text-xs text-gray-500">
+      <p className="mt-2 text-[13px] text-muted">
         {showNearbyColumn && <>{formatMessage(t.compareIntroNearby, { count: group.length, type: noun, km: MAX_KM })} </>}
         {formatMessage(t.compareIntroState, { type: noun, state: stateLabel })}{' '}
         {formatMessage(t.compareSource, { year: ACARA_DATA_YEAR })}
       </p>
       {stateRanking && (
-        <p className="mt-2 text-xs">
-          <Link href={rankingPath(stateRanking.state, stateRanking.slug, locale)} className="text-indigo-700 hover:underline">
+        <p className="mt-2 text-[13px]">
+          <Link href={rankingPath(stateRanking.state, stateRanking.slug, locale)} className="text-link hover:underline">
             {formatMessage(t.compareRankingLink, {
               group: localeRankingGroup(locale, stateRanking.schoolType, null),
               state: stateLabel,
@@ -154,7 +154,7 @@ export default function ComparisonSection({ school, locale }: { school: School; 
           <div className="mt-2 overflow-x-auto scroll-shadow-x">
             <table className="w-full min-w-[30rem] text-sm">
               <thead>
-                <tr className="border-b border-gray-200 text-left text-xs text-gray-500">
+                <tr className="border-b border-line-strong text-left text-[13px] text-muted">
                   <th scope="col" className="w-8 py-2 pr-2 font-medium">#</th>
                   <th scope="col" className="py-2 pr-3 font-medium">{t.compareColName}</th>
                   <th scope="col" className="py-2 pr-3 font-medium">{t.fieldSector}</th>
@@ -171,26 +171,26 @@ export default function ComparisonSection({ school, locale }: { school: School; 
                   const icsea = metricValue(entry, 'icsea');
                   const students = metricValue(entry, 'enrolments');
                   return (
-                    <tr key={entry.id} className={`border-b border-gray-100 ${isSelf ? 'bg-slate-50 font-semibold' : ''}`}>
-                      <td className="py-2 pr-2 tabular-nums text-gray-500">{listRanks[index] ?? '—'}</td>
+                    <tr key={entry.id} className={`border-b border-line ${isSelf ? 'bg-soft font-semibold' : ''}`}>
+                      <td className="py-2 pr-2 tabular-nums text-muted">{listRanks[index] ?? '—'}</td>
                       <td className="py-2 pr-3">
                         {isSelf || !slug ? (
                           <span>
                             {entry.school_name}
-                            {isSelf && <span className="ml-1 text-xs font-normal text-gray-500">({t.compareThisSchool})</span>}
+                            {isSelf && <span className="ml-1 text-[13px] font-normal text-muted">({t.compareThisSchool})</span>}
                           </span>
                         ) : (
-                          <Link href={schoolPath(entry.state, slug, locale)} className="text-indigo-700 hover:underline">
+                          <Link href={schoolPath(entry.state, slug, locale)} className="text-link hover:underline">
                             {entry.school_name}
                           </Link>
                         )}
                       </td>
                       <td className="py-2 pr-3">
-                        <span className={`whitespace-nowrap rounded-full px-2 py-0.5 text-[10px] font-medium ${sectorBadgeClass(entry.sector)}`}>
+                        <span className={`whitespace-nowrap rounded-full px-2 py-0.5 text-xs font-medium ${sectorBadgeClass(entry.sector)}`}>
                           {getSectorLabel(entry.sector, dictionary)}
                         </span>
                       </td>
-                      <td className="py-2 pr-3 text-right tabular-nums text-gray-600">
+                      <td className="py-2 pr-3 text-right tabular-nums text-ink-2">
                         {km === undefined ? '—' : formatMessage(t.diagramKm, { km: km.toFixed(1) })}
                       </td>
                       <td className="py-2 pr-3 text-right tabular-nums">{icsea ?? '—'}</td>
@@ -201,7 +201,7 @@ export default function ComparisonSection({ school, locale }: { school: School; 
               </tbody>
             </table>
           </div>
-          <p className="mt-2 text-xs text-gray-500">{t.icseaNote}</p>
+          <p className="mt-2 text-[13px] text-muted">{t.icseaNote}</p>
         </>
       )}
     </section>

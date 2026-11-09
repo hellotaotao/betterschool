@@ -23,15 +23,15 @@ export default function SchoolLinkCard({
     <li>
       <Link
         href={schoolPath(school.state, slug, locale)}
-        className="block rounded-lg border border-gray-200 p-3 hover:border-indigo-400 hover:bg-indigo-50/40 transition-colors"
+        className="bs-tile h-full"
       >
-        <span className="block text-sm font-semibold text-gray-900">{school.school_name}</span>
-        <span className="block text-xs text-gray-500 mt-0.5">
+        <span className="block font-semibold text-ink">{school.school_name}</span>
+        <span className="mt-0.5 block text-sm text-muted">
           {school.suburb}, {school.state} {school.postcode}
         </span>
-        {distance && <span className="block text-[11px] text-gray-400 mt-0.5">{distance}</span>}
-        <span className="mt-2 flex flex-wrap items-center gap-x-2 gap-y-1 text-xs text-gray-500">
-          <span className={`rounded-full px-2 py-0.5 text-[11px] ${sectorBadgeClass(school.sector)}`}>
+        {distance && <span className="mt-0.5 block text-[13px] text-muted">{distance}</span>}
+        <span className="mt-2 flex flex-wrap items-center gap-x-2 gap-y-1 text-[13px] text-muted">
+          <span className={`whitespace-nowrap rounded-full px-2 py-0.5 text-xs font-semibold ${sectorBadgeClass(school.sector)}`}>
             {getSectorLabel(school.sector, dictionary)}
           </span>
           {school.school_type && <span>{getSchoolTypeLabel(school.school_type, dictionary)}</span>}

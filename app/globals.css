@@ -18,6 +18,393 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
+/* ---------------------------------------------------------------------------
+   SEO page themes (docs/specs/2026-11-10-multi-theme-design.md)
+
+   <html data-theme> picks one block of --bs-* tokens; components use only the
+   semantic utilities mapped below, so the HTML is identical in every theme.
+   Sector hues (SECTOR_COLORS) are deliberately not tokens: they mean sector on
+   every surface and never change with the theme.
+   ------------------------------------------------------------------------- */
+
+:root,
+[data-theme="bright"] {
+  --bs-canvas: #eef4ff;
+  --bs-surface: #ffffff;
+  --bs-soft: #eef4ff;
+  --bs-soft-strong: #d6e2ff;
+  --bs-ink: #0e1b3d;
+  --bs-ink-2: #34406a;
+  --bs-muted: #5a6787;
+  --bs-line: #e6eaf2;
+  --bs-line-strong: #c9d3e6;
+  --bs-brand: #1f5eea;
+  --bs-brand-deep: #1a4fd6;
+  --bs-on-brand: #ffffff;
+  --bs-on-brand-muted: #dce6ff;
+  --bs-link: #1a4fd6;
+  --bs-accent: #ffd34d;
+  --bs-on-accent: #3d2c00;
+  --bs-accent-soft: #fff3c4;
+  --bs-on-accent-soft: #6b4e00;
+  --bs-zone: #1f5eea;
+  --bs-data-1: #d6e2ff;
+  --bs-data-2: #9db6f5;
+  --bs-data-3: #5b86f0;
+  --bs-data-4: #1a4fd6;
+  --bs-font-display: var(--font-bricolage), "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans CJK SC", sans-serif;
+  --bs-font-body: var(--font-dm-sans), "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans CJK SC", sans-serif;
+  --bs-radius-card: 1.5rem;
+  --bs-radius-inner: 1rem;
+  --bs-radius-ctl: 999px;
+}
+
+[data-theme="atlas"] {
+  --bs-canvas: #ffffff;
+  --bs-surface: #ffffff;
+  --bs-soft: #f6f7f9;
+  --bs-soft-strong: #dde1e8;
+  --bs-ink: #14213d;
+  --bs-ink-2: #3a4459;
+  --bs-muted: #5f6879;
+  --bs-line: #e3e5ea;
+  --bs-line-strong: #14213d;
+  --bs-brand: #14213d;
+  --bs-brand-deep: #0b1428;
+  --bs-on-brand: #ffffff;
+  --bs-on-brand-muted: #c9cfda;
+  --bs-link: #1f4fa3;
+  --bs-accent: #14213d;
+  --bs-on-accent: #ffffff;
+  --bs-accent-soft: #f6f7f9;
+  --bs-on-accent-soft: #3a4459;
+  --bs-zone: #14213d;
+  --bs-data-1: #d5dae3;
+  --bs-data-2: #a3adbf;
+  --bs-data-3: #5d6b85;
+  --bs-data-4: #14213d;
+  --bs-font-display: var(--font-newsreader), "Songti SC", "Noto Serif CJK SC", "Source Han Serif SC", SimSun, serif;
+  --bs-font-body: var(--font-plex-sans), "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans CJK SC", sans-serif;
+  --bs-radius-card: 0;
+  --bs-radius-inner: 0.375rem;
+  --bs-radius-ctl: 0.375rem;
+}
+
+[data-theme="harbour"] {
+  --bs-canvas: #ffffff;
+  --bs-surface: #ffffff;
+  --bs-soft: #eaf0fb;
+  --bs-soft-strong: #c9d6f2;
+  --bs-ink: #14213d;
+  --bs-ink-2: #34405c;
+  --bs-muted: #4a5878;
+  --bs-line: #e1e6f0;
+  --bs-line-strong: #183a8c;
+  --bs-brand: #183a8c;
+  --bs-brand-deep: #0f2557;
+  --bs-on-brand: #ffffff;
+  --bs-on-brand-muted: #c9d6f2;
+  --bs-link: #1f4fa3;
+  --bs-accent: #183a8c;
+  --bs-on-accent: #ffffff;
+  --bs-accent-soft: #eaf0fb;
+  --bs-on-accent-soft: #183a8c;
+  --bs-zone: #183a8c;
+  --bs-data-1: #d6e0f5;
+  --bs-data-2: #9db2e3;
+  --bs-data-3: #4f6fc0;
+  --bs-data-4: #183a8c;
+  --bs-font-display: var(--font-newsreader), "Songti SC", "Noto Serif CJK SC", "Source Han Serif SC", SimSun, serif;
+  --bs-font-body: var(--font-plex-sans), "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans CJK SC", sans-serif;
+  --bs-radius-card: 0.5rem;
+  --bs-radius-inner: 0.375rem;
+  --bs-radius-ctl: 0.375rem;
+}
+
+/* `inline` makes each utility emit var(--bs-…) directly, so a block can
+   re-scope the tokens (the harbour hero turns ink white) and every utility
+   inside it follows. */
+@theme inline {
+  --color-canvas: var(--bs-canvas);
+  --color-surface: var(--bs-surface);
+  --color-soft: var(--bs-soft);
+  --color-soft-strong: var(--bs-soft-strong);
+  --color-ink: var(--bs-ink);
+  --color-ink-2: var(--bs-ink-2);
+  --color-muted: var(--bs-muted);
+  --color-line: var(--bs-line);
+  --color-line-strong: var(--bs-line-strong);
+  --color-brand: var(--bs-brand);
+  --color-brand-deep: var(--bs-brand-deep);
+  --color-on-brand: var(--bs-on-brand);
+  --color-on-brand-muted: var(--bs-on-brand-muted);
+  --color-link: var(--bs-link);
+  --color-accent: var(--bs-accent);
+  --color-on-accent: var(--bs-on-accent);
+  --color-accent-soft: var(--bs-accent-soft);
+  --color-on-accent-soft: var(--bs-on-accent-soft);
+  --color-zone: var(--bs-zone);
+  --color-data-1: var(--bs-data-1);
+  --color-data-2: var(--bs-data-2);
+  --color-data-3: var(--bs-data-3);
+  --color-data-4: var(--bs-data-4);
+  --font-display: var(--bs-font-display);
+  --font-body: var(--bs-font-body);
+  --radius-card: var(--bs-radius-card);
+  --radius-inner: var(--bs-radius-inner);
+  --radius-ctl: var(--bs-radius-ctl);
+}
+
+@layer components {
+  .bs-page {
+    background: var(--bs-canvas);
+    color: var(--bs-ink);
+    font-family: var(--bs-font-body);
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+
+  /* A content block: a white card on the sky ground in bright, a section under
+     a hairline in the editorial themes. */
+  .bs-section {
+    margin-top: 1.25rem;
+    padding: 1.5rem;
+    background: var(--bs-surface);
+    border-radius: var(--bs-radius-card);
+    box-shadow: 0 1px 2px rgb(14 27 61 / 0.04), 0 6px 20px rgb(14 27 61 / 0.05);
+  }
+  @media (min-width: 640px) {
+    .bs-section { padding: 1.75rem 2rem; }
+  }
+  [data-theme="atlas"] .bs-section,
+  [data-theme="harbour"] .bs-section {
+    margin-top: 2.5rem;
+    padding: 2rem 0 0;
+    background: transparent;
+    border-radius: 0;
+    box-shadow: none;
+    border-top: 1px solid var(--bs-line);
+  }
+  /* The hero already closes the block above; a rule straight under it reads
+     as a stray line, most of all under harbour's colour band. */
+  [data-theme="atlas"] .bs-hero + .bs-section,
+  [data-theme="harbour"] .bs-hero + .bs-section {
+    border-top: 0;
+    padding-top: 0;
+  }
+
+  /* The page's title block. Harbour paints it in the brand colour edge to edge
+     from inside the reading column: the shadow fills sideways and clip-path
+     keeps it to the block's own height, so no wrapper element is needed. */
+  .bs-hero {
+    padding: 1.75rem 1.5rem;
+    background: var(--bs-surface);
+    border-radius: var(--bs-radius-card);
+    box-shadow: 0 1px 2px rgb(14 27 61 / 0.04), 0 6px 20px rgb(14 27 61 / 0.05);
+  }
+  @media (min-width: 640px) {
+    .bs-hero { padding: 2.25rem 2.5rem; }
+  }
+  [data-theme="atlas"] .bs-hero {
+    padding: 0.5rem 0 0;
+    background: transparent;
+    border-radius: 0;
+    box-shadow: none;
+  }
+  [data-theme="harbour"] .bs-hero {
+    --bs-ink: #ffffff;
+    --bs-ink-2: #e3e9f7;
+    --bs-muted: #c9d6f2;
+    --bs-link: #ffffff;
+    --bs-line: rgb(255 255 255 / 0.2);
+    --bs-line-strong: rgb(255 255 255 / 0.4);
+    --bs-soft: rgb(255 255 255 / 0.12);
+    --bs-soft-strong: rgb(255 255 255 / 0.3);
+    padding: 2.5rem 0 3rem;
+    background: var(--bs-brand);
+    color: var(--bs-ink);
+    border-radius: 0;
+    box-shadow: 0 0 0 100vmax var(--bs-brand);
+    clip-path: inset(0 -100vmax);
+  }
+  [data-theme="harbour"] .bs-hero .bs-btn {
+    background: #ffffff;
+    color: var(--bs-brand);
+  }
+  [data-theme="harbour"] .bs-hero .bs-btn-quiet {
+    background: transparent;
+    color: #ffffff;
+    box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.45);
+  }
+
+  .bs-h1 {
+    font-family: var(--bs-font-display);
+    font-size: 2.25rem;
+    line-height: 1.04;
+    font-weight: 700;
+    letter-spacing: -0.035em;
+    text-wrap: balance;
+  }
+  @media (min-width: 640px) {
+    .bs-h1 { font-size: 3rem; }
+  }
+  .bs-h2 {
+    font-family: var(--bs-font-display);
+    font-size: 1.5rem;
+    line-height: 1.2;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+  }
+  [data-theme="atlas"] :is(.bs-h1, .bs-h2),
+  [data-theme="harbour"] :is(.bs-h1, .bs-h2) {
+    font-weight: 500;
+    letter-spacing: -0.02em;
+  }
+
+  /* Small labels: sentence case in bright, small capitals in the editorial
+     themes. */
+  .bs-label {
+    font-size: 0.8125rem;
+    font-weight: 600;
+    color: var(--bs-muted);
+  }
+  [data-theme="atlas"] .bs-label,
+  [data-theme="harbour"] .bs-label {
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  .bs-figure {
+    font-family: var(--bs-font-display);
+    font-variant-numeric: tabular-nums lining-nums;
+    font-size: 2.25rem;
+    line-height: 1.05;
+    font-weight: 700;
+    letter-spacing: -0.03em;
+  }
+  [data-theme="atlas"] .bs-figure,
+  [data-theme="harbour"] .bs-figure {
+    font-weight: 500;
+  }
+  [data-theme="harbour"] .bs-figure {
+    color: var(--bs-brand);
+  }
+  [data-theme="harbour"] .bs-hero .bs-figure {
+    color: #ffffff;
+  }
+
+  /* One figure or fact in a grid: a filled tile in bright, a ruled cell in the
+     editorial themes. */
+  .bs-stat {
+    padding: 1rem 1.125rem;
+    background: var(--bs-soft);
+    border-radius: var(--bs-radius-inner);
+  }
+  [data-theme="atlas"] .bs-stat,
+  [data-theme="harbour"] .bs-stat {
+    padding: 0.875rem 0 0;
+    background: transparent;
+    border-radius: 0;
+    border-top: 1px solid var(--bs-line-strong);
+  }
+
+  .bs-btn,
+  .bs-btn-quiet {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    min-height: 2.75rem;
+    padding: 0 1.25rem;
+    border-radius: var(--bs-radius-ctl);
+    font-size: 0.9375rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background-color 0.15s ease;
+  }
+  .bs-btn {
+    background: var(--bs-brand);
+    color: var(--bs-on-brand);
+  }
+  .bs-btn:hover {
+    background: var(--bs-brand-deep);
+  }
+  .bs-btn-quiet {
+    background: var(--bs-soft);
+    color: var(--bs-link);
+  }
+  .bs-btn-quiet:hover {
+    background: var(--bs-soft-strong);
+  }
+  [data-theme="atlas"] .bs-btn-quiet,
+  [data-theme="harbour"] .bs-btn-quiet {
+    background: transparent;
+    color: var(--bs-ink);
+    box-shadow: inset 0 0 0 1px #c9ced8;
+  }
+
+  .bs-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+    padding: 0.25rem 0.75rem;
+    border-radius: var(--bs-radius-ctl);
+    background: var(--bs-soft);
+    color: var(--bs-ink-2);
+    font-size: 0.8125rem;
+    font-weight: 600;
+  }
+  button.bs-chip,
+  a.bs-chip {
+    min-height: 2.25rem;
+  }
+  .bs-chip[aria-current],
+  .bs-chip[aria-pressed="true"] {
+    background: var(--bs-brand);
+    color: var(--bs-on-brand);
+  }
+
+  /* A caveat or call-out. Yellow-tinted in bright; plain soft panel in the
+     editorial themes, which have no accent hue. */
+  .bs-note {
+    padding: 1rem 1.25rem;
+    background: var(--bs-accent-soft);
+    color: var(--bs-on-accent-soft);
+    border-radius: var(--bs-radius-inner);
+  }
+
+  /* A linked card for a school or suburb. */
+  .bs-tile {
+    display: block;
+    padding: 0.875rem 1rem;
+    background: var(--bs-soft);
+    border-radius: var(--bs-radius-inner);
+    color: var(--bs-ink);
+    transition: box-shadow 0.15s ease;
+  }
+  .bs-tile:hover {
+    box-shadow: inset 0 0 0 2px var(--bs-brand);
+  }
+  [data-theme="atlas"] .bs-tile,
+  [data-theme="harbour"] .bs-tile {
+    background: transparent;
+    box-shadow: inset 0 0 0 1px var(--bs-line);
+  }
+  [data-theme="atlas"] .bs-tile:hover,
+  [data-theme="harbour"] .bs-tile:hover {
+    box-shadow: inset 0 0 0 1px var(--bs-line-strong);
+  }
+
+  .bs-link {
+    color: var(--bs-link);
+    font-weight: 600;
+  }
+  .bs-link:hover {
+    text-decoration: underline;
+  }
+}
+
 @layer utilities {
   .text-balance {
     text-wrap: balance;
@@ -34,8 +421,8 @@ body {
      content and cover the shadow once that edge is reached. */
   .scroll-shadow-x {
     background:
-      linear-gradient(to right, #fff 30%, rgb(255 255 255 / 0)) left center / 2.5rem 100% no-repeat local,
-      linear-gradient(to left, #fff 30%, rgb(255 255 255 / 0)) right center / 2.5rem 100% no-repeat local,
+      linear-gradient(to right, var(--bs-surface, #fff) 30%, rgb(255 255 255 / 0)) left center / 2.5rem 100% no-repeat local,
+      linear-gradient(to left, var(--bs-surface, #fff) 30%, rgb(255 255 255 / 0)) right center / 2.5rem 100% no-repeat local,
       radial-gradient(farthest-side at 0 50%, rgb(15 23 42 / 0.16), transparent) left center / 0.875rem 100% no-repeat scroll,
       radial-gradient(farthest-side at 100% 50%, rgb(15 23 42 / 0.16), transparent) right center / 0.875rem 100% no-repeat scroll;
   }

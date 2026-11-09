@@ -159,7 +159,8 @@
       "footerLabel": "数据来源：",
       "acaraLinkText": "ACARA",
       "otherLanguage": "English",
-      "breadcrumb": "面包屑导航"
+      "breadcrumb": "面包屑导航",
+      "mainNav": "主导航"
     },
     "browse": {
       "metaTitle": "按州和城区浏览澳洲学校",

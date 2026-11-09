@@ -77,37 +77,56 @@ export default function CatchmentBody({ locale, state, slug }: { locale: Locale;
         { label: zone ? t.crumbZone : t.crumb },
       ]}
     >
-      <h1 className="text-2xl font-bold tracking-tight">
+      <header className="bs-hero">
+      <h1 className="bs-h1">
         {formatMessage(zone ? t.headingZone : t.heading, { school: school.school_name })}
       </h1>
-      <p className="mt-1 text-sm text-gray-500">
+      <p className="mt-2 text-[15px] text-muted">
         {school.suburb}, {full} {school.postcode}
       </p>
 
-      <div className="mt-4">
+      <div className="mt-6">
         <Link
           href={mapUrl({ locale, school: school.acara_sml_id, catchment: true })}
-          className="rounded-full bg-indigo-600 px-4 py-1.5 text-xs font-medium text-white hover:bg-indigo-700"
+          className="bs-btn"
         >
           {t.seeOnMap}
         </Link>
       </div>
 
-      <section className="mt-8" aria-labelledby="zone">
-        <h2 id="zone" className="text-base font-semibold">{t.zoneHeading}</h2>
-        <dl className="mt-3 rounded-lg border border-gray-200 px-3">
+      <section className="bs-note mt-6 max-w-2xl" aria-labelledby="check">
+        <h2 id="check" className="text-base font-bold">{t.checkHeading}</h2>
+        <p className="mt-1 text-[15px] leading-relaxed">
+          {formatMessage(t.checkBody, { state: localeStateLabel(locale, school.state) })}
+        </p>
+        {finderUrl && (
+          <a
+            href={finderUrl}
+            target="_blank"
+            rel="noreferrer"
+            className="mt-2 inline-block text-[15px] font-semibold underline"
+          >
+            {formatMessage(t.schoolFinderLink, { state: localeStateLabel(locale, school.state) })} →
+          </a>
+        )}
+      </section>
+      </header>
+
+      <section className="bs-section" aria-labelledby="zone">
+        <h2 id="zone" className="bs-h2">{t.zoneHeading}</h2>
+        <dl className="mt-3">
           {catchments.map(catchment => {
             const changed = formatBoundaryDate(catchment.boundary_updated, locale);
             return (
-              <div key={catchment.geometry_url} className="py-2 border-b border-gray-100 last:border-0 sm:grid sm:grid-cols-3 sm:gap-3">
-                <dt className="text-xs text-gray-500 sm:col-span-1">
+              <div key={catchment.geometry_url} className="border-b border-line py-2.5 last:border-0 sm:grid sm:grid-cols-3 sm:gap-3">
+                <dt className="text-[13px] text-muted sm:col-span-1">
                   {formatMessage(t.zoneKind, { kind: localeKind(locale, catchment.kind) })}
                 </dt>
-                <dd className="text-sm text-gray-900 sm:col-span-2">
+                <dd className="text-[15px] font-semibold text-ink sm:col-span-2">
                   {catchment.year_levels.length > 0
                     ? formatMessage(t.zoneYears, { levels: catchment.year_levels.join(', ') })
                     : t.zoneYearsUnknown}
-                  <span className="block text-[11px] text-gray-400 mt-0.5">
+                  <span className="mt-0.5 block text-[13px] font-normal text-muted">
                     {formatMessage(t.zoneDataYear, { year: catchment.data_year })}
                     {catchment.effective_year
                       ? ` · ${formatMessage(t.zoneEffective, { year: catchment.effective_year })}`
@@ -120,26 +139,9 @@ export default function CatchmentBody({ locale, state, slug }: { locale: Locale;
           })}
         </dl>
         {catchments.length > 1 && (
-          <p className="mt-2 text-xs text-gray-500">
+          <p className="mt-2 text-[13px] text-muted">
             {formatMessage(t.zoneVariantsNote, { count: catchments.length })}
           </p>
-        )}
-      </section>
-
-      <section className="mt-8 rounded-lg border border-amber-200 bg-amber-50/60 p-3">
-        <h2 className="text-sm font-semibold text-amber-900">{t.checkHeading}</h2>
-        <p className="mt-1 text-xs text-amber-900/80 leading-relaxed">
-          {formatMessage(t.checkBody, { state: localeStateLabel(locale, school.state) })}
-        </p>
-        {finderUrl && (
-          <a
-            href={finderUrl}
-            target="_blank"
-            rel="noreferrer"
-            className="mt-2 inline-block text-xs font-medium text-amber-900 underline"
-          >
-            {formatMessage(t.schoolFinderLink, { state: localeStateLabel(locale, school.state) })} →
-          </a>
         )}
       </section>
 
@@ -147,8 +149,8 @@ export default function CatchmentBody({ locale, state, slug }: { locale: Locale;
         const first = variants[0];
         const sectionId = `inside-${first.zone_id ?? first.geometry_url.replace(/[^a-z0-9]+/gi, '-')}`;
         return (
-          <section key={first.geometry_url} className="mt-8" aria-labelledby={sectionId}>
-            <h2 id={sectionId} className="text-base font-semibold">
+          <section key={first.geometry_url} className="bs-section" aria-labelledby={sectionId}>
+            <h2 id={sectionId} className="bs-h2">
               {distinguishingYears?.length
                 ? formatMessage(t.insideHeadingKindYears, {
                   kind: localeKind(locale, kind),
@@ -156,11 +158,11 @@ export default function CatchmentBody({ locale, state, slug }: { locale: Locale;
                 })
                 : formatMessage(t.insideHeadingKind, { kind: localeKind(locale, kind) })}
             </h2>
-            <p className="mt-1 text-xs text-gray-500">{t.insideHint}</p>
+            <p className="mt-1.5 text-sm text-muted">{t.insideHint}</p>
             {suburbs.length > 0 && (
-              <p className="mt-2 text-sm text-gray-700">
+              <p className="mt-2 text-[15px] text-ink-2">
                 {formatMessage(t.insideSuburbs, { suburbs: suburbs.join(', ') })}{' '}
-                <span className="text-gray-500">{t.insideSuburbsCaveat}</span>
+                <span className="text-muted">{t.insideSuburbsCaveat}</span>
               </p>
             )}
             {inside.length > 0 ? (
@@ -170,17 +172,17 @@ export default function CatchmentBody({ locale, state, slug }: { locale: Locale;
                 ))}
               </ul>
             ) : (
-              <p className="mt-3 text-sm text-gray-700">{t.insideNone}</p>
+              <p className="mt-3 text-[15px] text-ink-2">{t.insideNone}</p>
             )}
           </section>
         );
       })}
 
-      <section className="mt-8">
-        <h2 className="text-base font-semibold">
+      <section className="bs-section">
+        <h2 className="bs-h2">
           {formatMessage(t.aboutHeading, { school: school.school_name })}
         </h2>
-        <p className="mt-2 text-sm text-gray-700">
+        <p className="mt-2 text-[15px] text-ink-2">
           {formatMessage(t.aboutBody, {
             sector: getSectorLabel(school.sector, dictionary),
             type: school.school_type ? getSchoolTypeLabel(school.school_type, dictionary) : '',
@@ -192,7 +194,7 @@ export default function CatchmentBody({ locale, state, slug }: { locale: Locale;
         </p>
         <Link
           href={schoolPath(school.state, slug, locale)}
-          className="mt-2 inline-block text-xs font-medium text-indigo-700 hover:underline"
+          className="bs-link mt-2 inline-block text-[15px]"
         >
           {formatMessage(t.fullProfileLink, { school: school.school_name })} →
         </Link>

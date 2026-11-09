@@ -1,11 +1,27 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import { Inter } from "next/font/google";
+import { Bricolage_Grotesque, DM_Sans, IBM_Plex_Sans, Inter, Newsreader } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import { SITE_NAME, SITE_URL } from "@/lib/site";
 import { coveredCatchmentStates, getMessages } from "@/lib/i18n";
+import { DEFAULT_THEME, themeBootScript } from "@/lib/theme";
 
 const inter = Inter({ subsets: ["latin"] });
+
+// SEO page fonts, exposed as CSS variables for the theme tokens in globals.css.
+// Only the default theme's pair preloads; the others download only when a
+// page actually renders in their theme.
+const bricolage = Bricolage_Grotesque({ subsets: ["latin"], variable: "--font-bricolage", display: "swap" });
+const dmSans = DM_Sans({ subsets: ["latin"], variable: "--font-dm-sans", display: "swap" });
+const newsreader = Newsreader({ subsets: ["latin"], variable: "--font-newsreader", display: "swap", preload: false });
+const plexSans = IBM_Plex_Sans({
+    subsets: ["latin"],
+    weight: ["400", "500", "600"],
+    variable: "--font-plex-sans",
+    display: "swap",
+    preload: false,
+});
+const fontVariables = [bricolage, dmSans, newsreader, plexSans].map(font => font.variable).join(" ");
 
 export const metadata: Metadata = {
     // Needed for the prerendered pages to emit absolute canonical/OG URLs.
@@ -39,7 +55,12 @@ export default function RootLayout({
     children: React.ReactNode;
 }>) {
     return (
-        <html lang="en">
+        <html lang="en" data-theme={DEFAULT_THEME} className={fontVariables} suppressHydrationWarning>
+            <head>
+                {/* Runs before first paint so a remembered or linked theme
+                    never flashes the default; see lib/theme.ts. */}
+                <script dangerouslySetInnerHTML={{ __html: themeBootScript() }} />
+            </head>
             <body className={`antialiased ${inter.className}`}>
                 <script
                     type="application/ld+json"

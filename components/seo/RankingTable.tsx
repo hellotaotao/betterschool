@@ -107,14 +107,12 @@ export default function RankingTable({ rows, columns, defaultSort, defaultWeight
     weights: { ...current.weights, [metric]: amount },
   }));
 
-  const pill = (active: boolean) => `rounded-full border px-3 py-1 text-xs ${
-    active ? 'border-slate-700 bg-slate-700 text-white' : 'border-gray-200 text-gray-700 hover:border-indigo-400 hover:text-indigo-700'
-  }`;
+  const pill = (active: boolean) => (active ? 'bs-chip' : 'bs-chip hover:text-link');
 
   return (
     <div>
       <div className="flex flex-wrap items-center gap-2">
-        <span className="w-20 text-xs text-gray-500">{labels.sortBy}</span>
+        <span className="bs-label w-24 shrink-0">{labels.sortBy}</span>
         {columns.map(metric => (
           <button key={metric} type="button" className={pill(activeSort === metric)} aria-pressed={activeSort === metric} onClick={() => setSort(metric)}>
             {labels.columns[metric]}
@@ -128,8 +126,8 @@ export default function RankingTable({ rows, columns, defaultSort, defaultWeight
       </div>
 
       {canMix && activeSort === 'mix' && (
-        <div className="mt-3 rounded-lg bg-gray-50 p-3">
-          <div className="grid grid-cols-[8rem_1fr_2.5rem] items-center gap-x-3 gap-y-2 text-xs text-gray-600">
+        <div className="mt-3 rounded-inner bg-soft p-4">
+          <div className="grid grid-cols-[8rem_1fr_2.5rem] items-center gap-x-3 gap-y-2 text-[13px] text-ink-2">
             {weightable.map(metric => (
               <label key={metric} className="contents">
                 <span>{labels.columns[metric]}</span>
@@ -145,14 +143,15 @@ export default function RankingTable({ rows, columns, defaultSort, defaultWeight
               </label>
             ))}
           </div>
-          <p className="mt-2 text-xs text-gray-500">{fill(labels.weightsHint, ordered.length)}</p>
+          <p className="mt-2 text-[13px] text-muted">{fill(labels.weightsHint, ordered.length)}</p>
         </div>
       )}
 
       {hasSmall && labels.includeSmall && (
-        <label className="mt-3 flex items-center gap-2 text-xs text-gray-600">
+        <label className="mt-3 flex min-h-11 items-center gap-2 text-sm text-ink-2">
           <input
             type="checkbox"
+            className="h-5 w-5 accent-brand"
             checked={state.includeSmall}
             onChange={event => setState(current => ({ ...current, includeSmall: event.target.checked }))}
           />
@@ -161,17 +160,17 @@ export default function RankingTable({ rows, columns, defaultSort, defaultWeight
       )}
 
       <div className="mt-4 overflow-x-auto scroll-shadow-x">
-        <table className="w-full text-sm sm:min-w-[40rem]">
+        <table className="w-full text-[15px] sm:min-w-[40rem]">
           <thead>
-            <tr className="border-b border-gray-200 text-left text-xs text-gray-500 [&>th]:whitespace-nowrap">
+            <tr className="border-b border-line-strong text-left text-[13px] text-muted [&>th]:whitespace-nowrap">
               <th scope="col" className="w-10 py-2 pr-2 font-medium">{labels.rank}</th>
               <th scope="col" className="py-2 pr-3 font-medium">{labels.school}</th>
               <th scope="col" className="hidden py-2 pr-3 font-medium sm:table-cell">{labels.suburb}</th>
               {showSector && <th scope="col" className="py-2 pr-3 font-medium">{labels.sector}</th>}
-              {activeSort === 'mix' && <th scope="col" className="py-2 pr-3 text-right font-medium text-gray-900">{labels.mixScore}</th>}
+              {activeSort === 'mix' && <th scope="col" className="py-2 pr-3 text-right font-medium text-ink">{labels.mixScore}</th>}
               {columns.map(metric => (
-                <th key={metric} scope="col" className={`py-2 pr-3 text-right font-medium ${activeSort === metric ? 'text-gray-900' : ''}`}>
-                  <button type="button" onClick={() => setSort(metric)} className="hover:text-indigo-700">
+                <th key={metric} scope="col" className={`py-2 pr-3 text-right font-medium ${activeSort === metric ? 'text-ink' : ''}`}>
+                  <button type="button" onClick={() => setSort(metric)} className="hover:text-link">
                     {labels.columns[metric]}
                   </button>
                 </th>
@@ -180,19 +179,19 @@ export default function RankingTable({ rows, columns, defaultSort, defaultWeight
           </thead>
           <tbody>
             {shown.map(({ row, rank, score }) => (
-              <tr key={row.id} className="border-b border-gray-100">
-                <td className="py-2 pr-2 tabular-nums text-gray-500">{rank ?? '—'}</td>
+              <tr key={row.id} className="border-b border-line">
+                <td className="py-2 pr-2 tabular-nums text-muted">{rank ?? '—'}</td>
                 <td className="py-2 pr-3">
-                  <Link href={row.href} className="text-indigo-700 hover:underline">{row.name}</Link>
+                  <Link href={row.href} className="bs-link">{row.name}</Link>
                   {/* Narrow screens fold the suburb under the name so the figures stay in view. */}
-                  <span className="block text-xs text-gray-500 sm:hidden">{row.suburb}</span>
+                  <span className="block text-[13px] text-muted sm:hidden">{row.suburb}</span>
                 </td>
                 <td className="hidden py-2 pr-3 sm:table-cell">
-                  <Link href={row.suburbHref} className="text-gray-600 hover:text-indigo-700 hover:underline">{row.suburb}</Link>
+                  <Link href={row.suburbHref} className="text-ink-2 hover:text-link hover:underline">{row.suburb}</Link>
                 </td>
                 {showSector && (
                   <td className="py-2 pr-3">
-                    <span className={`whitespace-nowrap rounded-full px-2 py-0.5 text-[10px] font-medium ${sectorBadgeClass(row.sector)}`}>
+                    <span className={`whitespace-nowrap rounded-full px-2 py-0.5 text-xs font-medium ${sectorBadgeClass(row.sector)}`}>
                       {labels.sectors[row.sector] ?? row.sector}
                     </span>
                   </td>
@@ -210,7 +209,7 @@ export default function RankingTable({ rows, columns, defaultSort, defaultWeight
       </div>
 
       {ordered.length > limit && (
-        <button type="button" onClick={() => setShowAll(value => !value)} className="mt-3 text-xs text-indigo-700 hover:underline">
+        <button type="button" onClick={() => setShowAll(value => !value)} className="bs-btn-quiet mt-4">
           {showAll ? fill(labels.showTop, limit) : fill(labels.showAll, ordered.length)}
         </button>
       )}

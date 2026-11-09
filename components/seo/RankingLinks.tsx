@@ -12,12 +12,12 @@ export default function RankingLinks({ rankings, locale }: { rankings: RankingGr
         <li key={`${ranking.state}-${ranking.slug}`}>
           <Link
             href={rankingPath(ranking.state, ranking.slug, locale)}
-            className="inline-flex items-baseline gap-1.5 rounded-full border border-gray-200 px-3 py-1 text-xs text-gray-700 hover:border-indigo-400 hover:text-indigo-700"
+            className="bs-chip hover:text-link"
           >
             {ranking.schoolType === 'VCE' && ranking.sector === null
               ? t.viewVce
               : capitalize(localeRankingGroup(locale, ranking.schoolType, ranking.sector))}
-            <span className="text-[10px] text-gray-400">{ranking.ranked.toLocaleString('en-AU')}</span>
+            <span className="text-xs font-medium text-muted">{ranking.ranked.toLocaleString('en-AU')}</span>
           </Link>
         </li>
       ))}

@@ -71,11 +71,10 @@ export function rankingMetadata(locale: Locale, state: string, slug: string): Me
 }
 
 function Pill({ href, active, children }: { href?: string; active: boolean; children: React.ReactNode }) {
-  const base = 'rounded-full border px-3 py-1 text-xs';
-  if (active) return <span className={`${base} border-slate-700 bg-slate-700 text-white`}>{children}</span>;
-  if (!href) return <span className={`${base} border-gray-100 text-gray-300`}>{children}</span>;
+  if (active) return <span className="bs-chip" aria-current="page">{children}</span>;
+  if (!href) return <span className="bs-chip text-muted">{children}</span>;
   return (
-    <Link href={href} className={`${base} border-gray-200 text-gray-700 hover:border-indigo-400 hover:text-indigo-700`}>
+    <Link href={href} className="bs-chip hover:text-link">
       {children}
     </Link>
   );
@@ -149,8 +148,9 @@ export default function RankingBody({ locale, state, slug }: { locale: Locale; s
         { label: t.crumb },
       ]}
     >
-      <h1 className="text-2xl font-bold tracking-tight">{capitalize(formatMessage(isVce ? t.headingVce : t.heading, values))}</h1>
-      <p className="mt-2 max-w-3xl text-sm text-gray-600">
+      <header className="bs-hero">
+      <h1 className="bs-h1">{capitalize(formatMessage(isVce ? t.headingVce : t.heading, values))}</h1>
+      <p className="mt-3 max-w-3xl text-[17px] leading-relaxed text-ink-2">
         {isVce
           ? formatMessage(t.introVce, values)
           : formatMessage(ranking.ranked > DEFAULT_ROWS ? t.introTop : t.introAll, values)}
@@ -158,10 +158,12 @@ export default function RankingBody({ locale, state, slug }: { locale: Locale; s
         {ranking.smallCohort > 0 && <> {formatMessage(t.smallCohort, { ...values, count: ranking.smallCohort })}</>}
         {ranking.earlyOnly > 0 && <> {formatMessage(t.earlyOnly, { ...values, count: ranking.earlyOnly })}</>}
       </p>
+      </header>
 
-      <div className="mt-4 space-y-2">
+      <section className="bs-section" aria-label={t.crumb}>
+      <div className="space-y-2">
         <div className="flex flex-wrap items-center gap-2">
-          <span className="w-20 text-xs text-gray-500">{t.filterView}</span>
+          <span className="bs-label w-24 shrink-0">{t.filterView}</span>
           {RANKING_VIEWS.map(view => {
             const href = pathIfExists(rankingSlug({ schoolType: view, sector: ranking.sector }))
               ?? pathIfExists(rankingSlug({ schoolType: view, sector: null }));
@@ -175,7 +177,7 @@ export default function RankingBody({ locale, state, slug }: { locale: Locale; s
           })}
         </div>
         <div className="flex flex-wrap items-center gap-2">
-          <span className="w-20 text-xs text-gray-500">{t.filterSector}</span>
+          <span className="bs-label w-24 shrink-0">{t.filterSector}</span>
           {[null, ...RANKING_SECTORS].map(sector => (
             <Pill
               key={sector ?? 'all'}
@@ -199,29 +201,30 @@ export default function RankingBody({ locale, state, slug }: { locale: Locale; s
           limit={DEFAULT_ROWS}
         />
       </div>
-      <p className="mt-3 text-xs text-gray-500">
+      </section>
+      <p className="mt-6 text-sm text-muted">
         {isVce
           ? formatMessage(t.methodVce, { year: resultsYear, acaraYear: ACARA_DATA_YEAR })
           : formatMessage(t.method, { ...values, year: ACARA_DATA_YEAR })}
       </p>
-      <p className="mt-1 text-xs text-gray-500">
+      <p className="mt-1 text-sm text-muted">
         {naplanBefore}
-        <a href={MY_SCHOOL_URL} rel="noopener" className="text-indigo-700 hover:underline">{t.naplanLink}</a>
+        <a href={MY_SCHOOL_URL} rel="noopener" className="bs-link">{t.naplanLink}</a>
         {naplanAfter}
       </p>
 
       {otherStates.length > 0 && (
-        <section className="mt-10 border-t border-gray-100 pt-5" aria-labelledby="other-states">
-          <h2 id="other-states" className="text-base font-semibold">{t.otherStatesHeading}</h2>
+        <section className="bs-section" aria-labelledby="other-states">
+          <h2 id="other-states" className="bs-h2">{t.otherStatesHeading}</h2>
           <ul className="mt-3 flex flex-wrap gap-2">
             {otherStates.map(other => (
               <li key={other.state}>
                 <Link
                   href={rankingPath(other.state, other.slug, locale)}
-                  className="inline-flex items-baseline gap-1.5 rounded-full border border-gray-200 px-3 py-1 text-xs text-gray-700 hover:border-indigo-400 hover:text-indigo-700"
+                  className="bs-chip hover:text-link"
                 >
                   {localeStateName(locale, other.state)}
-                  <span className="text-[10px] text-gray-400">{other.ranked.toLocaleString('en-AU')}</span>
+                  <span className="text-xs text-muted">{other.ranked.toLocaleString('en-AU')}</span>
                 </Link>
               </li>
             ))}

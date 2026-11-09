@@ -159,7 +159,8 @@
       "footerLabel": "Data sources:",
       "acaraLinkText": "ACARA",
       "otherLanguage": "中文",
-      "breadcrumb": "Breadcrumb"
+      "breadcrumb": "Breadcrumb",
+      "mainNav": "Main"
     },
     "browse": {
       "metaTitle": "Browse Australian schools by state and suburb",
