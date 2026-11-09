@@ -139,6 +139,7 @@ export default function RankingBody({ locale, state, slug }: { locale: Locale; s
 
   return (
     <PageShell
+      wide
       locale={locale}
       bareEnglishPath={rankingPath(ranking.state, ranking.slug)}
       dataYear={ACARA_DATA_YEAR}
@@ -149,7 +150,7 @@ export default function RankingBody({ locale, state, slug }: { locale: Locale; s
       ]}
     >
       <h1 className="text-2xl font-bold tracking-tight">{capitalize(formatMessage(isVce ? t.headingVce : t.heading, values))}</h1>
-      <p className="mt-2 text-sm text-gray-600">
+      <p className="mt-2 max-w-3xl text-sm text-gray-600">
         {isVce
           ? formatMessage(t.introVce, values)
           : formatMessage(ranking.ranked > DEFAULT_ROWS ? t.introTop : t.introAll, values)}

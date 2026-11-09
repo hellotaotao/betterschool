@@ -160,7 +160,7 @@ export default function RankingTable({ rows, columns, defaultSort, defaultWeight
         </label>
       )}
 
-      <div className="mt-4 overflow-x-auto">
+      <div className="mt-4 overflow-x-auto scroll-shadow-x">
         <table className="w-full text-sm sm:min-w-[40rem]">
           <thead>
             <tr className="border-b border-gray-200 text-left text-xs text-gray-500 [&>th]:whitespace-nowrap">

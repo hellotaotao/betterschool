@@ -8,6 +8,7 @@ import { browsePath, catchmentPath, mapUrl, schoolPath, stateIndexPath, suburbPa
 import PageShell from '@/components/seo/PageShell';
 import SchoolLinkCard from '@/components/seo/SchoolLinkCard';
 import { catchmentStateInfo } from '@/lib/catchmentStates';
+import { mergeZoneSections } from '@/lib/zoneSections';
 
 /** Source ADD_DATE is a bare yyyymmdd string. Render it, don't dump it. */
 function formatBoundaryDate(raw: string | undefined, locale: Locale): string | null {
@@ -51,7 +52,7 @@ export default function CatchmentBody({ locale, state, slug }: { locale: Locale;
   const dictionary = getMessages(locale);
   const catchments = school.catchments;
   const dataYear = catchments[0]?.data_year;
-  const zones = getCatchmentZoneSections(school);
+  const zones = mergeZoneSections(getCatchmentZoneSections(school), entry => entry.school.id);
   const full = localeStateName(locale, school.state);
   // Every state warns that a boundary can split a street, but only the
   // school's own department can settle an address.
@@ -116,6 +117,11 @@ export default function CatchmentBody({ locale, state, slug }: { locale: Locale;
             );
           })}
         </dl>
+        {catchments.length > 1 && (
+          <p className="mt-2 text-xs text-gray-500">
+            {formatMessage(t.zoneVariantsNote, { count: catchments.length })}
+          </p>
+        )}
       </section>
 
       <section className="mt-8 rounded-lg border border-amber-200 bg-amber-50/60 p-3">
@@ -135,12 +141,18 @@ export default function CatchmentBody({ locale, state, slug }: { locale: Locale;
         )}
       </section>
 
-      {zones.map(({ catchment, inside, suburbs }) => {
-        const sectionId = `inside-${catchment.zone_id ?? catchment.geometry_url.replace(/[^a-z0-9]+/gi, '-')}`;
+      {zones.map(({ catchments: variants, kind, inside, suburbs, distinguishingYears }) => {
+        const first = variants[0];
+        const sectionId = `inside-${first.zone_id ?? first.geometry_url.replace(/[^a-z0-9]+/gi, '-')}`;
         return (
-          <section key={catchment.geometry_url} className="mt-8" aria-labelledby={sectionId}>
+          <section key={first.geometry_url} className="mt-8" aria-labelledby={sectionId}>
             <h2 id={sectionId} className="text-base font-semibold">
-              {formatMessage(t.insideHeadingKind, { kind: localeKind(locale, catchment.kind) })}
+              {distinguishingYears?.length
+                ? formatMessage(t.insideHeadingKindYears, {
+                  kind: localeKind(locale, kind),
+                  levels: distinguishingYears.join(', '),
+                })
+                : formatMessage(t.insideHeadingKind, { kind: localeKind(locale, kind) })}
             </h2>
             <p className="mt-1 text-xs text-gray-500">{t.insideHint}</p>
             {suburbs.length > 0 && (

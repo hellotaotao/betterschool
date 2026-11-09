@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { getLargestSuburbs, getSchoolsDataset, getStateRankings, getStateSummaries } from '@/lib/schoolsData';
 import { coveredCatchmentStates, formatMessage, getMessages } from '@/lib/i18n';
+import { catchmentStateCodes } from '@/lib/catchmentStates';
 import { buildPageMetadata, getSeo, localeStateName, type Locale } from '@/lib/seoLocale';
 import { mapUrl, stateIndexPath, suburbPath } from '@/lib/slug';
 import PageShell from '@/components/seo/PageShell';
@@ -30,6 +31,13 @@ export default function BrowseBody({ locale }: { locale: Locale }) {
   const states = getStateSummaries();
   const dataset = getSchoolsDataset();
   const largest = getLargestSuburbs(null, 24);
+  // Both lists come from the catchment registry, so the note cannot fall
+  // behind the data again (it once said "NSW only" with six states built).
+  const collected = new Set(catchmentStateCodes());
+  const uncovered = states
+    .filter(summary => !collected.has(summary.state))
+    .map(summary => (locale === 'zh' ? localeStateName(locale, summary.state) : summary.state))
+    .join(locale === 'zh' ? '、' : ', ');
 
   return (
     <PageShell
@@ -119,7 +127,10 @@ export default function BrowseBody({ locale }: { locale: Locale }) {
 
       <section className="mt-8 rounded-lg bg-gray-50 p-3">
         <h2 className="text-sm font-semibold">{t.zonesHeading}</h2>
-        <p className="mt-1 text-xs text-gray-600">{t.zonesBody}</p>
+        <p className="mt-1 text-xs text-gray-600">
+          {formatMessage(t.zonesBody, { covered: coveredCatchmentStates(getMessages(locale), locale) })}
+          {uncovered && `${locale === 'zh' ? '' : ' '}${formatMessage(t.zonesUncovered, { uncovered })}`}
+        </p>
       </section>
     </PageShell>
   );

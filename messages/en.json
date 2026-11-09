@@ -172,7 +172,8 @@
       "stateMeta": "{schools} schools · {suburbs} suburbs",
       "stateZoned": "{count} with an intake zone",
       "zonesHeading": "Intake zones",
-      "zonesBody": "Zone boundaries currently cover NSW government schools only. Zones apply to government schools alone — Catholic and Independent schools admit on their own criteria and have no geographic zone. Other states are not yet collected, which is different from having none.",
+      "zonesBody": "Zone boundaries are collected for government schools in {covered}. Zones apply to government schools alone — Catholic and Independent schools admit on their own criteria and have no geographic zone.",
+      "zonesUncovered": "Boundaries for {uncovered} are not yet collected, which is different from having none.",
       "largestHeading": "Suburbs with the most schools",
       "largestHint": "A shortcut into the biggest suburb pages. Every suburb is reachable through its state above.",
       "rankingsHeading": "School rankings by state",
@@ -374,7 +375,9 @@
       "crumb": "Catchment",
       "insideHeadingKind": "Other schools inside the {kind} zone",
       "insideNone": "No other geocoded schools were found inside this published boundary.",
-      "zoneYearsUnknown": "Year levels not published per zone"
+      "zoneYearsUnknown": "Year levels not published per zone",
+      "zoneVariantsNote": "The department publishes {count} boundaries for this school, one per group of year levels. They can differ, so check the one for the year your child will start in.",
+      "insideHeadingKindYears": "Other schools inside the {kind} zone for Years {levels}"
     },
     "ranking": {
       "metaTitle": "{state} {group} ranked by ICSEA ({year})",

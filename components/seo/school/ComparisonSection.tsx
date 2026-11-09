@@ -108,7 +108,7 @@ export default function ComparisonSection({ school, locale }: { school: School; 
       <h2 id="compare" className="text-lg font-semibold tracking-tight">
         {formatMessage(t.compareHeading, { school: school.school_name })}
       </h2>
-      <div className="mt-3 overflow-x-auto">
+      <div className="mt-3 overflow-x-auto scroll-shadow-x">
         <table className="w-full min-w-[28rem] text-sm">
           <thead>
             <tr className="border-b border-gray-200 text-left text-xs text-gray-500">
@@ -151,7 +151,7 @@ export default function ComparisonSection({ school, locale }: { school: School; 
           <h3 className="mt-6 text-sm font-semibold">
             {formatMessage(t.compareListHeading, { type: getSchoolTypeLabel(school.school_type, dictionary) })}
           </h3>
-          <div className="mt-2 overflow-x-auto">
+          <div className="mt-2 overflow-x-auto scroll-shadow-x">
             <table className="w-full min-w-[30rem] text-sm">
               <thead>
                 <tr className="border-b border-gray-200 text-left text-xs text-gray-500">
@@ -186,7 +186,7 @@ export default function ComparisonSection({ school, locale }: { school: School; 
                         )}
                       </td>
                       <td className="py-2 pr-3">
-                        <span className={`rounded-full px-2 py-0.5 text-[10px] font-medium ${sectorBadgeClass(entry.sector)}`}>
+                        <span className={`whitespace-nowrap rounded-full px-2 py-0.5 text-[10px] font-medium ${sectorBadgeClass(entry.sector)}`}>
                           {getSectorLabel(entry.sector, dictionary)}
                         </span>
                       </td>

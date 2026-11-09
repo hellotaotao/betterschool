@@ -28,6 +28,17 @@ body {
   .no-scrollbar {
     scrollbar-width: none;
   }
+  /* Edge shadows on a horizontally scrollable table. On a phone the table is
+     wider than the screen, and without a cue the cut-off columns read as
+     missing rather than off-screen. The white "local" layers scroll with the
+     content and cover the shadow once that edge is reached. */
+  .scroll-shadow-x {
+    background:
+      linear-gradient(to right, #fff 30%, rgb(255 255 255 / 0)) left center / 2.5rem 100% no-repeat local,
+      linear-gradient(to left, #fff 30%, rgb(255 255 255 / 0)) right center / 2.5rem 100% no-repeat local,
+      radial-gradient(farthest-side at 0 50%, rgb(15 23 42 / 0.16), transparent) left center / 0.875rem 100% no-repeat scroll,
+      radial-gradient(farthest-side at 100% 50%, rgb(15 23 42 / 0.16), transparent) right center / 0.875rem 100% no-repeat scroll;
+  }
 }
 
 /* School map markers (Leaflet DivIcon) */

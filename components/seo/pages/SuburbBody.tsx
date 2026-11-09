@@ -120,7 +120,7 @@ export default function SuburbBody({ locale, state, slug }: { locale: Locale; st
           <h2 id="compare" className="text-base font-semibold">
             {formatMessage(t.compareHeading, { suburb: group.suburb })}
           </h2>
-          <div className="mt-3 overflow-x-auto">
+          <div className="mt-3 overflow-x-auto scroll-shadow-x">
             <table className="w-full min-w-[36rem] text-sm">
               <thead>
                 <tr className="border-b border-gray-200 text-left text-xs text-gray-500">
@@ -148,7 +148,7 @@ export default function SuburbBody({ locale, state, slug }: { locale: Locale; st
                       </td>
                       <td className="py-2 pr-3 text-gray-600">{school.school_type ? getSchoolTypeLabel(school.school_type, dictionary) : '—'}</td>
                       <td className="py-2 pr-3">
-                        <span className={`rounded-full px-2 py-0.5 text-[10px] font-medium ${sectorBadgeClass(school.sector)}`}>
+                        <span className={`whitespace-nowrap rounded-full px-2 py-0.5 text-[10px] font-medium ${sectorBadgeClass(school.sector)}`}>
                           {getSectorLabel(school.sector, dictionary)}
                         </span>
                       </td>

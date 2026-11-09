@@ -44,7 +44,7 @@ export default function Year12Section({ school, locale }: { school: School; loca
           {formatMessage(excluded === 'early_only' ? t.y12EarlyOnly : t.y12Small, { year: latest.year, min: VCE_MIN_STUDENTS })}
         </p>
       )}
-      <div className="mt-3 overflow-x-auto">
+      <div className="mt-3 overflow-x-auto scroll-shadow-x">
         <table className="w-full min-w-[30rem] text-sm">
           <thead>
             <tr className="border-b border-gray-200 text-left text-xs text-gray-500">

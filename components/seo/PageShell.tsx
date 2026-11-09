@@ -28,6 +28,7 @@ export default function PageShell({
   children,
   dataYear,
   sourceLinks = [],
+  wide = false,
 }: {
   locale: Locale;
   /** Unprefixed path of this page, used to build the language switch link. */
@@ -36,14 +37,17 @@ export default function PageShell({
   children: React.ReactNode;
   dataYear?: number;
   sourceLinks?: { url: string; label: string }[];
+  /** For a page whose body is one wide table: the reading measure would wrap every school name onto three lines. */
+  wide?: boolean;
 }) {
   const t = getSeo(locale).shell;
+  const width = wide ? 'max-w-6xl' : 'max-w-3xl';
   const other: Locale = locale === 'zh' ? 'en' : 'zh';
 
   return (
     <div lang={htmlLang(locale)} className="min-h-screen bg-white font-sans text-gray-900 antialiased">
       <header className="border-b border-gray-200">
-        <div className="mx-auto max-w-3xl px-4 py-3 flex items-center justify-between gap-4">
+        <div className={`mx-auto ${width} px-4 py-3 flex items-center justify-between gap-4`}>
           <Link href={mapUrl({ locale })} className="text-sm font-bold text-indigo-700 hover:underline">
             <BrandLogo />
           </Link>
@@ -65,7 +69,7 @@ export default function PageShell({
         </div>
       </header>
 
-      <nav aria-label={t.breadcrumb} className="mx-auto max-w-3xl px-4 pt-4">
+      <nav aria-label={t.breadcrumb} className={`mx-auto ${width} px-4 pt-4`}>
         <ol className="flex flex-wrap gap-1 text-xs text-gray-500">
           {crumbs.map((crumb, index) => (
             <li key={`${crumb.label}-${index}`} className="flex items-center gap-1">
@@ -80,10 +84,10 @@ export default function PageShell({
         </ol>
       </nav>
 
-      <main className="mx-auto max-w-3xl px-4 py-6">{children}</main>
+      <main className={`mx-auto ${width} px-4 py-6`}>{children}</main>
 
       <footer className="border-t border-gray-200 mt-12">
-        <div className="mx-auto max-w-3xl px-4 py-6 space-y-2 text-xs text-gray-500">
+        <div className={`mx-auto ${width} px-4 py-6 space-y-2 text-xs text-gray-500`}>
           <p>
             {t.footerData}
             {dataYear ? ` (${dataYear})` : ''}

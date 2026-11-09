@@ -172,7 +172,8 @@
       "stateMeta": "{schools} 所学校 · {suburbs} 个城区",
       "stateZoned": "{count} 所有学区",
       "zonesHeading": "关于学区",
-      "zonesBody": "目前只收录了新南威尔士州公立学校的学区边界。学区只适用于公立学校——天主教学校和独立学校按各自的标准招生，没有地理学区。其他州还没有采集，这跟「没有学区」是两回事。",
+      "zonesBody": "目前收录了{covered}公立学校的学区边界。学区只适用于公立学校——天主教学校和独立学校按各自的标准招生，没有地理学区。",
+      "zonesUncovered": "{uncovered}的学区还没有采集，这跟「没有学区」是两回事。",
       "largestHeading": "学校最多的城区",
       "largestHint": "直接进入学校最多的几个城区页面。全部城区都可以通过上面的州索引找到。",
       "rankingsHeading": "各州学校排名",
@@ -374,7 +375,9 @@
       "crumb": "学区",
       "insideHeadingKind": "{kind}学区范围内的其他学校",
       "insideNone": "在这条公布的边界内，没有找到其他带坐标的学校。",
-      "zoneYearsUnknown": "该州未按学区公布适用年级"
+      "zoneYearsUnknown": "该州未按学区公布适用年级",
+      "zoneVariantsNote": "教育部门为这所学校公布了 {count} 条边界，分别对应不同年级。几条边界可能不一样，请以孩子入学年级对应的那条为准。",
+      "insideHeadingKindYears": "{levels} 年级{kind}学区范围内的其他学校"
     },
     "ranking": {
       "metaTitle": "{state}{group}排名：按 ICSEA（{year}）",
