@@ -34,6 +34,13 @@ export interface CatchmentStateInfo {
   finderUrl: string;
   /** Whether the state zones essentially all of its government schools. */
   complete: boolean;
+  /**
+   * What the English pages call the boundary. Victoria and South Australia
+   * officially say "school zone", and so do their parents: over the first 44
+   * days of Search Console data, VIC queries said "zone" 364 times to
+   * "catchment" 90, SA 222 to 14, while NSW and QLD ran the other way.
+   */
+  term: 'catchment' | 'zone';
 }
 
 const STATE_INFO: Record<string, CatchmentStateInfo> = {
@@ -41,37 +48,48 @@ const STATE_INFO: Record<string, CatchmentStateInfo> = {
     state: 'NSW',
     finderUrl: 'https://education.nsw.gov.au/school-finder',
     complete: true,
+    term: 'catchment',
   },
   SA: {
     state: 'SA',
     finderUrl: 'https://www.education.sa.gov.au/parents-and-families/enrol-school-or-preschool/find-a-school-zone-or-preschool-catchment-area',
     complete: false,
+    term: 'zone',
   },
   VIC: {
     state: 'VIC',
     finderUrl: 'https://www.findmyschool.vic.gov.au/',
     complete: true,
+    term: 'zone',
   },
   QLD: {
     state: 'QLD',
     finderUrl: 'https://www.qgso.qld.gov.au/maps/edmap/',
     complete: true,
+    term: 'catchment',
   },
   TAS: {
     state: 'TAS',
     finderUrl: 'https://www.decyp.tas.gov.au/learning/find-your-local-school/intake-areas-tasmanian-government-schools/',
     complete: true,
+    term: 'catchment',
   },
   ACT: {
     state: 'ACT',
     finderUrl: 'https://www.act.gov.au/education-and-training/find-a-school-and-enrol/find-a-school-in-your-priority-enrolment-area',
     complete: true,
+    term: 'catchment',
   },
 };
 
 /** Null for a state whose zones we have not collected. */
 export function catchmentStateInfo(state: string): CatchmentStateInfo | null {
   return STATE_INFO[state.toUpperCase()] ?? null;
+}
+
+/** True where the English pages say "school zone" rather than "catchment area". */
+export function usesSchoolZone(state: string): boolean {
+  return catchmentStateInfo(state)?.term === 'zone';
 }
 
 /** ACARA codes of the states with a published zone layer, in CATCHMENT_STATES order. */

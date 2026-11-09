@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { catchmentStateCodes, catchmentStateInfo } from './catchmentStates';
+import { catchmentStateCodes, catchmentStateInfo, usesSchoolZone } from './catchmentStates';
 import * as catchmentStates from './catchmentStates';
 import { CATCHMENT_STATES } from './catchmentLookup';
 
@@ -43,6 +43,17 @@ describe('catchmentStateInfo', () => {
     );
     expect(catchmentStateInfo('VIC')?.finderUrl).toBe('https://www.findmyschool.vic.gov.au/');
     expect(catchmentStateInfo('QLD')?.finderUrl).toBe('https://www.qgso.qld.gov.au/maps/edmap/');
+  });
+});
+
+describe('usesSchoolZone', () => {
+  // VIC and SA parents search "<school> zone"; NSW and QLD search "catchment".
+  it('says "school zone" only where the state and its searchers do', () => {
+    expect(usesSchoolZone('VIC')).toBe(true);
+    expect(usesSchoolZone('sa')).toBe(true);
+    for (const state of ['NSW', 'QLD', 'TAS', 'ACT', 'WA', 'NT']) {
+      expect(usesSchoolZone(state)).toBe(false);
+    }
   });
 });
 

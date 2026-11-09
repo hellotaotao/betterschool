@@ -8,7 +8,7 @@ import { buildPageMetadata, getSeo, localeStateLabel, localeStateName, type Loca
 import { browsePath, catchmentPath, mapUrl, schoolPath, stateIndexPath, suburbPath } from '@/lib/slug';
 import { displayRanks, metricValue, sortByMetric } from '@/lib/schoolCompare';
 import { sectorBadgeClass } from '@/utils/schoolFilters';
-import { catchmentStateCodes, catchmentStateInfo } from '@/lib/catchmentStates';
+import { catchmentStateCodes, catchmentStateInfo, usesSchoolZone } from '@/lib/catchmentStates';
 import PageShell from '@/components/seo/PageShell';
 import SchoolLinkCard from '@/components/seo/SchoolLinkCard';
 import { ACARA_DATA_YEAR } from '@/lib/dataYear';
@@ -208,7 +208,7 @@ export default function SuburbBody({ locale, state, slug }: { locale: Locale; st
                     href={catchmentPath(school.state, getSchoolSlug(school), locale)}
                     className="text-indigo-700 hover:underline"
                   >
-                    {formatMessage(t.catchmentLink, { school: school.school_name })}
+                    {formatMessage(usesSchoolZone(school.state) ? t.catchmentLinkZone : t.catchmentLink, { school: school.school_name })}
                   </Link>
                 </li>
               ))}

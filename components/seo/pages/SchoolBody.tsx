@@ -31,7 +31,7 @@ import { formatMessage, getMessages, getReligionLabel, getSchoolTypeLabel, getSe
 import { buildPageMetadata, getSeo, htmlLang, localeKind, localeStateLabel, localeStateName, type Locale } from '@/lib/seoLocale';
 import { absoluteUrl } from '@/lib/site';
 import { browsePath, catchmentPath, mapUrl, schoolPath, stateIndexPath, suburbPath } from '@/lib/slug';
-import { catchmentStateCodes, catchmentStateInfo } from '@/lib/catchmentStates';
+import { catchmentStateCodes, catchmentStateInfo, usesSchoolZone } from '@/lib/catchmentStates';
 import PageShell from '@/components/seo/PageShell';
 import SchoolLinkCard from '@/components/seo/SchoolLinkCard';
 import { ACARA_DATA_YEAR } from '@/lib/dataYear';
@@ -466,7 +466,7 @@ export default function SchoolBody({ locale, state, slug }: { locale: Locale; st
               href={catchmentPath(school.state, slug, locale)}
               className="mt-3 inline-block text-xs font-medium text-blue-700 hover:underline"
             >
-              {formatMessage(t.zoneLink, { school: school.school_name })} →
+              {formatMessage(usesSchoolZone(school.state) ? t.zoneLinkZone : t.zoneLink, { school: school.school_name })} →
             </Link>
           </div>
         ) : (

@@ -7,7 +7,7 @@ import { buildPageMetadata, getSeo, localeKind, localeStateLabel, localeStateNam
 import { browsePath, catchmentPath, mapUrl, schoolPath, stateIndexPath, suburbPath } from '@/lib/slug';
 import PageShell from '@/components/seo/PageShell';
 import SchoolLinkCard from '@/components/seo/SchoolLinkCard';
-import { catchmentStateInfo } from '@/lib/catchmentStates';
+import { catchmentStateInfo, usesSchoolZone } from '@/lib/catchmentStates';
 import { mergeZoneSections } from '@/lib/zoneSections';
 
 /** Source ADD_DATE is a bare yyyymmdd string. Render it, don't dump it. */
@@ -33,11 +33,12 @@ export function catchmentMetadata(locale: Locale, state: string, slug: string): 
     suburb: school.suburb,
     state: localeStateLabel(locale, school.state),
   };
+  const zone = usesSchoolZone(school.state);
 
   return buildPageMetadata({
     locale,
-    title: formatMessage(t.metaTitle, values),
-    description: formatMessage(t.metaDescription, values),
+    title: formatMessage(zone ? t.metaTitleZone : t.metaTitle, values),
+    description: formatMessage(zone ? t.metaDescriptionZone : t.metaDescription, values),
     bareEnglishPath: catchmentPath(school.state, slug),
     type: 'article',
   });
@@ -57,6 +58,7 @@ export default function CatchmentBody({ locale, state, slug }: { locale: Locale;
   // Every state warns that a boundary can split a street, but only the
   // school's own department can settle an address.
   const finderUrl = catchmentStateInfo(school.state)?.finderUrl;
+  const zone = usesSchoolZone(school.state);
 
   return (
     <PageShell
@@ -72,11 +74,11 @@ export default function CatchmentBody({ locale, state, slug }: { locale: Locale;
         { label: full, href: stateIndexPath(school.state, locale) },
         { label: school.suburb, href: suburbPath(school.state, school.suburb, locale) },
         { label: school.school_name, href: schoolPath(school.state, slug, locale) },
-        { label: t.crumb },
+        { label: zone ? t.crumbZone : t.crumb },
       ]}
     >
       <h1 className="text-2xl font-bold tracking-tight">
-        {formatMessage(t.heading, { school: school.school_name })}
+        {formatMessage(zone ? t.headingZone : t.heading, { school: school.school_name })}
       </h1>
       <p className="mt-1 text-sm text-gray-500">
         {school.suburb}, {full} {school.postcode}
