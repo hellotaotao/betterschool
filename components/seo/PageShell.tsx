@@ -87,33 +87,37 @@ export default function PageShell({
       <main className={`mx-auto ${width} px-4 py-6`}>{children}</main>
 
       <footer className="border-t border-gray-200 mt-12">
-        <div className={`mx-auto ${width} px-4 py-6 space-y-2 text-xs text-gray-500`}>
-          <p>
-            {t.footerData}
-            {dataYear ? ` (${dataYear})` : ''}
+        {/*
+          Identity first: a footer is read as "whose site is this", so a bare
+          list of government domains reads as if we were one of them. The
+          source line stays because the state catchment layers are CC BY.
+        */}
+        <div className={`mx-auto ${width} px-4 py-6 space-y-1 text-xs text-gray-400`}>
+          <p className="text-gray-500">
+            © {new Date().getFullYear()} BetterSchool.au
           </p>
-          <p className="flex flex-wrap gap-x-3">
+          <p className="flex flex-wrap gap-x-2">
+            <span>{t.footerLabel}</span>
             <a
-              className="text-indigo-700 hover:underline"
+              className="hover:text-gray-600 hover:underline"
               href="https://www.acara.edu.au/contact-us/acara-data-access"
               target="_blank"
               rel="noreferrer"
             >
-              {t.acaraLinkText} →
+              {t.acaraLinkText}{dataYear ? ` ${dataYear}` : ''}
             </a>
             {sourceLinks.map(source => (
               <a
                 key={source.url}
-                className="text-indigo-700 hover:underline"
+                className="before:mr-2 before:content-['·'] hover:text-gray-600 hover:underline"
                 href={source.url}
                 target="_blank"
                 rel="noreferrer"
               >
-                {source.label} →
+                {source.label}
               </a>
             ))}
           </p>
-          <p>{t.footerStance}</p>
         </div>
       </footer>
     </div>

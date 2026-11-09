@@ -156,10 +156,8 @@
     "shell": {
       "browseByState": "Browse by state",
       "openMap": "Open the map",
-      "footerData": "School identity, location and profile data comes from the ACARA Data Access Program. Official catchment source links appear below when this page uses boundary data.",
-      "footerStance": "Every figure on BetterSchool.au names its source. Where a value is inferred rather than official, the page says so; where it is not collected, the page says that too rather than showing a blank.",
-      "acaraLinkText": "ACARA Data Access Program",
-      "nswLinkText": "Data.NSW",
+      "footerLabel": "Data sources:",
+      "acaraLinkText": "ACARA",
       "otherLanguage": "中文",
       "breadcrumb": "Breadcrumb"
     },
