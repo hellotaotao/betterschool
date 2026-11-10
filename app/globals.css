@@ -1,21 +1,12 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
+/* Every page, the map app included, takes its ground, ink and type from the
+   active theme below. There is no dark mode: a dark palette for the map app
+   once left dark text on a dark ground wherever a component forgot it. */
 body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  color: var(--bs-ink);
+  background: var(--bs-surface);
+  font-family: var(--bs-font-body);
 }
 
 /* ---------------------------------------------------------------------------
@@ -719,6 +710,22 @@ body {
       radial-gradient(farthest-side at 0 50%, rgb(15 23 42 / 0.16), transparent) left center / 0.875rem 100% no-repeat scroll,
       radial-gradient(farthest-side at 100% 50%, rgb(15 23 42 / 0.16), transparent) right center / 0.875rem 100% no-repeat scroll;
   }
+}
+
+/* Leaflet's zoom buttons, in the theme's surface, ink and corner radius. */
+.leaflet-bar {
+  border: 0 !important;
+  border-radius: var(--bs-radius-inner) !important;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgb(14 27 61 / 0.14) !important;
+}
+.leaflet-bar a {
+  background: var(--bs-surface) !important;
+  color: var(--bs-ink) !important;
+  border-bottom-color: var(--bs-line) !important;
+}
+.leaflet-bar a:hover {
+  background: var(--bs-soft) !important;
 }
 
 /* School map markers (Leaflet DivIcon) */

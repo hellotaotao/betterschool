@@ -1,14 +1,13 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import { Bricolage_Grotesque, DM_Sans, IBM_Plex_Sans, Inter, Newsreader } from "next/font/google";
+import { Bricolage_Grotesque, DM_Sans, IBM_Plex_Sans, Newsreader } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import { SITE_NAME, SITE_URL } from "@/lib/site";
 import { coveredCatchmentStates, getMessages } from "@/lib/i18n";
 import { DEFAULT_THEME, themeBootScript } from "@/lib/theme";
 
-const inter = Inter({ subsets: ["latin"] });
-
-// SEO page fonts, exposed as CSS variables for the theme tokens in globals.css.
+// Theme fonts, exposed as CSS variables for the tokens in globals.css; the SEO
+// pages and the map app both read them.
 // Only the default theme's pair preloads; the others download only when a
 // page actually renders in their theme.
 const bricolage = Bricolage_Grotesque({ subsets: ["latin"], variable: "--font-bricolage", display: "swap" });
@@ -61,7 +60,7 @@ export default function RootLayout({
                     never flashes the default; see lib/theme.ts. */}
                 <script dangerouslySetInnerHTML={{ __html: themeBootScript() }} />
             </head>
-            <body className={`antialiased ${inter.className}`}>
+            <body className="antialiased">
                 <script
                     type="application/ld+json"
                     dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }}

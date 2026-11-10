@@ -14,15 +14,15 @@ import type { ZonesInView } from '@/lib/catchmentClient';
  */
 export function LanguageToggle({ locale, onChange }: { locale: Locale; onChange: (next: Locale) => void }) {
   return (
-    <div className="flex gap-1 bg-white/90 backdrop-blur-sm rounded-full px-1 py-1 shadow-md shrink-0">
+    <div className="flex gap-1 bg-surface/90 backdrop-blur-sm rounded-ctl px-1 py-1 shadow-md shrink-0">
       {(['en', 'zh'] as const).map(option => (
         <button
           key={option}
           onClick={() => onChange(option)}
           aria-pressed={locale === option}
           lang={option === 'zh' ? 'zh-Hans' : 'en'}
-          className={`px-2.5 py-0.5 rounded-full text-xs font-medium transition-colors ${
-            locale === option ? 'bg-indigo-600 text-white' : 'text-gray-600 hover:bg-gray-100'
+          className={`px-2.5 py-0.5 rounded-ctl text-xs font-medium transition-colors ${
+            locale === option ? 'bg-brand text-on-brand' : 'text-ink-2 hover:bg-soft'
           }`}
         >
           {option === 'en' ? 'EN' : '中文'}
@@ -69,15 +69,15 @@ export function ZoneOverlayControl({
   ];
 
   return (
-    <div className="flex items-center gap-1 rounded-full bg-white/90 backdrop-blur-sm px-2 py-1 shadow-md shrink-0">
-      <span className="text-[10px] text-gray-500 whitespace-nowrap">{dictionary.zoneBrowse.label}</span>
+    <div className="flex items-center gap-1 rounded-ctl bg-surface/90 backdrop-blur-sm px-2 py-1 shadow-md shrink-0">
+      <span className="text-[11px] text-muted whitespace-nowrap">{dictionary.zoneBrowse.label}</span>
       {options.map(([option, label]) => (
         <button
           key={option}
           onClick={() => onChange(option)}
           aria-pressed={value === option}
-          className={`rounded-full px-2 py-0.5 text-xs font-medium whitespace-nowrap transition-colors ${
-            value === option ? 'bg-indigo-600 text-white' : 'text-gray-600 hover:bg-gray-100'
+          className={`rounded-ctl px-2 py-0.5 text-xs font-medium whitespace-nowrap transition-colors ${
+            value === option ? 'bg-brand text-on-brand' : 'text-ink-2 hover:bg-soft'
           }`}
         >
           {label}
@@ -100,8 +100,8 @@ export function LookupButton({
   return (
     <button
       onClick={onClick}
-      className={`rounded-full px-3 py-1.5 text-xs font-medium shadow-md whitespace-nowrap transition-colors ${
-        active ? 'bg-indigo-600 text-white' : 'bg-white/90 backdrop-blur-sm text-gray-700 hover:bg-gray-100'
+      className={`rounded-ctl px-3 py-1.5 text-xs font-medium shadow-md whitespace-nowrap transition-colors ${
+        active ? 'bg-brand text-on-brand' : 'bg-surface/90 backdrop-blur-sm text-ink-2 hover:bg-soft'
       }`}
     >
       {active ? dictionary.lookup.cancel : `◎ ${dictionary.lookup.button}`}

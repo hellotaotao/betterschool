@@ -101,14 +101,14 @@ export default function SearchBox({ allSchools, dictionary, onPickSchool, onPick
   }, [active]);
 
   const optionClass = (index: number) => (
-    `w-full text-left flex items-center gap-2 px-4 py-2 border-t border-gray-50 cursor-pointer ${
-      index === active ? 'bg-indigo-50' : 'hover:bg-indigo-50'
+    `w-full text-left flex items-center gap-2 px-4 py-2 border-t border-line cursor-pointer ${
+      index === active ? 'bg-soft' : 'hover:bg-soft'
     }`
   );
 
   return (
     <div ref={boxRef} className="relative w-full">
-      <div className="flex items-center gap-2 bg-white rounded-full px-4 py-2 shadow-md">
+      <div className="flex items-center gap-2 bg-surface rounded-ctl px-4 py-2 shadow-md">
         <BrandLogo compact />
         <input
           value={query}
@@ -122,13 +122,13 @@ export default function SearchBox({ allSchools, dictionary, onPickSchool, onPick
           aria-controls={listboxId}
           aria-autocomplete="list"
           aria-activedescendant={expanded && active >= 0 ? optionId(active) : undefined}
-          className="flex-1 text-sm bg-transparent focus:outline-none text-gray-800 min-w-0"
+          className="flex-1 text-sm bg-transparent focus:outline-none text-ink min-w-0"
         />
         {query && (
           <button
             onClick={() => { setQuery(''); setDebounced(''); }}
             aria-label={dictionary.search.clear}
-            className="text-gray-400 hover:text-gray-700 text-sm shrink-0"
+            className="text-muted hover:text-ink text-sm shrink-0"
           >
             <span aria-hidden="true">✕</span>
           </button>
@@ -140,13 +140,13 @@ export default function SearchBox({ allSchools, dictionary, onPickSchool, onPick
           id={listboxId}
           role="listbox"
           aria-label={dictionary.search.placeholder}
-          className="absolute left-0 right-0 mt-1 bg-white rounded-xl shadow-xl border border-gray-100 overflow-hidden max-h-80 overflow-y-auto z-50"
+          className="absolute left-0 right-0 mt-1 bg-surface rounded-inner shadow-xl border border-line overflow-hidden max-h-80 overflow-y-auto z-50"
         >
           {results.length === 0 && (
-            <div role="presentation" className="px-4 py-3 text-xs text-gray-400">{dictionary.search.noResults}</div>
+            <div role="presentation" className="px-4 py-3 text-xs text-muted">{dictionary.search.noResults}</div>
           )}
           {schoolResults.length > 0 && (
-            <div role="presentation" className="px-3 pt-2 pb-1 text-[10px] uppercase tracking-wide text-gray-400 font-bold">{dictionary.search.schoolsGroup}</div>
+            <div role="presentation" className="px-3 pt-2 pb-1 text-[11px] uppercase tracking-wide text-muted font-bold">{dictionary.search.schoolsGroup}</div>
           )}
           {schoolResults.map((r, i) => r.type === 'school' && (
             // Options are not tab stops: focus stays in the input, as the combobox pattern expects.
@@ -160,18 +160,18 @@ export default function SearchBox({ allSchools, dictionary, onPickSchool, onPick
               onClick={() => pick(r)}
               className={optionClass(i)}
             >
-              <span aria-hidden="true" className="w-5 h-5 rounded bg-green-100 flex items-center justify-center text-[10px] shrink-0">🏫</span>
+              <span aria-hidden="true" className="w-5 h-5 rounded bg-soft flex items-center justify-center text-[11px] shrink-0">🏫</span>
               <span className="flex-1 min-w-0">
-                <span className="block text-xs font-semibold text-gray-800 truncate">{r.school.school_name}</span>
-                <span className="block text-[10px] text-gray-400 truncate">{r.school.suburb}, {r.school.state}</span>
+                <span className="block text-xs font-semibold text-ink truncate">{r.school.school_name}</span>
+                <span className="block text-[11px] text-muted truncate">{r.school.suburb}, {r.school.state}</span>
               </span>
-              <span className="text-[10px] text-gray-400 shrink-0">
+              <span className="text-[11px] text-muted shrink-0">
                 {getSectorLabel(r.school.sector, dictionary)}
               </span>
             </div>
           ))}
           {placeResults.length > 0 && (
-            <div role="presentation" className="px-3 pt-2 pb-1 text-[10px] uppercase tracking-wide text-gray-400 font-bold">{dictionary.search.placesGroup}</div>
+            <div role="presentation" className="px-3 pt-2 pb-1 text-[11px] uppercase tracking-wide text-muted font-bold">{dictionary.search.placesGroup}</div>
           )}
           {placeResults.map((r, j) => {
             if (r.type !== 'place') return null;
@@ -187,9 +187,9 @@ export default function SearchBox({ allSchools, dictionary, onPickSchool, onPick
                 onClick={() => pick(r)}
                 className={optionClass(i)}
               >
-                <span aria-hidden="true" className="w-5 h-5 rounded bg-indigo-100 flex items-center justify-center text-[10px] shrink-0">📍</span>
-                <span className="flex-1 text-xs font-semibold text-gray-800 truncate">{r.label}</span>
-                <span className="text-[10px] text-gray-400 shrink-0">{formatMessage(r.schools.length === 1 ? dictionary.search.placeCountOne : dictionary.search.placeCount, { count: r.schools.length })}</span>
+                <span aria-hidden="true" className="w-5 h-5 rounded bg-soft-strong flex items-center justify-center text-[11px] shrink-0">📍</span>
+                <span className="flex-1 text-xs font-semibold text-ink truncate">{r.label}</span>
+                <span className="text-[11px] text-muted shrink-0">{formatMessage(r.schools.length === 1 ? dictionary.search.placeCountOne : dictionary.search.placeCount, { count: r.schools.length })}</span>
               </div>
             );
           })}

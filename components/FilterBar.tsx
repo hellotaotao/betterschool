@@ -26,16 +26,16 @@ function PillGroup<T extends string>({
   onSelect: (v: T) => void;
 }) {
   return (
-    <div className="flex gap-1 bg-white/90 backdrop-blur-sm rounded-full px-2 py-1 shadow-md shrink-0">
+    <div className="flex gap-1 bg-surface/90 backdrop-blur-sm rounded-ctl px-2 py-1 shadow-md shrink-0">
       {options.map(opt => (
         <button
           key={opt.value}
           onClick={() => onSelect(opt.value)}
           title={opt.title}
-          className={`px-3 py-1 rounded-full text-xs font-medium transition-colors whitespace-nowrap ${
+          className={`px-3 py-1 rounded-ctl text-xs font-medium transition-colors whitespace-nowrap ${
             value === opt.value
-              ? 'bg-indigo-600 text-white'
-              : 'text-gray-600 hover:bg-gray-100'
+              ? 'bg-brand text-on-brand'
+              : 'text-ink-2 hover:bg-soft'
           }`}
         >
           {opt.label}

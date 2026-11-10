@@ -188,7 +188,7 @@ The SEO pages render in three themes — `bright` (default), `atlas`, `harbour`
 remembered choice, so pages stay static (no cookie read on the server).
 Preview any page with `?theme=atlas` etc.
 
-Components under `components/seo/` use only the semantic utilities
+Components under `components/seo/` and the map app's components use only the semantic utilities
 (`text-ink`, `text-muted`, `text-link`, `bg-soft`, `border-line`, `bg-brand`…)
 and the `bs-*` component classes (`bs-hero`, `bs-section`, `bs-h1`, `bs-h2`,
 `bs-label`, `bs-figure`, `bs-stat`, `bs-btn`, `bs-chip`, `bs-tile`,
@@ -197,7 +197,11 @@ and the `bs-*` component classes (`bs-hero`, `bs-section`, `bs-h1`, `bs-h2`,
 exception is `sectorBadgeClass`: sector hues are shared with the map and never
 change with the theme. SVG reads tokens through `style={{ fill: 'var(--bs-…)' }}`,
 since presentation attributes do not reliably resolve `var()`. The map app
-(`/schools`) is not themed yet.
+(`/schools`) follows the same rule: its panels and controls use the semantic
+utilities plus `rounded-inner` / `rounded-ctl`, and `<body>` takes font, ink
+and ground from the theme. What the map itself encodes (sector hues, the
+primary/secondary zone colours in `CATCHMENT_COLORS`, the selection ring) does
+not change with the theme. There is no dark mode.
 
 ### Hero map
 

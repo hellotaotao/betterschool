@@ -29,21 +29,21 @@ export default function DirectoryLinks({
   dictionary: Messages;
 }) {
   return (
-    <div className="shrink-0 border-t border-gray-200 bg-gray-50/90 px-3 py-2.5">
+    <div className="shrink-0 border-t border-line bg-soft/90 px-3 py-2.5">
       <Link
         href={browsePath(locale)}
-        className="block text-xs font-semibold text-indigo-700 hover:underline"
+        className="block text-xs font-semibold text-link hover:underline"
       >
         {dictionary.directory.browseAll} →
       </Link>
-      <p className="mt-0.5 text-[10px] leading-snug text-gray-500">{dictionary.directory.hint}</p>
+      <p className="mt-0.5 text-[11px] leading-snug text-muted">{dictionary.directory.hint}</p>
       <div className="mt-1.5 flex flex-wrap items-center gap-x-2 gap-y-1">
-        <span className="text-[10px] text-gray-400">{dictionary.directory.byState}</span>
+        <span className="text-[11px] text-muted">{dictionary.directory.byState}</span>
         {STATES.map(state => (
           <Link
             key={state}
             href={stateIndexPath(state, locale)}
-            className="text-[10px] font-medium text-gray-600 hover:text-indigo-700 hover:underline"
+            className="text-[11px] font-medium text-ink-2 hover:text-link hover:underline"
           >
             {state}
           </Link>

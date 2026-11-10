@@ -21,9 +21,9 @@ export default function MapLegend({
   dictionary: Messages;
 }) {
   return (
-    <div className={`absolute bottom-8 right-3 z-10 bg-white/90 backdrop-blur-sm rounded-lg px-3 py-2 shadow-md text-[10px] text-gray-600 space-y-1 ${hidden ? 'hidden' : ''}`}>
+    <div className={`absolute bottom-8 right-3 z-10 bg-surface/90 backdrop-blur-sm rounded-lg px-3 py-2 shadow-md text-[11px] text-ink-2 space-y-1 ${hidden ? 'hidden' : ''}`}>
       {zoneOverlay !== 'off' && (
-        <div className="flex items-center gap-2 pb-1 mb-1 border-b border-gray-100">
+        <div className="flex items-center gap-2 pb-1 mb-1 border-b border-line">
           <span
             className="inline-block w-4 h-0 shrink-0"
             style={{
@@ -31,7 +31,7 @@ export default function MapLegend({
               outline: '1.5px solid rgba(255,255,255,0.9)',
             }}
           ></span>
-          <span className="font-medium text-gray-700">{label}</span>
+          <span className="font-medium text-ink-2">{label}</span>
         </div>
       )}
       <div className="flex items-center gap-2">
@@ -55,16 +55,16 @@ export default function MapLegend({
         ></span>
         {dictionary.filters.independent}
       </div>
-      <div className="flex items-center gap-2 pt-1 border-t border-gray-100">
+      <div className="flex items-center gap-2 pt-1 border-t border-line">
         <span className="flex gap-0.5 items-center shrink-0">
-          <span className="w-1.5 h-1.5 rounded-full bg-gray-400 inline-block"></span>
-          <span className="w-2.5 h-2.5 rounded-full bg-gray-400 inline-block"></span>
-          <span className="w-3.5 h-3.5 rounded-full bg-gray-400 inline-block"></span>
+          <span className="w-1.5 h-1.5 rounded-full bg-muted inline-block"></span>
+          <span className="w-2.5 h-2.5 rounded-full bg-muted inline-block"></span>
+          <span className="w-3.5 h-3.5 rounded-full bg-muted inline-block"></span>
         </span>
         <span>{dictionary.legend.sizeEqualsEnrolments}</span>
       </div>
       <div className="flex items-center gap-2">
-        <span className="w-2 h-2 rounded-full bg-gray-400 border border-white inline-block shrink-0 opacity-55"></span>
+        <span className="w-2 h-2 rounded-full bg-muted border border-white inline-block shrink-0 opacity-55"></span>
         {dictionary.legend.enrolmentsUnknown}
       </div>
       <div className="flex items-center gap-2">
@@ -74,7 +74,7 @@ export default function MapLegend({
             background: `conic-gradient(${SECTOR_COLORS.Government} 0deg 200deg, ${SECTOR_COLORS.Catholic} 200deg 290deg, ${SECTOR_COLORS.Independent} 290deg 360deg)`,
           }}
         >
-          <span className="absolute inset-[3.5px] rounded-full bg-white"></span>
+          <span className="absolute inset-[3.5px] rounded-full bg-surface"></span>
         </span>
         <span>{dictionary.legend.clusterRing}</span>
       </div>

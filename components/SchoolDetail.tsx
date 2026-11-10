@@ -41,17 +41,17 @@ export default function SchoolDetail({
   const absenceKind = catchmentAbsenceKind(school.state, school.sector);
   const isPanel = variant === 'panel';
   const wrapClass = isPanel
-    ? 'absolute right-3 bottom-3 z-10 w-56 bg-white/95 backdrop-blur-sm rounded-xl shadow-xl flex flex-col overflow-hidden'
-    : 'flex flex-col h-full overflow-hidden bg-white';
+    ? 'absolute right-3 bottom-3 z-10 w-56 bg-surface/95 backdrop-blur-sm rounded-inner shadow-xl flex flex-col overflow-hidden'
+    : 'flex flex-col h-full overflow-hidden bg-surface';
 
   return (
     <div className={wrapClass} style={isPanel ? { top: topOffset ?? 56 } : undefined}>
-      <div className="px-3 py-2.5 border-b border-gray-100 flex justify-between items-center shrink-0">
-        <span className="text-xs font-bold text-indigo-600">{dictionary.details.title}</span>
+      <div className="px-3 py-2.5 border-b border-line flex justify-between items-center shrink-0">
+        <span className="text-xs font-bold text-link">{dictionary.details.title}</span>
         <button
           onClick={onClose}
           aria-label={dictionary.close}
-          className="text-gray-400 hover:text-gray-700 text-base leading-none"
+          className="text-muted hover:text-ink text-base leading-none"
         >
           <span aria-hidden="true">✕</span>
         </button>
@@ -59,10 +59,10 @@ export default function SchoolDetail({
 
       <div className="flex-1 overflow-y-auto p-3">
         <div className="mb-3">
-          <h2 className="text-sm font-bold text-gray-900 leading-tight">
+          <h2 className="font-display text-base font-bold tracking-tight text-ink leading-tight">
             {school.school_name}
           </h2>
-          <p className="text-[10px] text-gray-400 mt-0.5">
+          <p className="text-[11px] text-muted mt-0.5">
             {school.suburb}, {school.state} {school.postcode}
           </p>
         </div>
@@ -74,36 +74,36 @@ export default function SchoolDetail({
         {profileHref && (
           <a
             href={profileHref}
-            className="mb-3 flex items-center justify-center gap-1 rounded-lg bg-indigo-600 px-3 py-2 text-xs font-semibold text-white shadow-sm hover:bg-indigo-700"
+            className="mb-3 flex items-center justify-center gap-1 rounded-ctl bg-brand px-3 py-2 text-xs font-semibold text-on-brand shadow-sm hover:bg-brand-deep"
           >
             {dictionary.details.fullProfile}
             <span aria-hidden="true">→</span>
           </a>
         )}
 
-        <div className="bg-gray-50 rounded-lg p-2.5 space-y-2 text-xs">
+        <div className="bg-soft rounded-inner p-2.5 space-y-2 text-xs">
           <div className="flex justify-between items-center">
-            <span className="text-gray-500">{dictionary.details.sector}</span>
+            <span className="text-muted">{dictionary.details.sector}</span>
             <span
-              className={`text-[10px] px-2 py-0.5 rounded-full font-medium ${
+              className={`text-[11px] px-2 py-0.5 rounded-full font-medium ${
                 sectorBadgeClass(school.sector)
               }`}
             >
               {getSectorLabel(school.sector, dictionary)}
             </span>
           </div>
-          <div className="border-t border-gray-100" />
+          <div className="border-t border-line" />
           <div className="flex justify-between items-center">
-            <span className="text-gray-500">{dictionary.details.religiousAffiliation}</span>
+            <span className="text-muted">{dictionary.details.religiousAffiliation}</span>
             <span
               // Neutral tones only: purple sat next to the Catholic violet, and
               // hue on this app means sector.
-              className={`text-[10px] px-2 py-0.5 rounded-full font-medium ${
+              className={`text-[11px] px-2 py-0.5 rounded-full font-medium ${
                 school.is_religious === true
-                  ? 'bg-slate-200 text-slate-700'
+                  ? 'bg-soft-strong text-ink-2'
                   : school.is_religious === false
-                    ? 'bg-gray-100 text-gray-600'
-                    : 'bg-gray-50 text-gray-400'
+                    ? 'bg-soft text-ink-2'
+                    : 'bg-soft text-muted'
               }`}
             >
               {getReligionLabel(school.religious_affiliation, dictionary)}
@@ -111,10 +111,10 @@ export default function SchoolDetail({
           </div>
           {school.school_type && (
             <>
-              <div className="border-t border-gray-100" />
+              <div className="border-t border-line" />
               <div className="flex justify-between">
-                <span className="text-gray-500">{dictionary.details.schoolType}</span>
-                <span className="font-medium text-gray-800">
+                <span className="text-muted">{dictionary.details.schoolType}</span>
+                <span className="font-medium text-ink">
                   {getSchoolTypeLabel(school.school_type, dictionary)}
                 </span>
               </div>
@@ -122,105 +122,105 @@ export default function SchoolDetail({
           )}
           {school.campus_type && (
             <>
-              <div className="border-t border-gray-100" />
+              <div className="border-t border-line" />
               <div className="flex justify-between gap-2">
-                <span className="text-gray-500">{dictionary.details.campusType}</span>
-                <span className="font-medium text-gray-800 text-right">{school.campus_type}</span>
+                <span className="text-muted">{dictionary.details.campusType}</span>
+                <span className="font-medium text-ink text-right">{school.campus_type}</span>
               </div>
             </>
           )}
           {school.year_range && (
             <>
-              <div className="border-t border-gray-100" />
+              <div className="border-t border-line" />
               <div className="flex justify-between">
-                <span className="text-gray-500">{dictionary.details.yearRange}</span>
-                <span className="font-medium text-gray-800">{school.year_range}</span>
+                <span className="text-muted">{dictionary.details.yearRange}</span>
+                <span className="font-medium text-ink">{school.year_range}</span>
               </div>
             </>
           )}
           {Number.isFinite(school.icsea) && (
             <>
-              <div className="border-t border-gray-100" />
+              <div className="border-t border-line" />
               <div className="flex justify-between">
-                <span className="text-gray-500" title={dictionary.details.icseaHint}>{dictionary.details.icsea}</span>
-                <span className="font-medium text-gray-800">{school.icsea}</span>
+                <span className="text-muted" title={dictionary.details.icseaHint}>{dictionary.details.icsea}</span>
+                <span className="font-medium text-ink">{school.icsea}</span>
               </div>
             </>
           )}
           {Number.isFinite(school.icsea_percentile) && (
             <>
-              <div className="border-t border-gray-100" />
+              <div className="border-t border-line" />
               <div className="flex justify-between">
-                <span className="text-gray-500">{dictionary.details.icseaPercentile}</span>
-                <span className="font-medium text-gray-800">{school.icsea_percentile}</span>
+                <span className="text-muted">{dictionary.details.icseaPercentile}</span>
+                <span className="font-medium text-ink">{school.icsea_percentile}</span>
               </div>
             </>
           )}
           {Number.isFinite(school.total_enrolments) && (
             <>
-              <div className="border-t border-gray-100" />
+              <div className="border-t border-line" />
               <div className="flex justify-between">
-                <span className="text-gray-500">{dictionary.details.enrolments}</span>
-                <span className="font-medium text-gray-800">{school.total_enrolments}</span>
+                <span className="text-muted">{dictionary.details.enrolments}</span>
+                <span className="font-medium text-ink">{school.total_enrolments}</span>
               </div>
             </>
           )}
           {Number.isFinite(school.girls) && Number.isFinite(school.boys) && (
             <>
-              <div className="border-t border-gray-100" />
+              <div className="border-t border-line" />
               <div className="flex justify-between">
-                <span className="text-gray-500">{dictionary.details.girlsBoys}</span>
-                <span className="font-medium text-gray-800">{school.girls} / {school.boys}</span>
+                <span className="text-muted">{dictionary.details.girlsBoys}</span>
+                <span className="font-medium text-ink">{school.girls} / {school.boys}</span>
               </div>
             </>
           )}
           {Number.isFinite(school.lbote_yes_percent) && (
             <>
-              <div className="border-t border-gray-100" />
+              <div className="border-t border-line" />
               <div className="flex justify-between">
-                <span className="text-gray-500">{dictionary.details.lbote}</span>
-                <span className="font-medium text-gray-800">{school.lbote_yes_percent}%</span>
+                <span className="text-muted">{dictionary.details.lbote}</span>
+                <span className="font-medium text-ink">{school.lbote_yes_percent}%</span>
               </div>
             </>
           )}
           {Number.isFinite(school.indigenous_percent) && (
             <>
-              <div className="border-t border-gray-100" />
+              <div className="border-t border-line" />
               <div className="flex justify-between">
-                <span className="text-gray-500">{dictionary.details.indigenous}</span>
-                <span className="font-medium text-gray-800">{school.indigenous_percent}%</span>
+                <span className="text-muted">{dictionary.details.indigenous}</span>
+                <span className="font-medium text-ink">{school.indigenous_percent}%</span>
               </div>
             </>
           )}
-          <div className="border-t border-gray-100" />
+          <div className="border-t border-line" />
           <div className="flex justify-between">
-            <span className="text-gray-500">{dictionary.details.postcode}</span>
-            <span className="font-medium text-gray-800">{school.postcode}</span>
+            <span className="text-muted">{dictionary.details.postcode}</span>
+            <span className="font-medium text-ink">{school.postcode}</span>
           </div>
           {school.governing_body && (
             <>
-              <div className="border-t border-gray-100" />
+              <div className="border-t border-line" />
               <div className="flex justify-between gap-2">
-                <span className="text-gray-500">{dictionary.details.governingBody}</span>
-                <span className="font-medium text-gray-800 text-right">{school.governing_body}</span>
+                <span className="text-muted">{dictionary.details.governingBody}</span>
+                <span className="font-medium text-ink text-right">{school.governing_body}</span>
               </div>
             </>
           )}
           {school.school_url && (
             <>
-              <div className="border-t border-gray-100" />
+              <div className="border-t border-line" />
               <div className="flex justify-between">
-                <span className="text-gray-500">{dictionary.details.website}</span>
-                <a className="font-medium text-indigo-600 hover:underline" href={school.school_url} target="_blank" rel="noreferrer">Open</a>
+                <span className="text-muted">{dictionary.details.website}</span>
+                <a className="font-medium text-link hover:underline" href={school.school_url} target="_blank" rel="noreferrer">Open</a>
               </div>
             </>
           )}
           {school.fees && (
             <>
-              <div className="border-t border-gray-100" />
+              <div className="border-t border-line" />
               <div className="flex justify-between items-center">
-                <span className="text-gray-500">{dictionary.details.fees}</span>
-                <span className="font-medium text-gray-800 text-right">
+                <span className="text-muted">{dictionary.details.fees}</span>
+                <span className="font-medium text-ink text-right">
                   {school.fees.band === 'free'
                     ? dictionary.details.feeFree
                     : Number.isFinite(school.fees.annual_aud_min)
@@ -232,10 +232,10 @@ export default function SchoolDetail({
           )}
           {school.myschool_url && (
             <>
-              <div className="border-t border-gray-100" />
+              <div className="border-t border-line" />
               <div className="flex justify-between">
-                <span className="text-gray-500">{dictionary.details.naplan}</span>
-                <a className="font-medium text-indigo-600 hover:underline" href={school.myschool_url} target="_blank" rel="noreferrer">{dictionary.details.viewOnMySchool}</a>
+                <span className="text-muted">{dictionary.details.naplan}</span>
+                <a className="font-medium text-link hover:underline" href={school.myschool_url} target="_blank" rel="noreferrer">{dictionary.details.viewOnMySchool}</a>
               </div>
             </>
           )}
@@ -244,8 +244,8 @@ export default function SchoolDetail({
         {/* Catchments are a statutory feature of government enrolment only. For
             every other sector the honest answer is not "no zone found" but
             "zones do not apply", which is a different statement. */}
-        <div className="mt-2 rounded-lg border border-blue-100 bg-blue-50/50 p-2.5 space-y-2 text-xs">
-          <div className="text-[10px] font-semibold text-blue-900">{dictionary.catchment.title}</div>
+        <div className="mt-2 rounded-inner border border-line bg-soft p-2.5 space-y-2 text-xs">
+          <div className="text-[11px] font-semibold text-ink">{dictionary.catchment.title}</div>
 
           {catchments.length > 0 ? (
             <>
@@ -254,17 +254,17 @@ export default function SchoolDetail({
                 return (
                   <div key={catchment.geometry_url} className="space-y-1">
                     <div className="flex justify-between gap-2">
-                      <span className="flex items-center gap-1.5 text-blue-800/70">
+                      <span className="flex items-center gap-1.5 text-muted">
                         <ZoneSwatch kind={catchment.kind} />
                         {dictionary.catchment[catchment.kind]}
                       </span>
                       {catchment.year_levels.length > 0 && (
-                        <span className="font-medium text-blue-900 text-right">
+                        <span className="font-medium text-ink text-right">
                           {formatMessage(dictionary.catchment.years, { levels: catchment.year_levels.join(', ') })}
                         </span>
                       )}
                     </div>
-                    <div className="text-[9px] text-blue-800/60">
+                    <div className="text-[11px] text-muted">
                       {formatMessage(dictionary.catchment.dataYear, { year: catchment.data_year })}
                       {catchment.effective_year
                         ? ` · ${formatMessage(dictionary.catchment.effectiveFrom, { year: catchment.effective_year })}`
@@ -273,10 +273,10 @@ export default function SchoolDetail({
                     {onToggleCatchment && (
                       <button
                         onClick={() => onToggleCatchment(catchment)}
-                        className={`w-full rounded-md px-2 py-1 text-[10px] font-medium transition-colors ${
+                        className={`w-full rounded-ctl px-2 py-1 text-[11px] font-medium transition-colors ${
                           visible
-                            ? 'bg-blue-600 text-white hover:bg-blue-700'
-                            : 'bg-white text-blue-700 border border-blue-200 hover:bg-blue-50'
+                            ? 'bg-brand text-on-brand hover:bg-brand-deep'
+                            : 'bg-surface text-link border border-line-strong hover:bg-soft'
                         }`}
                       >
                         {visible ? dictionary.catchment.hide : dictionary.catchment.show}
@@ -287,24 +287,24 @@ export default function SchoolDetail({
               })}
 
               {catchmentError && (
-                <p className="text-[9px] text-red-600">{dictionary.catchment.loadError}</p>
+                <p className="text-[11px] text-red-600">{dictionary.catchment.loadError}</p>
               )}
 
-              <p className="text-[9px] text-blue-800/80 leading-snug">
+              <p className="text-[11px] text-ink-2 leading-snug">
                 {formatMessage(dictionary.catchment.disclaimer, { state: stateLabel })}
               </p>
               <a
                 href={finderUrl}
                 target="_blank"
                 rel="noreferrer"
-                className="block text-[10px] font-medium text-blue-700 hover:underline"
+                className="block text-[11px] font-medium text-link hover:underline"
               >
                 {formatMessage(dictionary.catchment.officialLink, { state: stateLabel })} →
               </a>
             </>
           ) : (
             <div className="space-y-1.5">
-              <p className="text-[9px] text-blue-800/70 leading-snug">
+              <p className="text-[11px] text-muted leading-snug">
                 {absenceKind === 'non-government'
                   ? dictionary.catchment.nonGovernment
                   : absenceKind === 'not-published'
@@ -320,7 +320,7 @@ export default function SchoolDetail({
                   href={finderUrl}
                   target="_blank"
                   rel="noreferrer"
-                  className="block text-[10px] font-medium text-blue-700 hover:underline"
+                  className="block text-[11px] font-medium text-link hover:underline"
                 >
                   {formatMessage(dictionary.catchment.officialLink, { state: stateLabel })} →
                 </a>
@@ -333,20 +333,20 @@ export default function SchoolDetail({
             absent for entire states. Kept for the schools that have it, but
             demoted to the bottom and explicitly caveated. */}
         {hasLegacyScore(school) && (
-          <div className="mt-2 rounded-lg border border-amber-200 bg-amber-50/60 p-2.5 space-y-2 text-xs">
-            <div className="text-[10px] font-semibold text-amber-900">
+          <div className="mt-2 rounded-inner border border-on-accent-soft/25 bg-accent-soft p-2.5 space-y-2 text-xs">
+            <div className="text-[11px] font-semibold text-on-accent-soft">
               {dictionary.details.legacySectionTitle}
             </div>
             <div className="flex justify-between">
-              <span className="text-amber-800/70">{dictionary.details.legacyScore}</span>
-              <span className="font-medium text-amber-900">{school.legacy_score}</span>
+              <span className="text-on-accent-soft/80">{dictionary.details.legacyScore}</span>
+              <span className="font-medium text-on-accent-soft">{school.legacy_score}</span>
             </div>
-            <div className="border-t border-amber-200/60" />
+            <div className="border-t border-on-accent-soft/20" />
             <div className="flex justify-between">
-              <span className="text-amber-800/70">{dictionary.details.datasetRank}</span>
-              <span className="font-medium text-amber-900">#{school.legacy_rank}</span>
+              <span className="text-on-accent-soft/80">{dictionary.details.datasetRank}</span>
+              <span className="font-medium text-on-accent-soft">#{school.legacy_rank}</span>
             </div>
-            <p className="text-[9px] text-amber-800/80 leading-snug">
+            <p className="text-[11px] text-on-accent-soft leading-snug">
               {dictionary.details.legacyCaveat}
             </p>
           </div>

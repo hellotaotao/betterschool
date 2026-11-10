@@ -301,13 +301,13 @@ export default function SchoolsPage() {
 
   return (
     <div className="relative w-screen h-screen overflow-hidden">
-      <div className={`absolute inset-0 z-0 bg-gray-100${overlayState?.features.length ? ' zone-overlay-active' : ''}`}>
+      <div className={`absolute inset-0 z-0 bg-soft${overlayState?.features.length ? ' zone-overlay-active' : ''}`}>
         {/* The map mounts without waiting for the dataset: the basemap tiles
             are the page's largest paint, and the dataset now follows them
             (see basemapReady). A failed load still replaces the map, since an
             empty map would read as "no schools here". */}
         {loadError ? (
-          <div className="w-full h-full flex items-center justify-center text-gray-500">
+          <div className="w-full h-full flex items-center justify-center text-muted">
             {dictionary.loadError}
           </div>
         ) : autoLocate !== null && (
@@ -332,7 +332,7 @@ export default function SchoolsPage() {
         )}
         {/* Mobile already says so in the bottom sheet, which covers this spot. */}
         {loading && !isMobile && (
-          <div className="absolute left-1/2 bottom-6 -translate-x-1/2 z-[500] pointer-events-none rounded-full bg-white/95 px-4 py-1.5 text-xs text-gray-600 shadow-md">
+          <div className="absolute left-1/2 bottom-6 -translate-x-1/2 z-[500] pointer-events-none rounded-ctl bg-surface/95 px-4 py-1.5 text-xs text-ink-2 shadow-md">
             {dictionary.loadingSchools}
           </div>
         )}
@@ -362,14 +362,14 @@ export default function SchoolsPage() {
               <FilterBar filters={filters} onChange={setFilters} dictionary={dictionary} variant="scroll" />
             </div>
             {lookup.pickMode && (
-              <div className="pointer-events-none rounded-lg bg-indigo-600/95 px-3 py-2 text-[11px] text-white shadow-md">
+              <div className="pointer-events-none rounded-inner bg-brand/95 px-3 py-2 text-[11px] text-on-brand shadow-md">
                 {dictionary.lookup.hint}
               </div>
             )}
             {zoneStatus && (
-              <div className="pointer-events-none rounded-lg bg-white/95 px-3 py-1.5 text-[11px] text-gray-700 shadow-md">
+              <div className="pointer-events-none rounded-inner bg-surface/95 px-3 py-1.5 text-[11px] text-ink-2 shadow-md">
                 <div>{zoneStatus}</div>
-                {zoneContext && <div className="mt-1 max-w-sm text-gray-600">{zoneContext}</div>}
+                {zoneContext && <div className="mt-1 max-w-sm text-ink-2">{zoneContext}</div>}
               </div>
             )}
           </div>
@@ -459,14 +459,14 @@ export default function SchoolsPage() {
               className="absolute left-1/2 -translate-x-1/2 z-30 flex flex-col items-center gap-1.5 pointer-events-none"
             >
               {lookup.pickMode && (
-                <div className="rounded-lg bg-indigo-600/95 px-4 py-2 text-xs text-white shadow-lg">
+                <div className="rounded-inner bg-brand/95 px-4 py-2 text-xs text-on-brand shadow-lg">
                   {dictionary.lookup.hint}
                 </div>
               )}
               {zoneStatus && (
-                <div className="rounded-lg bg-white/95 px-4 py-1.5 text-xs text-gray-700 shadow-lg">
+                <div className="rounded-inner bg-surface/95 px-4 py-1.5 text-xs text-ink-2 shadow-lg">
                   <div>{zoneStatus}</div>
-                  {zoneContext && <div className="mt-1 max-w-md text-gray-600">{zoneContext}</div>}
+                  {zoneContext && <div className="mt-1 max-w-md text-ink-2">{zoneContext}</div>}
                 </div>
               )}
             </div>
@@ -498,7 +498,7 @@ export default function SchoolsPage() {
           >
             <button
               onClick={() => setLeftPanelOpen(o => !o)}
-              className="absolute -right-3 top-1/2 -translate-y-1/2 z-20 w-6 h-12 bg-white rounded-r-md shadow-md flex items-center justify-center text-gray-500 hover:text-gray-800 hover:bg-gray-50 transition-colors"
+              className="absolute -right-3 top-1/2 -translate-y-1/2 z-20 w-6 h-12 bg-surface rounded-r-md shadow-md flex items-center justify-center text-muted hover:text-ink hover:bg-soft transition-colors"
               title={leftPanelOpen ? dictionary.sidebar.collapseList : dictionary.sidebar.expandList}
               aria-label={leftPanelOpen ? dictionary.sidebar.collapseList : dictionary.sidebar.expandList}
               aria-expanded={leftPanelOpen}
@@ -507,7 +507,7 @@ export default function SchoolsPage() {
             </button>
 
             {leftPanelOpen && (
-              <div className="w-full rounded-xl shadow-xl overflow-hidden flex">
+              <div className="w-full rounded-inner shadow-xl overflow-hidden flex">
                 <SchoolList
                   schools={displayedSchools}
                   selectedSchool={selectedSchool}

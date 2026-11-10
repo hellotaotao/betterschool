@@ -16,7 +16,7 @@ export default function BottomSheet({ snap, onSnapChange, labels, children }: Bo
   const height = snap === 'expanded' ? '75vh' : '128px';
   return (
     <div
-      className="absolute left-0 right-0 bottom-0 z-20 bg-white rounded-t-2xl shadow-[0_-4px_16px_rgba(0,0,0,0.18)] flex flex-col transition-[height] duration-300 ease-out"
+      className="absolute left-0 right-0 bottom-0 z-20 bg-surface rounded-t-2xl shadow-[0_-4px_16px_rgba(0,0,0,0.18)] flex flex-col transition-[height] duration-300 ease-out"
       style={{ height }}
     >
       <button
@@ -25,7 +25,7 @@ export default function BottomSheet({ snap, onSnapChange, labels, children }: Bo
         aria-label={snap === 'peek' ? labels.expand : labels.collapse}
         aria-expanded={snap === 'expanded'}
       >
-        <span aria-hidden="true" className="w-9 h-1 rounded-full bg-gray-300" />
+        <span aria-hidden="true" className="w-9 h-1 rounded-full bg-line-strong" />
       </button>
       <div className="flex-1 overflow-hidden">{children}</div>
     </div>
