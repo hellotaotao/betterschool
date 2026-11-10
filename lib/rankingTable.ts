@@ -160,8 +160,13 @@ export function parseTableQuery(search: string, fallback: TableState): TableStat
   };
 }
 
-export function tableQuery(state: TableState, fallback: TableState): string {
-  const params = new URLSearchParams();
+/**
+ * Rewrites only the table's own keys in `current`, so anything else on the
+ * URL (the theme, campaign tags) survives the table mirroring its view.
+ */
+export function tableQuery(state: TableState, fallback: TableState, current = ''): string {
+  const params = new URLSearchParams(current);
+  for (const key of ['sort', 'w', 'small']) params.delete(key);
   if (state.sort !== fallback.sort) params.set('sort', state.sort);
   if (state.sort === 'mix') {
     params.set('w', WEIGHTABLE.filter(metric => state.weights[metric] !== undefined)

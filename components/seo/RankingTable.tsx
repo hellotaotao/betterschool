@@ -79,7 +79,7 @@ export default function RankingTable({ rows, columns, defaultSort, defaultWeight
   }, [fallback]);
 
   useEffect(() => {
-    const query = tableQuery(state, fallback);
+    const query = tableQuery(state, fallback, window.location.search);
     window.history.replaceState(null, '', `${window.location.pathname}${query}`);
   }, [state, fallback]);
 

@@ -81,4 +81,10 @@ describe('table query', () => {
     expect(tableQuery(fallback, fallback)).toBe('');
     expect(parseTableQuery('?sort=evil&w=ratio.50,icsea.900', fallback)).toEqual(fallback);
   });
+
+  it('keeps parameters that are not the table\'s', () => {
+    const mix: TableState = { ...fallback, sort: 'mix', weights: { icsea: 100 } };
+    expect(tableQuery(fallback, fallback, '?theme=harbour&sort=icsea&utm_source=x')).toBe('?theme=harbour&utm_source=x');
+    expect(tableQuery(mix, fallback, '?theme=atlas')).toBe('?theme=atlas&sort=mix&w=icsea.100');
+  });
 });
