@@ -13,6 +13,9 @@ import PageShell from '@/components/seo/PageShell';
 import SchoolLinkCard from '@/components/seo/SchoolLinkCard';
 import { ACARA_DATA_YEAR } from '@/lib/dataYear';
 import RankingLinks from '@/components/seo/RankingLinks';
+import HeroMap from '@/components/seo/HeroMap';
+import { mapHref, mapLabels, zoneVariants } from '@/components/seo/mapParts';
+import { buildHeroMap } from '@/lib/heroMapData';
 
 /** Group order matches how a parent thinks about stages, not alphabetical. */
 const TYPE_ORDER = ['Primary', 'Combined', 'Secondary', 'Special'];
@@ -79,6 +82,53 @@ export default function SuburbBody({ locale, state, slug }: { locale: Locale; st
   const zoneState = catchmentStateInfo(group.state);
   const coveredStates = catchmentStateCodes().map(code => localeStateLabel(locale, code)).join(', ');
 
+  // Pins carry the rank from the side-by-side table, so the map and the table
+  // read as one. A lone school is labelled by name instead.
+  const showTable = ranked.length >= 2;
+  const heroMap = buildHeroMap({
+    focus: ranked.map((school, index) => ({
+      school,
+      number: showTable && rankedPositions[index] != null ? String(rankedPositions[index]) : undefined,
+      selected: !showTable,
+    })),
+    // Each zoned school's current boundary, all at once. Not fitted: a rural
+    // zone can be fifty times the suburb, and would shrink its schools to dots.
+    fixedZones: zoned.flatMap(school => zoneVariants(locale, school).slice(0, 1).map(variant => variant.feature)),
+    fitZones: false,
+  });
+
+  const hero = (
+    <>
+      <div>
+        <h1 className="bs-h1">
+          {formatMessage(t.heading, { suburb: group.suburb, state: full })}
+        </h1>
+        <p className="mt-2 text-[15px] text-muted">
+          {formatMessage(group.schools.length === 1 ? t.schoolCountOne : t.schoolCount, { count: group.schools.length })}
+          {group.postcodes.length > 0 && ` · ${formatMessage(t.postcode, { postcodes: group.postcodes.join(', ') })}`}
+        </p>
+      </div>
+
+      <div className="flex flex-wrap gap-2">
+        {Object.entries(sectorCounts).map(([sector, count]) => (
+          <span key={sector} className={`rounded-full px-3 py-1 text-[13px] font-semibold ${sectorBadgeClass(sector)}`}>
+            {count} {getSectorLabel(sector, dictionary)}
+          </span>
+        ))}
+      </div>
+
+      <div className="flex flex-wrap gap-2">
+        <Link
+          href={mapUrl({ locale, suburb: { state: group.state, suburb: group.suburb } })}
+          className="bs-btn"
+        >
+          {formatMessage(t.exploreOnMap, { suburb: group.suburb })}
+        </Link>
+      </div>
+      {heroMap && showTable && <p className="text-[13px] text-muted">{t.mapNote}</p>}
+    </>
+  );
+
   return (
     <PageShell
       locale={locale}
@@ -89,35 +139,15 @@ export default function SuburbBody({ locale, state, slug }: { locale: Locale; st
         { label: full, href: stateIndexPath(group.state, locale) },
         { label: group.suburb },
       ]}
+      split={{ side: hero, map: heroMap && (
+        <HeroMap
+          model={heroMap}
+          labels={mapLabels(locale, formatMessage(t.mapTitle, { suburb: group.suburb }))}
+          hrefFor={mapHref(locale)}
+        />
+      ) }}
     >
-      <header className="bs-hero">
-      <h1 className="bs-h1">
-        {formatMessage(t.heading, { suburb: group.suburb, state: full })}
-      </h1>
-      <p className="mt-2 text-[15px] text-muted">
-        {formatMessage(group.schools.length === 1 ? t.schoolCountOne : t.schoolCount, { count: group.schools.length })}
-        {group.postcodes.length > 0 && ` · ${formatMessage(t.postcode, { postcodes: group.postcodes.join(', ') })}`}
-      </p>
-
-      <div className="mt-4 flex flex-wrap gap-2">
-        {Object.entries(sectorCounts).map(([sector, count]) => (
-          <span key={sector} className={`rounded-full px-3 py-1 text-[13px] font-semibold ${sectorBadgeClass(sector)}`}>
-            {count} {getSectorLabel(sector, dictionary)}
-          </span>
-        ))}
-      </div>
-
-      <div className="mt-6">
-        <Link
-          href={mapUrl({ locale, suburb: { state: group.state, suburb: group.suburb } })}
-          className="bs-btn"
-        >
-          {formatMessage(t.exploreOnMap, { suburb: group.suburb })}
-        </Link>
-      </div>
-      </header>
-
-      {ranked.length >= 2 && (
+      {showTable && (
         <section className="bs-section" aria-labelledby="compare">
           <h2 id="compare" className="bs-h2">
             {formatMessage(t.compareHeading, { suburb: group.suburb })}

@@ -166,7 +166,7 @@
       "metaTitle": "Browse Australian schools by state and suburb",
       "metaDescription": "Browse all {schools} Australian schools by state and suburb, with school zone and catchment maps for {states}.",
       "heading": "Browse Australian schools",
-      "intro": "{schools} schools across {suburbs} suburbs, from the official ACARA {year} collection. Pick a state to see its suburbs, or go straight to the map to search by address.",
+      "intro": "{schools} schools across {suburbs} suburbs, from the official ACARA {year} collection. Pick a state to see its suburbs, or open the map and drop a pin on an address to see which zones it falls in.",
       "statesHeading": "States and territories",
       "stateMeta": "{schools} schools · {suburbs} suburbs",
       "stateZoned": "{count} with an intake zone",
@@ -176,7 +176,10 @@
       "largestHeading": "Suburbs with the most schools",
       "largestHint": "A shortcut into the biggest suburb pages. Every suburb is reachable through its state above.",
       "rankingsHeading": "School rankings by state",
-      "rankingsHint": "VCE results where VCAA publishes them; ICSEA, which describes students' background, for every school type."
+      "rankingsHint": "VCE results where VCAA publishes them; ICSEA, which describes students' background, for every school type.",
+      "statSchools": "schools",
+      "statSuburbs": "suburbs",
+      "statZoned": "schools with a published zone"
     },
     "stateIndex": {
       "metaTitle": "Schools in {state}, by suburb",
@@ -215,7 +218,9 @@
       "zonesNonePartial": "No government school based in {suburb} publishes an intake zone. {state} zones only part of its government system, so this says little either way — the suburb may still sit inside the zone of a school based elsewhere.",
       "compareHeading": "Schools in {suburb} side by side",
       "compareNote": "Sorted by ICSEA, highest first. ICSEA describes the socio-educational background of a school's students, not how the school performs. ACARA {year} data; students per teacher calculated by BetterSchool.",
-      "rankingsHeading": "How {suburb}'s schools rank in {state}"
+      "rankingsHeading": "How {suburb}'s schools rank in {state}",
+      "mapTitle": "Map of the schools in {suburb}",
+      "mapNote": "Numbers on the map match the side-by-side table."
     },
     "school": {
       "metaTitle": "{school}, {suburb} {state}",
@@ -306,13 +311,7 @@
       "fieldTeachingStaff": "Teaching staff",
       "fieldNonTeachingStaff": "Non-teaching staff",
       "staffValue": "{count} people · {fte} full-time equivalent",
-      "aroundHeading": "Around {school}",
-      "diagramTitle": "Schools near {school}, by direction and distance",
-      "diagramCaption": "The {count} nearest schools by straight-line distance. North is up and the rings are {step} km apart. Dot size follows enrolments and colour follows sector, the same key as the map.",
-      "diagramZone": "The outline is this school's published intake zone.",
-      "diagramThisSchool": "This school",
       "diagramKm": "{km} km",
-      "diagramNorth": "N",
       "compareHeading": "How {school} compares",
       "compareColMeasure": "Measure",
       "compareColSchool": "This school",
@@ -348,7 +347,11 @@
       "y12Link": "See the VCE ranking for {state}",
       "y12Withheld": "— means VCAA did not publish the figure: fewer than four students, or the program is not offered.",
       "y12Source": "VCAA Senior Secondary Completion and Achievement Information. © Victorian Curriculum and Assessment Authority.",
-      "y12EarlyOnly": "No student completed the VCE here in {year}: these results come from students taking Units 3–4 studies early, before the school has a Year 12, so it is not ranked."
+      "y12EarlyOnly": "No student completed the VCE here in {year}: these results come from students taking Units 3–4 studies early, before the school has a Year 12, so it is not ranked.",
+      "checkOnMap": "Check an address on the map",
+      "mapTitle": "Map of {school} and the schools around it",
+      "statVce": "VCE median study score",
+      "statVceRank": "{rank} of {count} in VIC"
     },
     "catchment": {
       "metaTitle": "{school} catchment area, {suburb} {state}",
@@ -361,6 +364,7 @@
       "zoneHeading": "The zone",
       "zoneKind": "{kind} zone",
       "zoneYears": "Years {levels}",
+      "zoneYearOne": "Year {levels}",
       "zoneDataYear": "{year} enrolment year",
       "zoneEffective": "takes effect {year}",
       "zoneUpdated": "boundary last changed {date}",
@@ -382,7 +386,8 @@
       "insideNone": "No other geocoded schools were found inside this published boundary.",
       "zoneYearsUnknown": "Year levels not published per zone",
       "zoneVariantsNote": "The department publishes {count} boundaries for this school, one per group of year levels. They can differ, so check the one for the year your child will start in.",
-      "insideHeadingKindYears": "Other schools inside the {kind} zone for Years {levels}"
+      "insideHeadingKindYears": "Other schools inside the {kind} zone for Years {levels}",
+      "mapTitle": "Map of the {school} zone and the schools around it"
     },
     "ranking": {
       "metaTitle": "{state} {group} ranked by ICSEA ({year})",
@@ -426,7 +431,8 @@
       "weightsHint": "Each weight applies to a school's percentile on that figure within this table. Only schools with every weighted figure take part: {count} here.",
       "showAll": "Show all {count}",
       "showTop": "Show the top {count}",
-      "earlyOnly": "{count} schools that have not yet reached Year 12 also published a median, from students taking Units 3–4 studies early; they are not ranked."
+      "earlyOnly": "{count} schools that have not yet reached Year 12 also published a median, from students taking Units 3–4 studies early; they are not ranked.",
+      "topThree": "Top three"
     },
     "kinds": {
       "primary": "Primary",
@@ -442,6 +448,11 @@
       "TAS": "Tasmania",
       "ACT": "Australian Capital Territory",
       "NT": "Northern Territory"
+    },
+    "map": {
+      "zone": "Published zone",
+      "neighbours": "Neighbouring zones",
+      "variantSwitch": "Zone for year levels"
     }
   }
 }

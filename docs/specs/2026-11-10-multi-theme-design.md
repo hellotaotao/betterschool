@@ -2,7 +2,7 @@
 
 - **日期**: 2026-11-10
 - **范围**: `/browse`、`/suburb/*`、`/school/*`、`/catchment/*`、`/ranking/*` 及其 `/zh` 版本。地图应用（`/schools`）不在本期。
-- **状态**: 第一期实施中
+- **状态**: 第一期、第二期已完成（第二期计划见 `docs/plans/2026-11-10-map-first-layouts.md`）
 - **设计稿**: https://claude.ai/artifact/5SsDLAWo78mMK3vCHvzQvu（画布第五至七行是定稿，第一行和第三行是另外两套主题的来源）
 
 ## 1. 为什么做

@@ -9,6 +9,9 @@ import PageShell from '@/components/seo/PageShell';
 import SchoolLinkCard from '@/components/seo/SchoolLinkCard';
 import { catchmentStateInfo, usesSchoolZone } from '@/lib/catchmentStates';
 import { mergeZoneSections } from '@/lib/zoneSections';
+import HeroMap from '@/components/seo/HeroMap';
+import { contextFor, mapHref, mapLabels, zoneVariants } from '@/components/seo/mapParts';
+import { buildHeroMap } from '@/lib/heroMapData';
 
 /** Source ADD_DATE is a bare yyyymmdd string. Render it, don't dump it. */
 function formatBoundaryDate(raw: string | undefined, locale: Locale): string | null {
@@ -60,6 +63,60 @@ export default function CatchmentBody({ locale, state, slug }: { locale: Locale;
   const finderUrl = catchmentStateInfo(school.state)?.finderUrl;
   const zone = usesSchoolZone(school.state);
 
+  const variants = zoneVariants(locale, school, { futureIfOnly: true });
+  const heroMap = buildHeroMap({
+    focus: [{ school, selected: true }],
+    variants,
+    context: contextFor(variants),
+  });
+
+  const hero = (
+    <>
+      {dataYear && (
+        <div className="flex flex-wrap gap-2">
+          <span className="bs-chip">{formatMessage(t.zoneDataYear, { year: dataYear })}</span>
+        </div>
+      )}
+      <div>
+        <h1 className="bs-h1">
+          {formatMessage(zone ? t.headingZone : t.heading, { school: school.school_name })}
+        </h1>
+        <p className="mt-2 text-[15px] text-muted">
+          {school.suburb}, {full} {school.postcode}
+        </p>
+      </div>
+
+      <div className="flex flex-wrap gap-2">
+        <Link
+          href={mapUrl({ locale, school: school.acara_sml_id, catchment: true })}
+          className="bs-btn"
+        >
+          {t.seeOnMap}
+        </Link>
+        <Link href={schoolPath(school.state, slug, locale)} className="bs-btn-quiet">
+          {formatMessage(t.fullProfileLink, { school: school.school_name })} →
+        </Link>
+      </div>
+
+      <section className="bs-note" aria-labelledby="check">
+        <h2 id="check" className="text-base font-bold">{t.checkHeading}</h2>
+        <p className="mt-1 text-[15px] leading-relaxed">
+          {formatMessage(t.checkBody, { state: localeStateLabel(locale, school.state) })}
+        </p>
+        {finderUrl && (
+          <a
+            href={finderUrl}
+            target="_blank"
+            rel="noreferrer"
+            className="mt-2 inline-block text-[15px] font-semibold underline"
+          >
+            {formatMessage(t.schoolFinderLink, { state: localeStateLabel(locale, school.state) })} →
+          </a>
+        )}
+      </section>
+    </>
+  );
+
   return (
     <PageShell
       locale={locale}
@@ -76,42 +133,14 @@ export default function CatchmentBody({ locale, state, slug }: { locale: Locale;
         { label: school.school_name, href: schoolPath(school.state, slug, locale) },
         { label: zone ? t.crumbZone : t.crumb },
       ]}
+      split={{ side: hero, map: heroMap && (
+        <HeroMap
+          model={heroMap}
+          labels={mapLabels(locale, formatMessage(t.mapTitle, { school: school.school_name }))}
+          hrefFor={mapHref(locale)}
+        />
+      ) }}
     >
-      <header className="bs-hero">
-      <h1 className="bs-h1">
-        {formatMessage(zone ? t.headingZone : t.heading, { school: school.school_name })}
-      </h1>
-      <p className="mt-2 text-[15px] text-muted">
-        {school.suburb}, {full} {school.postcode}
-      </p>
-
-      <div className="mt-6">
-        <Link
-          href={mapUrl({ locale, school: school.acara_sml_id, catchment: true })}
-          className="bs-btn"
-        >
-          {t.seeOnMap}
-        </Link>
-      </div>
-
-      <section className="bs-note mt-6 max-w-2xl" aria-labelledby="check">
-        <h2 id="check" className="text-base font-bold">{t.checkHeading}</h2>
-        <p className="mt-1 text-[15px] leading-relaxed">
-          {formatMessage(t.checkBody, { state: localeStateLabel(locale, school.state) })}
-        </p>
-        {finderUrl && (
-          <a
-            href={finderUrl}
-            target="_blank"
-            rel="noreferrer"
-            className="mt-2 inline-block text-[15px] font-semibold underline"
-          >
-            {formatMessage(t.schoolFinderLink, { state: localeStateLabel(locale, school.state) })} →
-          </a>
-        )}
-      </section>
-      </header>
-
       <section className="bs-section" aria-labelledby="zone">
         <h2 id="zone" className="bs-h2">{t.zoneHeading}</h2>
         <dl className="mt-3">
@@ -124,7 +153,7 @@ export default function CatchmentBody({ locale, state, slug }: { locale: Locale;
                 </dt>
                 <dd className="text-[15px] font-semibold text-ink sm:col-span-2">
                   {catchment.year_levels.length > 0
-                    ? formatMessage(t.zoneYears, { levels: catchment.year_levels.join(', ') })
+                    ? formatMessage(catchment.year_levels.length === 1 ? t.zoneYearOne : t.zoneYears, { levels: catchment.year_levels.join(', ') })
                     : t.zoneYearsUnknown}
                   <span className="mt-0.5 block text-[13px] font-normal text-muted">
                     {formatMessage(t.zoneDataYear, { year: catchment.data_year })}

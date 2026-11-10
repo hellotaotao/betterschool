@@ -30,6 +30,7 @@ export default function PageShell({
   dataYear,
   sourceLinks = [],
   wide = false,
+  split,
 }: {
   locale: Locale;
   /** Unprefixed path of this page, used to build the language switch link. */
@@ -40,6 +41,11 @@ export default function PageShell({
   sourceLinks?: { url: string; label: string }[];
   /** For a page whose body is one wide table: the reading measure would wrap every school name onto three lines. */
   wide?: boolean;
+  /**
+   * Map-first title band, full width above the body: `side` is the title
+   * block and gets the breadcrumb, `map` is drawn beside it.
+   */
+  split?: { map: React.ReactNode; side: React.ReactNode };
 }) {
   const t = getSeo(locale).shell;
   const width = wide ? 'max-w-6xl' : 'max-w-4xl';
@@ -67,22 +73,21 @@ export default function PageShell({
         </div>
       </header>
 
-      <nav aria-label={t.breadcrumb} className={`mx-auto ${width} px-4 pt-5`}>
-        <ol className="flex flex-wrap gap-1.5 text-sm text-muted">
-          {crumbs.map((crumb, index) => (
-            <li key={`${crumb.label}-${index}`} className="flex items-center gap-1.5">
-              {index > 0 && <span aria-hidden="true">›</span>}
-              {crumb.href ? (
-                <Link href={crumb.href} className="hover:text-link hover:underline">{crumb.label}</Link>
-              ) : (
-                <span className="text-ink-2">{crumb.label}</span>
-              )}
-            </li>
-          ))}
-        </ol>
-      </nav>
+      {split ? (
+        <div className="bs-split">
+          <div className="bs-split-side">
+            <Breadcrumbs label={t.breadcrumb} crumbs={crumbs} />
+            {split.side}
+          </div>
+          {split.map}
+        </div>
+      ) : (
+        <div className={`mx-auto ${width} px-4 pt-5`}>
+          <Breadcrumbs label={t.breadcrumb} crumbs={crumbs} />
+        </div>
+      )}
 
-      <main className={`mx-auto ${width} px-4 pt-4 pb-12`}>{children}</main>
+      <main className={`bs-main mx-auto ${width} px-4 ${split ? 'pt-6' : 'pt-4'} pb-12`}>{children}</main>
 
       <footer className="border-t border-line bg-surface">
         {/*
@@ -119,5 +124,24 @@ export default function PageShell({
         </div>
       </footer>
     </div>
+  );
+}
+
+function Breadcrumbs({ label, crumbs }: { label: string; crumbs: Crumb[] }) {
+  return (
+    <nav aria-label={label}>
+      <ol className="flex flex-wrap gap-1.5 text-sm text-muted">
+        {crumbs.map((crumb, index) => (
+          <li key={`${crumb.label}-${index}`} className="flex items-center gap-1.5">
+            {index > 0 && <span aria-hidden="true">›</span>}
+            {crumb.href ? (
+              <Link href={crumb.href} className="hover:text-link hover:underline">{crumb.label}</Link>
+            ) : (
+              <span className="text-ink-2">{crumb.label}</span>
+            )}
+          </li>
+        ))}
+      </ol>
+    </nav>
   );
 }

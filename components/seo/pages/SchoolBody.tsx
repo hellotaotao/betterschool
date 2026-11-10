@@ -10,7 +10,8 @@ import {
   getSizePool,
   getSuburb,
   getSuburbPeers,
-  readCatchmentFeature,
+  getVceStateRank,
+  latestYear12,
 } from '@/lib/schoolsData';
 import {
   gradeCohorts,
@@ -21,9 +22,11 @@ import {
   type Highlight,
 } from '@/lib/schoolInsights';
 import { suburbSlug } from '@/lib/slug';
-import { getMarkerColor, sectorBadgeClass } from '@/utils/schoolFilters';
+import { sectorBadgeClass } from '@/utils/schoolFilters';
 import EnrolmentChart, { type CohortBar } from '@/components/seo/school/EnrolmentChart';
-import NeighbourhoodDiagram, { layoutDiagram } from '@/components/seo/school/NeighbourhoodDiagram';
+import HeroMap from '@/components/seo/HeroMap';
+import { contextFor, mapHref, mapLabels, zoneVariants } from '@/components/seo/mapParts';
+import { buildHeroMap } from '@/lib/heroMapData';
 import ComparisonSection from '@/components/seo/school/ComparisonSection';
 import Year12Section from '@/components/seo/school/Year12Section';
 import { safeSchoolWebsiteUrl } from '@/lib/schoolUrl';
@@ -90,9 +93,15 @@ function Fact({ label, value, note }: { label: string; value: React.ReactNode; n
   );
 }
 
-function Stat({ label, value, children }: { label: string; value: React.ReactNode; children?: React.ReactNode }) {
+function Stat({ label, value, keyed = false, children }: {
+  label: string;
+  value: React.ReactNode;
+  /** The lead figure, filled in the bright theme. */
+  keyed?: boolean;
+  children?: React.ReactNode;
+}) {
   return (
-    <div className="bs-stat">
+    <div className={keyed ? 'bs-stat bs-stat-key flex flex-col' : 'bs-stat flex flex-col'}>
       <dt className="bs-label">{label}</dt>
       <dd className="mt-1.5">
         <span className="bs-figure block">{value}</span>
@@ -134,7 +143,6 @@ export default function SchoolBody({ locale, state, slug }: { locale: Locale; st
   const full = localeStateName(locale, school.state);
   const stateLabel = localeStateLabel(locale, school.state);
   const sectorLabel = getSectorLabel(school.sector, dictionary);
-  const sectorColor = getMarkerColor(school.sector);
   const number = (value: number) => value.toLocaleString('en-AU');
 
   const hasProfile = Boolean(school.year_range) && Number.isFinite(school.total_enrolments);
@@ -194,23 +202,88 @@ export default function SchoolBody({ locale, state, slug }: { locale: Locale; st
     || Number.isFinite(school.lbote_yes_percent)
     || Number.isFinite(school.indigenous_percent);
 
-  const neighbours = getNearestSchools(school);
-  // A future zone is not yet where the school draws from, so it stays off the
-  // picture of the school as it is.
-  const zoneFeatures = catchments
-    .filter(catchment => catchment.kind !== 'future')
-    .flatMap(catchment => {
-      if (!Number.isFinite(school.location_age_id)) return [];
-      const feature = readCatchmentFeature({
-        state: school.state.toLowerCase(),
-        location_age_id: Number(school.location_age_id),
-        kind: catchment.kind,
-        geometry_url: catchment.geometry_url,
-      });
-      return feature ? [feature] : [];
+  // The nearest schools join the frame so a rural school is not drawn as a
+  // lone dot in an empty square.
+  const variants = zoneVariants(locale, school);
+  const heroMap = buildHeroMap({
+    focus: [{ school, selected: true }],
+    variants,
+    context: contextFor(variants, school),
+    fitAlso: getNearestSchools(school, 5).map(entry => ({ lat: Number(entry.school.lat), lng: Number(entry.school.lng) })),
+  });
+
+  const vce = latestYear12(school);
+  const vceMedian = vce?.median_study_score ?? null;
+  const vceRank = vceMedian !== null ? getVceStateRank(school) : null;
+  const stats: { label: string; value: React.ReactNode; extra?: React.ReactNode }[] = [];
+  if (vceMedian !== null) {
+    stats.push({
+      label: t.statVce,
+      value: vceMedian,
+      extra: vceRank && 'rank' in vceRank && (
+        <span className="bs-pill-accent mt-2">
+          {formatMessage(t.statVceRank, { rank: vceRank.rank, count: vceRank.of })}
+        </span>
+      ),
     });
-  const diagram = layoutDiagram(school, neighbours, zoneFeatures);
-  const diagramSectors = [...new Set(neighbours.map(entry => entry.school.sector))];
+  }
+  if (hasProfile) {
+    stats.push({
+      label: t.statStudents,
+      value: number(Number(school.total_enrolments)),
+      extra: (
+        <>
+          {Number.isFinite(school.girls) && Number.isFinite(school.boys) && (
+            <span className="mt-1 block text-[13px] text-muted">
+              {formatMessage(t.enrolmentsSplit, { girls: number(Number(school.girls)), boys: number(Number(school.boys)) })}
+            </span>
+          )}
+          {sizePool.length >= 20 && (
+            <span className="mt-1 block text-[13px] text-muted">
+              {formatMessage(t.statSizeContext, {
+                percent: percentBelow(sizePool, Number(school.total_enrolments)),
+                type: typeLabel(locale, school),
+                state: stateLabel,
+              })}
+            </span>
+          )}
+        </>
+      ),
+    });
+  }
+  if (Number.isFinite(school.icsea)) {
+    stats.push({
+      label: t.fieldIcsea,
+      value: school.icsea,
+      extra: Number.isFinite(school.icsea_percentile) && (
+        <span className="mt-1 block text-[13px] text-muted">
+          {formatMessage(t.icseaPercentile, { value: ordinalNumber(Number(school.icsea_percentile), locale) })}
+        </span>
+      ),
+    });
+  }
+  if (ratio !== null) {
+    stats.push({
+      label: t.statRatio,
+      value: ratio.toFixed(1),
+      extra: (
+        <span className="mt-1 block text-[13px] text-muted">
+          {formatMessage(t.statRatioNote, { teachers: Number(school.staff?.teaching_fte) })}
+        </span>
+      ),
+    });
+  }
+  // Year levels are already in the chips; they fill the grid only when the
+  // VCE figure has not taken the slot.
+  if (vceMedian === null && school.year_range) {
+    stats.push({
+      label: t.statYears,
+      value: school.year_range,
+      extra: school.school_type && (
+        <span className="mt-1 block text-[13px] text-muted">{getSchoolTypeLabel(school.school_type, dictionary)}</span>
+      ),
+    });
+  }
 
   const jsonLd = {
     '@context': 'https://schema.org',
@@ -240,6 +313,90 @@ export default function SchoolBody({ locale, state, slug }: { locale: Locale; st
         ? t.religionInferredName
         : t.religionUnknownNote;
 
+  const hero = (
+    <>
+      <div className="flex flex-wrap items-center gap-2">
+        <span className={`rounded-full px-3 py-1 text-[13px] font-semibold ${sectorBadgeClass(school.sector)}`}>{sectorLabel}</span>
+        {school.school_type && (
+          <span className="bs-chip">
+            {getSchoolTypeLabel(school.school_type, dictionary)}
+          </span>
+        )}
+        {school.year_range && <span className="bs-chip">{school.year_range}</span>}
+      </div>
+      <div>
+        <h1 className="bs-h1">{school.school_name}</h1>
+        <p className="mt-2 text-[15px] text-muted">
+          {school.suburb}, {full} {school.postcode}
+        </p>
+      </div>
+      <p className="text-[17px] leading-relaxed text-ink-2">
+        {formatMessage(hasProfile ? t.lead : t.leadBasic, {
+          school: school.school_name,
+          type: typeLabel(locale, school),
+          suburb: school.suburb,
+          state: stateLabel,
+          sector: sectorLabel,
+          years: school.year_range ?? '',
+          count: number(Number(school.total_enrolments)),
+          year: ACARA_DATA_YEAR,
+        })}
+      </p>
+      <div className="flex flex-wrap gap-2">
+        <Link
+          href={mapUrl({ locale, school: school.acara_sml_id, catchment: catchments.length > 0 })}
+          className="bs-btn"
+        >
+          {catchments.length > 0 ? t.checkOnMap : t.viewOnMap}
+        </Link>
+        {school.myschool_url && (
+          <a
+            href={school.myschool_url}
+            target="_blank"
+            rel="noreferrer"
+            className="bs-btn-quiet"
+          >
+            {t.naplanLink} →
+          </a>
+        )}
+        {schoolWebsiteUrl && (
+          <a
+            href={schoolWebsiteUrl}
+            target="_blank"
+            rel="noreferrer"
+            className="bs-btn-quiet"
+          >
+            {t.websiteLink} →
+          </a>
+        )}
+      </div>
+
+      {stats.length > 0 && (
+        <dl className="grid grid-cols-2 gap-3">
+          {stats.map((stat, index) => (
+            <Stat key={stat.label} label={stat.label} value={stat.value} keyed={index === 0}>
+              {stat.extra}
+            </Stat>
+          ))}
+        </dl>
+      )}
+
+      {highlights.length > 0 && (
+        <section className="bs-note" aria-labelledby="highlights">
+          <h2 id="highlights" className="text-[15px] font-bold">{t.highlightsHeading}</h2>
+          <ul className="mt-2 space-y-1.5 text-[15px] leading-relaxed">
+            {highlights.map(highlight => (
+              <li key={highlight.kind} className="flex gap-2.5">
+                <span aria-hidden="true" className="mt-2.5 h-1.5 w-1.5 shrink-0 rounded-full bg-current opacity-70" />
+                <span>{highlightText(highlight)}</span>
+              </li>
+            ))}
+          </ul>
+        </section>
+      )}
+    </>
+  );
+
   return (
     <PageShell
       locale={locale}
@@ -255,124 +412,19 @@ export default function SchoolBody({ locale, state, slug }: { locale: Locale; st
         { label: school.suburb, href: suburbPath(school.state, school.suburb, locale) },
         { label: school.school_name },
       ]}
+      split={{ side: hero, map: heroMap && (
+        <HeroMap
+          model={heroMap}
+          labels={mapLabels(locale, formatMessage(t.mapTitle, { school: school.school_name }))}
+          hrefFor={mapHref(locale)}
+        />
+      ) }}
     >
       {/* "<" escaped so a value can never close the script element early. */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, '\\u003c') }}
       />
-
-      <header className="bs-hero">
-        <div className="flex flex-wrap items-center gap-2">
-          <span className={`rounded-full px-3 py-1 text-[13px] font-semibold ${sectorBadgeClass(school.sector)}`}>{sectorLabel}</span>
-          {school.school_type && (
-            <span className="bs-chip">
-              {getSchoolTypeLabel(school.school_type, dictionary)}
-            </span>
-          )}
-          {school.year_range && <span className="bs-chip">{school.year_range}</span>}
-        </div>
-        <h1 className="bs-h1 mt-4">{school.school_name}</h1>
-        <p className="mt-2 text-[15px] text-muted">
-          {school.suburb}, {full} {school.postcode}
-        </p>
-        <p className="mt-4 max-w-2xl text-lg leading-relaxed text-ink-2">
-          {formatMessage(hasProfile ? t.lead : t.leadBasic, {
-            school: school.school_name,
-            type: typeLabel(locale, school),
-            suburb: school.suburb,
-            state: stateLabel,
-            sector: sectorLabel,
-            years: school.year_range ?? '',
-            count: number(Number(school.total_enrolments)),
-            year: ACARA_DATA_YEAR,
-          })}
-        </p>
-        <div className="mt-6 flex flex-wrap gap-2">
-          <Link
-            href={mapUrl({ locale, school: school.acara_sml_id })}
-            className="bs-btn"
-          >
-            {t.viewOnMap}
-          </Link>
-          {school.myschool_url && (
-            <a
-              href={school.myschool_url}
-              target="_blank"
-              rel="noreferrer"
-              className="bs-btn-quiet"
-            >
-              {t.naplanLink} →
-            </a>
-          )}
-          {schoolWebsiteUrl && (
-            <a
-              href={schoolWebsiteUrl}
-              target="_blank"
-              rel="noreferrer"
-              className="bs-btn-quiet"
-            >
-              {t.websiteLink} →
-            </a>
-          )}
-        </div>
-
-      {hasProfile && (
-        <dl className="mt-8 grid grid-cols-2 gap-3 lg:grid-cols-4">
-          <Stat label={t.statStudents} value={number(Number(school.total_enrolments))}>
-            {Number.isFinite(school.girls) && Number.isFinite(school.boys) && (
-              <span className="mt-1 block text-[13px] text-muted">
-                {formatMessage(t.enrolmentsSplit, { girls: number(Number(school.girls)), boys: number(Number(school.boys)) })}
-              </span>
-            )}
-            {sizePool.length >= 20 && (
-              <span className="mt-1 block text-[13px] text-muted">
-                {formatMessage(t.statSizeContext, {
-                  percent: percentBelow(sizePool, Number(school.total_enrolments)),
-                  type: typeLabel(locale, school),
-                  state: stateLabel,
-                })}
-              </span>
-            )}
-          </Stat>
-          <Stat label={t.statYears} value={school.year_range}>
-            {school.school_type && (
-              <span className="mt-1 block text-[13px] text-muted">{getSchoolTypeLabel(school.school_type, dictionary)}</span>
-            )}
-          </Stat>
-          {ratio !== null && (
-            <Stat label={t.statRatio} value={ratio.toFixed(1)}>
-              <span className="mt-1 block text-[13px] text-muted">
-                {formatMessage(t.statRatioNote, { teachers: Number(school.staff?.teaching_fte) })}
-              </span>
-            </Stat>
-          )}
-          {Number.isFinite(school.icsea) && (
-            <Stat label={t.fieldIcsea} value={school.icsea}>
-              {Number.isFinite(school.icsea_percentile) && (
-                <span className="mt-1 block text-[13px] text-muted">
-                  {formatMessage(t.icseaPercentile, { value: ordinalNumber(Number(school.icsea_percentile), locale) })}
-                </span>
-              )}
-            </Stat>
-          )}
-        </dl>
-      )}
-      </header>
-
-      {highlights.length > 0 && (
-        <section className="bs-section" aria-labelledby="highlights">
-          <h2 id="highlights" className="bs-h2">{t.highlightsHeading}</h2>
-          <ul className="mt-3 space-y-2 text-[15px] leading-relaxed text-ink-2">
-            {highlights.map(highlight => (
-              <li key={highlight.kind} className="flex gap-3">
-                <span aria-hidden="true" className="mt-2.5 h-1.5 w-1.5 shrink-0 rounded-full bg-brand" />
-                <span>{highlightText(highlight)}</span>
-              </li>
-            ))}
-          </ul>
-        </section>
-      )}
 
       <ComparisonSection school={school} locale={locale} />
 
@@ -479,57 +531,6 @@ export default function SchoolBody({ locale, state, slug }: { locale: Locale; st
           </p>
         )}
       </section>
-
-      {neighbours.length > 0 && (
-        <section className="bs-section" aria-labelledby="around">
-          <h2 id="around" className="bs-h2">
-            {formatMessage(t.aroundHeading, { school: school.school_name })}
-          </h2>
-          <div className="mt-4 grid items-start gap-5 sm:grid-cols-[minmax(0,360px)_1fr]">
-            <NeighbourhoodDiagram
-              school={school}
-              neighbours={neighbours}
-              zones={zoneFeatures}
-              hrefFor={entry => schoolPath(entry.school.state, entry.slug, locale)}
-              title={formatMessage(t.diagramTitle, { school: school.school_name })}
-              kmLabel={km => formatMessage(t.diagramKm, { km })}
-              northLabel={t.diagramNorth}
-            />
-            <div className="text-[15px] text-ink-2">
-              <p className="leading-relaxed">
-                {formatMessage(t.diagramCaption, { count: neighbours.length, step: diagram.stepKm })}
-                {diagram.drawable.length > 0 && ` ${t.diagramZone}`}
-              </p>
-              <ul className="mt-3 space-y-1.5 text-sm text-ink-2">
-                <li className="flex items-center gap-2">
-                  <span
-                    aria-hidden="true"
-                    className="h-3 w-3 rounded-full ring-1 ring-ink ring-offset-2"
-                    style={{ backgroundColor: sectorColor }}
-                  />
-                  {t.diagramThisSchool}
-                </li>
-                {diagramSectors.map(sector => (
-                  <li key={sector} className="flex items-center gap-2">
-                    <span
-                      aria-hidden="true"
-                      className="h-3 w-3 rounded-full"
-                      style={{ backgroundColor: getMarkerColor(sector) }}
-                    />
-                    {getSectorLabel(sector, dictionary)}
-                  </li>
-                ))}
-              </ul>
-              <Link
-                href={mapUrl({ locale, school: school.acara_sml_id })}
-                className="bs-link mt-4 inline-block text-sm"
-              >
-                {t.viewOnMap} →
-              </Link>
-            </div>
-          </div>
-        </section>
-      )}
 
       {peers.length > 0 && (
         <section className="bs-section" aria-labelledby="nearby">

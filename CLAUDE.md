@@ -199,13 +199,34 @@ change with the theme. SVG reads tokens through `style={{ fill: 'var(--bs-…)' 
 since presentation attributes do not reliably resolve `var()`. The map app
 (`/schools`) is not themed yet.
 
+### Hero map
+
+School, catchment and suburb pages open with a map beside the title block
+(`PageShell`'s `split` prop, classes `bs-split`/`bs-map` in `globals.css`). The
+map is `components/seo/HeroMap.tsx`: server-rendered SVG, no tiles, no client
+script. `lib/heroMap.ts` holds the pure projection and fitting maths (tested);
+`lib/heroMapData.ts` picks what to draw (server only — it reads geometry off
+disk); `components/seo/mapParts.ts` builds labels and zone variants.
+
+- Boundaries are drawn from the published geometry, thinned only at the drawn
+  resolution (half a drawing unit, under a pixel). The stored geometry is never
+  simplified, and the zone lookup always runs against it.
+- Text (selected-school label, numbered pins, legend) is HTML over the SVG,
+  positioned in drawing units through `--u`, so it keeps its CSS size on a phone.
+- VIC year-group boundaries are radio buttons; CSS `:has()` shows the chosen
+  one, so there is no JavaScript.
+- Same encoding as the map app: sector is colour, enrolments are area,
+  selection is a white gap and an ink ring. Neighbouring zones are outlines.
+- No address search: there is no geocoder. The hero's main button opens the
+  map with the zone drawn, where the reader drops a pin.
+
 ### School pages
 
 `SchoolBody` is built so 11,034 pages do not read as one template. What varies
 is real data, not reworded boilerplate: per-year enrolments, staffing and SEA
 quarters (`grade_enrolments`, `staff`, `sea_quarters` — official ACARA fields,
-canonical only, not in the client projection), a neighbourhood diagram drawn
-from the school's own coordinates and zone, and a "what stands out" list.
+canonical only, not in the client projection), a hero map drawn from the
+school's own coordinates and zone, and a "what stands out" list.
 `lib/schoolInsights.ts::schoolHighlights` picks that list by rule (single-sex
 roll, only school in the suburb, a Year 7 intake step, size at the extremes of
 its state and type, remoteness…) and returns nothing for an unremarkable

@@ -56,6 +56,19 @@ export default function BrowseBody({ locale }: { locale: Locale }) {
         })}
       </p>
 
+      <dl className="mt-6 grid grid-cols-3 gap-3">
+        {[
+          { value: dataset.schools.length, label: t.statSchools },
+          { value: dataset.suburbs.size, label: t.statSuburbs },
+          { value: states.reduce((sum, summary) => sum + summary.zoned, 0), label: t.statZoned },
+        ].map((stat, index) => (
+          <div key={stat.label} className={`bs-stat flex flex-col-reverse justify-end gap-1 ${index === 0 ? 'bs-stat-key' : ''}`}>
+            <dt className="bs-label">{stat.label}</dt>
+            <dd className="bs-figure text-[1.75rem] sm:text-4xl">{stat.value.toLocaleString('en-AU')}</dd>
+          </div>
+        ))}
+      </dl>
+
       <div className="mt-6">
         <Link
           href={mapUrl({ locale })}

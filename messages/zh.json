@@ -166,7 +166,7 @@
       "metaTitle": "按州和城区浏览澳洲学校",
       "metaDescription": "按州和城区浏览全澳 {schools} 所学校，{states}还可以在地图上查看公立学校的学区边界。",
       "heading": "浏览澳洲学校",
-      "intro": "{suburbs} 个城区、{schools} 所学校，数据来自 ACARA {year} 官方采集。选一个州查看它的城区，或者直接打开地图按地址查。",
+      "intro": "{suburbs} 个城区、{schools} 所学校，数据来自 ACARA {year} 官方采集。选一个州查看它的城区，或者打开地图，在某个地址上放一个图钉，看它落在哪些学区里。",
       "statesHeading": "各州与领地",
       "stateMeta": "{schools} 所学校 · {suburbs} 个城区",
       "stateZoned": "{count} 所有学区",
@@ -176,7 +176,10 @@
       "largestHeading": "学校最多的城区",
       "largestHint": "直接进入学校最多的几个城区页面。全部城区都可以通过上面的州索引找到。",
       "rankingsHeading": "各州学校排名",
-      "rankingsHint": "有 VCAA 数据的按 VCE 成绩排名；各类学校都可按 ICSEA（反映学生背景）排名。"
+      "rankingsHint": "有 VCAA 数据的按 VCE 成绩排名；各类学校都可按 ICSEA（反映学生背景）排名。",
+      "statSchools": "所学校",
+      "statSuburbs": "个城区",
+      "statZoned": "所学校有已公布的学区"
     },
     "stateIndex": {
       "metaTitle": "{state}学校一览（按城区）",
@@ -215,7 +218,9 @@
       "zonesNonePartial": "没有以 {suburb} 为校址的公立学校公布学区。{state}只给一部分公立学校划片，所以这一点说明不了什么 —— 这个城区仍可能落在别处某所学校的学区范围内。",
       "compareHeading": "{suburb} 学校并排对比",
       "compareNote": "按 ICSEA 从高到低排序。ICSEA 反映的是学生的社会教育背景，而不是学校的教学表现。数据来自 ACARA {year}，师生比由 BetterSchool 计算。",
-      "rankingsHeading": "{suburb} 的学校在{state}的排名"
+      "rankingsHeading": "{suburb} 的学校在{state}的排名",
+      "mapTitle": "{suburb} 的学校分布图",
+      "mapNote": "地图上的编号与下方对比表一致。"
     },
     "school": {
       "metaTitle": "{school}（{suburb}，{state}）学校资料",
@@ -306,13 +311,7 @@
       "fieldTeachingStaff": "教师",
       "fieldNonTeachingStaff": "非教学人员",
       "staffValue": "{count} 人 · 全职当量 {fte}",
-      "aroundHeading": "{school} 周边",
-      "diagramTitle": "{school} 附近的学校：方向与距离",
-      "diagramCaption": "直线距离最近的 {count} 所学校。上方为北，相邻两圈相隔 {step} 公里。圆点大小表示在校人数，颜色表示办学性质，和地图上的图例一致。",
-      "diagramZone": "轮廓线是这所学校公布的学区范围。",
-      "diagramThisSchool": "本校",
       "diagramKm": "{km} 公里",
-      "diagramNorth": "北",
       "compareHeading": "{school} 与周边学校比较",
       "compareColMeasure": "指标",
       "compareColSchool": "本校",
@@ -348,7 +347,11 @@
       "y12Link": "查看{state} VCE 成绩排名",
       "y12Withheld": "“—”表示 VCAA 未公布该数字：人数少于四人，或学校没有开设该课程。",
       "y12Source": "VCAA《Senior Secondary Completion and Achievement Information》。© Victorian Curriculum and Assessment Authority。",
-      "y12EarlyOnly": "{year} 年这里没有学生完成 VCE：这些成绩来自学校开出 Year 12 之前提前修读 Units 3–4 科目的学生，因此不参与排名。"
+      "y12EarlyOnly": "{year} 年这里没有学生完成 VCE：这些成绩来自学校开出 Year 12 之前提前修读 Units 3–4 科目的学生，因此不参与排名。",
+      "checkOnMap": "在地图上查地址",
+      "mapTitle": "{school} 及周边学校地图",
+      "statVce": "VCE 中位学科分",
+      "statVceRank": "维州 {count} 所中第 {rank}"
     },
     "catchment": {
       "metaTitle": "{school} 学区范围（{suburb}，{state}）",
@@ -361,6 +364,7 @@
       "zoneHeading": "学区详情",
       "zoneKind": "{kind}学区",
       "zoneYears": "{levels} 年级",
+      "zoneYearOne": "{levels} 年级",
       "zoneDataYear": "{year} 招生年度",
       "zoneEffective": "{year} 年起生效",
       "zoneUpdated": "边界最后变更于 {date}",
@@ -382,7 +386,8 @@
       "insideNone": "在这条公布的边界内，没有找到其他带坐标的学校。",
       "zoneYearsUnknown": "该州未按学区公布适用年级",
       "zoneVariantsNote": "教育部门为这所学校公布了 {count} 条边界，分别对应不同年级。几条边界可能不一样，请以孩子入学年级对应的那条为准。",
-      "insideHeadingKindYears": "{levels} 年级{kind}学区范围内的其他学校"
+      "insideHeadingKindYears": "{levels} 年级{kind}学区范围内的其他学校",
+      "mapTitle": "{school} 学区范围及周边学校地图"
     },
     "ranking": {
       "metaTitle": "{state}{group}排名：按 ICSEA（{year}）",
@@ -426,7 +431,8 @@
       "weightsHint": "每项权重作用于学校在本表中该项指标的百分位。只有各项加权指标都有数据的学校参与综合排序：本表共 {count} 所。",
       "showAll": "显示全部 {count} 所",
       "showTop": "只显示前 {count} 名",
-      "earlyOnly": "另有 {count} 所学校还没有 Year 12，公布的中位分来自提前修读 Units 3–4 科目的学生，不参与排名。"
+      "earlyOnly": "另有 {count} 所学校还没有 Year 12，公布的中位分来自提前修读 Units 3–4 科目的学生，不参与排名。",
+      "topThree": "前三名"
     },
     "kinds": {
       "primary": "小学",
@@ -442,6 +448,11 @@
       "TAS": "塔斯马尼亚州",
       "ACT": "澳大利亚首都领地",
       "NT": "北领地"
+    },
+    "map": {
+      "zone": "已公布的学区",
+      "neighbours": "相邻学区",
+      "variantSwitch": "按年级查看学区"
     }
   }
 }

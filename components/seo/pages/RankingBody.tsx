@@ -4,7 +4,8 @@ import { notFound } from 'next/navigation';
 import { getRanking, getRankingGroups, getStateRankings, latestYear12, type RankingGroup } from '@/lib/schoolsData';
 import { metricValue } from '@/lib/schoolCompare';
 import { RANKING_SECTORS, RANKING_VIEWS, VCE_MIN_STUDENTS, rankingSlug } from '@/lib/rankings';
-import type { TableMetric, TableRow, Weights } from '@/lib/rankingTable';
+import { assignRanks, sortRows, type TableMetric, type TableRow, type Weights } from '@/lib/rankingTable';
+import { sectorBadgeClass } from '@/utils/schoolFilters';
 import RankingTable, { type RankingTableLabels } from '@/components/seo/RankingTable';
 import { formatMessage, getMessages } from '@/lib/i18n';
 import {
@@ -107,6 +108,19 @@ export default function RankingBody({ locale, state, slug }: { locale: Locale; s
   };
 
   const rows = tableRows(ranking, locale);
+  // The cards repeat the table's default order, which is also what the
+  // server renders; a reader who re-sorts the table changes only the table.
+  const lead: TableMetric = isVce ? 'vce_median' : 'icsea';
+  const second: TableMetric = isVce ? 'vce_40' : 'enrolments';
+  const defaultOrder = sortRows(rows.filter(row => !row.smallCohort), lead);
+  const defaultRanks = assignRanks(defaultOrder, lead);
+  const podium = defaultOrder.slice(0, 3).map((row, index) => ({ row, rank: defaultRanks[index] }));
+  const figure = (metric: TableMetric, value: number | null | undefined) => (
+    value == null ? '—'
+      : metric === 'vce_40' ? `${value}%`
+        : metric === 'enrolments' ? value.toLocaleString('en-AU')
+          : String(value)
+  );
   // A column is offered only when some school in this table has the figure.
   const columns = (['vce_median', 'vce_40', 'icsea', 'enrolments', 'ratio'] as TableMetric[])
     .filter(metric => rows.some(row => row.values[metric] !== null));
@@ -159,6 +173,37 @@ export default function RankingBody({ locale, state, slug }: { locale: Locale; s
         {ranking.earlyOnly > 0 && <> {formatMessage(t.earlyOnly, { ...values, count: ranking.earlyOnly })}</>}
       </p>
       </header>
+
+      {podium.length === 3 && (
+        <ol aria-label={t.topThree} className="mt-5 grid gap-3 sm:grid-cols-3">
+          {podium.map(({ row, rank }, index) => (
+            <li key={row.id} className={`bs-stat flex flex-col gap-2 ${index === 0 ? 'bs-stat-key' : 'bg-surface'}`}>
+              <div className="flex items-center justify-between gap-2">
+                <span className="bs-label">#{rank}</span>
+                {ranking.sector === null && (
+                  <span className={`whitespace-nowrap rounded-full px-2 py-0.5 text-xs font-medium ${sectorBadgeClass(row.sector)}`}>
+                    {labels.sectors[row.sector] ?? row.sector}
+                  </span>
+                )}
+              </div>
+              <Link href={row.href} className="font-display text-lg font-bold leading-snug hover:underline">
+                {row.name}
+              </Link>
+              <span className="text-[13px] text-muted">{row.suburb}</span>
+              <dl className="mt-auto flex flex-wrap gap-x-6 gap-y-1 pt-2">
+                <div className="flex flex-col-reverse">
+                  <dt className="text-[13px] text-muted">{labels.columns[lead]}</dt>
+                  <dd className="bs-figure text-3xl">{figure(lead, row.values[lead])}</dd>
+                </div>
+                <div className="flex flex-col-reverse">
+                  <dt className="text-[13px] text-muted">{labels.columns[second]}</dt>
+                  <dd className="bs-figure text-3xl">{figure(second, row.values[second])}</dd>
+                </div>
+              </dl>
+            </li>
+          ))}
+        </ol>
+      )}
 
       <section className="bs-section" aria-label={t.crumb}>
       <div className="space-y-2">

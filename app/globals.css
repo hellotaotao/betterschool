@@ -48,6 +48,7 @@ body {
   --bs-accent-soft: #fff3c4;
   --bs-on-accent-soft: #6b4e00;
   --bs-zone: #1f5eea;
+  --bs-map: #e8f0ff;
   --bs-data-1: #d6e2ff;
   --bs-data-2: #9db6f5;
   --bs-data-3: #5b86f0;
@@ -79,6 +80,7 @@ body {
   --bs-accent-soft: #f6f7f9;
   --bs-on-accent-soft: #3a4459;
   --bs-zone: #14213d;
+  --bs-map: #f1f3f6;
   --bs-data-1: #d5dae3;
   --bs-data-2: #a3adbf;
   --bs-data-3: #5d6b85;
@@ -110,6 +112,7 @@ body {
   --bs-accent-soft: #eaf0fb;
   --bs-on-accent-soft: #183a8c;
   --bs-zone: #183a8c;
+  --bs-map: #e8eef9;
   --bs-data-1: #d6e0f5;
   --bs-data-2: #9db2e3;
   --bs-data-3: #4f6fc0;
@@ -211,7 +214,9 @@ body {
     border-radius: 0;
     box-shadow: none;
   }
-  [data-theme="harbour"] .bs-hero {
+  /* Harbour's title blocks sit on the brand colour, so the tokens inside them
+     turn to white and translucent white. */
+  [data-theme="harbour"] :is(.bs-hero, .bs-split-side) {
     --bs-ink: #ffffff;
     --bs-ink-2: #e3e9f7;
     --bs-muted: #c9d6f2;
@@ -220,21 +225,309 @@ body {
     --bs-line-strong: rgb(255 255 255 / 0.4);
     --bs-soft: rgb(255 255 255 / 0.12);
     --bs-soft-strong: rgb(255 255 255 / 0.3);
-    padding: 2.5rem 0 3rem;
+    --bs-accent-soft: rgb(255 255 255 / 0.1);
+    --bs-on-accent-soft: #ffffff;
     background: var(--bs-brand);
     color: var(--bs-ink);
+  }
+  [data-theme="harbour"] .bs-hero {
+    padding: 2.5rem 0 3rem;
     border-radius: 0;
     box-shadow: 0 0 0 100vmax var(--bs-brand);
     clip-path: inset(0 -100vmax);
   }
-  [data-theme="harbour"] .bs-hero .bs-btn {
+  [data-theme="harbour"] :is(.bs-hero, .bs-split-side) .bs-btn {
     background: #ffffff;
     color: var(--bs-brand);
   }
-  [data-theme="harbour"] .bs-hero .bs-btn-quiet {
+  [data-theme="harbour"] :is(.bs-hero, .bs-split-side) .bs-btn-quiet {
     background: transparent;
     color: #ffffff;
     box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.45);
+  }
+
+  /* Map-first title band: the static map beside the title block, full width
+     under the site header. The title block comes first in the document, so
+     the h1 is read first; the map is drawn first, on top on a phone and on
+     the left on a wide screen. */
+  .bs-split {
+    display: flex;
+    flex-direction: column-reverse;
+    background: var(--bs-surface);
+    border-bottom: 1px solid var(--bs-line);
+  }
+  .bs-split > .bs-map {
+    height: 25rem;
+  }
+  .bs-split-side {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    padding: 1.25rem 1rem 2rem;
+  }
+  @media (min-width: 640px) {
+    .bs-split-side { padding: 1.5rem 2rem 2.25rem; }
+  }
+  @media (min-width: 1024px) {
+    .bs-split {
+      flex-direction: row-reverse;
+      align-items: stretch;
+    }
+    /* The title block can run long; the map holds one screen and stays in
+       view beside it rather than stretching and centring its subject below
+       the fold. */
+    .bs-split > .bs-map {
+      flex: 1 1 auto;
+      align-self: flex-start;
+      position: sticky;
+      top: 0;
+      height: min(calc(100svh - 3.5rem), 40rem);
+      min-height: 32rem;
+    }
+    .bs-split-side {
+      flex: 0 0 min(36rem, 46%);
+      padding: 1.5rem 2.25rem 2.25rem;
+    }
+  }
+  /* A school with no coordinates has no map: the title block takes the band. */
+  .bs-split-side:only-child {
+    flex: 1 1 auto;
+    width: 100%;
+    max-width: 56rem;
+    margin: 0 auto;
+  }
+  .bs-split .bs-h1 {
+    font-size: 2.25rem;
+  }
+  @media (min-width: 1280px) {
+    .bs-split .bs-h1 { font-size: 2.75rem; }
+  }
+  /* The band already closes the block above the body. */
+  [data-theme="atlas"] .bs-split + .bs-main > .bs-section:first-child,
+  [data-theme="harbour"] .bs-split + .bs-main > .bs-section:first-child {
+    margin-top: 0.5rem;
+    border-top: 0;
+    padding-top: 0;
+  }
+
+  /* The static map. One drawing unit is --u: the SVG is a 480-unit square
+     scaled with `meet`, so a unit is the figure's shorter side over 480, and
+     HTML overlays are placed in the same units from the centre. */
+  .bs-map {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    margin: 0;
+    background: var(--bs-map);
+  }
+  .bs-map-canvas {
+    position: relative;
+    flex: 1 1 auto;
+    min-height: 0;
+    container-type: size;
+    --u: calc(min(100cqw, 100cqh) / 480);
+  }
+  .bs-map-svg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+  }
+  .bs-map-dots a circle {
+    transition: stroke-width 0.15s ease;
+  }
+  .bs-map-dots a:hover circle {
+    stroke: var(--bs-ink);
+    stroke-width: 2;
+  }
+
+  /* Year-group variants: the first shows until the reader picks another.
+     Without :has() support the first simply stays. */
+  .bs-variant:not([data-variant="0"]) { display: none; }
+  .bs-map:has(.bs-map-switch input:checked:not([value="0"])) .bs-variant[data-variant="0"] { display: none; }
+  .bs-map:has(.bs-map-switch input[value="1"]:checked) .bs-variant[data-variant="1"],
+  .bs-map:has(.bs-map-switch input[value="2"]:checked) .bs-variant[data-variant="2"],
+  .bs-map:has(.bs-map-switch input[value="3"]:checked) .bs-variant[data-variant="3"],
+  .bs-map:has(.bs-map-switch input[value="4"]:checked) .bs-variant[data-variant="4"],
+  .bs-map:has(.bs-map-switch input[value="5"]:checked) .bs-variant[data-variant="5"] { display: inline; }
+
+  .bs-map-switch {
+    position: absolute;
+    z-index: 2;
+    top: 0.75rem;
+    left: 0.75rem;
+    right: 0.75rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.375rem;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    pointer-events: none;
+  }
+  .bs-map-switch label {
+    pointer-events: auto;
+    cursor: pointer;
+  }
+  .bs-map-switch span {
+    display: inline-flex;
+    align-items: center;
+    min-height: 2.25rem;
+    padding: 0 0.875rem;
+    border-radius: var(--bs-radius-ctl);
+    background: var(--bs-surface);
+    color: var(--bs-ink-2);
+    font-size: 0.875rem;
+    font-weight: 600;
+    box-shadow: 0 2px 8px rgb(14 27 61 / 0.14);
+  }
+  .bs-map-switch input:checked + span {
+    background: var(--bs-brand);
+    color: var(--bs-on-brand);
+  }
+  .bs-map-switch input:focus-visible + span {
+    outline: 2px solid var(--bs-link);
+    outline-offset: 2px;
+  }
+
+  .bs-map-pin {
+    position: absolute;
+    z-index: 1;
+    display: grid;
+    place-items: center;
+    width: 1.625rem;
+    height: 1.625rem;
+    transform: translate(-50%, -50%);
+    border: 3px solid;
+    border-radius: 999px;
+    background: #ffffff;
+    color: #0e1b3d;
+    font-size: 0.75rem;
+    font-weight: 700;
+    line-height: 1;
+    font-variant-numeric: tabular-nums;
+    box-shadow: 0 1px 4px rgb(14 27 61 / 0.25);
+    text-decoration: none;
+  }
+  .bs-map-pin:hover {
+    background: #0e1b3d;
+    color: #ffffff;
+  }
+
+  .bs-map-label {
+    position: absolute;
+    z-index: 1;
+    transform: translate(calc(var(--r) * var(--u)), -50%);
+    padding: 0.25rem 0.625rem;
+    border-radius: 0.625rem;
+    background: #0e1b3d;
+    color: #ffffff;
+    /* max-content, or a label near the right edge would wrap to the sliver
+       of width left between its anchor and the edge. */
+    width: max-content;
+    max-width: min(15rem, 46cqw);
+    font-size: 0.8125rem;
+    font-weight: 700;
+    line-height: 1.25;
+    pointer-events: none;
+  }
+  .bs-map-label[data-side="left"] {
+    transform: translate(calc(-100% - var(--r) * var(--u)), -50%);
+  }
+
+  /* Under the map while the map is full width, so it never covers a school;
+     floated over the corner once the map sits beside the title block. */
+  .bs-map-legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.25rem 0.875rem;
+    padding: 0.5rem 1rem;
+    border-top: 1px solid var(--bs-line);
+    background: var(--bs-surface);
+    color: var(--bs-ink-2);
+    font-size: 0.8125rem;
+    font-weight: 600;
+  }
+  @media (min-width: 1024px) {
+    .bs-map-legend {
+      position: absolute;
+      left: 0.75rem;
+      bottom: 0.75rem;
+      max-width: calc(100% - 7.5rem);
+      padding: 0.5rem 0.75rem;
+      border-top: 0;
+      border-radius: var(--bs-radius-inner);
+      box-shadow: 0 2px 8px rgb(14 27 61 / 0.12);
+    }
+  }
+  .bs-map-legend span {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+  }
+  .bs-map-legend i {
+    display: inline-block;
+    flex: none;
+  }
+  .bs-map-key-zone {
+    width: 0.875rem;
+    height: 0.625rem;
+    border: 2px solid var(--bs-zone);
+    border-radius: 2px;
+    background: color-mix(in srgb, var(--bs-zone) 14%, transparent);
+  }
+  .bs-map-key-context {
+    width: 0.875rem;
+    height: 0.625rem;
+    border: 1px solid color-mix(in srgb, var(--bs-zone) 45%, transparent);
+    border-radius: 2px;
+  }
+  .bs-map-key-dot {
+    width: 0.5625rem;
+    height: 0.5625rem;
+    border-radius: 999px;
+  }
+
+  .bs-map-scale {
+    position: absolute;
+    right: 0.75rem;
+    bottom: 0.75rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 0.125rem;
+    color: var(--bs-ink-2);
+    font-size: 0.75rem;
+    font-weight: 600;
+  }
+  .bs-map-scale i {
+    display: block;
+    height: 0.375rem;
+    border: 2px solid var(--bs-ink-2);
+    border-top: 0;
+  }
+
+  /* The lead figure in a stat grid: filled in bright, the same ruled cell as
+     its neighbours in the editorial themes. */
+  [data-theme="bright"] .bs-stat-key {
+    --bs-muted: var(--bs-on-brand-muted);
+    background: var(--bs-brand-deep);
+    color: var(--bs-on-brand);
+  }
+  .bs-pill-accent {
+    display: inline-flex;
+    align-self: flex-start;
+    padding: 0.25rem 0.625rem;
+    border-radius: 999px;
+    background: var(--bs-accent);
+    color: var(--bs-on-accent);
+    font-size: 0.8125rem;
+    font-weight: 700;
+  }
+  [data-theme="harbour"] .bs-split-side .bs-pill-accent {
+    background: #ffffff;
+    color: var(--bs-brand);
   }
 
   .bs-h1 {
@@ -290,7 +583,7 @@ body {
   [data-theme="harbour"] .bs-figure {
     color: var(--bs-brand);
   }
-  [data-theme="harbour"] .bs-hero .bs-figure {
+  [data-theme="harbour"] :is(.bs-hero, .bs-split-side) .bs-figure {
     color: #ffffff;
   }
 
