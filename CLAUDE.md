@@ -186,7 +186,15 @@ The SEO pages render in three themes — `bright` (default), `atlas`, `harbour`
 ([spec](docs/specs/2026-11-10-multi-theme-design.md)). A blocking script from
 `lib/theme.ts` sets the attribute before first paint from `?theme=` or the
 remembered choice, so pages stay static (no cookie read on the server).
-Preview any page with `?theme=atlas` etc.
+Preview any page with `?theme=atlas` etc.; a `?theme=` visit is
+remembered and takes that browser out of the theme experiment.
+
+A theme experiment (`THEME_EXPERIMENT` in `lib/theme.ts`) gives each new
+visitor a theme at random by weight, remembers it, and writes it into the page
+as Vercel flag values so Web Analytics tags page views and events with
+`flags/theme`. `components/LinkEvents.tsx` reports `map_open` and
+`profile_open` (rules in `lib/analyticsEvents.ts`). Setting the experiment to
+null ends it. How to read the results: spec section 6.
 
 Components under `components/seo/` and the map app's components use only the semantic utilities
 (`text-ink`, `text-muted`, `text-link`, `bg-soft`, `border-line`, `bg-brand`…)

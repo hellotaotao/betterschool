@@ -2,7 +2,7 @@
 
 - **日期**: 2026-11-10
 - **范围**: `/browse`、`/suburb/*`、`/school/*`、`/catchment/*`、`/ranking/*` 及其 `/zh` 版本；第三期起包括地图应用（`/schools`）。
-- **状态**: 第一至三期已完成（第二期计划见 `docs/plans/2026-11-10-map-first-layouts.md`）
+- **状态**: 四期都已完成；主题实验 `theme-ab-2026-11` 自 2026-11-10 起运行（第二期计划见 `docs/plans/2026-11-10-map-first-layouts.md`）
 - **设计稿**: https://claude.ai/artifact/5SsDLAWo78mMK3vCHvzQvu（画布第五至七行是定稿，第一行和第三行是另外两套主题的来源）
 
 ## 1. 为什么做
@@ -69,7 +69,31 @@ HTML 对三套主题完全一样，搜索引擎看到的内容不随主题变。
 1. **第一期（本文档）**：主题基础设施、语义类、所有 SEO 页面换成语义类、三套主题都能用 `?theme=` 预览。版式基本保持现在的结构。
 2. **第二期**：按定稿重排版式——学校页、suburb 页、学区页的地图分栏首屏（静态 SVG，基于真实学区几何），排名页的前三名卡片，Browse 页首屏。
 3. **第三期**：地图应用换装。只换颜色、字体和圆角，功能和布局不变；地图本身的编码（办学性质三色、小学/中学学区线颜色、选中圈）不随主题变。定稿里的结构改动（详情卡片浮在地图上、筛选改下拉）没有做。
-4. **第四期**：A/B 分流与统计。
+4. **第四期**：A/B 分流与统计。见第 6 节。
+
+## 6. 主题实验（第四期）
+
+**分组**：`lib/theme.ts` 的 `THEME_EXPERIMENT` 定义实验 ID、权重和上报用的标记名。2026-11-10 起全站三套各三分之一。分组由 `<head>` 里的主题脚本在浏览器中完成，结果存在 `localStorage` 的 `bs-theme-ab`（值为“实验 ID:主题”），同一访客之后一直看到同一套。
+
+不进实验的访客：
+
+- 网址带 `?theme=` 的（自己预览用），同时会清掉已有分组；
+- 以前用 `?theme=` 手动选过主题的；
+- 浏览器存储不可用的。这些访客一律看 bright。否则每个页面都会重新抽签，主题逐页变化。
+
+**上报**：分到组的访客，页面 `<head>` 里会多一个 `<script type="application/json" data-flag-values>{"theme":"…"}</script>`。Vercel Web Analytics 读到它，会给每次页面访问和自定义事件附上 `flags/theme`，已在开发模式的调试日志里确认过。另有两个自定义事件，由 `components/LinkEvents.tsx` 上报，规则在 `lib/analyticsEvents.ts`，事件数据里也带一份 `theme`：
+
+- `map_open`：从内容页点进地图，`from` 是出发页面的类型；
+- `profile_open`：从地图点进学校页、学区页或 suburb 页。
+
+**看结果**：在 Vercel 项目的 Analytics 页面，按 flag `theme` 分组比较：
+
+- 各组的访客数、每访客浏览页数、跳出率；
+- `map_open` 和 `profile_open` 的人数占该组访客的比例。
+
+也可以用 Web Analytics 接口，按 `eventData/theme` 或 `flags/theme` 聚合。
+
+**结束实验**：把 `THEME_EXPERIMENT` 设为 `null`，所有未手动选择的访客回到默认主题；或者把默认主题 `DEFAULT_THEME` 改成胜出的那套。想重新抽签就改 `id`。
 
 ## 5. 不做的事
 

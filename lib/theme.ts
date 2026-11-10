@@ -17,6 +17,24 @@ export const DEFAULT_THEME: Theme = 'bright';
 export const THEME_PARAM = 'theme';
 export const THEME_STORAGE_KEY = 'bs-theme';
 
+/**
+ * The running theme experiment, or null when none is.
+ *
+ * A visitor with no theme of their own is given one at random by these
+ * weights and keeps it. The page then carries `{ [flag]: theme }` as Vercel
+ * flag values, so Web Analytics attaches the theme to every page view and
+ * custom event and the groups can be compared. Changing `id` starts a new
+ * draw for everyone; setting this to null ends the test, and every visitor
+ * without a manual choice falls back to the default.
+ */
+export const THEME_EXPERIMENT: { id: string; flag: string; weights: Record<Theme, number> } | null = {
+  id: 'theme-ab-2026-11',
+  flag: 'theme',
+  weights: { bright: 1, atlas: 1, harbour: 1 },
+};
+/** Holds `<experiment id>:<theme>` for a visitor drawn into the experiment. */
+export const EXPERIMENT_STORAGE_KEY = 'bs-theme-ab';
+
 export function isTheme(value: unknown): value is Theme {
   return typeof value === 'string' && (THEMES as readonly string[]).includes(value);
 }
@@ -33,13 +51,27 @@ export function resolveTheme({ query, stored }: { query?: string | null; stored?
 }
 
 /**
- * Inline script for `<head>`. It mirrors `resolveTheme` and is generated from
- * the same constants so the theme list lives in one place. Storage can throw
- * (private mode, blocked site data), in which case the server's default stands.
+ * Inline script for `<head>`, generated from the same constants as the rest
+ * of this file so the theme list and experiment live in one place.
+ *
+ * Order: `?theme=` (remembered, and it takes the visitor out of the
+ * experiment, so previews never land in the data) → a remembered manual
+ * choice → an earlier draw in the current experiment → a new draw. A visitor
+ * whose storage throws gets the server's default and is left out: without
+ * storage every page would draw again and the theme would change per page.
  */
 export function themeBootScript(): string {
-  const themes = JSON.stringify(THEMES);
-  return `(function(){try{var t=${themes},q=new URLSearchParams(location.search).get(${JSON.stringify(
-    THEME_PARAM,
-  )}),k=${JSON.stringify(THEME_STORAGE_KEY)},s=null;try{s=localStorage.getItem(k)}catch(e){}var v=t.indexOf(q)>-1?q:(t.indexOf(s)>-1?s:null);if(v){document.documentElement.setAttribute('data-theme',v);if(v===q){try{localStorage.setItem(k,v)}catch(e){}}}}catch(e){}})();`;
+  const experiment = THEME_EXPERIMENT;
+  const config = JSON.stringify({
+    themes: THEMES,
+    param: THEME_PARAM,
+    key: THEME_STORAGE_KEY,
+    abKey: EXPERIMENT_STORAGE_KEY,
+    ab: experiment && {
+      id: experiment.id,
+      flag: experiment.flag,
+      weights: THEMES.map(theme => experiment.weights[theme]),
+    },
+  });
+  return `(function(){try{var c=${config},t=c.themes,d=document.documentElement,q=new URLSearchParams(location.search).get(c.param),ls=null,s=null,a=null,v=null,inAb=false;try{ls=localStorage;s=ls.getItem(c.key);a=ls.getItem(c.abKey)}catch(e){ls=null}if(t.indexOf(q)>-1){v=q;if(ls){try{ls.setItem(c.key,q);ls.removeItem(c.abKey)}catch(e){}}}else if(t.indexOf(s)>-1){v=s}else if(c.ab&&ls){var p=c.ab.id+':',g=a&&a.indexOf(p)===0?a.slice(p.length):null;if(t.indexOf(g)<0){var w=c.ab.weights,n=0,i;for(i=0;i<w.length;i++)n+=w[i];var r=Math.random()*n;g=t[t.length-1];for(i=0;i<w.length;i++){r-=w[i];if(r<0){g=t[i];break}}try{ls.setItem(c.abKey,p+g)}catch(e){g=null}}if(g){v=g;inAb=true}}if(v)d.setAttribute('data-theme',v);if(inAb){var f=document.createElement('script'),o={};o[c.ab.flag]=v;f.type='application/json';f.setAttribute('data-flag-values','');f.textContent=JSON.stringify(o);document.head.appendChild(f)}}catch(e){}})();`;
 }
