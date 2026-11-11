@@ -652,13 +652,6 @@ export default function SchoolBody({ locale, state, slug }: { locale: Locale; st
           />
         </dl>
       </section>
-
-      <section className="bs-section">
-        <h2 className="bs-h2 text-xl">{t.naplanHeading}</h2>
-        <p className="mt-1.5 text-[15px] text-ink-2">
-          {t.naplanBody}
-        </p>
-      </section>
     </PageShell>
   );
 }

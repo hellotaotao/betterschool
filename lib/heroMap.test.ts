@@ -106,12 +106,15 @@ describe('scaleBar', () => {
 });
 
 describe('overlayPosition', () => {
-  it('measures from the figure centre in drawing units', () => {
+  it('measures across from the centre line and down from the top edge', () => {
     expect(overlayPosition({ x: MAP_SIZE / 2, y: MAP_SIZE / 2 })).toEqual({
       left: 'calc(50% + 0 * var(--u))',
-      top: 'calc(50% + 0 * var(--u))',
+      top: `calc(${MAP_SIZE / 2} * var(--u))`,
     });
-    expect(overlayPosition({ x: MAP_SIZE / 2 + 12.34, y: 0 }).left).toBe('calc(50% + 12.3 * var(--u))');
+    expect(overlayPosition({ x: MAP_SIZE / 2 + 12.34, y: 7.06 })).toEqual({
+      left: 'calc(50% + 12.3 * var(--u))',
+      top: 'calc(7.1 * var(--u))',
+    });
   });
 });
 

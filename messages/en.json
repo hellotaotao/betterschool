@@ -266,8 +266,6 @@
       "nearbyHeading": "Schools near {suburb}",
       "nearbyHint": "Closest schools outside {suburb}, by straight-line distance. A suburb boundary is an administrative line, not the limit of what your child can attend.",
       "nearbyDistance": "{km} km from {school}",
-      "naplanHeading": "NAPLAN results",
-      "naplanBody": "ACARA publishes this school's NAPLAN results on My School. The link at the top of the page opens its official page.",
       "zoneLineNoYears": "{kind}",
       "zonePartialState": "{state} publishes intake zones for only some of its government schools, and the published data does not say which rule decides. None is published for this school — that is not the same as this school having no zone.",
       "metaDescriptionFull": "{sector} {type} school in {suburb}, {state}: {years}, {count} students. Year-by-year enrolments, staffing, intake zone and nearby schools from official ACARA data.",

@@ -170,16 +170,17 @@ export function formatScale(km: number): { value: number; unit: 'km' | 'm' } {
 }
 
 /**
- * CSS `left`/`top` for an HTML overlay at a drawing point. The SVG is centred
- * with `meet`, so one drawing unit is `--u` (set on the figure from container
- * query units) and the viewBox centre is the figure centre.
+ * CSS `left`/`top` for an HTML overlay at a drawing point. The SVG scales
+ * with `meet`, centred across and pinned to the top (xMidYMin), so one
+ * drawing unit is `--u` (set from container query units), the viewBox's
+ * centre line is the canvas's, and its top edge is the canvas's.
  */
 export function overlayPosition(point: { x: number; y: number }): { left: string; top: string } {
-  const offset = (value: number) => {
-    const units = Math.round((value - MAP_SIZE / 2) * 10) / 10;
-    return `calc(50% + ${units} * var(--u))`;
+  const units = (value: number) => Math.round(value * 10) / 10;
+  return {
+    left: `calc(50% + ${units(point.x - MAP_SIZE / 2)} * var(--u))`,
+    top: `calc(${units(point.y)} * var(--u))`,
   };
-  return { left: offset(point.x), top: offset(point.y) };
 }
 
 const YEAR_ORDER: Record<string, number> = { Preschool: -1, K: 0, P: 0 };

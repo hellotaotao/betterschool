@@ -264,15 +264,13 @@ body {
       flex-direction: row-reverse;
       align-items: stretch;
     }
-    /* The title block can run long; the map holds one screen and stays in
-       view beside it rather than stretching and centring its subject below
-       the fold. */
+    /* Same height as the title block, however long it runs, so the band
+       has no gap under the map. The drawing is pinned to the top of the
+       figure (HeroMap's xMidYMin), so a tall title block adds context below
+       the school rather than pushing the school down the page. */
     .bs-split > .bs-map {
       flex: 1 1 auto;
-      align-self: flex-start;
-      position: sticky;
-      top: 0;
-      height: min(calc(100svh - 3.5rem), 40rem);
+      height: auto;
       min-height: 32rem;
     }
     .bs-split-side {
@@ -302,8 +300,9 @@ body {
   }
 
   /* The static map. One drawing unit is --u: the SVG is a 480-unit square
-     scaled with `meet`, so a unit is the figure's shorter side over 480, and
-     HTML overlays are placed in the same units from the centre. */
+     scaled with `meet` and pinned to the top, so a unit is the canvas's
+     shorter side over 480, and HTML overlays are placed in the same units
+     from the top centre. */
   .bs-map {
     position: relative;
     display: flex;

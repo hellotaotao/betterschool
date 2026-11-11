@@ -266,8 +266,6 @@
       "nearbyHeading": "{suburb} 附近的学校",
       "nearbyHint": "{suburb} 之外最近的学校，按直线距离排序。城区边界只是行政划分，不是孩子能读哪些学校的边界。",
       "nearbyDistance": "距 {school} {km} 公里",
-      "naplanHeading": "NAPLAN 成绩",
-      "naplanBody": "ACARA 在 My School 上公布这所学校的 NAPLAN 成绩，页面顶部的链接直达官方页面。",
       "zoneLineNoYears": "{kind}",
       "zonePartialState": "{state}只给一部分公立学校划定了学区，而公开数据没有说明依据是什么。该校没有公布学区 —— 这跟该校没有学区不是一回事。",
       "metaDescriptionFull": "位于 {suburb}（{state}）的{sector}{type}：{years} 年级，在校 {count} 人。各年级人数、师资、学区和周边学校，全部来自 ACARA 官方数据。",

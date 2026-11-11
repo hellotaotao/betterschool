@@ -57,7 +57,7 @@ export default function HeroMap({
         </fieldset>
       )}
 
-      <svg viewBox={`0 0 ${MAP_SIZE} ${MAP_SIZE}`} role="img" aria-label={labels.title} className="bs-map-svg">
+      <svg viewBox={`0 0 ${MAP_SIZE} ${MAP_SIZE}`} preserveAspectRatio="xMidYMin meet" role="img" aria-label={labels.title} className="bs-map-svg">
         <g fill="none" strokeWidth="1" strokeOpacity="0.35" strokeLinejoin="round" style={{ stroke: ZONE }}>
           {context.map((path, index) => <path key={index} d={path} />)}
         </g>
