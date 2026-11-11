@@ -2,12 +2,14 @@
 
 import { useEffect } from 'react';
 import { track } from '@vercel/analytics';
-import { linkEvent } from '@/lib/analyticsEvents';
+import { experimentGroup, linkEvent } from '@/lib/analyticsEvents';
+import { THEME_EXPERIMENT } from '@/lib/theme';
 
 /**
- * Reports the clicks that show a reader going further (see linkEvent), with
- * the page's theme attached so the theme experiment's groups can be compared
- * even where Web Analytics does not pick the flag values up from the page.
+ * Reports the clicks that show a reader going further (see linkEvent). For a
+ * visitor in the theme experiment the event also carries their group as
+ * `theme`, a second copy of what Web Analytics reads from the flag values;
+ * a visitor outside it, a `?theme=` preview included, carries none.
  * One delegated listener: the links are rendered by server components that
  * cannot carry click handlers.
  */
@@ -20,10 +22,10 @@ export default function LinkEvents() {
       if (target.origin !== window.location.origin) return;
       const found = linkEvent(window.location.pathname, target.pathname);
       if (!found) return;
-      track(found.name, {
-        ...found.data,
-        theme: document.documentElement.getAttribute('data-theme') ?? 'unknown',
-      });
+      const group = THEME_EXPERIMENT
+        ? experimentGroup(document.querySelector('script[data-flag-values]')?.textContent, THEME_EXPERIMENT.flag)
+        : null;
+      track(found.name, group ? { ...found.data, theme: group } : found.data);
     };
     document.addEventListener('click', onClick, { capture: true });
     return () => document.removeEventListener('click', onClick, { capture: true });

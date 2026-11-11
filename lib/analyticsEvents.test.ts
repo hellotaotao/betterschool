@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { linkEvent, pageKind } from './analyticsEvents';
+import { experimentGroup, linkEvent, pageKind } from './analyticsEvents';
 
 describe('pageKind', () => {
   it('names each page family in either language', () => {
@@ -28,5 +28,18 @@ describe('linkEvent', () => {
   it('ignores ordinary navigation between reading pages', () => {
     expect(linkEvent('/school/vic/a', '/suburb/vic/b')).toBeNull();
     expect(linkEvent('/schools', '/schools')).toBeNull();
+  });
+});
+
+describe('experimentGroup', () => {
+  it('reads the group from the flag values', () => {
+    expect(experimentGroup('{"theme":"harbour"}', 'theme')).toBe('harbour');
+  });
+
+  it('is null outside the experiment or for anything malformed', () => {
+    expect(experimentGroup(null, 'theme')).toBeNull();
+    expect(experimentGroup('{"other":"x"}', 'theme')).toBeNull();
+    expect(experimentGroup('{"theme":3}', 'theme')).toBeNull();
+    expect(experimentGroup('not json', 'theme')).toBeNull();
   });
 });

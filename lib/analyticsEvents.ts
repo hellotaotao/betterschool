@@ -35,3 +35,19 @@ export function linkEvent(fromPath: string, toPath: string): LinkEvent | null {
   }
   return null;
 }
+
+/**
+ * The visitor's experiment group, read from the flag values the theme script
+ * writes into the page, or null for a visitor outside the experiment. The
+ * page's current theme is not the same thing: a `?theme=` preview shows a
+ * theme without being in any group, and must not count towards one.
+ */
+export function experimentGroup(flagValues: string | null | undefined, flag: string): string | null {
+  if (!flagValues) return null;
+  try {
+    const value = (JSON.parse(flagValues) as Record<string, unknown>)[flag];
+    return typeof value === 'string' ? value : null;
+  } catch {
+    return null;
+  }
+}

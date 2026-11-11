@@ -81,7 +81,7 @@ HTML 对三套主题完全一样，搜索引擎看到的内容不随主题变。
 - 以前用 `?theme=` 手动选过主题的；
 - 浏览器存储不可用的。这些访客一律看 bright。否则每个页面都会重新抽签，主题逐页变化。
 
-**上报**：分到组的访客，页面 `<head>` 里会多一个 `<script type="application/json" data-flag-values>{"theme":"…"}</script>`。Vercel Web Analytics 读到它，会给每次页面访问和自定义事件附上 `flags/theme`，已在开发模式的调试日志里确认过。另有两个自定义事件，由 `components/LinkEvents.tsx` 上报，规则在 `lib/analyticsEvents.ts`，事件数据里也带一份 `theme`：
+**上报**：分到组的访客，页面 `<head>` 里会多一个 `<script type="application/json" data-flag-values>{"theme":"…"}</script>`。Vercel Web Analytics 读到它，会给每次页面访问和自定义事件附上 `flags/theme`，已在开发模式的调试日志里确认过。另有两个自定义事件，由 `components/LinkEvents.tsx` 上报，规则在 `lib/analyticsEvents.ts`。实验组访客的事件数据里还会带一份 `theme`，作为分组标签的备份；不在实验组的访客（包括用 `?theme=` 预览的）不带这个字段：
 
 - `map_open`：从内容页点进地图，`from` 是出发页面的类型；
 - `profile_open`：从地图点进学校页、学区页或 suburb 页。
