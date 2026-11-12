@@ -60,3 +60,5 @@ data/catchment/qld/raw/
 data/catchment/tas/raw/
 data/catchment/act/raw/
 data/vcaa/raw/
+# School website text fetched for fee extraction (regenerate with npm run fees:fetch)
+data/fees/raw/
