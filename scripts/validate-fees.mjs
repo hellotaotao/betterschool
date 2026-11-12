@@ -37,7 +37,9 @@ function sourceDigits(id) {
 function inSource(source, value) {
   if (source.digits.includes(`$${value}`) || source.digits.includes(`$${value}00`)) return true;
   const formatted = value.toLocaleString('en-AU');
-  return new RegExp(`(^|[^0-9,.])${formatted.replace(/,/g, ',\\s?')}(?![0-9])`).test(source.text);
+  if (new RegExp(`(^|[^0-9,.])${formatted.replace(/,/g, ',\\s?')}(?![0-9])`).test(source.text)) return true;
+  // Some tables print four-figure amounts with no comma at all ("8193 1150 267 9610").
+  return new RegExp(`(^|[^0-9,.$])${value}(?![0-9,])`).test(source.text);
 }
 
 for (const [id, entry] of Object.entries(ledger.schools)) {

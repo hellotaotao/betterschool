@@ -225,6 +225,17 @@
     "source_url": "https://www.coffsccs.nsw.edu.au/enrolment/school-fees/"
    }
   },
+  "40406": {
+   "school_name": "Catholic Regional College Sydenham",
+   "website": "http://www.crcsydenham.net",
+   "status": "not_found",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 1,
+    "errors": 0
+   },
+   "note": "Only the home page could be fetched."
+  },
   "40408": {
    "school_name": "Tangara School for Girls",
    "website": "http://www.tangara.nsw.edu.au",
@@ -300,6 +311,17 @@
    },
    "note": "No fee page among the pages fetched."
   },
+  "40615": {
+   "school_name": "St Monica's College - Davisson Street",
+   "website": "http://www.stmonicas-epping.com",
+   "status": "blocked",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 0,
+    "errors": 1,
+    "home_error": "HTTP 403"
+   }
+  },
   "40617": {
    "school_name": "St Aloysius College Cronulla",
    "website": "https://stalscronulla.syd.catholic.edu.au/",
@@ -349,6 +371,28 @@
     "errors": 0
    },
    "note": "No fee page among the pages fetched."
+  },
+  "40621": {
+   "school_name": "St Francis Xavier College",
+   "website": "http://www.sfx.vic.edu.au",
+   "status": "found",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 15,
+    "errors": 0
+   },
+   "fees": {
+    "fee_year": 2027,
+    "basis": "education fee per student, all year levels",
+    "by_year": [
+     {
+      "years": "7-12",
+      "tuition": 8250
+     }
+    ],
+    "source": "school_website",
+    "source_url": "https://sfx.vic.edu.au/admissions/fees/"
+   }
   },
   "40672": {
    "school_name": "Calrossy Anglican School",
@@ -407,6 +451,17 @@
     "source": "school_website",
     "source_url": "https://www.calrossy.nsw.edu.au/documents/114/Calrossy_Anglican_School_Fees_Schedule_2026_.pdf"
    }
+  },
+  "40714": {
+   "school_name": "Ozford College",
+   "website": "http://www.ozford.edu.au",
+   "status": "not_found",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 16,
+    "errors": 0
+   },
+   "note": "Fees pages list higher-education courses only."
   },
   "40721": {
    "school_name": "Lakes Grammar - An Anglican School",
@@ -479,6 +534,12 @@
     "source": "diocese_schedule",
     "source_url": "https://cathwest.parra.catholic.edu.au/enrolment/school-fees"
    }
+  },
+  "40736": {
+   "school_name": "Holmes Grammar School",
+   "website": null,
+   "status": "no_website",
+   "checked": "2026-11-12"
   },
   "40790": {
    "school_name": "Hunter Trade College",
@@ -602,6 +663,42 @@
    "parent_name": "The Scots College",
    "website_source": "parent_school"
   },
+  "40862": {
+   "school_name": "Emmaus College - Burwood Campus",
+   "website": "http://www.emmaus.vic.edu.au",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 45936,
+   "parent_name": "Emmaus College",
+   "website_source": "parent_school"
+  },
+  "40865": {
+   "school_name": "Mount Scopus Memorial College - Fink Karp Ivany Campus",
+   "website": "http://www.scopus.vic.edu.au",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 46208,
+   "parent_name": "Mount Scopus Memorial College",
+   "website_source": "parent_school"
+  },
+  "40867": {
+   "school_name": "The King David School - The Rebecca Magid Centre",
+   "website": "http://www.kds.vic.edu.au",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 46247,
+   "parent_name": "The King David School",
+   "website_source": "parent_school"
+  },
+  "40868": {
+   "school_name": "Firbank Grammar School - Second Campus",
+   "website": "http://www.firbank.vic.edu.au",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 46164,
+   "parent_name": "Firbank Grammar School",
+   "website_source": "parent_school"
+  },
   "40875": {
    "school_name": "SCECGS Redlands - Murdoch campus",
    "website": "https://www.redlands.nsw.edu.au/",
@@ -666,6 +763,26 @@
     "source": "school_website",
     "source_url": "https://www.allsaints.nsw.edu.au/wp-content/uploads/2026/02/Fee-Schedule-2026.pdf"
    }
+  },
+  "40894": {
+   "school_name": "De La Salle College - Kinnoull Campus",
+   "website": "http://www.delasalle.vic.edu.au",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 45771,
+   "parent_name": "De La Salle College",
+   "website_source": "parent_school"
+  },
+  "40900": {
+   "school_name": "Caroline Chisholm Catholic College",
+   "website": "http://www.cccc.vic.edu.au/",
+   "status": "not_found",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 16,
+    "errors": 0
+   },
+   "note": "The only tuition document found is a 2023 schedule for international students."
   },
   "40904": {
    "school_name": "St Andrews College, Senior Campus",
@@ -776,6 +893,24 @@
    "parent_name": "St Mary and St Mina's Coptic Orthodox College",
    "website_source": "parent_school"
   },
+  "40938": {
+   "school_name": "MacKillop Catholic Regional College - St Mary's Campus",
+   "website": "http://www.mackillopwerribee.com.au/",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 46002,
+   "parent_name": "MacKillop Catholic Regional College",
+   "website_source": "parent_school"
+  },
+  "40950": {
+   "school_name": "Heritage College - Officer Campus",
+   "website": "http://www.heritagecollege.com.au",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 46212,
+   "parent_name": "Heritage College",
+   "website_source": "parent_school"
+  },
   "40965": {
    "school_name": "Blacktown Youth College - Lawson Campus",
    "website": "http://www.blacktownyouthcollege.nsw.edu.au",
@@ -785,6 +920,15 @@
    "parent_name": "Blacktown Youth College Incorporated",
    "website_source": "parent_school"
   },
+  "40970": {
+   "school_name": "St Margaret’s Berwick Grammar - Berwick Grammar School",
+   "website": "http://www.stmargarets.vic.edu.au",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 46203,
+   "parent_name": "St Margaret’s Berwick Grammar",
+   "website_source": "parent_school"
+  },
   "40979": {
    "school_name": "Al Noori Muslim School - Senior Campus",
    "website": "http://www.alnoori.nsw.edu.au",
@@ -792,6 +936,24 @@
    "checked": "2026-11-12",
    "parent_acara_sml_id": 43958,
    "parent_name": "Al Noori Muslim School",
+   "website_source": "parent_school"
+  },
+  "40981": {
+   "school_name": "Yesodei HaTorah College - Ormond Campus",
+   "website": "https://bettereducation.com.au/IndependentSchoolView0.aspx?Name=Yesodei%20Hatorah%20College,3184",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 46376,
+   "parent_name": "Yesodei HaTorah College",
+   "website_source": "parent_school"
+  },
+  "40983": {
+   "school_name": "Simonds Catholic College - St Brigid's VCE Campus",
+   "website": "http://www.sccmelb.catholic.edu.au",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 45631,
+   "parent_name": "Simonds Catholic College",
    "website_source": "parent_school"
   },
   "43134": {
@@ -18544,6 +18706,4991 @@
    },
    "note": "Only the home page could be fetched."
   },
+  "45629": {
+   "school_name": "Parade College",
+   "website": "http://www.parade.vic.edu.au",
+   "status": "found",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 16,
+    "errors": 0
+   },
+   "fees": {
+    "fee_year": 2027,
+    "basis": "tuition per student; building levy and IT charges extra",
+    "by_year": [
+     {
+      "years": "7-8",
+      "tuition": 10406
+     },
+     {
+      "years": "9-10",
+      "tuition": 10648
+     },
+     {
+      "years": "11-12",
+      "tuition": 10769
+     }
+    ],
+    "other_compulsory": "Building levy $500 per family; IT, laptop and ICT charges",
+    "source": "school_website",
+    "source_url": "https://www.parade.vic.edu.au/siteassets/Files/Booklets/2027-Fee-Schedule.pdf"
+   }
+  },
+  "45630": {
+   "school_name": "Parade College - Preston Campus",
+   "website": "http://www.parade.vic.edu.au",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 45629,
+   "parent_name": "Parade College",
+   "website_source": "parent_school"
+  },
+  "45631": {
+   "school_name": "Simonds Catholic College",
+   "website": "http://www.sccmelb.catholic.edu.au",
+   "status": "found",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 7,
+    "errors": 0
+   },
+   "fees": {
+    "fee_year": 2027,
+    "basis": "all-inclusive annual fee (tuition and levies)",
+    "by_year": [
+     {
+      "years": "7",
+      "total": 6289
+     },
+     {
+      "years": "8",
+      "total": 6270
+     },
+     {
+      "years": "9",
+      "total": 6858
+     },
+     {
+      "years": "10",
+      "total": 6602
+     },
+     {
+      "years": "11",
+      "total": 7780
+     },
+     {
+      "years": "12",
+      "total": 7930
+     }
+    ],
+    "source": "school_website",
+    "source_url": "https://www.sccmelb.catholic.edu.au/enrol/fees"
+   }
+  },
+  "45632": {
+   "school_name": "St Mary’s College Melbourne - Edmund Rice Campus",
+   "website": "https://www.stmaryscollege.vic.edu.au/",
+   "status": "found",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 13,
+    "errors": 1
+   },
+   "fees": {
+    "fee_year": 2026,
+    "basis": "published total (tuition plus consolidated levy)",
+    "by_year": [
+     {
+      "years": "7-8",
+      "tuition": 11761,
+      "total": 13368
+     },
+     {
+      "years": "9",
+      "tuition": 11761,
+      "total": 14024
+     },
+     {
+      "years": "10",
+      "tuition": 11761,
+      "total": 13482
+     },
+     {
+      "years": "11-12",
+      "tuition": 12340,
+      "total": 13947
+     }
+    ],
+    "source": "school_website",
+    "source_url": "https://stmaryscollege.s3.ap-southeast-2.amazonaws.com/uploads/St-Marys-Images/Enrolments/Fees/Schedule-of-Fees-2026.pdf"
+   }
+  },
+  "45647": {
+   "school_name": "Assumption College",
+   "website": "https://www.assumption.vic.edu.au/",
+   "status": "not_extracted",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 16,
+    "errors": 0
+   },
+   "note": "Fees page text holds no figures."
+  },
+  "45654": {
+   "school_name": "Sacre Coeur",
+   "website": "http://www.sac.vic.edu.au",
+   "status": "not_found",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 1,
+    "errors": 0
+   },
+   "note": "Only the home page could be fetched."
+  },
+  "45675": {
+   "school_name": "Star of the Sea College",
+   "website": "http://www.starmelb.catholic.edu.au",
+   "status": "not_extracted",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 13,
+    "errors": 0
+   },
+   "note": "2027 fees schedule PDF holds no figures as text."
+  },
+  "45696": {
+   "school_name": "Xavier College",
+   "website": "http://www.xavier.vic.edu.au",
+   "status": "found",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 14,
+    "errors": 0
+   },
+   "fees": {
+    "fee_year": 2026,
+    "basis": "published total (tuition/program fee, capital levy, payroll tax levy)",
+    "by_year": [
+     {
+      "years": "P-2",
+      "tuition": 27070,
+      "total": 31190
+     },
+     {
+      "years": "3-4",
+      "tuition": 27960,
+      "total": 32080
+     },
+     {
+      "years": "5-6",
+      "tuition": 35980,
+      "total": 40100
+     },
+     {
+      "years": "7-8",
+      "tuition": 39980,
+      "total": 44100
+     },
+     {
+      "years": "9",
+      "tuition": 40090,
+      "total": 44210
+     },
+     {
+      "years": "10",
+      "tuition": 40090,
+      "total": 44000
+     },
+     {
+      "years": "11-12",
+      "tuition": 40880,
+      "total": 44790
+     }
+    ],
+    "source": "school_website",
+    "source_url": "https://xavier.vic.edu.au/sites/default/files/2025-11/2026_SCALE%20OF%20FEES_WEB_3.pdf"
+   }
+  },
+  "45697": {
+   "school_name": "Xavier College - Burke Hall",
+   "website": "http://www.xavier.vic.edu.au",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 45696,
+   "parent_name": "Xavier College",
+   "website_source": "parent_school"
+  },
+  "45698": {
+   "school_name": "Xavier College - Kostka Hall",
+   "website": "http://www.xavier.vic.edu.au",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 45696,
+   "parent_name": "Xavier College",
+   "website_source": "parent_school"
+  },
+  "45704": {
+   "school_name": "Academy of Mary Immaculate",
+   "website": "http://www.academy.vic.edu.au",
+   "status": "found",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 8,
+    "errors": 0
+   },
+   "fees": {
+    "fee_year": 2027,
+    "basis": "total fees (tuition, technology levy, year-level levies)",
+    "by_year": [
+     {
+      "years": "7",
+      "tuition": 12738,
+      "total": 13640
+     },
+     {
+      "years": "8",
+      "tuition": 12892,
+      "total": 13244
+     },
+     {
+      "years": "9",
+      "tuition": 12892,
+      "total": 13794
+     },
+     {
+      "years": "10-11",
+      "tuition": 12892,
+      "total": 13244
+     },
+     {
+      "years": "12",
+      "tuition": 13310,
+      "total": 13662
+     }
+    ],
+    "source": "school_website",
+    "source_url": "https://www.academy.vic.edu.au/wp-content/uploads/2024/09/2027-Annual-Fees.pdf"
+   }
+  },
+  "45706": {
+   "school_name": "Mount Lilydale Mercy College",
+   "website": "http://www.mlmc.vic.edu.au",
+   "status": "not_extracted",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 13,
+    "errors": 2
+   },
+   "note": "Fees page text holds no figures."
+  },
+  "45712": {
+   "school_name": "Kilbreda College",
+   "website": "http://www.kilbreda.vic.edu.au",
+   "status": "found",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 13,
+    "errors": 0
+   },
+   "fees": {
+    "fee_year": 2026,
+    "basis": "tuition per student plus capital levy, one student",
+    "by_year": [
+     {
+      "years": "7-12",
+      "tuition": 8585,
+      "total": 9405
+     }
+    ],
+    "source": "school_website",
+    "source_url": "https://www.kilbreda.vic.edu.au/wp-content/uploads/2025/12/2026-Fee-Schedule-and-Information-1.pdf"
+   }
+  },
+  "45713": {
+   "school_name": "Padua College",
+   "website": "https://padua.vic.edu.au",
+   "status": "found",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 15,
+    "errors": 0
+   },
+   "fees": {
+    "fee_year": 2026,
+    "basis": "annual tuition; Year 9 includes the Aspire9 program and camp",
+    "by_year": [
+     {
+      "years": "7-8",
+      "tuition": 8210
+     },
+     {
+      "years": "9",
+      "tuition": 9565
+     },
+     {
+      "years": "10",
+      "tuition": 8210
+     },
+     {
+      "years": "11-12",
+      "tuition": 9080
+     }
+    ],
+    "source": "school_website",
+    "source_url": "https://www.padua.vic.edu.au/uploads/03-Enrolments/Fees/Padua-College-2026-Fee-Schedule.pdf"
+   }
+  },
+  "45714": {
+   "school_name": "Padua College - Rosebud Campus",
+   "website": "https://padua.vic.edu.au",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 45713,
+   "parent_name": "Padua College",
+   "website_source": "parent_school"
+  },
+  "45726": {
+   "school_name": "Catholic Ladies' College Ltd",
+   "website": "http://www.clc.vic.edu.au",
+   "status": "found",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 15,
+    "errors": 1
+   },
+   "fees": {
+    "fee_year": 2026,
+    "basis": "tuition per student, includes compulsory camps and excursions; family levies extra",
+    "by_year": [
+     {
+      "years": "7-8",
+      "tuition": 13088
+     },
+     {
+      "years": "9-12",
+      "tuition": 13516
+     }
+    ],
+    "other_compulsory": "Building levy $996 and grounds levy $198 per family",
+    "source": "school_website",
+    "source_url": "https://clc.vic.edu.au/wp-content/uploads/2025/11/2026-Fees-schedule-final.pdf"
+   }
+  },
+  "45735": {
+   "school_name": "St Aloysius College",
+   "website": "http://www.aloysius.vic.edu.au",
+   "status": "not_found",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 11,
+    "errors": 0
+   },
+   "note": "Only fees for full-fee-paying overseas students were found."
+  },
+  "45748": {
+   "school_name": "St Columba's College",
+   "website": "http://www.columba.vic.edu.au",
+   "status": "found",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 9,
+    "errors": 1
+   },
+   "fees": {
+    "fee_year": 2026,
+    "basis": "fee payable per year; laptop charge extra",
+    "by_year": [
+     {
+      "years": "7-9",
+      "tuition": 13000
+     },
+     {
+      "years": "10-12",
+      "tuition": 13750
+     }
+    ],
+    "other_compulsory": "Laptop $600-$640 a year",
+    "source": "school_website",
+    "source_url": "https://www.columba.vic.edu.au/wp-content/uploads/2025/12/Annual-Tuition-Fee-Statement-2026.pdf"
+   }
+  },
+  "45752": {
+   "school_name": "Genazzano FCJ College",
+   "website": "https://www.genazzano.vic.edu.au/",
+   "status": "found",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 15,
+    "errors": 1
+   },
+   "fees": {
+    "fee_year": 2027,
+    "basis": "total payable (tuition, levies, payroll tax levy)",
+    "by_year": [
+     {
+      "years": "P-3",
+      "tuition": 26250,
+      "total": 28700
+     },
+     {
+      "years": "4",
+      "tuition": 30400,
+      "total": 32900
+     },
+     {
+      "years": "5-6",
+      "tuition": 30400,
+      "total": 33800
+     },
+     {
+      "years": "7-8",
+      "tuition": 38600,
+      "total": 41500
+     },
+     {
+      "years": "9-11",
+      "tuition": 43500,
+      "total": 46600
+     },
+     {
+      "years": "12",
+      "tuition": 43500,
+      "total": 45500
+     }
+    ],
+    "source": "school_website",
+    "source_url": "https://www.genazzano.vic.edu.au/wp-content/uploads/2027-Genazzano-Domestic-Fee-Schedule.pdf"
+   }
+  },
+  "45760": {
+   "school_name": "Our Lady of Mercy College",
+   "website": "http://www.olmcheidelberg.catholic.edu.au",
+   "status": "unreachable",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 0,
+    "errors": 2,
+    "home_error": "UND_ERR_CONNECT_TIMEOUT"
+   }
+  },
+  "45771": {
+   "school_name": "De La Salle College",
+   "website": "http://www.delasalle.vic.edu.au",
+   "status": "found",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 8,
+    "errors": 1
+   },
+   "fees": {
+    "fee_year": 2027,
+    "basis": "published total (tuition plus consolidated levy); student capital levy extra",
+    "by_year": [
+     {
+      "years": "7",
+      "tuition": 16998,
+      "total": 18278
+     },
+     {
+      "years": "8",
+      "tuition": 16998,
+      "total": 18478
+     },
+     {
+      "years": "9",
+      "tuition": 16998,
+      "total": 18978
+     },
+     {
+      "years": "10",
+      "tuition": 17593,
+      "total": 18373
+     },
+     {
+      "years": "11",
+      "tuition": 17593,
+      "total": 18293
+     },
+     {
+      "years": "12",
+      "tuition": 17593,
+      "total": 18938
+     }
+    ],
+    "source": "school_website",
+    "source_url": "https://www.delasalle.vic.edu.au/wp-content/uploads/2026/10/2027-Schedule-of-Fees-and-Levies-website-final.pdf"
+   }
+  },
+  "45810": {
+   "school_name": "Loreto Mandeville Hall",
+   "website": "http://www.loretotoorak.vic.edu.au",
+   "status": "not_extracted",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 5,
+    "errors": 0
+   },
+   "note": "Enrolment pages give enrolment fees only; tuition not in the text fetched."
+  },
+  "45823": {
+   "school_name": "Our Lady of Sion College",
+   "website": "http://www.sion.catholic.edu.au",
+   "status": "found",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 7,
+    "errors": 0
+   },
+   "fees": {
+    "fee_year": 2027,
+    "basis": "tuition per student; capital levy per family extra",
+    "by_year": [
+     {
+      "years": "7-9",
+      "tuition": 12710
+     },
+     {
+      "years": "10-12",
+      "tuition": 13120
+     }
+    ],
+    "other_compulsory": "Capital levy $2,410 per family",
+    "source": "school_website",
+    "source_url": "https://cdn.prod.website-files.com/5b2826a56966d7160e936811/6aeba5882441703b7a21093e_2027%20Tuition%20Fees.pdf"
+   }
+  },
+  "45827": {
+   "school_name": "Salesian College Sunbury",
+   "website": "http://www.scr.vic.edu.au",
+   "status": "not_found",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 1,
+    "errors": 0
+   },
+   "note": "Only the home page could be fetched."
+  },
+  "45841": {
+   "school_name": "Santa Maria College",
+   "website": "http://www.santamaria.vic.edu.au",
+   "status": "found",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 13,
+    "errors": 0
+   },
+   "fees": {
+    "fee_year": 2026,
+    "basis": "tuition plus capital levy, one student, all year levels",
+    "by_year": [
+     {
+      "years": "7-12",
+      "tuition": 10200,
+      "total": 11000
+     }
+    ],
+    "source": "school_website",
+    "source_url": "https://cdn.prod.website-files.com/5f559b86ca1584810be4d878/691e3350a76a43e1ac99ae72_scan_tynajos_2025-11-18-11-31-59%20(1).pdf"
+   }
+  },
+  "45848": {
+   "school_name": "St Kevin's College",
+   "website": "http://www.stkevins.vic.edu.au",
+   "status": "found",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 14,
+    "errors": 0
+   },
+   "fees": {
+    "fee_year": 2027,
+    "basis": "total fees per student (tuition, payroll tax levy, camp and old collegians' levies)",
+    "by_year": [
+     {
+      "years": "P-2",
+      "tuition": 29710,
+      "total": 31390
+     },
+     {
+      "years": "3",
+      "tuition": 29710,
+      "total": 31870
+     },
+     {
+      "years": "4",
+      "tuition": 29710,
+      "total": 32000
+     },
+     {
+      "years": "5",
+      "tuition": 34080,
+      "total": 36900
+     },
+     {
+      "years": "6",
+      "tuition": 34080,
+      "total": 38070
+     },
+     {
+      "years": "7-8",
+      "tuition": 34080,
+      "total": 37340
+     },
+     {
+      "years": "9",
+      "tuition": 34080,
+      "total": 39330
+     },
+     {
+      "years": "10",
+      "tuition": 34080,
+      "total": 37440
+     },
+     {
+      "years": "11",
+      "tuition": 34080,
+      "total": 37830
+     },
+     {
+      "years": "12",
+      "tuition": 36150
+     }
+    ],
+    "source": "school_website",
+    "source_url": "https://stkevins.s3.ap-southeast-2.amazonaws.com/public-images/St-Kevins-College-2027-Fee-Schedule.pdf"
+   }
+  },
+  "45849": {
+   "school_name": "St Kevin's College - Glendalough",
+   "website": "http://www.stkevins.vic.edu.au",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 45848,
+   "parent_name": "St Kevin's College",
+   "website_source": "parent_school"
+  },
+  "45850": {
+   "school_name": "St Kevin's College - Waterford",
+   "website": "http://www.stkevins.vic.edu.au",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 45848,
+   "parent_name": "St Kevin's College",
+   "website_source": "parent_school"
+  },
+  "45855": {
+   "school_name": "St Bede's College",
+   "website": "http://www.stbedes.catholic.edu.au",
+   "status": "found",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 11,
+    "errors": 0
+   },
+   "fees": {
+    "fee_year": 2026,
+    "basis": "published total (tuition plus combined levy); family levies extra",
+    "by_year": [
+     {
+      "years": "7",
+      "tuition": 10580,
+      "total": 11435
+     },
+     {
+      "years": "8",
+      "tuition": 10580,
+      "total": 11315
+     },
+     {
+      "years": "9",
+      "tuition": 10580,
+      "total": 11505
+     },
+     {
+      "years": "10",
+      "tuition": 10810,
+      "total": 11405
+     },
+     {
+      "years": "11",
+      "tuition": 10810,
+      "total": 11360
+     },
+     {
+      "years": "12",
+      "tuition": 10810,
+      "total": 11435
+     }
+    ],
+    "other_compulsory": "Capital infrastructure levy $500 per family",
+    "source": "school_website",
+    "source_url": "https://www.stbedes.catholic.edu.au/wp-content/uploads/2025/12/370_SBC_FeeSchedule_2025_DIGITAL.pdf"
+   }
+  },
+  "45857": {
+   "school_name": "Siena College Ltd",
+   "website": "http://www.siena.vic.edu.au",
+   "status": "found",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 15,
+    "errors": 0
+   },
+   "fees": {
+    "fee_year": 2027,
+    "basis": "total annual fee (tuition plus payroll tax levy); facilities fee per family extra",
+    "by_year": [
+     {
+      "years": "7",
+      "tuition": 22510,
+      "total": 23811
+     },
+     {
+      "years": "8",
+      "tuition": 22950,
+      "total": 24251
+     },
+     {
+      "years": "9",
+      "tuition": 23450,
+      "total": 24751
+     },
+     {
+      "years": "10",
+      "tuition": 23760,
+      "total": 25061
+     },
+     {
+      "years": "11",
+      "tuition": 24060,
+      "total": 25361
+     },
+     {
+      "years": "12",
+      "tuition": 25310,
+      "total": 26611
+     }
+    ],
+    "other_compulsory": "Facilities fee $3,633 per family",
+    "source": "school_website",
+    "source_url": "https://www.siena.vic.edu.au/enrol/fees"
+   }
+  },
+  "45864": {
+   "school_name": "St Bernard's College",
+   "website": "http://www.sbc.vic.edu.au",
+   "status": "not_extracted",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 11,
+    "errors": 0
+   },
+   "note": "Fees and charges page text lists program levies but not tuition."
+  },
+  "45865": {
+   "school_name": "Whitefriars College",
+   "website": "http://www.whitefriars.vic.edu.au",
+   "status": "found",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 13,
+    "errors": 0
+   },
+   "fees": {
+    "fee_year": 2027,
+    "basis": "all-inclusive annual fee (tuition, tablet, curriculum activities, camps)",
+    "by_year": [
+     {
+      "years": "7",
+      "tuition": 18550
+     },
+     {
+      "years": "8",
+      "tuition": 19025
+     },
+     {
+      "years": "9-10",
+      "tuition": 19800
+     },
+     {
+      "years": "11-12",
+      "tuition": 20540
+     }
+    ],
+    "source": "school_website",
+    "source_url": "https://www.whitefriars.vic.edu.au/enrolment/local-students/fees-and-charges/"
+   }
+  },
+  "45868": {
+   "school_name": "Our Lady of the Sacred Heart College",
+   "website": "http://www.olsh.vic.edu.au",
+   "status": "unreachable",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 0,
+    "errors": 2,
+    "home_error": "UNABLE_TO_VERIFY_LEAF_SIGNATURE"
+   }
+  },
+  "45870": {
+   "school_name": "Salesian College Chadstone",
+   "website": "http://www.salesian.vic.edu.au",
+   "status": "found",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 16,
+    "errors": 0
+   },
+   "fees": {
+    "fee_year": 2026,
+    "basis": "college fee per year",
+    "by_year": [
+     {
+      "years": "7-10",
+      "tuition": 10760
+     },
+     {
+      "years": "11-12",
+      "tuition": 11760
+     }
+    ],
+    "source": "school_website",
+    "source_url": "http://www.salesian.vic.edu.au/wp-content/uploads/2025/11/2026-Fees-Schedule-final.pdf"
+   }
+  },
+  "45874": {
+   "school_name": "Marcellin College",
+   "website": "http://www.marcellin.vic.edu.au",
+   "status": "found",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 13,
+    "errors": 1
+   },
+   "fees": {
+    "fee_year": 2026,
+    "basis": "all-inclusive tuition, first student",
+    "by_year": [
+     {
+      "years": "7",
+      "tuition": 14710
+     },
+     {
+      "years": "8",
+      "tuition": 14860
+     },
+     {
+      "years": "9",
+      "tuition": 15380
+     },
+     {
+      "years": "10",
+      "tuition": 16560
+     },
+     {
+      "years": "11",
+      "tuition": 16600
+     },
+     {
+      "years": "12",
+      "tuition": 17120
+     }
+    ],
+    "source": "school_website",
+    "source_url": "https://cdn.prod.website-files.com/63297a19b276572e2343c0da/691bdc555cea0eadd10d7b6b_2026_Marcellin_College_Tuition_Schedule_of_Fees_D1.pdf"
+   }
+  },
+  "45906": {
+   "school_name": "Killester College",
+   "website": "http://www.killester.vic.edu.au",
+   "status": "found",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 10,
+    "errors": 0
+   },
+   "fees": {
+    "fee_year": 2026,
+    "basis": "total for one student (school fee, levies, capital contribution), includes camps and excursions",
+    "by_year": [
+     {
+      "years": "7",
+      "tuition": 3460,
+      "total": 4575
+     },
+     {
+      "years": "8-9",
+      "tuition": 3460,
+      "total": 4360
+     },
+     {
+      "years": "10",
+      "tuition": 3460,
+      "total": 4460
+     },
+     {
+      "years": "11-12",
+      "tuition": 3460,
+      "total": 4360
+     }
+    ],
+    "source": "school_website",
+    "source_url": "https://www.killester.vic.edu.au/school-fees/"
+   }
+  },
+  "45922": {
+   "school_name": "Sacred Heart Girls' College",
+   "website": "http://www.shgc.vic.edu.au",
+   "status": "found",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 14,
+    "errors": 0
+   },
+   "fees": {
+    "fee_year": 2027,
+    "basis": "annual fee, includes laptop, textbook hire (Years 7-9) and camps",
+    "by_year": [
+     {
+      "years": "7-9",
+      "tuition": 12510
+     },
+     {
+      "years": "10",
+      "tuition": 12973
+     },
+     {
+      "years": "11-12",
+      "tuition": 12624
+     }
+    ],
+    "source": "school_website",
+    "source_url": "https://shgc.s3.ap-southeast-2.amazonaws.com/uploads/fees/2027-Fees.pdf"
+   }
+  },
+  "45932": {
+   "school_name": "St John's Regional College",
+   "website": "https://www.sjrc.vic.edu.au/",
+   "status": "not_extracted",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 11,
+    "errors": 3
+   },
+   "note": "Fees information page text holds no figures."
+  },
+  "45936": {
+   "school_name": "Emmaus College",
+   "website": "http://www.emmaus.vic.edu.au",
+   "status": "not_extracted",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 6,
+    "errors": 0
+   },
+   "note": "Fees page text holds no figures."
+  },
+  "45947": {
+   "school_name": "Aquinas College",
+   "website": "http://www.aquinas.vic.edu.au",
+   "status": "found",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 5,
+    "errors": 0
+   },
+   "fees": {
+    "fee_year": 2027,
+    "basis": "total per student (tuition, capital, curriculum, camp and technology levies)",
+    "by_year": [
+     {
+      "years": "7",
+      "tuition": 10400,
+      "total": 12320
+     },
+     {
+      "years": "8",
+      "tuition": 10400,
+      "total": 12340
+     },
+     {
+      "years": "9",
+      "tuition": 10620,
+      "total": 12210
+     },
+     {
+      "years": "10",
+      "tuition": 10620,
+      "total": 12110
+     },
+     {
+      "years": "11-12",
+      "tuition": 10620,
+      "total": 12280
+     }
+    ],
+    "source": "school_website",
+    "source_url": "https://media.digistormhosting.com.au/ac-au-vic-612-website/documents/Links-requested/Fees-and-Charges-2027-Booklet_FA.pdf"
+   }
+  },
+  "45958": {
+   "school_name": "Ave Maria College",
+   "website": "http://www.avemaria.vic.edu.au",
+   "status": "not_extracted",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 14,
+    "errors": 1
+   },
+   "note": "2026 tuition fee letter PDF holds no figures as text."
+  },
+  "45963": {
+   "school_name": "Marian College",
+   "website": "http://www.mariansw.catholic.edu.au",
+   "status": "found",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 14,
+    "errors": 2
+   },
+   "fees": {
+    "fee_year": 2026,
+    "basis": "annual fee; laptop levy $550 in Years 7 and 10",
+    "by_year": [
+     {
+      "years": "7",
+      "tuition": 2650
+     },
+     {
+      "years": "8-9",
+      "tuition": 2900
+     },
+     {
+      "years": "10-12",
+      "tuition": 3000
+     }
+    ],
+    "source": "school_website",
+    "source_url": "https://www.mariansw.catholic.edu.au/enrolments/fees-uniform-transport"
+   }
+  },
+  "45964": {
+   "school_name": "Mount St Joseph Girls' College",
+   "website": "http://www.msj.vic.edu.au",
+   "status": "not_extracted",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 14,
+    "errors": 0
+   },
+   "note": "Tuition fees page text holds no figures."
+  },
+  "45970": {
+   "school_name": "Mater Christi College",
+   "website": "http://www.materchristi.edu.au",
+   "status": "found",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 10,
+    "errors": 0
+   },
+   "fees": {
+    "fee_year": 2026,
+    "basis": "total fees (tuition, levies, capital levy per family), all year levels",
+    "by_year": [
+     {
+      "years": "7-12",
+      "tuition": 9195,
+      "total": 12693
+     }
+    ],
+    "source": "school_website",
+    "source_url": "https://cdn.prod.website-files.com/64f652bf0acbfc277dfd7aab/6915586cb406f04d8bc1a482_MCC-Fee%20Schedule%20(tourPack)%20-%202026.pdf"
+   }
+  },
+  "45972": {
+   "school_name": "St Joseph's College",
+   "website": "http://www.stjosephs.com.au",
+   "status": "not_extracted",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 14,
+    "errors": 2
+   },
+   "note": "2026 tuition fee information PDF holds no figures as text."
+  },
+  "45976": {
+   "school_name": "Avila College",
+   "website": "http://www.avilacollege.vic.edu.au",
+   "status": "not_found",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 1,
+    "errors": 0
+   },
+   "note": "Only the home page could be fetched."
+  },
+  "45979": {
+   "school_name": "Emmanuel College",
+   "website": "http://www.ecmelb.catholic.edu.au",
+   "status": "not_found",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 1,
+    "errors": 0
+   },
+   "note": "Only the home page could be fetched."
+  },
+  "45980": {
+   "school_name": "Emmanuel College - Notre Dame Campus",
+   "website": "http://www.ecmelb.catholic.edu.au",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 45979,
+   "parent_name": "Emmanuel College",
+   "website_source": "parent_school"
+  },
+  "45983": {
+   "school_name": "St Monica's College - Dalton Road Campus",
+   "website": "http://www.stmonicas-epping.com",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 40615,
+   "parent_name": "St Monica's College - Davisson Street",
+   "website_source": "parent_school"
+  },
+  "45985": {
+   "school_name": "Mercy College",
+   "website": "http://www.mercycoburg.catholic.edu.au",
+   "status": "not_extracted",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 16,
+    "errors": 0
+   },
+   "note": "2027 school fees PDF holds no figures as text."
+  },
+  "45991": {
+   "school_name": "St Mary’s College for the Deaf – Dandenong Campus",
+   "website": "http://smdeaf.vic.edu.au",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 45990,
+   "parent_name": "St Mary's College for the Deaf - Wantirna South Campus",
+   "website_source": "parent_school"
+  },
+  "45992": {
+   "school_name": "St Mary’s College for the Deaf – Ringwood Campus",
+   "website": "http://smdeaf.vic.edu.au",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 45990,
+   "parent_name": "St Mary's College for the Deaf - Wantirna South Campus",
+   "website_source": "parent_school"
+  },
+  "45993": {
+   "school_name": "St Mary’s College for the Deaf – South Morang Campus",
+   "website": "http://smdeaf.vic.edu.au",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 45990,
+   "parent_name": "St Mary's College for the Deaf - Wantirna South Campus",
+   "website_source": "parent_school"
+  },
+  "45994": {
+   "school_name": "John Paul College",
+   "website": "http://www.jpc.vic.edu.au",
+   "status": "found",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 16,
+    "errors": 0
+   },
+   "fees": {
+    "fee_year": 2027,
+    "basis": "annual tuition, includes curriculum excursions and camps",
+    "by_year": [
+     {
+      "years": "7",
+      "tuition": 6650
+     },
+     {
+      "years": "8",
+      "tuition": 7750
+     },
+     {
+      "years": "9-12",
+      "tuition": 8200
+     }
+    ],
+    "source": "school_website",
+    "source_url": "https://media.digistormhosting.com.au/jpc-au-vic-1039-website-2023/documents/Fees-Schedule-2027.pdf"
+   }
+  },
+  "45996": {
+   "school_name": "Mazenod College",
+   "website": "http://www.mazenod.vic.edu.au",
+   "status": "not_extracted",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 13,
+    "errors": 0
+   },
+   "note": "School fees page text lists levies but not tuition."
+  },
+  "46002": {
+   "school_name": "MacKillop Catholic Regional College",
+   "website": "http://www.mackillopwerribee.com.au/",
+   "status": "not_found",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 1,
+    "errors": 1
+   },
+   "note": "Only the home page could be fetched."
+  },
+  "46035": {
+   "school_name": "Catholic Regional College St Albans",
+   "website": "http://www.crcstalbans.catholic.edu.au",
+   "status": "found",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 6,
+    "errors": 0
+   },
+   "fees": {
+    "fee_year": 2026,
+    "basis": "total for Year 7 (school fees, sport and excursions, camp, technology), families without a Health Care Card",
+    "by_year": [
+     {
+      "years": "7",
+      "tuition": 2324,
+      "total": 2909
+     }
+    ],
+    "source": "school_website",
+    "source_url": "https://www.crcstalbans.catholic.edu.au/wp-content/uploads/2025/11/Fees-2026-CRCSTA.pdf"
+   }
+  },
+  "46036": {
+   "school_name": "St Francis Xavier College - Berwick Campus",
+   "website": "http://www.sfx.vic.edu.au",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 40621,
+   "parent_name": "St Francis Xavier College",
+   "website_source": "parent_school"
+  },
+  "46044": {
+   "school_name": "Caroline Chisholm Catholic College - Sacred Heart Campus",
+   "website": "http://www.cccc.vic.edu.au/",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 40900,
+   "parent_name": "Caroline Chisholm Catholic College",
+   "website_source": "parent_school"
+  },
+  "46045": {
+   "school_name": "Caroline Chisholm Catholic College - Christ the King Campus",
+   "website": "http://www.cccc.vic.edu.au/",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 40900,
+   "parent_name": "Caroline Chisholm Catholic College",
+   "website_source": "parent_school"
+  },
+  "46053": {
+   "school_name": "Loyola College",
+   "website": "http://www.loyola.vic.edu.au",
+   "status": "found",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 8,
+    "errors": 0
+   },
+   "fees": {
+    "fee_year": 2026,
+    "basis": "tuition, includes subject and term levies and camps; building levy per family extra",
+    "by_year": [
+     {
+      "years": "7-8",
+      "tuition": 9250
+     },
+     {
+      "years": "9",
+      "tuition": 9850
+     },
+     {
+      "years": "10",
+      "tuition": 9250
+     },
+     {
+      "years": "11",
+      "tuition": 9450
+     },
+     {
+      "years": "12",
+      "tuition": 10030
+     }
+    ],
+    "other_compulsory": "Building levy $720 per family; eBook levy $205 in Years 7-9",
+    "source": "school_website",
+    "source_url": "https://loyola-vic.s3.ap-southeast-2.amazonaws.com/uploads/2026-Schedule-of-Fees.pdf"
+   }
+  },
+  "46054": {
+   "school_name": "St Francis Catholic College",
+   "website": "https://www.sfcc.vic.edu.au/",
+   "status": "found",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 8,
+    "errors": 0
+   },
+   "fees": {
+    "fee_year": 2026,
+    "basis": "fee including tuition and compulsory levies; device program extra",
+    "by_year": [
+     {
+      "years": "7-10",
+      "tuition": 5269
+     },
+     {
+      "years": "11-12",
+      "tuition": 5605
+     }
+    ],
+    "source": "school_website",
+    "source_url": "https://www.sfcc.vic.edu.au/join-us/fee-policy"
+   }
+  },
+  "46064": {
+   "school_name": "Catholic Regional College North Keilor",
+   "website": "http://www.crcnk.com.au",
+   "status": "not_found",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 1,
+    "errors": 0
+   },
+   "note": "Only the home page could be fetched."
+  },
+  "46079": {
+   "school_name": "Nazareth College",
+   "website": "http://www.nazareth.vic.edu.au",
+   "status": "not_found",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 14,
+    "errors": 0
+   },
+   "note": "No fee page among the pages fetched."
+  },
+  "46087": {
+   "school_name": "St Peter's College",
+   "website": "https://www2.stpeters.vic.edu.au/",
+   "status": "not_extracted",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 10,
+    "errors": 0
+   },
+   "note": "2026 education fee snapshot PDF holds no figures as text."
+  },
+  "46096": {
+   "school_name": "Penola Catholic College",
+   "website": "http://www.penola.vic.edu.au",
+   "status": "found",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 16,
+    "errors": 0
+   },
+   "fees": {
+    "fee_year": 2027,
+    "basis": "annual student tuition fee; building fund contribution extra",
+    "by_year": [
+     {
+      "years": "7",
+      "tuition": 4097
+     },
+     {
+      "years": "8",
+      "tuition": 4288
+     },
+     {
+      "years": "9-10",
+      "tuition": 4864
+     },
+     {
+      "years": "11-12",
+      "tuition": 5570
+     }
+    ],
+    "source": "school_website",
+    "source_url": "https://www.penola.vic.edu.au/enrolments/fees-levies"
+   }
+  },
+  "46097": {
+   "school_name": "Penola Catholic College - Glenroy Campus",
+   "website": "http://www.penola.vic.edu.au",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 46096,
+   "parent_name": "Penola Catholic College",
+   "website_source": "parent_school"
+  },
+  "46102": {
+   "school_name": "Thomas Carr College",
+   "website": "http://www.thomascarr.vic.edu.au",
+   "status": "not_found",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 13,
+    "errors": 0
+   },
+   "note": "Only fees for international students were found."
+  },
+  "46112": {
+   "school_name": "Antonine College",
+   "website": "http://www.antonine.catholic.edu.au",
+   "status": "found",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 9,
+    "errors": 0
+   },
+   "fees": {
+    "fee_year": 2027,
+    "basis": "tuition per student, Years 7-12; building fund per family extra",
+    "by_year": [
+     {
+      "years": "7-12",
+      "tuition": 4800
+     }
+    ],
+    "source": "school_website",
+    "source_url": "https://antonine.s3.ap-southeast-2.amazonaws.com/uploads/2026/Fee-Schedule-and-Policy-2027.pdf"
+   }
+  },
+  "46113": {
+   "school_name": "Antonine College - Cedar Campus",
+   "website": "http://www.antonine.catholic.edu.au",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 46112,
+   "parent_name": "Antonine College",
+   "website_source": "parent_school"
+  },
+  "46117": {
+   "school_name": "Marymede Catholic College",
+   "website": "http://www.marymede.vic.edu.au",
+   "status": "found",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 14,
+    "errors": 2
+   },
+   "fees": {
+    "fee_year": 2026,
+    "basis": "tuition fee; e-resource fee and building levy extra",
+    "by_year": [
+     {
+      "years": "P-6",
+      "tuition": 4865
+     },
+     {
+      "years": "7-8",
+      "tuition": 7916
+     },
+     {
+      "years": "9-10",
+      "tuition": 8345
+     },
+     {
+      "years": "11-12",
+      "tuition": 8763
+     }
+    ],
+    "other_compulsory": "E-resource fee $700 (secondary); building levy $500 per family",
+    "source": "school_website",
+    "source_url": "https://www.marymede.vic.edu.au/enrolments/school-fees"
+   }
+  },
+  "46121": {
+   "school_name": "Catholic Regional College Caroline Springs",
+   "website": "https://www.crccs.vic.edu.au/",
+   "status": "found",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 9,
+    "errors": 0
+   },
+   "fees": {
+    "fee_year": 2027,
+    "basis": "tuition fee; IT levy $385 and camps extra",
+    "by_year": [
+     {
+      "years": "7-9",
+      "tuition": 5715
+     }
+    ],
+    "source": "school_website",
+    "source_url": "https://www.crccs.vic.edu.au/enrolment-1/college-tuition-fee"
+   }
+  },
+  "46123": {
+   "school_name": "Kolbe Catholic College",
+   "website": "http://www.kolbecc.catholic.edu.au",
+   "status": "found",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 16,
+    "errors": 0
+   },
+   "fees": {
+    "fee_year": 2026,
+    "basis": "total (tuition, curriculum levy, IT levy)",
+    "by_year": [
+     {
+      "years": "7",
+      "tuition": 3880,
+      "total": 5405
+     },
+     {
+      "years": "8",
+      "tuition": 3880,
+      "total": 5385
+     },
+     {
+      "years": "9",
+      "tuition": 4410,
+      "total": 5895
+     },
+     {
+      "years": "10",
+      "tuition": 4410,
+      "total": 5475
+     },
+     {
+      "years": "11",
+      "tuition": 4700,
+      "total": 5765
+     }
+    ],
+    "source": "school_website",
+    "source_url": "https://www.kolbecc.catholic.edu.au/enrolment/fee-policy"
+   }
+  },
+  "46132": {
+   "school_name": "Wesley College",
+   "website": "http://www.wesleycollege.edu.au",
+   "status": "blocked",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 0,
+    "errors": 1,
+    "home_error": "HTTP 403"
+   }
+  },
+  "46133": {
+   "school_name": "Wesley College - Glen Waverley Campus",
+   "website": "http://www.wesleycollege.edu.au",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 46132,
+   "parent_name": "Wesley College",
+   "website_source": "parent_school"
+  },
+  "46134": {
+   "school_name": "Wesley College - Elsternwick Campus",
+   "website": "http://www.wesleycollege.edu.au",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 46132,
+   "parent_name": "Wesley College",
+   "website_source": "parent_school"
+  },
+  "46135": {
+   "school_name": "Wesley College - St Kilda Road Junior Campus",
+   "website": "http://www.wesleycollege.edu.au",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 46132,
+   "parent_name": "Wesley College",
+   "website_source": "parent_school"
+  },
+  "46136": {
+   "school_name": "Korowa Anglican Girls' School",
+   "website": "http://www.korowa.vic.edu.au",
+   "status": "found",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 13,
+    "errors": 3
+   },
+   "fees": {
+    "fee_year": 2027,
+    "basis": "tuition fee after government funding",
+    "by_year": [
+     {
+      "years": "P-2",
+      "tuition": 22670
+     },
+     {
+      "years": "3-4",
+      "tuition": 28530
+     },
+     {
+      "years": "5",
+      "tuition": 35570
+     },
+     {
+      "years": "6",
+      "tuition": 37070
+     },
+     {
+      "years": "7",
+      "tuition": 39280
+     },
+     {
+      "years": "8",
+      "tuition": 40770
+     }
+    ],
+    "source": "school_website",
+    "source_url": "https://www.korowa.vic.edu.au/enrolments/school-fees"
+   }
+  },
+  "46137": {
+   "school_name": "Melbourne Grammar School",
+   "website": "http://www.mgs.vic.edu.au",
+   "status": "found",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 16,
+    "errors": 0
+   },
+   "fees": {
+    "fee_year": 2026,
+    "basis": "fees per annum (tuition plus consolidated charge), domestic students",
+    "by_year": [
+     {
+      "years": "P",
+      "tuition": 36470,
+      "total": 36754
+     },
+     {
+      "years": "3",
+      "tuition": 37030,
+      "total": 37265
+     },
+     {
+      "years": "5",
+      "tuition": 37530,
+      "total": 37749
+     },
+     {
+      "years": "6",
+      "tuition": 37530,
+      "total": 39786
+     },
+     {
+      "years": "7",
+      "tuition": 43390,
+      "total": 44657
+     },
+     {
+      "years": "8",
+      "tuition": 43390,
+      "total": 44621
+     },
+     {
+      "years": "9",
+      "tuition": 46230,
+      "total": 48185
+     },
+     {
+      "years": "10",
+      "tuition": 46230,
+      "total": 52255
+     },
+     {
+      "years": "11",
+      "tuition": 46230,
+      "total": 46405
+     },
+     {
+      "years": "12",
+      "tuition": 46230,
+      "total": 46589
+     }
+    ],
+    "source": "school_website",
+    "source_url": "https://mgs.vic.edu.au/admissions/apply-here-and-find-out-more/tuition-and-boarding-fees"
+   }
+  },
+  "46138": {
+   "school_name": "Ruyton Girls' School",
+   "website": "http://www.ruyton.vic.edu.au",
+   "status": "found",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 13,
+    "errors": 1
+   },
+   "fees": {
+    "fee_year": 2027,
+    "basis": "annual tuition fee",
+    "by_year": [
+     {
+      "years": "P",
+      "tuition": 29040
+     },
+     {
+      "years": "1-2",
+      "tuition": 34396
+     },
+     {
+      "years": "3-4",
+      "tuition": 36787
+     },
+     {
+      "years": "5-6",
+      "tuition": 37960
+     },
+     {
+      "years": "7",
+      "tuition": 41744
+     },
+     {
+      "years": "8-9",
+      "tuition": 44179
+     },
+     {
+      "years": "10",
+      "tuition": 45330
+     },
+     {
+      "years": "11-12",
+      "tuition": 46791
+     }
+    ],
+    "source": "school_website",
+    "source_url": "https://media.digistormhosting.com.au/rgs-au-vic-1073-website-2023/documents/Fees/Ruyton-2027-Fees-and-Charges-Schedule.pdf"
+   }
+  },
+  "46139": {
+   "school_name": "Caulfield Grammar School",
+   "website": "http://www.caulfieldgs.vic.edu.au",
+   "status": "not_extracted",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 12,
+    "errors": 4
+   },
+   "note": "Enrolment pages give entry fees only; tuition not in the text fetched."
+  },
+  "46140": {
+   "school_name": "Caulfield Grammar School - Malvern Campus",
+   "website": "http://www.caulfieldgs.vic.edu.au",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 46139,
+   "parent_name": "Caulfield Grammar School",
+   "website_source": "parent_school"
+  },
+  "46141": {
+   "school_name": "Caulfield Grammar School - Wheelers Hill Campus",
+   "website": "http://www.caulfieldgs.vic.edu.au",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 46139,
+   "parent_name": "Caulfield Grammar School",
+   "website_source": "parent_school"
+  },
+  "46144": {
+   "school_name": "Methodist Ladies' College",
+   "website": "http://www.mlc.vic.edu.au",
+   "status": "not_extracted",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 16,
+    "errors": 0
+   },
+   "note": "Fees page text holds no figures."
+  },
+  "46145": {
+   "school_name": "Melbourne Grammar School - Wadhurst Campus",
+   "website": "http://www.mgs.vic.edu.au",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 46137,
+   "parent_name": "Melbourne Grammar School",
+   "website_source": "parent_school"
+  },
+  "46149": {
+   "school_name": "Fintona Girls' School",
+   "website": "https://www.fintona.vic.edu.au",
+   "status": "not_extracted",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 12,
+    "errors": 0
+   },
+   "note": "Fees page gives application and enrolment fees only."
+  },
+  "46150": {
+   "school_name": "Lauriston Girls' School",
+   "website": "http://www.lauriston.vic.edu.au",
+   "status": "found",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 9,
+    "errors": 0
+   },
+   "fees": {
+    "fee_year": 2027,
+    "basis": "annual tuition fee; Year 9 Howqua residential charge $37,100 extra",
+    "by_year": [
+     {
+      "years": "P-2",
+      "tuition": 33290
+     },
+     {
+      "years": "3",
+      "tuition": 39980
+     },
+     {
+      "years": "4-6",
+      "tuition": 41600
+     },
+     {
+      "years": "7-8",
+      "tuition": 46620
+     },
+     {
+      "years": "9",
+      "tuition": 47250
+     },
+     {
+      "years": "10-11",
+      "tuition": 49540
+     },
+     {
+      "years": "12",
+      "tuition": 49100
+     }
+    ],
+    "source": "school_website",
+    "source_url": "https://www.lauriston.vic.edu.au/wp-content/uploads/2026/09/LGS-Business-Notice-Domestic-2027.pdf"
+   }
+  },
+  "46156": {
+   "school_name": "Trinity Grammar School Kew",
+   "website": "http://www.trinity.vic.edu.au",
+   "status": "not_extracted",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 15,
+    "errors": 0
+   },
+   "note": "Tuition fees page text holds no figures."
+  },
+  "46157": {
+   "school_name": "Melbourne Girls Grammar",
+   "website": "http://www.mggs.vic.edu.au",
+   "status": "found",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 6,
+    "errors": 0
+   },
+   "fees": {
+    "fee_year": 2027,
+    "basis": "annual fee",
+    "by_year": [
+     {
+      "years": "P",
+      "tuition": 32504
+     },
+     {
+      "years": "1-2",
+      "tuition": 34372
+     },
+     {
+      "years": "3-4",
+      "tuition": 37148
+     },
+     {
+      "years": "5-6",
+      "tuition": 42340
+     },
+     {
+      "years": "7",
+      "tuition": 45160
+     },
+     {
+      "years": "8",
+      "tuition": 46624
+     },
+     {
+      "years": "9-10",
+      "tuition": 48768
+     },
+     {
+      "years": "11-12",
+      "tuition": 49900
+     }
+    ],
+    "source": "school_website",
+    "source_url": "https://www.mggs.vic.edu.au/enrolments/fees"
+   }
+  },
+  "46158": {
+   "school_name": "Melbourne Girls Grammar - Morris Hall Campus",
+   "website": "http://www.mggs.vic.edu.au",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 46157,
+   "parent_name": "Melbourne Girls Grammar",
+   "website_source": "parent_school"
+  },
+  "46162": {
+   "school_name": "Presbyterian Ladies' College",
+   "website": "http://www.plc.vic.edu.au",
+   "status": "not_extracted",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 6,
+    "errors": 2
+   },
+   "note": "Fees page text holds no figures."
+  },
+  "46163": {
+   "school_name": "St Michael's Grammar School",
+   "website": "http://www.stmichaels.vic.edu.au",
+   "status": "not_found",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 16,
+    "errors": 0
+   },
+   "note": "No fee page among the pages fetched."
+  },
+  "46164": {
+   "school_name": "Firbank Grammar School",
+   "website": "http://www.firbank.vic.edu.au",
+   "status": "blocked",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 0,
+    "errors": 1,
+    "home_error": "HTTP 403"
+   }
+  },
+  "46165": {
+   "school_name": "Firbank Grammar School - Sandringham Campus",
+   "website": "http://www.firbank.vic.edu.au",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 46164,
+   "parent_name": "Firbank Grammar School",
+   "website_source": "parent_school"
+  },
+  "46170": {
+   "school_name": "Ivanhoe Grammar School",
+   "website": "http://www.ivanhoe.com.au",
+   "status": "found",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 15,
+    "errors": 0
+   },
+   "fees": {
+    "fee_year": 2027,
+    "basis": "net tuition fees, Ivanhoe campus; composite fees extra",
+    "by_year": [
+     {
+      "years": "F",
+      "tuition": 24120
+     },
+     {
+      "years": "1-2",
+      "tuition": 27320
+     },
+     {
+      "years": "3-4",
+      "tuition": 30940
+     },
+     {
+      "years": "5",
+      "tuition": 31600
+     },
+     {
+      "years": "6",
+      "tuition": 33700
+     },
+     {
+      "years": "7",
+      "tuition": 34040
+     },
+     {
+      "years": "8",
+      "tuition": 36260
+     },
+     {
+      "years": "9-12",
+      "tuition": 37400
+     }
+    ],
+    "other_compulsory": "Composite fees $1,980-$4,840 a year in Years 7-12",
+    "source": "school_website",
+    "source_url": "https://media.igs.vic.edu.au/downloads/WEBSITE/Fees/2027/IvanhoeCampusScheduleofFees2027.pdf"
+   }
+  },
+  "46171": {
+   "school_name": "Ivanhoe Grammar School - Plenty Campus",
+   "website": "http://www.ivanhoe.com.au",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 46170,
+   "parent_name": "Ivanhoe Grammar School",
+   "website_source": "parent_school"
+  },
+  "46172": {
+   "school_name": "Scotch College",
+   "website": "http://www.scotch.vic.edu.au",
+   "status": "blocked",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 0,
+    "errors": 1,
+    "home_error": "HTTP 403"
+   }
+  },
+  "46173": {
+   "school_name": "St Leonard's College",
+   "website": "http://www.stleonards.vic.edu.au",
+   "status": "blocked",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 0,
+    "errors": 1,
+    "home_error": "HTTP 403"
+   }
+  },
+  "46174": {
+   "school_name": "Melbourne Grammar School - Grimwade Campus",
+   "website": "http://www.mgs.vic.edu.au",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 46137,
+   "parent_name": "Melbourne Grammar School",
+   "website_source": "parent_school"
+  },
+  "46175": {
+   "school_name": "Tintern Grammar",
+   "website": "http://www.tintern.vic.edu.au",
+   "status": "found",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 6,
+    "errors": 0
+   },
+   "fees": {
+    "fee_year": 2027,
+    "basis": "total (tuition plus fixed charge)",
+    "by_year": [
+     {
+      "years": "P",
+      "tuition": 22388,
+      "total": 22884
+     },
+     {
+      "years": "1-3",
+      "tuition": 26580,
+      "total": 27144
+     },
+     {
+      "years": "4-6",
+      "tuition": 29624,
+      "total": 30240
+     },
+     {
+      "years": "7-8",
+      "tuition": 32364,
+      "total": 33144
+     },
+     {
+      "years": "9",
+      "tuition": 34956,
+      "total": 35884
+     },
+     {
+      "years": "10-11",
+      "tuition": 38364
+     }
+    ],
+    "source": "school_website",
+    "source_url": "https://www.tintern.vic.edu.au/wp-content/uploads/2026/11/Schedule-of-Fees-2027.pdf"
+   }
+  },
+  "46177": {
+   "school_name": "Toorak College",
+   "website": "https://www.toorakcollege.vic.edu.au/",
+   "status": "found",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 15,
+    "errors": 0
+   },
+   "fees": {
+    "fee_year": 2027,
+    "basis": "total (tuition plus charges), local students",
+    "by_year": [
+     {
+      "years": "P",
+      "tuition": 20935,
+      "total": 21245
+     },
+     {
+      "years": "3",
+      "tuition": 25115,
+      "total": 26115
+     },
+     {
+      "years": "4",
+      "tuition": 30210,
+      "total": 31400
+     },
+     {
+      "years": "5",
+      "tuition": 33650,
+      "total": 34930
+     },
+     {
+      "years": "6",
+      "tuition": 33650,
+      "total": 34750
+     },
+     {
+      "years": "7",
+      "tuition": 35465,
+      "total": 37235
+     },
+     {
+      "years": "8",
+      "tuition": 35465,
+      "total": 37765
+     },
+     {
+      "years": "9",
+      "tuition": 39525,
+      "total": 42165
+     },
+     {
+      "years": "10",
+      "tuition": 39525,
+      "total": 39905
+     }
+    ],
+    "source": "school_website",
+    "source_url": "https://media.digistormhosting.com.au/tc-au-vic-110-website-2022/documents/2027-Local-Schedule-Fees-and-Charges.pdf"
+   }
+  },
+  "46178": {
+   "school_name": "St Catherine's School",
+   "website": "http://www.stcatherines.net.au",
+   "status": "not_extracted",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 16,
+    "errors": 0
+   },
+   "note": "Fees page text holds no figures."
+  },
+  "46179": {
+   "school_name": "Lowther Hall Anglican Grammar School",
+   "website": "https://www.lowtherhall.vic.edu.au/",
+   "status": "found",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 16,
+    "errors": 0
+   },
+   "fees": {
+    "fee_year": 2027,
+    "basis": "total annual fee (tuition plus composite fee)",
+    "by_year": [
+     {
+      "years": "P",
+      "tuition": 19000,
+      "total": 25000
+     },
+     {
+      "years": "1",
+      "tuition": 20000,
+      "total": 26400
+     },
+     {
+      "years": "2",
+      "tuition": 20900,
+      "total": 27700
+     },
+     {
+      "years": "3",
+      "tuition": 22500,
+      "total": 29600
+     },
+     {
+      "years": "4",
+      "tuition": 23500,
+      "total": 31100
+     },
+     {
+      "years": "5",
+      "tuition": 24600,
+      "total": 32600
+     },
+     {
+      "years": "6",
+      "tuition": 25800,
+      "total": 34200
+     },
+     {
+      "years": "7",
+      "tuition": 26700,
+      "total": 35500
+     },
+     {
+      "years": "8",
+      "tuition": 27800,
+      "total": 37000
+     }
+    ],
+    "source": "school_website",
+    "source_url": "https://lowtherhall.sfo2.cdn.digitaloceanspaces.com/public/LH_Schedule_of_Fees_2027_Web_view_5.pdf"
+   }
+  },
+  "46180": {
+   "school_name": "Penleigh & Essendon Grammar School",
+   "website": "http://www.pegs.vic.edu.au",
+   "status": "not_extracted",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 7,
+    "errors": 0
+   },
+   "note": "2026 scale of fees PDF holds no figures as text."
+  },
+  "46181": {
+   "school_name": "Penleigh & Essendon Grammar School - Essendon Campus",
+   "website": "http://www.pegs.vic.edu.au",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 46180,
+   "parent_name": "Penleigh & Essendon Grammar School",
+   "website_source": "parent_school"
+  },
+  "46182": {
+   "school_name": "Penleigh & Essendon Grammar School - Moonee Ponds Campus",
+   "website": "http://www.pegs.vic.edu.au",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 46180,
+   "parent_name": "Penleigh & Essendon Grammar School",
+   "website_source": "parent_school"
+  },
+  "46183": {
+   "school_name": "Shelford Girls' Grammar",
+   "website": null,
+   "status": "no_website",
+   "checked": "2026-11-12"
+  },
+  "46184": {
+   "school_name": "Mentone Grammar School",
+   "website": "http://www.mentonegrammar.net",
+   "status": "found",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 16,
+    "errors": 0
+   },
+   "fees": {
+    "fee_year": 2027,
+    "basis": "total (tuition plus other charges: facilities, transport and program levies), local students",
+    "by_year": [
+     {
+      "years": "P",
+      "tuition": 16907,
+      "total": 20692
+     },
+     {
+      "years": "1",
+      "tuition": 21303,
+      "total": 25088
+     },
+     {
+      "years": "2",
+      "tuition": 22691,
+      "total": 26723
+     },
+     {
+      "years": "3",
+      "tuition": 23727,
+      "total": 29072
+     },
+     {
+      "years": "4",
+      "tuition": 23727,
+      "total": 29190
+     },
+     {
+      "years": "5",
+      "tuition": 26413,
+      "total": 32471
+     },
+     {
+      "years": "6",
+      "tuition": 26413,
+      "total": 32661
+     },
+     {
+      "years": "7",
+      "tuition": 31633,
+      "total": 38229
+     },
+     {
+      "years": "8",
+      "tuition": 31633,
+      "total": 38340
+     },
+     {
+      "years": "9",
+      "tuition": 33674,
+      "total": 39726
+     },
+     {
+      "years": "10",
+      "tuition": 33674,
+      "total": 39996
+     },
+     {
+      "years": "11",
+      "tuition": 34195,
+      "total": 39062
+     },
+     {
+      "years": "12",
+      "tuition": 34195,
+      "total": 39128
+     }
+    ],
+    "source": "school_website",
+    "source_url": "https://www.mentonegrammar.net/wp-content/uploads/2026/10/4234-MG-Schedule-of-Fees-2027_Local-FA.pdf"
+   }
+  },
+  "46185": {
+   "school_name": "Ivanhoe Girls' Grammar School",
+   "website": "http://www.ivanhoegirls.vic.edu.au",
+   "status": "found",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 16,
+    "errors": 0
+   },
+   "fees": {
+    "fee_year": 2027,
+    "basis": "annual fees (tuition plus consolidated charges), local students",
+    "by_year": [
+     {
+      "years": "P",
+      "tuition": 26300,
+      "total": 27800
+     },
+     {
+      "years": "1-4",
+      "tuition": 28200,
+      "total": 29800
+     },
+     {
+      "years": "5-6",
+      "tuition": 31200,
+      "total": 33100
+     },
+     {
+      "years": "7-8",
+      "tuition": 35000,
+      "total": 37400
+     },
+     {
+      "years": "9-10",
+      "tuition": 37600,
+      "total": 40300
+     },
+     {
+      "years": "11-12",
+      "tuition": 38900,
+      "total": 41900
+     }
+    ],
+    "source": "school_website",
+    "source_url": "https://media.digistormhosting.com.au/iggs-au-vic-231-website/documents/Fees/Fees-2027-Local.pdf"
+   }
+  },
+  "46186": {
+   "school_name": "Carey Baptist Grammar School",
+   "website": "https://www.carey.com.au/",
+   "status": "found",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 14,
+    "errors": 0
+   },
+   "fees": {
+    "fee_year": 2027,
+    "basis": "tuition; compulsory fees and state tax and surcharges ($1,848) extra",
+    "by_year": [
+     {
+      "years": "P",
+      "tuition": 29200
+     },
+     {
+      "years": "1-3",
+      "tuition": 34516
+     },
+     {
+      "years": "4-6",
+      "tuition": 38508
+     },
+     {
+      "years": "7",
+      "tuition": 42080
+     },
+     {
+      "years": "8-10",
+      "tuition": 43732
+     },
+     {
+      "years": "11",
+      "tuition": 45200
+     }
+    ],
+    "other_compulsory": "Compulsory fees $2,104-$8,284 and state tax and surcharges $1,848 a year in Years 7-12",
+    "source": "school_website",
+    "source_url": "https://www.carey.com.au/enrolment/fees-charges"
+   }
+  },
+  "46187": {
+   "school_name": "Carey Baptist Grammar School - Donvale Campus",
+   "website": "https://www.carey.com.au/",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 46186,
+   "parent_name": "Carey Baptist Grammar School",
+   "website_source": "parent_school"
+  },
+  "46188": {
+   "school_name": "Kilvington Grammar School",
+   "website": "http://www.kilvington.vic.edu.au",
+   "status": "found",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 15,
+    "errors": 0
+   },
+   "fees": {
+    "fee_year": 2027,
+    "basis": "total fees (tuition, consolidated, maintenance and payroll tax levies, camp fee, book levy)",
+    "by_year": [
+     {
+      "years": "P",
+      "total": 21024
+     },
+     {
+      "years": "1",
+      "total": 22592
+     },
+     {
+      "years": "2",
+      "total": 24440
+     },
+     {
+      "years": "3",
+      "total": 26682
+     },
+     {
+      "years": "4",
+      "total": 28738
+     },
+     {
+      "years": "5",
+      "total": 31794
+     },
+     {
+      "years": "6",
+      "total": 35512
+     },
+     {
+      "years": "7",
+      "total": 36492
+     },
+     {
+      "years": "8",
+      "total": 38138
+     },
+     {
+      "years": "9",
+      "total": 40716
+     },
+     {
+      "years": "10",
+      "total": 40662
+     },
+     {
+      "years": "11",
+      "total": 40678
+     },
+     {
+      "years": "12",
+      "total": 40588
+     }
+    ],
+    "source": "school_website",
+    "source_url": "https://www.kilvington.vic.edu.au/enrol/tuition"
+   }
+  },
+  "46189": {
+   "school_name": "Haileybury College - Keysborough Boys",
+   "website": "https://www.haileybury.com.au/",
+   "status": "found",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 16,
+    "errors": 0
+   },
+   "fees": {
+    "fee_year": 2027,
+    "basis": "annual tuition fees, domestic",
+    "by_year": [
+     {
+      "years": "P",
+      "tuition": 25465
+     },
+     {
+      "years": "1-2",
+      "tuition": 30785
+     },
+     {
+      "years": "3-4",
+      "tuition": 33595
+     },
+     {
+      "years": "5-6",
+      "tuition": 37745
+     },
+     {
+      "years": "7-8",
+      "tuition": 43530
+     },
+     {
+      "years": "9-12",
+      "tuition": 43980
+     }
+    ],
+    "source": "school_website",
+    "source_url": "https://www.haileybury.com.au/admissions/fees-and-payments"
+   }
+  },
+  "46190": {
+   "school_name": "Haileybury College - Keysborough Girls",
+   "website": "https://www.haileybury.com.au/",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 46189,
+   "parent_name": "Haileybury College - Keysborough Boys",
+   "website_source": "parent_school"
+  },
+  "46191": {
+   "school_name": "Haileybury College - Brighton Boys",
+   "website": "https://www.haileybury.com.au/",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 46189,
+   "parent_name": "Haileybury College - Keysborough Boys",
+   "website_source": "parent_school"
+  },
+  "46192": {
+   "school_name": "Strathcona Baptist Girls' Grammar",
+   "website": "http://www.strathcona.vic.edu.au",
+   "status": "not_extracted",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 15,
+    "errors": 0
+   },
+   "note": "2027 domestic fee pack text gives policies but not the fee table."
+  },
+  "46193": {
+   "school_name": "Strathcona Baptist Girls' Grammar - Hawthorn Campus",
+   "website": "http://www.strathcona.vic.edu.au",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 46192,
+   "parent_name": "Strathcona Baptist Girls' Grammar",
+   "website_source": "parent_school"
+  },
+  "46194": {
+   "school_name": "Strathcona Baptist Girls' Grammar - Primary Campus",
+   "website": "http://www.strathcona.vic.edu.au",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 46192,
+   "parent_name": "Strathcona Baptist Girls' Grammar",
+   "website_source": "parent_school"
+  },
+  "46195": {
+   "school_name": "Mentone Girls' Grammar School",
+   "website": "http://www.mentonegirls.vic.edu.au",
+   "status": "not_extracted",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 16,
+    "errors": 0
+   },
+   "note": "Fee pages sit behind a login."
+  },
+  "46199": {
+   "school_name": "Camberwell Grammar School",
+   "website": "http://www.cgs.vic.edu.au",
+   "status": "not_extracted",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 7,
+    "errors": 1
+   },
+   "note": "Fees and charges page text holds no figures."
+  },
+  "46200": {
+   "school_name": "Brighton Grammar School",
+   "website": "http://www.brightongrammar.vic.edu.au",
+   "status": "blocked",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 0,
+    "errors": 1,
+    "home_error": "HTTP 403"
+   }
+  },
+  "46201": {
+   "school_name": "Huntingtower School",
+   "website": "http://www.huntingtower.vic.edu.au",
+   "status": "not_extracted",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 10,
+    "errors": 1
+   },
+   "note": "Only the international students' fee schedule came through as text."
+  },
+  "46202": {
+   "school_name": "Kingswood College",
+   "website": "http://www.kingswoodcollege.vic.edu.au",
+   "status": "not_extracted",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 8,
+    "errors": 0
+   },
+   "note": "Fees page text holds no figures."
+  },
+  "46203": {
+   "school_name": "St Margaret’s Berwick Grammar",
+   "website": "http://www.stmargarets.vic.edu.au",
+   "status": "found",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 15,
+    "errors": 0
+   },
+   "fees": {
+    "fee_year": 2027,
+    "basis": "total school fees (tuition plus consolidated charges)",
+    "by_year": [
+     {
+      "years": "P-1",
+      "tuition": 19372,
+      "total": 23171
+     },
+     {
+      "years": "2",
+      "tuition": 21971,
+      "total": 25931
+     },
+     {
+      "years": "3-4",
+      "tuition": 21971,
+      "total": 26563
+     },
+     {
+      "years": "5-6",
+      "tuition": 23964,
+      "total": 29826
+     },
+     {
+      "years": "7-8",
+      "tuition": 28053,
+      "total": 34360
+     },
+     {
+      "years": "9",
+      "tuition": 28053,
+      "total": 36514
+     },
+     {
+      "years": "10",
+      "tuition": 29505,
+      "total": 36696
+     },
+     {
+      "years": "11-12",
+      "tuition": 29505,
+      "total": 36085
+     }
+    ],
+    "source": "school_website",
+    "source_url": "https://stmargarets.vic.edu.au/static/7198dac0ab527f6611bc8712441597a1/2027-Fees-and-Charges-Domestic.pdf"
+   }
+  },
+  "46204": {
+   "school_name": "Camberwell Girls Grammar School",
+   "website": "http://www.cggs.vic.edu.au",
+   "status": "found",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 14,
+    "errors": 0
+   },
+   "fees": {
+    "fee_year": 2027,
+    "basis": "net tuition (after government funding) and total with levies, local students",
+    "by_year": [
+     {
+      "years": "P-2",
+      "tuition": 27230,
+      "total": 28080
+     },
+     {
+      "years": "3-4",
+      "tuition": 30833,
+      "total": 32385
+     },
+     {
+      "years": "5",
+      "tuition": 33496,
+      "total": 35935
+     },
+     {
+      "years": "6",
+      "tuition": 34114,
+      "total": 36555
+     },
+     {
+      "years": "7",
+      "tuition": 38014,
+      "total": 41775
+     },
+     {
+      "years": "8",
+      "tuition": 38942,
+      "total": 41925
+     },
+     {
+      "years": "9",
+      "tuition": 40725,
+      "total": 45155
+     },
+     {
+      "years": "10",
+      "tuition": 41411,
+      "total": 45075
+     },
+     {
+      "years": "11-12",
+      "tuition": 42666,
+      "total": 45595
+     }
+    ],
+    "source": "school_website",
+    "source_url": "https://cggs.vic.edu.au/enrolment/fees/"
+   }
+  },
+  "46205": {
+   "school_name": "Camberwell Girls Grammar School - Junior Campus",
+   "website": "http://www.cggs.vic.edu.au",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 46204,
+   "parent_name": "Camberwell Girls Grammar School",
+   "website_source": "parent_school"
+  },
+  "46206": {
+   "school_name": "Preshil, The Margaret Lyttle Memorial School",
+   "website": "http://www.preshil.vic.edu.au",
+   "status": "found",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 15,
+    "errors": 0
+   },
+   "fees": {
+    "fee_year": 2027,
+    "basis": "tuition fees",
+    "by_year": [
+     {
+      "years": "P",
+      "tuition": 24280
+     },
+     {
+      "years": "1",
+      "tuition": 25400
+     },
+     {
+      "years": "2",
+      "tuition": 25840
+     },
+     {
+      "years": "3",
+      "tuition": 26280
+     },
+     {
+      "years": "4",
+      "tuition": 27520
+     },
+     {
+      "years": "5",
+      "tuition": 28200
+     },
+     {
+      "years": "6",
+      "tuition": 30560
+     },
+     {
+      "years": "7",
+      "tuition": 32320
+     },
+     {
+      "years": "8",
+      "tuition": 33120
+     },
+     {
+      "years": "9-10",
+      "tuition": 34840
+     },
+     {
+      "years": "11-12",
+      "tuition": 38200
+     }
+    ],
+    "source": "school_website",
+    "source_url": "https://preshil.vic.edu.au/assets/main/PDFs/Preshil-2027-Fee-Schedule.pdf"
+   }
+  },
+  "46207": {
+   "school_name": "Preshil, The Margaret Lyttle Memorial School - Blackhall-Kalimna Preshil Senior School",
+   "website": "http://www.preshil.vic.edu.au",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 46206,
+   "parent_name": "Preshil, The Margaret Lyttle Memorial School",
+   "website_source": "parent_school"
+  },
+  "46208": {
+   "school_name": "Mount Scopus Memorial College",
+   "website": "http://www.scopus.vic.edu.au",
+   "status": "not_extracted",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 16,
+    "errors": 0
+   },
+   "note": "Fees and policies page text holds no figures."
+  },
+  "46209": {
+   "school_name": "Mount Scopus Memorial College - Gandel Besen House Campus",
+   "website": "http://www.scopus.vic.edu.au",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 46208,
+   "parent_name": "Mount Scopus Memorial College",
+   "website_source": "parent_school"
+  },
+  "46212": {
+   "school_name": "Heritage College",
+   "website": "http://www.heritagecollege.com.au",
+   "status": "not_found",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 1,
+    "errors": 0
+   },
+   "note": "Only the home page could be fetched."
+  },
+  "46213": {
+   "school_name": "Adass Israel School",
+   "website": "http://www.vrqa.vic.gov.au/StateRegister/Provider.aspx/DetailsProvider?AccountID=ac88c00c-ed32-de11-9c94-002185cd8e5c",
+   "status": "not_found",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 1,
+    "errors": 0
+   },
+   "note": "Only the home page could be fetched."
+  },
+  "46214": {
+   "school_name": "Adass Israel School - Orrong Road Campus",
+   "website": "http://www.vrqa.vic.gov.au/StateRegister/Provider.aspx/DetailsProvider?AccountID=ac88c00c-ed32-de11-9c94-002185cd8e5c",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 46213,
+   "parent_name": "Adass Israel School",
+   "website_source": "parent_school"
+  },
+  "46215": {
+   "school_name": "Yeshivah College",
+   "website": "http://www.ybr.vic.edu.au",
+   "status": "not_extracted",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 5,
+    "errors": 0
+   },
+   "note": "Fees page and fee policy hold no figures as text."
+  },
+  "46216": {
+   "school_name": "Beth Rivkah Ladies College",
+   "website": "http://www.ybr.vic.edu.au",
+   "status": "not_extracted",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 5,
+    "errors": 0
+   },
+   "note": "Fees page and fee policy hold no figures as text."
+  },
+  "46218": {
+   "school_name": "Leibler Yavneh College",
+   "website": "http://www.yavneh.vic.edu.au",
+   "status": "not_found",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 8,
+    "errors": 0
+   },
+   "note": "No fee page among the pages fetched."
+  },
+  "46219": {
+   "school_name": "Peninsula Grammar",
+   "website": "http://www.tps.vic.edu.au",
+   "status": "not_found",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 1,
+    "errors": 1
+   },
+   "note": "Only the home page could be fetched."
+  },
+  "46221": {
+   "school_name": "Bialik College",
+   "website": "https://www.bialik.vic.edu.au/",
+   "status": "found",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 16,
+    "errors": 0
+   },
+   "fees": {
+    "fee_year": 2026,
+    "basis": "tuition fee; payroll tax levy $1,495 and security levy $840 per student extra",
+    "by_year": [
+     {
+      "years": "P",
+      "tuition": 25500
+     },
+     {
+      "years": "1",
+      "tuition": 26750
+     },
+     {
+      "years": "2",
+      "tuition": 27950
+     },
+     {
+      "years": "3",
+      "tuition": 29500
+     },
+     {
+      "years": "4",
+      "tuition": 31500
+     },
+     {
+      "years": "5",
+      "tuition": 33950
+     },
+     {
+      "years": "6",
+      "tuition": 37500
+     },
+     {
+      "years": "7",
+      "tuition": 39930
+     },
+     {
+      "years": "8",
+      "tuition": 42600
+     },
+     {
+      "years": "9",
+      "tuition": 43500
+     },
+     {
+      "years": "10-11",
+      "tuition": 43950
+     },
+     {
+      "years": "12",
+      "tuition": 41980
+     }
+    ],
+    "source": "school_website",
+    "source_url": "https://media.digistormhosting.com.au/bc-au-vic-153-website/content/Prep-Y12-fees.pdf"
+   }
+  },
+  "46222": {
+   "school_name": "Edinburgh College",
+   "website": "https://www.edinburghcollege.vic.edu.au",
+   "status": "not_found",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 1,
+    "errors": 0
+   },
+   "note": "Only the home page could be fetched."
+  },
+  "46223": {
+   "school_name": "Luther College",
+   "website": "http://www.luther.vic.edu.au",
+   "status": "found",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 8,
+    "errors": 0
+   },
+   "fees": {
+    "fee_year": 2027,
+    "basis": "annual fee, includes a notebook computer",
+    "by_year": [
+     {
+      "years": "7",
+      "tuition": 21353
+     },
+     {
+      "years": "8",
+      "tuition": 22490
+     },
+     {
+      "years": "9",
+      "tuition": 23414
+     },
+     {
+      "years": "10-12",
+      "tuition": 24462
+     }
+    ],
+    "source": "school_website",
+    "source_url": "https://www.luther.vic.edu.au/admissions/fees/"
+   }
+  },
+  "46224": {
+   "school_name": "Yarra Valley Grammar",
+   "website": "http://www.yvg.vic.edu.au",
+   "status": "found",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 16,
+    "errors": 0
+   },
+   "fees": {
+    "fee_year": 2027,
+    "basis": "fees per annum, local students; levies listed separately",
+    "by_year": [
+     {
+      "years": "P",
+      "tuition": 19852
+     },
+     {
+      "years": "1-2",
+      "tuition": 24152
+     },
+     {
+      "years": "3-4",
+      "tuition": 26280
+     },
+     {
+      "years": "5",
+      "tuition": 26912
+     },
+     {
+      "years": "6",
+      "tuition": 28476
+     },
+     {
+      "years": "7",
+      "tuition": 29852
+     },
+     {
+      "years": "8",
+      "tuition": 31096
+     },
+     {
+      "years": "9",
+      "tuition": 33672
+     }
+    ],
+    "source": "school_website",
+    "source_url": "https://yvg-vic.s3.amazonaws.com/uploads/1.-School-Fees-Charges-2027-Local.pdf"
+   }
+  },
+  "46225": {
+   "school_name": "Edinburgh College (Primary Campus)",
+   "website": "https://www.edinburghcollege.vic.edu.au",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 46222,
+   "parent_name": "Edinburgh College",
+   "website_source": "parent_school"
+  },
+  "46226": {
+   "school_name": "Maranatha Christian School",
+   "website": "http://www.maranatha.vic.edu.au",
+   "status": "found",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 12,
+    "errors": 0
+   },
+   "fees": {
+    "fee_year": 2026,
+    "basis": "tuition, first child; other costs per child listed separately",
+    "by_year": [
+     {
+      "years": "P",
+      "tuition": 7165
+     },
+     {
+      "years": "1",
+      "tuition": 7425
+     },
+     {
+      "years": "2",
+      "tuition": 7805
+     },
+     {
+      "years": "3",
+      "tuition": 8040
+     },
+     {
+      "years": "4",
+      "tuition": 8280
+     },
+     {
+      "years": "5",
+      "tuition": 8530
+     },
+     {
+      "years": "6",
+      "tuition": 8785
+     },
+     {
+      "years": "7",
+      "tuition": 9225
+     },
+     {
+      "years": "8",
+      "tuition": 9685
+     },
+     {
+      "years": "9",
+      "tuition": 10170
+     },
+     {
+      "years": "10",
+      "tuition": 10680
+     },
+     {
+      "years": "11",
+      "tuition": 11210
+     },
+     {
+      "years": "12",
+      "tuition": 11775
+     }
+    ],
+    "other_compulsory": "Other costs $1,000-$1,015 a year in Years 7-12",
+    "source": "school_website",
+    "source_url": "https://www.maranatha.vic.edu.au/wp-content/uploads/2026/03/2026-Fee-Schedule-and-Information.pdf"
+   }
+  },
+  "46228": {
+   "school_name": "Maranatha Christian School - Officer Campus",
+   "website": "http://www.maranatha.vic.edu.au",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 46226,
+   "parent_name": "Maranatha Christian School",
+   "website_source": "parent_school"
+  },
+  "46229": {
+   "school_name": "Mount Evelyn Christian School",
+   "website": "http://www.mecs.vic.edu.au",
+   "status": "not_extracted",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 7,
+    "errors": 0
+   },
+   "note": "2026 fee schedule PDF lists amounts but their labels did not come through in order."
+  },
+  "46230": {
+   "school_name": "Melbourne Rudolf Steiner School",
+   "website": "http://www.mrss.com.au",
+   "status": "not_found",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 1,
+    "errors": 0
+   },
+   "note": "Only the home page could be fetched."
+  },
+  "46231": {
+   "school_name": "Nunawading Christian College - Secondary",
+   "website": "http://nunawading.vic.edu.au",
+   "status": "found",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 13,
+    "errors": 0
+   },
+   "fees": {
+    "fee_year": 2027,
+    "basis": "annual fees including tuition, building levy and consumables levy",
+    "by_year": [
+     {
+      "years": "F-4",
+      "total": 10270
+     },
+     {
+      "years": "5-6",
+      "total": 10380
+     },
+     {
+      "years": "7-8",
+      "total": 13740
+     },
+     {
+      "years": "9-10",
+      "total": 15080
+     },
+     {
+      "years": "11-12",
+      "total": 16130
+     }
+    ],
+    "source": "school_website",
+    "source_url": "https://nunawading.vic.edu.au/admissions/fees"
+   }
+  },
+  "46232": {
+   "school_name": "Eltham College",
+   "website": "http://www.elthamcollege.vic.edu.au",
+   "status": "not_extracted",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 16,
+    "errors": 0
+   },
+   "note": "2027 local fees PDF lists amounts but its year labels did not come through in order."
+  },
+  "46233": {
+   "school_name": "Eltham College - Lonsdale Street Campus",
+   "website": "http://www.elthamcollege.vic.edu.au",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 46232,
+   "parent_name": "Eltham College",
+   "website_source": "parent_school"
+  },
+  "46235": {
+   "school_name": "Donvale Christian College",
+   "website": "http://www.donvale.vic.edu.au",
+   "status": "not_extracted",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 11,
+    "errors": 0
+   },
+   "note": "2027 fee schedule text shows year-level levies but not tuition."
+  },
+  "46238": {
+   "school_name": "Braemar College",
+   "website": "http://www.braemar.vic.edu.au",
+   "status": "found",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 5,
+    "errors": 0
+   },
+   "fees": {
+    "fee_year": 2026,
+    "basis": "total annual fees and charges (tuition, consumables, insurance, activities, camps)",
+    "by_year": [
+     {
+      "years": "5-6",
+      "total": 11445
+     },
+     {
+      "years": "7-8",
+      "total": 14432
+     },
+     {
+      "years": "9-10",
+      "total": 15980
+     },
+     {
+      "years": "11-12",
+      "total": 16980
+     }
+    ],
+    "source": "school_website",
+    "source_url": "https://braemar.vic.edu.au/wp-content/uploads/2025/12/2026-Fees-and-Charges.pdf"
+   }
+  },
+  "46239": {
+   "school_name": "Gilson College",
+   "website": "http://www.gilson.vic.edu.au",
+   "status": "not_found",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 1,
+    "errors": 0
+   },
+   "note": "Only the home page could be fetched."
+  },
+  "46244": {
+   "school_name": "Melbourne Montessori College - Caulfield South Campus",
+   "website": "http://www.mms.vic.edu.au/",
+   "status": "unreachable",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 0,
+    "errors": 2,
+    "home_error": "ERR_TLS_CERT_ALTNAME_INVALID"
+   }
+  },
+  "46246": {
+   "school_name": "Waverley Christian College",
+   "website": "http://www.wcc.vic.edu.au",
+   "status": "found",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 11,
+    "errors": 0
+   },
+   "fees": {
+    "fee_year": 2026,
+    "basis": "tuition, first child (Wantirna South campus); year-level levies extra",
+    "by_year": [
+     {
+      "years": "P-6",
+      "tuition": 9915
+     },
+     {
+      "years": "7-10",
+      "tuition": 11040
+     },
+     {
+      "years": "11-12",
+      "tuition": 13475
+     }
+    ],
+    "source": "school_website",
+    "source_url": "https://wcc.vic.edu.au/wp-content/uploads/2026-WS-Fee-Schedule.pdf"
+   }
+  },
+  "46247": {
+   "school_name": "The King David School",
+   "website": "http://www.kds.vic.edu.au",
+   "status": "found",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 8,
+    "errors": 1
+   },
+   "fees": {
+    "fee_year": 2026,
+    "basis": "tuition; assistance charges listed separately",
+    "by_year": [
+     {
+      "years": "P",
+      "tuition": 23876
+     },
+     {
+      "years": "1",
+      "tuition": 24928
+     },
+     {
+      "years": "2",
+      "tuition": 26248
+     },
+     {
+      "years": "3",
+      "tuition": 27636
+     },
+     {
+      "years": "4",
+      "tuition": 29120
+     },
+     {
+      "years": "5",
+      "tuition": 30660
+     },
+     {
+      "years": "6",
+      "tuition": 33988
+     },
+     {
+      "years": "7",
+      "tuition": 36016
+     },
+     {
+      "years": "8",
+      "tuition": 36632
+     }
+    ],
+    "source": "school_website",
+    "source_url": "https://cdn.prod.website-files.com/693601d0a24bd9a413fa18d6/6960612c9dc6a450d62ce5f6_2026%20KDS%20Fee%20Schedule%20with%20Asst%20Fees%20.pdf"
+   }
+  },
+  "46248": {
+   "school_name": "The King David School - Junior School",
+   "website": "http://www.kds.vic.edu.au",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 46247,
+   "parent_name": "The King David School",
+   "website_source": "parent_school"
+  },
+  "46249": {
+   "school_name": "Westbourne Grammar School",
+   "website": "http://www.westbournegrammar.com",
+   "status": "found",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 9,
+    "errors": 0
+   },
+   "fees": {
+    "fee_year": 2027,
+    "basis": "tuition fees, include curriculum camps and excursions",
+    "by_year": [
+     {
+      "years": "P-1",
+      "tuition": 21516
+     },
+     {
+      "years": "2-3",
+      "tuition": 22356
+     },
+     {
+      "years": "4-6",
+      "tuition": 25020
+     },
+     {
+      "years": "7",
+      "tuition": 27968
+     },
+     {
+      "years": "8-9",
+      "tuition": 28800
+     },
+     {
+      "years": "10-12",
+      "tuition": 30184
+     }
+    ],
+    "source": "school_website",
+    "source_url": "https://www.westbournegrammar.com/school-fees/"
+   }
+  },
+  "46251": {
+   "school_name": "Northside Christian College",
+   "website": "http://www.ncc.vic.edu.au",
+   "status": "not_extracted",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 13,
+    "errors": 0
+   },
+   "note": "Fee schedule page text holds no figures."
+  },
+  "46252": {
+   "school_name": "St John's College Preston",
+   "website": "http://www.stjohnspreston.vic.edu.au",
+   "status": "found",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 15,
+    "errors": 0
+   },
+   "fees": {
+    "fee_year": 2026,
+    "basis": "compulsory annual total fee",
+    "by_year": [
+     {
+      "years": "F-2",
+      "total": 6340
+     },
+     {
+      "years": "3-6",
+      "total": 7911
+     },
+     {
+      "years": "7-10",
+      "total": 8988
+     },
+     {
+      "years": "11-12",
+      "total": 9725
+     }
+    ],
+    "source": "school_website",
+    "source_url": "https://www.stjohnspreston.vic.edu.au/assets/uploads/2025/11/Annual-Fees-2026.pdf"
+   }
+  },
+  "46255": {
+   "school_name": "Oxley Christian College",
+   "website": "http://www.oxley.vic.edu.au",
+   "status": "found",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 15,
+    "errors": 0
+   },
+   "fees": {
+    "fee_year": 2026,
+    "basis": "annual fee (total)",
+    "by_year": [
+     {
+      "years": "P",
+      "total": 7175
+     },
+     {
+      "years": "1",
+      "total": 9130
+     },
+     {
+      "years": "2",
+      "total": 9235
+     },
+     {
+      "years": "3",
+      "total": 10885
+     },
+     {
+      "years": "4",
+      "total": 11760
+     },
+     {
+      "years": "5",
+      "total": 11865
+     },
+     {
+      "years": "6",
+      "total": 12240
+     },
+     {
+      "years": "7",
+      "total": 14385
+     },
+     {
+      "years": "8",
+      "total": 14780
+     },
+     {
+      "years": "9",
+      "total": 16820
+     },
+     {
+      "years": "10",
+      "total": 17095
+     },
+     {
+      "years": "11",
+      "total": 17730
+     }
+    ],
+    "source": "school_website",
+    "source_url": "https://www.oxley.vic.edu.au/resources/fees"
+   }
+  },
+  "46260": {
+   "school_name": "Newhaven College",
+   "website": "http://www.newhavencol.vic.edu.au",
+   "status": "found",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 15,
+    "errors": 0
+   },
+   "fees": {
+    "fee_year": 2027,
+    "basis": "tuition, includes camps and excursions",
+    "by_year": [
+     {
+      "years": "P",
+      "tuition": 4890
+     },
+     {
+      "years": "1-6",
+      "tuition": 5870
+     },
+     {
+      "years": "7-8",
+      "tuition": 9460
+     },
+     {
+      "years": "9-12",
+      "tuition": 10820
+     }
+    ],
+    "source": "school_website",
+    "source_url": "https://www.newhavencol.vic.edu.au/admissions/fees"
+   }
+  },
+  "46264": {
+   "school_name": "Billanook College",
+   "website": "http://www.billanook.vic.edu.au",
+   "status": "found",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 16,
+    "errors": 0
+   },
+   "fees": {
+    "fee_year": 2027,
+    "basis": "total (tuition plus levies)",
+    "by_year": [
+     {
+      "years": "P-4",
+      "tuition": 9110,
+      "total": 11990
+     },
+     {
+      "years": "5-6",
+      "tuition": 12730,
+      "total": 16750
+     },
+     {
+      "years": "7-9",
+      "tuition": 17470,
+      "total": 22990
+     },
+     {
+      "years": "10-12",
+      "tuition": 22305,
+      "total": 29350
+     }
+    ],
+    "source": "school_website",
+    "source_url": "https://billanook.vic.edu.au/enrolment/fees/"
+   }
+  },
+  "46269": {
+   "school_name": "Plenty Valley Christian College",
+   "website": "http://www.pvcc.vic.edu.au",
+   "status": "found",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 11,
+    "errors": 0
+   },
+   "fees": {
+    "fee_year": 2027,
+    "basis": "tuition fee, first child",
+    "by_year": [
+     {
+      "years": "P",
+      "tuition": 8570
+     },
+     {
+      "years": "1-2",
+      "tuition": 9200
+     },
+     {
+      "years": "3-4",
+      "tuition": 9720
+     },
+     {
+      "years": "5-6",
+      "tuition": 10200
+     },
+     {
+      "years": "7-8",
+      "tuition": 11450
+     },
+     {
+      "years": "9-10",
+      "tuition": 12500
+     },
+     {
+      "years": "11-12",
+      "tuition": 13760
+     }
+    ],
+    "source": "school_website",
+    "source_url": "https://www.pvcc.vic.edu.au/wp-content/uploads/2026/09/2027-Schedule-of-Fees.pdf"
+   }
+  },
+  "46271": {
+   "school_name": "Bayside Christian College",
+   "website": "http://www.baysidecc.vic.edu.au",
+   "status": "not_extracted",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 11,
+    "errors": 0
+   },
+   "note": "2027 schedule of fees PDF holds no figures as text."
+  },
+  "46274": {
+   "school_name": "The Knox School",
+   "website": "http://www.knox.vic.edu.au",
+   "status": "not_extracted",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 14,
+    "errors": 0
+   },
+   "note": "Fees page text holds no figures."
+  },
+  "46275": {
+   "school_name": "Heathdale Christian College",
+   "website": "http://www.heathdale.vic.edu.au",
+   "status": "found",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 9,
+    "errors": 2
+   },
+   "fees": {
+    "fee_year": 2027,
+    "basis": "total (tuition plus resources levy), Werribee campus",
+    "by_year": [
+     {
+      "years": "P",
+      "tuition": 8321,
+      "total": 9014
+     },
+     {
+      "years": "1",
+      "tuition": 8902,
+      "total": 9595
+     },
+     {
+      "years": "2",
+      "tuition": 8902,
+      "total": 9617
+     },
+     {
+      "years": "3",
+      "tuition": 10213,
+      "total": 11005
+     },
+     {
+      "years": "4",
+      "tuition": 10213,
+      "total": 11207
+     },
+     {
+      "years": "5-6",
+      "tuition": 10927,
+      "total": 12003
+     },
+     {
+      "years": "7",
+      "tuition": 12289,
+      "total": 13545
+     },
+     {
+      "years": "8",
+      "tuition": 12289,
+      "total": 13163
+     },
+     {
+      "years": "9-10",
+      "tuition": 12952,
+      "total": 14208
+     },
+     {
+      "years": "11-12",
+      "tuition": 13373,
+      "total": 14683
+     }
+    ],
+    "source": "school_website",
+    "source_url": "https://assets.heathdale.vic.edu.au/media/2027-Fee-Schedule-Werribee-FINAL.pdf"
+   }
+  },
+  "46276": {
+   "school_name": "Hillcrest Christian College",
+   "website": "http://www.hillcrest.vic.edu.au",
+   "status": "found",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 14,
+    "errors": 0
+   },
+   "fees": {
+    "fee_year": 2027,
+    "basis": "tuition; resource levy, stationery and laptop extra",
+    "by_year": [
+     {
+      "years": "P",
+      "tuition": 7330
+     },
+     {
+      "years": "1-2",
+      "tuition": 7685
+     },
+     {
+      "years": "3-4",
+      "tuition": 7990
+     },
+     {
+      "years": "5-6",
+      "tuition": 8860
+     },
+     {
+      "years": "7",
+      "tuition": 9515
+     },
+     {
+      "years": "8",
+      "tuition": 9850
+     },
+     {
+      "years": "9",
+      "tuition": 10585
+     },
+     {
+      "years": "10",
+      "tuition": 10625
+     },
+     {
+      "years": "11",
+      "tuition": 11160
+     }
+    ],
+    "source": "school_website",
+    "source_url": "https://www.hillcrest.vic.edu.au/wp-content/uploads/2026/10/2027-HCC-Fee-Schedule.pdf"
+   }
+  },
+  "46282": {
+   "school_name": "Beaconhills College",
+   "website": "http://www.beaconhills.vic.edu.au/",
+   "status": "found",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 15,
+    "errors": 0
+   },
+   "fees": {
+    "fee_year": 2027,
+    "basis": "total (tuition, capital levy, parental assistance)",
+    "by_year": [
+     {
+      "years": "P-2",
+      "tuition": 8193,
+      "total": 9610
+     },
+     {
+      "years": "3-4",
+      "tuition": 9041,
+      "total": 10458
+     },
+     {
+      "years": "5",
+      "tuition": 9939,
+      "total": 11356
+     },
+     {
+      "years": "6",
+      "tuition": 10821,
+      "total": 12238
+     },
+     {
+      "years": "7",
+      "tuition": 11126,
+      "total": 12543
+     },
+     {
+      "years": "8",
+      "tuition": 10998,
+      "total": 12415
+     },
+     {
+      "years": "9",
+      "tuition": 12362,
+      "total": 13779
+     },
+     {
+      "years": "10-12",
+      "tuition": 13526,
+      "total": 14943
+     }
+    ],
+    "source": "school_website",
+    "source_url": "https://www.beaconhills.vic.edu.au/wp-content/uploads/2026/09/Tuition-Fees_2027.pdf"
+   }
+  },
+  "46283": {
+   "school_name": "Beaconhills College - Village Campus",
+   "website": "http://www.beaconhills.vic.edu.au/",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 46282,
+   "parent_name": "Beaconhills College",
+   "website_source": "parent_school"
+  },
+  "46286": {
+   "school_name": "Belgrave Heights Christian School",
+   "website": "http://www.bhcs.vic.edu.au/",
+   "status": "not_extracted",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 10,
+    "errors": 0
+   },
+   "note": "Fees page text holds no figures."
+  },
+  "46287": {
+   "school_name": "Oakleigh Grammar",
+   "website": "http://www.oakleighgrammar.vic.edu.au",
+   "status": "found",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 16,
+    "errors": 0
+   },
+   "fees": {
+    "fee_year": 2026,
+    "basis": "total (general tuition plus year-level composite levy)",
+    "by_year": [
+     {
+      "years": "P",
+      "tuition": 10487,
+      "total": 11162
+     },
+     {
+      "years": "1",
+      "tuition": 11117,
+      "total": 11812
+     },
+     {
+      "years": "2",
+      "tuition": 11537,
+      "total": 12247
+     },
+     {
+      "years": "3",
+      "tuition": 12222,
+      "total": 13407
+     },
+     {
+      "years": "4",
+      "tuition": 12482,
+      "total": 13627
+     },
+     {
+      "years": "7",
+      "tuition": 12965,
+      "total": 14300
+     },
+     {
+      "years": "8",
+      "tuition": 13251,
+      "total": 14434
+     },
+     {
+      "years": "9",
+      "tuition": 13406,
+      "total": 14999
+     },
+     {
+      "years": "10",
+      "tuition": 13574,
+      "total": 14753
+     },
+     {
+      "years": "11",
+      "tuition": 14036,
+      "total": 15056
+     }
+    ],
+    "source": "school_website",
+    "source_url": "https://www.oakleighgrammar.vic.edu.au/uploads/Documents/Fees-brochure.pdf"
+   }
+  },
+  "46293": {
+   "school_name": "St Andrews Christian College",
+   "website": "http://www.standrews.vic.edu.au",
+   "status": "found",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 12,
+    "errors": 0
+   },
+   "fees": {
+    "fee_year": 2026,
+    "basis": "tuition fees; levies listed separately",
+    "by_year": [
+     {
+      "years": "P-4",
+      "tuition": 9200
+     },
+     {
+      "years": "5-6",
+      "tuition": 9500
+     },
+     {
+      "years": "7-8",
+      "tuition": 10400
+     },
+     {
+      "years": "9-12",
+      "tuition": 11400
+     }
+    ],
+    "source": "school_website",
+    "source_url": "https://standrews-vic.s3.ap-southeast-2.amazonaws.com/siteassets/SACC-Schedule-of-Fees-2026.pdf"
+   }
+  },
+  "46297": {
+   "school_name": "Australian International Academy of Education",
+   "website": "http://www.aia.vic.edu.au/",
+   "status": "not_extracted",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 8,
+    "errors": 0
+   },
+   "note": "Tuition payment page text holds no figures."
+  },
+  "46298": {
+   "school_name": "Australian International Academy of Education - Senior Campus",
+   "website": "http://www.aia.vic.edu.au/",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 46297,
+   "parent_name": "Australian International Academy of Education",
+   "website_source": "parent_school"
+  },
+  "46299": {
+   "school_name": "Flinders Christian Community College",
+   "website": "http://www.flinders.vic.edu.au",
+   "status": "not_extracted",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 16,
+    "errors": 0
+   },
+   "note": "Campus fee pages text hold no figures."
+  },
+  "46300": {
+   "school_name": "Flinders Christian Community College - Carrum Downs Campus",
+   "website": "http://www.flinders.vic.edu.au",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 46299,
+   "parent_name": "Flinders Christian Community College",
+   "website_source": "parent_school"
+  },
+  "46303": {
+   "school_name": "Melton Christian College",
+   "website": "http://www.mcc.vic.edu.au/",
+   "status": "found",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 12,
+    "errors": 0
+   },
+   "fees": {
+    "fee_year": 2027,
+    "basis": "all-inclusive tuition fee per annum",
+    "by_year": [
+     {
+      "years": "P-2",
+      "tuition": 4900
+     },
+     {
+      "years": "3",
+      "tuition": 5100
+     },
+     {
+      "years": "4",
+      "tuition": 5400
+     },
+     {
+      "years": "5",
+      "tuition": 5900
+     },
+     {
+      "years": "6",
+      "tuition": 6400
+     },
+     {
+      "years": "7-9",
+      "tuition": 6900
+     },
+     {
+      "years": "10",
+      "tuition": 7400
+     },
+     {
+      "years": "11-12",
+      "tuition": 7700
+     }
+    ],
+    "source": "school_website",
+    "source_url": "https://mcc.vic.edu.au/assets/uploads/2026/11/Fee-Schedule-2027-Onsite.pdf"
+   }
+  },
+  "46305": {
+   "school_name": "Japanese School of Melbourne",
+   "website": "http://www.jsm.vic.edu.au",
+   "status": "not_extracted",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 5,
+    "errors": 0
+   },
+   "note": "Fees are published per term in Japanese for primary year groups; secondary rows were not reached."
+  },
+  "46307": {
+   "school_name": "Sophia Mundi Steiner School",
+   "website": "http://www.sophiamundi.vic.edu.au",
+   "status": "found",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 8,
+    "errors": 0
+   },
+   "fees": {
+    "fee_year": 2027,
+    "basis": "compulsory annual fees per student, include excursions and resources",
+    "by_year": [
+     {
+      "years": "P",
+      "total": 16060
+     },
+     {
+      "years": "1-2",
+      "total": 15940
+     },
+     {
+      "years": "3",
+      "total": 19250
+     },
+     {
+      "years": "4",
+      "total": 19490
+     },
+     {
+      "years": "5",
+      "total": 19810
+     },
+     {
+      "years": "6",
+      "total": 20640
+     },
+     {
+      "years": "7",
+      "total": 21440
+     },
+     {
+      "years": "8",
+      "total": 21640
+     },
+     {
+      "years": "9",
+      "total": 23900
+     },
+     {
+      "years": "10",
+      "total": 22390
+     },
+     {
+      "years": "11-12",
+      "total": 22850
+     }
+    ],
+    "source": "school_website",
+    "source_url": "https://media.digistormhosting.com.au/smss-au-vic-1137-website-2023/content/2027-Fee-Policy.pdf"
+   }
+  },
+  "46309": {
+   "school_name": "Al-Taqwa College",
+   "website": "http://www.al-taqwa.vic.edu.au/",
+   "status": "found",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 4,
+    "errors": 0
+   },
+   "fees": {
+    "fee_year": 2027,
+    "basis": "tuition fee; general levy extra",
+    "by_year": [
+     {
+      "years": "F-6",
+      "tuition": 3335
+     },
+     {
+      "years": "7-10",
+      "tuition": 3520
+     },
+     {
+      "years": "11-12",
+      "tuition": 3780
+     }
+    ],
+    "other_compulsory": "General levy $1,130-$1,300 a year",
+    "source": "school_website",
+    "source_url": "https://al-taqwa.vic.edu.au/wp-content/uploads/2026/10/2027_Fees.pdf"
+   }
+  },
+  "46310": {
+   "school_name": "Overnewton Anglican Community College - Yirramboi Campus",
+   "website": "http://www.overnewton.vic.edu.au",
+   "status": "not_extracted",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 14,
+    "errors": 0
+   },
+   "note": "Tuition fees page text holds no figures."
+  },
+  "46311": {
+   "school_name": "Overnewton Anglican Community College - Canowindra Campus",
+   "website": "http://www.overnewton.vic.edu.au",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 46310,
+   "parent_name": "Overnewton Anglican Community College - Yirramboi Campus",
+   "website_source": "parent_school"
+  },
+  "46313": {
+   "school_name": "Little Yarra Steiner School",
+   "website": "http://www.lyss.vic.edu.au",
+   "status": "not_extracted",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 9,
+    "errors": 0
+   },
+   "note": "2026 fee schedule PDF holds no figures as text."
+  },
+  "46314": {
+   "school_name": "Bacchus Marsh Grammar - Maddingley Campus",
+   "website": "http://www.bmg.vic.edu.au",
+   "status": "not_extracted",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 15,
+    "errors": 0
+   },
+   "note": "Fee schedule page text holds no figures."
+  },
+  "46315": {
+   "school_name": "Lighthouse Christian College",
+   "website": "http://www.lighthouse.vic.edu.au",
+   "status": "not_extracted",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 7,
+    "errors": 0
+   },
+   "note": "Fees page text holds no figures."
+  },
+  "46316": {
+   "school_name": "Alphington Grammar School",
+   "website": "http://www.alphington.vic.edu.au",
+   "status": "not_extracted",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 13,
+    "errors": 2
+   },
+   "note": "Fees and charges page text holds no figures."
+  },
+  "46317": {
+   "school_name": "Mooroolbark Grammar",
+   "website": "https://mooroolbarkgrammar.com.au/",
+   "status": "not_found",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 1,
+    "errors": 0
+   },
+   "note": "Only the home page could be fetched."
+  },
+  "46320": {
+   "school_name": "St Mary's Coptic Orthodox College",
+   "website": "http://www.copticvic.org",
+   "status": "not_found",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 1,
+    "errors": 1
+   },
+   "note": "Only the home page could be fetched."
+  },
+  "46321": {
+   "school_name": "Minaret College",
+   "website": "http://www.minaret.vic.edu.au",
+   "status": "blocked",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 0,
+    "errors": 1,
+    "home_error": "HTTP 403"
+   }
+  },
+  "46322": {
+   "school_name": "Minaret College - Officer Campus",
+   "website": "http://www.minaret.vic.edu.au",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 46321,
+   "parent_name": "Minaret College",
+   "website_source": "parent_school"
+  },
+  "46326": {
+   "school_name": "Casey Grammar School",
+   "website": "http://www.caseygrammar.vic.edu.au",
+   "status": "found",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 10,
+    "errors": 0
+   },
+   "fees": {
+    "fee_year": 2027,
+    "basis": "annual fees",
+    "by_year": [
+     {
+      "years": "F-2",
+      "tuition": 6308
+     },
+     {
+      "years": "3-4",
+      "tuition": 6828
+     },
+     {
+      "years": "5-6",
+      "tuition": 6996
+     },
+     {
+      "years": "7-10",
+      "tuition": 9796
+     },
+     {
+      "years": "11-12",
+      "tuition": 10116
+     }
+    ],
+    "source": "school_website",
+    "source_url": "https://www.caseygrammar.vic.edu.au/fees-payments/"
+   }
+  },
+  "46328": {
+   "school_name": "Ilim College",
+   "website": "http://www.ilimcollege.vic.edu.au",
+   "status": "blocked",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 0,
+    "errors": 1,
+    "home_error": "HTTP 403"
+   }
+  },
+  "46334": {
+   "school_name": "Good News Lutheran College",
+   "website": "http://www.goodnews.vic.edu.au",
+   "status": "not_extracted",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 14,
+    "errors": 0
+   },
+   "note": "2027 fee schedule PDF text is unreadable."
+  },
+  "46335": {
+   "school_name": "Sirius College",
+   "website": "http://www.sirius.vic.edu.au",
+   "status": "not_extracted",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 5,
+    "errors": 0
+   },
+   "note": "School fees page text holds no figures."
+  },
+  "46338": {
+   "school_name": "Sirius College - Keysborough Campus",
+   "website": "http://www.sirius.vic.edu.au",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 46335,
+   "parent_name": "Sirius College",
+   "website_source": "parent_school"
+  },
+  "46339": {
+   "school_name": "Sirius College - Meadow Fair Campus",
+   "website": "http://www.sirius.vic.edu.au",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 46335,
+   "parent_name": "Sirius College",
+   "website_source": "parent_school"
+  },
+  "46341": {
+   "school_name": "Sirius College - Ibrahim Dellal Campus",
+   "website": "http://www.sirius.vic.edu.au",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 46335,
+   "parent_name": "Sirius College",
+   "website_source": "parent_school"
+  },
+  "46342": {
+   "school_name": "Red Rock Christian College",
+   "website": "http://www.redrock.vic.edu.au",
+   "status": "found",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 5,
+    "errors": 0
+   },
+   "fees": {
+    "fee_year": 2026,
+    "basis": "annual tuition fee; year level levy extra",
+    "by_year": [
+     {
+      "years": "P-6",
+      "tuition": 4307
+     },
+     {
+      "years": "7-10",
+      "tuition": 4967
+     },
+     {
+      "years": "11-12",
+      "tuition": 5127
+     }
+    ],
+    "other_compulsory": "Year level levy $290-$837",
+    "source": "school_website",
+    "source_url": "https://redrock.vic.edu.au/fees-tuition/"
+   }
+  },
+  "46345": {
+   "school_name": "Darul Ulum College of Victoria",
+   "website": "http://www.dulum.vic.edu.au",
+   "status": "found",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 8,
+    "errors": 0
+   },
+   "fees": {
+    "fee_year": 2025,
+    "basis": "yearly fee, first child; the newest schedule published is for 2025",
+    "by_year": [
+     {
+      "years": "F-6",
+      "tuition": 3000
+     },
+     {
+      "years": "7-10",
+      "tuition": 3160
+     }
+    ],
+    "source": "school_website",
+    "source_url": "https://www.dulum.vic.edu.au/fawkner/page/fee-schedule-2025"
+   }
+  },
+  "46349": {
+   "school_name": "East Preston Islamic College",
+   "website": "http://www.epic.vic.edu.au",
+   "status": "not_found",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 13,
+    "errors": 0
+   },
+   "note": "Only fees for international students were found."
+  },
+  "46350": {
+   "school_name": "Christway College",
+   "website": "http://www.christway.vic.edu.au",
+   "status": "found",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 14,
+    "errors": 0
+   },
+   "fees": {
+    "fee_year": 2027,
+    "basis": "total (tuition plus levies), Kingston campus",
+    "by_year": [
+     {
+      "years": "P",
+      "tuition": 7400,
+      "total": 8210
+     },
+     {
+      "years": "1-2",
+      "tuition": 7400,
+      "total": 8170
+     },
+     {
+      "years": "3-4",
+      "tuition": 7400,
+      "total": 8560
+     },
+     {
+      "years": "5",
+      "tuition": 7400,
+      "total": 8710
+     },
+     {
+      "years": "6",
+      "tuition": 7400,
+      "total": 8945
+     },
+     {
+      "years": "7",
+      "tuition": 8950,
+      "total": 12160
+     },
+     {
+      "years": "8",
+      "tuition": 8950,
+      "total": 12130
+     },
+     {
+      "years": "9",
+      "tuition": 9400,
+      "total": 12165
+     },
+     {
+      "years": "10",
+      "tuition": 9400,
+      "total": 12565
+     },
+     {
+      "years": "11",
+      "tuition": 10050,
+      "total": 11840
+     }
+    ],
+    "source": "school_website",
+    "source_url": "https://christway.vic.edu.au/wp-content/uploads/2026/09/2027-Fee-Schedule-Kingston-Campus.pdf"
+   }
+  },
+  "46352": {
+   "school_name": "Melbourne Montessori College - Brighton East Campus",
+   "website": "http://www.mms.vic.edu.au/",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 46244,
+   "parent_name": "Melbourne Montessori College - Caulfield South Campus",
+   "website_source": "parent_school"
+  },
+  "46353": {
+   "school_name": "Aitken College",
+   "website": "http://www.aitkencollege.edu.au",
+   "status": "found",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 10,
+    "errors": 1
+   },
+   "fees": {
+    "fee_year": 2026,
+    "basis": "total fee (tuition plus infrastructure levy)",
+    "by_year": [
+     {
+      "years": "P-6",
+      "tuition": 7232,
+      "total": 8332
+     },
+     {
+      "years": "7-9",
+      "tuition": 9152,
+      "total": 10252
+     },
+     {
+      "years": "10-12",
+      "tuition": 10164,
+      "total": 11264
+     }
+    ],
+    "source": "school_website",
+    "source_url": "https://aitkencollege.edu.au/docs/7.-school-fees-2026.pdf"
+   }
+  },
+  "46354": {
+   "school_name": "Alia College",
+   "website": "http://www.alia.vic.edu.au",
+   "status": "not_extracted",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 9,
+    "errors": 1
+   },
+   "note": "Fees and scholarships page text holds no figures."
+  },
+  "46358": {
+   "school_name": "Global Village Learning",
+   "website": "https://www.gisbornemontessori.vic.edu.au",
+   "status": "not_found",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 1,
+    "errors": 0
+   },
+   "note": "Only the home page could be fetched."
+  },
+  "46359": {
+   "school_name": "Mt Hira College",
+   "website": "http://www.mthira.vic.edu.au",
+   "status": "not_extracted",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 14,
+    "errors": 1
+   },
+   "note": "2027 fee schedule PDF gives labels but no amounts as text."
+  },
+  "46360": {
+   "school_name": "OneSchool Global Vic",
+   "website": "https://www.oneschoolglobal.com/",
+   "status": "blocked",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 0,
+    "errors": 1,
+    "home_error": "HTTP 403"
+   }
+  },
+  "46363": {
+   "school_name": "OneSchool Global Vic - Berwick Centre",
+   "website": "https://www.oneschoolglobal.com/",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 46360,
+   "parent_name": "OneSchool Global Vic",
+   "website_source": "parent_school"
+  },
+  "46365": {
+   "school_name": "OneSchool Global Vic - Melton Centre",
+   "website": "https://www.oneschoolglobal.com/",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 46360,
+   "parent_name": "OneSchool Global Vic",
+   "website_source": "parent_school"
+  },
+  "46376": {
+   "school_name": "Yesodei HaTorah College",
+   "website": "https://bettereducation.com.au/IndependentSchoolView0.aspx?Name=Yesodei%20Hatorah%20College,3184",
+   "status": "blocked",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 0,
+    "errors": 1,
+    "home_error": "HTTP 403"
+   }
+  },
+  "46379": {
+   "school_name": "Alice Miller School - Candlebark Campus",
+   "website": "https://alicemiller.vic.edu.au/",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 52381,
+   "parent_name": "Alice Miller School",
+   "website_source": "parent_school"
+  },
+  "46380": {
+   "school_name": "Lakeside College",
+   "website": "http://www.lakeside.vic.edu.au",
+   "status": "found",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 10,
+    "errors": 0
+   },
+   "fees": {
+    "fee_year": 2026,
+    "basis": "fees, first child",
+    "by_year": [
+     {
+      "years": "P",
+      "tuition": 4830
+     },
+     {
+      "years": "1-2",
+      "tuition": 4910
+     },
+     {
+      "years": "3",
+      "tuition": 5500
+     },
+     {
+      "years": "4",
+      "tuition": 5890
+     },
+     {
+      "years": "5",
+      "tuition": 6600
+     },
+     {
+      "years": "6",
+      "tuition": 6850
+     },
+     {
+      "years": "7-8",
+      "tuition": 7890
+     }
+    ],
+    "source": "school_website",
+    "source_url": "https://www.lakeside.vic.edu.au/enrolments/fee-schedule"
+   }
+  },
+  "46383": {
+   "school_name": "Balcombe Grammar School",
+   "website": "http://www.balcombegrammar.vic.edu.au",
+   "status": "found",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 14,
+    "errors": 0
+   },
+   "fees": {
+    "fee_year": 2027,
+    "basis": "annual fee",
+    "by_year": [
+     {
+      "years": "F-2",
+      "tuition": 9636
+     },
+     {
+      "years": "3-4",
+      "tuition": 9732
+     },
+     {
+      "years": "5-6",
+      "tuition": 9996
+     },
+     {
+      "years": "7-10",
+      "tuition": 13484
+     },
+     {
+      "years": "11-12",
+      "tuition": 14260
+     }
+    ],
+    "source": "school_website",
+    "source_url": "https://www.balcombegrammar.vic.edu.au/enrolments/school-fees/"
+   }
+  },
+  "46385": {
+   "school_name": "Hume Anglican Grammar",
+   "website": "http://www.humegrammar.vic.edu.au",
+   "status": "found",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 16,
+    "errors": 0
+   },
+   "fees": {
+    "fee_year": 2027,
+    "basis": "annual tuition fee; capital and maintenance levy $250 extra",
+    "by_year": [
+     {
+      "years": "P",
+      "tuition": 6670
+     },
+     {
+      "years": "1",
+      "tuition": 6780
+     },
+     {
+      "years": "2",
+      "tuition": 6910
+     },
+     {
+      "years": "3",
+      "tuition": 7080
+     },
+     {
+      "years": "4",
+      "tuition": 7260
+     },
+     {
+      "years": "5",
+      "tuition": 7440
+     },
+     {
+      "years": "6",
+      "tuition": 7630
+     },
+     {
+      "years": "7",
+      "tuition": 8820
+     },
+     {
+      "years": "8",
+      "tuition": 9240
+     },
+     {
+      "years": "9",
+      "tuition": 9670
+     },
+     {
+      "years": "10",
+      "tuition": 10090
+     },
+     {
+      "years": "11",
+      "tuition": 10420
+     },
+     {
+      "years": "12",
+      "tuition": 10750
+     }
+    ],
+    "source": "school_website",
+    "source_url": "https://www.humegrammar.vic.edu.au/enrolment/fees"
+   }
+  },
+  "46387": {
+   "school_name": "Lighthouse Christian College Cranbourne",
+   "website": "http://lighthousecranbourne.vic.edu.au",
+   "status": "not_found",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 1,
+    "errors": 0
+   },
+   "note": "Only the home page could be fetched."
+  },
+  "46390": {
+   "school_name": "Al Siraat College",
+   "website": "http://www.alsiraat.vic.edu.au",
+   "status": "found",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 13,
+    "errors": 0
+   },
+   "fees": {
+    "fee_year": 2027,
+    "basis": "annual tuition, first child, secondary; composite levy extra",
+    "by_year": [
+     {
+      "years": "7-12",
+      "tuition": 4152
+     }
+    ],
+    "other_compulsory": "Composite levy $2,160 (Years 7-11), $2,332 (Year 12)",
+    "source": "school_website",
+    "source_url": "https://www.alsiraat.vic.edu.au/downloads/ASC%20Fees%202027%20with%20grade%2012%20CL.pdf"
+   }
+  },
+  "46391": {
+   "school_name": "Woodleigh School",
+   "website": "http://www.woodleigh.vic.edu.au",
+   "status": "not_extracted",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 15,
+    "errors": 1
+   },
+   "note": "2027 fees and charges PDF text shows discounts but not the fee table."
+  },
+  "46392": {
+   "school_name": "Woodleigh School - Minimbah Campus",
+   "website": "http://www.woodleigh.vic.edu.au",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 46391,
+   "parent_name": "Woodleigh School",
+   "website_source": "parent_school"
+  },
+  "46395": {
+   "school_name": "Heritage College Knox",
+   "website": "http://www.heritage.vic.edu.au",
+   "status": "found",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 9,
+    "errors": 0
+   },
+   "fees": {
+    "fee_year": 2027,
+    "basis": "base rate tuition; fee additions listed separately",
+    "by_year": [
+     {
+      "years": "P-4",
+      "tuition": 4349
+     },
+     {
+      "years": "5-6",
+      "tuition": 4676
+     },
+     {
+      "years": "7-8",
+      "tuition": 6513
+     },
+     {
+      "years": "9-10",
+      "tuition": 7603
+     },
+     {
+      "years": "11-12",
+      "tuition": 9974
+     }
+    ],
+    "source": "school_website",
+    "source_url": "https://cdn.prod.website-files.com/62a878799558fd3e1667229d/6af2840ee850d9cbbc6e36ff_cbc0e9270308c663ab7fbbcde10c117e_2027%20Fee%20Schedule.pdf"
+   }
+  },
   "50212": {
    "school_name": "Pacific Valley Christian School",
    "website": "http://www.pacificvalley.nsw.edu.au/",
@@ -18713,6 +23860,42 @@
    "parent_name": "St Philip's Christian College Dynamic Learning",
    "website_source": "parent_school"
   },
+  "50312": {
+   "school_name": "Islamic College of Melbourne",
+   "website": "http://www.icom.vic.edu.au",
+   "status": "found",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 11,
+    "errors": 0
+   },
+   "fees": {
+    "fee_year": 2027,
+    "basis": "annual tuition fee; extra-curricular activity fee extra",
+    "by_year": [
+     {
+      "years": "F-6",
+      "tuition": 5040
+     },
+     {
+      "years": "7-10",
+      "tuition": 5380
+     },
+     {
+      "years": "11-12",
+      "tuition": 5471
+     }
+    ],
+    "source": "school_website",
+    "source_url": "https://cms.icom.vic.edu.au/wp-content/uploads/2026/10/ICOM-2027-College-Fee-Schedule.pdf"
+   }
+  },
+  "50313": {
+   "school_name": "Stott's Colleges",
+   "website": null,
+   "status": "no_website",
+   "checked": "2026-11-12"
+  },
   "50380": {
    "school_name": "Alpha Omega Senior College",
    "website": "http://www.aosc.nsw.edu.au/",
@@ -18735,6 +23918,69 @@
    },
    "note": "No fee page among the pages fetched."
   },
+  "50394": {
+   "school_name": "Southern Cross Grammar",
+   "website": "http://www.scg.vic.edu.au/",
+   "status": "found",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 12,
+    "errors": 0
+   },
+   "fees": {
+    "fee_year": null,
+    "year_note": "fee table does not state its year; checked 2026-11-13",
+    "basis": "total fee payable (tuition plus composite fee)",
+    "by_year": [
+     {
+      "years": "F-2",
+      "tuition": 10970,
+      "total": 11820
+     },
+     {
+      "years": "3-4",
+      "tuition": 11530,
+      "total": 12930
+     },
+     {
+      "years": "5",
+      "tuition": 11970,
+      "total": 13770
+     },
+     {
+      "years": "6",
+      "tuition": 11970,
+      "total": 14270
+     },
+     {
+      "years": "7-8",
+      "tuition": 13660,
+      "total": 16060
+     },
+     {
+      "years": "9",
+      "tuition": 13660,
+      "total": 16560
+     },
+     {
+      "years": "10-12",
+      "tuition": 15330,
+      "total": 17030
+     }
+    ],
+    "source": "school_website",
+    "source_url": "https://www.scg.vic.edu.au/fees/"
+   }
+  },
+  "50413": {
+   "school_name": "Geelong Grammar School - Toorak campus",
+   "website": "http://www.ggs.vic.edu.au",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 50402,
+   "parent_name": "Geelong Grammar School - Corio Campus",
+   "website_source": "parent_school"
+  },
   "50416": {
    "school_name": "Hills Adventist College",
    "website": "http://www.hills.adventist.edu.au",
@@ -18745,6 +23991,15 @@
     "errors": 1,
     "home_error": "HTTP 525"
    }
+  },
+  "50420": {
+   "school_name": "Berengarra School - Chadstone Campus",
+   "website": "http://www.berengarra.vic.edu.au",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 46236,
+   "parent_name": "Berengarra School",
+   "website_source": "parent_school"
   },
   "50423": {
    "school_name": "Malek Fahd Islamic School Beaumont Hills",
@@ -18771,6 +24026,24 @@
    "checked": "2026-11-12",
    "parent_acara_sml_id": 50250,
    "parent_name": "Aspect Macarthur School",
+   "website_source": "parent_school"
+  },
+  "50454": {
+   "school_name": "St Francis Xavier College - Officer Campus",
+   "website": "http://www.sfx.vic.edu.au",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 40621,
+   "parent_name": "St Francis Xavier College",
+   "website_source": "parent_school"
+  },
+  "50455": {
+   "school_name": "St Peter's College - Clyde North Campus",
+   "website": "https://www2.stpeters.vic.edu.au/",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 46087,
+   "parent_name": "St Peter's College",
    "website_source": "parent_school"
   },
   "50494": {
@@ -18807,6 +24080,15 @@
     "source": "school_website",
     "source_url": "https://www.opac.nsw.edu.au/enrol/fees/"
    }
+  },
+  "50496": {
+   "school_name": "Waverley Christian College - Narre Warren South Campus",
+   "website": "http://www.wcc.vic.edu.au",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 46246,
+   "parent_name": "Waverley Christian College",
+   "website_source": "parent_school"
   },
   "50500": {
    "school_name": "Pittwater House Schools",
@@ -18855,6 +24137,51 @@
     "source_url": "https://pittwaterhouse.com.au/wp-content/uploads/2026/01/2026-Annual-Fees.pdf"
    }
   },
+  "50503": {
+   "school_name": "Glenroy Private",
+   "website": "http://www.glenroyprivate.vic.edu.au/",
+   "status": "found",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 5,
+    "errors": 0
+   },
+   "fees": {
+    "fee_year": 2026,
+    "basis": "annual tuition fee, first child",
+    "by_year": [
+     {
+      "years": "P-6",
+      "tuition": 2400
+     },
+     {
+      "years": "7-10",
+      "tuition": 2700
+     },
+     {
+      "years": "11",
+      "tuition": 3100
+     },
+     {
+      "years": "12",
+      "tuition": 2350
+     }
+    ],
+    "source": "school_website",
+    "source_url": "https://www.glenroyprivate.vic.edu.au/fee-schedule/"
+   }
+  },
+  "50505": {
+   "school_name": "Divrei Emineh",
+   "website": "https://www.goodschools.com.au/compare-schools/in-ormond-3204/divrei-emineh",
+   "status": "not_found",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 1,
+    "errors": 0
+   },
+   "note": "Only the home page could be fetched."
+  },
   "50506": {
    "school_name": "Western Grammar School",
    "website": "https://www.wgs.nsw.edu.au/",
@@ -18866,6 +24193,15 @@
    },
    "note": "2026 fee schedule PDF found; no figures came through as text."
   },
+  "50509": {
+   "school_name": "Mount Evelyn Christian School - Ranges Tec Campus",
+   "website": "http://www.mecs.vic.edu.au",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 46229,
+   "parent_name": "Mount Evelyn Christian School",
+   "website_source": "parent_school"
+  },
   "50511": {
    "school_name": "St Philip's Christian College Dynamic Learning - Gosford",
    "website": "https://www.spcc.nsw.edu.au/",
@@ -18873,6 +24209,61 @@
    "checked": "2026-11-12",
    "parent_acara_sml_id": 43701,
    "parent_name": "St Philip's Christian College Dynamic Learning",
+   "website_source": "parent_school"
+  },
+  "50513": {
+   "school_name": "Cornish College",
+   "website": "http://www.cornishcollege.vic.edu.au",
+   "status": "found",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 13,
+    "errors": 0
+   },
+   "fees": {
+    "fee_year": 2026,
+    "basis": "annual tuition fee",
+    "by_year": [
+     {
+      "years": "P",
+      "tuition": 14875
+     },
+     {
+      "years": "1-2",
+      "tuition": 15722
+     },
+     {
+      "years": "3-4",
+      "tuition": 17458
+     },
+     {
+      "years": "5-6",
+      "tuition": 19298
+     },
+     {
+      "years": "7-8",
+      "tuition": 22665
+     },
+     {
+      "years": "9-10",
+      "tuition": 24548
+     },
+     {
+      "years": "11-12",
+      "tuition": 26155
+     }
+    ],
+    "source": "school_website",
+    "source_url": "https://www.cornishcollege.vic.edu.au/wp-content/uploads/2026-Fee-Schedule_Mar.pdf"
+   }
+  },
+  "50516": {
+   "school_name": "Ilim College - Glenroy Campus",
+   "website": "http://www.ilimcollege.vic.edu.au",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 46328,
+   "parent_name": "Ilim College",
    "website_source": "parent_school"
   },
   "50562": {
@@ -18918,6 +24309,15 @@
     "errors": 1,
     "home_error": "HTTP 403"
    }
+  },
+  "50589": {
+   "school_name": "Gilson College - Mernda Campus",
+   "website": "http://www.gilson.vic.edu.au",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 46239,
+   "parent_name": "Gilson College",
+   "website_source": "parent_school"
   },
   "50593": {
    "school_name": "Al-Faisal College - Campbelltown",
@@ -19021,6 +24421,24 @@
    "parent_name": "Stella Maris College",
    "website_source": "parent_school"
   },
+  "50724": {
+   "school_name": "Australian International Academy of Education - Caroline Springs Senior Campus",
+   "website": "http://www.aia.vic.edu.au/",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 46297,
+   "parent_name": "Australian International Academy of Education",
+   "website_source": "parent_school"
+  },
+  "50725": {
+   "school_name": "Padua College - Tyabb Campus",
+   "website": "https://padua.vic.edu.au",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 45713,
+   "parent_name": "Padua College",
+   "website_source": "parent_school"
+  },
   "50729": {
    "school_name": "Australian International Academy, Kellyville Campus",
    "website": "http://kellyville.aia.nsw.edu.au/",
@@ -19031,6 +24449,15 @@
     "errors": 0
    },
    "note": "No fee page among the pages fetched."
+  },
+  "50730": {
+   "school_name": "Heathdale Christian College - Melton Campus",
+   "website": "http://www.heathdale.vic.edu.au",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 46275,
+   "parent_name": "Heathdale Christian College",
+   "website_source": "parent_school"
   },
   "51457": {
    "school_name": "Our Lady of the Assumption Catholic Primary School",
@@ -19332,6 +24759,42 @@
     "source_url": "https://www.stlukesmarsdenpark.catholic.edu.au/enrolment/school-fees"
    }
   },
+  "51483": {
+   "school_name": "Cire Community School - Mt Evelyn Campus",
+   "website": "http://www.cire.org.au/community-school/",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 51484,
+   "parent_name": "Cire Community School",
+   "website_source": "parent_school"
+  },
+  "51486": {
+   "school_name": "ECG Secondary College - Pakenham Campus",
+   "website": "https://ecg.vic.edu.au/",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 40835,
+   "parent_name": "ECG Secondary College",
+   "website_source": "parent_school"
+  },
+  "51487": {
+   "school_name": "Woodleigh School - Penbank Campus",
+   "website": "http://www.woodleigh.vic.edu.au",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 46391,
+   "parent_name": "Woodleigh School",
+   "website_source": "parent_school"
+  },
+  "51488": {
+   "school_name": "Hillcrest Christian College - Rivercrest Christian College",
+   "website": "http://www.hillcrest.vic.edu.au",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 46276,
+   "parent_name": "Hillcrest Christian College",
+   "website_source": "parent_school"
+  },
   "51520": {
    "school_name": "Al-Faisal College - Liverpool",
    "website": "http://www.alfaisalcollege.com/",
@@ -19369,6 +24832,24 @@
     "source": "school_website",
     "source_url": "https://www.alfaisalcollege.com/assets/2025%20fee%20structure.pdf"
    }
+  },
+  "51525": {
+   "school_name": "Ilim College - Kiewa Campus",
+   "website": "http://www.ilimcollege.vic.edu.au",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 46328,
+   "parent_name": "Ilim College",
+   "website_source": "parent_school"
+  },
+  "51529": {
+   "school_name": "Sirius College - Dallas Campus",
+   "website": "http://www.sirius.vic.edu.au",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 46335,
+   "parent_name": "Sirius College",
+   "website_source": "parent_school"
   },
   "52040": {
    "school_name": "St Andrew's Cathedral School - Bishop Barry Senior College",
@@ -19610,6 +25091,33 @@
    "parent_name": "Kinross Wolaroi School",
    "website_source": "parent_school"
   },
+  "52094": {
+   "school_name": "Ozford College - Ozford College Campus",
+   "website": "http://www.ozford.edu.au",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 40714,
+   "parent_name": "Ozford College",
+   "website_source": "parent_school"
+  },
+  "52102": {
+   "school_name": "Al-Taqwa College - Olive Branch Annexe",
+   "website": "http://www.al-taqwa.vic.edu.au/",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 46309,
+   "parent_name": "Al-Taqwa College",
+   "website_source": "parent_school"
+  },
+  "52146": {
+   "school_name": "Adass Israel School - Glen Eira Road Campus",
+   "website": "http://www.vrqa.vic.gov.au/StateRegister/Provider.aspx/DetailsProvider?AccountID=ac88c00c-ed32-de11-9c94-002185cd8e5c",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 46213,
+   "parent_name": "Adass Israel School",
+   "website_source": "parent_school"
+  },
   "52304": {
    "school_name": "Calrossy Anglican School - Simpson House Campus",
    "website": "http://www.calrossy.nsw.edu.au/",
@@ -19801,6 +25309,124 @@
    },
    "note": "2026 schedule of fees PDF found; no figures came through as text."
   },
+  "52379": {
+   "school_name": "Advance College of Education Incorporated - Hastings Hub",
+   "website": "http://www.advancecollege.vic.edu.au",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 52378,
+   "parent_name": "Advance College of Education Incorporated",
+   "website_source": "parent_school"
+  },
+  "52380": {
+   "school_name": "Al Iman College",
+   "website": "https://aliman.vic.edu.au/",
+   "status": "found",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 16,
+    "errors": 0
+   },
+   "fees": {
+    "fee_year": 2026,
+    "basis": "tuition fee per annum; general and extracurricular levies extra",
+    "by_year": [
+     {
+      "years": "F-6",
+      "tuition": 2340
+     },
+     {
+      "years": "7-12",
+      "tuition": 2540
+     }
+    ],
+    "other_compulsory": "General levy $425 and extracurricular levy $150 per child",
+    "source": "school_website",
+    "source_url": "https://www.aliman.vic.edu.au/publications/downloads/Fee%20Schedule%20(2026)%20.pdf"
+   }
+  },
+  "52381": {
+   "school_name": "Alice Miller School",
+   "website": "https://alicemiller.vic.edu.au/",
+   "status": "found",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 3,
+    "errors": 0
+   },
+   "fees": {
+    "fee_year": 2027,
+    "basis": "all-inclusive fee (camps, excursions, books, food, bus)",
+    "by_year": [
+     {
+      "years": "P-2",
+      "tuition": 15172
+     },
+     {
+      "years": "3-6",
+      "tuition": 15628
+     },
+     {
+      "years": "7-10",
+      "tuition": 16298
+     },
+     {
+      "years": "11-12",
+      "tuition": 17326
+     }
+    ],
+    "source": "school_website",
+    "source_url": "https://alicemiller.vic.edu.au/enrolment/"
+   }
+  },
+  "52382": {
+   "school_name": "Harkaway Hills College",
+   "website": "http://www.harkawayhills.vic.edu.au",
+   "status": "found",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 4,
+    "errors": 0
+   },
+   "fees": {
+    "fee_year": null,
+    "year_note": "enrolments page does not state the year; checked 2026-11-13",
+    "basis": "annual tuition fees, include excursions and initial textbooks",
+    "by_year": [
+     {
+      "years": "F",
+      "tuition": 9915
+     },
+     {
+      "years": "1-6",
+      "tuition": 11016
+     },
+     {
+      "years": "7-9",
+      "tuition": 12474
+     },
+     {
+      "years": "10",
+      "tuition": 12927
+     },
+     {
+      "years": "11-12",
+      "tuition": 13448
+     }
+    ],
+    "source": "school_website",
+    "source_url": "https://www.harkawayhills.vic.edu.au/enrolments/"
+   }
+  },
+  "52385": {
+   "school_name": "St Mary’s College for the Deaf – Sunbury Campus",
+   "website": "http://smdeaf.vic.edu.au",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 45990,
+   "parent_name": "St Mary's College for the Deaf - Wantirna South Campus",
+   "website_source": "parent_school"
+  },
   "52395": {
    "school_name": "St Patrick's Catholic Primary School",
    "website": "https://stpmortlake.syd.catholic.edu.au",
@@ -19929,6 +25555,51 @@
    "parent_name": "Sathya Sai College",
    "website_source": "parent_school"
   },
+  "52421": {
+   "school_name": "Caulfield Grammar School - Yarra Junction Campus",
+   "website": "http://www.caulfieldgs.vic.edu.au",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 46139,
+   "parent_name": "Caulfield Grammar School",
+   "website_source": "parent_school"
+  },
+  "52423": {
+   "school_name": "Haileybury College - Brighton Girls",
+   "website": "https://www.haileybury.com.au/",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 46189,
+   "parent_name": "Haileybury College - Keysborough Boys",
+   "website_source": "parent_school"
+  },
+  "52424": {
+   "school_name": "Berengarra School - Café Education",
+   "website": "http://www.berengarra.vic.edu.au",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 46236,
+   "parent_name": "Berengarra School",
+   "website_source": "parent_school"
+  },
+  "52429": {
+   "school_name": "Cire Community School - Yarra Junction Campus",
+   "website": "http://www.cire.org.au/community-school/",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 51484,
+   "parent_name": "Cire Community School",
+   "website_source": "parent_school"
+  },
+  "52430": {
+   "school_name": "Advance College of Education Incorporated - Mornington Campus",
+   "website": "http://www.advancecollege.vic.edu.au",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 52378,
+   "parent_name": "Advance College of Education Incorporated",
+   "website_source": "parent_school"
+  },
   "52433": {
    "school_name": "Warakirri College - Blacktown",
    "website": "http://www.warakirricollege.nsw.edu.au",
@@ -19976,6 +25647,289 @@
    "checked": "2026-11-12",
    "parent_acara_sml_id": 51460,
    "parent_name": "Mackillop Education Waranara School",
+   "website_source": "parent_school"
+  },
+  "52516": {
+   "school_name": "Cheder Levi Yitzchok Inc",
+   "website": "https://www.cly.vic.edu.au/",
+   "status": "not_found",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 6,
+    "errors": 0
+   },
+   "note": "No fee page among the pages fetched."
+  },
+  "52521": {
+   "school_name": "Hester Hornbrook Academy - Prahran Campus",
+   "website": "https://www.hhacademy.vic.edu.au",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 52517,
+   "parent_name": "Hester Hornbrook Academy",
+   "website_source": "parent_school"
+  },
+  "52522": {
+   "school_name": "Hester Hornbrook Academy - Sunshine Campus",
+   "website": "https://www.hhacademy.vic.edu.au",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 52517,
+   "parent_name": "Hester Hornbrook Academy",
+   "website_source": "parent_school"
+  },
+  "52523": {
+   "school_name": "Ilim College - Doveton Campus",
+   "website": "http://www.ilimcollege.vic.edu.au",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 46328,
+   "parent_name": "Ilim College",
+   "website_source": "parent_school"
+  },
+  "52524": {
+   "school_name": "Kamaruka - Primary Campus",
+   "website": "http://www.kamaruka.vic.edu.au",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 40695,
+   "parent_name": "Kamaruka",
+   "website_source": "parent_school"
+  },
+  "52526": {
+   "school_name": "MacKillop Specialist School - Flexible Learning Centre Maidstone",
+   "website": "https://www.mackillop.org.au/mackillop-school-geelong",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 50453,
+   "parent_name": "MacKillop Specialist School - Whittington",
+   "website_source": "parent_school"
+  },
+  "52527": {
+   "school_name": "SEDA College (Victoria)",
+   "website": "https://seda.vic.edu.au/",
+   "status": "not_extracted",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 8,
+    "errors": 0
+   },
+   "note": "Fees vary by sports program; no single fee per year level."
+  },
+  "52529": {
+   "school_name": "SEDA College (Victoria) - AFL - Sunshine",
+   "website": "https://seda.vic.edu.au/",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 52527,
+   "parent_name": "SEDA College (Victoria)",
+   "website_source": "parent_school"
+  },
+  "52531": {
+   "school_name": "SEDA College (Victoria) - AFL - Clayton",
+   "website": "https://seda.vic.edu.au/",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 52527,
+   "parent_name": "SEDA College (Victoria)",
+   "website_source": "parent_school"
+  },
+  "52533": {
+   "school_name": "SEDA College (Victoria) - AFL - Werribee",
+   "website": "https://seda.vic.edu.au/",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 52527,
+   "parent_name": "SEDA College (Victoria)",
+   "website_source": "parent_school"
+  },
+  "52535": {
+   "school_name": "SEDA College (Victoria) - AFL- Preston",
+   "website": "https://seda.vic.edu.au/",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 52527,
+   "parent_name": "SEDA College (Victoria)",
+   "website_source": "parent_school"
+  },
+  "52537": {
+   "school_name": "SEDA College (Victoria) - AFL Victoria & Cricket Australia Sports Development Program - Strathmore",
+   "website": "https://seda.vic.edu.au/",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 52527,
+   "parent_name": "SEDA College (Victoria)",
+   "website_source": "parent_school"
+  },
+  "52539": {
+   "school_name": "SEDA College (Victoria) - Basketball - Dandenong",
+   "website": "https://seda.vic.edu.au/",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 52527,
+   "parent_name": "SEDA College (Victoria)",
+   "website_source": "parent_school"
+  },
+  "52541": {
+   "school_name": "SEDA College (Victoria) - Basketball Braybrook",
+   "website": "https://seda.vic.edu.au/",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 52527,
+   "parent_name": "SEDA College (Victoria)",
+   "website_source": "parent_school"
+  },
+  "52542": {
+   "school_name": "SEDA College (Victoria) - Basketball Broadmeadows",
+   "website": "https://seda.vic.edu.au/",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 52527,
+   "parent_name": "SEDA College (Victoria)",
+   "website_source": "parent_school"
+  },
+  "52543": {
+   "school_name": "SEDA College (Victoria) - Basketball Burwood",
+   "website": "https://seda.vic.edu.au/",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 52527,
+   "parent_name": "SEDA College (Victoria)",
+   "website_source": "parent_school"
+  },
+  "52544": {
+   "school_name": "SEDA College (Victoria) - Building and Construction - Deer Park",
+   "website": "https://seda.vic.edu.au/",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 52527,
+   "parent_name": "SEDA College (Victoria)",
+   "website_source": "parent_school"
+  },
+  "52545": {
+   "school_name": "SEDA College (Victoria) - Building and Construction - Dandenong",
+   "website": "https://seda.vic.edu.au/",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 52527,
+   "parent_name": "SEDA College (Victoria)",
+   "website_source": "parent_school"
+  },
+  "52548": {
+   "school_name": "SEDA College (Victoria) - Cricket Australia - Box Hill",
+   "website": "https://seda.vic.edu.au/",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 52527,
+   "parent_name": "SEDA College (Victoria)",
+   "website_source": "parent_school"
+  },
+  "52549": {
+   "school_name": "SEDA College (Victoria) - Cricket Australia - Footscray",
+   "website": "https://seda.vic.edu.au/",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 52527,
+   "parent_name": "SEDA College (Victoria)",
+   "website_source": "parent_school"
+  },
+  "52550": {
+   "school_name": "SEDA College (Victoria) - FFV Burnley",
+   "website": "https://seda.vic.edu.au/",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 52527,
+   "parent_name": "SEDA College (Victoria)",
+   "website_source": "parent_school"
+  },
+  "52551": {
+   "school_name": "SEDA College (Victoria) - FFV Burnley 2",
+   "website": "https://seda.vic.edu.au/",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 52527,
+   "parent_name": "SEDA College (Victoria)",
+   "website_source": "parent_school"
+  },
+  "52553": {
+   "school_name": "SEDA College (Victoria) - Hawthorn Talented Player Program (TPP)",
+   "website": "https://seda.vic.edu.au/",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 52527,
+   "parent_name": "SEDA College (Victoria)",
+   "website_source": "parent_school"
+  },
+  "52555": {
+   "school_name": "SEDA College (Victoria) - Melbourne City Talented Player Program - Kensington",
+   "website": "https://seda.vic.edu.au/",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 52527,
+   "parent_name": "SEDA College (Victoria)",
+   "website_source": "parent_school"
+  },
+  "52560": {
+   "school_name": "SEDA College (Victoria) - Netball - Keysborough",
+   "website": "https://seda.vic.edu.au/",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 52527,
+   "parent_name": "SEDA College (Victoria)",
+   "website_source": "parent_school"
+  },
+  "52561": {
+   "school_name": "SEDA College (Victoria) - Netball Ascot Vale",
+   "website": "https://seda.vic.edu.au/",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 52527,
+   "parent_name": "SEDA College (Victoria)",
+   "website_source": "parent_school"
+  },
+  "52562": {
+   "school_name": "SEDA College (Victoria) - Netball Burnley",
+   "website": "https://seda.vic.edu.au/",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 52527,
+   "parent_name": "SEDA College (Victoria)",
+   "website_source": "parent_school"
+  },
+  "52563": {
+   "school_name": "SEDA College (Victoria) - Sailing - Albert Park",
+   "website": "https://seda.vic.edu.au/",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 52527,
+   "parent_name": "SEDA College (Victoria)",
+   "website_source": "parent_school"
+  },
+  "52564": {
+   "school_name": "SEDA College (Victoria) - Jubilee Park",
+   "website": "https://seda.vic.edu.au/",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 52527,
+   "parent_name": "SEDA College (Victoria)",
+   "website_source": "parent_school"
+  },
+  "52565": {
+   "school_name": "SEDA College (Victoria) - The Huddle, North Melbourne Football Club",
+   "website": "https://seda.vic.edu.au/",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 52527,
+   "parent_name": "SEDA College (Victoria)",
+   "website_source": "parent_school"
+  },
+  "52566": {
+   "school_name": "David Scott School - High Street Campus",
+   "website": "http://www.davidscottschool.vic.edu.au",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 52481,
+   "parent_name": "David Scott School",
    "website_source": "parent_school"
   },
   "52612": {
@@ -20094,6 +26048,33 @@
     "source": "school_website",
     "source_url": "https://tns.nsw.edu.au/files/tns-schedule-of-fees-2026-bb220c.pdf"
    }
+  },
+  "52624": {
+   "school_name": "Bacchus Marsh Grammar - Staughton Vale Farm Campus",
+   "website": "http://www.bmg.vic.edu.au",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 46314,
+   "parent_name": "Bacchus Marsh Grammar - Maddingley Campus",
+   "website_source": "parent_school"
+  },
+  "52626": {
+   "school_name": "SEDA College (Victoria) - Frankston Park Function Centre",
+   "website": "https://seda.vic.edu.au/",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 52527,
+   "parent_name": "SEDA College (Victoria)",
+   "website_source": "parent_school"
+  },
+  "52629": {
+   "school_name": "Xavier College - Billilla Annex Campus",
+   "website": "http://www.xavier.vic.edu.au",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 45696,
+   "parent_name": "Xavier College",
+   "website_source": "parent_school"
   },
   "52635": {
    "school_name": "Trinity Grammar School Field Studies Centre, Woollamia Campus",
@@ -20242,6 +26223,24 @@
     "source_url": "https://www.thesmallschool.org.au/school-fees"
    }
   },
+  "52710": {
+   "school_name": "Braemar College - Woodend Campus",
+   "website": "http://www.braemar.vic.edu.au",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 46238,
+   "parent_name": "Braemar College",
+   "website_source": "parent_school"
+  },
+  "52712": {
+   "school_name": "SEDA College (Victoria) - Melbourne Sports Centres Parkville",
+   "website": "https://seda.vic.edu.au/",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 52527,
+   "parent_name": "SEDA College (Victoria)",
+   "website_source": "parent_school"
+  },
   "52713": {
    "school_name": "Vista Lodge",
    "website": "http://www.mags.nsw.edu.au",
@@ -20389,6 +26388,62 @@
     "source_url": "https://www.santasophiaboxhill.catholic.edu.au/enrolment/school-fees"
    }
   },
+  "52734": {
+   "school_name": "Fernbrook School",
+   "website": "https://www.fernbrook.com.au/",
+   "status": "not_found",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 3,
+    "errors": 0
+   },
+   "note": "No fee page among the pages fetched."
+  },
+  "52736": {
+   "school_name": "Ivanhoe Grammar School - University Campus",
+   "website": "http://www.ivanhoe.com.au",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 46170,
+   "parent_name": "Ivanhoe Grammar School",
+   "website_source": "parent_school"
+  },
+  "52781": {
+   "school_name": "Bacchus Marsh Grammar - Woodlea",
+   "website": "http://www.bmg.vic.edu.au",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 46314,
+   "parent_name": "Bacchus Marsh Grammar - Maddingley Campus",
+   "website_source": "parent_school"
+  },
+  "52782": {
+   "school_name": "Christway College - Wyndham",
+   "website": "http://www.christway.vic.edu.au",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 46350,
+   "parent_name": "Christway College",
+   "website_source": "parent_school"
+  },
+  "52783": {
+   "school_name": "De La Salle College - Holy Eucharist Campus",
+   "website": "http://www.delasalle.vic.edu.au",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 45771,
+   "parent_name": "De La Salle College",
+   "website_source": "parent_school"
+  },
+  "52786": {
+   "school_name": "Hume Anglican Grammar - Donnybrook Campus",
+   "website": "http://www.humegrammar.vic.edu.au",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 46385,
+   "parent_name": "Hume Anglican Grammar",
+   "website_source": "parent_school"
+  },
   "52789": {
    "school_name": "Warakirri College - Campbelltown South",
    "website": "http://www.warakirricollege.nsw.edu.au",
@@ -20396,6 +26451,24 @@
    "checked": "2026-11-12",
    "parent_acara_sml_id": 40779,
    "parent_name": "Warakirri College",
+   "website_source": "parent_school"
+  },
+  "52815": {
+   "school_name": "SEDA College (Victoria) - AFL Dandenong Campus - Dandenong Oasis",
+   "website": "https://seda.vic.edu.au/",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 52527,
+   "parent_name": "SEDA College (Victoria)",
+   "website_source": "parent_school"
+  },
+  "52816": {
+   "school_name": "SEDA College (Victoria) - MC North Melbourne YMCA",
+   "website": "https://seda.vic.edu.au/",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 52527,
+   "parent_name": "SEDA College (Victoria)",
    "website_source": "parent_school"
   },
   "52818": {
@@ -20466,6 +26539,15 @@
     "source_url": "https://living.school/fees/"
    }
   },
+  "52856": {
+   "school_name": "Indie School (Bacchus Marsh)",
+   "website": "http://www.awcc.edu.au",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 43720,
+   "parent_name": "Indie School Wodonga",
+   "website_source": "parent_school"
+  },
   "52877": {
    "school_name": "All Saints Catholic College, Casula Campus",
    "website": "https://ascc.syd.catholic.edu.au",
@@ -20514,6 +26596,118 @@
     "errors": 0
    },
    "note": "Fees page text holds no figures."
+  },
+  "52977": {
+   "school_name": "St Mary’s College Melbourne - Presentation Campus",
+   "website": "https://www.stmaryscollege.vic.edu.au/",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 45632,
+   "parent_name": "St Mary’s College Melbourne - Edmund Rice Campus",
+   "website_source": "parent_school"
+  },
+  "52979": {
+   "school_name": "St Bede's College - Bentleigh East Campus",
+   "website": "http://www.stbedes.catholic.edu.au",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 45855,
+   "parent_name": "St Bede's College",
+   "website_source": "parent_school"
+  },
+  "52980": {
+   "school_name": "St Mary's College for the Deaf - Tarneit Campus",
+   "website": "http://smdeaf.vic.edu.au",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 45990,
+   "parent_name": "St Mary's College for the Deaf - Wantirna South Campus",
+   "website_source": "parent_school"
+  },
+  "52981": {
+   "school_name": "MacKillop Specialist School - MacKillop Education Caulfield",
+   "website": "https://www.mackillop.org.au/mackillop-school-geelong",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 50453,
+   "parent_name": "MacKillop Specialist School - Whittington",
+   "website_source": "parent_school"
+  },
+  "52984": {
+   "school_name": "Donvale Christian College - Hall Road Campus",
+   "website": "http://www.donvale.vic.edu.au",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 46235,
+   "parent_name": "Donvale Christian College",
+   "website_source": "parent_school"
+  },
+  "52985": {
+   "school_name": "Minaret College - Doveton Campus",
+   "website": "http://www.minaret.vic.edu.au",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 46321,
+   "parent_name": "Minaret College",
+   "website_source": "parent_school"
+  },
+  "52986": {
+   "school_name": "Indie School Wodonga - Indie School Ringwood Campus",
+   "website": "http://www.awcc.edu.au",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 43720,
+   "parent_name": "Indie School Wodonga",
+   "website_source": "parent_school"
+  },
+  "52988": {
+   "school_name": "SEDA College (Victoria) - J.E Moore Park Campus",
+   "website": "https://seda.vic.edu.au/",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 52527,
+   "parent_name": "SEDA College (Victoria)",
+   "website_source": "parent_school"
+  },
+  "52989": {
+   "school_name": "SEDA College (Victoria) - Flemington HUB",
+   "website": "https://seda.vic.edu.au/",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 52527,
+   "parent_name": "SEDA College (Victoria)",
+   "website_source": "parent_school"
+  },
+  "52992": {
+   "school_name": "Youth2Industry College",
+   "website": "http://www.y2ic.vic.edu.au",
+   "status": "not_found",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 4,
+    "errors": 0
+   },
+   "note": "No fee page among the pages fetched."
+  },
+  "52993": {
+   "school_name": "My College",
+   "website": "http://www.mycollege.vic.edu.au",
+   "status": "not_found",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 2,
+    "errors": 1
+   },
+   "note": "Only two pages reachable; no fee page."
+  },
+  "52995": {
+   "school_name": "Cire Community School Berwick Campus",
+   "website": "http://www.cire.org.au/community-school/",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 51484,
+   "parent_name": "Cire Community School",
+   "website_source": "parent_school"
   },
   "52996": {
    "school_name": "Broken Bay Cross Campus Course Centre",
@@ -20669,6 +26863,28 @@
    },
    "note": "Only two pages reachable; no fee page."
   },
+  "53015": {
+   "school_name": "Ignatius Learning Centre",
+   "website": "https://jss.org.au/what-we-do/ignatius-learning-centre/",
+   "status": "not_found",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 5,
+    "errors": 0
+   },
+   "note": "No fee page among the pages fetched."
+  },
+  "53016": {
+   "school_name": "Djerriwarrh Community & Education Services - Djerriwarrh Community College",
+   "website": "https://www.dcc.vic.edu.au",
+   "status": "not_found",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 4,
+    "errors": 0
+   },
+   "note": "No fee page among the pages fetched."
+  },
   "53040": {
    "school_name": "Newcastle Grammar Bolton Street Campus",
    "website": "http://www.ngs.nsw.edu.au",
@@ -20685,6 +26901,15 @@
    "checked": "2026-11-12",
    "parent_acara_sml_id": 52369,
    "parent_name": "GOAL College",
+   "website_source": "parent_school"
+  },
+  "53045": {
+   "school_name": "Preston Reservoir Adult Community Education - Mernda Campus",
+   "website": "https://prace.vic.edu.au/prace-college/",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 52482,
+   "parent_name": "Preston Reservoir Adult Community Education - Prace College campus",
    "website_source": "parent_school"
   },
   "53083": {
@@ -20729,6 +26954,76 @@
     "home_error": "ENOTFOUND"
    }
   },
+  "53089": {
+   "school_name": "Muhammadiyah Australia College",
+   "website": "https://macollege.vic.edu.au/",
+   "status": "unreachable",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 0,
+    "errors": 1,
+    "home_error": "ENOTFOUND"
+   }
+  },
+  "53091": {
+   "school_name": "Urban College",
+   "website": "https://www.urbancollege.vic.edu.au",
+   "status": "not_found",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 12,
+    "errors": 0
+   },
+   "note": "No fee page among the pages fetched."
+  },
+  "53092": {
+   "school_name": "Plenty River College",
+   "website": "https://prc.vic.edu.au/",
+   "status": "not_found",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 3,
+    "errors": 1
+   },
+   "note": "No fee page among the pages fetched."
+  },
+  "53093": {
+   "school_name": "Lysterfield Lake College",
+   "website": "https://www.lysterfieldlake.vic.edu.au",
+   "status": "found",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 4,
+    "errors": 0
+   },
+   "fees": {
+    "fee_year": null,
+    "year_note": "enrolments page does not state the year; checked 2026-11-13",
+    "basis": "annual tuition fee, includes excursions and initial textbooks",
+    "by_year": [
+     {
+      "years": "3-6",
+      "tuition": 11016
+     },
+     {
+      "years": "7-9",
+      "tuition": 12474
+     },
+     {
+      "years": "10",
+      "tuition": 12927
+     }
+    ],
+    "source": "school_website",
+    "source_url": "https://www.lysterfieldlake.vic.edu.au/enrolments/"
+   }
+  },
+  "53094": {
+   "school_name": "Launch Campus",
+   "website": null,
+   "status": "no_website",
+   "checked": "2026-11-12"
+  },
   "53106": {
    "school_name": "St Philip's Christian College Dynamic Learning - Port Stephens",
    "website": "https://www.spcc.nsw.edu.au/",
@@ -20754,6 +27049,24 @@
    "checked": "2026-11-12",
    "parent_acara_sml_id": 43918,
    "parent_name": "Yanginanook School",
+   "website_source": "parent_school"
+  },
+  "53122": {
+   "school_name": "Australian International Academy of Education - Caroline Springs Primary Campus",
+   "website": "http://www.aia.vic.edu.au/",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 46297,
+   "parent_name": "Australian International Academy of Education",
+   "website_source": "parent_school"
+  },
+  "53123": {
+   "school_name": "Cire Community School - Lilydale Campus",
+   "website": "http://www.cire.org.au/community-school/",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 51484,
+   "parent_name": "Cire Community School",
    "website_source": "parent_school"
   },
   "53161": {
@@ -20835,6 +27148,15 @@
    "parent_name": "Indie School Albury",
    "website_source": "parent_school"
   },
+  "53216": {
+   "school_name": "Melbourne Indigenous Transition School - MITS Year 8 Campus",
+   "website": "https://www.mits.vic.edu.au/",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 52296,
+   "parent_name": "Melbourne Indigenous Transition School",
+   "website_source": "parent_school"
+  },
   "53219": {
    "school_name": "Aspect Riverina School, Wagga Campus",
    "website": "https://www.autismspectrum.org.au/school/aspect-riverina-school-0",
@@ -20896,6 +27218,87 @@
    "parent_name": "The Alpine School",
    "website_source": "parent_school"
   },
+  "53236": {
+   "school_name": "St Bernard's College - Resurrection House Campus",
+   "website": "http://www.sbc.vic.edu.au",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 45864,
+   "parent_name": "St Bernard's College",
+   "website_source": "parent_school"
+  },
+  "53237": {
+   "school_name": "St Francis Catholic College - Cobblebank Campus",
+   "website": "https://www.sfcc.vic.edu.au/",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 46054,
+   "parent_name": "St Francis Catholic College",
+   "website_source": "parent_school"
+  },
+  "53238": {
+   "school_name": "Haileybury College - Pangea",
+   "website": "https://www.haileybury.com.au/",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 46189,
+   "parent_name": "Haileybury College - Keysborough Boys",
+   "website_source": "parent_school"
+  },
+  "53239": {
+   "school_name": "Westbourne Grammar School - Williamstown Campus",
+   "website": "http://www.westbournegrammar.com",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 46249,
+   "parent_name": "Westbourne Grammar School",
+   "website_source": "parent_school"
+  },
+  "53240": {
+   "school_name": "Darul Ulum College of Victoria - Darul Ulum Academy",
+   "website": "http://www.dulum.vic.edu.au",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 46345,
+   "parent_name": "Darul Ulum College of Victoria",
+   "website_source": "parent_school"
+  },
+  "53241": {
+   "school_name": "Indie School Greensborough",
+   "website": "http://www.awcc.edu.au",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 43720,
+   "parent_name": "Indie School Wodonga",
+   "website_source": "parent_school"
+  },
+  "53243": {
+   "school_name": "Australian Christian College Casey",
+   "website": "https://www.acc.edu.au/benalla/",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 46281,
+   "parent_name": "Australian Christian College - Benalla",
+   "website_source": "parent_school"
+  },
+  "53254": {
+   "school_name": "Hester Hornbrook Academy - South Melbourne",
+   "website": "https://www.hhacademy.vic.edu.au",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 52517,
+   "parent_name": "Hester Hornbrook Academy",
+   "website_source": "parent_school"
+  },
+  "53255": {
+   "school_name": "SEDA College (Victoria) - MSAC Function Room",
+   "website": "https://seda.vic.edu.au/",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 52527,
+   "parent_name": "SEDA College (Victoria)",
+   "website_source": "parent_school"
+  },
   "53256": {
    "school_name": "St Aloysius' College, Rozelle",
    "website": "http://www.staloysius.nsw.edu.au",
@@ -20903,6 +27306,24 @@
    "checked": "2026-11-12",
    "parent_acara_sml_id": 43684,
    "parent_name": "St Aloysius' College",
+   "website_source": "parent_school"
+  },
+  "53264": {
+   "school_name": "Melton Christian College - Toolern Vale Campus",
+   "website": "http://www.mcc.vic.edu.au/",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 46303,
+   "parent_name": "Melton Christian College",
+   "website_source": "parent_school"
+  },
+  "53266": {
+   "school_name": "Hume Anglican Grammar - Kalkallo Campus",
+   "website": "http://www.humegrammar.vic.edu.au",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 46385,
+   "parent_name": "Hume Anglican Grammar",
    "website_source": "parent_school"
   },
   "53277": {
@@ -20950,6 +27371,51 @@
    "parent_name": "Pacific Coast Christian School",
    "website_source": "parent_school"
   },
+  "53314": {
+   "school_name": "Haileybury College - Berwick Boys",
+   "website": "https://www.haileybury.com.au/",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 46189,
+   "parent_name": "Haileybury College - Keysborough Boys",
+   "website_source": "parent_school"
+  },
+  "53315": {
+   "school_name": "Haileybury College - Berwick Girls",
+   "website": "https://www.haileybury.com.au/",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 46189,
+   "parent_name": "Haileybury College - Keysborough Boys",
+   "website_source": "parent_school"
+  },
+  "53316": {
+   "school_name": "Haileybury College - City Boys",
+   "website": "https://www.haileybury.com.au/",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 46189,
+   "parent_name": "Haileybury College - Keysborough Boys",
+   "website_source": "parent_school"
+  },
+  "53317": {
+   "school_name": "Haileybury College - City Girls",
+   "website": "https://www.haileybury.com.au/",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 46189,
+   "parent_name": "Haileybury College - Keysborough Boys",
+   "website_source": "parent_school"
+  },
+  "53318": {
+   "school_name": "ECG Secondary College - Dandenong Campus",
+   "website": "https://ecg.vic.edu.au/",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 40835,
+   "parent_name": "ECG Secondary College",
+   "website_source": "parent_school"
+  },
   "53322": {
    "school_name": "Margaret Jurd College Tuncurry Campus",
    "website": "http://www.mjc.nsw.edu.au/",
@@ -20966,6 +27432,68 @@
    "checked": "2026-11-12",
    "parent_acara_sml_id": 40847,
    "parent_name": "Indie School Albury",
+   "website_source": "parent_school"
+  },
+  "53333": {
+   "school_name": "Marymede Catholic College - Doreen",
+   "website": "http://www.marymede.vic.edu.au",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 46117,
+   "parent_name": "Marymede Catholic College",
+   "website_source": "parent_school"
+  },
+  "53335": {
+   "school_name": "Islamic College of Sport",
+   "website": "https://islamiccollegeofsport.com.au/",
+   "status": "not_extracted",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 4,
+    "errors": 0
+   },
+   "note": "Fees page text holds no figures."
+  },
+  "53336": {
+   "school_name": "Mernda Hills Christian College",
+   "website": "https://merndahills.vic.edu.au/",
+   "status": "found",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 10,
+    "errors": 0
+   },
+   "fees": {
+    "fee_year": 2027,
+    "basis": "total per year, single child (tuition, consumables levy, building levy)",
+    "by_year": [
+     {
+      "years": "P-6",
+      "tuition": 7548,
+      "total": 8960
+     },
+     {
+      "years": "7-10",
+      "tuition": 9680,
+      "total": 11896
+     },
+     {
+      "years": "11-12",
+      "tuition": 10512,
+      "total": 12728
+     }
+    ],
+    "source": "school_website",
+    "source_url": "https://asv.vic.edu.au/uploads/merndaHills/MHCC_2027_FeeSchedule.pdf"
+   }
+  },
+  "53340": {
+   "school_name": "Foundation Learning Centre - Peninsula Campus",
+   "website": "https://www.foundationcollege.vic.edu.au/",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 53339,
+   "parent_name": "Foundation Learning Centre - Foundation College",
    "website_source": "parent_school"
   },
   "53357": {
@@ -20995,6 +27523,24 @@
    "parent_name": "Indie School Albury",
    "website_source": "parent_school"
   },
+  "53368": {
+   "school_name": "Cire Community School - Monbulk Campus",
+   "website": "http://www.cire.org.au/community-school/",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 51484,
+   "parent_name": "Cire Community School",
+   "website_source": "parent_school"
+  },
+  "53369": {
+   "school_name": "Julia Gillard Community College - The Cottage",
+   "website": "https://jgillardcc.vic.edu.au/",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 53337,
+   "parent_name": "Julia Gillard Community College - 20 Synnot Street",
+   "website_source": "parent_school"
+  },
   "53379": {
    "school_name": "Novoschool",
    "website": "https://www.novoschool.nsw.edu.au/",
@@ -21022,6 +27568,26 @@
     "source": "school_website",
     "source_url": "https://www.novoschool.nsw.edu.au/enrol"
    }
+  },
+  "53382": {
+   "school_name": "Saints College - BlendED Campus",
+   "website": "http://www.youthplus.edu.au",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 50452,
+   "parent_name": "Saints College - North Melbourne Campus",
+   "website_source": "parent_school"
+  },
+  "53400": {
+   "school_name": "Y Community School",
+   "website": "https://whittlesea.ymca.org.au/y-community-school/",
+   "status": "not_found",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 1,
+    "errors": 0
+   },
+   "note": "Only the home page could be fetched."
   },
   "53418": {
    "school_name": "Indie School Parramatta",
@@ -21093,6 +27659,145 @@
    "checked": "2026-11-12",
    "parent_acara_sml_id": 52825,
    "parent_name": "Living School",
+   "website_source": "parent_school"
+  },
+  "53452": {
+   "school_name": "St Monica's College - St Stephen’s/Gaudete Campus",
+   "website": "http://www.stmonicas-epping.com",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 40615,
+   "parent_name": "St Monica's College - Davisson Street",
+   "website_source": "parent_school"
+  },
+  "53454": {
+   "school_name": "Emmaus College - Junior School",
+   "website": "http://www.emmaus.vic.edu.au",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 45936,
+   "parent_name": "Emmaus College",
+   "website_source": "parent_school"
+  },
+  "53455": {
+   "school_name": "Caulfield Grammar School - Shelford Campus",
+   "website": "http://www.caulfieldgs.vic.edu.au",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 46139,
+   "parent_name": "Caulfield Grammar School",
+   "website_source": "parent_school"
+  },
+  "53458": {
+   "school_name": "Melton Christian College - Online Campus",
+   "website": "http://www.mcc.vic.edu.au/",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 46303,
+   "parent_name": "Melton Christian College",
+   "website_source": "parent_school"
+  },
+  "53459": {
+   "school_name": "Good News Lutheran College - Mambourin Campus",
+   "website": "http://www.goodnews.vic.edu.au",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 46334,
+   "parent_name": "Good News Lutheran College",
+   "website_source": "parent_school"
+  },
+  "53460": {
+   "school_name": "Al Siraat College - Online College",
+   "website": "http://www.alsiraat.vic.edu.au",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 46390,
+   "parent_name": "Al Siraat College",
+   "website_source": "parent_school"
+  },
+  "53462": {
+   "school_name": "Saints College - Fitzroy North Campus",
+   "website": "http://www.youthplus.edu.au",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 50452,
+   "parent_name": "Saints College - North Melbourne Campus",
+   "website_source": "parent_school"
+  },
+  "53463": {
+   "school_name": "Saints College - Sunshine Campus",
+   "website": "http://www.youthplus.edu.au",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 50452,
+   "parent_name": "Saints College - North Melbourne Campus",
+   "website_source": "parent_school"
+  },
+  "53464": {
+   "school_name": "Hester Hornbrook Academy - Werribee",
+   "website": "https://www.hhacademy.vic.edu.au",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 52517,
+   "parent_name": "Hester Hornbrook Academy",
+   "website_source": "parent_school"
+  },
+  "53465": {
+   "school_name": "Islamic College of Sport - South-East Campus",
+   "website": "https://islamiccollegeofsport.com.au/",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 53335,
+   "parent_name": "Islamic College of Sport",
+   "website_source": "parent_school"
+  },
+  "53466": {
+   "school_name": "Islamic College of Sport - Hoppers Crossing Campus",
+   "website": "https://islamiccollegeofsport.com.au/",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 53335,
+   "parent_name": "Islamic College of Sport",
+   "website_source": "parent_school"
+  },
+  "53470": {
+   "school_name": "OakTree College",
+   "website": "https://otc.vic.edu.au/",
+   "status": "blocked",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 0,
+    "errors": 1,
+    "home_error": "HTTP 403"
+   }
+  },
+  "53473": {
+   "school_name": "The Avenue School",
+   "website": "http://theavenueschool.vic.edu.au",
+   "status": "not_found",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 1,
+    "errors": 0
+   },
+   "note": "Only the home page could be fetched."
+  },
+  "53489": {
+   "school_name": "ECG Secondary College - Pakenham Senior Campus",
+   "website": "https://ecg.vic.edu.au/",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 40835,
+   "parent_name": "ECG Secondary College",
+   "website_source": "parent_school"
+  },
+  "53490": {
+   "school_name": "SEDA College (Victoria) - Brens Pavilion Royal Park",
+   "website": "https://seda.vic.edu.au/",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 52527,
+   "parent_name": "SEDA College (Victoria)",
    "website_source": "parent_school"
   }
  }

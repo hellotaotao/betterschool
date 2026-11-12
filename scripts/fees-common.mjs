@@ -35,11 +35,25 @@ export const STATUSES = {
   campus: 'a sub-campus; its website and fees are those of parent_acara_sml_id',
 };
 
-/** The parent school of a sub-campus that has no website of its own, else null. */
-export function parentSchoolId(school) {
+const siteOf = url => {
+  try {
+    return new URL(url).hostname.replace(/^www\./, '');
+  } catch {
+    return null;
+  }
+};
+
+/**
+ * The parent school of a sub-campus that shares the parent's fee schedule:
+ * one with no website of its own, or one listed under the parent's own site.
+ * Null for anything else, including a campus with a separate site.
+ */
+export function parentSchoolId(school, byId) {
   const parent = Number(school.rolled_school_id);
-  return school.campus_type === 'School Sub-Campus' && !school.school_url
-    && Number.isFinite(parent) && parent !== school.acara_sml_id ? parent : null;
+  if (school.campus_type !== 'School Sub-Campus' || !Number.isFinite(parent) || parent === school.acara_sml_id) return null;
+  if (!school.school_url) return parent;
+  const parentUrl = byId?.get(parent)?.school_url;
+  return parentUrl && siteOf(parentUrl) === siteOf(school.school_url) ? parent : null;
 }
 
 // Greater Sydney by postcode: the metropolitan ranges plus the Blue Mountains
@@ -50,7 +64,18 @@ export function inSydney(school) {
   return (code >= 2000 && code <= 2249) || (code >= 2555 && code <= 2574) || (code >= 2740 && code <= 2786);
 }
 
+// Greater Melbourne by postcode, on the same terms as inSydney: the metropolitan
+// block plus the Melton, Sunbury, Yarra Ranges, Mornington and Casey fringes.
+export function inMelbourne(school) {
+  const code = Number(school.postcode);
+  return (code >= 3000 && code <= 3210) || (code >= 3335 && code <= 3341) || (code >= 3427 && code <= 3443)
+    || (code >= 3750 && code <= 3811) || (code >= 3910 && code <= 3944) || (code >= 3975 && code <= 3978);
+}
+
 export const SCOPES = {
+  'melbourne-secondary': school =>
+    school.state === 'VIC' && inMelbourne(school) && school.sector !== 'Government'
+    && school.school_type !== 'Primary' && school.school_type !== 'Special',
   'sydney-secondary': school =>
     school.state === 'NSW' && inSydney(school) && school.sector !== 'Government'
     && school.school_type !== 'Primary' && school.school_type !== 'Special',

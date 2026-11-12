@@ -127,8 +127,8 @@ async function main() {
       // in the ledger as website_source "lookup" and stands in for it.
       const website = school.school_url ?? (previous.website_source === 'lookup' ? previous.website : null);
       const base = { school_name: school.school_name, website };
-      const parent = parentSchoolId(school);
-      if (!website && parent && byId.has(parent)) {
+      const parent = parentSchoolId({ ...school, school_url: website }, byId);
+      if (parent && byId.has(parent)) {
         // A campus inherits nothing from an earlier crawl or note of its own.
         const kept = { ...previous };
         delete kept.crawl;
