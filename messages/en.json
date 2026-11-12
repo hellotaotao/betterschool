@@ -51,6 +51,22 @@
     "sectorCounts": "Gov {government} · Cath {catholic} · Ind {independent}",
     "averageIcsea": "Avg ICSEA: {value}"
   },
+  "compare": {
+    "title": "Compare schools",
+    "add": "Add to compare",
+    "added": "In compare list",
+    "select": "Select {name} for comparison",
+    "trayCount": "{count} selected",
+    "open": "Compare",
+    "clear": "Clear",
+    "remove": "Remove {name}",
+    "back": "Back to details",
+    "needTwo": "Select at least two schools to compare.",
+    "full": "Up to {max} schools can be compared at once.",
+    "field": "Field",
+    "zone": "Catchment zone",
+    "noZone": "—"
+  },
   "details": {
     "title": "School details",
     "fullProfile": "Full profile page",

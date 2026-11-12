@@ -25,6 +25,7 @@ import SchoolList from '../../components/SchoolList';
 import FilterBar from '../../components/FilterBar';
 import SearchBox from '../../components/SearchBox';
 import CatchmentLookup from '../../components/CatchmentLookup';
+import CompareTable from '../../components/CompareTable';
 import BottomSheet, { SheetSnap } from '../../components/BottomSheet';
 import MapLegend from '../../components/MapLegend';
 import { LanguageToggle, LookupButton, ZoneOverlayControl, zoneOverlayStatus } from '../../components/MapControls';
@@ -42,6 +43,28 @@ const DATA_VERSION = [
   schoolsMetadata.client_dataset?.sha256 ?? '',
 ].filter(Boolean).join('-') || 'v1';
 const DATA_PARTS: string[] = schoolsMetadata.client_dataset.parts;
+// Wider than this and the columns no longer fit beside the school list.
+const MAX_COMPARE = 4;
+
+function CompareTray({ count, dictionary, onOpen, onClear }: {
+  count: number;
+  dictionary: ReturnType<typeof getMessages>;
+  onOpen: () => void;
+  onClear: () => void;
+}) {
+  return (
+    <div className="pointer-events-auto flex items-center gap-3 rounded-full bg-surface/95 px-4 py-1.5 text-xs shadow-lg">
+      <span className="text-ink-2">{formatMessage(dictionary.compare.trayCount, { count })}</span>
+      <button
+        onClick={onOpen}
+        className="rounded-ctl bg-brand px-3 py-1 font-semibold text-on-brand hover:bg-brand-deep"
+      >
+        {dictionary.compare.open}
+      </button>
+      <button onClick={onClear} className="text-muted hover:text-ink">{dictionary.compare.clear}</button>
+    </div>
+  );
+}
 
 // Deep links from the prerendered pages: /schools?school=<acara_sml_id>
 // [&catchment=1] from school and catchment pages, ?suburb=&state= from suburb
@@ -66,6 +89,8 @@ export default function SchoolsPage() {
   const [visibleSchools, setVisibleSchools] = useState<MapSchool[]>([]);
   const [selectedSchool, setSelectedSchool] = useState<MapSchool | null>(null);
   const [placeFocus, setPlaceFocus] = useState<MapSchool[] | null>(null);
+  const [compareSchools, setCompareSchools] = useState<MapSchool[]>([]);
+  const [compareOpen, setCompareOpen] = useState(false);
   const [sortBy, setSortBy] = useState<'name' | 'icsea' | 'enrolments'>('name');
   const [leftPanelOpen, setLeftPanelOpen] = useState(true);
   const [sheetSnap, setSheetSnap] = useState<SheetSnap>('peek');
@@ -212,6 +237,30 @@ export default function SchoolsPage() {
     if (!isDeselect && isMobile) setSheetSnap('expanded');
   }
 
+  const compareIds = useMemo(() => compareSchools.map(s => s.id), [compareSchools]);
+  const compareFull = compareSchools.length >= MAX_COMPARE;
+
+  const toggleCompare = useCallback((school: MapSchool) => {
+    setCompareSchools(prev => {
+      if (prev.some(s => s.id === school.id)) {
+        const next = prev.filter(s => s.id !== school.id);
+        if (next.length === 0) setCompareOpen(false);
+        return next;
+      }
+      return prev.length >= MAX_COMPARE ? prev : [...prev, school];
+    });
+  }, []);
+
+  const clearCompare = useCallback(() => {
+    setCompareSchools([]);
+    setCompareOpen(false);
+  }, []);
+
+  const openCompare = useCallback(() => {
+    setCompareOpen(true);
+    if (isMobile) setSheetSnap('expanded');
+  }, [isMobile]);
+
   function handleMapClick() {
     setSelectedSchool(null);
   }
@@ -299,6 +348,31 @@ export default function SchoolsPage() {
     return schoolPath(selectedSchool.state, schoolSlugFor(selectedSchool, allSchools), locale);
   }, [selectedSchool, allSchools, locale]);
 
+  const profileHrefFor = useCallback(
+    (school: MapSchool) => (allSchools.length === 0
+      ? undefined
+      : schoolPath(school.state, schoolSlugFor(school, allSchools), locale)),
+    [allSchools, locale],
+  );
+
+  const compareTable = (variant: 'panel' | 'sheet', topOffset?: number) => (
+    <CompareTable
+      schools={compareSchools}
+      dictionary={dictionary}
+      onRemove={toggleCompare}
+      onClear={clearCompare}
+      onClose={() => setCompareOpen(false)}
+      profileHrefFor={profileHrefFor}
+      variant={variant}
+      topOffset={topOffset}
+    />
+  );
+  const compareProps = {
+    inCompare: selectedSchool ? compareIds.includes(selectedSchool.id) : false,
+    compareFull,
+    onToggleCompare: selectedSchool ? () => toggleCompare(selectedSchool) : undefined,
+  };
+
   return (
     <div className="relative w-screen h-screen overflow-hidden">
       <div className={`absolute inset-0 z-0 bg-soft${overlayState?.features.length ? ' zone-overlay-active' : ''}`}>
@@ -361,6 +435,9 @@ export default function SchoolsPage() {
             <div className="pointer-events-auto">
               <FilterBar filters={filters} onChange={setFilters} dictionary={dictionary} variant="scroll" />
             </div>
+            {compareSchools.length > 0 && !compareOpen && (
+              <CompareTray count={compareSchools.length} dictionary={dictionary} onOpen={openCompare} onClear={clearCompare} />
+            )}
             {lookup.pickMode && (
               <div className="pointer-events-none rounded-inner bg-brand/95 px-3 py-2 text-[11px] text-on-brand shadow-md">
                 {dictionary.lookup.hint}
@@ -379,7 +456,9 @@ export default function SchoolsPage() {
             onSnapChange={setSheetSnap}
             labels={{ expand: dictionary.sidebar.expandList, collapse: dictionary.sidebar.collapseList }}
           >
-            {lookup.pin && !selectedSchool ? (
+            {compareOpen ? (
+              compareTable('sheet')
+            ) : lookup.pin && !selectedSchool ? (
               <CatchmentLookup
                 results={lookup.results}
                 lookupState={lookup.state}
@@ -403,6 +482,7 @@ export default function SchoolsPage() {
                 onToggleCatchment={catchment.toggle}
                 catchmentError={catchment.error}
                 profileHref={profileHref}
+                {...compareProps}
               />
             ) : (
               <SchoolList
@@ -417,6 +497,9 @@ export default function SchoolsPage() {
                 dictionary={dictionary}
                 locale={locale}
                 selectedCardRef={selectedCardRef}
+                compareIds={compareIds}
+                compareFull={compareFull}
+                onToggleCompare={toggleCompare}
               />
             )}
           </BottomSheet>
@@ -475,7 +558,7 @@ export default function SchoolsPage() {
           {/* Shares the right-hand column with the detail panel. Selecting a
               result swaps to that school's detail; closing it returns here,
               because the lookup state is kept. */}
-          {lookup.pin && !selectedSchool && (
+          {lookup.pin && !selectedSchool && !compareOpen && (
             <CatchmentLookup
               results={lookup.results}
               lookupState={lookup.state}
@@ -520,12 +603,23 @@ export default function SchoolsPage() {
                   dictionary={dictionary}
                   locale={locale}
                   selectedCardRef={selectedCardRef}
+                compareIds={compareIds}
+                compareFull={compareFull}
+                onToggleCompare={toggleCompare}
                 />
               </div>
             )}
           </div>
 
-          {selectedSchool && (
+          {compareOpen && compareTable('panel', topBarBottom + 8)}
+
+          {compareSchools.length > 0 && !compareOpen && (
+            <div className="absolute bottom-4 left-1/2 -translate-x-1/2 z-30">
+              <CompareTray count={compareSchools.length} dictionary={dictionary} onOpen={openCompare} onClear={clearCompare} />
+            </div>
+          )}
+
+          {selectedSchool && !compareOpen && (
             <SchoolDetail
               school={selectedSchool}
               dictionary={dictionary}
@@ -536,12 +630,13 @@ export default function SchoolsPage() {
               onToggleCatchment={catchment.toggle}
               catchmentError={catchment.error}
               profileHref={profileHref}
+              {...compareProps}
             />
           )}
 
           {/* The detail panel occupies the same right-hand column, so hide the
               legend while a school is selected instead of stacking the two. */}
-          <MapLegend zoneOverlay={zoneOverlay} label={zoneLegendLabel} hidden={!!selectedSchool} dictionary={dictionary} />
+          <MapLegend zoneOverlay={zoneOverlay} label={zoneLegendLabel} hidden={!!selectedSchool || compareOpen} dictionary={dictionary} />
         </>
       )}
     </div>

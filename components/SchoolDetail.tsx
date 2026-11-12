@@ -4,6 +4,7 @@ import { MapSchool, type MapSchoolCatchment } from '@/types/school';
 import { coveredCatchmentStates, formatMessage, getReligionLabel, getSchoolTypeLabel, getSectorLabel, Locale, Messages } from '@/lib/i18n';
 import { catchmentAbsenceKind, catchmentStateInfo } from '@/lib/catchmentStates';
 import { hasLegacyScore, sectorBadgeClass } from '@/utils/schoolFilters';
+import { feeLabel } from '@/utils/feeLabel';
 import ZoneSwatch from './ZoneSwatch';
 
 interface SchoolDetailProps {
@@ -19,6 +20,10 @@ interface SchoolDetailProps {
   profileHref?: string;
   /** Distance from the viewport top to sit below the (wrapping) top bar. */
   topOffset?: number;
+  /** Compare-list membership; omit onToggleCompare to hide the button. */
+  inCompare?: boolean;
+  compareFull?: boolean;
+  onToggleCompare?: () => void;
 }
 
 export default function SchoolDetail({
@@ -32,6 +37,9 @@ export default function SchoolDetail({
   catchmentError = false,
   profileHref,
   topOffset,
+  inCompare = false,
+  compareFull = false,
+  onToggleCompare,
 }: SchoolDetailProps) {
   const catchments = school.catchments ?? [];
   const zoneState = catchmentStateInfo(school.state);
@@ -79,6 +87,20 @@ export default function SchoolDetail({
             {dictionary.details.fullProfile}
             <span aria-hidden="true">→</span>
           </a>
+        )}
+
+        {onToggleCompare && (
+          <button
+            onClick={onToggleCompare}
+            disabled={!inCompare && compareFull}
+            className={`mb-3 w-full rounded-ctl px-3 py-1.5 text-xs font-medium transition-colors disabled:opacity-50 ${
+              inCompare
+                ? 'bg-soft-strong text-ink border border-line-strong'
+                : 'bg-surface text-link border border-line-strong hover:bg-soft'
+            }`}
+          >
+            {inCompare ? `✓ ${dictionary.compare.added}` : `+ ${dictionary.compare.add}`}
+          </button>
         )}
 
         <div className="bg-soft rounded-inner p-2.5 space-y-2 text-xs">
@@ -221,11 +243,7 @@ export default function SchoolDetail({
               <div className="flex justify-between items-center">
                 <span className="text-muted">{dictionary.details.fees}</span>
                 <span className="font-medium text-ink text-right">
-                  {school.fees.band === 'free'
-                    ? dictionary.details.feeFree
-                    : Number.isFinite(school.fees.annual_aud_min)
-                      ? `A$${school.fees.annual_aud_min}${Number.isFinite(school.fees.annual_aud_max) && school.fees.annual_aud_max !== school.fees.annual_aud_min ? `–${school.fees.annual_aud_max}` : ''}`
-                      : dictionary.details.feeUnknown}
+                  {feeLabel(school, dictionary)}
                 </span>
               </div>
             </>

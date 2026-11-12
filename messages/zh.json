@@ -51,6 +51,22 @@
     "sectorCounts": "政府 {government} · 天主教 {catholic} · 独立 {independent}",
     "averageIcsea": "平均 ICSEA：{value}"
   },
+  "compare": {
+    "title": "学校对比",
+    "add": "加入对比",
+    "added": "已加入对比",
+    "select": "选择 {name} 进行对比",
+    "trayCount": "已选 {count} 所",
+    "open": "开始对比",
+    "clear": "清空",
+    "remove": "移除 {name}",
+    "back": "返回详情",
+    "needTwo": "至少选择两所学校才能对比。",
+    "full": "最多同时对比 {max} 所学校。",
+    "field": "项目",
+    "zone": "学区",
+    "noZone": "—"
+  },
   "details": {
     "title": "学校详情",
     "fullProfile": "完整档案页",

@@ -31,6 +31,9 @@ interface SchoolListProps {
   dictionary: Messages;
   locale: Locale;
   selectedCardRef: RefObject<HTMLDivElement | null>;
+  compareIds?: string[];
+  compareFull?: boolean;
+  onToggleCompare?: (s: MapSchool) => void;
 }
 
 export default function SchoolList({
@@ -45,6 +48,9 @@ export default function SchoolList({
   dictionary,
   locale,
   selectedCardRef,
+  compareIds = [],
+  compareFull = false,
+  onToggleCompare,
 }: SchoolListProps) {
   // The viewport can legitimately contain every school in the country — the map
   // opens at a whole-of-Australia view before geolocation moves it. Rendering
@@ -106,9 +112,22 @@ export default function SchoolList({
                     : 'bg-surface border border-line hover:border-line-strong hover:shadow-sm'
                 }`}
               >
-                <h3 className="font-display text-[13px] font-semibold text-ink leading-tight">
-                  {school.school_name}
-                </h3>
+                <div className="flex items-start justify-between gap-2">
+                  <h3 className="font-display text-[13px] font-semibold text-ink leading-tight">
+                    {school.school_name}
+                  </h3>
+                  {onToggleCompare && (
+                    <input
+                      type="checkbox"
+                      checked={compareIds.includes(sid)}
+                      disabled={!compareIds.includes(sid) && compareFull}
+                      onClick={e => e.stopPropagation()}
+                      onChange={() => onToggleCompare(school)}
+                      aria-label={formatMessage(dictionary.compare.select, { name: school.school_name })}
+                      className="mt-0.5 h-3.5 w-3.5 shrink-0 cursor-pointer accent-brand"
+                    />
+                  )}
+                </div>
                 <p className="text-[11px] text-muted mt-0.5">
                   {school.suburb}, {school.state}
                 </p>
