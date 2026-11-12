@@ -11,7 +11,7 @@ import crypto from 'node:crypto';
 import fs from 'node:fs';
 import path from 'node:path';
 import {
-  RAW_DIR, SCOPES, fetchPage, htmlLinks, htmlToText, isPdf, loadLedger, loadSchools, parentSchoolId, pdfToText, saveLedger, today,
+  RAW_DIR, SCOPES, fetchPage, htmlLinks, htmlToText, isPdf, loadLedger, feePageUrls, loadSchools, parentSchoolId, pdfToText, saveLedger, today,
 } from './fees-common.mjs';
 
 const MAX_PAGES = 16;
@@ -155,6 +155,7 @@ async function main() {
         const status = previous.status === 'found' && result.status === 'fetched' ? 'found' : result.status;
         ledger.schools[id] = {
           ...previous, ...base, status, checked: today(),
+          fee_pages: feePageUrls(id),
           crawl: { pages: result.pages, errors: result.errors, ...(result.homeError ? { home_error: result.homeError } : {}) },
         };
       }

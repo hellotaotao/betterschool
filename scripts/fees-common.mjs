@@ -189,6 +189,20 @@ export function flatten(text) {
   return text.split('\n').map(line => line.trim()).filter(Boolean).join('|').replace(/[ \t]+/g, ' ');
 }
 
+/**
+ * Pages the crawl reached that look like fee pages, for a school whose figures
+ * could not be read: a person can open them, and a later pass knows where to
+ * look. Overseas-student and out-of-hours-care schedules are left out.
+ */
+export function feePageUrls(id, limit = 5) {
+  const logPath = path.join(RAW_DIR, String(id), '_log.json');
+  if (!fs.existsSync(logPath)) return [];
+  const urls = JSON.parse(fs.readFileSync(logPath, 'utf8'))
+    .filter(entry => entry.file && /fee|tuition|schedule|charges/i.test(entry.url) && !/international|overseas|oosh|music|bus|feedback|policy/i.test(entry.url))
+    .map(entry => entry.url);
+  return [...new Set(urls)].slice(0, limit);
+}
+
 export function readRawPages(id) {
   const dir = path.join(RAW_DIR, String(id));
   const logPath = path.join(dir, '_log.json');

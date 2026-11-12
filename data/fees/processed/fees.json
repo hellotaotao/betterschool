@@ -9,7 +9,10 @@
     "pages": 4,
     "errors": 0
    },
-   "note": "The only fees published are marked effective from 1 January 2024."
+   "note": "The only fees published are marked effective from 1 January 2024.",
+   "fee_pages": [
+    "https://www.smmc.nsw.edu.au/school-fees"
+   ]
   },
   "40277": {
    "school_name": "Saint Mary MacKillop Colleges Limited",
@@ -31,7 +34,10 @@
     "pages": 3,
     "errors": 0
    },
-   "note": "2025 school fees PDF holds no figures as text."
+   "note": "2025 school fees PDF holds no figures as text.",
+   "fee_pages": [
+    "https://stphilomena.qld.edu.au/wp-content/uploads/2025/03/2025_SchoolFees.pdf"
+   ]
   },
   "40294": {
    "school_name": "Divine Mercy College",
@@ -346,7 +352,10 @@
     "pages": 6,
     "errors": 0
    },
-   "note": "Tuition fees page text holds no figures."
+   "note": "Tuition fees page text holds no figures.",
+   "fee_pages": [
+    "https://heritage.nsw.edu.au/tuition-fees/"
+   ]
   },
   "40611": {
    "school_name": "St Paul's International College",
@@ -357,7 +366,14 @@
     "pages": 14,
     "errors": 0
    },
-   "note": "No fee page among the pages fetched."
+   "note": "No fee page among the pages fetched.",
+   "fee_pages": [
+    "https://www.spic.nsw.edu.au/news-events/facebook-feed/",
+    "https://www.spic.nsw.edu.au/zh/news-events/facebook-feed/",
+    "https://www.spic.nsw.edu.au/ko/news-events/facebook-feed/",
+    "https://www.spic.nsw.edu.au/vi/news-events/facebook-feed/",
+    "https://www.spic.nsw.edu.au/ja/news-events/facebook-feed/"
+   ]
   },
   "40613": {
    "school_name": "Wongutha Christian Aboriginal Parent-Directed School",
@@ -531,7 +547,10 @@
     "pages": 3,
     "errors": 0
    },
-   "note": "Fees and assistance page text holds no figures."
+   "note": "Fees and assistance page text holds no figures.",
+   "fee_pages": [
+    "https://www.stpats.qld.edu.au/our-college/fees-and-assistance/"
+   ]
   },
   "40685": {
    "school_name": "OneSchool Global WA",
@@ -559,7 +578,14 @@
     "pages": 16,
     "errors": 0
    },
-   "note": "Fees pages list higher-education courses only."
+   "note": "Fees pages list higher-education courses only.",
+   "fee_pages": [
+    "https://ozford.edu.au/admissions/fees/",
+    "https://ozford.edu.au/statement-of-tuition-assurance/",
+    "https://ozford.edu.au/documents/204/2026_FEE_HELP_information_booklet_-_Final.pdf",
+    "https://ozford.edu.au/documents/438/UNDERGRADUATE_2026_FEE_SCHEDULE_FOR_AUSTRALIAN_CITIZENS.pdf",
+    "https://ozford.edu.au/documents/437/POSTGRADUATE_2026_FEE_SCHEDULE_FOR_AUSTRALIAN_CITIZENS_.pdf"
+   ]
   },
   "40721": {
    "school_name": "Lakes Grammar - An Anglican School",
@@ -674,7 +700,10 @@
     "pages": 5,
     "errors": 0
    },
-   "note": "Fees page text holds no figures."
+   "note": "Fees page text holds no figures.",
+   "fee_pages": [
+    "https://htc.nsw.edu.au/fees"
+   ]
   },
   "40792": {
    "school_name": "Newman Senior Technical College",
@@ -875,7 +904,10 @@
     "pages": 5,
     "errors": 0
    },
-   "note": "Fee page text holds no figures."
+   "note": "Fee page text holds no figures.",
+   "fee_pages": [
+    "https://staines.qld.edu.au/pay-my-fees/"
+   ]
   },
   "40856": {
    "school_name": "The Scots College, Glengarry campus",
@@ -1041,7 +1073,14 @@
     "pages": 16,
     "errors": 0
    },
-   "note": "The only tuition document found is a 2023 schedule for international students."
+   "note": "The only tuition document found is a 2023 schedule for international students.",
+   "fee_pages": [
+    "https://www.cccc.vic.edu.au/enrolments/school-fees-2",
+    "https://cccc-vic.s3.ap-southeast-2.amazonaws.com/uploads/files/2023_College_Tuition.pdf?v=1686279224",
+    "https://cccc-vic.s3.ap-southeast-2.amazonaws.com/uploads/files/2025_College_Tuition-1-1.pdf?v=1740698435",
+    "https://cccc-vic.s3.ap-southeast-2.amazonaws.com/uploads/School-Fees/2026_College_Tuition.pdf?v=1770155385",
+    "https://cccc-vic.s3.ap-southeast-2.amazonaws.com/uploads/Enrolments/2027_College_Tuition.pdf?v=1793936973"
+   ]
   },
   "40904": {
    "school_name": "St Andrews College, Senior Campus",
@@ -1206,7 +1245,12 @@
     "pages": 9,
     "errors": 0
    },
-   "note": "2026 schedule is by family structure (primary and secondary students together); no per-student fee could be read."
+   "note": "2026 schedule is by family structure (primary and secondary students together); no per-student fee could be read.",
+   "fee_pages": [
+    "https://www.sacc.catholic.edu.au/enrolment/school-fees/",
+    "https://os-schools.s3-ap-southeast-2.amazonaws.com/sacc-catholic-edu-au/bundle11/School%20Fee%20Schedule%20-%202026.pdf",
+    "https://os-schools.s3-ap-southeast-2.amazonaws.com/sacc-catholic-edu-au/bundle11/Fee%20Payment%20Options.pdf"
+   ]
   },
   "40934": {
    "school_name": "St Mary and St Mina's Coptic Orthodox College, Rockdale campus",
@@ -1401,7 +1445,11 @@
     "pages": 5,
     "errors": 0
    },
-   "note": "The only fee table published is for 2024."
+   "note": "The only fee table published is for 2024.",
+   "fee_pages": [
+    "https://www.shcoota.nsw.edu.au/school-fees",
+    "https://shcscootamundra.schoolzineplus.com/_file/media/6181/school_fees_2026.pdf"
+   ]
   },
   "43146": {
    "school_name": "St Anne's Catholic College",
@@ -1423,7 +1471,11 @@
     "pages": 5,
     "errors": 0
    },
-   "note": "2026 school fees PDF holds no figures as text."
+   "note": "2026 school fees PDF holds no figures as text.",
+   "fee_pages": [
+    "https://www.mcauleytumut.nsw.edu.au/note-to-parents/school-fees",
+    "https://mcauleyccstumut.schoolzineplus.com/_file/media/16160/school_fees_2026.pdf"
+   ]
   },
   "43151": {
    "school_name": "Carroll College",
@@ -1482,7 +1534,11 @@
     "pages": 5,
     "errors": 0
    },
-   "note": "2026 fee schedule PDF lists amounts but the year columns did not come through in order."
+   "note": "2026 fee schedule PDF lists amounts but the year columns did not come through in order.",
+   "fee_pages": [
+    "https://tccg.schoolzineplus.com/_file/media/2664/2026_fee_schedule.pdf",
+    "https://www.trinitycollege.nsw.edu.au/_file/media/2664/2026_fee_schedule.pdf"
+   ]
   },
   "43153": {
    "school_name": "Lumen Christi Catholic College",
@@ -5381,14 +5437,21 @@
     "pages": 6,
     "errors": 0
    },
-   "note": "2026 school fees PDF text holds the discount table but not the fee figures."
+   "note": "2026 school fees PDF text holds the discount table but not the fee figures.",
+   "fee_pages": [
+    "https://www.sjccdbb.catholic.edu.au/enrolments/schedule-of-fees/",
+    "https://www.sjccdbb.catholic.edu.au/wp-content/uploads/2026/02/St-Josephs-Catholic-College-School-Fees-2026.pdf"
+   ]
   },
   "43271": {
    "school_name": "St Leo's Catholic College",
    "website": "http://www.stleos.nsw.edu.au",
    "status": "not_found",
    "checked": "2026-11-12",
-   "note": "Fees are set by Catholic Schools Broken Bay; not on the college site."
+   "note": "Fees are set by Catholic Schools Broken Bay; not on the college site.",
+   "fee_pages": [
+    "https://stleos.nsw.edu.au/future-students/priority-feeder-schools/"
+   ]
   },
   "43272": {
    "school_name": "St Paul's Catholic College",
@@ -5472,7 +5535,11 @@
     "pages": 9,
     "errors": 1
    },
-   "note": "Fees page lists only the 2026 school resource fee ($1,100-$1,245), not tuition."
+   "note": "Fees page lists only the 2026 school resource fee ($1,100-$1,245), not tuition.",
+   "fee_pages": [
+    "https://www.medowiecmcc.catholic.edu.au/enrolment/fees/",
+    "https://www.medowiecmcc.catholic.edu.au/enrolment/fees/payment-of-fees/"
+   ]
   },
   "43320": {
    "school_name": "St Clare's High School",
@@ -5661,7 +5728,10 @@
     "pages": 10,
     "errors": 2
    },
-   "note": "School fees page text holds no figures."
+   "note": "School fees page text holds no figures.",
+   "fee_pages": [
+    "https://www.sjchsdow.catholic.edu.au/enrol/school-fees/"
+   ]
   },
   "43330": {
    "school_name": "Magdalene Catholic College",
@@ -10968,7 +11038,10 @@
     "pages": 4,
     "errors": 0
    },
-   "note": "Fee page describes the fee components but shows no figures."
+   "note": "Fee page describes the fee components but shows no figures.",
+   "fee_pages": [
+    "https://www.goodsamaritan.nsw.edu.au/schedule-of-fees-charges"
+   ]
   },
   "43492": {
    "school_name": "Aquinas Catholic College",
@@ -12592,7 +12665,11 @@
     "pages": 10,
     "errors": 0
    },
-   "note": "2026 schedule of fees PDF holds no figures as text."
+   "note": "2026 schedule of fees PDF holds no figures as text.",
+   "fee_pages": [
+    "https://www.edmundricecollege.nsw.edu.au/enrolment/fees/",
+    "https://www.edmundricecollege.nsw.edu.au/app/uploads/2026/09/Schedule-of-Fees-Charges-2026-4.pdf"
+   ]
   },
   "43664": {
    "school_name": "Rosebank College",
@@ -12652,7 +12729,11 @@
     "pages": 16,
     "errors": 0
    },
-   "note": "Fee schedule page text shows sibling discounts but not the fee figures."
+   "note": "Fee schedule page text shows sibling discounts but not the fee figures.",
+   "fee_pages": [
+    "https://www.stedwards.nsw.edu.au/enrolment/fee-schedule/",
+    "https://www.stedwards.nsw.edu.au/media/documents/Parent_Code_of_Conduct_LgmFeeB.pdf"
+   ]
   },
   "43666": {
    "school_name": "Waverley College",
@@ -13482,7 +13563,11 @@
     "pages": 8,
     "errors": 0
    },
-   "note": "Fee pages exist but show no figures."
+   "note": "Fee pages exist but show no figures.",
+   "fee_pages": [
+    "https://rpcs.nsw.edu.au/enrol/fees-scholarships/",
+    "https://rpcs.nsw.edu.au/fees/"
+   ]
   },
   "43699": {
    "school_name": "Condell Park Christian School",
@@ -13661,7 +13746,11 @@
     "pages": 7,
     "errors": 0
    },
-   "note": "2026 fee schedule PDF holds no figures as text."
+   "note": "2026 fee schedule PDF holds no figures as text.",
+   "fee_pages": [
+    "https://www.ccs.nsw.edu.au/fees-payments/",
+    "https://www.ccs.nsw.edu.au/core/uploads/2026-Fee-Schedule-.pdf"
+   ]
   },
   "43713": {
    "school_name": "Greenacre Christian College",
@@ -13714,7 +13803,10 @@
     "pages": 3,
     "errors": 0
    },
-   "note": "Fee schedule page text holds no figures."
+   "note": "Fee schedule page text holds no figures.",
+   "fee_pages": [
+    "https://www.koinonia.nsw.edu.au/fee-schedule"
+   ]
   },
   "43716": {
    "school_name": "Newcastle Waldorf School",
@@ -13877,7 +13969,11 @@
     "pages": 5,
     "errors": 0
    },
-   "note": "Fees published per term only (2026: $1,568 a term Classes 1-6, $2,575 Classes 7-12, first child); the number of terms is not stated, so no annual figure is recorded."
+   "note": "Fees published per term only (2026: $1,568 a term Classes 1-6, $2,575 Classes 7-12, first child); the number of terms is not stated, so no annual figure is recorded.",
+   "fee_pages": [
+    "https://kindlehill.nsw.edu.au/fees/",
+    "https://kindlehill.nsw.edu.au/wp-content/uploads/2026/05/2026-School-Fee-Schedule-2-1.pdf"
+   ]
   },
   "43755": {
    "school_name": "The Armidale Waldorf School",
@@ -13888,7 +13984,11 @@
     "pages": 5,
     "errors": 0
    },
-   "note": "2026 fee schedule PDF lists amounts but most class labels did not come through as text."
+   "note": "2026 fee schedule PDF lists amounts but most class labels did not come through as text.",
+   "fee_pages": [
+    "https://waldorf.nsw.edu.au/fees/",
+    "https://waldorf.nsw.edu.au/wp-content/uploads/2026/02/2026-Fee-Schedule.pdf"
+   ]
   },
   "43756": {
    "school_name": "Australian Performing Arts Grammar School",
@@ -13934,7 +14034,10 @@
     "pages": 6,
     "errors": 0
    },
-   "note": "2026 fee schedule PDF holds no figures as text."
+   "note": "2026 fee schedule PDF holds no figures as text.",
+   "fee_pages": [
+    "https://standrewscs.nsw.edu.au/wp-content/uploads/2025/11/2026-Fee-Schedule.pdf"
+   ]
   },
   "43758": {
    "school_name": "Kuyper Christian School",
@@ -13945,7 +14048,10 @@
     "pages": 7,
     "errors": 0
    },
-   "note": "Fees page shows no figures."
+   "note": "Fees page shows no figures.",
+   "fee_pages": [
+    "https://kuyper.nsw.edu.au/enrolment/fees/"
+   ]
   },
   "43759": {
    "school_name": "MidCoast Christian College",
@@ -13956,7 +14062,11 @@
     "pages": 10,
     "errors": 0
    },
-   "note": "2026 fees PDF lists amounts but its year labels did not come through in order."
+   "note": "2026 fees PDF lists amounts but its year labels did not come through in order.",
+   "fee_pages": [
+    "https://mccc.nsw.edu.au/enrol/fees/",
+    "https://mccc.nsw.edu.au/wp-content/uploads/2026-Fees-for-Website-1.pdf"
+   ]
   },
   "43760": {
    "school_name": "Shearwater, the Mullumbimby Steiner School",
@@ -14155,7 +14265,10 @@
     "pages": 5,
     "errors": 0
    },
-   "note": "Fee structure page text holds no figures."
+   "note": "Fee structure page text holds no figures.",
+   "fee_pages": [
+    "https://www.smcs.nsw.edu.au/fee-structure"
+   ]
   },
   "43767": {
    "school_name": "Hinterland Christian College",
@@ -14166,7 +14279,11 @@
     "pages": 4,
     "errors": 0
    },
-   "note": "Fees PDF (2025-2026) holds no figures as text."
+   "note": "Fees PDF (2025-2026) holds no figures as text.",
+   "fee_pages": [
+    "https://www.hinterland.nsw.edu.au/fees",
+    "https://cdn.prod.website-files.com/631978977d1a5ff55856a7c7/6801f11eafcedb4671e993c5_SCHOOL%20FEES%202025_2026.pdf"
+   ]
   },
   "43770": {
    "school_name": "Calderwood Christian School",
@@ -14259,7 +14376,12 @@
     "pages": 16,
     "errors": 0
    },
-   "note": "Only the preschool fee schedule was reached."
+   "note": "Only the preschool fee schedule was reached.",
+   "fee_pages": [
+    "https://www.moamagrammar.nsw.edu.au/our-school/news-and-events/news-feed/",
+    "https://www.moamagrammar.nsw.edu.au/enrolments/fees/",
+    "https://magpublic.blob.core.windows.net/docs/Website/2027%20Preschool%20-%20Fee%20Schedule.pdf"
+   ]
   },
   "43778": {
    "school_name": "Blue Hills College",
@@ -14308,7 +14430,14 @@
     "pages": 10,
     "errors": 0
    },
-   "note": "2026 fees published per term only; the number of terms is not stated in the schedule."
+   "note": "2026 fees published per term only; the number of terms is not stated in the schedule.",
+   "fee_pages": [
+    "https://capebyronsteiner.nsw.edu.au/schoolfees/",
+    "https://capebyronsteiner.nsw.edu.au/wp-content/uploads/2025/09/2026-School-Fees-1.pdf",
+    "https://capebyronsteiner.nsw.edu.au/wp-content/uploads/2025/09/2026-School-Fees-OTHER-FEES.pdf",
+    "https://capebyronsteiner.nsw.edu.au/wp-content/uploads/2026/09/2027-School-Fees-term.pdf",
+    "https://capebyronsteiner.nsw.edu.au/wp-content/uploads/2026/09/2027-School-Fees-other-charges.pdf"
+   ]
   },
   "43780": {
    "school_name": "Aetaomah School",
@@ -14319,7 +14448,10 @@
     "pages": 5,
     "errors": 0
    },
-   "note": "Fee schedule page text holds no figures."
+   "note": "Fee schedule page text holds no figures.",
+   "fee_pages": [
+    "https://www.aetaomah.nsw.edu.au/fee-schedule"
+   ]
   },
   "43781": {
    "school_name": "Linuwel School Ltd",
@@ -14389,7 +14521,10 @@
     "pages": 8,
     "errors": 0
    },
-   "note": "School fees page shows no figures."
+   "note": "School fees page shows no figures.",
+   "fee_pages": [
+    "https://www.tyndale.edu.au/enrolment/school-fees/"
+   ]
   },
   "43785": {
    "school_name": "Sydney Grammar School",
@@ -14400,7 +14535,12 @@
     "pages": 10,
     "errors": 0
    },
-   "note": "Fees page text holds no figures; they may sit in a linked document or script."
+   "note": "Fees page text holds no figures; they may sit in a linked document or script.",
+   "fee_pages": [
+    "https://www.sydgram.nsw.edu.au/community-quicklinks/parents/pay-fees-online/",
+    "https://www.sydgram.nsw.edu.au/admissions/fee-assisted-places/",
+    "https://www.sydgram.nsw.edu.au/admissions/fees/"
+   ]
   },
   "43787": {
    "school_name": "Orange Anglican Grammar School",
@@ -14411,7 +14551,10 @@
     "pages": 2,
     "errors": 0
    },
-   "note": "2026 fees PDF holds no figures as text."
+   "note": "2026 fees PDF holds no figures as text.",
+   "fee_pages": [
+    "https://media.digistormhosting.com.au/oags-au-nsw-380-website-2023/content/2026-Fees-Charges.pdf?v=1767585266"
+   ]
   },
   "43788": {
    "school_name": "Illawarra Christian School",
@@ -14898,7 +15041,10 @@
     "pages": 4,
     "errors": 0
    },
-   "note": "Fees page and 2026 fee policy hold no figures as text."
+   "note": "Fees page and 2026 fee policy hold no figures as text.",
+   "fee_pages": [
+    "https://www.krishnaschool.nsw.edu.au/fees"
+   ]
   },
   "43809": {
    "school_name": "Wollemi College",
@@ -14936,7 +15082,13 @@
     "pages": 9,
     "errors": 1
    },
-   "note": "2026 fee sheet PDF holds no figures as text."
+   "note": "2026 fee sheet PDF holds no figures as text.",
+   "fee_pages": [
+    "https://www.rainbowridge.nsw.edu.au/fee-sheet-2026/",
+    "https://www.rainbowridge.nsw.edu.au/fee-sheet-2025/",
+    "http://www.rainbowridge.nsw.edu.au/wp-content/uploads/2025/12/Fee-Sheet-2026.pdf",
+    "http://www.rainbowridge.nsw.edu.au/wp-content/uploads/2024/12/Fee-Sheet-2025.pdf"
+   ]
   },
   "43811": {
    "school_name": "St Paul's College",
@@ -15147,7 +15299,13 @@
     "pages": 14,
     "errors": 1
    },
-   "note": "2027 fee schedule PDF found; the tuition table did not come through as text."
+   "note": "2027 fee schedule PDF found; the tuition table did not come through as text.",
+   "fee_pages": [
+    "https://www.norwest.nsw.edu.au/enrolment/fees-scholarships",
+    "https://www.norwest.nsw.edu.au/news/helping-your-child-feel-like-they-belong-at-school",
+    "https://media.digistormhosting.com.au/ncc-au-nsw-678-website/documents/2027-NWCC-Fee-Schedule_Final.pdf?v=1791101460",
+    "https://media.digistormhosting.com.au/ncc-au-nsw-678-website/content/2023-NWCC-Fee-Schedule_Final2.pdf?mtime=20221017050433"
+   ]
   },
   "43825": {
    "school_name": "Reddam House, Bondi Campus",
@@ -15610,7 +15768,10 @@
     "pages": 15,
     "errors": 0
    },
-   "note": "Fee schedule page text holds no figures."
+   "note": "Fee schedule page text holds no figures.",
+   "fee_pages": [
+    "https://www.thac.nsw.edu.au/enrolments/fee-schedule/"
+   ]
   },
   "43844": {
    "school_name": "Kinross Wolaroi School",
@@ -15684,7 +15845,12 @@
     "pages": 8,
     "errors": 0
    },
-   "note": "2027 school fees page text holds no figures."
+   "note": "2027 school fees page text holds no figures.",
+   "fee_pages": [
+    "https://www.avondaleschool.nsw.edu.au/enrolment/fees",
+    "https://www.avondaleschool.nsw.edu.au/enrolment/fees/school-fees",
+    "https://www.avondaleschool.nsw.edu.au/enrolment/fees/elc-fees"
+   ]
   },
   "43846": {
    "school_name": "Pymble Ladies' College",
@@ -15797,7 +15963,10 @@
     "pages": 7,
     "errors": 0
    },
-   "note": "Fee schedule page text holds no figures."
+   "note": "Fee schedule page text holds no figures.",
+   "fee_pages": [
+    "https://hcs.nsw.edu.au/fee-schedule/"
+   ]
   },
   "43849": {
    "school_name": "Scots All Saints College",
@@ -16044,7 +16213,13 @@
     "pages": 15,
     "errors": 0
    },
-   "note": "School fees page text holds no figures."
+   "note": "School fees page text holds no figures.",
+   "fee_pages": [
+    "https://masada.nsw.edu.au/school-fees/",
+    "https://masada.nsw.edu.au/iw/school-fees/",
+    "https://masada.nsw.edu.au/zh-CN/school-fees/",
+    "https://masada.nsw.edu.au/zh-TW/school-fees/"
+   ]
   },
   "43860": {
    "school_name": "Toongabbie Christian College",
@@ -16055,7 +16230,11 @@
     "pages": 15,
     "errors": 0
    },
-   "note": "Fee structure page text holds no figures."
+   "note": "Fee structure page text holds no figures.",
+   "fee_pages": [
+    "https://www.tcc.nsw.edu.au/enrolment/fee-structure/",
+    "https://www.tcc.nsw.edu.au/wp-content/uploads/2022/10/TCC-How-to-Pay-College-Fees-website-flyer.pdf"
+   ]
   },
   "43861": {
    "school_name": "Northholm Grammar School",
@@ -16155,7 +16334,12 @@
     "pages": 14,
     "errors": 0
    },
-   "note": "Tuition fees page text holds no figures."
+   "note": "Tuition fees page text holds no figures.",
+   "fee_pages": [
+    "https://www.carinya.nsw.edu.au/tuition-fees",
+    "https://www.carinya.nsw.edu.au/fee-calculator",
+    "https://www.carinya.nsw.edu.au/fees-faqs"
+   ]
   },
   "43866": {
    "school_name": "Carinya Christian School Tamworth",
@@ -16166,7 +16350,12 @@
     "pages": 14,
     "errors": 0
    },
-   "note": "Tuition fees page text holds no figures."
+   "note": "Tuition fees page text holds no figures.",
+   "fee_pages": [
+    "https://www.carinya.nsw.edu.au/tuition-fees",
+    "https://www.carinya.nsw.edu.au/fee-calculator",
+    "https://www.carinya.nsw.edu.au/fees-faqs"
+   ]
   },
   "43867": {
    "school_name": "St Bishoy Coptic Orthodox College",
@@ -16249,7 +16438,11 @@
     "pages": 15,
     "errors": 0
    },
-   "note": "Only overseas-student fees were linked from the pages fetched."
+   "note": "Only overseas-student fees were linked from the pages fetched.",
+   "fee_pages": [
+    "https://grg.nsw.edu.au/enrolment/fees/",
+    "https://grg.nsw.edu.au/wp-content/uploads/2025/11/2026-Fee-Structure.pdf"
+   ]
   },
   "43875": {
    "school_name": "SCECGS Redlands",
@@ -16475,7 +16668,11 @@
     "pages": 14,
     "errors": 0
    },
-   "note": "2026 fees PDF holds no text (likely an image)."
+   "note": "2026 fees PDF holds no text (likely an image).",
+   "fee_pages": [
+    "https://negs.nsw.edu.au/enrol-with-us/school-fees/",
+    "https://negs.nsw.edu.au/wp-content/uploads/2026/03/2026-NEGS-Collated-Fees.pdf"
+   ]
   },
   "43883": {
    "school_name": "The King's School",
@@ -16531,7 +16728,11 @@
     "pages": 8,
     "errors": 0
    },
-   "note": "Fees page text holds no figures."
+   "note": "Fees page text holds no figures.",
+   "fee_pages": [
+    "https://www.scas.nsw.edu.au/fees",
+    "https://scas.nsw.edu.au/fees"
+   ]
   },
   "43889": {
    "school_name": "St Philip's Christian College - Port Stephens",
@@ -16601,7 +16802,11 @@
     "source_urls": [
      "https://www.wcc.nsw.edu.au/"
     ]
-   }
+   },
+   "fee_pages": [
+    "https://www.wcc.nsw.edu.au/enrol/fee-schedule/",
+    "https://www.wcc.nsw.edu.au/search/?query=fees"
+   ]
   },
   "43892": {
    "school_name": "Wollondilly Anglican College",
@@ -16612,7 +16817,11 @@
     "pages": 13,
     "errors": 0
    },
-   "note": "Fees and charges page text holds no figures."
+   "note": "Fees and charges page text holds no figures.",
+   "fee_pages": [
+    "https://www.wac.nsw.edu.au/enrolments/fees-and-charges/",
+    "https://www.wac.nsw.edu.au/documents/74/Schedule_of_Fees__Charges_2026.pdf"
+   ]
   },
   "43893": {
    "school_name": "Brightwaters Christian College",
@@ -16718,7 +16927,11 @@
     "pages": 9,
     "errors": 0
    },
-   "note": "2026 fee schedule PDF found; no figures came through as text."
+   "note": "2026 fee schedule PDF found; no figures came through as text.",
+   "fee_pages": [
+    "https://www.korowal.nsw.edu.au/enrolments/information-and-fees/",
+    "https://www.korowal.nsw.edu.au/wp-content/uploads/2025/10/2026-Korowal-School-Fee-Schedule.pdf"
+   ]
   },
   "43901": {
    "school_name": "Shellharbour Anglican College",
@@ -16771,7 +16984,10 @@
     "pages": 12,
     "errors": 0
    },
-   "note": "2026 fee schedule text shows camp costs but not tuition."
+   "note": "2026 fee schedule text shows camp costs but not tuition.",
+   "fee_pages": [
+    "https://richmond.nsw.edu.au/wp-content/uploads/2026/02/Fee-Schedule-2026-1.pdf"
+   ]
   },
   "43904": {
    "school_name": "Trinity Anglican College - Albury",
@@ -17101,7 +17317,10 @@
     "pages": 4,
     "errors": 0
    },
-   "note": "School fees page text holds no figures."
+   "note": "School fees page text holds no figures.",
+   "fee_pages": [
+    "https://www.alamanah.nsw.edu.au/school-fees/"
+   ]
   },
   "43920": {
    "school_name": "Kambala",
@@ -17161,7 +17380,10 @@
     "pages": 5,
     "errors": 0
    },
-   "note": "Fees page text holds no figures."
+   "note": "Fees page text holds no figures.",
+   "fee_pages": [
+    "https://www.scotsalbury.nsw.edu.au/joinscots/fees"
+   ]
   },
   "43924": {
    "school_name": "Southern Highlands Christian School",
@@ -17454,7 +17676,12 @@
     "pages": 16,
     "errors": 0
    },
-   "note": "2027 fee schedule PDF lists amounts but its year-level labels did not come through as text."
+   "note": "2027 fee schedule PDF lists amounts but its year-level labels did not come through as text.",
+   "fee_pages": [
+    "https://www.aics.nsw.edu.au/enrolment-and-student-affairs/tuition-fees",
+    "https://cdn.prod.website-files.com/698e3fdb6b1a60689a3f4053/6af256594db94dd3a2ddbb0e_2027%20Fee%20Schedule.pdf",
+    "https://cdn.prod.website-files.com/698e3fdb6b1a60689a3f4053/69b828b164c935cfc8645b41_AICS-Student-Fee-Payment-Plan-Agreement.pdf"
+   ]
   },
   "43938": {
    "school_name": "Penrith Anglican College",
@@ -17861,7 +18088,10 @@
     "pages": 4,
     "errors": 0
    },
-   "note": "School fees page text holds no figures."
+   "note": "School fees page text holds no figures.",
+   "fee_pages": [
+    "https://rissalah.nsw.edu.au/school-fees/"
+   ]
   },
   "43951": {
    "school_name": "Heritage College Lake Macquarie",
@@ -17872,7 +18102,10 @@
     "pages": 6,
     "errors": 0
    },
-   "note": "Fees page text holds no figures."
+   "note": "Fees page text holds no figures.",
+   "fee_pages": [
+    "https://lakemac.heritage.edu.au/fees"
+   ]
   },
   "43952": {
    "school_name": "Al-Faisal College",
@@ -18056,7 +18289,10 @@
     "pages": 16,
     "errors": 0
    },
-   "note": "Fees page text holds no figures."
+   "note": "Fees page text holds no figures.",
+   "fee_pages": [
+    "https://www.arndell.nsw.edu.au/enrolments/fees/"
+   ]
   },
   "43962": {
    "school_name": "Bethel Christian School",
@@ -18078,7 +18314,10 @@
     "pages": 3,
     "errors": 0
    },
-   "note": "2027 fees published per term ($2,671 K-2, $2,744 Years 3-6, $3,741 Years 7-10, $4,009 Year 11); only Year 12 states its number of terms."
+   "note": "2027 fees published per term ($2,671 K-2, $2,744 Years 3-6, $3,741 Years 7-10, $4,009 Year 11); only Year 12 states its number of terms.",
+   "fee_pages": [
+    "https://www.bdc.nsw.edu.au/join-our-college/fees-and-financial-terms"
+   ]
   },
   "43964": {
    "school_name": "Blue Mountains Grammar School",
@@ -18310,7 +18549,12 @@
     "pages": 12,
     "errors": 0
    },
-   "note": "The only fee statement published is for 2022."
+   "note": "The only fee statement published is for 2022.",
+   "fee_pages": [
+    "https://www.galstaun.nsw.edu.au/enrolments/fees/",
+    "https://www.galstaun.nsw.edu.au/wp-content/uploads/2026-School-Fees-.pdf",
+    "https://www.galstaun.nsw.edu.au/wp-content/uploads/2022-Statement-of-Fees.pdf"
+   ]
   },
   "43976": {
    "school_name": "Arden Anglican School",
@@ -18452,7 +18696,10 @@
     "pages": 6,
     "errors": 0
    },
-   "note": "Fees page text holds no figures."
+   "note": "Fees page text holds no figures.",
+   "fee_pages": [
+    "https://www.mfis.nsw.edu.au/day-to-day/fees-and-payments/"
+   ]
   },
   "43981": {
    "school_name": "Nowra Christian School",
@@ -18493,7 +18740,10 @@
     "pages": 4,
     "errors": 0
    },
-   "note": "Fees page text holds no figures."
+   "note": "Fees page text holds no figures.",
+   "fee_pages": [
+    "https://www.stmary.nsw.edu.au/the-school/fees"
+   ]
   },
   "43985": {
    "school_name": "Pacific Hills Christian School",
@@ -18561,7 +18811,10 @@
     "pages": 15,
     "errors": 0
    },
-   "note": "College fees page text holds no figures."
+   "note": "College fees page text holds no figures.",
+   "fee_pages": [
+    "https://www.plc.nsw.edu.au/enrolments/college-fees/"
+   ]
   },
   "43988": {
    "school_name": "The Athena School",
@@ -19182,7 +19435,10 @@
     "pages": 9,
     "errors": 0
    },
-   "note": "2027 schedule of fees PDF found; no figures came through as text."
+   "note": "2027 schedule of fees PDF found; no figures came through as text.",
+   "fee_pages": [
+    "https://www.mamre.nsw.edu.au/documents/557/Mamre_Schedule_of_fees_and_charges_for_2027_1_gXi4ttw.pdf"
+   ]
   },
   "44020": {
    "school_name": "Hunter Christian School",
@@ -19243,7 +19499,10 @@
     "pages": 3,
     "errors": 0
    },
-   "note": "Fees published per term only ($4,180 primary, $5,300 Stages 4-5, $5,825 Stage 6); the number of terms is not stated."
+   "note": "Fees published per term only ($4,180 primary, $5,300 Stages 4-5, $5,825 Stage 6); the number of terms is not stated.",
+   "fee_pages": [
+    "https://static1.squarespace.com/static/502a34d3e4b05bc1fa6351ec/t/691d4a7b8ad76d57aa66e616/1763527291823/Enrolment+Schedule+of+Fees+2026.docx.pdf"
+   ]
   },
   "44023": {
    "school_name": "Northern Beaches Christian School",
@@ -19544,7 +19803,12 @@
     "pages": 13,
     "errors": 0
    },
-   "note": "2027 fees schedule PDF holds no figures as text."
+   "note": "2027 fees schedule PDF holds no figures as text.",
+   "fee_pages": [
+    "https://starmelb.catholic.edu.au/enrolments/fees/",
+    "https://starmelb.catholic.edu.au/wp-content/uploads/2026/11/Fees-Schedule-2027.pdf",
+    "http://starmelb.catholic.edu.au/wp-content/uploads/2022/01/Fees-Schedule-2022.pdf"
+   ]
   },
   "45696": {
    "school_name": "Xavier College",
@@ -19669,7 +19933,12 @@
     "pages": 13,
     "errors": 2
    },
-   "note": "Fees page text holds no figures."
+   "note": "Fees page text holds no figures.",
+   "fee_pages": [
+    "https://www.mlmc.vic.edu.au/enrolment/fees",
+    "https://mlmc-vic.s3.ap-southeast-2.amazonaws.com/uploads/Documents/Newsletter-Documents/2026-NL-documents/Schedule-of-Fees-and-Payments-2026.pdf",
+    "https://mlmc-vic.s3.ap-southeast-2.amazonaws.com/uploads/Documents/Schedule-of-Fees/Schedule-of-Fees-and-Payments-2023.pdf"
+   ]
   },
   "45712": {
    "school_name": "Kilbreda College",
@@ -19773,7 +20042,12 @@
     "pages": 11,
     "errors": 0
    },
-   "note": "Only fees for full-fee-paying overseas students were found."
+   "note": "Only fees for full-fee-paying overseas students were found.",
+   "fee_pages": [
+    "https://www.aloysius.vic.edu.au/enrolments/fees-and-uniform",
+    "https://media.digistormhosting.com.au/sac-au-vic-809-website/documents/St-Aloysius-College-Fee-Schedule-2027.pdf?v=1790138757",
+    "https://media.digistormhosting.com.au/sac-au-vic-809-website/content/2027-FFPOS-Tuition-Fees.pdf?v=1788756344"
+   ]
   },
   "45748": {
    "school_name": "St Columba's College",
@@ -20173,7 +20447,10 @@
     "pages": 11,
     "errors": 0
    },
-   "note": "Fees and charges page text lists program levies but not tuition."
+   "note": "Fees and charges page text lists program levies but not tuition.",
+   "fee_pages": [
+    "https://www.sbc.vic.edu.au/enrolments/fees-and-charges"
+   ]
   },
   "45865": {
    "school_name": "Whitefriars College",
@@ -20411,7 +20688,10 @@
     "pages": 6,
     "errors": 0
    },
-   "note": "Fees page text holds no figures."
+   "note": "Fees page text holds no figures.",
+   "fee_pages": [
+    "https://www.emmaus.vic.edu.au/enrolments/fees"
+   ]
   },
   "45947": {
    "school_name": "Aquinas College",
@@ -20465,7 +20745,12 @@
     "pages": 14,
     "errors": 1
    },
-   "note": "2026 tuition fee letter PDF holds no figures as text."
+   "note": "2026 tuition fee letter PDF holds no figures as text.",
+   "fee_pages": [
+    "https://www.avemaria.vic.edu.au/enrolments-and-tours/fees-levies",
+    "https://www.avemaria.vic.edu.au/uploads/Enrolments/Letter-re.-2026-Tuition-Fees.pdf",
+    "https://www.avemaria.vic.edu.au/uploads/Enrolments/School-Fee-Payment-Agreement-2026.pdf"
+   ]
   },
   "45963": {
    "school_name": "Marian College",
@@ -20506,7 +20791,13 @@
     "pages": 14,
     "errors": 0
    },
-   "note": "Tuition fees page text holds no figures."
+   "note": "Tuition fees page text holds no figures.",
+   "fee_pages": [
+    "https://www.msj.vic.edu.au/enrolments/tuition-fees",
+    "https://msjvic.s3.ap-southeast-2.amazonaws.com/uploads/Fees/csef-application-form-2026-v1.pdf",
+    "https://msjvic.s3.ap-southeast-2.amazonaws.com/uploads/Fees/MSJ-CCA.pdf",
+    "https://msjvic.s3.ap-southeast-2.amazonaws.com/uploads/Fees/MSJ-DDR.pdf"
+   ]
   },
   "45970": {
    "school_name": "Mater Christi College",
@@ -20540,7 +20831,11 @@
     "pages": 14,
     "errors": 2
    },
-   "note": "2026 tuition fee information PDF holds no figures as text."
+   "note": "2026 tuition fee information PDF holds no figures as text.",
+   "fee_pages": [
+    "https://stjosephs.com.au/enrolments/fees/",
+    "https://stjosephs.com.au/wp-content/uploads/2026-Tuition-Fee-Information-4.pdf"
+   ]
   },
   "45976": {
    "school_name": "Avila College",
@@ -20591,7 +20886,10 @@
     "pages": 16,
     "errors": 0
    },
-   "note": "2027 school fees PDF holds no figures as text."
+   "note": "2027 school fees PDF holds no figures as text.",
+   "fee_pages": [
+    "https://cdn.prod.website-files.com/5e7bd5fda355b61f4b29e975/6ad6952d6aa83311d3a4372e_Mercy%20College%202027%20School%20Fees.pdf"
+   ]
   },
   "45991": {
    "school_name": "St Mary’s College for the Deaf – Dandenong Campus",
@@ -20659,7 +20957,10 @@
     "pages": 13,
     "errors": 0
    },
-   "note": "School fees page text lists levies but not tuition."
+   "note": "School fees page text lists levies but not tuition.",
+   "fee_pages": [
+    "https://www.mazenod.vic.edu.au/admissions/school-fees"
+   ]
   },
   "46002": {
    "school_name": "MacKillop Catholic Regional College",
@@ -20845,7 +21146,11 @@
     "pages": 10,
     "errors": 0
    },
-   "note": "2026 education fee snapshot PDF holds no figures as text."
+   "note": "2026 education fee snapshot PDF holds no figures as text.",
+   "fee_pages": [
+    "https://www.stpeters.vic.edu.au/enrolments/tuition-fees-and-payments/",
+    "https://www.stpeters.vic.edu.au/wp-content/uploads/2025/10/Education-Fee-Snapshot-2026.pdf"
+   ]
   },
   "46096": {
    "school_name": "Penola Catholic College",
@@ -20899,7 +21204,12 @@
     "pages": 13,
     "errors": 0
    },
-   "note": "Only fees for international students were found."
+   "note": "Only fees for international students were found.",
+   "fee_pages": [
+    "https://www.thomascarr.vic.edu.au/enrolments/school-fees/",
+    "https://www.thomascarr.vic.edu.au/our-community/feeder-primary-schools/",
+    "https://www.thomascarr.vic.edu.au/wp-content/uploads/2026/01/Schedule-of-Fees-Website.pdf"
+   ]
   },
   "46112": {
    "school_name": "Antonine College",
@@ -21239,7 +21549,11 @@
     "pages": 12,
     "errors": 4
    },
-   "note": "Enrolment pages give entry fees only; tuition not in the text fetched."
+   "note": "Enrolment pages give entry fees only; tuition not in the text fetched.",
+   "fee_pages": [
+    "https://www.caulfieldgs.vic.edu.au/fees/",
+    "https://www.caulfieldgs.vic.edu.au/wp-content/uploads/2026/09/Scale-of-Fees-2027.pdf"
+   ]
   },
   "46140": {
    "school_name": "Caulfield Grammar School - Malvern Campus",
@@ -21319,7 +21633,10 @@
     "pages": 12,
     "errors": 0
    },
-   "note": "Fees page gives application and enrolment fees only."
+   "note": "Fees page gives application and enrolment fees only.",
+   "fee_pages": [
+    "https://www.fintona.vic.edu.au/enrolment/fees/"
+   ]
   },
   "46150": {
    "school_name": "Lauriston Girls' School",
@@ -21477,7 +21794,10 @@
     "pages": 6,
     "errors": 2
    },
-   "note": "Fees page text holds no figures."
+   "note": "Fees page text holds no figures.",
+   "fee_pages": [
+    "https://www.plc.vic.edu.au/enrol/fees"
+   ]
   },
   "46163": {
    "school_name": "St Michael's Grammar School",
@@ -21767,7 +22087,10 @@
     "pages": 16,
     "errors": 0
    },
-   "note": "Fees page text holds no figures."
+   "note": "Fees page text holds no figures.",
+   "fee_pages": [
+    "https://www.stcatherines.net.au/admissions/fees/"
+   ]
   },
   "46179": {
    "school_name": "Lowther Hall Anglican Grammar School",
@@ -21841,7 +22164,10 @@
     "pages": 7,
     "errors": 0
    },
-   "note": "2026 scale of fees PDF holds no figures as text."
+   "note": "2026 scale of fees PDF holds no figures as text.",
+   "fee_pages": [
+    "https://www.pegs.vic.edu.au/wp-content/uploads/2026/03/2026-Scale-of-Fees.pdf"
+   ]
   },
   "46181": {
    "school_name": "Penleigh & Essendon Grammar School - Essendon Campus",
@@ -22189,7 +22515,11 @@
     "pages": 15,
     "errors": 0
    },
-   "note": "2027 domestic fee pack text gives policies but not the fee table."
+   "note": "2027 domestic fee pack text gives policies but not the fee table.",
+   "fee_pages": [
+    "https://www.strathcona.vic.edu.au/contact-admissions/fees/",
+    "https://www.strathcona.vic.edu.au/wp-content/uploads/2027_Fee_Pack_Domestic_Students.pdf"
+   ]
   },
   "46193": {
    "school_name": "Strathcona Baptist Girls' Grammar - Hawthorn Campus",
@@ -22276,7 +22606,10 @@
     "pages": 7,
     "errors": 1
    },
-   "note": "Fees and charges page text holds no figures."
+   "note": "Fees and charges page text holds no figures.",
+   "fee_pages": [
+    "https://www.cgs.vic.edu.au/enrolment/enrolment-process/fees-and-charges-for-all-australian-residents"
+   ]
   },
   "46200": {
    "school_name": "Brighton Grammar School",
@@ -22298,7 +22631,11 @@
     "pages": 10,
     "errors": 1
    },
-   "note": "Only the international students' fee schedule came through as text."
+   "note": "Only the international students' fee schedule came through as text.",
+   "fee_pages": [
+    "https://www.huntingtower.vic.edu.au/admissions/fees-payments",
+    "https://cdn.huntingtower.vic.edu.au/htdocuments/misc/Fee%20Schedule%20Domestic.pdf"
+   ]
   },
   "46202": {
    "school_name": "Kingswood College",
@@ -22309,7 +22646,10 @@
     "pages": 8,
     "errors": 0
    },
-   "note": "Fees page text holds no figures."
+   "note": "Fees page text holds no figures.",
+   "fee_pages": [
+    "https://www.kingswoodcollege.vic.edu.au/enrolment-and-tours/fees"
+   ]
   },
   "46203": {
    "school_name": "St Margaret’s Berwick Grammar",
@@ -22521,7 +22861,11 @@
     "pages": 16,
     "errors": 0
    },
-   "note": "Fees and policies page text holds no figures."
+   "note": "Fees and policies page text holds no figures.",
+   "fee_pages": [
+    "https://www.scopus.vic.edu.au/enrolments/enrolling-at-scopus/fees-and-policies",
+    "https://www.scopus.vic.edu.au/enrolments/scholarships-and-bursaries/fee-assistance-faqs"
+   ]
   },
   "46209": {
    "school_name": "Mount Scopus Memorial College - Gandel Besen House Campus",
@@ -22572,7 +22916,10 @@
     "pages": 5,
     "errors": 0
    },
-   "note": "Fees page and fee policy hold no figures as text."
+   "note": "Fees page and fee policy hold no figures as text.",
+   "fee_pages": [
+    "https://ybr.vic.edu.au/fees-and-ybr-caps"
+   ]
   },
   "46216": {
    "school_name": "Beth Rivkah Ladies College",
@@ -22583,7 +22930,10 @@
     "pages": 5,
     "errors": 0
    },
-   "note": "Fees page and fee policy hold no figures as text."
+   "note": "Fees page and fee policy hold no figures as text.",
+   "fee_pages": [
+    "https://ybr.vic.edu.au/fees-and-ybr-caps"
+   ]
   },
   "46218": {
    "school_name": "Leibler Yavneh College",
@@ -22866,7 +23216,11 @@
     "pages": 7,
     "errors": 0
    },
-   "note": "2026 fee schedule PDF lists amounts but their labels did not come through in order."
+   "note": "2026 fee schedule PDF lists amounts but their labels did not come through in order.",
+   "fee_pages": [
+    "https://www.mecs.vic.edu.au/school-fees",
+    "https://static1.squarespace.com/static/68a53b36181a3d79186ae10d/t/6adfd3b38e417864b2332638/1793053619243/2026+Fee+Schedule+%288%29.pdf"
+   ]
   },
   "46230": {
    "school_name": "Melbourne Rudolf Steiner School",
@@ -22926,7 +23280,10 @@
     "pages": 16,
     "errors": 0
    },
-   "note": "2027 local fees PDF lists amounts but its year labels did not come through in order."
+   "note": "2027 local fees PDF lists amounts but its year labels did not come through in order.",
+   "fee_pages": [
+    "https://media.digistormhosting.com.au/ec-au-vic-225-website-2023/content/FINAL-ELTHAM_College_Local_Fees2027.pdf?v=1789010503"
+   ]
   },
   "46233": {
    "school_name": "Eltham College - Lonsdale Street Campus",
@@ -22946,7 +23303,12 @@
     "pages": 11,
     "errors": 0
    },
-   "note": "2027 fee schedule text shows year-level levies but not tuition."
+   "note": "2027 fee schedule text shows year-level levies but not tuition.",
+   "fee_pages": [
+    "https://www.donvale.vic.edu.au/uploads/Fee-Schedule-2027.pdf",
+    "https://www.donvale.vic.edu.au/uploads/Fee-Schedule-2026.pdf",
+    "https://www.donvale.vic.edu.au/uploads/Fee-Schedule-2025.pdf"
+   ]
   },
   "46238": {
    "school_name": "Braemar College",
@@ -23148,7 +23510,12 @@
     "pages": 13,
     "errors": 0
    },
-   "note": "Fee schedule page text holds no figures."
+   "note": "Fee schedule page text holds no figures.",
+   "fee_pages": [
+    "https://ncc.vic.edu.au/fee-schedule",
+    "https://ncc.vic.edu.au/pdf/2026%20School%20Fee%20Payment%20Agreement.pdf",
+    "https://www.ncc.vic.edu.au/fee-schedule"
+   ]
   },
   "46252": {
    "school_name": "St John's College Preston",
@@ -23377,7 +23744,11 @@
     "pages": 11,
     "errors": 0
    },
-   "note": "2027 schedule of fees PDF holds no figures as text."
+   "note": "2027 schedule of fees PDF holds no figures as text.",
+   "fee_pages": [
+    "https://www.baysidecc.vic.edu.au/fees/",
+    "https://www.baysidecc.vic.edu.au/wp-content/uploads/2027-Schedule-of-Fees-Charges-FINAL.pdf"
+   ]
   },
   "46274": {
    "school_name": "The Knox School",
@@ -23388,7 +23759,12 @@
     "pages": 14,
     "errors": 0
    },
-   "note": "Fees page text holds no figures."
+   "note": "Fees page text holds no figures.",
+   "fee_pages": [
+    "https://www.knox.vic.edu.au/enrolment/fees/",
+    "https://www.knox.vic.edu.au/feel-the-beat-year-8-african-drumming/",
+    "https://www.knox.vic.edu.au/wp-content/uploads/2026/11/2027LocalFeeSchedule.pdf"
+   ]
   },
   "46275": {
    "school_name": "Heathdale Christian College",
@@ -23588,7 +23964,10 @@
     "pages": 10,
     "errors": 0
    },
-   "note": "Fees page text holds no figures."
+   "note": "Fees page text holds no figures.",
+   "fee_pages": [
+    "https://bhcs.vic.edu.au/enrolments/fees/"
+   ]
   },
   "46287": {
    "school_name": "Oakleigh Grammar",
@@ -23701,7 +24080,10 @@
     "pages": 8,
     "errors": 0
    },
-   "note": "Tuition payment page text holds no figures."
+   "note": "Tuition payment page text holds no figures.",
+   "fee_pages": [
+    "https://www.aia.vic.edu.au/parents/online-tuition-fee-payments"
+   ]
   },
   "46298": {
    "school_name": "Australian International Academy of Education - Senior Campus",
@@ -23721,7 +24103,14 @@
     "pages": 16,
     "errors": 0
    },
-   "note": "Campus fee pages text hold no figures."
+   "note": "Campus fee pages text hold no figures.",
+   "fee_pages": [
+    "https://www.flinders.vic.edu.au/our-college/finance-office/school-fee-forms",
+    "https://www.flinders.vic.edu.au/carrumdowns/information-for-carrum-downs-parents/carrum-downs-fees",
+    "https://www.flinders.vic.edu.au/tyabb/parents-ty/fees",
+    "https://www.flinders.vic.edu.au/enrolment/fee-calculator",
+    "https://www.flinders.vic.edu.au/enrolment/enrol-fees"
+   ]
   },
   "46300": {
    "school_name": "Flinders Christian Community College - Carrum Downs Campus",
@@ -23791,7 +24180,10 @@
     "pages": 5,
     "errors": 0
    },
-   "note": "Fees are published per term in Japanese for primary year groups; secondary rows were not reached."
+   "note": "Fees are published per term in Japanese for primary year groups; secondary rows were not reached.",
+   "fee_pages": [
+    "https://jsm.vic.edu.au/guide/regular_fee/"
+   ]
   },
   "46307": {
    "school_name": "Sophia Mundi Steiner School",
@@ -23895,7 +24287,10 @@
     "pages": 14,
     "errors": 0
    },
-   "note": "Tuition fees page text holds no figures."
+   "note": "Tuition fees page text holds no figures.",
+   "fee_pages": [
+    "https://www.overnewton.vic.edu.au/enrolment/tuition-fees"
+   ]
   },
   "46311": {
    "school_name": "Overnewton Anglican Community College - Canowindra Campus",
@@ -23915,7 +24310,10 @@
     "pages": 9,
     "errors": 0
    },
-   "note": "2026 fee schedule PDF holds no figures as text."
+   "note": "2026 fee schedule PDF holds no figures as text.",
+   "fee_pages": [
+    "https://lyss.vic.edu.au/wp-content/uploads/2026/06/2026-LYSS-Fee-Schedule.pdf"
+   ]
   },
   "46314": {
    "school_name": "Bacchus Marsh Grammar - Maddingley Campus",
@@ -23984,7 +24382,10 @@
     "pages": 7,
     "errors": 0
    },
-   "note": "Fees page text holds no figures."
+   "note": "Fees page text holds no figures.",
+   "fee_pages": [
+    "https://www.lighthouse.vic.edu.au/enrolment/fees-scholarships/"
+   ]
   },
   "46316": {
    "school_name": "Alphington Grammar School",
@@ -24129,7 +24530,11 @@
     "pages": 14,
     "errors": 0
    },
-   "note": "2027 fee schedule PDF text is unreadable."
+   "note": "2027 fee schedule PDF text is unreadable.",
+   "fee_pages": [
+    "https://www.goodnews.vic.edu.au/schedule-of-fees",
+    "https://static1.squarespace.com/static/66fcba33f8c3fd5ed696efcb/t/6af59b092443c27acb65f535/1794480905147/GNLC+2027+Fees+Tarneit+%26+Mambourin.pdf"
+   ]
   },
   "46335": {
    "school_name": "Sirius College",
@@ -24140,7 +24545,10 @@
     "pages": 5,
     "errors": 0
    },
-   "note": "School fees page text holds no figures."
+   "note": "School fees page text holds no figures.",
+   "fee_pages": [
+    "https://www.sirius.vic.edu.au/enrolment/school-fees/"
+   ]
   },
   "46338": {
    "school_name": "Sirius College - Keysborough Campus",
@@ -24235,7 +24643,11 @@
     "pages": 13,
     "errors": 0
    },
-   "note": "Only fees for international students were found."
+   "note": "Only fees for international students were found.",
+   "fee_pages": [
+    "https://www.epic.vic.edu.au/fees/",
+    "https://www.epic.vic.edu.au/wp-content/uploads/2025/12/Local-Student-Fee-Structure-2026-1.pdf"
+   ]
   },
   "46350": {
    "school_name": "Christway College",
@@ -24356,7 +24768,10 @@
     "pages": 9,
     "errors": 1
    },
-   "note": "Fees and scholarships page text holds no figures."
+   "note": "Fees and scholarships page text holds no figures.",
+   "fee_pages": [
+    "https://alia.vic.edu.au/enrolment-process/fees-and-scholarships/"
+   ]
   },
   "46358": {
    "school_name": "Global Village Learning",
@@ -24378,7 +24793,13 @@
     "pages": 14,
     "errors": 1
    },
-   "note": "2027 fee schedule PDF gives labels but no amounts as text."
+   "note": "2027 fee schedule PDF gives labels but no amounts as text.",
+   "fee_pages": [
+    "https://www.mthira.vic.edu.au/admissions/school-fees/",
+    "https://www.mthira.vic.edu.au/wp-content/uploads/2027-New-School-Fees-Schedule-1.pdf",
+    "https://www.mthira.vic.edu.au/wp-content/uploads/2026-New-School-Fees-Schedule1.pdf",
+    "https://www.mthira.vic.edu.au/wp-content/uploads/2026-School-Fees-Schedule.pdf"
+   ]
   },
   "46360": {
    "school_name": "OneSchool Global Vic",
@@ -24626,7 +25047,11 @@
     "pages": 15,
     "errors": 1
    },
-   "note": "2027 fees and charges PDF text shows discounts but not the fee table."
+   "note": "2027 fees and charges PDF text shows discounts but not the fee table.",
+   "fee_pages": [
+    "https://www.woodleigh.vic.edu.au/enrol/fees",
+    "https://woodleigh-school.spicyweb.net.au/main/HOST/MARKETING/Fees-and-Charges/261028_Woodleigh-School-Fees-and-Charges-2027.pdf"
+   ]
   },
   "46392": {
    "school_name": "Woodleigh School - Minimbah Campus",
@@ -24786,7 +25211,10 @@
     "pages": 6,
     "errors": 1
    },
-   "note": "Fees page text holds no figures."
+   "note": "Fees page text holds no figures.",
+   "fee_pages": [
+    "https://www.columba.catholic.edu.au/enrolment/fees/"
+   ]
   },
   "47657": {
    "school_name": "St Andrew's Catholic College Redlynch Valley",
@@ -24852,7 +25280,12 @@
     "pages": 16,
     "errors": 0
    },
-   "note": "2026 schedule lists annual costs by year band without readable labels."
+   "note": "2026 schedule lists annual costs by year band without readable labels.",
+   "fee_pages": [
+    "https://www.xavier.qld.edu.au/enrolments/fees-and-levies",
+    "https://www.xavier.qld.edu.au/ArticleDocuments/568/2026%20Schedule%20of%20Fees%20and%20Levies.pdf.aspx",
+    "https://www.xavier.qld.edu.au/ArticleDocuments/575/2027%20Schedule%20of%20Fees%20and%20Levies.pdf.aspx"
+   ]
   },
   "47666": {
    "school_name": "Mary MacKillop Catholic College",
@@ -24889,7 +25322,11 @@
     "pages": 12,
     "errors": 0
    },
-   "note": "Fee pages and 2026 schedule PDF hold no figures as text."
+   "note": "Fee pages and 2026 schedule PDF hold no figures as text.",
+   "fee_pages": [
+    "https://www.stteresa.qld.edu.au/enrolments/school-fee-information",
+    "https://www.stteresa.qld.edu.au/ArticleDocuments/795/Schedule%20of%20Annual%20Fees%202026.pdf"
+   ]
   },
   "47669": {
    "school_name": "St Augustine's College",
@@ -24900,7 +25337,14 @@
     "pages": 11,
     "errors": 0
    },
-   "note": "2026 fees PDF lists amounts without readable row labels."
+   "note": "2026 fees PDF lists amounts without readable row labels.",
+   "fee_pages": [
+    "https://www.stac.qld.edu.au/enrolments-fees",
+    "https://www.stac.qld.edu.au/enrolments/college-fees",
+    "https://www.stac.qld.edu.au/ArticleDocuments/1136/2026%20Annual%20College%20Fees%20and%20Levies.pdf",
+    "https://www.stac.qld.edu.au/ArticleDocuments/1136/Application%20for%20Refund%20of%20Bond%20and%20or%20Fees%20in%20Credit%20Upon%20College%20Exit%20Form.pdf",
+    "https://www.stac.qld.edu.au/ArticleDocuments/1136/Application%20for%20Fee%20Concession%20Form.pdf"
+   ]
   },
   "47671": {
    "school_name": "Mt Maria College - Petrie",
@@ -24911,7 +25355,11 @@
     "pages": 13,
     "errors": 0
    },
-   "note": "Fee pages and 2026 schedule PDF hold no figures as text."
+   "note": "Fee pages and 2026 schedule PDF hold no figures as text.",
+   "fee_pages": [
+    "https://www.mmcp.qld.edu.au/enrolments/fee-information",
+    "https://www.mmcp.qld.edu.au/ArticleDocuments/904/2026%20Schedule%20of%20Fees%20and%20Levies.pdf"
+   ]
   },
   "47720": {
    "school_name": "Ambrose Treacy College",
@@ -24981,7 +25429,12 @@
     "pages": 12,
     "errors": 0
    },
-   "note": "2026 tuition fees are tabulated by family structure; no single per-student fee read."
+   "note": "2026 tuition fees are tabulated by family structure; no single per-student fee read.",
+   "fee_pages": [
+    "https://www.sscc.qld.edu.au/enrolments/fees-and-levies/",
+    "https://www.sscc.qld.edu.au/wp-content/uploads/2026/02/2026-Tuition-Fees-CEDC.pdf",
+    "https://www.sscc.qld.edu.au/wp-content/uploads/2024/10/Fee-Discounts.pdf"
+   ]
   },
   "47772": {
    "school_name": "St Francis College",
@@ -24992,7 +25445,11 @@
     "pages": 14,
     "errors": 0
    },
-   "note": "Fee pages and policy PDFs hold no figures as text."
+   "note": "Fee pages and policy PDFs hold no figures as text.",
+   "fee_pages": [
+    "https://www.sfcc.qld.edu.au/enrol/fees-and-finance",
+    "https://www.sfcc.qld.edu.au/ArticleDocuments/928/2026%20Fees%20and%20Levies%20Ready%20Reckoner.pdf"
+   ]
   },
   "47779": {
    "school_name": "St Mary's School",
@@ -25026,7 +25483,11 @@
     "pages": 5,
     "errors": 0
    },
-   "note": "College fees page and 2026 schedule PDF hold no figures as text."
+   "note": "College fees page and 2026 schedule PDF hold no figures as text.",
+   "fee_pages": [
+    "https://www.dalby.catholic.edu.au/college-fees",
+    "https://oloscdalby.schoolzineplus.com/_file/media/12537/2026_college_fee_schedule.pdf"
+   ]
   },
   "47819": {
    "school_name": "St Catherine's Catholic College The Whitsundays",
@@ -25037,7 +25498,11 @@
     "pages": 13,
     "errors": 0
    },
-   "note": "2026 fee schedule PDFs hold no figures as text."
+   "note": "2026 fee schedule PDFs hold no figures as text.",
+   "fee_pages": [
+    "https://os-schools.s3-ap-southeast-2.amazonaws.com/prspne/bundle45/2026%20FEE%20SCHEDULE.pdf",
+    "https://os-schools.s3-ap-southeast-2.amazonaws.com/prspne/bundle45/2026%20HEALTH%20CARE%20CARD%20CONCESSION%20FEE%20SCHEDULE.pdf"
+   ]
   },
   "47824": {
    "school_name": "St Joseph's Catholic School",
@@ -25082,7 +25547,11 @@
     "pages": 10,
     "errors": 6
    },
-   "note": "Fee information page and 2026 schedule PDF hold no figures as text."
+   "note": "Fee information page and 2026 schedule PDF hold no figures as text.",
+   "fee_pages": [
+    "https://padua.qld.edu.au/fee-information/",
+    "https://padua.qld.edu.au/wp-content/uploads/2026-Fee-Schedule.pdf"
+   ]
   },
   "47852": {
    "school_name": "St Columban's College",
@@ -25258,7 +25727,12 @@
     "pages": 15,
     "errors": 0
    },
-   "note": "Only fees for international students were found."
+   "note": "Only fees for international students were found.",
+   "fee_pages": [
+    "https://www.vnc.qld.edu.au/fees-schedule/",
+    "https://www.vnc.qld.edu.au/wp-content/uploads/2025/11/2026-Fee-Schedule.pdf",
+    "https://www.vnc.qld.edu.au/wp-content/uploads/2023/10/School-Fees-Procedures-v2.pdf"
+   ]
   },
   "47859": {
    "school_name": "Assisi Catholic College",
@@ -25269,7 +25743,11 @@
     "pages": 8,
     "errors": 1
    },
-   "note": "2026 schedule is tabulated by family structure with unreadable column labels."
+   "note": "2026 schedule is tabulated by family structure with unreadable column labels.",
+   "fee_pages": [
+    "https://www.assisi.qld.edu.au/enrolments/how-to-apply-and-fees",
+    "https://www.assisi.qld.edu.au/ArticleDocuments/308/2026%20Fees%20Schedule.pdf"
+   ]
   },
   "47860": {
    "school_name": "Aquinas College",
@@ -25332,7 +25810,10 @@
     "pages": 3,
     "errors": 0
    },
-   "note": "2026 fee schedule PDF holds no figures as text."
+   "note": "2026 fee schedule PDF holds no figures as text.",
+   "fee_pages": [
+    "https://stjohnsroma.schoolzineplus.com/_file/media/4751/2026_fee_schedule.pdf"
+   ]
   },
   "47863": {
    "school_name": "St Mary's College",
@@ -25373,7 +25854,10 @@
     "pages": 12,
     "errors": 0
    },
-   "note": "Fees and discounts page text holds no figures."
+   "note": "Fees and discounts page text holds no figures.",
+   "fee_pages": [
+    "https://www.gilroysm.catholic.edu.au/enrolment/fees-discounts/"
+   ]
   },
   "47865": {
    "school_name": "Ryan Catholic College",
@@ -25384,7 +25868,11 @@
     "pages": 10,
     "errors": 0
    },
-   "note": "2026 and 2027 schedule pages hold no figures as text."
+   "note": "2026 and 2027 schedule pages hold no figures as text.",
+   "fee_pages": [
+    "https://www.ryan.catholic.edu.au/parents/2026-schedule-of-fees/",
+    "https://www.ryan.catholic.edu.au/parents/2026-schedule-of-fees/2027-schedule-of-fees/"
+   ]
   },
   "47866": {
    "school_name": "St Augustine's College",
@@ -25395,7 +25883,10 @@
     "pages": 12,
     "errors": 0
    },
-   "note": "2026 fee structure page lists amounts without readable row labels."
+   "note": "2026 fee structure page lists amounts without readable row labels.",
+   "fee_pages": [
+    "https://www.sac.qld.edu.au/enrolment/college-fee-structure/"
+   ]
   },
   "47867": {
    "school_name": "Brigidine College",
@@ -25406,7 +25897,11 @@
     "pages": 12,
     "errors": 1
    },
-   "note": "Enrolment pages give acceptance and commitment fees only; tuition not in the text fetched."
+   "note": "Enrolment pages give acceptance and commitment fees only; tuition not in the text fetched.",
+   "fee_pages": [
+    "https://brigidine.qld.edu.au/brigidine-college-admissions-brisbane-girls-school/school-fees-payment-options/",
+    "https://brigidine.qld.edu.au/wp-content/uploads/2026-Fee-Schedule_Final.pdf"
+   ]
   },
   "47868": {
    "school_name": "St John Fisher College",
@@ -25428,7 +25923,11 @@
     "pages": 11,
     "errors": 0
    },
-   "note": "Fees page and 2026 schedule PDF hold no figures as text."
+   "note": "Fees page and 2026 schedule PDF hold no figures as text.",
+   "fee_pages": [
+    "https://www.mmc.qld.edu.au/enrolments/fees",
+    "https://www.mmc.qld.edu.au/ArticleDocuments/1140/MMC%202026%20schedule-of-fees-and-terms.pdf"
+   ]
   },
   "47870": {
    "school_name": "Loreto College Coorparoo",
@@ -25439,7 +25938,11 @@
     "pages": 15,
     "errors": 1
    },
-   "note": "Fee structure page and 2027 tuition PDF hold no figures as text."
+   "note": "Fee structure page and 2027 tuition PDF hold no figures as text.",
+   "fee_pages": [
+    "https://www.loreto.qld.edu.au/enrol/fee-structure/",
+    "https://www.loreto.qld.edu.au/wp-content/uploads/2027-Tuition-Fee-and-Levies-1.pdf"
+   ]
   },
   "47871": {
    "school_name": "Lourdes Hill College",
@@ -25511,7 +26014,10 @@
     "pages": 7,
     "errors": 0
    },
-   "note": "Fees page text holds no figures."
+   "note": "Fees page text holds no figures.",
+   "fee_pages": [
+    "https://www.msm.qld.edu.au/enrol/fees"
+   ]
   },
   "47874": {
    "school_name": "Our Lady's College",
@@ -25658,7 +26164,12 @@
     "pages": 13,
     "errors": 0
    },
-   "note": "2027 fee schedule PDF and fee pages hold no figures as text."
+   "note": "2027 fee schedule PDF and fee pages hold no figures as text.",
+   "fee_pages": [
+    "https://www.trinitycollege.qld.edu.au/enrolments/college-fees",
+    "https://www.trinitycollege.qld.edu.au/ArticleDocuments/972/2027%20Fee%20Schedule.pdf.aspx",
+    "https://www.trinitycollege.qld.edu.au/ArticleDocuments/928/Fee%20Payment%20Plan%20Estimator.pdf"
+   ]
   },
   "47881": {
    "school_name": "St Mary's College",
@@ -25669,7 +26180,12 @@
     "pages": 11,
     "errors": 0
    },
-   "note": "2027 fee schedule columns could not be matched to the first student."
+   "note": "2027 fee schedule columns could not be matched to the first student.",
+   "fee_pages": [
+    "https://www.stmarys.qld.edu.au/enrolment/fees-and-payments",
+    "https://www.stmarys.qld.edu.au/ArticleDocuments/1002/St%20Mary's%20College%20Fee%20Schedule%202027.pdf.aspx",
+    "https://www.stmarys.qld.edu.au/enrolment/fees-payments/fees-and-payments"
+   ]
   },
   "47882": {
    "school_name": "All Hallows' School",
@@ -25680,7 +26196,11 @@
     "pages": 15,
     "errors": 0
    },
-   "note": "Fees page and 2026 fees PDF hold no figures as text."
+   "note": "Fees page and 2026 fees PDF hold no figures as text.",
+   "fee_pages": [
+    "https://www.ahs.qld.edu.au/enrol/fees/",
+    "https://www.ahs.qld.edu.au/wp-content/uploads/School-Fees-2026.pdf"
+   ]
   },
   "47883": {
    "school_name": "St Peter Claver College",
@@ -25742,7 +26262,12 @@
     "pages": 13,
     "errors": 0
    },
-   "note": "2026 fees schedule table headings could not be matched to the figures."
+   "note": "2026 fees schedule table headings could not be matched to the figures.",
+   "fee_pages": [
+    "https://www.stmc.qld.edu.au/enrol/college-fees-payments",
+    "https://www.stmc.qld.edu.au/ArticleDocuments/510/STMC%202026%20Fees%20and%20Levies.pdf.aspx",
+    "https://www.stmc.qld.edu.au/ArticleDocuments/510/New%20Student%20Fee%20Advice.pdf.aspx"
+   ]
   },
   "47886": {
    "school_name": "Clairvaux MacKillop College",
@@ -25817,7 +26342,11 @@
     "pages": 13,
     "errors": 0
    },
-   "note": "Fee structure page and PDFs hold no figures as text."
+   "note": "Fee structure page and PDFs hold no figures as text.",
+   "fee_pages": [
+    "https://www.chisholm.qld.edu.au/enrolment/fee-structure",
+    "https://www.chisholm.qld.edu.au/ArticleDocuments/1381/2026%20Fee%20Structure.pdf"
+   ]
   },
   "47889": {
    "school_name": "Marymount College",
@@ -25828,7 +26357,13 @@
     "pages": 14,
     "errors": 0
    },
-   "note": "2027 schedule PDFs hold no figures as text."
+   "note": "2027 schedule PDFs hold no figures as text.",
+   "fee_pages": [
+    "https://www.marymount.qld.edu.au/enrolments/school-fees",
+    "https://www.marymount.qld.edu.au/ArticleDocuments/1878/2027%20Schedule%20of%20Fees%20Levies%20and%20Charges.pdf.aspx",
+    "https://www.marymount.qld.edu.au/ArticleDocuments/1878/2027%20School%20Fee%20Information.pdf.aspx",
+    "https://www.marymount.qld.edu.au/ArticleDocuments/1878/2027%20Fees%20and%20Levies%20Calculation%20Spreadsheet.xlsx.aspx"
+   ]
   },
   "47891": {
    "school_name": "St Mary's College",
@@ -25839,7 +26374,10 @@
     "pages": 14,
     "errors": 0
    },
-   "note": "2026 fees and levies schedule holds no figures as text."
+   "note": "2026 fees and levies schedule holds no figures as text.",
+   "fee_pages": [
+    "https://www.smcm.qld.edu.au/ArticleDocuments/623/2026%20Fees%20and%20Levies%20Schedules.pdf.aspx"
+   ]
   },
   "47892": {
    "school_name": "St Mary's Catholic College",
@@ -25850,7 +26388,12 @@
     "pages": 14,
     "errors": 0
    },
-   "note": "Fee structure is worked as a family example, not a per-student table."
+   "note": "Fee structure is worked as a family example, not a per-student table.",
+   "fee_pages": [
+    "https://www.saintmarys.qld.edu.au/enrol/fee-structure",
+    "https://www.saintmarys.qld.edu.au/ArticleDocuments/803/Fee%20Concession%20Application.pdf",
+    "https://www.saintmarys.qld.edu.au/ArticleDocuments/803/Fee%20Schedule%202026%20Updated%20February%202026.pdf"
+   ]
   },
   "47893": {
    "school_name": "St Patrick's College",
@@ -25916,7 +26459,12 @@
     "pages": 7,
     "errors": 0
    },
-   "note": "Fees page and 2026 schedule PDF hold no figures as text."
+   "note": "Fees page and 2026 schedule PDF hold no figures as text.",
+   "fee_pages": [
+    "https://www.stjosephs.qld.edu.au/fees",
+    "https://stjostanthorpe.schoolzineplus.com/_file/media/14896/st_joseph_s_school_schedule_of_fees_2026.pdf",
+    "https://www.stjosephs.qld.edu.au/_file/media/14896/st_joseph_s_school_schedule_of_fees_2026.pdf"
+   ]
   },
   "47898": {
    "school_name": "St Saviour's College",
@@ -25927,7 +26475,10 @@
     "pages": 4,
     "errors": 0
    },
-   "note": "2026 fee schedule PDF holds no figures as text."
+   "note": "2026 fee schedule PDF holds no figures as text.",
+   "fee_pages": [
+    "https://ssctwb.schoolzineplus.com/_file/media/9341/2026_fee_schedule.pdf"
+   ]
   },
   "47899": {
    "school_name": "St Ursula's College",
@@ -26083,7 +26634,14 @@
     "pages": 11,
     "errors": 0
    },
-   "note": "Fee structure pages hold no figures as text."
+   "note": "Fee structure pages hold no figures as text.",
+   "fee_pages": [
+    "https://www.goodshepherd.catholic.edu.au/enrolment/college-fee-structure/",
+    "https://www.goodshepherd.catholic.edu.au/enrolment/college-fee-structure/fees-levies/",
+    "https://www.goodshepherd.catholic.edu.au/enrolment/college-fee-structure/centrelink-discount/",
+    "https://www.goodshepherd.catholic.edu.au/enrolment/college-fee-structure/concession-information/",
+    "https://www.goodshepherd.catholic.edu.au/enrolment/college-fee-structure/payment-options/"
+   ]
   },
   "47908": {
    "school_name": "Burdekin Catholic High School",
@@ -26094,7 +26652,11 @@
     "pages": 10,
     "errors": 0
    },
-   "note": "The newest fee structure published is for 2024."
+   "note": "The newest fee structure published is for 2024.",
+   "fee_pages": [
+    "https://www.bchs.catholic.edu.au/enrolment/school-fees-direct-debit-information/",
+    "https://s3-ap-southeast-2.amazonaws.com/os-schools/bchs-catholic-edu-au/documents/fee_structure_2024.pdf"
+   ]
   },
   "47909": {
    "school_name": "Ignatius Park College",
@@ -26105,7 +26667,10 @@
     "pages": 14,
     "errors": 0
    },
-   "note": "Fees page text holds no figures."
+   "note": "Fees page text holds no figures.",
+   "fee_pages": [
+    "https://www.ipc.qld.edu.au/enrol/fees/"
+   ]
   },
   "47911": {
    "school_name": "St Margaret Mary's College",
@@ -26208,7 +26773,10 @@
     "pages": 5,
     "errors": 0
    },
-   "note": "School fees and assistance page text holds no figures."
+   "note": "School fees and assistance page text holds no figures.",
+   "fee_pages": [
+    "https://www.tccr.com.au/school-fees-and-assistance"
+   ]
   },
   "47917": {
    "school_name": "Good Counsel College",
@@ -26219,7 +26787,11 @@
     "pages": 11,
     "errors": 2
    },
-   "note": "2026 fees schedule is tabulated by number of children with the first-child column not readable in order."
+   "note": "2026 fees schedule is tabulated by number of children with the first-child column not readable in order.",
+   "fee_pages": [
+    "https://www.gcc.qld.edu.au/enrolments/fees-and-levies/",
+    "https://os-data-2.s3-ap-southeast-2.amazonaws.com/gccqldeduau/bundle12/2026_gcc_fees__levies.pdf"
+   ]
   },
   "47918": {
    "school_name": "Mount St Bernard College",
@@ -26230,7 +26802,12 @@
     "pages": 16,
     "errors": 0
    },
-   "note": "2027 fees and levies PDF gave only part of the day-student table."
+   "note": "2027 fees and levies PDF gave only part of the day-student table.",
+   "fee_pages": [
+    "https://www.msb.qld.edu.au/college-profile/fees-finance-matters/",
+    "https://www.msb.qld.edu.au/wp-content/uploads/2026/11/2027-Fees-and-Levies-.pdf",
+    "https://www.msb.qld.edu.au/wp-content/uploads/2026/11/School-Fees-Concession-Card-Information-Mar-2026.pdf"
+   ]
   },
   "47919": {
    "school_name": "St Mary's Catholic College",
@@ -26241,7 +26818,10 @@
     "pages": 9,
     "errors": 0
    },
-   "note": "College fee structure page text holds no figures."
+   "note": "College fee structure page text holds no figures.",
+   "fee_pages": [
+    "https://www.smcc.qld.edu.au/enrol-now/college-fee-structure/"
+   ]
   },
   "47920": {
    "school_name": "St Monica's College",
@@ -26263,7 +26843,12 @@
     "pages": 15,
     "errors": 0
    },
-   "note": "Fee pages and 2027 schedule PDF hold no figures as text."
+   "note": "Fee pages and 2027 schedule PDF hold no figures as text.",
+   "fee_pages": [
+    "https://www.uc.qld.edu.au/enrolments/fees-and-payments/finance-fees-and-payments",
+    "https://www.uc.qld.edu.au/enrolments/fees-and-payments",
+    "https://www.uc.qld.edu.au/ArticleDocuments/562/2027%20College%20Fee%20Schedule%20PDF%20final.pdf.aspx"
+   ]
   },
   "47924": {
    "school_name": "Carmel College",
@@ -26274,7 +26859,11 @@
     "pages": 12,
     "errors": 0
    },
-   "note": "Fees page and 2027 fees and levies PDF hold no figures as text."
+   "note": "Fees page and 2027 fees and levies PDF hold no figures as text.",
+   "fee_pages": [
+    "https://www.carmelcollege.qld.edu.au/enrolments/fees",
+    "https://www.carmelcollege.qld.edu.au/ArticleDocuments/796/2027%20Carmel%20College%20Fees%20and%20Levies.pdf.aspx"
+   ]
   },
   "47935": {
    "school_name": "Lighthouse Christian School",
@@ -26339,7 +26928,10 @@
     "pages": 8,
     "errors": 0
    },
-   "note": "Fees and scholarships page text holds no figures."
+   "note": "Fees and scholarships page text holds no figures.",
+   "fee_pages": [
+    "https://www.tmc.qld.edu.au/enrolments/fees-scholarships"
+   ]
   },
   "47938": {
    "school_name": "Islamic College of Brisbane",
@@ -26350,7 +26942,11 @@
     "pages": 8,
     "errors": 1
    },
-   "note": "2027 schedule lists tuition amounts without readable year labels."
+   "note": "2027 schedule lists tuition amounts without readable year labels.",
+   "fee_pages": [
+    "https://icb.qld.edu.au/fees-levies/",
+    "https://icb.qld.edu.au/wp-content/uploads/2026/11/Student-Fees-Schedule-K1.pdf"
+   ]
   },
   "47940": {
    "school_name": "Saint Stephen's College",
@@ -26602,7 +27198,14 @@
     "pages": 16,
     "errors": 0
    },
-   "note": "Domestic fee schedule PDF columns could not be matched to year levels."
+   "note": "Domestic fee schedule PDF columns could not be matched to year levels.",
+   "fee_pages": [
+    "https://www.bac.qld.edu.au/future-families/fees",
+    "https://www.bac.qld.edu.au/future-families/fee-calculator",
+    "https://www.bac.qld.edu.au/future-families/fee-discounts-inclusions",
+    "https://www.bac.qld.edu.au/learning/early-learning-kindergarten/early-learning-fees",
+    "https://media.digistormhosting.com.au/bac-au-qld-295-website-2022/content/Domestic-Fee-Schedule-02.26.pdf?v=1770072995"
+   ]
   },
   "47958": {
    "school_name": "Faith Lutheran College - Plainland",
@@ -26613,7 +27216,13 @@
     "pages": 13,
     "errors": 0
    },
-   "note": "Fees and financial information PDF gave bus fees but no readable tuition table."
+   "note": "Fees and financial information PDF gave bus fees but no readable tuition table.",
+   "fee_pages": [
+    "https://www.faithlc.qld.edu.au/enrolment/fees-and-payments",
+    "https://media.digistormhosting.com.au/flc-au-qld-891-website-2023/documents/Fees-and-Financial-Information-2027.pdf?v=1790732712",
+    "https://media.digistormhosting.com.au/flc-au-qld-891-website-2023/documents/Primary-School-Fee-sheet-for-2027.pdf?v=1773705617",
+    "https://media.digistormhosting.com.au/flc-au-qld-891-website-2023/documents/Fees-and-Financial-Information-2026.pdf?v=1763007699"
+   ]
   },
   "47960": {
    "school_name": "Kimberley College",
@@ -26738,7 +27347,11 @@
     "pages": 9,
     "errors": 0
    },
-   "note": "2027 schedule's readable table is for families enrolled before 2023 only."
+   "note": "2027 schedule's readable table is for families enrolled before 2023 only.",
+   "fee_pages": [
+    "https://parklands.qld.edu.au/fee-information/",
+    "https://parklands.qld.edu.au/wp-content/uploads/2026/10/2027-Fee-Schedule.pdf"
+   ]
   },
   "47964": {
    "school_name": "Pacific Lutheran College",
@@ -26799,7 +27412,10 @@
     "pages": 10,
     "errors": 0
    },
-   "note": "2026 fee schedule lists tuition amounts without readable year labels."
+   "note": "2026 fee schedule lists tuition amounts without readable year labels.",
+   "fee_pages": [
+    "https://www.pbc.qld.edu.au/wp-content/uploads/2025/11/Fee-Schedule-2026-1.pdf"
+   ]
   },
   "47968": {
    "school_name": "Livingstone Christian College",
@@ -26810,7 +27426,10 @@
     "pages": 8,
     "errors": 0
    },
-   "note": "Fee information page text holds no figures."
+   "note": "Fee information page text holds no figures.",
+   "fee_pages": [
+    "https://www.livingstone.qld.edu.au/fee-information"
+   ]
   },
   "47969": {
    "school_name": "Cairns Hinterland Steiner School",
@@ -26821,7 +27440,11 @@
     "pages": 12,
     "errors": 0
    },
-   "note": "2026 schedule PDF gave primary rows only in the text read."
+   "note": "2026 schedule PDF gave primary rows only in the text read.",
+   "fee_pages": [
+    "https://www.chss.qld.edu.au/enrolment/our-fees",
+    "https://media.digistormhosting.com.au/chss-au-qld-650-website/documents/2026-CHSS-Schedule-of-Fees.pdf?v=1771224360"
+   ]
   },
   "47970": {
    "school_name": "OneSchool Global QLD - Wakerley",
@@ -26870,7 +27493,10 @@
     "pages": 11,
     "errors": 0
    },
-   "note": "Fees page text holds no figures."
+   "note": "Fees page text holds no figures.",
+   "fee_pages": [
+    "https://tlc.qld.edu.au/fees/"
+   ]
   },
   "47979": {
    "school_name": "Moreton Bay Boys' College",
@@ -26971,7 +27597,10 @@
     "pages": 3,
     "errors": 0
    },
-   "note": "2027 tuition fee schedule lists amounts without readable year labels."
+   "note": "2027 tuition fee schedule lists amounts without readable year labels.",
+   "fee_pages": [
+    "https://media.digistormhosting.com.au/gscs-au-qld-1056-website-2023/documents/2027-Tuition-Fee-Schedule.pdf?v=1793662140"
+   ]
   },
   "47985": {
    "school_name": "Caloundra City Private School",
@@ -27008,7 +27637,12 @@
     "pages": 9,
     "errors": 0
    },
-   "note": "2026 fees are per child per period with the period not stated in the text read."
+   "note": "2026 fees are per child per period with the period not stated in the text read.",
+   "fee_pages": [
+    "https://nac.qld.edu.au/fee-information/",
+    "https://nac.qld.edu.au/wp-content/uploads/2026/01/College-Fees-2026.pdf",
+    "https://nac.qld.edu.au/wp-content/uploads/2026/01/Noosa_2026_Fee_Assistance-_Application_Form.pdf"
+   ]
   },
   "47987": {
    "school_name": "St James Lutheran College",
@@ -27058,7 +27692,10 @@
     "pages": 9,
     "errors": 0
    },
-   "note": "Only fees for international students were found."
+   "note": "Only fees for international students were found.",
+   "fee_pages": [
+    "https://aiic.qld.edu.au/college-fees/"
+   ]
   },
   "47990": {
    "school_name": "The Lakes College",
@@ -27165,7 +27802,11 @@
     "pages": 14,
     "errors": 0
    },
-   "note": "Fee schedule PDF gave enrolment fees but no readable tuition table."
+   "note": "Fee schedule PDF gave enrolment fees but no readable tuition table.",
+   "fee_pages": [
+    "https://www.hillbrook.qld.edu.au/enrol/fees/",
+    "https://www.hillbrook.qld.edu.au/wp-content/uploads/Fee-Schedule-.pdf"
+   ]
   },
   "47994": {
    "school_name": "Toowoomba Anglican School",
@@ -27176,7 +27817,11 @@
     "pages": 9,
     "errors": 0
    },
-   "note": "2027 domestic schedule lists one column of amounts whose heading is not readable (tuition or total)."
+   "note": "2027 domestic schedule lists one column of amounts whose heading is not readable (tuition or total).",
+   "fee_pages": [
+    "https://www.taschool.qld.edu.au/schedule-of-fees/",
+    "https://www.taschool.qld.edu.au/cmsb/uploads/tas-2027-schedule-of-fees-domestic.pdf"
+   ]
   },
   "47995": {
    "school_name": "Canterbury College",
@@ -27244,7 +27889,12 @@
     "pages": 9,
     "errors": 0
    },
-   "note": "School fees page text holds no figures."
+   "note": "School fees page text holds no figures.",
+   "fee_pages": [
+    "https://tas.qld.edu.au/school-fees/",
+    "https://tas.qld.edu.au/wp-content/uploads/2026/11/Int-Fee-2026-Update-1.jpg",
+    "https://tas.qld.edu.au/wp-content/uploads/2023/08/Tuition-Protection-Brochure.pdf"
+   ]
   },
   "47998": {
    "school_name": "St Aidan's Anglican Girls School",
@@ -27255,7 +27905,10 @@
     "pages": 8,
     "errors": 0
    },
-   "note": "Fees page text holds no figures."
+   "note": "Fees page text holds no figures.",
+   "fee_pages": [
+    "https://www.staidans.qld.edu.au/admissions/fees"
+   ]
   },
   "47999": {
    "school_name": "St Paul's School",
@@ -27316,7 +27969,10 @@
     "pages": 11,
     "errors": 0
    },
-   "note": "Fees page text holds no figures."
+   "note": "Fees page text holds no figures.",
+   "fee_pages": [
+    "https://www.allsouls.qld.edu.au/enrolment/fees/"
+   ]
   },
   "48002": {
    "school_name": "All Saints Anglican School",
@@ -27327,7 +27983,11 @@
     "pages": 15,
     "errors": 0
    },
-   "note": "2026 fees are published per semester, which the page's per-term field cannot hold without calculating an annual figure."
+   "note": "2026 fees are published per semester, which the page's per-term field cannot hold without calculating an annual figure.",
+   "fee_pages": [
+    "https://www.asas.qld.edu.au/admissions/fees",
+    "https://media.digistormhosting.com.au/asas-au-qld-83-website-2022/documents/ASAS-Kindy-Funding-Statement-of-Fees-2026.pdf?v=1788226411"
+   ]
   },
   "48003": {
    "school_name": "The Southport School",
@@ -27338,7 +27998,10 @@
     "pages": 12,
     "errors": 0
    },
-   "note": "Fees page text holds no figures."
+   "note": "Fees page text holds no figures.",
+   "fee_pages": [
+    "https://www.tss.qld.edu.au/parent-info/fees"
+   ]
   },
   "48004": {
    "school_name": "The Cathedral School of St Anne and St James",
@@ -27383,7 +28046,10 @@
     "pages": 13,
     "errors": 0
    },
-   "note": "2027 tuition fee carries an asterisk whose footnote could not be read, so what it includes is unclear."
+   "note": "2027 tuition fee carries an asterisk whose footnote could not be read, so what it includes is unclear.",
+   "fee_pages": [
+    "https://www.mfac.edu.au/enrolments/fees-levies/"
+   ]
   },
   "48006": {
    "school_name": "West Moreton Anglican College",
@@ -27496,7 +28162,11 @@
     "pages": 10,
     "errors": 0
    },
-   "note": "School fees pages hold no figures as text."
+   "note": "School fees pages hold no figures as text.",
+   "fee_pages": [
+    "https://www.glennie.qld.edu.au/enrol/fees-scholarships/",
+    "https://www.glennie.qld.edu.au/parent-info/school-fees/"
+   ]
   },
   "48011": {
    "school_name": "Brisbane Boys' College",
@@ -27507,7 +28177,12 @@
     "pages": 16,
     "errors": 0
    },
-   "note": "Only fees for international students were found."
+   "note": "Only fees for international students were found.",
+   "fee_pages": [
+    "https://www.bbc.qld.edu.au/admissions/school-fees/",
+    "https://www.bbc.qld.edu.au/efees/",
+    "https://www.bbc.qld.edu.au/wp-content/uploads/2026/11/261104-2027-Domestic-School-Fees_final.pdf"
+   ]
   },
   "48012": {
    "school_name": "Clayfield College",
@@ -27548,7 +28223,11 @@
     "pages": 7,
     "errors": 1
    },
-   "note": "Fee table has two groups of columns whose headings could not be matched."
+   "note": "Fee table has two groups of columns whose headings could not be matched.",
+   "fee_pages": [
+    "https://www.tkis.qld.edu.au/PDF/TKIS_Fee_Calculator_Tool.PDF",
+    "https://www.tkis.qld.edu.au/PDF/TKIS_fees.pdf"
+   ]
   },
   "48014": {
    "school_name": "Somerville House",
@@ -27559,7 +28238,11 @@
     "pages": 14,
     "errors": 0
    },
-   "note": "Fee pages and 2026 fee PDFs hold no figures as text."
+   "note": "Fee pages and 2026 fee PDFs hold no figures as text.",
+   "fee_pages": [
+    "https://www.somerville.qld.edu.au/admissions/fees-and-payments/",
+    "https://www.somerville.qld.edu.au/wp-content/uploads/2026-School-Fees-Domestic-T3.pdf"
+   ]
   },
   "48015": {
    "school_name": "Fairholme College",
@@ -27570,7 +28253,14 @@
     "pages": 14,
     "errors": 1
    },
-   "note": "Fee pages and 2026 fees notice hold no figures as text."
+   "note": "Fee pages and 2026 fees notice hold no figures as text.",
+   "fee_pages": [
+    "https://www.fairholme.qld.edu.au/fees-and-payments",
+    "https://irp.cdn-website.com/b47dc0d5/files/uploaded/fees-notice-australian-resident-2026.pdf",
+    "https://irp.cdn-website.com/b47dc0d5/files/uploaded/fees-notice-kindergarten-2026.pdf",
+    "https://irp.cdn-website.com/b47dc0d5/files/uploaded/statement-of-fees-kindergarten-services-qkfs-2026-053927db.pdf",
+    "https://irp.cdn-website.com/b47dc0d5/files/uploaded/fees-futurity-education-finance-21.pdf"
+   ]
   },
   "48016": {
    "school_name": "Northpine Christian College",
@@ -27581,7 +28271,13 @@
     "pages": 9,
     "errors": 1
    },
-   "note": "Fee pages and 2026 fees schedule hold no figures as text."
+   "note": "Fee pages and 2026 fees schedule hold no figures as text.",
+   "fee_pages": [
+    "https://www.northpine.qld.edu.au/enrolment-overview/fees/",
+    "https://www.northpine.qld.edu.au/wp-content/uploads/2026-Fees-Schedule-PDF-1.pdf",
+    "https://www.northpine.qld.edu.au/wp-content/uploads/2027-Fee-Payment-Agreement-1.pdf",
+    "https://www.northpine.qld.edu.au/wp-content/uploads/All-2027-Fee-Forms-Combined.pdf"
+   ]
   },
   "48017": {
    "school_name": "Gold Coast Christian College",
@@ -27614,7 +28310,10 @@
     "pages": 11,
     "errors": 0
    },
-   "note": "Fees page text holds no figures."
+   "note": "Fees page text holds no figures.",
+   "fee_pages": [
+    "https://www.cas.qld.edu.au/enrolment/fees/"
+   ]
   },
   "48023": {
    "school_name": "Carlisle Adventist College",
@@ -27636,7 +28335,11 @@
     "pages": 16,
     "errors": 0
    },
-   "note": "Fees and payments page text holds no figures."
+   "note": "Fees and payments page text holds no figures.",
+   "fee_pages": [
+    "https://www.stpeters.qld.edu.au/indooroopilly/admissions/fees-and-payments",
+    "https://www.stpeters.qld.edu.au/indooroopilly/boarding/fees-schedule"
+   ]
   },
   "48026": {
    "school_name": "Concordia Lutheran College",
@@ -27757,7 +28460,10 @@
     "pages": 3,
     "errors": 0
    },
-   "note": "2026 schedule gave primary year levels only in the text read."
+   "note": "2026 schedule gave primary year levels only in the text read.",
+   "fee_pages": [
+    "https://static1.squarespace.com/static/618b15053dea45515d0cb1fb/t/6a2783ee780daa7b1eb084db/1780974574202/2026+Schedule+of+Fees+%281%29.pdf"
+   ]
   },
   "48029": {
    "school_name": "The School of Total Education",
@@ -27901,7 +28607,10 @@
     "pages": 5,
     "errors": 0
    },
-   "note": "Fees page text holds no figures."
+   "note": "Fees page text holds no figures.",
+   "fee_pages": [
+    "https://www.iggs.qld.edu.au/enrol/fees"
+   ]
   },
   "48036": {
    "school_name": "Ipswich Grammar School",
@@ -27912,7 +28621,11 @@
     "pages": 12,
     "errors": 0
    },
-   "note": "2026 fees are per term and the page does not state how many terms a year apart from Year 12."
+   "note": "2026 fees are per term and the page does not state how many terms a year apart from Year 12.",
+   "fee_pages": [
+    "https://www.ipswichgrammar.com/enrolments/tuition-and-fees",
+    "https://media.digistormhosting.com.au/igs-au-qld-108-website-2022/content/Domestic-Fee-Schedule-2026_21x25-FINAL-ZK.pdf?v=1764887572"
+   ]
   },
   "48037": {
    "school_name": "Toowoomba Grammar School",
@@ -28061,7 +28774,12 @@
     "pages": 5,
     "errors": 1
    },
-   "note": "Fees page and 2027 fees PDF hold no figures as text."
+   "note": "Fees page and 2027 fees PDF hold no figures as text.",
+   "fee_pages": [
+    "https://calvarycc.qld.edu.au/common-questions/fees-and-canteen",
+    "https://calvarycc.qld.edu.au/media/egkbehsg/2027-school-fees-website.pdf",
+    "https://calvarycc.qld.edu.au/media/k0ipc0xf/2027-fee-calculator-parents-pw-protected.xlsx"
+   ]
   },
   "48044": {
    "school_name": "Carinity Education - Shalom",
@@ -28181,7 +28899,10 @@
     "pages": 6,
     "errors": 1
    },
-   "note": "College fees page text holds no figures."
+   "note": "College fees page text holds no figures.",
+   "fee_pages": [
+    "https://www.acc.qld.edu.au/enrolment/college-fees/"
+   ]
   },
   "48050": {
    "school_name": "Trinity College",
@@ -28192,7 +28913,10 @@
     "pages": 3,
     "errors": 0
    },
-   "note": "Fees page text holds no figures."
+   "note": "Fees page text holds no figures.",
+   "fee_pages": [
+    "https://www.trinitygladstone.qld.edu.au/fees"
+   ]
   },
   "48051": {
    "school_name": "Northside Christian College",
@@ -28404,7 +29128,12 @@
     "pages": 14,
     "errors": 0
    },
-   "note": "2026 primary fees PDF read; the secondary schedule was not among the pages fetched."
+   "note": "2026 primary fees PDF read; the secondary schedule was not among the pages fetched.",
+   "fee_pages": [
+    "https://calcc.qld.edu.au/enrol-at-calcc/school-fee-calculator/",
+    "https://calcc.qld.edu.au/wp-content/uploads/2025/10/Primary-Fees-2026.pdf",
+    "https://calcc.qld.edu.au/wp-content/uploads/2025/10/Secondary-Fees-2026.pdf"
+   ]
   },
   "48059": {
    "school_name": "Aboriginal & Islander Independent Community School",
@@ -28415,7 +29144,11 @@
     "pages": 5,
     "errors": 0
    },
-   "note": "School fees page and PDF hold no figures as text."
+   "note": "School fees page and PDF hold no figures as text.",
+   "fee_pages": [
+    "https://murrischool.qld.edu.au/school-fees/",
+    "https://murrischool.qld.edu.au/wp-content/uploads/2025/03/school_fees_web.pdf"
+   ]
   },
   "48060": {
    "school_name": "John Paul College",
@@ -28448,7 +29181,10 @@
     "pages": 6,
     "errors": 2
    },
-   "note": "School fees page text holds no figures."
+   "note": "School fees page text holds no figures.",
+   "fee_pages": [
+    "https://www.genesis.qld.edu.au/enrol-now/school-fees/"
+   ]
   },
   "48063": {
    "school_name": "Rivermount College",
@@ -28578,7 +29314,11 @@
     "pages": 16,
     "errors": 0
    },
-   "note": "Fees and payments pages hold no figures as text."
+   "note": "Fees and payments pages hold no figures as text.",
+   "fee_pages": [
+    "https://www.stpeters.qld.edu.au/indooroopilly/admissions/fees-and-payments",
+    "https://www.stpeters.qld.edu.au/indooroopilly/boarding/fees-schedule"
+   ]
   },
   "48074": {
    "school_name": "Faith Lutheran College - Redlands",
@@ -28627,7 +29367,11 @@
     "pages": 7,
     "errors": 0
    },
-   "note": "2027 fees are per student with the period not stated in the text read."
+   "note": "2027 fees are per student with the period not stated in the text read.",
+   "fee_pages": [
+    "https://www.redeemer.qld.edu.au/enrol/fees",
+    "https://media.digistormhosting.com.au/rlcb-au-qld-1026-website-2023/content/2027-FEES.pdf?v=1792990458"
+   ]
   },
   "48077": {
    "school_name": "Prince of Peace Lutheran College",
@@ -28638,7 +29382,11 @@
     "pages": 16,
     "errors": 0
    },
-   "note": "Fees page and 2026 schedule hold no figures as text."
+   "note": "Fees page and 2026 schedule hold no figures as text.",
+   "fee_pages": [
+    "https://www.princeofpeace.qld.edu.au/enrolments/fees/",
+    "https://www.princeofpeace.qld.edu.au/wp-content/uploads/2020/02/2026-Fee-Schedule.pdf"
+   ]
   },
   "48080": {
    "school_name": "St John's Lutheran School",
@@ -28649,7 +29397,10 @@
     "pages": 6,
     "errors": 0
    },
-   "note": "Fee schedule page text holds no figures."
+   "note": "Fee schedule page text holds no figures.",
+   "fee_pages": [
+    "https://www.sjls.qld.edu.au/fee-schedule/"
+   ]
   },
   "48081": {
    "school_name": "St Andrews Lutheran College",
@@ -28698,7 +29449,12 @@
     "pages": 16,
     "errors": 0
    },
-   "note": "2027 schedule text shows resource levies but not the tuition table."
+   "note": "2027 schedule text shows resource levies but not the tuition table.",
+   "fee_pages": [
+    "https://www.plc.qld.edu.au/enrolments/fee-schedule",
+    "https://media.digistormhosting.com.au/plc-au-qld-188-website-2021/documents/ENROLMENTS_Fee-Schedule_Domestic-2027-Tuition-and-Boarding-Fees.pdf?v=1793235640",
+    "https://media.digistormhosting.com.au/plc-au-qld-188-website-2021/documents/ENROLMENTS-Fee-Schedule-Kindergarten.pdf?v=1690346393"
+   ]
   },
   "48083": {
    "school_name": "Grace Lutheran College",
@@ -28720,7 +29476,12 @@
     "pages": 15,
     "errors": 1
    },
-   "note": "2027 domestic fee pack text holds no readable tuition table."
+   "note": "2027 domestic fee pack text holds no readable tuition table.",
+   "fee_pages": [
+    "https://www.redeemer.com.au/enrolments/fee-schedule",
+    "https://media.digistormhosting.com.au/rlc-au-qld-32-website-2020/secondary/documents/Fees/Full-Fee-Pack-Domestic-2027-Final.pdf?v=1789958598",
+    "https://media.digistormhosting.com.au/rlc-au-qld-32-website-2020/secondary/documents/Fees/2026-School-Fee-Worksheet.pdf?v=1763012965"
+   ]
   },
   "48085": {
    "school_name": "Brisbane Montessori School",
@@ -28731,7 +29492,12 @@
     "pages": 8,
     "errors": 0
    },
-   "note": "Fee schedule lists early years programs only in the text read."
+   "note": "Fee schedule lists early years programs only in the text read.",
+   "fee_pages": [
+    "https://www.bms.qld.edu.au/enrolments/fees",
+    "https://media.digistormhosting.com.au/bms-au-qld-994-website/content/2026-Fee-Schedule.pdf?v=1769651843",
+    "https://media.digistormhosting.com.au/bms-au-qld-994-website/content/2027-Fee-Schedule.pdf?v=1788824818"
+   ]
   },
   "48086": {
    "school_name": "Chinchilla Christian College",
@@ -28764,7 +29530,12 @@
     "pages": 11,
     "errors": 0
    },
-   "note": "Fees and inclusions page and 2027 tuition fee schedule hold no figures as text."
+   "note": "Fees and inclusions page and 2027 tuition fee schedule hold no figures as text.",
+   "fee_pages": [
+    "https://www.chac.qld.edu.au/enrol-at-chac/fees-and-inclusions/",
+    "https://www.chac.qld.edu.au/wp-content/uploads/2027-Tuition-Fee-Schedule.pdf",
+    "https://www.chac.qld.edu.au/wp-content/uploads/Private-Tuition-Responsibilities-of-Parties.pdf"
+   ]
   },
   "48090": {
    "school_name": "Hills International College",
@@ -28786,7 +29557,10 @@
     "pages": 11,
     "errors": 0
    },
-   "note": "Schedule of fees page text holds no figures."
+   "note": "Schedule of fees page text holds no figures.",
+   "fee_pages": [
+    "https://www.btc.qld.edu.au/enrolments/enrolment-information/schedule-of-fees/"
+   ]
   },
   "48092": {
    "school_name": "Redlands College",
@@ -28831,7 +29605,11 @@
     "pages": 13,
     "errors": 1
    },
-   "note": "2026 schedule lists amounts without readable year-level labels."
+   "note": "2026 schedule lists amounts without readable year-level labels.",
+   "fee_pages": [
+    "https://www.somerset.qld.edu.au/enrolments/college-fees",
+    "https://media.digistormhosting.com.au/sc-au-qld-101-website/documents/External-Asset-Sharing/2026-Schedule-of-Fees-and-Charges.pdf?v=1764309090"
+   ]
   },
   "48094": {
    "school_name": "Emmanuel College",
@@ -28876,7 +29654,11 @@
     "pages": 13,
     "errors": 0
    },
-   "note": "Only fees for international students were found."
+   "note": "Only fees for international students were found.",
+   "fee_pages": [
+    "https://www.samfordsteiner.qld.edu.au/enrolments/fees/",
+    "https://www.samfordsteiner.qld.edu.au/wp-content/uploads/2026-Parent-Fee-Schedule.pdf"
+   ]
   },
   "48096": {
    "school_name": "A B Paterson College",
@@ -29040,7 +29822,12 @@
     "pages": 11,
     "errors": 0
    },
-   "note": "College fees guide text holds no figures."
+   "note": "College fees guide text holds no figures.",
+   "fee_pages": [
+    "https://brisbanechristiancollege.com.au/enrolment/college-fees-guide/",
+    "https://s3-us-west-2.amazonaws.com/prospectusandfees/Brisbane+Christian+College+Agent+Handbook.pdf",
+    "https://s3-us-west-2.amazonaws.com/prospectusandfees/Educational+Agent+Application+Form+v2018.pdf"
+   ]
   },
   "48106": {
    "school_name": "Calvary Christian College",
@@ -29051,7 +29838,11 @@
     "pages": 16,
     "errors": 0
    },
-   "note": "2027 school fee schedule columns could not be matched to year levels."
+   "note": "2027 school fee schedule columns could not be matched to year levels.",
+   "fee_pages": [
+    "https://www.calvary.qld.edu.au/enrol/fees-payment",
+    "https://media.digistormhosting.com.au/ccc-au-qld-624-website/content/2027-School-Fee-Schedule-FINAL-12-Nov-2026.pdf?v=1794454910"
+   ]
   },
   "48107": {
    "school_name": "Nambour Christian College",
@@ -29062,7 +29853,12 @@
     "pages": 15,
     "errors": 0
    },
-   "note": "Fees page and 2027 schedule PDFs hold no figures as text."
+   "note": "Fees page and 2027 schedule PDFs hold no figures as text.",
+   "fee_pages": [
+    "https://www.ncc.qld.edu.au/enrolments/fees/",
+    "https://www.ncc.qld.edu.au/wp-content/uploads/Fee-Schedule-2027-1.pdf",
+    "https://www.ncc.qld.edu.au/wp-content/uploads/Fee-Schedule-2027-2.pdf"
+   ]
   },
   "48108": {
    "school_name": "Freshwater Christian College",
@@ -29188,7 +29984,11 @@
     "pages": 8,
     "errors": 0
    },
-   "note": "2026 fees page and activity fees form hold no figures as text."
+   "note": "2026 fees page and activity fees form hold no figures as text.",
+   "fee_pages": [
+    "https://djarragun.qld.edu.au/enrolments/2026-fees/",
+    "https://djarragun.qld.edu.au/wp-content/uploads/2026/02/Activity-Fees-Form-2026-V.2.pdf"
+   ]
   },
   "48112": {
    "school_name": "Gulf Christian College",
@@ -29210,7 +30010,10 @@
     "pages": 10,
     "errors": 0
    },
-   "note": "School fees page text holds no figures."
+   "note": "School fees page text holds no figures.",
+   "fee_pages": [
+    "https://heights.qld.edu.au/enrol/school-fees-2/"
+   ]
   },
   "48860": {
    "school_name": "St Joseph's College",
@@ -29324,7 +30127,12 @@
     "pages": 9,
     "errors": 0
    },
-   "note": "The fees schedule read is for primary year levels only."
+   "note": "The fees schedule read is for primary year levels only.",
+   "fee_pages": [
+    "https://www.smsc.wa.edu.au/fees.html",
+    "https://www.smsc.wa.edu.au/pdf/feesandcharges_primary.pdf",
+    "https://www.smsc.wa.edu.au/pdf/feesandcharges_secondary.pdf"
+   ]
   },
   "48892": {
    "school_name": "Christian Brothers' College",
@@ -29335,7 +30143,11 @@
     "pages": 14,
     "errors": 0
    },
-   "note": "2026 fees and charges PDF gave only elective and other fees in the text read."
+   "note": "2026 fees and charges PDF gave only elective and other fees in the text read.",
+   "fee_pages": [
+    "https://cache.cms.io/2016.cbcfremantle.wa.edu.au/upload/pages/enrolments/2026-fees-and-charges-updated_1.12.2025_v2_web.pdf",
+    "https://millstream-cms.s3.ap-southeast-2.amazonaws.com/2016.cbcfremantle.wa.edu.au/upload/pages/scholarships-and-bursaries/application-for-special-fee-arrangement_09.12.2025.pdf?response-content-type=application%2Foctet-stream&response-content-disposition=attachment%3B%20filename%3Dapplication-for-special-fee-arrangement_09.12.2025.pdf&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Security-Token=IQoJb3JpZ2luX2VjEKb%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaDmFwLXNvdXRoZWFzdC0yIkcwRQIhALtopMjHCahBtZD5L9a5%2FT5eOlYXcQQ045x4igIsXmsvAiA%2BiBAUFt2iTjcdVxjMnD7ifGj8oqTDjHVk5hxBRBh7CirJBQhuEAAaDDQ1MDE1MzQwNTAxMyIMdUpOXW4gDOc%2FXj7TKqYF5mTfzhNLmUk6GkvLPto9nAudr3tbo34T5QzhOCqyWYOMDFiwFERDnTH6H%2FD0dCCwq5ReAByqbsYS6uJ14T3PWUDBcYR%2F48A3IFcO1cukzGkNkqiGHZO%2FGjfYgDvNAiwh93ZbMTEv8Aa7ePOjSENKS5mfYIF4ShOJf2CxOMnmEDwPT6A6LS6HRR4ze71AaULrYA3vtXAnMkrEWSBTM1mrYP5wc2YzzxXuelJqnGHUwyAL1qXB9suGin8EeYwSE%2B65sSNKvfWVN8CIP%2BqXZEYw1VfavHOiu3uWNcDGJ5WMRo6QC9HtEeC3ZYusrUyNQh5j7mOnuGy29sVbdSau9nrzpdPMViaNsqouInxdBU154c8fI01CCGHsge6tR%2B%2BDw6PJjz3XrYsnKQTvOhq8bidbw7nc2EooQW7js1EPcFvSI%2F2uTAayWiG7rxNh%2F0ZOh%2FL3Iyc6hSoDO8fiDB4gbRmdKA2Tt%2Baze35sGHKE4XPl9S6l%2BRDz8d6ravzOxdfymixcWotj%2B7%2BFrO5sc8qSp5OQAlelJBoTo8%2FatgUTJefPKrMZeRE%2FxF%2BdyKwk%2FrRcA4Cqmi1e%2B0zKbIhUI143EdmYG3fsyI1mrlTdDaIg6p%2FovwQEDy6u7QBjTnN6eSI40kTYkCkDhNn3Du5Et97wZvonyIoHsXp9VKS36jZr2mSYgDiQNDKh8VFWPi%2FqqI6Ye%2BoHC3cqah%2FeqRhkU02eLjUzyPQzHX%2B6iA83Ae1%2BqAp9s1gg9IWtdbmxGbX6eu8bTKfwEsihnVcH9uv4ZcsRgPS6ElZdDC1FDqh%2BEprnJODBjSgUE5t83%2BguEsag8OVWgGegUmlF3pG%2BBKO7OsOIClwxZxlKJy1uRK8OEVM6%2FLlKx5Gj8mU5t%2BbXBiB8xraHuELRTyjL51fJMJr%2B1tcGOrEBKWVVuP4BG3l4h6QyZC02XYW%2BTzG1nXTeHZOxqwsGCRipMtiCVvsDbGBHYEykOpgAkBNpS%2BGHIniC7W1e8631dzmSXQw0KMCQS%2BMMJwhwjq26EXsoI28cGz%2BB%2BdVs%2FYIX9lWRrf7RUlusxXTCYof%2BNhSff%2BYbe4Nle%2BfDSJSpanyiEgAtwjBiUDKKkJUzigZuXwhGW%2BNJqW3eplBQeqgBoO4NznIL8iQthnuVOwZUnT2j&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=ASIAWRTZ33JK3A5TJ6T7%2F20261112%2Fap-southeast-2%2Fs3%2Faws4_request&X-Amz-Date=20261112T133855Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Signature=3fda84362de7639d2b03a34c75f5bdb627adeb8d480fe0be4d375456c6b7019c"
+   ]
   },
   "48894": {
    "school_name": "Nagle Catholic College",
@@ -29458,7 +30270,10 @@
     "pages": 12,
     "errors": 0
    },
-   "note": "Boarding bursary pages only; no tuition table among the pages fetched."
+   "note": "Boarding bursary pages only; no tuition table among the pages fetched.",
+   "fee_pages": [
+    "https://www.mazenod.wa.edu.au/images/Our_School/Fin_Documents/2026_Schedule_of_Fees_and_Charges.pdf"
+   ]
   },
   "48913": {
    "school_name": "St Brigid's College",
@@ -29529,7 +30344,10 @@
     "pages": 16,
     "errors": 0
    },
-   "note": "Fee pages hold no figures as text."
+   "note": "Fee pages hold no figures as text.",
+   "fee_pages": [
+    "https://www.aquinas.wa.edu.au/community/holygroundcoffee"
+   ]
   },
   "48917": {
    "school_name": "Sacred Heart College",
@@ -29579,7 +30397,12 @@
     "pages": 7,
     "errors": 0
    },
-   "note": "2026 schedule of fees and charges PDF holds no figures as text."
+   "note": "2026 schedule of fees and charges PDF holds no figures as text.",
+   "fee_pages": [
+    "https://sjsnortham.wa.edu.au/wp-content/uploads/2026/08/2026-Schedule-of-Fees-and-Charges-final.pdf",
+    "https://sjsnortham.wa.edu.au/wp-content/uploads/2026/07/2022_School_Fee_Collection_Procedure.pdf",
+    "https://sjsnortham.wa.edu.au/wp-content/uploads/2026/09/HCC-Tuition-fee-Discount-Scheme.pdf"
+   ]
   },
   "48936": {
    "school_name": "Mercedes College",
@@ -29590,7 +30413,11 @@
     "pages": 9,
     "errors": 0
    },
-   "note": "Tuition fees page and 2026 PDF hold no figures as text."
+   "note": "Tuition fees page and 2026 PDF hold no figures as text.",
+   "fee_pages": [
+    "https://www.mercedes.wa.edu.au/enrolments-private/tuition-fees/",
+    "https://www.mercedes.wa.edu.au/wp-content/uploads/2025/12/2026-Tuition-Fees.pdf"
+   ]
   },
   "48937": {
    "school_name": "Trinity College",
@@ -29627,7 +30454,11 @@
     "pages": 9,
     "errors": 0
    },
-   "note": "Applications and fees page and 2026 fees PDF hold no figures as text."
+   "note": "Applications and fees page and 2026 fees PDF hold no figures as text.",
+   "fee_pages": [
+    "https://www.norbert.wa.edu.au/enrolments/applications-and-fees/",
+    "https://www.norbert.wa.edu.au/wp-content/uploads/2025/11/2026_fees_charges.pdf"
+   ]
   },
   "48951": {
    "school_name": "Servite College",
@@ -29687,7 +30518,12 @@
     "pages": 15,
     "errors": 0
    },
-   "note": "The only fees published are for 2024."
+   "note": "The only fees published are for 2024.",
+   "fee_pages": [
+    "https://mercy.wa.edu.au/enrol/fees-and-charges/",
+    "https://mercy.wa.edu.au/wp-content/uploads/2025/12/2026-MERCY-FEES-AND-CHARGES-FINAL.pdf",
+    "https://mercy.wa.edu.au/wp-content/uploads/2024/02/2024-Fees-and-Charges.pdf"
+   ]
   },
   "48959": {
    "school_name": "La Salle College",
@@ -29724,7 +30560,11 @@
     "pages": 15,
     "errors": 1
    },
-   "note": "2026 fee schedule is tabulated by number of children with columns not matched to year levels."
+   "note": "2026 fee schedule is tabulated by number of children with columns not matched to year levels.",
+   "fee_pages": [
+    "https://stmarysbroome.wa.edu.au/enrolments/school-fees/",
+    "https://stmarysbroome.wa.edu.au/wp-content/uploads/2026/07/St-Marys-College-School-Fee-Schedule-2026-FINAL.pdf"
+   ]
   },
   "48967": {
    "school_name": "John XXIII College",
@@ -29832,7 +30672,11 @@
     "pages": 9,
     "errors": 0
    },
-   "note": "Fees and charges page and 2026 PDF hold no figures as text."
+   "note": "Fees and charges page and 2026 PDF hold no figures as text.",
+   "fee_pages": [
+    "https://www.corpus.wa.edu.au/fees-charges",
+    "https://static1.squarespace.com/static/57f874e8440243944ef66aa7/t/697accb4ffbe45741a220003/1769655476865/Fees+%26+Charges_2026.pdf"
+   ]
   },
   "48980": {
    "school_name": "Luurnpa Catholic School",
@@ -29854,7 +30698,12 @@
     "pages": 15,
     "errors": 0
    },
-   "note": "Fees and charges page and 2026 PDF hold no figures as text."
+   "note": "Fees and charges page and 2026 PDF hold no figures as text.",
+   "fee_pages": [
+    "https://www.lumen.wa.edu.au/enrolments/fees-and-charges",
+    "https://www.lumen.wa.edu.au/discover/college-instrumental-and-vocal-tuition-program",
+    "https://lumen-wa.s3.ap-southeast-2.amazonaws.com/lumen/Files/Fees-Charges-2026.pdf?v=1773752221"
+   ]
   },
   "48982": {
    "school_name": "John Paul College",
@@ -29981,7 +30830,11 @@
     "pages": 9,
     "errors": 0
    },
-   "note": "2026 schedule PDF gave music fees only in the text read."
+   "note": "2026 schedule PDF gave music fees only in the text read.",
+   "fee_pages": [
+    "https://www.seton.wa.edu.au/fees-and-charges",
+    "https://static1.squarespace.com/static/59ef0cf0017db2e4f3703d29/t/691d1b33e3720f453a5c6b82/1763515187954/Schedule+of+Fees+and+Charges+2026.pdf"
+   ]
   },
   "48996": {
    "school_name": "Ursula Frayne Catholic College",
@@ -30003,7 +30856,12 @@
     "pages": 7,
     "errors": 0
    },
-   "note": "2026 schedule gave primary rows only in the text read."
+   "note": "2026 schedule gave primary rows only in the text read.",
+   "fee_pages": [
+    "https://www.mcc.wa.edu.au/fees",
+    "https://static1.squarespace.com/static/677b4cc982114c23dab3ee38/t/69969ff7603612598067bb60/1771479031194/2026+Tuition+and+Fees+Schedule+V7%5B9%5D.pdf",
+    "https://static1.squarespace.com/static/677b4cc982114c23dab3ee38/t/67933f4b51520d31bfe58379/1737703244223/CONCESSION+CARD+SCHOOL+FEE+DISCOUNT+SCHEME.pdf"
+   ]
   },
   "49000": {
    "school_name": "Mater Dei College",
@@ -30014,7 +30872,11 @@
     "pages": 11,
     "errors": 1
    },
-   "note": "Fees pages and 2026 schedule hold no figures as text."
+   "note": "Fees pages and 2026 schedule hold no figures as text.",
+   "fee_pages": [
+    "https://mdc.wa.edu.au/enrolments/fees-and-charges/",
+    "https://mdc.wa.edu.au/wp-content/uploads/2026/02/2026-Schedule-of-Fees-and-Charges.pdf"
+   ]
   },
   "49005": {
    "school_name": "St Mary MacKillop College",
@@ -30025,7 +30887,12 @@
     "pages": 11,
     "errors": 0
    },
-   "note": "Only the second-student and later tuition columns could be read."
+   "note": "Only the second-student and later tuition columns could be read.",
+   "fee_pages": [
+    "https://www.mackillop.wa.edu.au/mackillop-community/parent-information/fees-accounts/",
+    "https://www.mackillop.wa.edu.au/essentials/fee-structure/",
+    "https://www.mackillop.wa.edu.au/wp-content/uploads/2025/12/Enrolment-Info-and-Fees-2026-A4.pdf"
+   ]
   },
   "49009": {
    "school_name": "Irene McCormack Catholic College",
@@ -30175,7 +31042,10 @@
     "pages": 16,
     "errors": 0
    },
-   "note": "Fees page text holds no figures."
+   "note": "Fees page text holds no figures.",
+   "fee_pages": [
+    "https://www.mlc.wa.edu.au/enrolment/fees/"
+   ]
   },
   "49021": {
    "school_name": "Guildford Grammar School",
@@ -30186,7 +31056,12 @@
     "pages": 16,
     "errors": 0
    },
-   "note": "2026 fees PDFs give resource levies and international fees; the domestic tuition table was not readable."
+   "note": "2026 fees PDFs give resource levies and international fees; the domestic tuition table was not readable.",
+   "fee_pages": [
+    "https://www.ggs.wa.edu.au/enrol/fees/",
+    "https://www.ggs.wa.edu.au/wp-content/uploads/2025/09/2026-Fees-and-Charges-1.pdf",
+    "https://www.ggs.wa.edu.au/wp-content/uploads/2026/09/2027-Fees-and-Charges.pdf"
+   ]
   },
   "49022": {
    "school_name": "St Hilda's Anglican School for Girls",
@@ -30197,7 +31072,13 @@
     "pages": 15,
     "errors": 0
    },
-   "note": "2026 schedule of fees gave early years rows only in the text read."
+   "note": "2026 schedule of fees gave early years rows only in the text read.",
+   "fee_pages": [
+    "https://www.sthildas.wa.edu.au/enrol/schedule-of-fees/",
+    "https://www.sthildas.wa.edu.au/zh/%e6%8b%9b%e6%94%b6/schedule-of-fees/",
+    "https://www.sthildas.wa.edu.au/wp-content/uploads/2025/08/WS_Schedule-of-Fees_A5_2026.pdf",
+    "https://www.sthildas.wa.edu.au/wp-content/uploads/2025/08/WS_Schedule-of-Fees_A5_FFPOS_2026-1.pdf"
+   ]
   },
   "49023": {
    "school_name": "Perth College",
@@ -30242,7 +31123,10 @@
     "pages": 16,
     "errors": 0
    },
-   "note": "2026 fees schedule PDFs give acceptance fees but no readable tuition table."
+   "note": "2026 fees schedule PDFs give acceptance fees but no readable tuition table.",
+   "fee_pages": [
+    "https://plc.wa.edu.au/wp-content/uploads/2026/06/Fees-Schedule-2026-Updated.pdf"
+   ]
   },
   "49025": {
    "school_name": "Penrhos College",
@@ -30253,7 +31137,12 @@
     "pages": 15,
     "errors": 0
    },
-   "note": "Only a tuition fee raffle page was found; no fee schedule."
+   "note": "Only a tuition fee raffle page was found; no fee schedule.",
+   "fee_pages": [
+    "https://www.penrhos.wa.edu.au/giving/tuition-fee-raffle",
+    "https://www.penrhos.wa.edu.au/enrolments/fees-and-charges",
+    "https://media.digistormhosting.com.au/pc-au-wa-552-website-2023/content/2026-Schedule-of-Fees-and-Charges-Penrhos-College.pdf?v=1764741809"
+   ]
   },
   "49026": {
    "school_name": "Wesley College",
@@ -30336,7 +31225,10 @@
     "pages": 7,
     "errors": 1
    },
-   "note": "Fees page text holds no figures."
+   "note": "Fees page text holds no figures.",
+   "fee_pages": [
+    "https://www.scotch.wa.edu.au/admissions/fees/"
+   ]
   },
   "49029": {
    "school_name": "The Montessori School",
@@ -30347,7 +31239,11 @@
     "pages": 9,
     "errors": 0
    },
-   "note": "2026 tuition fees page lists amounts without readable year-band labels."
+   "note": "2026 tuition fees page lists amounts without readable year-band labels.",
+   "fee_pages": [
+    "https://www.themontessorischool.wa.edu.au/parents/tuition-fees/",
+    "https://www.themontessorischool.wa.edu.au/enrolments/how-to-enrol/application-fee-payment-form/"
+   ]
   },
   "49030": {
    "school_name": "Hale School",
@@ -30358,7 +31254,11 @@
     "pages": 7,
     "errors": 0
    },
-   "note": "2026 local fees PDF gave sibling and entry fees but not the first-child fee in the text read."
+   "note": "2026 local fees PDF gave sibling and entry fees but not the first-child fee in the text read.",
+   "fee_pages": [
+    "https://www.hale.wa.edu.au/fees/",
+    "https://www.hale.wa.edu.au/wp-content/uploads/2025/12/Fees-and-charges-local-2026.pdf"
+   ]
   },
   "49033": {
    "school_name": "Treetops Montessori School",
@@ -30399,7 +31299,10 @@
     "pages": 16,
     "errors": 0
    },
-   "note": "Fees page text holds no figures."
+   "note": "Fees page text holds no figures.",
+   "fee_pages": [
+    "https://www.bcgs.wa.edu.au/enrolments/fees"
+   ]
   },
   "49035": {
    "school_name": "Carmel School",
@@ -30463,7 +31366,11 @@
     "pages": 10,
     "errors": 0
    },
-   "note": "Fees page and fee schedule PDF hold no figures as text."
+   "note": "Fees page and fee schedule PDF hold no figures as text.",
+   "fee_pages": [
+    "https://rehoboth.wa.edu.au/enrolments/fees/",
+    "https://rehoboth.wa.edu.au/wp-content/uploads/2026/04/RCC-Fee-Schedules-April-2026-to-March-2027.pdf"
+   ]
   },
   "49041": {
    "school_name": "HillSide Christian College",
@@ -30474,7 +31381,12 @@
     "pages": 5,
     "errors": 0
    },
-   "note": "Fees pages and 2026/2027 PDFs hold no figures as text."
+   "note": "Fees pages and 2026/2027 PDFs hold no figures as text.",
+   "fee_pages": [
+    "https://www.hillside.wa.edu.au/enrolment-fees/",
+    "https://www.hillside.wa.edu.au/wp-content/uploads/2026/10/2027-Fees-and-ChargesLOW.pdf",
+    "https://www.hillside.wa.edu.au/wp-content/uploads/2025/12/2026-Fees-and-ChargesLOW.pdf"
+   ]
   },
   "49043": {
    "school_name": "Kulkarriya Community School",
@@ -30507,7 +31419,11 @@
     "pages": 8,
     "errors": 0
    },
-   "note": "Fees pages and 2026 schedule hold no figures as text."
+   "note": "Fees pages and 2026 schedule hold no figures as text.",
+   "fee_pages": [
+    "https://www.beehive.wa.edu.au/fees-and-tuition/",
+    "https://www.beehive.wa.edu.au/wp-content/uploads/2026/01/2026-Schedule-of-Fees.pdf"
+   ]
   },
   "49049": {
    "school_name": "All Saints' College",
@@ -30518,7 +31434,11 @@
     "pages": 16,
     "errors": 0
    },
-   "note": "Only fees for international students were found."
+   "note": "Only fees for international students were found.",
+   "fee_pages": [
+    "https://www.allsaints.wa.edu.au/enrolments/fee-calculator",
+    "https://www.allsaints.wa.edu.au/enrolments/admissions-faq/~board/admissions-faqs/post/if-my-child-is-offered-a-place-what-fees-are-payable-to-confirm-their-enrolment"
+   ]
   },
   "49050": {
    "school_name": "Southern Hills Christian College",
@@ -30581,7 +31501,12 @@
     "pages": 9,
     "errors": 0
    },
-   "note": "Fee pages and 2026/2027 schedules hold no figures as text."
+   "note": "Fee pages and 2026/2027 schedules hold no figures as text.",
+   "fee_pages": [
+    "https://www.eccs.wa.edu.au/parents/school-fees/",
+    "https://www.eccs.wa.edu.au/wp-content/uploads/2025/12/2026-Fees-and-Charges-Schedule.pdf",
+    "https://www.eccs.wa.edu.au/wp-content/uploads/2026/11/2027-Fees-Schedule.pdf"
+   ]
   },
   "49058": {
    "school_name": "Geraldton Christian College",
@@ -30592,7 +31517,10 @@
     "pages": 8,
     "errors": 0
    },
-   "note": "Tuition fees page text holds no figures."
+   "note": "Tuition fees page text holds no figures.",
+   "fee_pages": [
+    "https://gcc.wa.edu.au/enrolment/tuition-fees/"
+   ]
   },
   "49059": {
    "school_name": "Yiyili Aboriginal Community School",
@@ -30614,7 +31542,10 @@
     "pages": 3,
     "errors": 0
    },
-   "note": "2027 fee page lists amounts by sibling position without readable year bands."
+   "note": "2027 fee page lists amounts by sibling position without readable year bands.",
+   "fee_pages": [
+    "https://www.acc.edu.au/darlingdowns/fees/"
+   ]
   },
   "49064": {
    "school_name": "Swan Christian College",
@@ -30739,7 +31670,11 @@
     "pages": 14,
     "errors": 1
    },
-   "note": "Fees page and 2026 domestic PDF hold no figures as text."
+   "note": "Fees page and 2026 domestic PDF hold no figures as text.",
+   "fee_pages": [
+    "https://www.kingsway.wa.edu.au/enrolments/fees/",
+    "https://www.kingsway.wa.edu.au/wp-content/uploads/2025/12/2026-Fees-and-Levies-DOMESTIC.pdf"
+   ]
   },
   "49069": {
    "school_name": "Providence Christian College",
@@ -30838,7 +31773,10 @@
     "pages": 6,
     "errors": 0
    },
-   "note": "2026 fee schedule gave early childhood and primary only in the text read."
+   "note": "2026 fee schedule gave early childhood and primary only in the text read.",
+   "fee_pages": [
+    "https://pws.wa.edu.au/wp-content/uploads/2025/12/2025-12-10-2026-PWS-Fee-Schedule.pdf"
+   ]
   },
   "49073": {
    "school_name": "Rockingham Montessori School",
@@ -30860,7 +31798,11 @@
     "pages": 12,
     "errors": 0
    },
-   "note": "2027 fee information brochure holds no figures as text."
+   "note": "2027 fee information brochure holds no figures as text.",
+   "fee_pages": [
+    "https://www.scbc.wa.edu.au/wp-content/uploads/2026/11/20261112-SCBC-Fee-Information-Brochure-2027.pdf",
+    "https://www.scbc.wa.edu.au/wp-content/uploads/2024/06/Fees-e1717759273424-1024x1009.jpg"
+   ]
   },
   "49076": {
    "school_name": "St Mark's Anglican Community School",
@@ -30901,7 +31843,11 @@
     "pages": 7,
     "errors": 3
    },
-   "note": "Fee information pages hold no figures as text."
+   "note": "Fee information pages hold no figures as text.",
+   "fee_pages": [
+    "https://www.cornerstone.wa.edu.au/enrolment/fee-information",
+    "https://www.cornerstone.wa.edu.au/enrolment/fee-information/pre-kindy"
+   ]
   },
   "49079": {
    "school_name": "Australian Islamic College (Thornlie)",
@@ -31081,7 +32027,10 @@
     "pages": 13,
     "errors": 0
    },
-   "note": "School fees page text holds no figures."
+   "note": "School fees page text holds no figures.",
+   "fee_pages": [
+    "https://www.jwacs.wa.edu.au/enrolments/school-fees/"
+   ]
   },
   "49089": {
    "school_name": "John Calvin Christian College",
@@ -31320,7 +32269,13 @@
     "pages": 16,
     "errors": 0
    },
-   "note": "2027 fee schedule lists amounts without readable class labels."
+   "note": "2027 fee schedule lists amounts without readable class labels.",
+   "fee_pages": [
+    "https://www.goldenhill.wa.edu.au/fees",
+    "https://goldenhill.schoolzineplus.com/_file/media/7518/2026_fee_schedule_v2026_01_16.pdf",
+    "https://goldenhill.schoolzineplus.com/_file/media/8408/2027_fee_schedule.pdf",
+    "https://goldenhill.schoolzineplus.com/_file/media/6309/2025_fee_schedule_.pdf"
+   ]
   },
   "49103": {
    "school_name": "Australian Islamic College (Dianella)",
@@ -31379,7 +32334,11 @@
     "pages": 14,
     "errors": 1
    },
-   "note": "2026 schedule gave program fees but the year-level tuition table was not readable."
+   "note": "2026 schedule gave program fees but the year-level tuition table was not readable.",
+   "fee_pages": [
+    "https://www.tranby.wa.edu.au/fees/",
+    "https://www.tranby.wa.edu.au/wp-content/uploads/2025/11/2026-Tranby-College-Schedule-of-Fees-and-Charges.pdf"
+   ]
   },
   "49113": {
    "school_name": "Living Waters Lutheran College",
@@ -31496,7 +32455,11 @@
     "pages": 13,
     "errors": 0
    },
-   "note": "Tuition fees page and 2027 schedule hold no figures as text."
+   "note": "Tuition fees page and 2027 schedule hold no figures as text.",
+   "fee_pages": [
+    "https://www.petermoyes.wa.edu.au/enrolments/tuition-fees",
+    "https://media.digistormhosting.com.au/petermoyes/Fees-and-Charges-Schedule/2027-Fees-and-Charges-Schedule-current-families.pdf?v=1793664431"
+   ]
   },
   "49119": {
    "school_name": "Georgiana Molloy Anglican School",
@@ -31529,7 +32492,10 @@
     "pages": 3,
     "errors": 0
    },
-   "note": "Fees page text holds no figures."
+   "note": "Fees page text holds no figures.",
+   "fee_pages": [
+    "https://hopecc.wa.edu.au/about/fees/"
+   ]
   },
   "49125": {
    "school_name": "Australian Christian College - Southlands",
@@ -31642,7 +32608,11 @@
     "pages": 6,
     "errors": 0
    },
-   "note": "2027 fees are per term and the page does not state how many terms a year."
+   "note": "2027 fees are per term and the page does not state how many terms a year.",
+   "fee_pages": [
+    "https://childsideschool.wa.edu.au/fees/",
+    "https://childsideschool.wa.edu.au/wp-content/uploads/2026/11/Fees-Schedule-for-2027.pdf"
+   ]
   },
   "49137": {
    "school_name": "Mandurah Baptist College",
@@ -31876,7 +32846,10 @@
     "pages": 7,
     "errors": 0
    },
-   "note": "Fee schedule PDF gave discounts and charges but no readable tuition table."
+   "note": "Fee schedule PDF gave discounts and charges but no readable tuition table.",
+   "fee_pages": [
+    "https://www.hcp.wa.edu.au/fees"
+   ]
   },
   "49144": {
    "school_name": "Fountain College - Ferndale Campus",
@@ -31921,7 +32894,10 @@
     "pages": 5,
     "errors": 0
    },
-   "note": "2026 schedule lists amounts without readable class labels."
+   "note": "2026 schedule lists amounts without readable class labels.",
+   "fee_pages": [
+    "https://static1.squarespace.com/static/62a97b6cea4da078f1d69f85/t/6a166690b8b3b206fa25d223/1779852945482/LTSS+Schedule+of+Fees+2026+-+for+handbook+and+website.pdf"
+   ]
   },
   "49146": {
    "school_name": "Esperance Anglican Community School",
@@ -31932,7 +32908,11 @@
     "pages": 8,
     "errors": 0
    },
-   "note": "School fees page and 2026 schedule hold no figures as text."
+   "note": "School fees page and 2026 schedule hold no figures as text.",
+   "fee_pages": [
+    "https://www.eacs.wa.edu.au/school-fees/",
+    "https://www.eacs.wa.edu.au/wp-content/uploads/2025/12/Fee-Schedule-2026.pdf"
+   ]
   },
   "49148": {
    "school_name": "Bold Park Community School",
@@ -31943,7 +32923,10 @@
     "pages": 5,
     "errors": 0
    },
-   "note": "2027 fee schedule totals could not be matched to year levels."
+   "note": "2027 fee schedule totals could not be matched to year levels.",
+   "fee_pages": [
+    "https://www.boldpark.com/wp-content/uploads/2026/11/Fee-Schedule-2027-FINAL.pdf"
+   ]
   },
   "50212": {
    "school_name": "Pacific Valley Christian School",
@@ -32442,7 +33425,10 @@
     "pages": 5,
     "errors": 0
    },
-   "note": "Tuition fees page text holds no figures."
+   "note": "Tuition fees page text holds no figures.",
+   "fee_pages": [
+    "https://www.endeavour.qld.edu.au/tuition-fees"
+   ]
   },
   "50499": {
    "school_name": "Wisdom College",
@@ -32586,7 +33572,11 @@
     "pages": 6,
     "errors": 0
    },
-   "note": "2026 fee schedule PDF found; no figures came through as text."
+   "note": "2026 fee schedule PDF found; no figures came through as text.",
+   "fee_pages": [
+    "https://www.wgs.nsw.edu.au/fees",
+    "https://www.wgs.nsw.edu.au/wp-content/uploads/2026/02/WGS-Fee-Schedule-18-Feb-2026.pdf"
+   ]
   },
   "50508": {
    "school_name": "Rockingham Montessori School - Secondary School Campus",
@@ -32701,7 +33691,11 @@
     "pages": 15,
     "errors": 1
    },
-   "note": "Fees page and fees PDFs hold no figures as text."
+   "note": "Fees page and fees PDFs hold no figures as text.",
+   "fee_pages": [
+    "https://kennedy.wa.edu.au/enrol/fees/",
+    "https://kennedy.wa.edu.au/wp-content/uploads/2024/11/Fees-and-charges-domestic_2025_A4-web.pdf"
+   ]
   },
   "50562": {
    "school_name": "Aurora Southern Highlands Steiner School",
@@ -32889,7 +33883,10 @@
     "pages": 7,
     "errors": 2
    },
-   "note": "Fees page text holds no figures."
+   "note": "Fees page text holds no figures.",
+   "fee_pages": [
+    "https://salamah.nsw.edu.au/about-us/fees/"
+   ]
   },
   "50602": {
    "school_name": "Mother Teresa Catholic College",
@@ -32900,7 +33897,12 @@
     "pages": 10,
     "errors": 0
    },
-   "note": "2026 tuition fees and charges PDF lists amounts without readable year labels."
+   "note": "2026 tuition fees and charges PDF lists amounts without readable year labels.",
+   "fee_pages": [
+    "https://www.motherteresa.wa.edu.au/fees-charges",
+    "https://static1.squarespace.com/static/5ed7226e6cd7d9667d41555e/t/67d117d53345b640db3e2996/1741756375180/School+Fee+%26+Collection+Procedure+2024.pdf",
+    "https://static1.squarespace.com/static/5ed7226e6cd7d9667d41555e/t/69264aea30fd813aaa64bea3/1764117226532/2026+Tuition+Fees+and+Charges.pdf"
+   ]
   },
   "50606": {
    "school_name": "Aspect Riverina School, North Albury Campus",
@@ -32959,7 +33961,11 @@
     "pages": 12,
     "errors": 0
    },
-   "note": "2026 fees and charges schedule lists amounts without readable year labels."
+   "note": "2026 fees and charges schedule lists amounts without readable year labels.",
+   "fee_pages": [
+    "https://www.stjohnbosco.wa.edu.au/college-fee-schedule/",
+    "https://www.stjohnbosco.wa.edu.au/pdf/Forms/2026%20Fees%20and%20Charges%20Schedule.pdf"
+   ]
   },
   "50702": {
    "school_name": "Radiant Life College",
@@ -33420,7 +34426,11 @@
     "pages": 15,
     "errors": 1
    },
-   "note": "2026 fee schedule is a worked family example with primary rows only."
+   "note": "2026 fee schedule is a worked family example with primary rows only.",
+   "fee_pages": [
+    "https://www.mackillopcatholiccollege.qld.edu.au/enrolling/fees/",
+    "https://www.mackillopcatholiccollege.qld.edu.au/wp-content/uploads/2026/02/2026-Fee-Schedule-MacKillop-Catholic-College.pdf"
+   ]
   },
   "51502": {
    "school_name": "Holy Spirit College - Manoora Campus",
@@ -33440,7 +34450,10 @@
     "pages": 5,
     "errors": 0
    },
-   "note": "Fees and charges page gave junior school rows only in the text read."
+   "note": "Fees and charges page gave junior school rows only in the text read.",
+   "fee_pages": [
+    "https://stjames.wa.edu.au/fees-charges/"
+   ]
   },
   "51511": {
    "school_name": "Salvado Catholic College",
@@ -33451,7 +34464,13 @@
     "pages": 8,
     "errors": 0
    },
-   "note": "College fees page and PDFs hold no figures as text."
+   "note": "College fees page and PDFs hold no figures as text.",
+   "fee_pages": [
+    "https://www.salvado.wa.edu.au/college-fees",
+    "https://static1.squarespace.com/static/6274bfaec3dfc538f0378ec2/t/627e5bf6487e2b5db6fbf5d6/1725418379318/fees_payinfo.pdf",
+    "https://static1.squarespace.com/static/6274bfaec3dfc538f0378ec2/t/627e5c20a342496183282554/1725418379318/fees_hcc.pdf",
+    "https://static1.squarespace.com/static/6274bfaec3dfc538f0378ec2/t/627e5c426adb093e4d145329/1725418379318/fees_faq.pdf"
+   ]
   },
   "51519": {
    "school_name": "Carmichael College",
@@ -33843,7 +34862,10 @@
     "pages": 5,
     "errors": 0
    },
-   "note": "Fee structure is by location and phase without a per-year-level table."
+   "note": "Fee structure is by location and phase without a per-year-level table.",
+   "fee_pages": [
+    "https://theindustryschool.com.au/fee-structure/"
+   ]
   },
   "52247": {
    "school_name": "The Rockhampton Grammar School - Quarry Street Campus",
@@ -33863,7 +34885,10 @@
     "pages": 4,
     "errors": 0
    },
-   "note": "2026 fee schedule PDF holds no figures as text."
+   "note": "2026 fee schedule PDF holds no figures as text.",
+   "fee_pages": [
+    "https://d3mb1hepqvcfhn.cloudfront.net/tsvccqldedu/documents/college_fee_schedule_2026_september_2026.pdf"
+   ]
   },
   "52267": {
    "school_name": "Mundaring Christian College - Parkerville Campus",
@@ -34063,7 +35088,11 @@
     "pages": 13,
     "errors": 1
    },
-   "note": "2026 schedule of fees PDF found; no figures came through as text."
+   "note": "2026 schedule of fees PDF found; no figures came through as text.",
+   "fee_pages": [
+    "https://www.sfccdow.catholic.edu.au/parents/fees-and-charges/",
+    "https://www.sfccdow.catholic.edu.au/documents/36/2026_Schedule_of_Fees_8CNn707.pdf"
+   ]
   },
   "52379": {
    "school_name": "Advance College of Education Incorporated - Hastings Hub",
@@ -34201,7 +35230,10 @@
     "pages": 5,
     "errors": 0
    },
-   "note": "The only fee schedule published is for 2023."
+   "note": "The only fee schedule published is for 2023.",
+   "fee_pages": [
+    "https://www.northshore.wa.edu.au/fees/"
+   ]
   },
   "52395": {
    "school_name": "St Patrick's Catholic Primary School",
@@ -34437,7 +35469,10 @@
     "pages": 6,
     "errors": 1
    },
-   "note": "2026 fee schedule lists amounts by number of children without readable year bands."
+   "note": "2026 fee schedule lists amounts by number of children without readable year bands.",
+   "fee_pages": [
+    "https://irp.cdn-website.com/d0de3d63/files/uploaded/BRCC+-+2026+Fee+Schedule+-+updated+.pdf"
+   ]
   },
   "52445": {
    "school_name": "Arethusa College - Windsor Campus",
@@ -34548,7 +35583,12 @@
     "pages": 9,
     "errors": 1
    },
-   "note": "College fees page and 2026 PDF hold no figures as text."
+   "note": "College fees page and 2026 PDF hold no figures as text.",
+   "fee_pages": [
+    "https://www.abbc.wa.edu.au/enrolments/college-fees",
+    "https://atlantisbbc.schoolzineplus.com/_file/media/834/abbc_2026_enrolment_fees.pdf",
+    "https://www.abbc.wa.edu.au/_file/media/834/abbc_2026_enrolment_fees.pdf"
+   ]
   },
   "52489": {
    "school_name": "Austin Cove Baptist College - California Crescent Campus",
@@ -34565,7 +35605,10 @@
     "pages": 4,
     "errors": 0
    },
-   "note": "2026 school fees page text gave the table heading but no figures."
+   "note": "2026 school fees page text gave the table heading but no figures.",
+   "fee_pages": [
+    "https://mis.qld.edu.au/schoolfees2026/"
+   ]
   },
   "52499": {
    "school_name": "St Joseph's College",
@@ -34576,7 +35619,12 @@
     "pages": 11,
     "errors": 0
    },
-   "note": "Fees pages and 2026 schedule PDF hold no figures as text."
+   "note": "Fees pages and 2026 schedule PDF hold no figures as text.",
+   "fee_pages": [
+    "https://www.stjosephscoomera.qld.edu.au/enrolments/feesonlinepayment",
+    "https://www.stjosephscoomera.qld.edu.au/ArticleDocuments/1456/2026%20School%20Fees%20and%20Charges.pdf.aspx",
+    "https://www.stjosephscoomera.qld.edu.au/enrolments/fees-online-payments/feesonlinepayment"
+   ]
   },
   "52500": {
    "school_name": "Charlotte Mason College",
@@ -34632,7 +35680,10 @@
     "pages": 6,
     "errors": 0
    },
-   "note": "Fees and aid page text holds no figures."
+   "note": "Fees and aid page text holds no figures.",
+   "fee_pages": [
+    "https://nmc.nsw.edu.au/about/fees-and-aid/"
+   ]
   },
   "52513": {
    "school_name": "Waranara School - Senior Campus",
@@ -34708,7 +35759,11 @@
     "pages": 8,
     "errors": 0
    },
-   "note": "Fees vary by sports program; no single fee per year level."
+   "note": "Fees vary by sports program; no single fee per year level.",
+   "fee_pages": [
+    "https://seda.vic.edu.au/join-us/student-fees/",
+    "https://seda.vic.edu.au/wp-content/uploads/2026/09/2027-Statement-of-Student-Fees-with-Payment-Schedules-V3.pdf"
+   ]
   },
   "52529": {
    "school_name": "SEDA College (Victoria) - AFL - Sunshine",
@@ -35008,7 +36063,10 @@
     "pages": 4,
     "errors": 0
    },
-   "note": "Fee structure page text holds no figures."
+   "note": "Fee structure page text holds no figures.",
+   "fee_pages": [
+    "https://www.vcc.nsw.edu.au/fee-structure"
+   ]
   },
   "52617": {
    "school_name": "Oasis College Surry Hills",
@@ -35190,7 +36248,12 @@
     "pages": 10,
     "errors": 0
    },
-   "note": "2026 schedule lists amounts without readable class labels."
+   "note": "2026 schedule lists amounts without readable class labels.",
+   "fee_pages": [
+    "https://biralisteiner.qld.edu.au/enrolment/fees-concessions/",
+    "https://biralisteiner.qld.edu.au/enrolment/paying-fees/",
+    "https://biralisteiner.qld.edu.au/wp-content/uploads/2025/11/Schedule-of-Fees-2026-20251110.pdf"
+   ]
   },
   "52669": {
    "school_name": "The SCOTS PGC College - Lock Street Campus",
@@ -35237,7 +36300,10 @@
     "pages": 2,
     "errors": 0
    },
-   "note": "Enrolment and fees page text holds no figures."
+   "note": "Enrolment and fees page text holds no figures.",
+   "fee_pages": [
+    "https://www.thealpineschool.nsw.edu.au/enrolment-and-fees"
+   ]
   },
   "52680": {
    "school_name": "The Small School",
@@ -35393,7 +36459,10 @@
     "pages": 6,
     "errors": 0
    },
-   "note": "Fee page has 2026 and 2027 tabs; the figures in the text cannot be tied to one year."
+   "note": "Fee page has 2026 and 2027 tabs; the figures in the text cannot be tied to one year.",
+   "fee_pages": [
+    "https://maarif.nsw.edu.au/application-form/fees/"
+   ]
   },
   "52731": {
    "school_name": "Santa Sophia Catholic College (Primary)",
@@ -35655,7 +36724,11 @@
     "pages": 12,
     "errors": 0
    },
-   "note": "2026 fees schedule is by child position without a stated year-level range."
+   "note": "2026 fees schedule is by child position without a stated year-level range.",
+   "fee_pages": [
+    "https://www.sandamianocollege.qld.edu.au/enrolment/fees-payments",
+    "https://www.sandamianocollege.qld.edu.au/ArticleDocuments/951/3.%202026%20FEES%20SCHEDULE%20ONLY%20NO%20INFO.pdf"
+   ]
   },
   "52767": {
    "school_name": "South West Community College - Blair Street Campus",
@@ -35747,7 +36820,10 @@
     "pages": 6,
     "errors": 0
    },
-   "note": "Fee structure is given by location and phase, not by year level."
+   "note": "Fee structure is given by location and phase, not by year level.",
+   "fee_pages": [
+    "https://theindustryschool.com.au/fee-structure/"
+   ]
   },
   "52793": {
    "school_name": "Kairos Community College - Caloundra Campus",
@@ -35776,7 +36852,10 @@
     "pages": 10,
     "errors": 1
    },
-   "note": "School fees page text holds no figures."
+   "note": "School fees page text holds no figures.",
+   "fee_pages": [
+    "https://www.olmca.wa.edu.au/school-fees"
+   ]
   },
   "52815": {
    "school_name": "SEDA College (Victoria) - AFL Dandenong Campus - Dandenong Oasis",
@@ -35823,7 +36902,10 @@
     "pages": 5,
     "errors": 0
    },
-   "note": "Fee structure is given by location and phase, not by year level."
+   "note": "Fee structure is given by location and phase, not by year level.",
+   "fee_pages": [
+    "https://theindustryschool.com.au/fee-structure/"
+   ]
   },
   "52825": {
    "school_name": "Living School",
@@ -35931,7 +37013,14 @@
     "pages": 16,
     "errors": 0
    },
-   "note": "Fee structure page and 2027 PDFs hold no figures as text."
+   "note": "Fee structure page and 2027 PDFs hold no figures as text.",
+   "fee_pages": [
+    "https://www.newman.qld.edu.au/enrolments/college-fee-structure/",
+    "https://os-data-2.s3-ap-southeast-2.amazonaws.com/newman/bundle2/catholic-school-fee-discounts-general.pdf",
+    "https://os-data-2.s3-ap-southeast-2.amazonaws.com/newman/bundle2/2027%20Newman%20Catholic%20College%20Fees.pdf",
+    "https://os-data-2.s3-ap-southeast-2.amazonaws.com/newman/bundle2/2027-Tuition-Fees-Schedule.pdf",
+    "https://os-data-2.s3-ap-southeast-2.amazonaws.com/newman/bundle2/hcc_tuition_fee_discount-scheme_form.pdf"
+   ]
   },
   "52843": {
    "school_name": "Catherine McAuley College",
@@ -36162,7 +37251,10 @@
     "pages": 5,
     "errors": 0
    },
-   "note": "Fees page text holds no figures."
+   "note": "Fees page text holds no figures.",
+   "fee_pages": [
+    "https://westbournecollege.com.au/admissions/fees/"
+   ]
   },
   "52952": {
    "school_name": "Youth Futures Community School (Midland)",
@@ -36720,7 +37812,11 @@
     "pages": 7,
     "errors": 1
    },
-   "note": "Local tuition fee pages hold no figures as text."
+   "note": "Local tuition fee pages hold no figures as text.",
+   "fee_pages": [
+    "https://www.ming-de.qld.edu.au/enrol/local-tuition-fees",
+    "https://www.ming-de.qld.edu.au/cn/enrol/local-tuition-fees"
+   ]
   },
   "53076": {
    "school_name": "Faith Christian School of Distance Education",
@@ -36740,7 +37836,10 @@
     "pages": 6,
     "errors": 0
    },
-   "note": "2026 schedule of fees table gave only part of its rows in the text read."
+   "note": "2026 schedule of fees table gave only part of its rows in the text read.",
+   "fee_pages": [
+    "https://www.mhoc.catholic.edu.au/enrol/school-fees/"
+   ]
   },
   "53083": {
    "school_name": "Hartford College",
@@ -36919,7 +38018,10 @@
     "pages": 5,
     "errors": 0
    },
-   "note": "Fee structure is given by location and phase, not by year level."
+   "note": "Fee structure is given by location and phase, not by year level.",
+   "fee_pages": [
+    "https://theindustryschool.com.au/fee-structure/"
+   ]
   },
   "53104": {
    "school_name": "Challenge Trade and Business College",
@@ -37060,7 +38162,11 @@
     "pages": 9,
     "errors": 0
    },
-   "note": "Fees page and 2026 fee schedule hold no figures as text."
+   "note": "Fees page and 2026 fee schedule hold no figures as text.",
+   "fee_pages": [
+    "https://www.notredamecollege.qld.edu.au/enrol/fees",
+    "https://www.notredamecollege.qld.edu.au/ArticleDocuments/626/2026%20Fee%20Schedule.pdf"
+   ]
   },
   "53154": {
    "school_name": "Mastery Schools Australia",
@@ -37091,7 +38197,10 @@
     "pages": 5,
     "errors": 0
    },
-   "note": "The only fee document published covers 2023-2024."
+   "note": "The only fee document published covers 2023-2024.",
+   "fee_pages": [
+    "https://irp.cdn-website.com/2a1f49b8/files/uploaded/My%20Dream%20Australian%20Academy%20-%20TUITION%20FEES%20-2023-2024%20docx%20(1).pdf"
+   ]
   },
   "53164": {
    "school_name": "Leppington Anglican College",
@@ -37372,7 +38481,10 @@
     "pages": 6,
     "errors": 0
    },
-   "note": "2026 school fees PDF holds no figures as text."
+   "note": "2026 school fees PDF holds no figures as text.",
+   "fee_pages": [
+    "https://fd26cad3-608b-462f-9d1d-5283fa524cca.filesusr.com/ugd/5fcb3c_84f146b2ffe441d68e148556d27b70a9.pdf?dn=Compass+2026+%28School+fees%29.pdf"
+   ]
   },
   "53231": {
    "school_name": "Hillcrest Christian College - Coolangatta Campus",
@@ -37553,7 +38665,10 @@
     "pages": 6,
     "errors": 0
    },
-   "note": "Fee structure is given by location and phase, not by year level."
+   "note": "Fee structure is given by location and phase, not by year level.",
+   "fee_pages": [
+    "https://theindustryschool.com.au/fee-structure/"
+   ]
   },
   "53275": {
    "school_name": "The Industry School - Sunshine Coast",
@@ -37564,7 +38679,10 @@
     "pages": 7,
     "errors": 0
    },
-   "note": "Fee structure is given by location and phase, not by year level."
+   "note": "Fee structure is given by location and phase, not by year level.",
+   "fee_pages": [
+    "https://theindustryschool.com.au/fee-structure/"
+   ]
   },
   "53277": {
    "school_name": "Aspect South Coast School, Wollongong University",
@@ -37635,7 +38753,12 @@
     "pages": 16,
     "errors": 0
    },
-   "note": "Fees depend on the sports program chosen; no single fee per year level."
+   "note": "Fees depend on the sports program chosen; no single fee per year level.",
+   "fee_pages": [
+    "https://seda.wa.edu.au/join-us/student-fees/",
+    "https://seda.wa.edu.au/wp-content/uploads/2025/11/SEDA-College-WA-Schedule-of-Student-Fees-2026.pdf",
+    "https://seda.wa.edu.au/wp-content/uploads/2026/03/SEDA-College-WA-Schedule-of-Student-Fees-2027-Illustrative-example-only.pdf"
+   ]
   },
   "53294": {
    "school_name": "Living School - Southern Cross University Campus",
@@ -37751,7 +38874,10 @@
     "pages": 4,
     "errors": 0
    },
-   "note": "Fees page text holds no figures."
+   "note": "Fees page text holds no figures.",
+   "fee_pages": [
+    "https://islamiccollegeofsport.com.au/fees/"
+   ]
   },
   "53336": {
    "school_name": "Mernda Hills Christian College",
@@ -38012,7 +39138,10 @@
     "pages": 5,
     "errors": 0
    },
-   "note": "Tuition fees page text holds no figures."
+   "note": "Tuition fees page text holds no figures.",
+   "fee_pages": [
+    "https://www.dcc.wa.edu.au/tuition-fees"
+   ]
   },
   "53387": {
    "school_name": "St Marcellin Catholic College",
@@ -38023,7 +39152,10 @@
     "pages": 4,
     "errors": 0
    },
-   "note": "2026 fee schedule gave early years rows only in the text read."
+   "note": "2026 fee schedule gave early years rows only in the text read.",
+   "fee_pages": [
+    "https://stmarcellin.wa.edu.au/wp-content/uploads/2026/02/Fee-Schedule-2026.pdf"
+   ]
   },
   "53392": {
    "school_name": "The Industry School - Redlands (Cleveland)",
@@ -38101,7 +39233,10 @@
     "pages": 13,
     "errors": 0
    },
-   "note": "Fees page text holds no figures."
+   "note": "Fees page text holds no figures.",
+   "fee_pages": [
+    "https://www.faith.qld.edu.au/enrolments/fees"
+   ]
   },
   "53412": {
    "school_name": "Mastery Schools Australia - Taigum Secondary Temporary Facility",
