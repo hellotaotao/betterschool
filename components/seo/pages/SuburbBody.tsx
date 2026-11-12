@@ -93,7 +93,7 @@ export default function SuburbBody({ locale, state, slug }: { locale: Locale; st
     })),
     // Each zoned school's current boundary, all at once. Not fitted: a rural
     // zone can be fifty times the suburb, and would shrink its schools to dots.
-    fixedZones: zoned.flatMap(school => zoneVariants(locale, school).slice(0, 1).map(variant => variant.feature)),
+    fixedZones: zoned.flatMap(school => zoneVariants(locale, school).slice(0, 1)),
     fitZones: false,
   });
 
@@ -142,7 +142,7 @@ export default function SuburbBody({ locale, state, slug }: { locale: Locale; st
       split={{ side: hero, map: heroMap && (
         <HeroMap
           model={heroMap}
-          labels={mapLabels(locale, formatMessage(t.mapTitle, { suburb: group.suburb }))}
+          labels={mapLabels(locale, formatMessage(t.mapTitle, { suburb: group.suburb }), { state: group.state })}
           hrefFor={mapHref(locale)}
         />
       ) }}

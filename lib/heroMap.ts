@@ -132,6 +132,16 @@ export function ringsPath(frame: MapFrame, rings: Ring[], grid = 0.5): string {
   return parts.join('');
 }
 
+/** [[south, west], [north, east]] of the focus square, for a slippy map to fit. */
+export function frameBounds(frame: MapFrame): [[number, number], [number, number]] {
+  const latSpan = frame.radiusKm / 110.574;
+  const lngSpan = frame.radiusKm / (111.32 * Math.cos((frame.origin.lat * Math.PI) / 180));
+  return [
+    [frame.origin.lat - latSpan, frame.origin.lng - lngSpan],
+    [frame.origin.lat + latSpan, frame.origin.lng + lngSpan],
+  ];
+}
+
 /**
  * [minLng, minLat, maxLng, maxLat] of the area worth drawing context in: the
  * focus square plus `factor` times its radius, which covers the margins a wide

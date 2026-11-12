@@ -16,7 +16,7 @@ import { formatMessage, getMessages, getSchoolTypeLabel, getSectorLabel, ordinal
 import { getSeo, localeRankingGroup, localeStateLabel, type Locale } from '@/lib/seoLocale';
 import { rankingPath, schoolPath } from '@/lib/slug';
 import { rankingSlug, RANKING_TYPES, type RankingType } from '@/lib/rankings';
-import { sectorBadgeClass } from '@/utils/schoolFilters';
+import { getMarkerColor } from '@/utils/schoolFilters';
 import { ACARA_DATA_YEAR } from '@/lib/dataYear';
 
 const MAX_KM = 15;
@@ -103,36 +103,78 @@ export default function ComparisonSection({ school, locale }: { school: School; 
   const listed = hasNearby ? sortByMetric(group, 'icsea') : [];
   const listRanks = displayRanks(listed, 'icsea');
 
+  // ICSEA bars share one fixed scale on every page, so a bar means the same
+  // length everywhere; nearly every school sits between these two values.
+  const BAR_MIN = 800;
+  const BAR_MAX = 1250;
+  const barWidth = (value: number) => `${Math.round(Math.max(0.04, Math.min(1, (value - BAR_MIN) / (BAR_MAX - BAR_MIN))) * 100)}%`;
+
   return (
     <section className="bs-section" aria-labelledby="compare">
       <h2 id="compare" className="bs-h2">
         {formatMessage(t.compareHeading, { school: school.school_name })}
       </h2>
-      <div className="mt-3 overflow-x-auto scroll-shadow-x">
-        <table className="w-full min-w-[28rem] text-sm">
-          <thead>
-            <tr className="border-b border-line-strong text-left text-[13px] text-muted">
-              <th scope="col" className="py-2 pr-3 font-medium">{t.compareColMeasure}</th>
-              <th scope="col" className="py-2 pr-3 font-medium">{t.compareColSchool}</th>
-              {showNearbyColumn && <th scope="col" className="py-2 pr-3 font-medium">{t.compareColNearby}</th>}
-              <th scope="col" className="py-2 font-medium">{formatMessage(t.compareColState, { state: stateLabel })}</th>
-            </tr>
-          </thead>
-          <tbody>
-            {rows.map(row => (
-              <tr key={row.metric} className="border-b border-line">
-                <th scope="row" className="py-2 pr-3 text-left font-normal text-ink-2">{label[row.metric]}</th>
-                <td className="py-2 pr-3 font-semibold tabular-nums">{row.value}</td>
-                {showNearbyColumn && <td className="py-2 pr-3">{row.nearby}</td>}
-                <td className="py-2">{row.state}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
-      <p className="mt-2 text-[13px] text-muted">
+      <ul className="mt-3 flex flex-wrap gap-2">
+        {/* Students per teacher stays out: a school-wide average that moves by a
+            point or two between schools tells a parent little. */}
+        {rows.filter(row => row.metric !== 'ratio').map(row => (
+          <li key={row.metric} className="bs-chip">
+            <span className="text-muted">{label[row.metric]}</span>
+            <span className="font-semibold text-ink">{row.nearby !== '—' ? row.nearby : row.state}</span>
+          </li>
+        ))}
+      </ul>
+
+      {listed.length >= 3 && (
+        <ol className="mt-5 space-y-1">
+          {listed.map((entry, index) => {
+            const isSelf = entry.id === school.id;
+            const slug = slugById.get(entry.id);
+            const km = kmById.get(entry.id);
+            const icsea = metricValue(entry, 'icsea');
+            const students = metricValue(entry, 'enrolments');
+            return (
+              <li
+                key={entry.id}
+                className={`grid grid-cols-[1.5rem_minmax(0,1fr)_auto] items-center gap-x-3 gap-y-1 rounded-inner px-2 py-2 sm:grid-cols-[1.5rem_minmax(0,1.3fr)_minmax(0,1fr)_4.5rem] ${isSelf ? 'bg-soft' : ''}`}
+              >
+                <span className="text-[13px] tabular-nums text-muted">{listRanks[index] ?? '—'}</span>
+                <span className="min-w-0">
+                  <span className="flex items-center gap-2">
+                    <span aria-hidden="true" className="h-2.5 w-2.5 shrink-0 rounded-full" style={{ backgroundColor: getMarkerColor(entry.sector) }} />
+                    {isSelf || !slug ? (
+                      <span className="truncate font-semibold text-ink">{entry.school_name}</span>
+                    ) : (
+                      <Link href={schoolPath(entry.state, slug, locale)} className="truncate text-link hover:underline">
+                        {entry.school_name}
+                      </Link>
+                    )}
+                  </span>
+                  <span className="block pl-[1.125rem] text-[13px] text-muted">
+                    {isSelf ? t.compareThisSchool : km === undefined ? '' : formatMessage(t.diagramKm, { km: km.toFixed(1) })}
+                    {' · '}{getSectorLabel(entry.sector, dictionary)}
+                  </span>
+                </span>
+                <span className="col-span-2 col-start-2 flex items-center gap-2 sm:col-span-1 sm:col-start-auto" aria-label={`${t.fieldIcsea} ${icsea ?? '—'}`}>
+                  <span className="h-2 flex-1 overflow-hidden rounded-full bg-soft-strong">
+                    {icsea !== null && (
+                      <span className={`block h-full rounded-full ${isSelf ? 'bg-brand' : 'bg-data-2'}`} style={{ width: barWidth(icsea) }} />
+                    )}
+                  </span>
+                  <span className={`w-10 text-right text-[13px] tabular-nums ${isSelf ? 'font-bold text-ink' : 'text-ink-2'}`}>{icsea ?? '—'}</span>
+                </span>
+                <span className="row-start-1 col-start-3 text-right text-[13px] tabular-nums text-muted sm:col-start-4">
+                  {students === null ? '—' : formatMessage(t.compareStudentsShort, { count: number(students) })}
+                </span>
+              </li>
+            );
+          })}
+        </ol>
+      )}
+
+      <p className="mt-3 text-[13px] text-muted">
         {showNearbyColumn && <>{formatMessage(t.compareIntroNearby, { count: group.length, type: noun, km: MAX_KM })} </>}
-        {formatMessage(t.compareIntroState, { type: noun, state: stateLabel })}{' '}
+        {t.icseaNote}{' '}
         {formatMessage(t.compareSource, { year: ACARA_DATA_YEAR })}
       </p>
       {stateRanking && (
@@ -144,65 +186,6 @@ export default function ComparisonSection({ school, locale }: { school: School; 
             })}{' '}→
           </Link>
         </p>
-      )}
-
-      {listed.length >= 3 && (
-        <>
-          <h3 className="mt-6 text-sm font-semibold">
-            {formatMessage(t.compareListHeading, { type: getSchoolTypeLabel(school.school_type, dictionary) })}
-          </h3>
-          <div className="mt-2 overflow-x-auto scroll-shadow-x">
-            <table className="w-full min-w-[30rem] text-sm">
-              <thead>
-                <tr className="border-b border-line-strong text-left text-[13px] text-muted">
-                  <th scope="col" className="w-8 py-2 pr-2 font-medium">#</th>
-                  <th scope="col" className="py-2 pr-3 font-medium">{t.compareColName}</th>
-                  <th scope="col" className="py-2 pr-3 font-medium">{t.fieldSector}</th>
-                  <th scope="col" className="py-2 pr-3 text-right font-medium">{t.compareColDistance}</th>
-                  <th scope="col" className="py-2 pr-3 text-right font-medium">{t.fieldIcsea}</th>
-                  <th scope="col" className="py-2 text-right font-medium">{t.statStudents}</th>
-                </tr>
-              </thead>
-              <tbody>
-                {listed.map((entry, index) => {
-                  const isSelf = entry.id === school.id;
-                  const slug = slugById.get(entry.id);
-                  const km = kmById.get(entry.id);
-                  const icsea = metricValue(entry, 'icsea');
-                  const students = metricValue(entry, 'enrolments');
-                  return (
-                    <tr key={entry.id} className={`border-b border-line ${isSelf ? 'bg-soft font-semibold' : ''}`}>
-                      <td className="py-2 pr-2 tabular-nums text-muted">{listRanks[index] ?? '—'}</td>
-                      <td className="py-2 pr-3">
-                        {isSelf || !slug ? (
-                          <span>
-                            {entry.school_name}
-                            {isSelf && <span className="ml-1 text-[13px] font-normal text-muted">({t.compareThisSchool})</span>}
-                          </span>
-                        ) : (
-                          <Link href={schoolPath(entry.state, slug, locale)} className="text-link hover:underline">
-                            {entry.school_name}
-                          </Link>
-                        )}
-                      </td>
-                      <td className="py-2 pr-3">
-                        <span className={`whitespace-nowrap rounded-full px-2 py-0.5 text-xs font-medium ${sectorBadgeClass(entry.sector)}`}>
-                          {getSectorLabel(entry.sector, dictionary)}
-                        </span>
-                      </td>
-                      <td className="py-2 pr-3 text-right tabular-nums text-ink-2">
-                        {km === undefined ? '—' : formatMessage(t.diagramKm, { km: km.toFixed(1) })}
-                      </td>
-                      <td className="py-2 pr-3 text-right tabular-nums">{icsea ?? '—'}</td>
-                      <td className="py-2 text-right tabular-nums">{students === null ? '—' : number(students)}</td>
-                    </tr>
-                  );
-                })}
-              </tbody>
-            </table>
-          </div>
-          <p className="mt-2 text-[13px] text-muted">{t.icseaNote}</p>
-        </>
       )}
     </section>
   );

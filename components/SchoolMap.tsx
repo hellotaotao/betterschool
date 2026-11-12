@@ -5,6 +5,7 @@ import { MapContainer, TileLayer, Marker, GeoJSON, useMap, useMapEvents } from '
 import L from 'leaflet';
 import 'leaflet.markercluster';
 import 'leaflet/dist/leaflet.css';
+import { BASEMAP_ATTRIBUTION, BASEMAP_TILE_URL } from '@/lib/basemap';
 import { MapSchool } from '@/types/school';
 import { getMarkerRadius, getMarkerColor, CATCHMENT_COLORS, SECTOR_COLORS } from '@/utils/schoolFilters';
 import { zoneKey, type CatchmentFeature, type ViewportBounds } from '@/lib/catchmentLookup';
@@ -537,8 +538,8 @@ export default function SchoolMap({
         {/* One host, as OSM now asks (the a/b/c subdomains predate HTTP/2),
             which also lets app/schools/layout.tsx preconnect to it. */}
         <TileLayer
-          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-          url="https://tile.openstreetmap.org/{z}/{x}/{y}.png"
+          attribution={BASEMAP_ATTRIBUTION}
+          url={BASEMAP_TILE_URL}
           eventHandlers={onBasemapLoad ? { load: onBasemapLoad } : undefined}
         />
 

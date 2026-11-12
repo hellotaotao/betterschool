@@ -3,19 +3,39 @@ import type { HeroMapLabels } from '@/components/seo/HeroMap';
 import { featureFor, type ContextRule, type ZoneInput } from '@/lib/heroMapData';
 import { compactYears } from '@/lib/heroMap';
 import { formatMessage, getMessages, getSectorLabel } from '@/lib/i18n';
-import { getSeo, localeKind, type Locale } from '@/lib/seoLocale';
+import { getSeo, localeKind, localeStateLabel, type Locale } from '@/lib/seoLocale';
+import { catchmentStateInfo } from '@/lib/catchmentStates';
 import { schoolPath } from '@/lib/slug';
 import type { MapDot } from '@/lib/heroMapData';
 
-export function mapLabels(locale: Locale, title: string): HeroMapLabels {
+export function mapLabels(
+  locale: Locale,
+  title: string,
+  { state, schoolName = null }: { state: string; schoolName?: string | null },
+): HeroMapLabels {
   const t = getSeo(locale).map;
   const dictionary = getMessages(locale);
+  const finderUrl = catchmentStateInfo(state)?.finderUrl ?? null;
   return {
     title,
     zone: t.zone,
     neighbours: t.neighbours,
     variantSwitch: t.variantSwitch,
     sector: sector => getSectorLabel(sector, dictionary),
+    live: {
+      schoolName,
+      tapHint: t.tapHint,
+      inZone: t.inZone,
+      inZoneVariant: t.inZoneVariant,
+      inOtherZone: t.inOtherZone,
+      inOtherZoneNoOwn: t.inOtherZoneNoOwn,
+      inNoZone: t.inNoZone,
+      confirm: t.confirm,
+      finderUrl,
+      finderText: finderUrl
+        ? formatMessage(getSeo(locale).catchment.schoolFinderLink, { state: localeStateLabel(locale, state) })
+        : null,
+    },
   };
 }
 
@@ -43,7 +63,7 @@ export function zoneVariants(locale: Locale, school: School, { futureIfOnly = fa
       : '';
     const kind = formatMessage(t.zoneKind, { kind: localeKind(locale, catchment.kind) });
     const label = oneKind ? years || kind : [kind, years].filter(Boolean).join(' · ');
-    return [{ key: catchment.zone_id ?? catchment.geometry_url, label, feature }];
+    return [{ key: catchment.zone_id ?? catchment.geometry_url, label, feature, url: catchment.geometry_url }];
   });
 }
 

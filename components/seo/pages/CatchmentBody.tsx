@@ -136,7 +136,7 @@ export default function CatchmentBody({ locale, state, slug }: { locale: Locale;
       split={{ side: hero, map: heroMap && (
         <HeroMap
           model={heroMap}
-          labels={mapLabels(locale, formatMessage(t.mapTitle, { school: school.school_name }))}
+          labels={mapLabels(locale, formatMessage(t.mapTitle, { school: school.school_name }), { state: school.state, schoolName: school.school_name })}
           hrefFor={mapHref(locale)}
         />
       ) }}

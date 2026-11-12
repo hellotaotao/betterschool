@@ -498,6 +498,49 @@ body {
     border-top: 0;
   }
 
+  /* Interactive hero map (LiveMap). Leaflet mounts over the SVG; once it is
+     up the figure carries data-live and the drawing underneath is hidden.
+     The year switch and legend stay, above Leaflet's own stacking context. */
+  .bs-live {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    background: var(--bs-map);
+  }
+  .bs-map[data-live] :is(.bs-map-svg, .bs-map-pin, .bs-map-label, .bs-map-scale) {
+    display: none;
+  }
+  .bs-live-answer {
+    position: absolute;
+    z-index: 3;
+    top: 0.75rem;
+    left: 0.75rem;
+    max-width: min(24rem, calc(100% - 4.5rem));
+    padding: 0.625rem 0.875rem;
+    border-radius: var(--bs-radius-inner);
+    background: var(--bs-surface);
+    box-shadow: 0 2px 10px rgb(14 27 61 / 0.16);
+    font-size: 0.875rem;
+    line-height: 1.45;
+  }
+  .bs-live-answer-low {
+    top: 3.5rem;
+  }
+  .bs-live-pin {
+    display: grid;
+    place-items: center;
+    width: 26px;
+    height: 26px;
+    border: 3px solid;
+    border-radius: 999px;
+    background: #fff;
+    color: #0e1b3d;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 1;
+    box-shadow: 0 1px 4px rgb(14 27 61 / 0.25);
+  }
+
   /* The lead figure in a stat grid: filled in bright, the same ruled cell as
      its neighbours in the editorial themes. */
   [data-theme="bright"] .bs-stat-key {
@@ -725,6 +768,35 @@ body {
 }
 .leaflet-bar a:hover {
   background: var(--bs-soft) !important;
+}
+
+/* Hero map labels. Outside the component layer on purpose: leaflet.css is
+   unlayered, and unlayered rules beat layered ones whatever their
+   specificity, so these would otherwise lose to Leaflet's white tooltip. */
+.bs-live .leaflet-tooltip.bs-zone-label {
+  padding: 0;
+  border: 0;
+  background: transparent;
+  box-shadow: none;
+  color: var(--bs-zone);
+  font-size: 0.6875rem;
+  font-weight: 700;
+  text-align: center;
+  text-shadow: 0 0 3px #fff, 0 0 3px #fff, 0 0 3px #fff;
+  white-space: nowrap;
+}
+.bs-live .leaflet-tooltip.bs-live-label {
+  padding: 0.25rem 0.625rem;
+  border: 0;
+  border-radius: 0.625rem;
+  background: #0e1b3d;
+  color: #fff;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  box-shadow: none;
+}
+.bs-live .leaflet-tooltip.bs-live-label::before {
+  display: none;
 }
 
 /* School map markers (Leaflet DivIcon) */

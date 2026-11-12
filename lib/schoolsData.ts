@@ -136,13 +136,6 @@ export function getSchoolSlug(school: School): string {
   return getSchoolsDataset().slugs.get(school.id) ?? '';
 }
 
-/** Other schools in the same suburb, excluding the given one. */
-export function getSuburbPeers(school: School, limit = 12): School[] {
-  const group = getSuburb(school.state, suburbSlug(school.suburb));
-  if (!group) return [];
-  return group.schools.filter(peer => peer.id !== school.id).slice(0, limit);
-}
-
 /** Straight-line distance in km. Haversine on a spherical earth. */
 function distanceKm(aLat: number, aLng: number, bLat: number, bLng: number): number {
   const toRad = (deg: number) => (deg * Math.PI) / 180;
@@ -205,39 +198,6 @@ export interface NearbySchool {
   school: School;
   slug: string;
   km: number;
-}
-
-/**
- * The nearest schools outside this school's own suburb.
- *
- * 2,716 of 4,800 suburbs hold exactly one school, so `getSuburbPeers` returns
- * nothing for more than half the school pages — leaving them with no lateral
- * link and near-duplicate content against their own suburb page. This is also
- * the question an address-first reader is actually asking: the suburb boundary
- * is an administrative line, not the edge of what their child can attend.
- *
- * Kept as a separate section from the same-suburb peers rather than padding
- * that list, so "in this suburb" and "near this suburb" stay distinguishable.
- */
-export function getNearbySchools(school: School, limit = 8): NearbySchool[] {
-  const dataset = getSchoolsDataset();
-  const own = suburbSlug(school.suburb);
-  const scored: NearbySchool[] = [];
-
-  for (const candidate of dataset.schools) {
-    if (candidate.id === school.id) continue;
-    if (candidate.state !== school.state) continue;
-    if (suburbSlug(candidate.suburb) === own) continue;
-    const slug = dataset.slugs.get(candidate.id);
-    if (!slug) continue;
-    scored.push({
-      school: candidate,
-      slug,
-      km: distanceKm(Number(school.lat), Number(school.lng), Number(candidate.lat), Number(candidate.lng)),
-    });
-  }
-
-  return scored.sort((a, b) => a.km - b.km).slice(0, limit);
 }
 
 /**

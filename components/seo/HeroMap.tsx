@@ -1,5 +1,6 @@
 import { MAP_SIZE, formatScale, overlayPosition } from '@/lib/heroMap';
 import type { HeroMapModel, MapDot } from '@/lib/heroMapData';
+import LiveMap, { type LiveMapLabels } from '@/components/seo/LiveMap';
 
 // Theme tokens (globals.css), set through `style` because SVG presentation
 // attributes do not reliably resolve var().
@@ -15,6 +16,7 @@ export interface HeroMapLabels {
   /** Legend of the year-group switch. */
   variantSwitch: string;
   sector: (sector: string) => string;
+  live: LiveMapLabels;
 }
 
 /**
@@ -42,8 +44,25 @@ export default function HeroMap({
   const hasZone = variants.length > 0 || fixedZones.length > 0;
   const scaleText = formatScale(scale.km);
 
+  const markers = [...dots.map(entry => ({ ...entry, selected: false, number: undefined })), ...focus].map(entry => ({
+    id: entry.id,
+    name: entry.name,
+    lat: entry.lat,
+    lng: entry.lng,
+    color: entry.color,
+    r: entry.r,
+    href: hrefFor(entry),
+    number: entry.number,
+    selected: entry.selected,
+  }));
+  const zones = model.live.context.map(zone => ({
+    url: zone.url,
+    name: zone.name,
+    href: hrefFor({ slug: zone.slug, state: zone.state } as MapDot),
+  }));
+
   return (
-    <figure className="bs-map">
+    <LiveMap data={model.live} zones={zones} markers={markers} labels={labels.live}>
       <div className="bs-map-canvas">
       {variants.length > 1 && (
         <fieldset className="bs-map-switch">
@@ -165,6 +184,6 @@ export default function HeroMap({
           </span>
         ))}
       </div>
-    </figure>
+    </LiveMap>
   );
 }

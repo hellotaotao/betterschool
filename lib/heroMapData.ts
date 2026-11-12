@@ -7,6 +7,7 @@ import {
   contextBounds,
   featureRings,
   fitFrame,
+  frameBounds,
   project,
   ringsPath,
   scaleBar,
@@ -30,6 +31,8 @@ const MAX_BACKGROUND_SCHOOLS = 120;
 export interface MapDot {
   id: string;
   name: string;
+  lat: number;
+  lng: number;
   sector: string;
   color: string;
   x: number;
@@ -52,8 +55,19 @@ export interface MapVariant {
   path: string;
 }
 
+/** What the interactive map needs on top of the drawing: geometry is fetched by URL, not inlined. */
+export interface LiveMapData {
+  bounds: [[number, number], [number, number]];
+  /** Same order as `HeroMapModel.variants`, so the radio switch indexes both. */
+  variants: { key: string; label: string; url: string }[];
+  fixed: string[];
+  /** Neighbouring zones, each named after the school it belongs to. */
+  context: { url: string; name: string; slug: string; state: string }[];
+}
+
 export interface HeroMapModel {
   frame: MapFrame;
+  live: LiveMapData;
   variants: MapVariant[];
   /** Zones drawn alongside the focus ones, every variant at once. */
   fixedZones: string[];
@@ -68,6 +82,18 @@ export interface ZoneInput {
   key: string;
   label: string;
   feature: CatchmentFeature;
+  /** The published geometry file, which the interactive map fetches. */
+  url: string;
+}
+
+export function geometryUrl(entry: { state: string; location_age_id: number; kind: string; geometry_url?: string }): string {
+  return entry.geometry_url ?? `/data/catchment/${entry.state}/${entry.location_age_id}-${entry.kind}.json`;
+}
+
+let schoolsByAcara: Map<number, School> | undefined;
+function schoolByAcara(id: number): School | undefined {
+  schoolsByAcara ??= new Map(getSchoolsDataset().schools.map(school => [school.acara_sml_id, school]));
+  return schoolsByAcara.get(id);
 }
 
 export function featureFor(school: School, catchment: SchoolCatchment): CatchmentFeature | null {
@@ -96,6 +122,8 @@ function dot(school: School, frame: MapFrame): MapDot {
   return {
     id: school.id,
     name: school.school_name,
+    lat: Math.round(Number(school.lat) * 1e5) / 1e5,
+    lng: Math.round(Number(school.lng) * 1e5) / 1e5,
     sector: school.sector,
     color: getMarkerColor(school.sector),
     x: round(x),
@@ -125,7 +153,7 @@ export function buildHeroMap({
   /** Mutually exclusive boundaries; the reader picks one. */
   variants?: ZoneInput[];
   /** Boundaries always drawn, e.g. every zone of the schools in a suburb. */
-  fixedZones?: CatchmentFeature[];
+  fixedZones?: ZoneInput[];
   context?: ContextRule | null;
   /** False when a zone is far larger than the focus and would shrink it to a dot. */
   fitZones?: boolean;
@@ -136,7 +164,7 @@ export function buildHeroMap({
   if (placed.length === 0) return null;
 
   const zoneRings = fitZones
-    ? [...variants.map(variant => variant.feature), ...fixedZones].flatMap(featureRings)
+    ? [...variants, ...fixedZones].map(zone => zone.feature).flatMap(featureRings)
     : [];
   const frame = fitFrame(
     [...placed.map(entry => ({ lat: Number(entry.school.lat), lng: Number(entry.school.lng) })), ...fitAlso],
@@ -157,9 +185,10 @@ export function buildHeroMap({
     .sort((a, b) => b.r - a.r);
 
   const shownOwners = new Set(
-    [...variants.map(variant => variant.feature), ...fixedZones].map(feature => feature.properties.acara_sml_id),
+    [...variants, ...fixedZones].map(zone => zone.feature.properties.acara_sml_id),
   );
   const contextPaths: string[] = [];
+  const liveContext: LiveMapData['context'] = [];
   if (context) {
     const seen = new Set<string>();
     const candidates = getCatchmentEntries()
@@ -182,6 +211,10 @@ export function buildHeroMap({
       // Faint 1px context lines: a coarser tolerance is invisible and halves the bytes.
       const path = ringsPath(frame, featureRings(feature), 1.5);
       if (path) contextPaths.push(path);
+      const owner = schoolByAcara(entry.acara_sml_id);
+      if (owner) {
+        liveContext.push({ url: geometryUrl(entry), name: owner.school_name, slug: getSchoolSlug(owner), state: owner.state });
+      }
     }
   }
 
@@ -191,12 +224,20 @@ export function buildHeroMap({
     selected: Boolean(entry.selected),
   }));
 
+  const drawnVariants = variants
+    .map(variant => ({ variant, path: ringsPath(frame, featureRings(variant.feature)) }))
+    .filter(entry => entry.path);
+
   return {
     frame,
-    variants: variants
-      .map(variant => ({ key: variant.key, label: variant.label, path: ringsPath(frame, featureRings(variant.feature)) }))
-      .filter(variant => variant.path),
-    fixedZones: fixedZones.map(feature => ringsPath(frame, featureRings(feature))).filter(Boolean),
+    live: {
+      bounds: frameBounds(frame),
+      variants: drawnVariants.map(({ variant }) => ({ key: variant.key, label: variant.label, url: variant.url })),
+      fixed: fixedZones.map(zone => zone.url),
+      context: liveContext,
+    },
+    variants: drawnVariants.map(({ variant, path }) => ({ key: variant.key, label: variant.label, path })),
+    fixedZones: fixedZones.map(zone => ringsPath(frame, featureRings(zone.feature))).filter(Boolean),
     context: contextPaths,
     dots,
     focus: focusDots,
