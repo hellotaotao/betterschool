@@ -72,7 +72,13 @@ export function inMelbourne(school) {
     || (code >= 3750 && code <= 3811) || (code >= 3910 && code <= 3944) || (code >= 3975 && code <= 3978);
 }
 
+const nonGovSecondary = state => school =>
+  school.state === state && school.sector !== 'Government'
+  && school.school_type !== 'Primary' && school.school_type !== 'Special';
+
 export const SCOPES = {
+  'qld-secondary': nonGovSecondary('QLD'),
+  'wa-secondary': nonGovSecondary('WA'),
   'melbourne-secondary': school =>
     school.state === 'VIC' && inMelbourne(school) && school.sector !== 'Government'
     && school.school_type !== 'Primary' && school.school_type !== 'Special',
