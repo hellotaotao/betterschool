@@ -28,8 +28,19 @@ export const STATUSES = {
   not_extracted: 'figures exist but could not be read (script-rendered table, image)',
   blocked: 'the website refuses automated requests',
   unreachable: 'the website did not respond',
-  no_website: 'no website in the ACARA record',
+  no_website: 'no website in the ACARA record, and none found by lookup',
+  // ACARA lists a sub-campus as its own location, without a website or an
+  // enrolment count of its own: it is part of the school named by
+  // rolled_school_id, which carries the website and the fee schedule.
+  campus: 'a sub-campus; its website and fees are those of parent_acara_sml_id',
 };
+
+/** The parent school of a sub-campus that has no website of its own, else null. */
+export function parentSchoolId(school) {
+  const parent = Number(school.rolled_school_id);
+  return school.campus_type === 'School Sub-Campus' && !school.school_url
+    && Number.isFinite(parent) && parent !== school.acara_sml_id ? parent : null;
+}
 
 // Greater Sydney by postcode: the metropolitan ranges plus the Blue Mountains
 // and Macarthur blocks. Close enough to pick a crawl batch; not a boundary

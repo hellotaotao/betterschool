@@ -32,18 +32,36 @@ export interface PublishedFees {
  * page words them differently because "the school does not publish fees" and
  * "we have not looked yet" are different facts.
  */
-export type FeeRecord =
+export type FeeRecord = (
   | { status: 'found'; checked: string; fees: PublishedFees }
   | { status: 'not_published'; checked: string }
   | { status: 'unavailable'; checked: string }
-  | { status: 'missing' };
+  | { status: 'missing' }
+) & {
+  /** Set on a sub-campus: the record is its parent school's, named here so the page says so. */
+  campusOf?: string;
+};
 
-type LedgerEntry = { status: string; checked: string; fees?: PublishedFees };
+type LedgerEntry = {
+  status: string;
+  checked: string;
+  fees?: PublishedFees;
+  parent_acara_sml_id?: number;
+  parent_name?: string;
+};
 const schools = (ledger as unknown as { schools: Record<string, LedgerEntry> }).schools;
 
 export function getFeeRecord(acaraId: number): FeeRecord {
   const entry = schools[String(acaraId)];
   if (!entry) return { status: 'missing' };
+  // A sub-campus has no fee schedule of its own; it is part of its parent school.
+  if (entry.status === 'campus' && entry.parent_acara_sml_id != null) {
+    const parent = schools[String(entry.parent_acara_sml_id)];
+    const record: FeeRecord = parent && parent.status !== 'campus'
+      ? getFeeRecord(entry.parent_acara_sml_id)
+      : { status: 'unavailable', checked: entry.checked };
+    return { ...record, campusOf: entry.parent_name };
+  }
   if (entry.status === 'found' && entry.fees) return { status: 'found', checked: entry.checked, fees: entry.fees };
   if (entry.status === 'not_published') return { status: 'not_published', checked: entry.checked };
   return { status: 'unavailable', checked: entry.checked };

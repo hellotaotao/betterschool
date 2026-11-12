@@ -11,7 +11,7 @@ import crypto from 'node:crypto';
 import fs from 'node:fs';
 import path from 'node:path';
 import {
-  RAW_DIR, SCOPES, fetchPage, htmlLinks, htmlToText, isPdf, loadLedger, loadSchools, pdfToText, saveLedger, today,
+  RAW_DIR, SCOPES, fetchPage, htmlLinks, htmlToText, isPdf, loadLedger, loadSchools, parentSchoolId, pdfToText, saveLedger, today,
 } from './fees-common.mjs';
 
 const MAX_PAGES = 16;
@@ -114,6 +114,7 @@ async function main() {
       return options.force || !entry?.checked || Date.parse(entry.checked) < cutoff;
     });
   console.log(`${targets.length} schools to fetch`);
+  const byId = new Map(loadSchools().map(school => [school.acara_sml_id, school]));
 
   let done = 0;
   const work = targets.slice();
@@ -122,11 +123,27 @@ async function main() {
       const school = work.shift();
       const id = school.acara_sml_id;
       const previous = ledger.schools[id] ?? {};
-      const base = { school_name: school.school_name, website: school.school_url ?? null };
-      if (!school.school_url) {
+      // ACARA leaves some websites blank; one found and verified by hand is kept
+      // in the ledger as website_source "lookup" and stands in for it.
+      const website = school.school_url ?? (previous.website_source === 'lookup' ? previous.website : null);
+      const base = { school_name: school.school_name, website };
+      const parent = parentSchoolId(school);
+      if (!website && parent && byId.has(parent)) {
+        // A campus inherits nothing from an earlier crawl or note of its own.
+        const kept = { ...previous };
+        delete kept.crawl;
+        delete kept.note;
+        ledger.schools[id] = {
+          ...kept, ...base, status: 'campus', checked: today(),
+          parent_acara_sml_id: parent,
+          parent_name: byId.get(parent).school_name,
+          website: byId.get(parent).school_url ?? null,
+          website_source: 'parent_school',
+        };
+      } else if (!website) {
         ledger.schools[id] = { ...previous, ...base, status: 'no_website', checked: today() };
       } else {
-        const result = await crawl(school);
+        const result = await crawl({ ...school, school_url: website });
         // Figures already read stay until the extraction step replaces them.
         const status = previous.status === 'found' && result.status === 'fetched' ? 'found' : result.status;
         ledger.schools[id] = {

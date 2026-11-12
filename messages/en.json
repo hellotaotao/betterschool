@@ -311,6 +311,7 @@
       "feesFree": "No tuition fees",
       "feesFreeNote": "Government school. Voluntary contributions may still apply.",
       "feesNotPublished": "The school does not publish its fees online.",
+      "feesCampusOf": "This is a campus of {school}; the fees shown are that school’s.",
       "feesNotCollected": "We have not collected this school’s fees yet.",
       "feesYear": "Year {years}",
       "statFees": "Fees, Year {years}",

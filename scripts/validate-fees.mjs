@@ -44,6 +44,14 @@ for (const [id, entry] of Object.entries(ledger.schools)) {
   if (!schools.has(id)) fail(id, 'not an ACARA school');
   if (!STATUSES[entry.status]) fail(id, `unknown status ${entry.status}`);
   if (!/^\d{4}-\d{2}-\d{2}$/.test(entry.checked ?? '')) fail(id, 'missing checked date');
+  if (entry.status === 'campus') {
+    const parent = String(entry.parent_acara_sml_id);
+    if (!schools.has(parent) || parent === id) fail(id, `campus with parent ${entry.parent_acara_sml_id}`);
+    else if (schools.get(id)?.rolled_school_id != null && String(schools.get(id).rolled_school_id) !== parent) {
+      fail(id, `campus parent ${parent} is not ACARA's rolled_school_id`);
+    }
+  }
+  if (entry.website_source === 'lookup' && !entry.website_note) fail(id, 'looked-up website without website_note');
   if (entry.status !== 'found') {
     if (entry.fees?.by_year) fail(id, `status ${entry.status} but carries figures`);
     continue;

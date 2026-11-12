@@ -323,15 +323,21 @@
   },
   "40875": {
    "school_name": "SCECGS Redlands - Murdoch campus",
-   "website": null,
-   "status": "no_website",
-   "checked": "2026-11-12"
+   "website": "https://www.redlands.nsw.edu.au/",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 43875,
+   "parent_name": "SCECGS Redlands",
+   "website_source": "parent_school"
   },
   "40888": {
    "school_name": "Trinity Catholic College (Regents Park Campus)",
-   "website": null,
-   "status": "no_website",
-   "checked": "2026-11-12"
+   "website": "https://trinity.syd.catholic.edu.au",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 43474,
+   "parent_name": "Trinity Catholic College",
+   "website_source": "parent_school"
   },
   "40892": {
    "school_name": "All Saints Grammar",
@@ -382,21 +388,30 @@
   },
   "40904": {
    "school_name": "St Andrews College, Senior Campus",
-   "website": null,
-   "status": "no_website",
-   "checked": "2026-11-12"
+   "website": "http://www.standrewscmarayong.catholic.edu.au",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 43221,
+   "parent_name": "St Andrews College",
+   "website_source": "parent_school"
   },
   "40905": {
    "school_name": "St John Paul II Catholic College (Nirimba)",
-   "website": null,
-   "status": "no_website",
-   "checked": "2026-11-12"
+   "website": "https://www.stjohnpaul2.catholic.edu.au/",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 43222,
+   "parent_name": "St John Paul II Catholic College (Schofields)",
+   "website_source": "parent_school"
   },
   "40919": {
    "school_name": "Arden Anglican School, Epping campus",
-   "website": null,
-   "status": "no_website",
-   "checked": "2026-11-12"
+   "website": "http://www.arden.nsw.edu.au",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 43976,
+   "parent_name": "Arden Anglican School",
+   "website_source": "parent_school"
   },
   "40921": {
    "school_name": "Reddam House",
@@ -411,27 +426,39 @@
   },
   "40923": {
    "school_name": "Key College, Chapel School campus",
-   "website": null,
-   "status": "no_website",
-   "checked": "2026-11-12"
+   "website": "http://www.youthoffthestreets.com.au/education/w1/i1001886/",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 43784,
+   "parent_name": "Key College",
+   "website_source": "parent_school"
   },
   "40934": {
    "school_name": "St Mary and St Mina's Coptic Orthodox College, Rockdale campus",
-   "website": null,
-   "status": "no_website",
-   "checked": "2026-11-12"
+   "website": "http://www.stmary.nsw.edu.au",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 43983,
+   "parent_name": "St Mary and St Mina's Coptic Orthodox College",
+   "website_source": "parent_school"
   },
   "40965": {
    "school_name": "Blacktown Youth College - Lawson Campus",
-   "website": null,
-   "status": "no_website",
-   "checked": "2026-11-12"
+   "website": "http://www.blacktownyouthcollege.nsw.edu.au",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 40644,
+   "parent_name": "Blacktown Youth College Incorporated",
+   "website_source": "parent_school"
   },
   "40979": {
    "school_name": "Al Noori Muslim School - Senior Campus",
-   "website": null,
-   "status": "no_website",
-   "checked": "2026-11-12"
+   "website": "http://www.alnoori.nsw.edu.au",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 43958,
+   "parent_name": "Al Noori Muslim School",
+   "website_source": "parent_school"
   },
   "43155": {
    "school_name": "St Michael's Primary School",
@@ -11803,9 +11830,12 @@
   },
   "43825": {
    "school_name": "Reddam House, Bondi Campus",
-   "website": null,
-   "status": "no_website",
-   "checked": "2026-11-12"
+   "website": "https://www.reddamhouse.com.au/",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 40921,
+   "parent_name": "Reddam House",
+   "website_source": "parent_school"
   },
   "43827": {
    "school_name": "Minarah College",
@@ -12139,9 +12169,12 @@
   },
   "43852": {
    "school_name": "Al Amanah College, Bankstown campus",
-   "website": null,
-   "status": "no_website",
-   "checked": "2026-11-12"
+   "website": "https://www.alamanah.nsw.edu.au/",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 43919,
+   "parent_name": "Al Amanah College",
+   "website_source": "parent_school"
   },
   "43854": {
    "school_name": "Redeemer Baptist School",
@@ -14504,21 +14537,30 @@
   },
   "50423": {
    "school_name": "Malek Fahd Islamic School Beaumont Hills",
-   "website": null,
-   "status": "no_website",
-   "checked": "2026-11-12"
+   "website": "https://www.mfis.nsw.edu.au/",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 43980,
+   "parent_name": "Malek Fahd Islamic School",
+   "website_source": "parent_school"
   },
   "50424": {
    "school_name": "Malek Fahd Islamic School Hoxton Park",
-   "website": null,
-   "status": "no_website",
-   "checked": "2026-11-12"
+   "website": "https://www.mfis.nsw.edu.au/",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 43980,
+   "parent_name": "Malek Fahd Islamic School",
+   "website_source": "parent_school"
   },
   "50433": {
    "school_name": "Aspect Macarthur School, West Hoxton",
-   "website": null,
-   "status": "no_website",
-   "checked": "2026-11-12"
+   "website": "http://www.autismspectrum.org.au",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 50250,
+   "parent_name": "Aspect Macarthur School",
+   "website_source": "parent_school"
   },
   "50494": {
    "school_name": "Oran Park Anglican College",
@@ -14682,15 +14724,21 @@
   },
   "50713": {
    "school_name": "Redeemer Baptist School, Castle Hill campus",
-   "website": null,
-   "status": "no_website",
-   "checked": "2026-11-12"
+   "website": "http://www.redeemer.nsw.edu.au",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 43854,
+   "parent_name": "Redeemer Baptist School",
+   "website_source": "parent_school"
   },
   "50716": {
    "school_name": "Stella Maris College Benedict Campus",
-   "website": null,
-   "status": "no_website",
-   "checked": "2026-11-12"
+   "website": "http://stellamaris.nsw.edu.au",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 43677,
+   "parent_name": "Stella Maris College",
+   "website_source": "parent_school"
   },
   "50729": {
    "school_name": "Australian International Academy, Kellyville Campus",
@@ -15008,21 +15056,30 @@
   },
   "52040": {
    "school_name": "St Andrew's Cathedral School - Bishop Barry Senior College",
-   "website": null,
-   "status": "no_website",
-   "checked": "2026-11-12"
+   "website": "http://www.sacs.nsw.edu.au",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 43841,
+   "parent_name": "St Andrew's Cathedral School",
+   "website_source": "parent_school"
   },
   "52044": {
    "school_name": "The Scots College, Ginahgulla Centre campus",
-   "website": null,
-   "status": "no_website",
-   "checked": "2026-11-12"
+   "website": "http://www.tsc.nsw.edu.au",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 43821,
+   "parent_name": "The Scots College",
+   "website_source": "parent_school"
   },
   "52048": {
    "school_name": "Kambala, Fernbank Campus",
-   "website": null,
-   "status": "no_website",
-   "checked": "2026-11-12"
+   "website": "http://www.kambala.nsw.edu.au",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 43920,
+   "parent_name": "Kambala",
+   "website_source": "parent_school"
   },
   "52049": {
    "school_name": "Eileen O'Connor Catholic College",
@@ -15093,105 +15150,176 @@
   },
   "52055": {
    "school_name": "Ravenswood School for Girls, Boarding House",
-   "website": null,
-   "status": "no_website",
-   "checked": "2026-11-12"
+   "website": "http://www.ravenswood.nsw.edu.au",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 43939,
+   "parent_name": "Ravenswood School for Girls",
+   "website_source": "parent_school"
   },
   "52062": {
    "school_name": "SHORE - Sydney Church of England Grammar School, Boat Shed",
-   "website": null,
-   "status": "no_website",
-   "checked": "2026-11-12"
+   "website": "https://www.shore.nsw.edu.au/",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 43878,
+   "parent_name": "SHORE - Sydney Church of England Grammar School",
+   "website_source": "parent_school"
   },
   "52065": {
    "school_name": "Trinity Grammar School Bishop Chambers House",
-   "website": null,
-   "status": "no_website",
-   "checked": "2026-11-12"
+   "website": "http://www.trinity.nsw.edu.au",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 43710,
+   "parent_name": "Trinity Grammar School",
+   "website_source": "parent_school"
   },
   "52066": {
    "school_name": "MLC School, Art and Design Centre",
-   "website": null,
-   "status": "no_website",
-   "checked": "2026-11-12"
+   "website": "http://www.mlcsyd.nsw.edu.au",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 44010,
+   "parent_name": "MLC School",
+   "website_source": "parent_school"
   },
   "52067": {
    "school_name": "Aspect South East Sydney School, Auburn",
-   "website": null,
-   "status": "no_website",
-   "checked": "2026-11-12"
+   "website": "http://www.autismspectrum.org.au",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 43927,
+   "parent_name": "Aspect South East Sydney School",
+   "website_source": "parent_school"
   },
   "52081": {
    "school_name": "Odyssey College, Ingleburn",
-   "website": null,
-   "status": "no_website",
-   "checked": "2026-11-12"
+   "website": "http://www.odysseyhouse.com.au",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 40383,
+   "parent_name": "Odyssey College",
+   "website_source": "parent_school"
   },
   "52086": {
    "school_name": "Marsden Park Anglican College",
-   "website": null,
-   "status": "no_website",
-   "checked": "2026-11-12"
+   "website": "https://www.mpac.nsw.edu.au/",
+   "status": "found",
+   "checked": "2026-11-12",
+   "website_source": "lookup",
+   "website_note": "Not in ACARA; found by domain lookup on 2026-11-12, home page title names the school",
+   "crawl": {
+    "pages": 5,
+    "errors": 0
+   },
+   "fees": {
+    "fee_year": 2027,
+    "basis": "annual school fees; service charges extra",
+    "by_year": [
+     {
+      "years": "K-6",
+      "tuition": 8800
+     },
+     {
+      "years": "7-10",
+      "tuition": 9960
+     }
+    ],
+    "other_compulsory": "Service charges $1,100-$2,000 a year",
+    "source": "school_website",
+    "source_url": "https://www.mpac.nsw.edu.au/mpac-info/fees-and-charges/"
+   }
   },
   "52087": {
    "school_name": "St Bishoy Coptic Orthodox College, St Bishoy Hall",
-   "website": null,
-   "status": "no_website",
-   "checked": "2026-11-12"
+   "website": "http://www.stbishoy.nsw.edu.au",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 43867,
+   "parent_name": "St Bishoy Coptic Orthodox College",
+   "website_source": "parent_school"
   },
   "52323": {
    "school_name": "Queenwood, Art and Design Campus",
-   "website": null,
-   "status": "no_website",
-   "checked": "2026-11-12"
+   "website": "http://www.queenwood.nsw.edu.au",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 43795,
+   "parent_name": "Queenwood",
+   "website_source": "parent_school"
   },
   "52341": {
    "school_name": "Aspect Western Sydney School, Castle Hill",
-   "website": null,
-   "status": "no_website",
-   "checked": "2026-11-12"
+   "website": "http://www.autismspectrum.org.au",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 43823,
+   "parent_name": "Aspect Western Sydney School",
+   "website_source": "parent_school"
   },
   "52343": {
    "school_name": "Aspect Western Sydney School, Kemps Creek - Emmaus",
-   "website": null,
-   "status": "no_website",
-   "checked": "2026-11-12"
+   "website": "http://www.autismspectrum.org.au",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 43823,
+   "parent_name": "Aspect Western Sydney School",
+   "website_source": "parent_school"
   },
   "52346": {
    "school_name": "Aspect Western Sydney School, Quakers Road, Marayong",
-   "website": null,
-   "status": "no_website",
-   "checked": "2026-11-12"
+   "website": "http://www.autismspectrum.org.au",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 43823,
+   "parent_name": "Aspect Western Sydney School",
+   "website_source": "parent_school"
   },
   "52347": {
    "school_name": "Aspect Western Sydney School, Schofields",
-   "website": null,
-   "status": "no_website",
-   "checked": "2026-11-12"
+   "website": "http://www.autismspectrum.org.au",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 43823,
+   "parent_name": "Aspect Western Sydney School",
+   "website_source": "parent_school"
   },
   "52349": {
    "school_name": "Aspect Western Sydney School, Springwood",
-   "website": null,
-   "status": "no_website",
-   "checked": "2026-11-12"
+   "website": "http://www.autismspectrum.org.au",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 43823,
+   "parent_name": "Aspect Western Sydney School",
+   "website_source": "parent_school"
   },
   "52361": {
    "school_name": "Aspect South East Sydney School, Menai",
-   "website": null,
-   "status": "no_website",
-   "checked": "2026-11-12"
+   "website": "http://www.autismspectrum.org.au",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 43927,
+   "parent_name": "Aspect South East Sydney School",
+   "website_source": "parent_school"
   },
   "52362": {
    "school_name": "Aspect South East Sydney School, Regents Park",
-   "website": null,
-   "status": "no_website",
-   "checked": "2026-11-12"
+   "website": "http://www.autismspectrum.org.au",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 43927,
+   "parent_name": "Aspect South East Sydney School",
+   "website_source": "parent_school"
   },
   "52363": {
    "school_name": "MLC School, Music Centre",
-   "website": null,
-   "status": "no_website",
-   "checked": "2026-11-12"
+   "website": "http://www.mlcsyd.nsw.edu.au",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 44010,
+   "parent_name": "MLC School",
+   "website_source": "parent_school"
   },
   "52372": {
    "school_name": "St Francis Catholic College",
@@ -15316,39 +15444,55 @@
   },
   "52433": {
    "school_name": "Warakirri College - Blacktown",
-   "website": null,
-   "status": "no_website",
-   "checked": "2026-11-12"
+   "website": "http://www.warakirricollege.nsw.edu.au",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 40779,
+   "parent_name": "Warakirri College",
+   "website_source": "parent_school"
   },
   "52511": {
    "school_name": "GOAL College, Olympic Park",
-   "website": null,
-   "status": "no_website",
-   "checked": "2026-11-12"
+   "website": "https://www.goalcollege.nsw.edu.au/",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 52369,
+   "parent_name": "GOAL College",
+   "website_source": "parent_school"
   },
   "52513": {
    "school_name": "Waranara School - Senior Campus",
-   "website": null,
-   "status": "no_website",
-   "checked": "2026-11-12"
+   "website": "http://www.goodshep.org.au/find-a-service/educational-pathways/",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 51460,
+   "parent_name": "Mackillop Education Waranara School",
+   "website_source": "parent_school"
   },
   "52617": {
    "school_name": "Oasis College Surry Hills",
    "website": null,
    "status": "no_website",
-   "checked": "2026-11-12"
+   "checked": "2026-11-12",
+   "note": "Special assistance school with no website in ACARA; domain guesses and web search on 2026-11-12 found none."
   },
   "52618": {
    "school_name": "Alpha Omega Senior College, Queen Street Campus",
-   "website": null,
-   "status": "no_website",
-   "checked": "2026-11-12"
+   "website": "http://www.aosc.nsw.edu.au/",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 50380,
+   "parent_name": "Alpha Omega Senior College",
+   "website_source": "parent_school"
   },
   "52619": {
    "school_name": "Marist Catholic College Penshurst - South Hurstville Campus",
-   "website": null,
-   "status": "no_website",
-   "checked": "2026-11-12"
+   "website": "https://maristpenshurst.syd.catholic.edu.au",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 43480,
+   "parent_name": "Marist Catholic College Penshurst",
+   "website_source": "parent_school"
   },
   "52640": {
    "school_name": "Santa Sophia Catholic College (Secondary)",
@@ -15538,21 +15682,30 @@
   },
   "52789": {
    "school_name": "Warakirri College - Campbelltown South",
-   "website": null,
-   "status": "no_website",
-   "checked": "2026-11-12"
+   "website": "http://www.warakirricollege.nsw.edu.au",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 40779,
+   "parent_name": "Warakirri College",
+   "website_source": "parent_school"
   },
   "52820": {
    "school_name": "CathWest Innovation College McCarthy Campus",
-   "website": null,
-   "status": "no_website",
-   "checked": "2026-11-12"
+   "website": "https://cathwest.parra.catholic.edu.au/",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 40728,
+   "parent_name": "CathWest Innovation College",
+   "website_source": "parent_school"
   },
   "52877": {
    "school_name": "All Saints Catholic College, Casula Campus",
-   "website": null,
-   "status": "no_website",
-   "checked": "2026-11-12"
+   "website": "https://ascc.syd.catholic.edu.au",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 43422,
+   "parent_name": "All Saints Catholic College",
+   "website_source": "parent_school"
   },
   "52944": {
    "school_name": "Muslim Girls Grammar School",
@@ -15578,21 +15731,30 @@
   },
   "52996": {
    "school_name": "Broken Bay Cross Campus Course Centre",
-   "website": null,
-   "status": "no_website",
-   "checked": "2026-11-12"
+   "website": "http://www.stleos.nsw.edu.au",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 43271,
+   "parent_name": "St Leo's Catholic College",
+   "website_source": "parent_school"
   },
   "52999": {
    "school_name": "Aspect Western Sydney School, St Andrews College Senior Campus",
-   "website": null,
-   "status": "no_website",
-   "checked": "2026-11-12"
+   "website": "http://www.autismspectrum.org.au",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 43823,
+   "parent_name": "Aspect Western Sydney School",
+   "website_source": "parent_school"
   },
   "53000": {
    "school_name": "Australian Islamic College of Sydney Senior School",
-   "website": null,
-   "status": "no_website",
-   "checked": "2026-11-12"
+   "website": "http://www.aics.nsw.edu.au/",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 43937,
+   "parent_name": "Australian Islamic College of Sydney",
+   "website_source": "parent_school"
   },
   "53006": {
    "school_name": "St Luke's Arrunga",
@@ -15676,9 +15838,12 @@
   },
   "53042": {
    "school_name": "GOAL College, ACPE",
-   "website": null,
-   "status": "no_website",
-   "checked": "2026-11-12"
+   "website": "https://www.goalcollege.nsw.edu.au/",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 52369,
+   "parent_name": "GOAL College",
+   "website_source": "parent_school"
   },
   "53083": {
    "school_name": "Hartford College",
@@ -15713,9 +15878,12 @@
   },
   "53117": {
    "school_name": "High School Campus for Yanginanook School",
-   "website": null,
-   "status": "no_website",
-   "checked": "2026-11-12"
+   "website": "http://www.yanginanook.nsw.edu.au",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 43918,
+   "parent_name": "Yanginanook School",
+   "website_source": "parent_school"
   },
   "53162": {
    "school_name": "My Dream Australian Academy",
@@ -15730,21 +15898,60 @@
   },
   "53164": {
    "school_name": "Leppington Anglican College",
-   "website": null,
-   "status": "no_website",
-   "checked": "2026-11-12"
+   "website": "https://www.lac.nsw.edu.au/",
+   "status": "found",
+   "checked": "2026-11-12",
+   "website_source": "lookup",
+   "website_note": "Not in ACARA; found by domain lookup on 2026-11-12, home page title names the school",
+   "crawl": {
+    "pages": 9,
+    "errors": 1
+   },
+   "fees": {
+    "fee_year": 2026,
+    "basis": "annual school fees; service charges extra",
+    "by_year": [
+     {
+      "years": "K-6",
+      "tuition": 9240
+     },
+     {
+      "years": "7-10",
+      "tuition": 9840
+     }
+    ],
+    "other_compulsory": "Service charges $840-$1,860 a year",
+    "one_off": [
+     {
+      "item": "Application fee",
+      "aud": 100
+     },
+     {
+      "item": "Acceptance fee",
+      "aud": 500
+     }
+    ],
+    "source": "school_website",
+    "source_url": "https://www.lac.nsw.edu.au/documents/96/LAC_Fee_Schedule_2026.pdf"
+   }
   },
   "53196": {
    "school_name": "Warakirri College - Campbelltown North",
-   "website": null,
-   "status": "no_website",
-   "checked": "2026-11-12"
+   "website": "http://www.warakirricollege.nsw.edu.au",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 40779,
+   "parent_name": "Warakirri College",
+   "website_source": "parent_school"
   },
   "53198": {
    "school_name": "Indie School Fairfield",
-   "website": null,
-   "status": "no_website",
-   "checked": "2026-11-12"
+   "website": "https://www.awcc.edu.au/",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 40847,
+   "parent_name": "Indie School Albury",
+   "website_source": "parent_school"
   },
   "53221": {
    "school_name": "St Joseph's Catholic Primary School",
@@ -15791,45 +15998,66 @@
   },
   "53256": {
    "school_name": "St Aloysius' College, Rozelle",
-   "website": null,
-   "status": "no_website",
-   "checked": "2026-11-12"
+   "website": "http://www.staloysius.nsw.edu.au",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 43684,
+   "parent_name": "St Aloysius' College",
+   "website_source": "parent_school"
   },
   "53324": {
    "school_name": "Indie School Liverpool",
-   "website": null,
-   "status": "no_website",
-   "checked": "2026-11-12"
+   "website": "https://www.awcc.edu.au/",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 40847,
+   "parent_name": "Indie School Albury",
+   "website_source": "parent_school"
   },
   "53357": {
    "school_name": "William Street Campus",
-   "website": null,
-   "status": "no_website",
-   "checked": "2026-11-12"
+   "website": "https://smccsydney.syd.catholic.edu.au",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 43464,
+   "parent_name": "St Mary's Cathedral College",
+   "website_source": "parent_school"
   },
   "53358": {
    "school_name": "St Clare's College - Bronte Road Campus",
-   "website": null,
-   "status": "no_website",
-   "checked": "2026-11-12"
+   "website": "https://stclares.syd.catholic.edu.au",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 43676,
+   "parent_name": "St Clare's College",
+   "website_source": "parent_school"
   },
   "53418": {
    "school_name": "Indie School Parramatta",
-   "website": null,
-   "status": "no_website",
-   "checked": "2026-11-12"
+   "website": "https://www.awcc.edu.au/",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 40847,
+   "parent_name": "Indie School Albury",
+   "website_source": "parent_school"
   },
   "53419": {
    "school_name": "Reddam House North Shore",
-   "website": null,
-   "status": "no_website",
-   "checked": "2026-11-12"
+   "website": "https://www.reddamhouse.com.au/",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 40921,
+   "parent_name": "Reddam House",
+   "website_source": "parent_school"
   },
   "53423": {
    "school_name": "International Maarif Schools of Australia - Auburn Campus",
-   "website": null,
-   "status": "no_website",
-   "checked": "2026-11-12"
+   "website": "https://www.maarif.nsw.edu.au/",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 52730,
+   "parent_name": "International Maarif Schools of Australia - Gallipoli Campus",
+   "website_source": "parent_school"
   }
  }
 }

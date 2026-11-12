@@ -311,6 +311,7 @@
       "feesFree": "不收学费",
       "feesFreeNote": "公立学校。仍可能有自愿性质的捐款。",
       "feesNotPublished": "学校没有在官网公开学费。",
+      "feesCampusOf": "本校区隶属 {school}，以下为该校的学费。",
       "feesNotCollected": "我们还没有收录这所学校的学费。",
       "feesYear": "Year {years}",
       "statFees": "学费 · Year {years}",

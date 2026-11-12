@@ -41,9 +41,13 @@ function FeesPanel({ t, locale, school, record }: { t: Copy; locale: Locale; sch
       </Panel>
     );
   }
+  const campusLine = record.campusOf
+    ? <p className="mt-1 text-[13px] text-muted">{formatMessage(t.feesCampusOf, { school: record.campusOf })}</p>
+    : null;
   if (record.status !== 'found') {
     return (
       <Panel title={t.feesHeading}>
+        {campusLine}
         <p className="mt-2 text-[15px] text-ink-2">
           {record.status === 'not_published' ? t.feesNotPublished : t.feesNotCollected}
         </p>
@@ -60,6 +64,7 @@ function FeesPanel({ t, locale, school, record }: { t: Copy; locale: Locale; sch
 
   return (
     <Panel title={t.feesHeading}>
+      {campusLine}
       <p className="mt-1 text-[13px] text-muted">
         {fees.fee_year
           ? formatMessage(t.feesYearLabel, { year: fees.fee_year })
