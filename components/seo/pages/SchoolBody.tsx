@@ -5,18 +5,21 @@ import { School } from '@/types/school';
 import {
   getNearestSchools,
   getSchoolBySlug,
+  getSchoolSlug,
   getSizePool,
   getSuburb,
   getVceStateRank,
   latestYear12,
 } from '@/lib/schoolsData';
+import { annualFigure, getFeeRecord, leadFeeRow } from '@/lib/feesData';
+import OverviewSection from '@/components/seo/school/OverviewSection';
 import {
   percentBelow,
   schoolHighlights,
   type Highlight,
 } from '@/lib/schoolInsights';
 import { suburbSlug } from '@/lib/slug';
-import { sectorBadgeClass } from '@/utils/schoolFilters';
+import { getMarkerColor, sectorBadgeClass } from '@/utils/schoolFilters';
 import HeroMap from '@/components/seo/HeroMap';
 import { contextFor, mapHref, mapLabels, zoneVariants } from '@/components/seo/mapParts';
 import { buildHeroMap } from '@/lib/heroMapData';
@@ -154,7 +157,26 @@ export default function SchoolBody({ locale, state, slug }: { locale: Locale; st
   const vce = latestYear12(school);
   const vceMedian = vce?.median_study_score ?? null;
   const vceRank = vceMedian !== null ? getVceStateRank(school) : null;
+  const feeRecord = getFeeRecord(school.acara_sml_id);
+  const suburbSchools = getSuburb(school.state, suburbSlug(school.suburb))?.schools ?? [school];
+  const peers = suburbSchools.filter(peer => peer.id !== school.id);
   const stats: { label: string; value: React.ReactNode; extra?: React.ReactNode }[] = [];
+  // The first thing a parent asks of a non-government school, so it leads.
+  const leadFee = feeRecord.status === 'found' ? leadFeeRow(feeRecord.fees) : null;
+  const leadFeeValue = leadFee ? annualFigure(leadFee) : null;
+  if (feeRecord.status === 'found' && leadFee && leadFeeValue !== null) {
+    stats.push({
+      label: formatMessage(t.statFees, { years: leadFee.years.replace('-', '–') }),
+      value: `$${leadFeeValue.toLocaleString('en-AU')}`,
+      extra: (
+        <span className="mt-1 block text-[13px] text-muted">
+          {feeRecord.fees.fee_year
+            ? formatMessage(t.feesYearLabel, { year: feeRecord.fees.fee_year })
+            : formatMessage(t.feesNoYear, { date: feeRecord.checked })}
+        </span>
+      ),
+    });
+  }
   if (vceMedian !== null) {
     stats.push({
       label: t.statVce,
@@ -329,6 +351,8 @@ export default function SchoolBody({ locale, state, slug }: { locale: Locale; st
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, '\\u003c') }}
       />
 
+      <OverviewSection school={school} locale={locale} fees={feeRecord} />
+
       <ComparisonSection school={school} locale={locale} />
 
       <Year12Section school={school} locale={locale} />
@@ -378,6 +402,26 @@ export default function SchoolBody({ locale, state, slug }: { locale: Locale; st
         )}
       </section>
 
+      {/* Names, not cards: the suburb page has the detail. These are the lateral
+          links that keep a school page from being a dead end. */}
+      {peers.length > 0 && (
+        <section className="bs-section" aria-labelledby="peers">
+          <h2 id="peers" className="bs-h2">{formatMessage(t.peersHeading, { suburb: school.suburb })}</h2>
+          <ul className="mt-3 flex flex-wrap gap-2">
+            {peers.slice(0, 16).map(peer => (
+              <li key={peer.id}>
+                <Link href={schoolPath(peer.state, getSchoolSlug(peer), locale)} className="bs-chip">
+                  <span aria-hidden="true" className="h-2 w-2 shrink-0 rounded-full" style={{ background: getMarkerColor(peer.sector) }} />
+                  {peer.school_name}
+                </Link>
+              </li>
+            ))}
+          </ul>
+          <Link href={suburbPath(school.state, school.suburb, locale)} className="bs-link mt-3 inline-block text-sm">
+            {formatMessage(t.peersAll, { suburb: school.suburb, count: suburbSchools.length })} →
+          </Link>
+        </section>
+      )}
     </PageShell>
   );
 }

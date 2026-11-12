@@ -77,19 +77,34 @@ export default function LiveMapCanvas({
     // so a school at the edge of the frame is not drawn under them. A phone
     // cannot spare that height without zooming out a level, so there the box
     // may sit over the map and only the switch gets room.
-    const narrow = map.getSize().x < 640;
-    map.fitBounds(data.bounds, {
-      animate: false,
-      paddingTopLeft: narrow ? [8, hasSwitch ? 48 : 8] : [12, hasSwitch ? 104 : 64],
-      paddingBottomRight: [8, 8],
-    });
+    // A valid view first: fitting a container that has no size yet (a narrow
+    // window lays the figure out after this runs) yields NaN coordinates.
+    map.setView(L.latLngBounds(data.bounds).getCenter(), 14, { animate: false });
+    const frame = () => {
+      const size = map.getSize();
+      if (size.x === 0 || size.y === 0) return false;
+      const narrow = size.x < 640;
+      map.fitBounds(data.bounds, {
+        animate: false,
+        paddingTopLeft: narrow ? [8, hasSwitch ? 48 : 8] : [12, hasSwitch ? 104 : 64],
+        paddingBottomRight: [8, 8],
+      });
+      // The server drawing is pinned to the top of a tall figure; match it, so
+      // the school sits in the same place before and after the swap.
+      if (size.y > size.x) map.panBy([0, (size.y - size.x) / 2], { animate: false });
+      return true;
+    };
+    if (!frame()) {
+      const observer = new ResizeObserver(() => {
+        map.invalidateSize({ animate: false });
+        if (frame()) observer.disconnect();
+      });
+      observer.observe(container);
+      map.once('unload', () => observer.disconnect());
+    }
     // Marker sizes are tuned for a desktop-wide hero; scale them down with
     // the map so a phone does not show a carpet of overlapping dots.
-    const dotScale = Math.min(1, Math.max(0.55, map.getSize().x / 640));
-    // The server drawing is pinned to the top of a tall figure; match it, so
-    // the school sits in the same place before and after the swap.
-    const size = map.getSize();
-    if (size.y > size.x) map.panBy([0, (size.y - size.x) / 2], { animate: false });
+    const dotScale = Math.min(1, Math.max(0.55, (map.getSize().x || 640) / 640));
 
     L.tileLayer(BASEMAP_TILE_URL, { attribution: BASEMAP_ATTRIBUTION, maxZoom: 19 }).addTo(map);
     L.control.scale({ imperial: false, position: 'bottomright' }).addTo(map);
