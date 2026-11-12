@@ -105,6 +105,31 @@ export function today() {
   return new Date().toISOString().slice(0, 10);
 }
 
+/**
+ * Apply a new reading to a ledger entry while keeping past years.
+ *
+ * Figures for a different fee year push the outgoing ones, source URL and
+ * all, onto fees_history; a re-read of the same year replaces them (it is a
+ * correction, not history). A reading with no figures moves the current ones
+ * to history rather than dropping them. Only figures and links are kept, never
+ * the source documents: when a school replaces or removes its schedule, the
+ * old link simply stops working.
+ */
+export function applyReading(entry, reading) {
+  const { fees: incoming, ...rest } = reading;
+  const history = [...(entry.fees_history ?? [])];
+  const current = entry.fees;
+  const retire = current && (!incoming || current.fee_year !== incoming.fee_year);
+  if (retire) history.unshift({ ...current, superseded: today() });
+  const next = { ...entry, ...rest };
+  delete next.fees;
+  delete next.note;
+  if (incoming) next.fees = incoming;
+  if (rest.note) next.note = rest.note;
+  if (history.length > 0) next.fees_history = history;
+  return next;
+}
+
 const USER_AGENT = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 14_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130 Safari/537.36';
 
 export async function fetchPage(url, { timeoutMs = 25000 } = {}) {

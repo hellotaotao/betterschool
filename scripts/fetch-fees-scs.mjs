@@ -8,7 +8,7 @@
 
 import fs from 'node:fs';
 import path from 'node:path';
-import { RAW_DIR, fetchPage, flatten, htmlToText, loadLedger, loadSchools, saveLedger, today } from './fees-common.mjs';
+import { RAW_DIR, applyReading, fetchPage, flatten, htmlToText, loadLedger, loadSchools, saveLedger, today } from './fees-common.mjs';
 
 const SCS_HOST = /^https?:\/\/(?:www\.)?([a-z0-9-]+)\.syd\.catholic\.edu\.au/i;
 const FEE_PAGE = 'enrolment/school-fees-and-assistance';
@@ -42,8 +42,8 @@ async function main() {
       else if (!result.year || !result.feePage) outcome = 'not_extracted';
       else {
         outcome = 'found';
-        ledger.schools[id] = {
-          ...ledger.schools[id],
+        // A new fee year moves last year's figures and link into fees_history.
+        ledger.schools[id] = applyReading(ledger.schools[id] ?? {}, {
           school_name: school.school_name,
           website: school.school_url,
           status: 'found',
@@ -56,7 +56,7 @@ async function main() {
             source: 'scs_endpoint',
             source_url: result.feePage,
           },
-        };
+        });
       }
     } catch (error) {
       outcome = 'unreachable';

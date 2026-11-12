@@ -18,6 +18,7 @@ const MAX_PAGES = 16;
 const RELEVANT = /fee|tuition|enrol|admission|scholarship|apply|application|entrance|cost/i;
 // A fee schedule beats an "apply now" form when the page budget runs out.
 const STRONG = /fee|tuition|scholarship|entrance|schedule/i;
+const FEE = /fee|tuition|schedule/i;
 
 function args() {
   const out = { scope: null, ids: null, staleDays: 180, concurrency: 6, force: false };
@@ -50,12 +51,15 @@ async function crawl(school) {
   fs.mkdirSync(dir, { recursive: true });
   const home = school.school_url.replace(/^http:/, 'https:');
   const queue = [{ url: home, text: 'home', depth: 0 }];
+  // Fee and scholarship links jump the queue: the page budget once ran out on
+  // menus and news before reaching a fee schedule PDF linked from the fees page.
+  const priority = [];
   const tried = new Set();
   const saved = new Set();
   const log = [];
   let homeStatus = null;
-  while (queue.length > 0 && tried.size < MAX_PAGES) {
-    const { url, text, depth } = queue.shift();
+  while ((priority.length > 0 || queue.length > 0) && tried.size < MAX_PAGES) {
+    const { url, text, depth } = priority.shift() ?? queue.shift();
     if (tried.has(url)) continue;
     tried.add(url);
     let page;
@@ -90,8 +94,11 @@ async function crawl(school) {
       const links = htmlLinks(page.url, page.body)
         .filter(link => RELEVANT.test(link.href) || RELEVANT.test(link.text))
         .filter(link => sameSite(link.href, home) || /\.pdf($|\?)/i.test(link.href))
-        .sort((a, b) => Number(!STRONG.test(a.href + a.text)) - Number(!STRONG.test(b.href + b.text)));
-      for (const link of links) if (!tried.has(link.href)) queue.push({ url: link.href, text: link.text, depth: depth + 1 });
+        .sort((a, b) => Number(!FEE.test(a.href + a.text)) - Number(!FEE.test(b.href + b.text)));
+      for (const link of links) {
+        if (tried.has(link.href)) continue;
+        (STRONG.test(link.href + link.text) ? priority : queue).push({ url: link.href, text: link.text, depth: depth + 1 });
+      }
     }
     await new Promise(resolve => setTimeout(resolve, 300));
   }

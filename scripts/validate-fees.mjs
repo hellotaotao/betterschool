@@ -54,6 +54,14 @@ for (const [id, entry] of Object.entries(ledger.schools)) {
     }
   }
   if (entry.website_source === 'lookup' && !entry.website_note) fail(id, 'looked-up website without website_note');
+  // Past years keep their figures and links only; the documents are not kept,
+  // so they are checked for shape, not traced to source text.
+  for (const past of entry.fees_history ?? []) {
+    if (past.fee_year === null ? !past.year_note : !Number.isInteger(past.fee_year)) fail(id, `history fee_year ${past.fee_year}`);
+    if (!Array.isArray(past.by_year) || past.by_year.length === 0) fail(id, 'history entry without by_year');
+    if (!past.source_url) fail(id, 'history entry without source_url');
+    if (!/^\d{4}-\d{2}-\d{2}$/.test(past.superseded ?? '')) fail(id, 'history entry without superseded date');
+  }
   if (entry.status !== 'found') {
     if (entry.fees?.by_year) fail(id, `status ${entry.status} but carries figures`);
     continue;

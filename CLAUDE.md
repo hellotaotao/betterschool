@@ -35,6 +35,7 @@ npm run fees:fetch -- --scope sydney-secondary  # crawl school sites -> data/fee
 npm run fees:fetch:scs   # Sydney Catholic Schools fee endpoint, one call per school
 node scripts/fetch-fees-cspd.mjs  # NSW Catholic sites on the Parramatta fee template
 npm run fees:cards       # evidence excerpts for fetched schools, read into the ledger by hand
+npm run fees:merge -- readings.json  # write hand readings; a new fee year moves the old one to fees_history
 npm run fees:validate    # every amount must appear in its source text
 npm run canonical:build  # merge all layers -> public/data/schools.canonical.json
                          # (also runs client:build: the map's slimmer copy)
@@ -94,7 +95,8 @@ ACARA/*.xlsx
 school websites + Sydney/Parramatta Catholic fee sources
   └─ scripts/fetch-fees*.mjs, validate-fees.mjs → data/fees/processed/fees.json
        (ledger: one entry per school attempted, whatever the outcome; absent = never
-        attempted. Not yet merged into canonical. Spec: docs/specs/2026-11-12-school-fees-design.md)
+        attempted. Past years keep figures and links in fees_history, never the documents.
+        Read by lib/feesData.ts, not merged into canonical. Spec: docs/specs/2026-11-12-school-fees-design.md)
 vcaa.vic.edu.au SSCAI (VCE results)
   └─ scripts/{fetch,parse}-vcaa-sscai.mjs, match-vcaa-acara.mjs → data/vcaa/processed/year12-layer.json
 data.nsw.gov.au / data.sa.gov.au / discover.data.vic.gov.au / data.qld.gov.au / LISTdata / ACTmapi

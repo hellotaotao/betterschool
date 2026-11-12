@@ -1062,13 +1062,40 @@
   "43153": {
    "school_name": "Lumen Christi Catholic College",
    "website": "http://www.lumen.nsw.edu.au",
-   "status": "not_extracted",
+   "status": "found",
    "checked": "2026-11-12",
    "crawl": {
     "pages": 15,
     "errors": 0
    },
-   "note": "2027 fees are published per term, some per family and some per student; the number of terms is not stated."
+   "fees": {
+    "fee_year": 2027,
+    "basis": "total per annum (CEO tuition, student levy, school levy per family)",
+    "by_year": [
+     {
+      "years": "K-4",
+      "total": 3724
+     },
+     {
+      "years": "5-6",
+      "total": 4158
+     },
+     {
+      "years": "7-8",
+      "total": 5527
+     },
+     {
+      "years": "9-10",
+      "total": 5883
+     },
+     {
+      "years": "11-12",
+      "total": 6104
+     }
+    ],
+    "source": "school_website",
+    "source_url": "https://lcccpambulab.schoolzineplus.com/_file/media/5095/2027_fee_schedule_letter_to_parents_final.pdf"
+   }
   },
   "43154": {
    "school_name": "Hennessy Catholic College",
@@ -5149,13 +5176,28 @@
   "43327": {
    "school_name": "Mount Carmel Catholic College",
    "website": "http://www.mcccdow.catholic.edu.au",
-   "status": "not_found",
+   "status": "found",
    "checked": "2026-11-12",
    "crawl": {
-    "pages": 14,
-    "errors": 0
+    "pages": 13,
+    "errors": 1
    },
-   "note": "College fees page shows no figures; Wollongong diocese."
+   "fees": {
+    "fee_year": 2026,
+    "basis": "diocesan tuition only; building levy and school-based fees extra",
+    "by_year": [
+     {
+      "years": "7-8",
+      "tuition": 2150
+     },
+     {
+      "years": "9-10",
+      "tuition": 2320
+     }
+    ],
+    "source": "school_website",
+    "source_url": "https://www.mcccdow.catholic.edu.au/documents/41/Diocesan_School_Fee_Information_2026_.pdf"
+   }
   },
   "43328": {
    "school_name": "St John the Evangelist Catholic High School",
@@ -13949,13 +13991,40 @@
   "43788": {
    "school_name": "Illawarra Christian School",
    "website": "http://www.ics.nsw.edu.au",
-   "status": "not_extracted",
+   "status": "found",
    "checked": "2026-11-12",
    "crawl": {
-    "pages": 11,
+    "pages": 13,
     "errors": 0
    },
-   "note": "Fees page text holds no figures."
+   "fees": {
+    "fee_year": 2027,
+    "basis": "annual tuition fee, first child",
+    "by_year": [
+     {
+      "years": "K-2",
+      "tuition": 8200
+     },
+     {
+      "years": "3-6",
+      "tuition": 8650
+     },
+     {
+      "years": "7-8",
+      "tuition": 10500
+     },
+     {
+      "years": "9-10",
+      "tuition": 10850
+     },
+     {
+      "years": "11-12",
+      "tuition": 12040
+     }
+    ],
+    "source": "school_website",
+    "source_url": "https://www.ics.nsw.edu.au/documents/200/2027_School_Fee_Schedule_-_ICS.pdf"
+   }
   },
   "43790": {
    "school_name": "Moree Christian School",
@@ -14223,13 +14292,36 @@
   "43802": {
    "school_name": "The McDonald College",
    "website": "http://www.mcdonald.nsw.edu.au",
-   "status": "not_extracted",
+   "status": "found",
    "checked": "2026-11-12",
    "crawl": {
     "pages": 16,
     "errors": 0
    },
-   "note": "Fees page text holds no figures; they may sit in a linked document or script."
+   "fees": {
+    "fee_year": 2026,
+    "basis": "tuition fees per annum; family levies and student charges extra",
+    "by_year": [
+     {
+      "years": "K-2",
+      "tuition": 22060
+     },
+     {
+      "years": "3-4",
+      "tuition": 25816
+     },
+     {
+      "years": "5-6",
+      "tuition": 28572
+     },
+     {
+      "years": "7-8",
+      "tuition": 34088
+     }
+    ],
+    "source": "school_website",
+    "source_url": "https://www.mcdonald.nsw.edu.au/wp-content/uploads/2026/02/feb-2026-fee-schedule60.pdf"
+   }
   },
   "43803": {
    "school_name": "Scone Grammar School",
@@ -14521,13 +14613,29 @@
   "43814": {
    "school_name": "Penrith Christian School",
    "website": "http://www.pcs.nsw.edu.au",
-   "status": "not_extracted",
+   "status": "found",
    "checked": "2026-11-12",
    "crawl": {
     "pages": 14,
     "errors": 0
    },
-   "note": "Tuition and costs page text holds no figures."
+   "fees": {
+    "fee_year": 2027,
+    "basis": "tuition fees per annum; stage levies extra",
+    "by_year": [
+     {
+      "years": "K-6",
+      "tuition": 8400
+     },
+     {
+      "years": "7-12",
+      "tuition": 8660
+     }
+    ],
+    "other_compulsory": "Stage levies $628-$2,600 a year",
+    "source": "school_website",
+    "source_url": "https://www.pcs.nsw.edu.au/documents/292/PCS_-_2027_School_Fees_Schedule_rD6HHZc.pdf"
+   }
   },
   "43819": {
    "school_name": "OneSchool Global NSW - Condobolin",
@@ -15007,13 +15115,55 @@
   "43841": {
    "school_name": "St Andrew's Cathedral School",
    "website": "http://www.sacs.nsw.edu.au",
-   "status": "not_extracted",
+   "status": "found",
    "checked": "2026-11-12",
    "crawl": {
     "pages": 16,
     "errors": 0
    },
-   "note": "Fees page text holds no figures."
+   "fees": {
+    "fee_year": 2026,
+    "basis": "total fee per annum (tuition, resources, curriculum and outdoor education levies), Australian students",
+    "by_year": [
+     {
+      "years": "K-1",
+      "tuition": 25830,
+      "total": 26699
+     },
+     {
+      "years": "2",
+      "tuition": 25830,
+      "total": 26790
+     },
+     {
+      "years": "3-4",
+      "tuition": 30646,
+      "total": 31923
+     },
+     {
+      "years": "5",
+      "tuition": 34197,
+      "total": 37553
+     },
+     {
+      "years": "6",
+      "tuition": 34197,
+      "total": 37609
+     },
+     {
+      "years": "7",
+      "tuition": 39450,
+      "total": 43150
+     },
+     {
+      "years": "8",
+      "tuition": 41142,
+      "total": 44947
+     }
+    ],
+    "source": "school_website",
+    "source_url": "https://www.sacs.nsw.edu.au/wp-content/uploads/2025/12/2026-SACS-Fee-schedule-AU_FA.pdf"
+   }
   },
   "43842": {
    "school_name": "The Armidale School",
@@ -15972,13 +16122,44 @@
   "43890": {
    "school_name": "Oxley College",
    "website": "https://www.oxley.nsw.edu.au/",
-   "status": "not_extracted",
+   "status": "found",
    "checked": "2026-11-12",
    "crawl": {
     "pages": 15,
     "errors": 0
    },
-   "note": "Schedule of fees page text holds no figures."
+   "fees": {
+    "fee_year": 2027,
+    "basis": "annual tuition fees",
+    "by_year": [
+     {
+      "years": "K-3",
+      "tuition": 14570
+     },
+     {
+      "years": "4-5",
+      "tuition": 16520
+     },
+     {
+      "years": "6",
+      "tuition": 16840
+     },
+     {
+      "years": "7",
+      "tuition": 25575
+     },
+     {
+      "years": "8-10",
+      "tuition": 25782
+     },
+     {
+      "years": "11-12",
+      "tuition": 27534
+     }
+    ],
+    "source": "school_website",
+    "source_url": "https://media.digistormhosting.com.au/oc-au-nsw-1053-website-2024/content/Oxley-College-2027-Schedule-of-Fees-and-Charges.pdf"
+   }
   },
   "43891": {
    "school_name": "William Clarke College",
@@ -17154,13 +17335,44 @@
   "43947": {
    "school_name": "Wycliffe Christian School",
    "website": "http://www.wycliffe.nsw.edu.au",
-   "status": "not_extracted",
+   "status": "found",
    "checked": "2026-11-12",
    "crawl": {
-    "pages": 9,
+    "pages": 11,
     "errors": 0
    },
-   "note": "Fees page text holds no figures."
+   "fees": {
+    "fee_year": 2027,
+    "basis": "fee per year, first child",
+    "by_year": [
+     {
+      "years": "K",
+      "tuition": 6699
+     },
+     {
+      "years": "1-2",
+      "tuition": 7457
+     },
+     {
+      "years": "3-4",
+      "tuition": 8045
+     },
+     {
+      "years": "5-6",
+      "tuition": 8628
+     },
+     {
+      "years": "7-8",
+      "tuition": 9339
+     },
+     {
+      "years": "9-12",
+      "tuition": 9922
+     }
+    ],
+    "source": "school_website",
+    "source_url": "https://www.wycliffe.nsw.edu.au/documents/82/2027_Fee_Schedule_K-12.pdf"
+   }
   },
   "43949": {
    "school_name": "Macarthur Anglican School",
@@ -17565,13 +17777,44 @@
   "43969": {
    "school_name": "Cranbrook School",
    "website": "http://www.cranbrook.nsw.edu.au",
-   "status": "not_extracted",
+   "status": "found",
    "checked": "2026-11-12",
    "crawl": {
-    "pages": 16,
+    "pages": 15,
     "errors": 0
    },
-   "note": "Fees page text holds no figures."
+   "fees": {
+    "fee_year": 2026,
+    "basis": "tuition per annum, domestic students",
+    "by_year": [
+     {
+      "years": "K",
+      "tuition": 35526
+     },
+     {
+      "years": "1-2",
+      "tuition": 37785
+     },
+     {
+      "years": "3-4",
+      "tuition": 41826
+     },
+     {
+      "years": "5-6",
+      "tuition": 43236
+     },
+     {
+      "years": "7-10",
+      "tuition": 50478
+     },
+     {
+      "years": "11-12",
+      "tuition": 52470
+     }
+    ],
+    "source": "school_website",
+    "source_url": "https://www.cranbrook.nsw.edu.au/wp-content/uploads/2025/12/2026_Cranbrook-School-Fee-Schedule.pdf"
+   }
   },
   "43970": {
    "school_name": "Mountains Christian College",
@@ -18829,13 +19072,32 @@
   "45647": {
    "school_name": "Assumption College",
    "website": "https://www.assumption.vic.edu.au/",
-   "status": "not_extracted",
+   "status": "found",
    "checked": "2026-11-12",
    "crawl": {
     "pages": 16,
     "errors": 0
    },
-   "note": "Fees page text holds no figures."
+   "fees": {
+    "fee_year": 2026,
+    "basis": "annual tuition fee, includes core activities and non-elective camps",
+    "by_year": [
+     {
+      "years": "7-8",
+      "tuition": 10114
+     },
+     {
+      "years": "9-10",
+      "tuition": 10490
+     },
+     {
+      "years": "11-12",
+      "tuition": 10722
+     }
+    ],
+    "source": "school_website",
+    "source_url": "https://www.assumption.vic.edu.au/wp-content/uploads/2025/11/6913fd73d7779f4eb0e0758e_2026-Fee-Information.pdf"
+   }
   },
   "45654": {
    "school_name": "Sacre Coeur",
@@ -19672,13 +19934,48 @@
   "45932": {
    "school_name": "St John's Regional College",
    "website": "https://www.sjrc.vic.edu.au/",
-   "status": "not_extracted",
+   "status": "found",
    "checked": "2026-11-12",
    "crawl": {
-    "pages": 11,
-    "errors": 3
+    "pages": 12,
+    "errors": 2
    },
-   "note": "Fees information page text holds no figures."
+   "fees": {
+    "fee_year": 2026,
+    "basis": "tuition, includes excursions and compulsory camps; total adds subject resources and laptop levy where listed",
+    "by_year": [
+     {
+      "years": "7",
+      "tuition": 4565,
+      "total": 4805
+     },
+     {
+      "years": "8",
+      "tuition": 4705,
+      "total": 5235
+     },
+     {
+      "years": "9",
+      "tuition": 4875,
+      "total": 5645
+     },
+     {
+      "years": "10",
+      "tuition": 4950,
+      "total": 5070
+     },
+     {
+      "years": "11",
+      "tuition": 5100
+     },
+     {
+      "years": "12",
+      "tuition": 5220
+     }
+    ],
+    "source": "school_website",
+    "source_url": "https://www.sjrc.vic.edu.au/wp-content/uploads/2025/11/St-Johns-Regional-College-2026-Fees.pdf"
+   }
   },
   "45936": {
    "school_name": "Emmaus College",
@@ -20079,13 +20376,40 @@
   "46079": {
    "school_name": "Nazareth College",
    "website": "http://www.nazareth.vic.edu.au",
-   "status": "not_found",
+   "status": "found",
    "checked": "2026-11-12",
    "crawl": {
-    "pages": 14,
+    "pages": 15,
     "errors": 0
    },
-   "note": "No fee page among the pages fetched."
+   "fees": {
+    "fee_year": 2026,
+    "basis": "tuition fee",
+    "by_year": [
+     {
+      "years": "7-8",
+      "tuition": 6716
+     },
+     {
+      "years": "9",
+      "tuition": 6927
+     },
+     {
+      "years": "10",
+      "tuition": 6443
+     },
+     {
+      "years": "11",
+      "tuition": 6889
+     },
+     {
+      "years": "12",
+      "tuition": 6677
+     }
+    ],
+    "source": "school_website",
+    "source_url": "https://www.nazareth.vic.edu.au/wp-content/uploads/NC_FeeSchedule_2026.pdf"
+   }
   },
   "46087": {
    "school_name": "St Peter's College",
@@ -20513,13 +20837,44 @@
   "46144": {
    "school_name": "Methodist Ladies' College",
    "website": "http://www.mlc.vic.edu.au",
-   "status": "not_extracted",
+   "status": "found",
    "checked": "2026-11-12",
    "crawl": {
     "pages": 16,
     "errors": 0
    },
-   "note": "Fees page text holds no figures."
+   "fees": {
+    "fee_year": 2027,
+    "basis": "tuition fees per annum, local students",
+    "by_year": [
+     {
+      "years": "P",
+      "tuition": 29400
+     },
+     {
+      "years": "1-2",
+      "tuition": 30705
+     },
+     {
+      "years": "3-4",
+      "tuition": 36030
+     },
+     {
+      "years": "5-6",
+      "tuition": 40995
+     },
+     {
+      "years": "7-9",
+      "tuition": 43770
+     },
+     {
+      "years": "10-12",
+      "tuition": 46410
+     }
+    ],
+    "source": "school_website",
+    "source_url": "https://mlcdatastore.blob.core.windows.net/mlc-cdms-ext-docs/Schedule%20of%20Fees%20and%20Charges.pdf"
+   }
   },
   "46145": {
    "school_name": "Melbourne Grammar School - Wadhurst Campus",
@@ -20590,13 +20945,44 @@
   "46156": {
    "school_name": "Trinity Grammar School Kew",
    "website": "http://www.trinity.vic.edu.au",
-   "status": "not_extracted",
+   "status": "found",
    "checked": "2026-11-12",
    "crawl": {
-    "pages": 15,
+    "pages": 16,
     "errors": 0
    },
-   "note": "Tuition fees page text holds no figures."
+   "fees": {
+    "fee_year": 2027,
+    "basis": "net annual fee, domestic students",
+    "by_year": [
+     {
+      "years": "P",
+      "tuition": 32440
+     },
+     {
+      "years": "1-3",
+      "tuition": 37016
+     },
+     {
+      "years": "4-6",
+      "tuition": 41872
+     },
+     {
+      "years": "7-8",
+      "tuition": 45432
+     },
+     {
+      "years": "9-10",
+      "tuition": 46884
+     },
+     {
+      "years": "11-12",
+      "tuition": 47460
+     }
+    ],
+    "source": "school_website",
+    "source_url": "https://trinity.vic.edu.au/wp-content/uploads/2026/09/Fees-and-Charges-2027_Domestic.pdf"
+   }
   },
   "46157": {
    "school_name": "Melbourne Girls Grammar",
@@ -20671,13 +21057,60 @@
   "46163": {
    "school_name": "St Michael's Grammar School",
    "website": "http://www.stmichaels.vic.edu.au",
-   "status": "not_found",
+   "status": "found",
    "checked": "2026-11-12",
    "crawl": {
     "pages": 16,
     "errors": 0
    },
-   "note": "No fee page among the pages fetched."
+   "fees": {
+    "fee_year": 2026,
+    "basis": "total (tuition plus levies and payroll tax levy)",
+    "by_year": [
+     {
+      "years": "P",
+      "tuition": 19022,
+      "total": 25824
+     },
+     {
+      "years": "1",
+      "tuition": 23546,
+      "total": 30348
+     },
+     {
+      "years": "2",
+      "tuition": 26734,
+      "total": 33816
+     },
+     {
+      "years": "3",
+      "tuition": 29179,
+      "total": 36876
+     },
+     {
+      "years": "4",
+      "tuition": 29215,
+      "total": 36912
+     },
+     {
+      "years": "5",
+      "tuition": 30249,
+      "total": 38388
+     },
+     {
+      "years": "6",
+      "tuition": 30656,
+      "total": 39744
+     },
+     {
+      "years": "7",
+      "tuition": 30889,
+      "total": 40632
+     }
+    ],
+    "source": "school_website",
+    "source_url": "https://services.stmichaels.vic.edu.au/smg_dlfle.cfm?open=yes&fileID=15704"
+   }
   },
   "46164": {
    "school_name": "Firbank Grammar School",
@@ -21354,13 +21787,60 @@
   "46195": {
    "school_name": "Mentone Girls' Grammar School",
    "website": "http://www.mentonegirls.vic.edu.au",
-   "status": "not_extracted",
+   "status": "found",
    "checked": "2026-11-12",
    "crawl": {
     "pages": 16,
     "errors": 0
    },
-   "note": "Fee pages sit behind a login."
+   "fees": {
+    "fee_year": 2027,
+    "basis": "total (tuition plus levies), domestic students",
+    "by_year": [
+     {
+      "years": "P",
+      "tuition": 17000,
+      "total": 21250
+     },
+     {
+      "years": "1-2",
+      "tuition": 22000,
+      "total": 26750
+     },
+     {
+      "years": "3-4",
+      "tuition": 26750,
+      "total": 31500
+     },
+     {
+      "years": "5",
+      "tuition": 28500,
+      "total": 34000
+     },
+     {
+      "years": "6",
+      "tuition": 28500,
+      "total": 34750
+     },
+     {
+      "years": "7",
+      "tuition": 32000,
+      "total": 38750
+     },
+     {
+      "years": "8",
+      "tuition": 33500,
+      "total": 40500
+     },
+     {
+      "years": "9",
+      "tuition": 34250,
+      "total": 42250
+     }
+    ],
+    "source": "school_website",
+    "source_url": "https://mentone.sfo2.cdn.digitaloceanspaces.com/public/Enrolments/Fees/2027-Domestic-Fee-Schedule.pdf"
+   }
   },
   "46199": {
    "school_name": "Camberwell Grammar School",
@@ -23015,13 +23495,60 @@
   "46314": {
    "school_name": "Bacchus Marsh Grammar - Maddingley Campus",
    "website": "http://www.bmg.vic.edu.au",
-   "status": "not_extracted",
+   "status": "found",
    "checked": "2026-11-12",
    "crawl": {
     "pages": 15,
     "errors": 0
    },
-   "note": "Fee schedule page text holds no figures."
+   "fees": {
+    "fee_year": 2027,
+    "basis": "annual tuition fee; school development levy per family extra",
+    "by_year": [
+     {
+      "years": "P-2",
+      "tuition": 8357
+     },
+     {
+      "years": "3-4",
+      "tuition": 10663
+     },
+     {
+      "years": "5",
+      "tuition": 12388
+     },
+     {
+      "years": "6",
+      "tuition": 12500
+     },
+     {
+      "years": "7",
+      "tuition": 15009
+     },
+     {
+      "years": "8",
+      "tuition": 14998
+     },
+     {
+      "years": "9",
+      "tuition": 16458
+     },
+     {
+      "years": "10",
+      "tuition": 16156
+     },
+     {
+      "years": "11",
+      "tuition": 16604
+     },
+     {
+      "years": "12",
+      "tuition": 16824
+     }
+    ],
+    "source": "school_website",
+    "source_url": "https://www.bmg.vic.edu.au/wp-content/uploads/2026/11/BMG-Fee-Schedule-2027.pdf"
+   }
   },
   "46315": {
    "school_name": "Lighthouse Christian College",
@@ -23037,13 +23564,45 @@
   "46316": {
    "school_name": "Alphington Grammar School",
    "website": "http://www.alphington.vic.edu.au",
-   "status": "not_extracted",
+   "status": "found",
    "checked": "2026-11-12",
    "crawl": {
-    "pages": 13,
-    "errors": 2
+    "pages": 15,
+    "errors": 0
    },
-   "note": "Fees and charges page text holds no figures."
+   "fees": {
+    "fee_year": 2027,
+    "basis": "annual cost (tuition, consolidated fees and levies, payroll tax levy)",
+    "by_year": [
+     {
+      "years": "P-2",
+      "tuition": 12336,
+      "total": 18628
+     },
+     {
+      "years": "3-4",
+      "tuition": 12856,
+      "total": 19491
+     },
+     {
+      "years": "5-6",
+      "tuition": 13051,
+      "total": 20488
+     },
+     {
+      "years": "7-8",
+      "tuition": 16154,
+      "total": 24964
+     },
+     {
+      "years": "9",
+      "tuition": 16863,
+      "total": 29222
+     }
+    ],
+    "source": "school_website",
+    "source_url": "https://alphington.vic.edu.au/wp-content/uploads/2026/09/2027-Prep-to-Year-12-Fees.pdf"
+   }
   },
   "46317": {
    "school_name": "Mooroolbark Grammar",

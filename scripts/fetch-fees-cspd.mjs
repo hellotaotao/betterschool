@@ -9,7 +9,7 @@
 
 import fs from 'node:fs';
 import path from 'node:path';
-import { RAW_DIR, fetchPage, flatten, htmlToText, loadLedger, loadSchools, saveLedger, today } from './fees-common.mjs';
+import { RAW_DIR, applyReading, fetchPage, flatten, htmlToText, loadLedger, loadSchools, saveLedger, today } from './fees-common.mjs';
 
 const BLOCK = /\|((?:Year \d{1,2})|Kindergarten|Kinder)\|\1 1st Child 2nd Child 3rd Child 4th\+ Child\|(.*?)\|Total\|\$([\d,]+)\|/g;
 const amount = text => Number(text.replace(/,/g, ''));
@@ -31,7 +31,10 @@ async function main() {
   fs.mkdirSync(dir, { recursive: true });
   const schools = loadSchools().filter(school =>
     school.state === 'NSW' && school.sector === 'Catholic' && school.school_url
-    && !/syd\.catholic\.edu\.au/.test(school.school_url) && ledger.schools[school.acara_sml_id]?.status !== 'found');
+    && !/syd\.catholic\.edu\.au/.test(school.school_url)
+    // Re-read schools this template supplied before, so next year's schedule replaces this year's.
+    && (ledger.schools[school.acara_sml_id]?.status !== 'found'
+      || ledger.schools[school.acara_sml_id]?.fees?.source === 'diocese_schedule'));
   let found = 0;
   const work = schools.slice();
   async function worker() {
@@ -45,8 +48,7 @@ async function main() {
         const parsed = parseTemplate(flat);
         if (!parsed) continue;
         fs.writeFileSync(path.join(dir, `${school.acara_sml_id}.txt`), `URL: ${page.url}\n\n${flat}`);
-        ledger.schools[school.acara_sml_id] = {
-          ...ledger.schools[school.acara_sml_id],
+        ledger.schools[school.acara_sml_id] = applyReading(ledger.schools[school.acara_sml_id] ?? {}, {
           school_name: school.school_name,
           website: school.school_url,
           status: 'found',
@@ -58,7 +60,7 @@ async function main() {
             source: 'diocese_schedule',
             source_url: page.url,
           },
-        };
+        });
         found += 1;
       } catch {
         // Unreachable or not the template: the general crawl covers it.
