@@ -1,5 +1,27 @@
 {
  "schools": {
+  "40275": {
+   "school_name": "Saint Mary MacKillop College Albury",
+   "website": "http://smmc.nsw.edu.au/",
+   "status": "not_found",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 4,
+    "errors": 0
+   },
+   "note": "The only fees published are marked effective from 1 January 2024."
+  },
+  "40277": {
+   "school_name": "Saint Mary MacKillop Colleges Limited",
+   "website": "https://www.stmarymackillop.nsw.edu.au/",
+   "status": "not_found",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 2,
+    "errors": 0
+   },
+   "note": "Only two pages reachable; no fee page."
+  },
   "40367": {
    "school_name": "Knox Grammar School",
    "website": "http://www.knox.nsw.edu.au/",
@@ -102,6 +124,33 @@
     "source_url": "https://www.moriah.nsw.edu.au/ArticleDocuments/MC_Schedule%20of%20Fees%202026%20Final.pdf.aspx"
    }
   },
+  "40372": {
+   "school_name": "St Francis Xavier's College",
+   "website": "http://hamilton.catholic.edu.au",
+   "status": "found",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 6,
+    "errors": 2
+   },
+   "fees": {
+    "fee_year": 2026,
+    "basis": "diocesan tuition per student; building levy per family and resource fees extra",
+    "by_year": [
+     {
+      "years": "7-9",
+      "tuition": 2353
+     },
+     {
+      "years": "11-12",
+      "tuition": 3488
+     }
+    ],
+    "other_compulsory": "Building levy $1,964 per family; resource fee $1,000-$1,400 per student",
+    "source": "school_website",
+    "source_url": "https://www.hamilton.catholic.edu.au/parent-information/fees-overview/"
+   }
+  },
   "40375": {
    "school_name": "St Joseph's Catholic Primary School Como - Oyster Bay",
    "website": "https://stjcomo.syd.catholic.edu.au",
@@ -143,6 +192,37 @@
     "sibling": "2nd child 10% off tuition, 3rd 35%, 4th 100% (Sydney Catholic Schools)",
     "source": "scs_endpoint",
     "source_url": "https://stjcomo.syd.catholic.edu.au/enrolment/school-fees-and-assistance"
+   }
+  },
+  "40384": {
+   "school_name": "Coffs Harbour Christian Community School",
+   "website": "https://www.coffsccs.nsw.edu.au/",
+   "status": "found",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 4,
+    "errors": 0
+   },
+   "fees": {
+    "fee_year": null,
+    "year_note": "tuition table does not state its year (the levies beside it are headed 2027); checked 2026-11-13",
+    "basis": "basic tuition per annum; levies extra",
+    "by_year": [
+     {
+      "years": "K-6",
+      "tuition": 4480
+     },
+     {
+      "years": "7-8",
+      "tuition": 6760
+     },
+     {
+      "years": "9-12",
+      "tuition": 7220
+     }
+    ],
+    "source": "school_website",
+    "source_url": "https://www.coffsccs.nsw.edu.au/enrolment/school-fees/"
    }
   },
   "40408": {
@@ -198,6 +278,28 @@
     ]
    }
   },
+  "40409": {
+   "school_name": "Heritage Christian School",
+   "website": "http://www.heritage.nsw.edu.au",
+   "status": "not_extracted",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 6,
+    "errors": 0
+   },
+   "note": "Tuition fees page text holds no figures."
+  },
+  "40611": {
+   "school_name": "St Paul's International College",
+   "website": "http://www.spic.nsw.edu.au/",
+   "status": "not_found",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 14,
+    "errors": 0
+   },
+   "note": "No fee page among the pages fetched."
+  },
   "40617": {
    "school_name": "St Aloysius College Cronulla",
    "website": "https://stalscronulla.syd.catholic.edu.au/",
@@ -237,6 +339,113 @@
     "source_url": "https://stalscronulla.syd.catholic.edu.au/enrolment/school-fees-and-assistance"
    }
   },
+  "40618": {
+   "school_name": "All Saints College",
+   "website": "http://www.maitlandasc.catholic.edu.au/",
+   "status": "not_found",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 4,
+    "errors": 0
+   },
+   "note": "No fee page among the pages fetched."
+  },
+  "40672": {
+   "school_name": "Calrossy Anglican School",
+   "website": "http://www.calrossy.nsw.edu.au/",
+   "status": "found",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 13,
+    "errors": 0
+   },
+   "fees": {
+    "fee_year": 2026,
+    "basis": "total annual day fees (tuition, co-curricular fee, MacBook program)",
+    "by_year": [
+     {
+      "years": "K",
+      "total": 7700
+     },
+     {
+      "years": "1-2",
+      "total": 8980
+     },
+     {
+      "years": "3-4",
+      "total": 10220
+     },
+     {
+      "years": "5-6",
+      "total": 11460
+     },
+     {
+      "years": "7",
+      "total": 15880
+     },
+     {
+      "years": "8",
+      "total": 17480
+     },
+     {
+      "years": "9",
+      "total": 20400
+     },
+     {
+      "years": "10",
+      "total": 20780
+     },
+     {
+      "years": "11",
+      "total": 23440
+     },
+     {
+      "years": "12",
+      "total": 23430
+     }
+    ],
+    "source": "school_website",
+    "source_url": "https://www.calrossy.nsw.edu.au/documents/114/Calrossy_Anglican_School_Fees_Schedule_2026_.pdf"
+   }
+  },
+  "40721": {
+   "school_name": "Lakes Grammar - An Anglican School",
+   "website": "http://www.lakes.nsw.edu.au",
+   "status": "found",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 10,
+    "errors": 1
+   },
+   "fees": {
+    "fee_year": 2026,
+    "basis": "annual tuition fees",
+    "by_year": [
+     {
+      "years": "K-4",
+      "tuition": 6536
+     },
+     {
+      "years": "5-6",
+      "tuition": 7492
+     },
+     {
+      "years": "7-10",
+      "tuition": 8448
+     },
+     {
+      "years": "11",
+      "tuition": 9396
+     },
+     {
+      "years": "12",
+      "tuition": 9399
+     }
+    ],
+    "source": "school_website",
+    "source_url": "https://www.lakes.nsw.edu.au/enrolment/fees/"
+   }
+  },
   "40728": {
    "school_name": "CathWest Innovation College",
    "website": "https://cathwest.parra.catholic.edu.au/",
@@ -269,6 +478,69 @@
     "sibling": "diocesan tuition reduced for 2nd and 3rd child, free from the 4th",
     "source": "diocese_schedule",
     "source_url": "https://cathwest.parra.catholic.edu.au/enrolment/school-fees"
+   }
+  },
+  "40790": {
+   "school_name": "Hunter Trade College",
+   "website": "https://htc.nsw.edu.au/",
+   "status": "not_extracted",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 5,
+    "errors": 0
+   },
+   "note": "Fees page text holds no figures."
+  },
+  "40792": {
+   "school_name": "Newman Senior Technical College",
+   "website": "http://www.newman.nsw.edu.au",
+   "status": "found",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 6,
+    "errors": 0
+   },
+   "fees": {
+    "fee_year": 2027,
+    "basis": "annual fee; camps and electives billed separately",
+    "by_year": [
+     {
+      "years": "11-12",
+      "tuition": 5635
+     }
+    ],
+    "source": "school_website",
+    "source_url": "https://www.newman.nsw.edu.au/fees-explained/"
+   }
+  },
+  "40827": {
+   "school_name": "Pacific Coast Christian School",
+   "website": "http://www.pacificcoast.nsw.edu.au",
+   "status": "found",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 13,
+    "errors": 0
+   },
+   "fees": {
+    "fee_year": 2026,
+    "basis": "annual tuition fees, first child",
+    "by_year": [
+     {
+      "years": "K-4",
+      "tuition": 3610
+     },
+     {
+      "years": "5-6",
+      "tuition": 3970
+     },
+     {
+      "years": "7-12",
+      "tuition": 4280
+     }
+    ],
+    "source": "school_website",
+    "source_url": "https://www.pacificcoast.nsw.edu.au/images/pages/fees/PCCS-Fee-Schedule-2026.pdf"
    }
   },
   "40831": {
@@ -320,6 +592,15 @@
     "source": "diocese_schedule",
     "source_url": "https://www.olarousehill.catholic.edu.au/enrolment/school-fees"
    }
+  },
+  "40856": {
+   "school_name": "The Scots College, Glengarry campus",
+   "website": "http://www.tsc.nsw.edu.au",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 43821,
+   "parent_name": "The Scots College",
+   "website_source": "parent_school"
   },
   "40875": {
    "school_name": "SCECGS Redlands - Murdoch campus",
@@ -433,6 +714,59 @@
    "parent_name": "Key College",
    "website_source": "parent_school"
   },
+  "40926": {
+   "school_name": "Clarence Valley Anglican School",
+   "website": "https://www.cvas.nsw.edu.au/",
+   "status": "found",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 14,
+    "errors": 1
+   },
+   "fees": {
+    "fee_year": 2027,
+    "basis": "tuition per term, includes camps and compulsory excursions; Year 12 billed over three terms",
+    "by_year": [
+     {
+      "years": "K-2",
+      "per_term": 1335,
+      "terms": 4
+     },
+     {
+      "years": "3-4",
+      "per_term": 1525,
+      "terms": 4
+     },
+     {
+      "years": "5-6",
+      "per_term": 1600,
+      "terms": 4
+     },
+     {
+      "years": "7-8",
+      "per_term": 1720,
+      "terms": 4
+     },
+     {
+      "years": "9-10",
+      "per_term": 1850,
+      "terms": 4
+     },
+     {
+      "years": "11",
+      "per_term": 2120,
+      "terms": 4
+     },
+     {
+      "years": "12",
+      "per_term": 2826,
+      "terms": 3
+     }
+    ],
+    "source": "school_website",
+    "source_url": "https://media.digistormhosting.com.au/cvas-au-nsw-269-website/content/2027-Fee-Schedule.pdf"
+   }
+  },
   "40934": {
    "school_name": "St Mary and St Mina's Coptic Orthodox College, Rockdale campus",
    "website": "http://www.stmary.nsw.edu.au",
@@ -459,6 +793,150 @@
    "parent_acara_sml_id": 43958,
    "parent_name": "Al Noori Muslim School",
    "website_source": "parent_school"
+  },
+  "43134": {
+   "school_name": "St Patrick's Parish School",
+   "website": "http://www.stpatscooma.nsw.edu.au",
+   "status": "not_found",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 6,
+    "errors": 0
+   },
+   "note": "No fee page among the pages fetched."
+  },
+  "43135": {
+   "school_name": "Sacred Heart Central School",
+   "website": "http://www.shcoota.nsw.edu.au",
+   "status": "not_found",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 5,
+    "errors": 0
+   },
+   "note": "The only fee table published is for 2024."
+  },
+  "43146": {
+   "school_name": "St Anne's Catholic College",
+   "website": "http://www.stannestemora.nsw.edu.au",
+   "status": "not_found",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 4,
+    "errors": 0
+   },
+   "note": "No fee page among the pages fetched."
+  },
+  "43147": {
+   "school_name": "McAuley Catholic College",
+   "website": "http://www.mcauleytumut.nsw.edu.au",
+   "status": "not_extracted",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 5,
+    "errors": 0
+   },
+   "note": "2026 school fees PDF holds no figures as text."
+  },
+  "43151": {
+   "school_name": "Carroll College",
+   "website": "http://www.ccb.nsw.edu.au",
+   "status": "found",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 7,
+    "errors": 1
+   },
+   "fees": {
+    "fee_year": 2027,
+    "basis": "annual amount (diocesan tuition plus student resource fee)",
+    "by_year": [
+     {
+      "years": "7",
+      "tuition": 2622,
+      "total": 6127
+     },
+     {
+      "years": "8",
+      "tuition": 2622,
+      "total": 5707
+     },
+     {
+      "years": "9",
+      "tuition": 2707,
+      "total": 5762
+     },
+     {
+      "years": "10",
+      "tuition": 2707,
+      "total": 6522
+     },
+     {
+      "years": "11",
+      "tuition": 3015,
+      "total": 6167
+     },
+     {
+      "years": "12",
+      "tuition": 3015,
+      "total": 6607
+     }
+    ],
+    "source": "school_website",
+    "source_url": "https://carrollc.schoolzineplus.com/_file/media/15322/2027_carroll_college_fee_schedule.pdf"
+   }
+  },
+  "43152": {
+   "school_name": "Trinity Catholic College Goulburn",
+   "website": "http://www.trinitycollege.nsw.edu.au",
+   "status": "not_extracted",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 5,
+    "errors": 0
+   },
+   "note": "2026 fee schedule PDF lists amounts but the year columns did not come through in order."
+  },
+  "43153": {
+   "school_name": "Lumen Christi Catholic College",
+   "website": "http://www.lumen.nsw.edu.au",
+   "status": "not_extracted",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 15,
+    "errors": 0
+   },
+   "note": "2027 fees are published per term, some per family and some per student; the number of terms is not stated."
+  },
+  "43154": {
+   "school_name": "Hennessy Catholic College",
+   "website": "http://www.hccy.nsw.edu.au",
+   "status": "found",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 6,
+    "errors": 0
+   },
+   "fees": {
+    "fee_year": 2027,
+    "basis": "annual fee, one student, includes student and school levies",
+    "by_year": [
+     {
+      "years": "7-8",
+      "tuition": 5520
+     },
+     {
+      "years": "9-10",
+      "tuition": 5605
+     },
+     {
+      "years": "11-12",
+      "tuition": 5913
+     }
+    ],
+    "source": "school_website",
+    "source_url": "https://www.hccy.nsw.edu.au/_file/media/11737/hennessy_catholic_college_school_fees_2027.pdf"
+   }
   },
   "43155": {
    "school_name": "St Michael's Primary School",
@@ -4122,6 +4600,71 @@
     "source_url": "https://www.stpatsdundas.catholic.edu.au/enrolment/school-fees"
    }
   },
+  "43266": {
+   "school_name": "MacKillop Catholic College",
+   "website": "http://www.mccwdbb.catholic.edu.au",
+   "status": "found",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 12,
+    "errors": 0
+   },
+   "fees": {
+    "fee_year": 2026,
+    "basis": "education fee, first child; camps and supplementary fees extra",
+    "by_year": [
+     {
+      "years": "K-6",
+      "tuition": 3533
+     },
+     {
+      "years": "7-8",
+      "tuition": 5158
+     },
+     {
+      "years": "9-10",
+      "tuition": 5256
+     },
+     {
+      "years": "11-12",
+      "tuition": 5729
+     }
+    ],
+    "source": "school_website",
+    "source_url": "https://www.mccwdbb.catholic.edu.au/wp-content/uploads/2026/09/2026-Schedule-of-Fees.pdf"
+   }
+  },
+  "43267": {
+   "school_name": "St Peter's Catholic College",
+   "website": "http://www.stpetersdbb.catholic.edu.au",
+   "status": "found",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 11,
+    "errors": 0
+   },
+   "fees": {
+    "fee_year": null,
+    "year_note": "schedule is headed 2026 but its text calls it the 2025 fee structure; checked 2026-11-13",
+    "basis": "education fee, first child; supplementary fees extra",
+    "by_year": [
+     {
+      "years": "7-8",
+      "tuition": 5125
+     },
+     {
+      "years": "9-10",
+      "tuition": 5206
+     },
+     {
+      "years": "11-12",
+      "tuition": 5702
+     }
+    ],
+    "source": "school_website",
+    "source_url": "https://www.stpetersdbb.catholic.edu.au/wp-content/uploads/2025/12/School-Fee-Letter-to-Parents.pdf"
+   }
+  },
   "43268": {
    "school_name": "Mater Maria Catholic College",
    "website": "https://matermaria.nsw.edu.au/",
@@ -4215,6 +4758,17 @@
     ]
    }
   },
+  "43270": {
+   "school_name": "St Joseph's Catholic College",
+   "website": "http://www.sjccdbb.catholic.edu.au",
+   "status": "not_extracted",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 6,
+    "errors": 0
+   },
+   "note": "2026 school fees PDF text holds the discount table but not the fee figures."
+  },
   "43271": {
    "school_name": "St Leo's Catholic College",
    "website": "http://www.stleos.nsw.edu.au",
@@ -4264,6 +4818,161 @@
     "source_url": "https://www.stpaulsdbb.catholic.edu.au/wp-content/uploads/2025/12/School-Fee-Schedule-Letter-2026.pdf"
    }
   },
+  "43299": {
+   "school_name": "St Catherine's Catholic College",
+   "website": "http://singleton.catholic.edu.au",
+   "status": "not_found",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 7,
+    "errors": 2
+   },
+   "note": "No fee page among the pages fetched."
+  },
+  "43317": {
+   "school_name": "St Joseph's College",
+   "website": "http://www.lochinvarsj.catholic.edu.au/",
+   "status": "not_found",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 4,
+    "errors": 0
+   },
+   "note": "No fee page among the pages fetched."
+  },
+  "43318": {
+   "school_name": "All Saints College (St Peter's)",
+   "website": "http://www.maitlandasc.catholic.edu.au/",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 40618,
+   "parent_name": "All Saints College",
+   "website_source": "parent_school"
+  },
+  "43319": {
+   "school_name": "San Clemente Catholic College",
+   "website": "https://www.medowiecmcc.catholic.edu.au/",
+   "status": "not_extracted",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 9,
+    "errors": 1
+   },
+   "note": "Fees page lists only the 2026 school resource fee ($1,100-$1,245), not tuition."
+  },
+  "43320": {
+   "school_name": "St Clare's High School",
+   "website": "http://www.tareesc.catholic.edu.au",
+   "status": "found",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 10,
+    "errors": 0
+   },
+   "fees": {
+    "fee_year": 2026,
+    "basis": "diocesan tuition per year, first child; family building levy and resource fees extra",
+    "by_year": [
+     {
+      "years": "7-10",
+      "tuition": 2353
+     },
+     {
+      "years": "11-12",
+      "tuition": 3488
+     }
+    ],
+    "other_compulsory": "Family building levy $1,964",
+    "source": "school_website",
+    "source_url": "https://www.tareesc.catholic.edu.au/enrolment/school-fees/"
+   }
+  },
+  "43321": {
+   "school_name": "St Joseph's Catholic College",
+   "website": "http://www.aberdeen.catholic.edu.au",
+   "status": "not_found",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 4,
+    "errors": 1
+   },
+   "note": "No fee page among the pages fetched."
+  },
+  "43322": {
+   "school_name": "Trinity Catholic College",
+   "website": "http://www.adamstownsp.catholic.edu.au",
+   "status": "not_found",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 1,
+    "errors": 0
+   },
+   "note": "Only the home page could be fetched."
+  },
+  "43323": {
+   "school_name": "St Mary's Catholic College",
+   "website": "http://gatesheadsm.catholic.edu.au",
+   "status": "not_found",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 5,
+    "errors": 0
+   },
+   "note": "No fee page among the pages fetched."
+  },
+  "43324": {
+   "school_name": "St Paul's Catholic College",
+   "website": "http://booragul.catholic.edu.au",
+   "status": "not_found",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 4,
+    "errors": 0
+   },
+   "note": "No fee page among the pages fetched."
+  },
+  "43325": {
+   "school_name": "Holy Spirit College",
+   "website": "http://www.hscdow.catholic.edu.au",
+   "status": "found",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 7,
+    "errors": 0
+   },
+   "fees": {
+    "fee_year": 2026,
+    "basis": "total per year group (diocesan and school-based fees), excluding electives",
+    "by_year": [
+     {
+      "years": "7",
+      "total": 4784
+     },
+     {
+      "years": "8",
+      "total": 4659
+     },
+     {
+      "years": "9",
+      "total": 5186
+     },
+     {
+      "years": "10",
+      "total": 4769
+     },
+     {
+      "years": "11",
+      "total": 4881
+     },
+     {
+      "years": "12",
+      "total": 5179
+     }
+    ],
+    "source": "school_website",
+    "source_url": "https://static1.squarespace.com/static/6539c53980fc16490cb41044/t/691e4eb2c96824034b16f432/1763593906098/Diocesan+School+Fee+Information+for+Families+2026.docx.pdf"
+   }
+  },
   "43326": {
    "school_name": "John Therry Catholic College",
    "website": "http://www.jtccdow.catholic.edu.au",
@@ -4285,6 +4994,45 @@
     "errors": 0
    },
    "note": "College fees page shows no figures; Wollongong diocese."
+  },
+  "43328": {
+   "school_name": "St John the Evangelist Catholic High School",
+   "website": "http://www.sjedow.catholic.edu.au",
+   "status": "found",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 10,
+    "errors": 0
+   },
+   "fees": {
+    "fee_year": 2026,
+    "basis": "published total per year group (tuition, building levy, resource, sport, excursions and other charges)",
+    "by_year": [
+     {
+      "years": "7",
+      "tuition": 2150,
+      "total": 4474
+     },
+     {
+      "years": "8",
+      "tuition": 2150,
+      "total": 4308
+     }
+    ],
+    "source": "school_website",
+    "source_url": "https://sjedow.schoolzineplus.com/_file/media/28622/school_fees_2026.pdf"
+   }
+  },
+  "43329": {
+   "school_name": "St Joseph's Catholic High School",
+   "website": "http://www.sjchsdow.catholic.edu.au",
+   "status": "not_extracted",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 10,
+    "errors": 2
+   },
+   "note": "School fees page text holds no figures."
   },
   "43330": {
    "school_name": "Magdalene Catholic College",
@@ -4314,6 +5062,48 @@
     ],
     "source": "diocese_schedule",
     "source_url": "https://mccdow.catholic.edu.au/assets/Uploads/PDFs/School-Fees/2026-Diocesan-School-Fees.pdf"
+   }
+  },
+  "43360": {
+   "school_name": "Corpus Christi Catholic High School",
+   "website": "http://www.ccchsdow.catholic.edu.au",
+   "status": "found",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 5,
+    "errors": 0
+   },
+   "fees": {
+    "fee_year": 2026,
+    "basis": "total fees per year group, before sibling discounts and family fees",
+    "by_year": [
+     {
+      "years": "7",
+      "total": 4940
+     },
+     {
+      "years": "8",
+      "total": 4375
+     },
+     {
+      "years": "9",
+      "total": 4836
+     },
+     {
+      "years": "10",
+      "total": 4832
+     },
+     {
+      "years": "11",
+      "total": 5374
+     },
+     {
+      "years": "12",
+      "total": 5090
+     }
+    ],
+    "source": "school_website",
+    "source_url": "https://www.ccchsdow.catholic.edu.au/wp-content/uploads/2025/12/2026-School-Fee-Schedule.pdf"
    }
   },
   "43361": {
@@ -10021,6 +10811,828 @@
     "source_url": "https://clancy.syd.catholic.edu.au/enrolment/school-fees-and-assistance"
    }
   },
+  "43538": {
+   "school_name": "MacKillop College Port Macquarie",
+   "website": "http://www.pmaclism.catholic.edu.au",
+   "status": "found",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 4,
+    "errors": 0
+   },
+   "fees": {
+    "fee_year": 2027,
+    "basis": "annual fee; camps and electives billed separately",
+    "by_year": [
+     {
+      "years": "7",
+      "tuition": 5760
+     },
+     {
+      "years": "8",
+      "tuition": 5700
+     },
+     {
+      "years": "9",
+      "tuition": 5280
+     },
+     {
+      "years": "10",
+      "tuition": 5320
+     },
+     {
+      "years": "11-12",
+      "tuition": 5800
+     }
+    ],
+    "source": "school_website",
+    "source_url": "https://www.pmaclism.catholic.edu.au/school-fees"
+   }
+  },
+  "43539": {
+   "school_name": "Xavier Catholic College Ballina",
+   "website": "http://www.xavierlism.catholic.edu.au",
+   "status": "found",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 5,
+    "errors": 0
+   },
+   "fees": {
+    "fee_year": 2027,
+    "basis": "annual fee; excursions and electives billed separately",
+    "by_year": [
+     {
+      "years": "7",
+      "tuition": 5690
+     },
+     {
+      "years": "8",
+      "tuition": 6060
+     },
+     {
+      "years": "9",
+      "tuition": 5875
+     },
+     {
+      "years": "10",
+      "tuition": 5775
+     },
+     {
+      "years": "11",
+      "tuition": 5835
+     },
+     {
+      "years": "12",
+      "tuition": 5495
+     }
+    ],
+    "source": "school_website",
+    "source_url": "https://www.xavierlism.catholic.edu.au/school-fees"
+   }
+  },
+  "43540": {
+   "school_name": "St Joseph's Regional College",
+   "website": "http://www.pmreglism.catholic.edu.au/",
+   "status": "found",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 5,
+    "errors": 0
+   },
+   "fees": {
+    "fee_year": 2027,
+    "basis": "annual fee; camps and electives billed separately",
+    "by_year": [
+     {
+      "years": "7-8",
+      "tuition": 5500
+     },
+     {
+      "years": "9-10",
+      "tuition": 5300
+     },
+     {
+      "years": "11-12",
+      "tuition": 5940
+     }
+    ],
+    "source": "school_website",
+    "source_url": "https://www.pmreglism.catholic.edu.au/school-fees"
+   }
+  },
+  "43541": {
+   "school_name": "Mount St Patrick College",
+   "website": "http://www.mursclism.catholic.edu.au",
+   "status": "found",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 5,
+    "errors": 0
+   },
+   "fees": {
+    "fee_year": 2027,
+    "basis": "annual fee, includes compulsory camps; family building levy and technology levy extra",
+    "by_year": [
+     {
+      "years": "7",
+      "tuition": 3586
+     },
+     {
+      "years": "8-10",
+      "tuition": 3529
+     },
+     {
+      "years": "11-12",
+      "tuition": 4171
+     }
+    ],
+    "other_compulsory": "Family building levy $680; technology levy $486 in some years",
+    "source": "school_website",
+    "source_url": "https://www.mursclism.catholic.edu.au/college-fees"
+   }
+  },
+  "43542": {
+   "school_name": "St John's College",
+   "website": "http://www.lisjclism.catholic.edu.au",
+   "status": "found",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 6,
+    "errors": 0
+   },
+   "fees": {
+    "fee_year": 2027,
+    "basis": "annual fee; camps and electives billed separately",
+    "by_year": [
+     {
+      "years": "7-8",
+      "tuition": 5530
+     },
+     {
+      "years": "9-10",
+      "tuition": 5650
+     },
+     {
+      "years": "11-12",
+      "tuition": 6275
+     }
+    ],
+    "source": "school_website",
+    "source_url": "https://www.lisjclism.catholic.edu.au/school-fees"
+   }
+  },
+  "43543": {
+   "school_name": "St Paul's College",
+   "website": "http://www.kmpslism.catholic.edu.au/",
+   "status": "found",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 5,
+    "errors": 0
+   },
+   "fees": {
+    "fee_year": 2027,
+    "basis": "annual fee; family school services levy, camps and electives extra",
+    "by_year": [
+     {
+      "years": "7-8",
+      "tuition": 2690
+     },
+     {
+      "years": "9-10",
+      "tuition": 2556
+     },
+     {
+      "years": "11-12",
+      "tuition": 3176
+     }
+    ],
+    "other_compulsory": "Family school services levy $903",
+    "source": "school_website",
+    "source_url": "https://www.kmpslism.catholic.edu.au/2027-fees"
+   }
+  },
+  "43544": {
+   "school_name": "McAuley Catholic College",
+   "website": "https://www.grafslism.catholic.edu.au/",
+   "status": "found",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 8,
+    "errors": 0
+   },
+   "fees": {
+    "fee_year": 2027,
+    "basis": "annual fee; family building levy, camps and electives extra",
+    "by_year": [
+     {
+      "years": "7",
+      "tuition": 3925
+     },
+     {
+      "years": "8",
+      "tuition": 3860
+     },
+     {
+      "years": "9",
+      "tuition": 3575
+     },
+     {
+      "years": "10",
+      "tuition": 3600
+     },
+     {
+      "years": "11",
+      "tuition": 4715
+     },
+     {
+      "years": "12",
+      "tuition": 4830
+     }
+    ],
+    "other_compulsory": "Family building levy $793",
+    "source": "school_website",
+    "source_url": "https://www.grafslism.catholic.edu.au/school-fees"
+   }
+  },
+  "43545": {
+   "school_name": "St John Paul College",
+   "website": "http://www.cofhslism.catholic.edu.au/",
+   "status": "found",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 7,
+    "errors": 0
+   },
+   "fees": {
+    "fee_year": 2026,
+    "basis": "tuition, one child, all year levels",
+    "by_year": [
+     {
+      "years": "7-12",
+      "tuition": 4938
+     }
+    ],
+    "source": "school_website",
+    "source_url": "https://sjpccoffs.schoolzineplus.com/_file/media/20703/sjpc_2026_tuition_fees_schedule.pdf"
+   }
+  },
+  "43546": {
+   "school_name": "St Mary's Catholic College",
+   "website": "http://www.cashlism.catholic.edu.au",
+   "status": "found",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 5,
+    "errors": 0
+   },
+   "fees": {
+    "fee_year": 2027,
+    "basis": "annual fee; family building levy, camps and electives extra",
+    "by_year": [
+     {
+      "years": "7-10",
+      "tuition": 3144
+     },
+     {
+      "years": "11-12",
+      "tuition": 3688
+     }
+    ],
+    "other_compulsory": "Family building levy $420",
+    "source": "school_website",
+    "source_url": "https://www.cashlism.catholic.edu.au/school-fees"
+   }
+  },
+  "43547": {
+   "school_name": "St Joseph's College",
+   "website": "http://www.bpslism.catholic.edu.au",
+   "status": "found",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 15,
+    "errors": 0
+   },
+   "fees": {
+    "fee_year": 2027,
+    "basis": "annual fee; camps billed separately",
+    "by_year": [
+     {
+      "years": "7-10",
+      "tuition": 5260
+     },
+     {
+      "years": "11-12",
+      "tuition": 4940
+     }
+    ],
+    "source": "school_website",
+    "source_url": "https://www.bpslism.catholic.edu.au/school-fees"
+   }
+  },
+  "43550": {
+   "school_name": "St Raphael's Catholic School Cowra",
+   "website": "http://www.straphaelscowra.catholic.edu.au",
+   "status": "found",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 9,
+    "errors": 0
+   },
+   "fees": {
+    "fee_year": 2026,
+    "basis": "single school fee per year",
+    "by_year": [
+     {
+      "years": "K",
+      "tuition": 1432
+     },
+     {
+      "years": "1",
+      "tuition": 1485
+     },
+     {
+      "years": "2",
+      "tuition": 1610
+     },
+     {
+      "years": "3",
+      "tuition": 1669
+     },
+     {
+      "years": "4",
+      "tuition": 1721
+     },
+     {
+      "years": "5",
+      "tuition": 1962
+     },
+     {
+      "years": "6",
+      "tuition": 2063
+     },
+     {
+      "years": "7",
+      "tuition": 2200
+     },
+     {
+      "years": "8",
+      "tuition": 2224
+     },
+     {
+      "years": "9",
+      "tuition": 2186
+     },
+     {
+      "years": "10",
+      "tuition": 2184
+     },
+     {
+      "years": "11",
+      "tuition": 3272
+     },
+     {
+      "years": "12",
+      "tuition": 3068
+     }
+    ],
+    "source": "school_website",
+    "source_url": "https://straphaelscowra.schoolzineplus.com/_file/media/4338/cowstr_2026_single_fee.pdf"
+   }
+  },
+  "43551": {
+   "school_name": "St Matthews Catholic School Mudgee",
+   "website": "http://www.stmattsmudgee.catholic.edu.au",
+   "status": "found",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 14,
+    "errors": 0
+   },
+   "fees": {
+    "fee_year": null,
+    "year_note": "fee table is not dated; the page links a 2025 fee schedule; checked 2026-11-13",
+    "basis": "school fee per year",
+    "by_year": [
+     {
+      "years": "K",
+      "tuition": 1785
+     },
+     {
+      "years": "1",
+      "tuition": 1665
+     },
+     {
+      "years": "2",
+      "tuition": 1688
+     },
+     {
+      "years": "3",
+      "tuition": 1703
+     },
+     {
+      "years": "4",
+      "tuition": 1732
+     },
+     {
+      "years": "5",
+      "tuition": 1798
+     },
+     {
+      "years": "6",
+      "tuition": 2347
+     },
+     {
+      "years": "7",
+      "tuition": 2604
+     },
+     {
+      "years": "8",
+      "tuition": 2284
+     },
+     {
+      "years": "9",
+      "tuition": 2626
+     },
+     {
+      "years": "10",
+      "tuition": 3256
+     },
+     {
+      "years": "11",
+      "tuition": 3814
+     },
+     {
+      "years": "12",
+      "tuition": 3940
+     }
+    ],
+    "source": "school_website",
+    "source_url": "https://www.stmattsmudgee.catholic.edu.au/school-fees"
+   }
+  },
+  "43553": {
+   "school_name": "St Mary's Catholic School Wellington",
+   "website": "https://www.stmaryswellington.catholic.edu.au/",
+   "status": "found",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 3,
+    "errors": 0
+   },
+   "fees": {
+    "fee_year": 2026,
+    "basis": "school fee per year; Years 9-10 include two elective fees",
+    "by_year": [
+     {
+      "years": "K-4",
+      "tuition": 1504
+     },
+     {
+      "years": "5",
+      "tuition": 2302
+     },
+     {
+      "years": "6",
+      "tuition": 2085
+     },
+     {
+      "years": "7",
+      "tuition": 2849
+     },
+     {
+      "years": "8",
+      "tuition": 2799
+     },
+     {
+      "years": "9",
+      "tuition": 3832
+     },
+     {
+      "years": "10",
+      "tuition": 4093
+     }
+    ],
+    "source": "school_website",
+    "source_url": "https://smcswellington.schoolzineplus.com/_file/media/6649/2026_schedule_of_fees_1_.pdf"
+   }
+  },
+  "43577": {
+   "school_name": "La Salle Academy Lithgow",
+   "website": "http://www.lasalleacademy.catholic.edu.au/Home",
+   "status": "found",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 6,
+    "errors": 1
+   },
+   "fees": {
+    "fee_year": 2026,
+    "basis": "single school fee per year, includes a base elective fee",
+    "by_year": [
+     {
+      "years": "7",
+      "tuition": 3434
+     },
+     {
+      "years": "8",
+      "tuition": 3111
+     },
+     {
+      "years": "9",
+      "tuition": 3427
+     },
+     {
+      "years": "10",
+      "tuition": 3174
+     },
+     {
+      "years": "11",
+      "tuition": 4065
+     },
+     {
+      "years": "12",
+      "tuition": 3688
+     }
+    ],
+    "source": "school_website",
+    "source_url": "https://www.lasalleacademy.catholic.edu.au/_file/media/2085/lthlas_2026_single_fee.pdf"
+   }
+  },
+  "43578": {
+   "school_name": "MacKillop College Bathurst",
+   "website": "http://mackillopbathurst.catholic.edu.au",
+   "status": "found",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 6,
+    "errors": 0
+   },
+   "fees": {
+    "fee_year": 2026,
+    "basis": "single school fee per year, includes a base elective fee",
+    "by_year": [
+     {
+      "years": "7",
+      "tuition": 3879
+     },
+     {
+      "years": "8",
+      "tuition": 3640
+     },
+     {
+      "years": "9",
+      "tuition": 3875
+     },
+     {
+      "years": "10",
+      "tuition": 4754
+     },
+     {
+      "years": "11",
+      "tuition": 4378
+     },
+     {
+      "years": "12",
+      "tuition": 4641
+     }
+    ],
+    "source": "school_website",
+    "source_url": "https://mackillopbathurst.schoolzineplus.com/_file/media/749/bthmac_2026_single_fee.pdf"
+   }
+  },
+  "43579": {
+   "school_name": "St Johns College Dubbo",
+   "website": "http://www.stjohnsdubbo.catholic.edu.au/",
+   "status": "found",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 7,
+    "errors": 0
+   },
+   "fees": {
+    "fee_year": 2026,
+    "basis": "single school fee per year, includes a base elective fee",
+    "by_year": [
+     {
+      "years": "7-8",
+      "tuition": 3607
+     },
+     {
+      "years": "9-10",
+      "tuition": 4177
+     },
+     {
+      "years": "11-12",
+      "tuition": 4753
+     }
+    ],
+    "source": "school_website",
+    "source_url": "https://www.stjohnsdubbo.catholic.edu.au/_file/media/185/sjc_2024_single_fee_schedule_1_.pdf"
+   }
+  },
+  "43580": {
+   "school_name": "James Sheahan Catholic High School Orange",
+   "website": "http://www.jschs.catholic.edu.au",
+   "status": "found",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 10,
+    "errors": 0
+   },
+   "fees": {
+    "fee_year": 2027,
+    "basis": "school fee per year, covers compulsory and curriculum charges and year-group excursions",
+    "by_year": [
+     {
+      "years": "7",
+      "tuition": 4095
+     },
+     {
+      "years": "8",
+      "tuition": 3939
+     },
+     {
+      "years": "9",
+      "tuition": 5705
+     },
+     {
+      "years": "10",
+      "tuition": 4031
+     },
+     {
+      "years": "11",
+      "tuition": 4503
+     },
+     {
+      "years": "12",
+      "tuition": 3834
+     }
+    ],
+    "source": "school_website",
+    "source_url": "https://jschs.schoolzineplus.com/_file/media/3240/orajsc_2027_fee_schedule.pdf"
+   }
+  },
+  "43625": {
+   "school_name": "Kildare Catholic College",
+   "website": "http://www.kccww.catholic.edu.au",
+   "status": "not_found",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 4,
+    "errors": 0
+   },
+   "note": "No fee page among the pages fetched."
+  },
+  "43626": {
+   "school_name": "Mater Dei Catholic College",
+   "website": "http://www.mdccww.catholic.edu.au",
+   "status": "found",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 5,
+    "errors": 1
+   },
+   "fees": {
+    "fee_year": 2026,
+    "basis": "college tuition per child; resource fee and subject levies extra",
+    "by_year": [
+     {
+      "years": "7-8",
+      "tuition": 5865
+     },
+     {
+      "years": "9-10",
+      "tuition": 5975
+     },
+     {
+      "years": "11-12",
+      "tuition": 6095
+     }
+    ],
+    "source": "school_website",
+    "source_url": "https://mdccww.catholic.edu.au/college-fees/"
+   }
+  },
+  "43627": {
+   "school_name": "St Francis De Sales Regional College",
+   "website": "http://www.sfcww.catholic.edu.au/",
+   "status": "not_found",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 3,
+    "errors": 0
+   },
+   "note": "No fee page among the pages fetched."
+  },
+  "43628": {
+   "school_name": "Xavier Catholic College",
+   "website": "https://www.xhsww.catholic.edu.au/",
+   "status": "not_found",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 1,
+    "errors": 0
+   },
+   "note": "Only the home page could be fetched."
+  },
+  "43629": {
+   "school_name": "Marian Catholic College",
+   "website": "http://www.mccww.catholic.edu.au",
+   "status": "not_found",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 4,
+    "errors": 0
+   },
+   "note": "No fee page among the pages fetched."
+  },
+  "43636": {
+   "school_name": "St Philomena's School",
+   "website": "https://stphilomenasmoree.catholic.edu.au/",
+   "status": "blocked",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 0,
+    "errors": 1,
+    "home_error": "HTTP 403"
+   }
+  },
+  "43649": {
+   "school_name": "Holy Trinity School",
+   "website": "https://holytrinity.nsw.edu.au/",
+   "status": "blocked",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 0,
+    "errors": 1,
+    "home_error": "HTTP 403"
+   }
+  },
+  "43651": {
+   "school_name": "St Mary's College",
+   "website": "https://stmaryscollege.nsw.edu.au/",
+   "status": "blocked",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 0,
+    "errors": 1,
+    "home_error": "HTTP 403"
+   }
+  },
+  "43652": {
+   "school_name": "McCarthy Catholic College",
+   "website": "https://mccarthy.nsw.edu.au/",
+   "status": "blocked",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 0,
+    "errors": 1,
+    "home_error": "HTTP 403"
+   }
+  },
+  "43653": {
+   "school_name": "O'Connor Catholic College",
+   "website": "https://oconnor.nsw.edu.au/",
+   "status": "blocked",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 0,
+    "errors": 1,
+    "home_error": "HTTP 403"
+   }
+  },
+  "43654": {
+   "school_name": "Trinity Catholic College Lismore",
+   "website": "http://www.trinitylismore.nsw.edu.au/",
+   "status": "found",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 15,
+    "errors": 1
+   },
+   "fees": {
+    "fee_year": 2026,
+    "basis": "tuition fees as published",
+    "by_year": [
+     {
+      "years": "7-8",
+      "tuition": 4525
+     },
+     {
+      "years": "9-10",
+      "tuition": 4925
+     },
+     {
+      "years": "11-12",
+      "tuition": 5665
+     }
+    ],
+    "source": "school_website",
+    "source_url": "https://www.trinitylismore.nsw.edu.au/_file/media/6816/fee_schedule_2026.docx.pdf"
+   }
+  },
   "43655": {
    "school_name": "St Maroun's College",
    "website": "http://www.stmarouns.nsw.edu.au",
@@ -10148,6 +11760,37 @@
     ],
     "source": "school_website",
     "source_url": "https://www.loreto.nsw.edu.au/enrol/enrol/fees/"
+   }
+  },
+  "43658": {
+   "school_name": "St Mary Star of the Sea College",
+   "website": "http://www.stmarys.nsw.edu.au",
+   "status": "found",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 12,
+    "errors": 0
+   },
+   "fees": {
+    "fee_year": 2026,
+    "basis": "tuition per student; resources and technology levy extra",
+    "by_year": [
+     {
+      "years": "7-8",
+      "tuition": 8532
+     },
+     {
+      "years": "9-10",
+      "tuition": 8382
+     },
+     {
+      "years": "11-12",
+      "tuition": 10803
+     }
+    ],
+    "other_compulsory": "Resources $627-$1,320 and technology levy $501 a year",
+    "source": "school_website",
+    "source_url": "https://www.stmarys.nsw.edu.au/enrolments/tuition-fees/"
    }
   },
   "43659": {
@@ -10311,6 +11954,17 @@
     ]
    }
   },
+  "43663": {
+   "school_name": "Edmund Rice College",
+   "website": "http://www.edmundricecollege.nsw.edu.au/",
+   "status": "not_extracted",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 10,
+    "errors": 0
+   },
+   "note": "2026 schedule of fees PDF holds no figures as text."
+  },
   "43664": {
    "school_name": "Rosebank College",
    "website": "http://www.rosebank.nsw.edu.au/",
@@ -10359,6 +12013,17 @@
     "source": "school_website",
     "source_url": "https://rosebank1337.s3.ap-southeast-2.amazonaws.com/2026_Fee_Schedule_1_2af0041987.pdf"
    }
+  },
+  "43665": {
+   "school_name": "St Edward's Christian Brothers' College",
+   "website": "http://www.stedwards.nsw.edu.au/",
+   "status": "not_extracted",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 16,
+    "errors": 0
+   },
+   "note": "Fee schedule page text shows sibling discounts but not the fee figures."
   },
   "43666": {
    "school_name": "Waverley College",
@@ -10433,6 +12098,46 @@
     "other_compulsory": "Technology levy $990 a year",
     "source": "school_website",
     "source_url": "https://www.riverview.nsw.edu.au/enrol/fees/"
+   }
+  },
+  "43669": {
+   "school_name": "Chevalier College",
+   "website": "http://www.chevalier.nsw.edu.au",
+   "status": "found",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 8,
+    "errors": 0
+   },
+   "fees": {
+    "fee_year": 2027,
+    "basis": "annual tuition as published",
+    "by_year": [
+     {
+      "years": "7-8",
+      "tuition": 12289
+     },
+     {
+      "years": "9-10",
+      "tuition": 12744
+     },
+     {
+      "years": "11",
+      "tuition": 14413
+     },
+     {
+      "years": "12",
+      "tuition": 14212
+     }
+    ],
+    "one_off": [
+     {
+      "item": "Acceptance fee",
+      "aud": 500
+     }
+    ],
+    "source": "school_website",
+    "source_url": "https://www.chevalier.nsw.edu.au/wp-content/uploads/2026/11/2027-Fee-Schedule.pdf"
    }
   },
   "43670": {
@@ -10911,6 +12616,39 @@
     "source_url": "https://www.krb.nsw.edu.au/app/uploads/2025/11/Residents-Schedule-of-Fees-K-12_2026_FINAL.pdf"
    }
   },
+  "43689": {
+   "school_name": "St Stanislaus' College",
+   "website": "http://www.stannies.com/",
+   "status": "found",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 7,
+    "errors": 0
+   },
+   "fees": {
+    "fee_year": 2027,
+    "basis": "published total (tuition, capital fee, other levies)",
+    "by_year": [
+     {
+      "years": "7-8",
+      "tuition": 7688,
+      "total": 10788
+     },
+     {
+      "years": "9-10",
+      "tuition": 8464,
+      "total": 11388
+     },
+     {
+      "years": "11-12",
+      "tuition": 10080,
+      "total": 13044
+     }
+    ],
+    "source": "school_website",
+    "source_url": "https://stannies.com/fees/"
+   }
+  },
   "43690": {
    "school_name": "Loreto Normanhurst",
    "website": "http://www.loretonh.nsw.edu.au",
@@ -10964,6 +12702,28 @@
     "entrance_test": "none_stated",
     "scholarship_test": null,
     "source_urls": []
+   }
+  },
+  "43691": {
+   "school_name": "Red Bend Catholic College",
+   "website": "http://www.redbendcc.nsw.edu.au",
+   "status": "found",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 7,
+    "errors": 0
+   },
+   "fees": {
+    "fee_year": 2026,
+    "basis": "tuition per year; incidentals typically $225-$435 extra",
+    "by_year": [
+     {
+      "years": "7-10",
+      "tuition": 4910
+     }
+    ],
+    "source": "school_website",
+    "source_url": "https://69ee1225-0b8b-4c68-90cf-119a231e647f.filesusr.com/ugd/7c10f3_a45bcdcc824f421cac43a299fd004823.pdf"
    }
   },
   "43693": {
@@ -11145,6 +12905,36 @@
     "source_url": "https://media.digistormhosting.com.au/ccs-au-nsw-331-website-2022/documents/Enrolment/2027-Tuition-Fee-Schedule.pdf"
    }
   },
+  "43702": {
+   "school_name": "Dubbo Christian School",
+   "website": "http://www.dubbocs.edu.au",
+   "status": "found",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 13,
+    "errors": 2
+   },
+   "fees": {
+    "fee_year": 2027,
+    "basis": "annual school fees, first student",
+    "by_year": [
+     {
+      "years": "K-6",
+      "tuition": 6675
+     },
+     {
+      "years": "7-10",
+      "tuition": 8820
+     },
+     {
+      "years": "11-12",
+      "tuition": 9710
+     }
+    ],
+    "source": "school_website",
+    "source_url": "https://www.dubbocs.edu.au/wp-content/uploads/2026/09/2027-DCS-Fee-Schedule.pdf"
+   }
+  },
   "43703": {
    "school_name": "German International School Sydney",
    "website": "http://www.giss.nsw.edu.au",
@@ -11155,6 +12945,17 @@
     "errors": 0
    },
    "note": "Only two pages reachable; no fee page."
+  },
+  "43704": {
+   "school_name": "OneSchool Global NSW - Maitland",
+   "website": "https://www.oneschoolglobal.com/campus/australia/maitland/",
+   "status": "blocked",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 0,
+    "errors": 1,
+    "home_error": "HTTP 403"
+   }
   },
   "43707": {
    "school_name": "Sherwood Hills Christian School",
@@ -11222,6 +13023,17 @@
     ]
    }
   },
+  "43711": {
+   "school_name": "Casino Christian School",
+   "website": "http://www.ccs.nsw.edu.au",
+   "status": "not_extracted",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 7,
+    "errors": 0
+   },
+   "note": "2026 fee schedule PDF holds no figures as text."
+  },
   "43713": {
    "school_name": "Greenacre Christian College",
    "website": "http://www.gcc.nsw.edu.au/",
@@ -11262,6 +13074,74 @@
     ],
     "source": "school_website",
     "source_url": "https://static1.squarespace.com/static/5e4f2f8ad700ae7acb8b4ae5/t/6937539f8940e8497dbd0f2b/1765233567451/2026+Fee+Schedule+Prospectus+FINAL.pdf"
+   }
+  },
+  "43714": {
+   "school_name": "Koinonia Christian Academy",
+   "website": "http://koinonia.nsw.edu.au",
+   "status": "not_extracted",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 3,
+    "errors": 0
+   },
+   "note": "Fee schedule page text holds no figures."
+  },
+  "43716": {
+   "school_name": "Newcastle Waldorf School",
+   "website": "http://www.newcastlewaldorfschool.nsw.edu.au/",
+   "status": "found",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 5,
+    "errors": 1
+   },
+   "fees": {
+    "fee_year": 2027,
+    "basis": "annual fee as published",
+    "by_year": [
+     {
+      "years": "K",
+      "tuition": 5080
+     },
+     {
+      "years": "1",
+      "tuition": 5360
+     },
+     {
+      "years": "2",
+      "tuition": 5500
+     },
+     {
+      "years": "3",
+      "tuition": 5680
+     },
+     {
+      "years": "4",
+      "tuition": 5860
+     },
+     {
+      "years": "5-6",
+      "tuition": 7440
+     },
+     {
+      "years": "7-12",
+      "tuition": 8260
+     }
+    ],
+    "source": "school_website",
+    "source_url": "https://www.newcastlewaldorfschool.nsw.edu.au/fees/"
+   }
+  },
+  "43717": {
+   "school_name": "OneSchool Global NSW - Wagga Wagga",
+   "website": "https://www.oneschoolglobal.com/campus/australia/wagga-wagga/",
+   "status": "blocked",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 0,
+    "errors": 1,
+    "home_error": "HTTP 403"
    }
   },
   "43724": {
@@ -11337,6 +13217,17 @@
     "source_url": "https://alsadiq.nsw.edu.au/wp-content/uploads/2026/03/2026-Tuition-and-Levies-Fee-Schedule.pdf"
    }
   },
+  "43744": {
+   "school_name": "Nambucca Valley Christian Community School",
+   "website": "http://www.nvccs.nsw.edu.au",
+   "status": "not_found",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 3,
+    "errors": 0
+   },
+   "note": "No fee page among the pages fetched."
+  },
   "43752": {
    "school_name": "The Lakes Christian College",
    "website": "http://www.thelakescc.nsw.edu.au",
@@ -11358,6 +13249,17 @@
     "errors": 0
    },
    "note": "Fees published per term only (2026: $1,568 a term Classes 1-6, $2,575 Classes 7-12, first child); the number of terms is not stated, so no annual figure is recorded."
+  },
+  "43755": {
+   "school_name": "The Armidale Waldorf School",
+   "website": "http://www.waldorf.nsw.edu.au",
+   "status": "not_extracted",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 5,
+    "errors": 0
+   },
+   "note": "2026 fee schedule PDF lists amounts but most class labels did not come through as text."
   },
   "43756": {
    "school_name": "Australian Performing Arts Grammar School",
@@ -11394,6 +13296,17 @@
     "source_url": "https://apgs.nsw.edu.au/fees/"
    }
   },
+  "43757": {
+   "school_name": "St Andrew's Christian School",
+   "website": "http://www.standrewscs.nsw.edu.au",
+   "status": "not_extracted",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 6,
+    "errors": 0
+   },
+   "note": "2026 fee schedule PDF holds no figures as text."
+  },
   "43758": {
    "school_name": "Kuyper Christian School",
    "website": "http://www.kuyper.nsw.edu.au",
@@ -11404,6 +13317,93 @@
     "errors": 0
    },
    "note": "Fees page shows no figures."
+  },
+  "43759": {
+   "school_name": "MidCoast Christian College",
+   "website": "https://mccc.nsw.edu.au/",
+   "status": "not_extracted",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 10,
+    "errors": 0
+   },
+   "note": "2026 fees PDF lists amounts but its year labels did not come through in order."
+  },
+  "43760": {
+   "school_name": "Shearwater, the Mullumbimby Steiner School",
+   "website": "http://www.shearwater.nsw.edu.au",
+   "status": "found",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 4,
+    "errors": 0
+   },
+   "fees": {
+    "fee_year": 2026,
+    "basis": "annual fees as published",
+    "by_year": [
+     {
+      "years": "K-2",
+      "tuition": 8132
+     },
+     {
+      "years": "3-4",
+      "tuition": 9520
+     },
+     {
+      "years": "5-6",
+      "tuition": 10452
+     },
+     {
+      "years": "7-8",
+      "tuition": 11200
+     },
+     {
+      "years": "9-10",
+      "tuition": 12080
+     },
+     {
+      "years": "11",
+      "tuition": 11200
+     },
+     {
+      "years": "12",
+      "tuition": 11205
+     }
+    ],
+    "source": "school_website",
+    "source_url": "https://shearwater.nsw.edu.au/school-fees/"
+   }
+  },
+  "43761": {
+   "school_name": "Border Christian College",
+   "website": "http://www.alburybcc.nsw.edu.au",
+   "status": "found",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 4,
+    "errors": 0
+   },
+   "fees": {
+    "fee_year": 2025,
+    "basis": "annual tuition; the newest published is for 2025. Years 11-12 are omitted because the page says their cost is spread over two years",
+    "by_year": [
+     {
+      "years": "K-6",
+      "tuition": 3080
+     },
+     {
+      "years": "7-8",
+      "tuition": 3952
+     },
+     {
+      "years": "9-10",
+      "tuition": 4120
+     }
+    ],
+    "source": "school_website",
+    "source_url": "https://alburybcc.nsw.edu.au/enrolment/"
+   }
   },
   "43762": {
    "school_name": "Abbotsleigh",
@@ -11517,6 +13517,229 @@
     "source_url": "https://www.lorien.nsw.edu.au/wp-content/uploads/2026/02/2026-Fees-Information.pdf"
    }
   },
+  "43765": {
+   "school_name": "Snowy Mountains Christian School",
+   "website": "http://www.smcs.nsw.edu.au",
+   "status": "not_extracted",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 5,
+    "errors": 0
+   },
+   "note": "Fee structure page text holds no figures."
+  },
+  "43767": {
+   "school_name": "Hinterland Christian College",
+   "website": "http://www.hinterland.nsw.edu.au",
+   "status": "not_extracted",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 4,
+    "errors": 0
+   },
+   "note": "Fees PDF (2025-2026) holds no figures as text."
+  },
+  "43770": {
+   "school_name": "Calderwood Christian School",
+   "website": "http://www.calderwoodcs.nsw.edu.au",
+   "status": "not_found",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 1,
+    "errors": 1
+   },
+   "note": "Only the home page could be fetched."
+  },
+  "43771": {
+   "school_name": "Summerland Christian College",
+   "website": "https://www.mysccollege.com/",
+   "status": "not_found",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 1,
+    "errors": 0
+   },
+   "note": "Only the home page could be fetched."
+  },
+  "43772": {
+   "school_name": "Central Coast Steiner School",
+   "website": "http://www.ccss.nsw.edu.au/",
+   "status": "found",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 7,
+    "errors": 0
+   },
+   "fees": {
+    "fee_year": 2026,
+    "basis": "fees per annum; compulsory materials levy extra",
+    "by_year": [
+     {
+      "years": "K-6",
+      "tuition": 6976
+     },
+     {
+      "years": "7-10",
+      "tuition": 7872
+     },
+     {
+      "years": "11-12",
+      "tuition": 8440
+     }
+    ],
+    "source": "school_website",
+    "source_url": "https://ccss.nsw.edu.au/wp-content/uploads/2025/10/Fees-Policy-2026.pdf"
+   }
+  },
+  "43774": {
+   "school_name": "Wagga Wagga Christian College",
+   "website": "https://www.wwcc.nsw.edu.au/",
+   "status": "found",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 6,
+    "errors": 1
+   },
+   "fees": {
+    "fee_year": 2026,
+    "basis": "annual tuition, oldest child; includes compulsory sport and camps",
+    "by_year": [
+     {
+      "years": "K-6",
+      "tuition": 4773
+     },
+     {
+      "years": "7-8",
+      "tuition": 6824
+     },
+     {
+      "years": "9-12",
+      "tuition": 8453
+     }
+    ],
+    "source": "school_website",
+    "source_url": "https://wwcc.nsw.edu.au/fees/"
+   }
+  },
+  "43777": {
+   "school_name": "Moama Anglican Grammar School",
+   "website": "http://www.moamagrammar.nsw.edu.au",
+   "status": "not_found",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 16,
+    "errors": 0
+   },
+   "note": "Only the preschool fee schedule was reached."
+  },
+  "43778": {
+   "school_name": "Blue Hills College",
+   "website": "http://www.bluehills.nsw.edu.au",
+   "status": "found",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 6,
+    "errors": 0
+   },
+   "fees": {
+    "fee_year": 2025,
+    "basis": "published total (tuition, consumables, technology fee, laptop levy); the newest schedule published is for 2025",
+    "by_year": [
+     {
+      "years": "K-6",
+      "tuition": 2050,
+      "total": 2505
+     },
+     {
+      "years": "7-8",
+      "tuition": 2500,
+      "total": 3725
+     },
+     {
+      "years": "9-10",
+      "tuition": 2790,
+      "total": 4015
+     },
+     {
+      "years": "11-12",
+      "tuition": 3080,
+      "total": 4305
+     }
+    ],
+    "source": "school_website",
+    "source_url": "https://bluehills.nsw.edu.au/wp-content/uploads/2025/08/College-Fee-Schedule-for-2025-BHC.pdf"
+   }
+  },
+  "43779": {
+   "school_name": "Cape Byron Rudolf Steiner School",
+   "website": "http://www.capebyronsteiner.nsw.edu.au",
+   "status": "not_extracted",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 10,
+    "errors": 0
+   },
+   "note": "2026 fees published per term only; the number of terms is not stated in the schedule."
+  },
+  "43780": {
+   "school_name": "Aetaomah School",
+   "website": "https://www.aetaomah.nsw.edu.au/",
+   "status": "not_extracted",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 5,
+    "errors": 0
+   },
+   "note": "Fee schedule page text holds no figures."
+  },
+  "43781": {
+   "school_name": "Linuwel School Ltd",
+   "website": "https://www.linuwel.nsw.edu.au/",
+   "status": "found",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 6,
+    "errors": 0
+   },
+   "fees": {
+    "fee_year": 2026,
+    "basis": "term fees, first child; include planned camps and resources; the page lists four terms",
+    "by_year": [
+     {
+      "years": "K-2",
+      "per_term": 2000,
+      "terms": 4
+     },
+     {
+      "years": "3-4",
+      "per_term": 2045,
+      "terms": 4
+     },
+     {
+      "years": "5-6",
+      "per_term": 2130,
+      "terms": 4
+     },
+     {
+      "years": "7-8",
+      "per_term": 2380,
+      "terms": 4
+     },
+     {
+      "years": "9-10",
+      "per_term": 2488,
+      "terms": 4
+     },
+     {
+      "years": "11-12",
+      "per_term": 2625,
+      "terms": 4
+     }
+    ],
+    "source": "school_website",
+    "source_url": "https://linuwel.nsw.edu.au/fees-and-term-dates/"
+   }
+  },
   "43782": {
    "school_name": "Unity Grammar College",
    "website": "http://www.unitygrammar.com.au",
@@ -11549,6 +13772,39 @@
     "errors": 0
    },
    "note": "Fees page text holds no figures; they may sit in a linked document or script."
+  },
+  "43787": {
+   "school_name": "Orange Anglican Grammar School",
+   "website": "http://www.orangegrammar.nsw.edu.au",
+   "status": "not_extracted",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 2,
+    "errors": 0
+   },
+   "note": "2026 fees PDF holds no figures as text."
+  },
+  "43788": {
+   "school_name": "Illawarra Christian School",
+   "website": "http://www.ics.nsw.edu.au",
+   "status": "not_extracted",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 11,
+    "errors": 0
+   },
+   "note": "Fees page text holds no figures."
+  },
+  "43790": {
+   "school_name": "Moree Christian School",
+   "website": "http://www.moreecs.nsw.edu.au",
+   "status": "not_found",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 2,
+    "errors": 0
+   },
+   "note": "Only two pages reachable; no fee page."
   },
   "43792": {
    "school_name": "Shire Christian School",
@@ -11597,6 +13853,17 @@
     "source": "school_website",
     "source_url": "https://www.shirechristian.nsw.edu.au/enrolments/fees/"
    }
+  },
+  "43793": {
+   "school_name": "St Philip's Christian College - Cessnock",
+   "website": "http://www.spcc.nsw.edu.au/index.php?c=18",
+   "status": "not_found",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 1,
+    "errors": 0
+   },
+   "note": "Only the home page could be fetched."
   },
   "43794": {
    "school_name": "Lycee Condorcet The International French School Of Sydney",
@@ -11683,6 +13950,114 @@
     "source_url": "https://www.queenwood.nsw.edu.au/app/uploads/2025/12/Q-2026-Schedule-of-Fees.pdf"
    }
   },
+  "43797": {
+   "school_name": "The Riverina Anglican College",
+   "website": "http://www.trac.nsw.edu.au/",
+   "status": "found",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 13,
+    "errors": 1
+   },
+   "fees": {
+    "fee_year": null,
+    "year_note": "fee schedule page does not state the year; checked 2026-11-13",
+    "basis": "tuition per annum; primary includes book packs",
+    "by_year": [
+     {
+      "years": "K-2",
+      "tuition": 5550
+     },
+     {
+      "years": "3-4",
+      "tuition": 5890
+     },
+     {
+      "years": "5-6",
+      "tuition": 6300
+     },
+     {
+      "years": "7-8",
+      "tuition": 10440
+     },
+     {
+      "years": "9-10",
+      "tuition": 10640
+     },
+     {
+      "years": "11-12",
+      "tuition": 10800
+     }
+    ],
+    "source": "school_website",
+    "source_url": "https://www.trac.nsw.edu.au/enrol/fee-schedule/"
+   }
+  },
+  "43798": {
+   "school_name": "OneSchool Global NSW - Leeton",
+   "website": "https://www.oneschoolglobal.com/campus/australia/leeton/",
+   "status": "blocked",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 0,
+    "errors": 1,
+    "home_error": "HTTP 403"
+   }
+  },
+  "43799": {
+   "school_name": "Namoi Valley Christian School",
+   "website": "http://www.nvcs.com.au",
+   "status": "not_found",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 3,
+    "errors": 0
+   },
+   "note": "No fee page among the pages fetched."
+  },
+  "43801": {
+   "school_name": "Tweed Valley Adventist College",
+   "website": "https://www.tvac.nsw.edu.au/",
+   "status": "found",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 4,
+    "errors": 0
+   },
+   "fees": {
+    "fee_year": 2026,
+    "basis": "published total (tuition plus resources and technology)",
+    "by_year": [
+     {
+      "years": "K-4",
+      "tuition": 2360,
+      "total": 3080
+     },
+     {
+      "years": "5-6",
+      "tuition": 2360,
+      "total": 3840
+     },
+     {
+      "years": "7-8",
+      "tuition": 2380,
+      "total": 4040
+     },
+     {
+      "years": "9-10",
+      "tuition": 2580,
+      "total": 4240
+     },
+     {
+      "years": "11-12",
+      "tuition": 3260,
+      "total": 4480
+     }
+    ],
+    "source": "school_website",
+    "source_url": "https://www.tvac.nsw.edu.au/wp-content/uploads/2025/11/TVAC-Fee-Schedule-2026.pdf"
+   }
+  },
   "43802": {
    "school_name": "The McDonald College",
    "website": "http://www.mcdonald.nsw.edu.au",
@@ -11694,6 +14069,136 @@
    },
    "note": "Fees page text holds no figures; they may sit in a linked document or script."
   },
+  "43803": {
+   "school_name": "Scone Grammar School",
+   "website": "http://www.sgs.nsw.edu.au",
+   "status": "found",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 14,
+    "errors": 0
+   },
+   "fees": {
+    "fee_year": 2026,
+    "basis": "annual tuition; resource activity levy extra",
+    "by_year": [
+     {
+      "years": "K-2",
+      "tuition": 5120
+     },
+     {
+      "years": "3-4",
+      "tuition": 5452
+     },
+     {
+      "years": "5-8",
+      "tuition": 6136
+     },
+     {
+      "years": "9-10",
+      "tuition": 7096
+     },
+     {
+      "years": "11",
+      "tuition": 9148
+     },
+     {
+      "years": "12",
+      "tuition": 9144
+     }
+    ],
+    "source": "school_website",
+    "source_url": "https://www.sgs.nsw.edu.au/enrolment/scone-grammar-school-fees"
+   }
+  },
+  "43805": {
+   "school_name": "Kempsey Adventist School",
+   "website": "http://www.kas.nsw.edu.au",
+   "status": "found",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 4,
+    "errors": 0
+   },
+   "fees": {
+    "fee_year": 2026,
+    "basis": "total fee payable per year",
+    "by_year": [
+     {
+      "years": "K-3",
+      "total": 2180
+     },
+     {
+      "years": "4-6",
+      "total": 2390
+     },
+     {
+      "years": "7-8",
+      "total": 2890
+     },
+     {
+      "years": "9-10",
+      "total": 3280
+     },
+     {
+      "years": "11-12",
+      "total": 3380
+     }
+    ],
+    "source": "school_website",
+    "source_url": "https://kas.nsw.edu.au/wp-content/uploads/2026/06/KAS-Fee-Schedule-May-2026-.pdf"
+   }
+  },
+  "43806": {
+   "school_name": "Emmanuel Anglican College",
+   "website": "http://www.eac.nsw.edu.au",
+   "status": "found",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 9,
+    "errors": 0
+   },
+   "fees": {
+    "fee_year": 2026,
+    "basis": "fees per year as published",
+    "by_year": [
+     {
+      "years": "K-2",
+      "tuition": 7899
+     },
+     {
+      "years": "3-4",
+      "tuition": 9018
+     },
+     {
+      "years": "5-6",
+      "tuition": 10398
+     },
+     {
+      "years": "7-8",
+      "tuition": 11400
+     },
+     {
+      "years": "9",
+      "tuition": 11898
+     },
+     {
+      "years": "10",
+      "tuition": 12399
+     },
+     {
+      "years": "11",
+      "tuition": 12747
+     },
+     {
+      "years": "12",
+      "tuition": 13248
+     }
+    ],
+    "source": "school_website",
+    "source_url": "https://eac.nsw.edu.au/wp-content/uploads/2026/07/Schedule-of-Fees-1.pdf"
+   }
+  },
   "43807": {
    "school_name": "St Narsai Assyrian Christian College",
    "website": "http://snac.nsw.edu.au",
@@ -11704,6 +14209,17 @@
     "errors": 1
    },
    "note": "Only the home page could be fetched."
+  },
+  "43808": {
+   "school_name": "Bhaktivedanta Swami Gurukula School",
+   "website": "https://www.krishnaschool.nsw.edu.au/",
+   "status": "not_extracted",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 4,
+    "errors": 0
+   },
+   "note": "Fees page and 2026 fee policy hold no figures as text."
   },
   "43809": {
    "school_name": "Wollemi College",
@@ -11730,6 +14246,51 @@
     "other_compulsory": "Curriculum and technology levy $1,895-$3,010; capital levy $1,625 per family",
     "source": "school_website",
     "source_url": "https://www.wollemi.nsw.edu.au/wp-content/uploads/2026/11/West-Fee-Schedule-2027.pdf"
+   }
+  },
+  "43810": {
+   "school_name": "Rainbow Ridge School for Steiner Education",
+   "website": "http://www.rainbowridge.nsw.edu.au",
+   "status": "not_extracted",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 9,
+    "errors": 1
+   },
+   "note": "2026 fee sheet PDF holds no figures as text."
+  },
+  "43811": {
+   "school_name": "St Paul's College",
+   "website": "http://www.stpaulscollege.nsw.edu.au/",
+   "status": "found",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 13,
+    "errors": 2
+   },
+   "fees": {
+    "fee_year": 2027,
+    "basis": "annual tuition, includes most elective costs; building levy extra",
+    "by_year": [
+     {
+      "years": "7",
+      "tuition": 8410
+     },
+     {
+      "years": "8",
+      "tuition": 9765
+     },
+     {
+      "years": "9-10",
+      "tuition": 11250
+     },
+     {
+      "years": "11-12",
+      "tuition": 13075
+     }
+    ],
+    "source": "school_website",
+    "source_url": "https://www.stpaulscollege.nsw.edu.au/forms?download=333:2027-fee-schedule"
    }
   },
   "43812": {
@@ -11806,6 +14367,60 @@
    },
    "note": "Tuition and costs page text holds no figures."
   },
+  "43819": {
+   "school_name": "OneSchool Global NSW - Condobolin",
+   "website": "https://www.oneschoolglobal.com/campus/australia/condobolin/",
+   "status": "blocked",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 0,
+    "errors": 1,
+    "home_error": "HTTP 403"
+   }
+  },
+  "43820": {
+   "school_name": "Macquarie Anglican Grammar School",
+   "website": "http://www.mags.nsw.edu.au",
+   "status": "found",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 12,
+    "errors": 0
+   },
+   "fees": {
+    "fee_year": 2026,
+    "basis": "annual school fees; service charges extra",
+    "by_year": [
+     {
+      "years": "K-2",
+      "tuition": 6780
+     },
+     {
+      "years": "3-4",
+      "tuition": 6860
+     },
+     {
+      "years": "5-6",
+      "tuition": 7900
+     },
+     {
+      "years": "7-8",
+      "tuition": 8240
+     },
+     {
+      "years": "9-11",
+      "tuition": 9180
+     },
+     {
+      "years": "12",
+      "tuition": 9195
+     }
+    ],
+    "other_compulsory": "Service charges $1,800-$2,700 a year in Years 7-12",
+    "source": "school_website",
+    "source_url": "https://www.mags.nsw.edu.au/assets/2026-Schedule-of-Fees-and-Charges-Day-School.pdf"
+   }
+  },
   "43821": {
    "school_name": "The Scots College",
    "website": "http://www.tsc.nsw.edu.au",
@@ -11816,6 +14431,17 @@
     "errors": 0
    },
    "note": "Only the home page could be fetched."
+  },
+  "43822": {
+   "school_name": "OneSchool Global NSW - Armidale",
+   "website": "https://www.oneschoolglobal.com/campus/australia/armidale/",
+   "status": "blocked",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 0,
+    "errors": 1,
+    "home_error": "HTTP 403"
+   }
   },
   "43824": {
    "school_name": "Norwest Christian College",
@@ -11847,6 +14473,148 @@
     "errors": 1
    },
    "note": "Only the home page could be fetched."
+  },
+  "43830": {
+   "school_name": "Manning Valley Anglican College",
+   "website": "http://www.mvac.nsw.edu.au",
+   "status": "found",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 9,
+    "errors": 1
+   },
+   "fees": {
+    "fee_year": 2026,
+    "basis": "tuition per year; resource and activity levy extra",
+    "by_year": [
+     {
+      "years": "K",
+      "tuition": 2668
+     },
+     {
+      "years": "1",
+      "tuition": 2944
+     },
+     {
+      "years": "2",
+      "tuition": 3264
+     },
+     {
+      "years": "3-6",
+      "tuition": 3648
+     },
+     {
+      "years": "7",
+      "tuition": 3924
+     },
+     {
+      "years": "8",
+      "tuition": 4204
+     },
+     {
+      "years": "9-10",
+      "tuition": 4536
+     },
+     {
+      "years": "11-12",
+      "tuition": 4956
+     }
+    ],
+    "source": "school_website",
+    "source_url": "https://www.mvac.nsw.edu.au/enrol/tuition-fees/"
+   }
+  },
+  "43831": {
+   "school_name": "Charlton Christian College",
+   "website": "http://www.charlton.nsw.edu.au",
+   "status": "found",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 7,
+    "errors": 0
+   },
+   "fees": {
+    "fee_year": 2027,
+    "basis": "yearly tuition, first child",
+    "by_year": [
+     {
+      "years": "K-4",
+      "tuition": 6240
+     },
+     {
+      "years": "5-6",
+      "tuition": 7530
+     },
+     {
+      "years": "7-8",
+      "tuition": 8350
+     },
+     {
+      "years": "9-10",
+      "tuition": 9066
+     },
+     {
+      "years": "11-12",
+      "tuition": 9209
+     }
+    ],
+    "source": "school_website",
+    "source_url": "https://www.charlton.nsw.edu.au/wp-content/uploads/2027-Fees.pdf"
+   }
+  },
+  "43832": {
+   "school_name": "Chrysalis School for Rudolf Steiner Education",
+   "website": "http://www.chrysalis.nsw.edu.au",
+   "status": "found",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 15,
+    "errors": 0
+   },
+   "fees": {
+    "fee_year": 2026,
+    "basis": "class fees per term; the schedule lists four terms",
+    "by_year": [
+     {
+      "years": "K-2",
+      "per_term": 1556,
+      "terms": 4
+     },
+     {
+      "years": "3-4",
+      "per_term": 1818,
+      "terms": 4
+     },
+     {
+      "years": "5-6",
+      "per_term": 2158,
+      "terms": 4
+     },
+     {
+      "years": "7-8",
+      "per_term": 2495,
+      "terms": 4
+     },
+     {
+      "years": "9-10",
+      "per_term": 2773,
+      "terms": 4
+     }
+    ],
+    "source": "school_website",
+    "source_url": "https://chrysalis.nsw.edu.au/wp-content/uploads/Chrysalis-School-Fee-Information-2026.pdf"
+   }
+  },
+  "43835": {
+   "school_name": "Nowra Anglican College",
+   "website": "http://www.nac.nsw.edu.au",
+   "status": "not_found",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 9,
+    "errors": 0
+   },
+   "note": "No fee page among the pages fetched."
   },
   "43836": {
    "school_name": "The Hills Grammar School",
@@ -12085,6 +14853,17 @@
    },
    "note": "Fees page text holds no figures."
   },
+  "43842": {
+   "school_name": "The Armidale School",
+   "website": "http://www.as.edu.au",
+   "status": "not_found",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 15,
+    "errors": 0
+   },
+   "note": "No fee page among the pages fetched."
+  },
   "43843": {
    "school_name": "Thomas Hassall Anglican College",
    "website": "http://www.thac.nsw.edu.au",
@@ -12095,6 +14874,80 @@
     "errors": 0
    },
    "note": "Fee schedule page text holds no figures."
+  },
+  "43844": {
+   "school_name": "Kinross Wolaroi School",
+   "website": "http://www.kws.nsw.edu.au",
+   "status": "found",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 16,
+    "errors": 0
+   },
+   "fees": {
+    "fee_year": 2027,
+    "basis": "total day fees (tuition, resource levy, core activities, technology)",
+    "by_year": [
+     {
+      "years": "K",
+      "tuition": 11340,
+      "total": 12360
+     },
+     {
+      "years": "1",
+      "tuition": 15540,
+      "total": 16620
+     },
+     {
+      "years": "2",
+      "tuition": 15540,
+      "total": 17160
+     },
+     {
+      "years": "3",
+      "tuition": 17640,
+      "total": 19960
+     },
+     {
+      "years": "4",
+      "tuition": 17640,
+      "total": 20660
+     },
+     {
+      "years": "5",
+      "tuition": 20800,
+      "total": 23620
+     },
+     {
+      "years": "6",
+      "tuition": 20800,
+      "total": 24120
+     },
+     {
+      "years": "7",
+      "tuition": 29900,
+      "total": 33260
+     },
+     {
+      "years": "8",
+      "tuition": 29900,
+      "total": 33660
+     }
+    ],
+    "source": "school_website",
+    "source_url": "https://cdn.prod.website-files.com/6667ea89d7a7ebd13f0823f6/6ac83b5468a8ca7ac3d502f5_KWS%20Fee%20Schedule%202027.pdf"
+   }
+  },
+  "43845": {
+   "school_name": "Avondale School",
+   "website": "https://www.avondaleschool.nsw.edu.au/",
+   "status": "not_extracted",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 8,
+    "errors": 0
+   },
+   "note": "2027 school fees page text holds no figures."
   },
   "43846": {
    "school_name": "Pymble Ladies' College",
@@ -12156,6 +15009,48 @@
     ]
    }
   },
+  "43847": {
+   "school_name": "Macquarie College",
+   "website": "http://www.macquariecollege.nsw.edu.au",
+   "status": "found",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 9,
+    "errors": 0
+   },
+   "fees": {
+    "fee_year": 2027,
+    "basis": "annual fee as published",
+    "by_year": [
+     {
+      "years": "K-2",
+      "tuition": 8148
+     },
+     {
+      "years": "3-4",
+      "tuition": 8608
+     },
+     {
+      "years": "5-6",
+      "tuition": 9664
+     },
+     {
+      "years": "7-8",
+      "tuition": 11944
+     },
+     {
+      "years": "9-10",
+      "tuition": 12848
+     },
+     {
+      "years": "11-12",
+      "tuition": 13728
+     }
+    ],
+    "source": "school_website",
+    "source_url": "https://www.macquariecollege.nsw.edu.au/wp-content/uploads/2026/09/2027-Fee-Schedule.pdf"
+   }
+  },
   "43848": {
    "school_name": "Christadelphian Heritage College Sydney",
    "website": "http://www.hcs.nsw.edu.au",
@@ -12166,6 +15061,51 @@
     "errors": 0
    },
    "note": "Fee schedule page text holds no figures."
+  },
+  "43849": {
+   "school_name": "Scots All Saints College",
+   "website": "http://www.scotsallsaints.nsw.edu.au",
+   "status": "found",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 13,
+    "errors": 1
+   },
+   "fees": {
+    "fee_year": 2026,
+    "basis": "tuition per year; services charge $2,532 a year extra",
+    "by_year": [
+     {
+      "years": "7",
+      "tuition": 15776
+     },
+     {
+      "years": "8",
+      "tuition": 17044
+     },
+     {
+      "years": "9-10",
+      "tuition": 20148
+     },
+     {
+      "years": "11-12",
+      "tuition": 22572
+     }
+    ],
+    "source": "school_website",
+    "source_url": "https://cdn.scotsallsaints.nsw.edu.au/wp-content/uploads/2025/12/2026-Schedule-of-Fees-Senior-School.pdf"
+   }
+  },
+  "43851": {
+   "school_name": "Snowy Mountains Grammar School",
+   "website": "http://www.smgs.nsw.edu.au",
+   "status": "unreachable",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 0,
+    "errors": 1,
+    "home_error": "HTTP 503"
+   }
   },
   "43852": {
    "school_name": "Al Amanah College, Bankstown campus",
@@ -12207,6 +15147,77 @@
     ],
     "source": "school_website",
     "source_url": "https://static1.squarespace.com/static/55936ff1e4b0a45627113c70/t/6a928eb54590e8700c29ebae/1787989685787/RBS_Fees_Local_Students_2027.pdf"
+   }
+  },
+  "43855": {
+   "school_name": "Newcastle Grammar School",
+   "website": "http://www.ngs.nsw.edu.au",
+   "status": "found",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 16,
+    "errors": 0
+   },
+   "fees": {
+    "fee_year": 2026,
+    "basis": "annual tuition; activity levy extra",
+    "by_year": [
+     {
+      "years": "K",
+      "tuition": 19655
+     },
+     {
+      "years": "1",
+      "tuition": 20493
+     },
+     {
+      "years": "2",
+      "tuition": 20934
+     },
+     {
+      "years": "3",
+      "tuition": 23221
+     },
+     {
+      "years": "4",
+      "tuition": 23627
+     },
+     {
+      "years": "5",
+      "tuition": 25846
+     },
+     {
+      "years": "6",
+      "tuition": 26584
+     },
+     {
+      "years": "7",
+      "tuition": 31806
+     },
+     {
+      "years": "8",
+      "tuition": 32175
+     },
+     {
+      "years": "9",
+      "tuition": 32586
+     },
+     {
+      "years": "10",
+      "tuition": 32969
+     },
+     {
+      "years": "11",
+      "tuition": 33263
+     },
+     {
+      "years": "12",
+      "tuition": 34370
+     }
+    ],
+    "other_compulsory": "Activity levy $910-$2,339 a year",
+    "source": "school_website",
+    "source_url": "https://ngs.nsw.edu.au/wp-content/uploads/2025/11/School-Fee-Schedule-Nov-2026.pdf"
    }
   },
   "43856": {
@@ -12398,6 +15409,28 @@
     "source_url": "https://macc.nsw.edu.au/wp-content/uploads/2026/04/Fee-Schedule-2026-1.pdf"
    }
   },
+  "43865": {
+   "school_name": "Carinya Christian School Gunnedah",
+   "website": "http://www.carinya.nsw.edu.au",
+   "status": "not_extracted",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 14,
+    "errors": 0
+   },
+   "note": "Tuition fees page text holds no figures."
+  },
+  "43866": {
+   "school_name": "Carinya Christian School Tamworth",
+   "website": "http://www.carinya.nsw.edu.au",
+   "status": "not_extracted",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 14,
+    "errors": 0
+   },
+   "note": "Tuition fees page text holds no figures."
+  },
   "43867": {
    "school_name": "St Bishoy Coptic Orthodox College",
    "website": "http://www.stbishoy.nsw.edu.au",
@@ -12459,6 +15492,17 @@
     "home_error": "HTTP 403"
    }
   },
+  "43873": {
+   "school_name": "Cedars Christian College",
+   "website": "http://www.cedars.nsw.edu.au",
+   "status": "not_found",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 1,
+    "errors": 0
+   },
+   "note": "Only the home page could be fetched."
+  },
   "43874": {
    "school_name": "Georges River Grammar",
    "website": "http://www.grg.nsw.edu.au",
@@ -12510,6 +15554,41 @@
     ],
     "source": "school_website",
     "source_url": "https://www.redlands.nsw.edu.au/wp-content/uploads/2026/10/Fees_Schedule_2026.pdf"
+   }
+  },
+  "43876": {
+   "school_name": "Central Coast Adventist School",
+   "website": "http://www.ccas.nsw.edu.au",
+   "status": "found",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 12,
+    "errors": 0
+   },
+   "fees": {
+    "fee_year": 2026,
+    "basis": "annual tuition; class charges and building levy extra",
+    "by_year": [
+     {
+      "years": "K-6",
+      "tuition": 7290
+     },
+     {
+      "years": "7-8",
+      "tuition": 8790
+     },
+     {
+      "years": "9-10",
+      "tuition": 10340
+     },
+     {
+      "years": "11-12",
+      "tuition": 11629
+     }
+    ],
+    "other_compulsory": "Class charges $1,898-$2,747 and building levy $500 a year in Years 7-12",
+    "source": "school_website",
+    "source_url": "https://media.digistormhosting.com.au/ccas-au-nsw-9-staging/documents/Fees/CCAS_Fees_2026-PS_HS.pdf"
    }
   },
   "43877": {
@@ -12616,6 +15695,51 @@
     ]
    }
   },
+  "43879": {
+   "school_name": "Sapphire Coast Anglican College",
+   "website": "http://www.scac.nsw.edu.au",
+   "status": "found",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 11,
+    "errors": 0
+   },
+   "fees": {
+    "fee_year": 2026,
+    "basis": "tuition per annum, includes curriculum activities",
+    "by_year": [
+     {
+      "years": "K-2",
+      "tuition": 5090
+     },
+     {
+      "years": "3-6",
+      "tuition": 5510
+     },
+     {
+      "years": "7-10",
+      "tuition": 7150
+     },
+     {
+      "years": "11-12",
+      "tuition": 7640
+     }
+    ],
+    "source": "school_website",
+    "source_url": "https://irp.cdn-website.com/e30bfbb0/files/uploaded/2026+Fee+Schedule+SCAC.pdf"
+   }
+  },
+  "43880": {
+   "school_name": "New England Girls' School",
+   "website": "http://www.negs.nsw.edu.au",
+   "status": "not_extracted",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 14,
+    "errors": 0
+   },
+   "note": "2026 fees PDF holds no text (likely an image)."
+  },
   "43883": {
    "school_name": "The King's School",
    "website": "http://www.kings.edu.au",
@@ -12661,6 +15785,39 @@
     ]
    }
   },
+  "43887": {
+   "school_name": "St Columba Anglican School",
+   "website": "http://www.scas.nsw.edu.au",
+   "status": "not_extracted",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 8,
+    "errors": 0
+   },
+   "note": "Fees page text holds no figures."
+  },
+  "43889": {
+   "school_name": "St Philip's Christian College - Port Stephens",
+   "website": "http://www.spcc.nsw.edu.au",
+   "status": "not_found",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 1,
+    "errors": 0
+   },
+   "note": "Only the home page could be fetched."
+  },
+  "43890": {
+   "school_name": "Oxley College",
+   "website": "https://www.oxley.nsw.edu.au/",
+   "status": "not_extracted",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 15,
+    "errors": 0
+   },
+   "note": "Schedule of fees page text holds no figures."
+  },
   "43891": {
    "school_name": "William Clarke College",
    "website": "http://www.wcc.nsw.edu.au",
@@ -12688,6 +15845,33 @@
     "errors": 0
    },
    "note": "Fees and charges page text holds no figures."
+  },
+  "43893": {
+   "school_name": "Brightwaters Christian College",
+   "website": "https://www.brightwaters.nsw.edu.au/",
+   "status": "found",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 3,
+    "errors": 0
+   },
+   "fees": {
+    "fee_year": 2027,
+    "basis": "annual school fees, first child; levy extra",
+    "by_year": [
+     {
+      "years": "K-6",
+      "tuition": 3215
+     },
+     {
+      "years": "7-10",
+      "tuition": 3755
+     }
+    ],
+    "other_compulsory": "Levy $160-$680 a year",
+    "source": "school_website",
+    "source_url": "https://www.brightwaters.nsw.edu.au/fees/"
+   }
   },
   "43894": {
    "school_name": "Nepean Christian School",
@@ -12746,6 +15930,17 @@
     "home_error": "HTTP 525"
    }
   },
+  "43898": {
+   "school_name": "Medowie Christian School",
+   "website": "http://www.medowiecs.nsw.edu.au",
+   "status": "not_found",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 1,
+    "errors": 0
+   },
+   "note": "Only the home page could be fetched."
+  },
   "43900": {
    "school_name": "Korowal School",
    "website": "http://www.korowal.nsw.edu.au/",
@@ -12757,9 +15952,141 @@
    },
    "note": "2026 fee schedule PDF found; no figures came through as text."
   },
+  "43901": {
+   "school_name": "Shellharbour Anglican College",
+   "website": "http://www.shellharbourac.nsw.edu.au",
+   "status": "found",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 12,
+    "errors": 0
+   },
+   "fees": {
+    "fee_year": 2027,
+    "basis": "annual college fees; service charges extra",
+    "by_year": [
+     {
+      "years": "K-6",
+      "tuition": 8620
+     },
+     {
+      "years": "7-8",
+      "tuition": 10160
+     },
+     {
+      "years": "9-10",
+      "tuition": 10200
+     }
+    ],
+    "other_compulsory": "Service charges $1,780-$1,900 a year in Years 7-10",
+    "source": "school_website",
+    "source_url": "https://www.shellharbourac.nsw.edu.au/wp-content/uploads/2026/11/Shellharbour-Fee-Schedule-2027.pdf"
+   }
+  },
+  "43902": {
+   "school_name": "OneSchool Global NSW - Goulburn",
+   "website": "https://www.oneschoolglobal.com/campus/australia/goulburn/",
+   "status": "blocked",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 0,
+    "errors": 1,
+    "home_error": "HTTP 403"
+   }
+  },
+  "43903": {
+   "school_name": "Richmond Christian College",
+   "website": "http://www.richmond.nsw.edu.au",
+   "status": "not_extracted",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 12,
+    "errors": 0
+   },
+   "note": "2026 fee schedule text shows camp costs but not tuition."
+  },
+  "43904": {
+   "school_name": "Trinity Anglican College - Albury",
+   "website": "http://www.trinityac.nsw.edu.au",
+   "status": "found",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 16,
+    "errors": 0
+   },
+   "fees": {
+    "fee_year": 2026,
+    "basis": "annual fee, inclusive of tuition, camps, excursions and IT",
+    "by_year": [
+     {
+      "years": "K",
+      "tuition": 4175
+     },
+     {
+      "years": "1-2",
+      "tuition": 4500
+     },
+     {
+      "years": "3-4",
+      "tuition": 5070
+     },
+     {
+      "years": "5-6",
+      "tuition": 5665
+     },
+     {
+      "years": "7-8",
+      "tuition": 6965
+     },
+     {
+      "years": "9-10",
+      "tuition": 8410
+     },
+     {
+      "years": "11-12",
+      "tuition": 8570
+     }
+    ],
+    "source": "school_website",
+    "source_url": "https://media.digistormhosting.com.au/taca-au-nsw-818-website-2023/documents/Fee-Schedule-2026_FINAL-V2.pdf"
+   }
+  },
+  "43907": {
+   "school_name": "OneSchool Global NSW - Albury",
+   "website": "https://www.oneschoolglobal.com/campus/australia/albury/",
+   "status": "blocked",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 0,
+    "errors": 1,
+    "home_error": "HTTP 403"
+   }
+  },
+  "43908": {
+   "school_name": "OneSchool Global NSW - Orange",
+   "website": "https://www.oneschoolglobal.com/campus/australia/orange/",
+   "status": "blocked",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 0,
+    "errors": 1,
+    "home_error": "HTTP 403"
+   }
+  },
   "43910": {
    "school_name": "OneSchool Global NSW - Mount Victoria",
    "website": "https://www.oneschoolglobal.com/campus/australia/mount-victoria/",
+   "status": "blocked",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 0,
+    "errors": 1,
+    "home_error": "HTTP 403"
+   }
+  },
+  "43911": {
+   "school_name": "OneSchool Global NSW - Illawarra",
+   "website": "https://www.oneschoolglobal.com/campus/australia/illawarra/",
    "status": "blocked",
    "checked": "2026-11-12",
    "crawl": {
@@ -12908,6 +16235,56 @@
     ]
    }
   },
+  "43915": {
+   "school_name": "Frensham School",
+   "website": "http://www.frensham.nsw.edu.au",
+   "status": "found",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 12,
+    "errors": 0
+   },
+   "fees": {
+    "fee_year": 2026,
+    "basis": "tuition per annum as published",
+    "by_year": [
+     {
+      "years": "K",
+      "tuition": 17738
+     },
+     {
+      "years": "1",
+      "tuition": 19350
+     },
+     {
+      "years": "2",
+      "tuition": 22038
+     },
+     {
+      "years": "3",
+      "tuition": 24725
+     },
+     {
+      "years": "4",
+      "tuition": 27413
+     },
+     {
+      "years": "5-6",
+      "tuition": 31549
+     },
+     {
+      "years": "7-10",
+      "tuition": 43773
+     },
+     {
+      "years": "11-12",
+      "tuition": 47267
+     }
+    ],
+    "source": "school_website",
+    "source_url": "https://www.frensham.nsw.edu.au/wp-content/uploads/2025/11/2026-Frensham-Schools-fee-schedule_1841977950046606808.pdf"
+   }
+  },
   "43918": {
    "school_name": "Yanginanook School",
    "website": "http://www.yanginanook.nsw.edu.au",
@@ -12995,6 +16372,48 @@
     "source": "school_website",
     "source_url": "https://kambala.nsw.edu.au/wp-content/uploads/2025/12/Kambala-Fee-Schedule-2026-FINAL-3.pdf"
    }
+  },
+  "43921": {
+   "school_name": "Port Macquarie Adventist School",
+   "website": "https://pmas.info/",
+   "status": "not_found",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 1,
+    "errors": 0
+   },
+   "note": "Only the home page could be fetched."
+  },
+  "43923": {
+   "school_name": "The Scots School Albury",
+   "website": "http://www.scotsalbury.nsw.edu.au",
+   "status": "not_extracted",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 5,
+    "errors": 0
+   },
+   "note": "Fees page text holds no figures."
+  },
+  "43924": {
+   "school_name": "Southern Highlands Christian School",
+   "website": "http://www.shcs.nsw.edu.au",
+   "status": "not_found",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 1,
+    "errors": 0
+   },
+   "note": "Only the home page could be fetched."
+  },
+  "43925": {
+   "school_name": "Amity College Illawarra Campus",
+   "website": "https://www.amity.nsw.edu.au/homepage",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 44001,
+   "parent_name": "Amity College, Prestons",
+   "website_source": "parent_school"
   },
   "43926": {
    "school_name": "St Euphemia College",
@@ -13152,6 +16571,17 @@
     "source_url": "https://wccs.nsw.edu.au/enrolments/fees/"
    }
   },
+  "43931": {
+   "school_name": "St Philip's Christian College - Waratah",
+   "website": "http://www.spcc.nsw.edu.au",
+   "status": "not_found",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 1,
+    "errors": 0
+   },
+   "note": "Only the home page could be fetched."
+  },
   "43934": {
    "school_name": "International Grammar School",
    "website": "http://www.igssyd.nsw.edu.au",
@@ -13196,6 +16626,44 @@
     ],
     "source": "school_website",
     "source_url": "https://igssyd-wp-01.s3.ap-southeast-2.amazonaws.com/production/2025/12/08105848/2026-K-To-Year-12-Fee-Schedule.pdf"
+   }
+  },
+  "43935": {
+   "school_name": "Wyong Christian Community School",
+   "website": "http://www.wyongccs.nsw.edu.au",
+   "status": "found",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 15,
+    "errors": 0
+   },
+   "fees": {
+    "fee_year": 2027,
+    "basis": "annual fees, first child",
+    "by_year": [
+     {
+      "years": "K-4",
+      "tuition": 5960
+     },
+     {
+      "years": "5-6",
+      "tuition": 7100
+     },
+     {
+      "years": "7-8",
+      "tuition": 7400
+     },
+     {
+      "years": "9-10",
+      "tuition": 8060
+     },
+     {
+      "years": "11-12",
+      "tuition": 8800
+     }
+    ],
+    "source": "school_website",
+    "source_url": "https://media.digistormhosting.com.au/wccs-au-nsw-98-webiste/documents/WCCS-Parent-Resources/2027-School-Fees.pdf"
    }
   },
   "43936": {
@@ -13384,6 +16852,93 @@
     "source_url": "https://www.sceggs.nsw.edu.au/wp-content/uploads/2026/10/Application-For-Enrolment-Form-2026.pdf"
    }
   },
+  "43944": {
+   "school_name": "The Illawarra Grammar School",
+   "website": "http://www.tigs.nsw.edu.au",
+   "status": "found",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 7,
+    "errors": 0
+   },
+   "fees": {
+    "fee_year": 2026,
+    "basis": "published total (tuition plus activity fee)",
+    "by_year": [
+     {
+      "years": "K",
+      "tuition": 16410,
+      "total": 16820
+     },
+     {
+      "years": "1-2",
+      "tuition": 18160,
+      "total": 18680
+     },
+     {
+      "years": "3-4",
+      "tuition": 19710,
+      "total": 20810
+     },
+     {
+      "years": "5-6",
+      "tuition": 21370,
+      "total": 22800
+     },
+     {
+      "years": "7-8",
+      "tuition": 24850,
+      "total": 27160
+     },
+     {
+      "years": "9",
+      "tuition": 26270,
+      "total": 28580
+     },
+     {
+      "years": "10-12",
+      "tuition": 27890,
+      "total": 30200
+     }
+    ],
+    "source": "school_website",
+    "source_url": "https://www.tigs.nsw.edu.au/wp-content/uploads/2026-Schedule-of-Fees-and-Charges-final.pdf"
+   }
+  },
+  "43945": {
+   "school_name": "Central Coast Grammar School",
+   "website": "http://www.ccgs.nsw.edu.au",
+   "status": "found",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 14,
+    "errors": 1
+   },
+   "fees": {
+    "fee_year": 2026,
+    "basis": "annual tuition, selected year levels as published on the overview",
+    "by_year": [
+     {
+      "years": "K",
+      "tuition": 15590
+     },
+     {
+      "years": "5",
+      "tuition": 19030
+     },
+     {
+      "years": "7",
+      "tuition": 24800
+     },
+     {
+      "years": "11",
+      "tuition": 28090
+     }
+    ],
+    "source": "school_website",
+    "source_url": "https://www.ccgs.nsw.edu.au/enrol/fee-schedule"
+   }
+  },
   "43946": {
    "school_name": "Al Zahra College",
    "website": "http://www.azc.nsw.edu.au",
@@ -13509,6 +17064,17 @@
    },
    "note": "School fees page text holds no figures."
   },
+  "43951": {
+   "school_name": "Heritage College Lake Macquarie",
+   "website": "https://lakemac.heritage.edu.au/",
+   "status": "not_extracted",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 6,
+    "errors": 0
+   },
+   "note": "Fees page text holds no figures."
+  },
   "43952": {
    "school_name": "Al-Faisal College",
    "website": "http://www.afc.nsw.edu.au",
@@ -13553,6 +17119,47 @@
     "errors": 0
    },
    "note": "No fee page among the pages fetched."
+  },
+  "43954": {
+   "school_name": "St Peter's Anglican College - Broulee",
+   "website": "http://www.stpetersbroulee.nsw.edu.au",
+   "status": "found",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 6,
+    "errors": 0
+   },
+   "fees": {
+    "fee_year": 2026,
+    "basis": "tuition per annum, includes curriculum activities",
+    "by_year": [
+     {
+      "years": "K-6",
+      "tuition": 6390
+     },
+     {
+      "years": "7-9",
+      "tuition": 7650
+     },
+     {
+      "years": "10-12",
+      "tuition": 7990
+     }
+    ],
+    "source": "school_website",
+    "source_url": "https://www.stpetersbroulee.nsw.edu.au/wp-content/uploads/2026-Fee-Schedule-SPAC.pdf"
+   }
+  },
+  "43956": {
+   "school_name": "Elonera Montessori School",
+   "website": "http://www.eloneramontessori.com.au",
+   "status": "not_found",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 1,
+    "errors": 0
+   },
+   "note": "Only the home page could be fetched."
   },
   "43957": {
    "school_name": "Emanuel School",
@@ -13663,6 +17270,17 @@
    },
    "note": "Only two pages reachable; no fee page."
   },
+  "43963": {
+   "school_name": "Bishop Druitt College",
+   "website": "http://www.bdc.nsw.edu.au",
+   "status": "not_extracted",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 3,
+    "errors": 0
+   },
+   "note": "2027 fees published per term ($2,671 K-2, $2,744 Years 3-6, $3,741 Years 7-10, $4,009 Year 11); only Year 12 states its number of terms."
+  },
   "43964": {
    "school_name": "Blue Mountains Grammar School",
    "website": "http://www.bmgs.nsw.edu.au",
@@ -13708,6 +17326,78 @@
     "other_compulsory": "Related charges $4,153-$4,363 a year in Years 7-12",
     "source": "school_website",
     "source_url": "https://www.bmgs.nsw.edu.au/wp-content/uploads/2026/01/2026-School-Fees.pdf"
+   }
+  },
+  "43965": {
+   "school_name": "Parkes Christian School",
+   "website": "https://www.parkescs.nsw.edu.au/",
+   "status": "found",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 6,
+    "errors": 0
+   },
+   "fees": {
+    "fee_year": 2026,
+    "basis": "tuition, first student; compulsory levy extra",
+    "by_year": [
+     {
+      "years": "K-10",
+      "tuition": 3745
+     },
+     {
+      "years": "11-12",
+      "tuition": 4057
+     }
+    ],
+    "other_compulsory": "Compulsory levy $400 (K-6) or $1,113 (Years 7-12)",
+    "source": "school_website",
+    "source_url": "https://www.parkescs.nsw.edu.au/enrolment/school-fees/"
+   }
+  },
+  "43967": {
+   "school_name": "Coffs Harbour Bible Church School",
+   "website": "http://www.chbcs.nsw.edu.au",
+   "status": "not_found",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 1,
+    "errors": 0
+   },
+   "note": "Only the home page could be fetched."
+  },
+  "43968": {
+   "school_name": "Burrabadine Christian Community School",
+   "website": "http://www.burrabadineccs.nsw.edu.au",
+   "status": "found",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 8,
+    "errors": 0
+   },
+   "fees": {
+    "fee_year": 2026,
+    "basis": "fees per year, first child",
+    "by_year": [
+     {
+      "years": "K-3",
+      "tuition": 2568
+     },
+     {
+      "years": "4-6",
+      "tuition": 2732
+     },
+     {
+      "years": "7-8",
+      "tuition": 3229
+     },
+     {
+      "years": "9-10",
+      "tuition": 3551
+     }
+    ],
+    "source": "school_website",
+    "source_url": "https://www.burrabadineccs.nsw.edu.au/enrolments/fees"
    }
   },
   "43969": {
@@ -13758,6 +17448,28 @@
     "source": "school_website",
     "source_url": "https://www.mountainscc.nsw.edu.au/wp-content/uploads/2025/11/2026-College-Fees-Schedule.pdf"
    }
+  },
+  "43971": {
+   "school_name": "St Philip's Christian College - Gosford",
+   "website": "http://www.spcc.nsw.edu.au",
+   "status": "not_found",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 1,
+    "errors": 0
+   },
+   "note": "Only the home page could be fetched."
+  },
+  "43972": {
+   "school_name": "Green Point Christian College",
+   "website": "http://www.gpcc.nsw.edu.au",
+   "status": "not_found",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 4,
+    "errors": 0
+   },
+   "note": "No fee page among the pages fetched."
   },
   "43973": {
    "school_name": "Galstaun College",
@@ -13820,6 +17532,48 @@
     ]
    }
   },
+  "43977": {
+   "school_name": "Hunter Valley Grammar School",
+   "website": "http://www.hvgs.nsw.edu.au",
+   "status": "found",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 15,
+    "errors": 0
+   },
+   "fees": {
+    "fee_year": 2026,
+    "basis": "total annual tuition cost, one child",
+    "by_year": [
+     {
+      "years": "K-2",
+      "tuition": 12800
+     },
+     {
+      "years": "3-4",
+      "tuition": 15800
+     },
+     {
+      "years": "5-6",
+      "tuition": 18800
+     },
+     {
+      "years": "7-10",
+      "tuition": 24200
+     },
+     {
+      "years": "11",
+      "tuition": 25300
+     },
+     {
+      "years": "12",
+      "tuition": 25500
+     }
+    ],
+    "source": "school_website",
+    "source_url": "https://media.digistormhosting.com.au/hvgs-au-nsw-532-website-2024/content/2026-Fee-Schedule-K-12.pdf.pdf"
+   }
+  },
   "43978": {
    "school_name": "Inaburra School",
    "website": "http://www.inaburra.nsw.edu.au",
@@ -13870,6 +17624,36 @@
    },
    "note": "Fees page text holds no figures."
   },
+  "43981": {
+   "school_name": "Nowra Christian School",
+   "website": "http://www.ncs.nsw.edu.au",
+   "status": "found",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 5,
+    "errors": 0
+   },
+   "fees": {
+    "fee_year": 2027,
+    "basis": "tuition, first child in family",
+    "by_year": [
+     {
+      "years": "K-6",
+      "tuition": 6979
+     },
+     {
+      "years": "7-10",
+      "tuition": 9399
+     },
+     {
+      "years": "11-12",
+      "tuition": 10617
+     }
+    ],
+    "source": "school_website",
+    "source_url": "https://www.ncs.nsw.edu.au/assets/images/fees-schedule-2027.pdf"
+   }
+  },
   "43983": {
    "school_name": "St Mary and St Mina's Coptic Orthodox College",
    "website": "http://www.stmary.nsw.edu.au",
@@ -13891,6 +17675,52 @@
     "errors": 1
    },
    "note": "Only the home page could be fetched."
+  },
+  "43986": {
+   "school_name": "PLC Armidale",
+   "website": "http://www.plcarmidale.nsw.edu.au/",
+   "status": "found",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 10,
+    "errors": 1
+   },
+   "fees": {
+    "fee_year": 2026,
+    "basis": "tuition per year",
+    "by_year": [
+     {
+      "years": "K-2",
+      "tuition": 6192
+     },
+     {
+      "years": "3-4",
+      "tuition": 8196
+     },
+     {
+      "years": "5-6",
+      "tuition": 9948
+     },
+     {
+      "years": "7",
+      "tuition": 18564
+     },
+     {
+      "years": "8",
+      "tuition": 21072
+     },
+     {
+      "years": "9-10",
+      "tuition": 29280
+     },
+     {
+      "years": "11-12",
+      "tuition": 30480
+     }
+    ],
+    "source": "school_website",
+    "source_url": "https://plcarmidale.nsw.edu.au/enrol-at-plc-armidale/fees/"
+   }
   },
   "43987": {
    "school_name": "Presbyterian Ladies' College Sydney",
@@ -14103,6 +17933,45 @@
     "source_url": "https://stmarks.nsw.edu.au/enrolment-application-offers-of-acceptance/"
    }
   },
+  "43999": {
+   "school_name": "Lindisfarne Anglican Grammar School",
+   "website": "http://www.lindisfarne.nsw.edu.au/",
+   "status": "found",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 12,
+    "errors": 0
+   },
+   "fees": {
+    "fee_year": 2026,
+    "basis": "annual tuition; levies listed separately",
+    "by_year": [
+     {
+      "years": "K-4",
+      "tuition": 8828
+     },
+     {
+      "years": "5-6",
+      "tuition": 9428
+     },
+     {
+      "years": "7-10",
+      "tuition": 10204
+     },
+     {
+      "years": "11",
+      "tuition": 11080
+     },
+     {
+      "years": "12",
+      "tuition": 11091
+     }
+    ],
+    "other_compulsory": "Levies $2,160-$4,048 a year",
+    "source": "school_website",
+    "source_url": "https://www.lindisfarne.nsw.edu.au/wp-content/uploads/2025/12/2026-Lindisfarne-Fee-Schedule.pdf"
+   }
+  },
   "44000": {
    "school_name": "St Paul's Grammar School",
    "website": "http://www.stpauls.nsw.edu.au",
@@ -14305,6 +18174,106 @@
     ]
    }
   },
+  "44011": {
+   "school_name": "Bishop Tyrrell Anglican College",
+   "website": "http://www.btac.nsw.edu.au",
+   "status": "found",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 10,
+    "errors": 0
+   },
+   "fees": {
+    "fee_year": 2026,
+    "basis": "total education fee (tuition plus resource and activity levy)",
+    "by_year": [
+     {
+      "years": "K-2",
+      "tuition": 7564,
+      "total": 8712
+     },
+     {
+      "years": "3-4",
+      "tuition": 8040,
+      "total": 9552
+     },
+     {
+      "years": "5",
+      "tuition": 8040,
+      "total": 9596
+     },
+     {
+      "years": "6",
+      "tuition": 8040,
+      "total": 9732
+     },
+     {
+      "years": "7-8",
+      "tuition": 9840,
+      "total": 11884
+     },
+     {
+      "years": "9",
+      "tuition": 9908,
+      "total": 11952
+     },
+     {
+      "years": "10",
+      "tuition": 9908,
+      "total": 12028
+     },
+     {
+      "years": "11",
+      "tuition": 11144,
+      "total": 13376
+     }
+    ],
+    "source": "school_website",
+    "source_url": "https://www.btac.nsw.edu.au/wp-content/uploads/2026/08/K-12-School-Fees.pdf"
+   }
+  },
+  "44013": {
+   "school_name": "Maitland Christian School",
+   "website": "http://www.maitlandcs.nsw.edu.au",
+   "status": "found",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 7,
+    "errors": 0
+   },
+   "fees": {
+    "fee_year": 2027,
+    "basis": "annual fee as published",
+    "by_year": [
+     {
+      "years": "K-2",
+      "tuition": 7125
+     },
+     {
+      "years": "3-4",
+      "tuition": 7425
+     },
+     {
+      "years": "5-6",
+      "tuition": 7850
+     },
+     {
+      "years": "7-8",
+      "tuition": 10125
+     },
+     {
+      "years": "9-10",
+      "tuition": 10225
+     },
+     {
+      "years": "11-12",
+      "tuition": 10650
+     }
+    ],
+    "source": "school_website",
+    "source_url": "https://maitlandcs.nsw.edu.au/wp-content/uploads/2026/11/MCS-Fee-Schedule-2027.V1.5.pdf"
+   }
+  },
   "44014": {
    "school_name": "Montgrove College",
    "website": "http://www.montgrove.nsw.edu.au",
@@ -14332,6 +18301,48 @@
     "source_url": "https://www.montgrove.nsw.edu.au/wp-content/uploads/2026/11/West-Fee-Schedule-2027.pdf"
    }
   },
+  "44016": {
+   "school_name": "Belmont Christian College",
+   "website": "http://www.bcc.nsw.edu.au",
+   "status": "found",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 4,
+    "errors": 0
+   },
+   "fees": {
+    "fee_year": 2027,
+    "basis": "all-inclusive annual fee, first child",
+    "by_year": [
+     {
+      "years": "K",
+      "tuition": 6010
+     },
+     {
+      "years": "1-4",
+      "tuition": 7015
+     },
+     {
+      "years": "5-6",
+      "tuition": 8000
+     },
+     {
+      "years": "7-8",
+      "tuition": 8904
+     },
+     {
+      "years": "9-10",
+      "tuition": 10341
+     },
+     {
+      "years": "11-12",
+      "tuition": 11012
+     }
+    ],
+    "source": "school_website",
+    "source_url": "https://bcc.nsw.edu.au/fees/"
+   }
+  },
   "44019": {
    "school_name": "Mamre Anglican School",
    "website": "http://www.mamre.nsw.edu.au",
@@ -14342,6 +18353,56 @@
     "errors": 0
    },
    "note": "2027 schedule of fees PDF found; no figures came through as text."
+  },
+  "44020": {
+   "school_name": "Hunter Christian School",
+   "website": "http://www.hunterchristian.nsw.edu.au",
+   "status": "found",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 7,
+    "errors": 0
+   },
+   "fees": {
+    "fee_year": 2027,
+    "basis": "annual fee, first child",
+    "by_year": [
+     {
+      "years": "K",
+      "tuition": 6262
+     },
+     {
+      "years": "1-2",
+      "tuition": 6727
+     },
+     {
+      "years": "3-4",
+      "tuition": 6965
+     },
+     {
+      "years": "5-6",
+      "tuition": 7485
+     },
+     {
+      "years": "7",
+      "tuition": 8534
+     },
+     {
+      "years": "8",
+      "tuition": 9388
+     },
+     {
+      "years": "9",
+      "tuition": 9972
+     },
+     {
+      "years": "10",
+      "tuition": 10339
+     }
+    ],
+    "source": "school_website",
+    "source_url": "https://hunterchristian.nsw.edu.au/wp-content/uploads/2026/10/HCS-2027-Fee-Schedule.pdf"
+   }
   },
   "44021": {
    "school_name": "Sydney Montessori School",
@@ -14365,6 +18426,102 @@
     "home_error": "HTTP 403"
    }
   },
+  "44024": {
+   "school_name": "Orange Christian School",
+   "website": "http://www.ocs.nsw.edu.au",
+   "status": "found",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 6,
+    "errors": 0
+   },
+   "fees": {
+    "fee_year": 2026,
+    "basis": "annual tuition, first child (schedule file titled 2026)",
+    "by_year": [
+     {
+      "years": "K",
+      "tuition": 4341
+     },
+     {
+      "years": "1",
+      "tuition": 4961
+     },
+     {
+      "years": "2",
+      "tuition": 5581
+     },
+     {
+      "years": "3-6",
+      "tuition": 6201
+     },
+     {
+      "years": "7-10",
+      "tuition": 8110
+     },
+     {
+      "years": "11-12",
+      "tuition": 9969
+     }
+    ],
+    "source": "school_website",
+    "source_url": "https://www.ocs.nsw.edu.au/wp-content/uploads/2025/12/2026-Fee-Schedule-1.pdf"
+   }
+  },
+  "44025": {
+   "school_name": "Pacific Brook Christian School",
+   "website": "http://www.pacificbrook.nsw.edu.au/pbcs/",
+   "status": "found",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 13,
+    "errors": 0
+   },
+   "fees": {
+    "fee_year": 2026,
+    "basis": "annual tuition, eldest student",
+    "by_year": [
+     {
+      "years": "K-6",
+      "tuition": 3030
+     },
+     {
+      "years": "7-10",
+      "tuition": 3820
+     }
+    ],
+    "source": "school_website",
+    "source_url": "https://www.pacificbrook.nsw.edu.au/enrol/fees"
+   }
+  },
+  "44027": {
+   "school_name": "Sathya Sai College",
+   "website": "http://www.sathyasai.nsw.edu.au",
+   "status": "found",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 8,
+    "errors": 0
+   },
+   "fees": {
+    "fee_year": 2026,
+    "basis": "total per student (tuition, resource levy, sport and excursion levy); primary campus only",
+    "by_year": [
+     {
+      "years": "K-2",
+      "tuition": 1000,
+      "total": 1710
+     },
+     {
+      "years": "3-6",
+      "tuition": 1000,
+      "total": 1760
+     }
+    ],
+    "source": "school_website",
+    "source_url": "https://sathyasai.nsw.edu.au/about-us/fees-and-levies/"
+   }
+  },
   "44028": {
    "school_name": "Oxford Falls Grammar School",
    "website": "http://www.ofgs.nsw.edu.au",
@@ -14374,6 +18531,51 @@
     "pages": 0,
     "errors": 2,
     "home_error": "ENOTFOUND"
+   }
+  },
+  "44029": {
+   "school_name": "Australian Christian College - Singleton",
+   "website": "https://www.acc.edu.au/",
+   "status": "not_found",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 1,
+    "errors": 0
+   },
+   "note": "Only the home page could be fetched."
+  },
+  "50212": {
+   "school_name": "Pacific Valley Christian School",
+   "website": "http://www.pacificvalley.nsw.edu.au/",
+   "status": "found",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 14,
+    "errors": 0
+   },
+   "fees": {
+    "fee_year": 2026,
+    "basis": "annual tuition, eldest student",
+    "by_year": [
+     {
+      "years": "K-4",
+      "tuition": 2460
+     },
+     {
+      "years": "5-6",
+      "tuition": 2740
+     },
+     {
+      "years": "7-8",
+      "tuition": 3310
+     },
+     {
+      "years": "9-12",
+      "tuition": 3590
+     }
+    ],
+    "source": "school_website",
+    "source_url": "https://www.pacificvalley.nsw.edu.au/enrol/fees"
    }
   },
   "50222": {
@@ -14501,6 +18703,15 @@
     "source": "school_website",
     "source_url": "https://www.sbccdow.catholic.edu.au/wp-content/uploads/2025/12/2026-School-Fee-Statement-1.pdf"
    }
+  },
+  "50253": {
+   "school_name": "St Philip's Christian College Dynamic Learning - Cessnock",
+   "website": "https://www.spcc.nsw.edu.au/",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 43701,
+   "parent_name": "St Philip's Christian College Dynamic Learning",
+   "website_source": "parent_school"
   },
   "50380": {
    "school_name": "Alpha Omega Senior College",
@@ -14655,6 +18866,37 @@
    },
    "note": "2026 fee schedule PDF found; no figures came through as text."
   },
+  "50511": {
+   "school_name": "St Philip's Christian College Dynamic Learning - Gosford",
+   "website": "https://www.spcc.nsw.edu.au/",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 43701,
+   "parent_name": "St Philip's Christian College Dynamic Learning",
+   "website_source": "parent_school"
+  },
+  "50562": {
+   "school_name": "Aurora Southern Highlands Steiner School",
+   "website": "http://aurorasteiner.nsw.edu.au/",
+   "status": "not_found",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 3,
+    "errors": 0
+   },
+   "note": "No fee page among the pages fetched."
+  },
+  "50564": {
+   "school_name": "Central Coast Sports College",
+   "website": "http://www.ccsc.nsw.edu.au",
+   "status": "not_found",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 2,
+    "errors": 0
+   },
+   "note": "Only two pages reachable; no fee page."
+  },
   "50570": {
    "school_name": "Pal Buddhist School",
    "website": "http://pal.nsw.edu.au/",
@@ -14721,6 +18963,45 @@
     "errors": 2
    },
    "note": "Fees page text holds no figures."
+  },
+  "50606": {
+   "school_name": "Aspect Riverina School, North Albury Campus",
+   "website": "https://www.autismspectrum.org.au/school/aspect-riverina-school-0",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 50249,
+   "parent_name": "Aspect Riverina School",
+   "website_source": "parent_school"
+  },
+  "50687": {
+   "school_name": "St Brigid's Catholic College",
+   "website": "http://www.sbccdbb.catholic.edu.au/",
+   "status": "found",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 6,
+    "errors": 0
+   },
+   "fees": {
+    "fee_year": 2026,
+    "basis": "education fee, first child; supplementary fees extra",
+    "by_year": [
+     {
+      "years": "7-8",
+      "tuition": 4671
+     },
+     {
+      "years": "9-10",
+      "tuition": 5152
+     },
+     {
+      "years": "11-12",
+      "tuition": 5502
+     }
+    ],
+    "source": "school_website",
+    "source_url": "https://www.sbccdbb.catholic.edu.au/wp-content/uploads/2025/12/2026-PRIORITIES-AND-FEE-SCHEDULE.pdf"
+   }
   },
   "50713": {
    "school_name": "Redeemer Baptist School, Castle Hill campus",
@@ -14850,6 +19131,41 @@
     ],
     "source": "school_website",
     "source_url": "https://kccs.com.au/wp-content/uploads/2026/01/2026-School-Fee-Schedule.pdf"
+   }
+  },
+  "51466": {
+   "school_name": "The Anglican School Googong",
+   "website": "http://www.googongschool.nsw.edu.au/",
+   "status": "found",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 7,
+    "errors": 0
+   },
+   "fees": {
+    "fee_year": null,
+    "year_note": "school fees page does not state the year; checked 2026-11-13",
+    "basis": "all-inclusive tuition per annum",
+    "by_year": [
+     {
+      "years": "K-2",
+      "tuition": 10432
+     },
+     {
+      "years": "3-4",
+      "tuition": 11360
+     },
+     {
+      "years": "5-6",
+      "tuition": 12160
+     },
+     {
+      "years": "7-8",
+      "tuition": 13216
+     }
+    ],
+    "source": "school_website",
+    "source_url": "https://www.googongschool.nsw.edu.au/school-fees/"
    }
   },
   "51470": {
@@ -15193,6 +19509,33 @@
    "parent_name": "Aspect South East Sydney School",
    "website_source": "parent_school"
   },
+  "52072": {
+   "school_name": "Alesco Secondary College - Abermain Campus",
+   "website": "https://atwea.edu.au/high-school-at-alesco/",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 40724,
+   "parent_name": "Alesco Secondary College",
+   "website_source": "parent_school"
+  },
+  "52076": {
+   "school_name": "The Armidale School, Peter Hall Trade Training in Schools Centre",
+   "website": "http://www.as.edu.au",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 43842,
+   "parent_name": "The Armidale School",
+   "website_source": "parent_school"
+  },
+  "52077": {
+   "school_name": "Trinity Catholic College Lismore, St Joseph's Campus",
+   "website": "http://www.trinitylismore.nsw.edu.au/",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 43654,
+   "parent_name": "Trinity Catholic College Lismore",
+   "website_source": "parent_school"
+  },
   "52081": {
    "school_name": "Odyssey College, Ingleburn",
    "website": "http://www.odysseyhouse.com.au",
@@ -15200,6 +19543,15 @@
    "checked": "2026-11-12",
    "parent_acara_sml_id": 40383,
    "parent_name": "Odyssey College",
+   "website_source": "parent_school"
+  },
+  "52085": {
+   "school_name": "St Paul's College, Equine Centre campus",
+   "website": "http://www.stpaulscollege.nsw.edu.au/",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 43811,
+   "parent_name": "St Paul's College",
    "website_source": "parent_school"
   },
   "52086": {
@@ -15240,6 +19592,78 @@
    "parent_name": "St Bishoy Coptic Orthodox College",
    "website_source": "parent_school"
   },
+  "52088": {
+   "school_name": "St Stanislaus' College, Sunnyside Farm",
+   "website": "http://www.stannies.com/",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 43689,
+   "parent_name": "St Stanislaus' College",
+   "website_source": "parent_school"
+  },
+  "52090": {
+   "school_name": "Kinross Wolaroi School, PLC Site",
+   "website": "http://www.kws.nsw.edu.au",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 43844,
+   "parent_name": "Kinross Wolaroi School",
+   "website_source": "parent_school"
+  },
+  "52304": {
+   "school_name": "Calrossy Anglican School - Simpson House Campus",
+   "website": "http://www.calrossy.nsw.edu.au/",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 40672,
+   "parent_name": "Calrossy Anglican School",
+   "website_source": "parent_school"
+  },
+  "52305": {
+   "school_name": "Calrossy Anglican School - Tangara Campus",
+   "website": "http://www.calrossy.nsw.edu.au/",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 40672,
+   "parent_name": "Calrossy Anglican School",
+   "website_source": "parent_school"
+  },
+  "52306": {
+   "school_name": "Alesco Secondary College - Coast Campus",
+   "website": "https://atwea.edu.au/high-school-at-alesco/",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 40724,
+   "parent_name": "Alesco Secondary College",
+   "website_source": "parent_school"
+  },
+  "52307": {
+   "school_name": "Alesco Secondary College - Raymond Terrace Campus",
+   "website": "https://atwea.edu.au/high-school-at-alesco/",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 40724,
+   "parent_name": "Alesco Secondary College",
+   "website_source": "parent_school"
+  },
+  "52311": {
+   "school_name": "St Philip's Christian College Young Parents - Wyong",
+   "website": "https://www.spcc.nsw.edu.au/",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 52070,
+   "parent_name": "St Philip's Christian College Young Parents",
+   "website_source": "parent_school"
+  },
+  "52315": {
+   "school_name": "Aspect Hunter School, Port Macquarie High School Satellite",
+   "website": "http://www.autismspectrum.org.au/",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 43768,
+   "parent_name": "Aspect Hunter School",
+   "website_source": "parent_school"
+  },
   "52323": {
    "school_name": "Queenwood, Art and Design Campus",
    "website": "http://www.queenwood.nsw.edu.au",
@@ -15247,6 +19671,33 @@
    "checked": "2026-11-12",
    "parent_acara_sml_id": 43795,
    "parent_name": "Queenwood",
+   "website_source": "parent_school"
+  },
+  "52326": {
+   "school_name": "Aspect Central Coast School, Tuggerah",
+   "website": "http://www.autismspectrum.org.au",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 43796,
+   "parent_name": "Aspect Central Coast School",
+   "website_source": "parent_school"
+  },
+  "52329": {
+   "school_name": "St Paul's College, Farm campus",
+   "website": "http://www.stpaulscollege.nsw.edu.au/",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 43811,
+   "parent_name": "St Paul's College",
+   "website_source": "parent_school"
+  },
+  "52331": {
+   "school_name": "Aspect South Coast School, Farmborough Heights",
+   "website": "http://www.autismspectrum.org.au",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 43813,
+   "parent_name": "Aspect South Coast School",
    "website_source": "parent_school"
   },
   "52341": {
@@ -15294,6 +19745,15 @@
    "parent_name": "Aspect Western Sydney School",
    "website_source": "parent_school"
   },
+  "52354": {
+   "school_name": "SCECGS Redlands - High Country campus",
+   "website": "https://www.redlands.nsw.edu.au/",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 43875,
+   "parent_name": "SCECGS Redlands",
+   "website_source": "parent_school"
+  },
   "52361": {
    "school_name": "Aspect South East Sydney School, Menai",
    "website": "http://www.autismspectrum.org.au",
@@ -15319,6 +19779,15 @@
    "checked": "2026-11-12",
    "parent_acara_sml_id": 44010,
    "parent_name": "MLC School",
+   "website_source": "parent_school"
+  },
+  "52368": {
+   "school_name": "Lismore Diocese Online Education Centre",
+   "website": "http://www.cofhslism.catholic.edu.au/",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 43545,
+   "parent_name": "St John Paul College",
    "website_source": "parent_school"
   },
   "52372": {
@@ -15442,6 +19911,24 @@
     "source_url": "https://stapaustral.syd.catholic.edu.au/enrolment/school-fees-and-assistance"
    }
   },
+  "52415": {
+   "school_name": "Novo Education Space Shoalhaven",
+   "website": "http://www.alescoillawarra.nsw.edu.au",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 50379,
+   "parent_name": "Novo Education Space",
+   "website_source": "parent_school"
+  },
+  "52419": {
+   "school_name": "Sathya Sai College Secondary Campus, Dungay",
+   "website": "http://www.sathyasai.nsw.edu.au",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 44027,
+   "parent_name": "Sathya Sai College",
+   "website_source": "parent_school"
+  },
   "52433": {
    "school_name": "Warakirri College - Blacktown",
    "website": "http://www.warakirricollege.nsw.edu.au",
@@ -15450,6 +19937,17 @@
    "parent_acara_sml_id": 40779,
    "parent_name": "Warakirri College",
    "website_source": "parent_school"
+  },
+  "52439": {
+   "school_name": "St Bede's Catholic College",
+   "website": "http://www.chisholmsb.catholic.edu.au/",
+   "status": "not_found",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 6,
+    "errors": 1
+   },
+   "note": "No fee page among the pages fetched."
   },
   "52511": {
    "school_name": "GOAL College, Olympic Park",
@@ -15460,6 +19958,17 @@
    "parent_name": "GOAL College",
    "website_source": "parent_school"
   },
+  "52512": {
+   "school_name": "New Madinah College",
+   "website": "http://nmc.nsw.edu.au",
+   "status": "not_extracted",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 6,
+    "errors": 0
+   },
+   "note": "Fees and aid page text holds no figures."
+  },
   "52513": {
    "school_name": "Waranara School - Senior Campus",
    "website": "http://www.goodshep.org.au/find-a-service/educational-pathways/",
@@ -15468,6 +19977,72 @@
    "parent_acara_sml_id": 51460,
    "parent_name": "Mackillop Education Waranara School",
    "website_source": "parent_school"
+  },
+  "52612": {
+   "school_name": "Alesco Secondary College - Tomaree Campus",
+   "website": "https://atwea.edu.au/high-school-at-alesco/",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 40724,
+   "parent_name": "Alesco Secondary College",
+   "website_source": "parent_school"
+  },
+  "52613": {
+   "school_name": "Central West Leadership Academy",
+   "website": "https://theacademy.nsw.edu.au",
+   "status": "found",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 9,
+    "errors": 0
+   },
+   "fees": {
+    "fee_year": 2026,
+    "basis": "tuition per year; Years 11-12 include the IB fee",
+    "by_year": [
+     {
+      "years": "K",
+      "tuition": 6108
+     },
+     {
+      "years": "1-2",
+      "tuition": 6384
+     },
+     {
+      "years": "3-4",
+      "tuition": 7412
+     },
+     {
+      "years": "5-6",
+      "tuition": 7884
+     },
+     {
+      "years": "7-8",
+      "tuition": 8484
+     },
+     {
+      "years": "9-10",
+      "tuition": 9080
+     },
+     {
+      "years": "11-12",
+      "tuition": 10530
+     }
+    ],
+    "source": "school_website",
+    "source_url": "https://theacademy.nsw.edu.au/about"
+   }
+  },
+  "52616": {
+   "school_name": "Verity Christian College",
+   "website": "https://www.vcc.nsw.edu.au/",
+   "status": "not_extracted",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 4,
+    "errors": 0
+   },
+   "note": "Fee structure page text holds no figures."
   },
   "52617": {
    "school_name": "Oasis College Surry Hills",
@@ -15492,6 +20067,41 @@
    "checked": "2026-11-12",
    "parent_acara_sml_id": 43480,
    "parent_name": "Marist Catholic College Penshurst",
+   "website_source": "parent_school"
+  },
+  "52620": {
+   "school_name": "The Nature School",
+   "website": "https://tns.nsw.edu.au/",
+   "status": "found",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 8,
+    "errors": 0
+   },
+   "fees": {
+    "fee_year": 2026,
+    "basis": "tuition fee, one-off payment",
+    "by_year": [
+     {
+      "years": "K-2",
+      "tuition": 4490
+     },
+     {
+      "years": "3-6",
+      "tuition": 4700
+     }
+    ],
+    "source": "school_website",
+    "source_url": "https://tns.nsw.edu.au/files/tns-schedule-of-fees-2026-bb220c.pdf"
+   }
+  },
+  "52635": {
+   "school_name": "Trinity Grammar School Field Studies Centre, Woollamia Campus",
+   "website": "http://www.trinity.nsw.edu.au",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 43710,
+   "parent_name": "Trinity Grammar School",
    "website_source": "parent_school"
   },
   "52640": {
@@ -15578,6 +20188,69 @@
     "source_url": "https://www.santasophiaboxhill.catholic.edu.au/enrolment/school-fees"
    }
   },
+  "52677": {
+   "school_name": "Novo Education Space Vincentia",
+   "website": "http://www.alescoillawarra.nsw.edu.au",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 50379,
+   "parent_name": "Novo Education Space",
+   "website_source": "parent_school"
+  },
+  "52679": {
+   "school_name": "The Alpine School",
+   "website": "https://www.thealpineschool.nsw.edu.au",
+   "status": "not_extracted",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 2,
+    "errors": 0
+   },
+   "note": "Enrolment and fees page text holds no figures."
+  },
+  "52680": {
+   "school_name": "The Small School",
+   "website": "https://www.thesmallschool.org.au/",
+   "status": "found",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 5,
+    "errors": 0
+   },
+   "fees": {
+    "fee_year": 2026,
+    "basis": "fees per year, include all educational materials",
+    "by_year": [
+     {
+      "years": "K-6",
+      "tuition": 3708
+     },
+     {
+      "years": "7-8",
+      "tuition": 3740
+     },
+     {
+      "years": "9-10",
+      "tuition": 3776
+     },
+     {
+      "years": "11",
+      "tuition": 3812
+     }
+    ],
+    "source": "school_website",
+    "source_url": "https://www.thesmallschool.org.au/school-fees"
+   }
+  },
+  "52713": {
+   "school_name": "Vista Lodge",
+   "website": "http://www.mags.nsw.edu.au",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 43820,
+   "parent_name": "Macquarie Anglican Grammar School",
+   "website_source": "parent_school"
+  },
   "52716": {
    "school_name": "Sydney Science College",
    "website": "https://www.sydneysciencecollege.nsw.edu.au/",
@@ -15588,6 +20261,42 @@
     "errors": 1,
     "home_error": "ENOTFOUND"
    }
+  },
+  "52719": {
+   "school_name": "Indie School Wagga - Kincaid",
+   "website": "https://www.awcc.edu.au/",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 40847,
+   "parent_name": "Indie School Albury",
+   "website_source": "parent_school"
+  },
+  "52726": {
+   "school_name": "Scots All Saints College, Campus West",
+   "website": "http://www.scotsallsaints.nsw.edu.au",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 43849,
+   "parent_name": "Scots All Saints College",
+   "website_source": "parent_school"
+  },
+  "52728": {
+   "school_name": "Calrossy Anglican School - William Cowper Campus",
+   "website": "http://www.calrossy.nsw.edu.au/",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 40672,
+   "parent_name": "Calrossy Anglican School",
+   "website_source": "parent_school"
+  },
+  "52729": {
+   "school_name": "Skillset Senior College - Dubbo",
+   "website": "https://www.skillsetseniorcollege.nsw.edu.au/",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 51474,
+   "parent_name": "Skillset Senior College",
+   "website_source": "parent_school"
   },
   "52730": {
    "school_name": "International Maarif Schools of Australia - Gallipoli Campus",
@@ -15689,6 +20398,15 @@
    "parent_name": "Warakirri College",
    "website_source": "parent_school"
   },
+  "52818": {
+   "school_name": "Hunter Valley Grammar School - Farm",
+   "website": "http://www.hvgs.nsw.edu.au",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 43977,
+   "parent_name": "Hunter Valley Grammar School",
+   "website_source": "parent_school"
+  },
   "52820": {
    "school_name": "CathWest Innovation College McCarthy Campus",
    "website": "https://cathwest.parra.catholic.edu.au/",
@@ -15698,6 +20416,56 @@
    "parent_name": "CathWest Innovation College",
    "website_source": "parent_school"
   },
+  "52825": {
+   "school_name": "Living School",
+   "website": "https://living.school",
+   "status": "found",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 9,
+    "errors": 1
+   },
+   "fees": {
+    "fee_year": 2026,
+    "basis": "fees per year, include textbooks and stationery",
+    "by_year": [
+     {
+      "years": "K",
+      "tuition": 5977
+     },
+     {
+      "years": "1-4",
+      "tuition": 6521
+     },
+     {
+      "years": "5-6",
+      "tuition": 7608
+     },
+     {
+      "years": "7-8",
+      "tuition": 8151
+     },
+     {
+      "years": "9",
+      "tuition": 8611
+     },
+     {
+      "years": "10",
+      "tuition": 9149
+     },
+     {
+      "years": "11",
+      "tuition": 9659
+     },
+     {
+      "years": "12",
+      "tuition": 10659
+     }
+    ],
+    "source": "school_website",
+    "source_url": "https://living.school/fees/"
+   }
+  },
   "52877": {
    "school_name": "All Saints Catholic College, Casula Campus",
    "website": "https://ascc.syd.catholic.edu.au",
@@ -15705,6 +20473,24 @@
    "checked": "2026-11-12",
    "parent_acara_sml_id": 43422,
    "parent_name": "All Saints Catholic College",
+   "website_source": "parent_school"
+  },
+  "52878": {
+   "school_name": "Aspect Central Coast School Senior College",
+   "website": "http://www.autismspectrum.org.au",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 43796,
+   "parent_name": "Aspect Central Coast School",
+   "website_source": "parent_school"
+  },
+  "52891": {
+   "school_name": "Alesco Secondary College - Northlakes Campus",
+   "website": "https://atwea.edu.au/high-school-at-alesco/",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 40724,
+   "parent_name": "Alesco Secondary College",
    "website_source": "parent_school"
   },
   "52944": {
@@ -15738,6 +20524,15 @@
    "parent_name": "St Leo's Catholic College",
    "website_source": "parent_school"
   },
+  "52997": {
+   "school_name": "St Matthews Catholic School - Secondary Campus",
+   "website": "http://www.stmattsmudgee.catholic.edu.au",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 43551,
+   "parent_name": "St Matthews Catholic School Mudgee",
+   "website_source": "parent_school"
+  },
   "52999": {
    "school_name": "Aspect Western Sydney School, St Andrews College Senior Campus",
    "website": "http://www.autismspectrum.org.au",
@@ -15754,6 +20549,33 @@
    "checked": "2026-11-12",
    "parent_acara_sml_id": 43937,
    "parent_name": "Australian Islamic College of Sydney",
+   "website_source": "parent_school"
+  },
+  "53001": {
+   "school_name": "Alesco Secondary College - Charlestown Campus",
+   "website": "https://atwea.edu.au/high-school-at-alesco/",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 40724,
+   "parent_name": "Alesco Secondary College",
+   "website_source": "parent_school"
+  },
+  "53002": {
+   "school_name": "Indie School Wagga - Fitzmaurice",
+   "website": "https://www.awcc.edu.au/",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 40847,
+   "parent_name": "Indie School Albury",
+   "website_source": "parent_school"
+  },
+  "53004": {
+   "school_name": "ET Australia Secondary College Senior Campus",
+   "website": "http://www.etaustralia.com/",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 50559,
+   "parent_name": "ET Australia Secondary College",
    "website_source": "parent_school"
   },
   "53006": {
@@ -15836,6 +20658,26 @@
     "source_url": "https://www.stlukesmarsdenpark.catholic.edu.au/enrolment/school-fees"
    }
   },
+  "53007": {
+   "school_name": "Catherine McAuley Catholic College",
+   "website": "https://www.cmc.vic.edu.au",
+   "status": "not_found",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 2,
+    "errors": 0
+   },
+   "note": "Only two pages reachable; no fee page."
+  },
+  "53040": {
+   "school_name": "Newcastle Grammar Bolton Street Campus",
+   "website": "http://www.ngs.nsw.edu.au",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 43855,
+   "parent_name": "Newcastle Grammar School",
+   "website_source": "parent_school"
+  },
   "53042": {
    "school_name": "GOAL College, ACPE",
    "website": "https://www.goalcollege.nsw.edu.au/",
@@ -15876,6 +20718,35 @@
     "source_url": "https://www.hartfordcollege.nsw.edu.au/admissions/"
    }
   },
+  "53085": {
+   "school_name": "Maam Giingana Gumbaynggirr",
+   "website": "https://www.giinganaschool.org.au",
+   "status": "unreachable",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 0,
+    "errors": 1,
+    "home_error": "ENOTFOUND"
+   }
+  },
+  "53106": {
+   "school_name": "St Philip's Christian College Dynamic Learning - Port Stephens",
+   "website": "https://www.spcc.nsw.edu.au/",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 43701,
+   "parent_name": "St Philip's Christian College Dynamic Learning",
+   "website_source": "parent_school"
+  },
+  "53108": {
+   "school_name": "Yulinbal",
+   "website": "https://www.nsc.edu.au/",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 52436,
+   "parent_name": "Nautilus Senior College",
+   "website_source": "parent_school"
+  },
   "53117": {
    "school_name": "High School Campus for Yanginanook School",
    "website": "http://www.yanginanook.nsw.edu.au",
@@ -15884,6 +20755,17 @@
    "parent_acara_sml_id": 43918,
    "parent_name": "Yanginanook School",
    "website_source": "parent_school"
+  },
+  "53161": {
+   "school_name": "Brewarrina Christian School",
+   "website": "https://www.brewarrinacs.nsw.edu.au/",
+   "status": "not_found",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 11,
+    "errors": 0
+   },
+   "note": "No fee page among the pages fetched."
   },
   "53162": {
    "school_name": "My Dream Australian Academy",
@@ -15953,6 +20835,15 @@
    "parent_name": "Indie School Albury",
    "website_source": "parent_school"
   },
+  "53219": {
+   "school_name": "Aspect Riverina School, Wagga Campus",
+   "website": "https://www.autismspectrum.org.au/school/aspect-riverina-school-0",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 50249,
+   "parent_name": "Aspect Riverina School",
+   "website_source": "parent_school"
+  },
   "53221": {
    "school_name": "St Joseph's Catholic Primary School",
    "website": "https://stjrosebery.syd.catholic.edu.au/",
@@ -15996,6 +20887,15 @@
     "source_url": "https://stjrosebery.syd.catholic.edu.au/enrolment/school-fees-and-assistance"
    }
   },
+  "53232": {
+   "school_name": "The Alpine School Secondary Campus",
+   "website": "https://www.thealpineschool.nsw.edu.au",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 52679,
+   "parent_name": "The Alpine School",
+   "website_source": "parent_school"
+  },
   "53256": {
    "school_name": "St Aloysius' College, Rozelle",
    "website": "http://www.staloysius.nsw.edu.au",
@@ -16003,6 +20903,60 @@
    "checked": "2026-11-12",
    "parent_acara_sml_id": 43684,
    "parent_name": "St Aloysius' College",
+   "website_source": "parent_school"
+  },
+  "53277": {
+   "school_name": "Aspect South Coast School, Wollongong University",
+   "website": "http://www.autismspectrum.org.au",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 43813,
+   "parent_name": "Aspect South Coast School",
+   "website_source": "parent_school"
+  },
+  "53278": {
+   "school_name": "Namoi Valley Christian School Secondary Campus",
+   "website": "http://www.nvcs.com.au",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 43799,
+   "parent_name": "Namoi Valley Christian School",
+   "website_source": "parent_school"
+  },
+  "53294": {
+   "school_name": "Living School - Southern Cross University Campus",
+   "website": "https://living.school",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 52825,
+   "parent_name": "Living School",
+   "website_source": "parent_school"
+  },
+  "53295": {
+   "school_name": "Western Riverina Community School - Hickey Campus",
+   "website": "https://www.wrcs.nsw.edu.au/",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 52622,
+   "parent_name": "Western Riverina Community School",
+   "website_source": "parent_school"
+  },
+  "53296": {
+   "school_name": "Pacific Online Christian School",
+   "website": "http://www.pacificcoast.nsw.edu.au",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 40827,
+   "parent_name": "Pacific Coast Christian School",
+   "website_source": "parent_school"
+  },
+  "53322": {
+   "school_name": "Margaret Jurd College Tuncurry Campus",
+   "website": "http://www.mjc.nsw.edu.au/",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 43747,
+   "parent_name": "Margaret Jurd College",
    "website_source": "parent_school"
   },
   "53324": {
@@ -16032,6 +20986,43 @@
    "parent_name": "St Clare's College",
    "website_source": "parent_school"
   },
+  "53360": {
+   "school_name": "Indie School Newcastle",
+   "website": "https://www.awcc.edu.au/",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 40847,
+   "parent_name": "Indie School Albury",
+   "website_source": "parent_school"
+  },
+  "53379": {
+   "school_name": "Novoschool",
+   "website": "https://www.novoschool.nsw.edu.au/",
+   "status": "found",
+   "checked": "2026-11-12",
+   "crawl": {
+    "pages": 2,
+    "errors": 0
+   },
+   "fees": {
+    "fee_year": 2027,
+    "basis": "annual tuition, includes lunch, sport and most camps",
+    "by_year": [
+     {
+      "years": "7-10",
+      "tuition": 11900
+     }
+    ],
+    "one_off": [
+     {
+      "item": "Entrance fee",
+      "aud": 1000
+     }
+    ],
+    "source": "school_website",
+    "source_url": "https://www.novoschool.nsw.edu.au/enrol"
+   }
+  },
   "53418": {
    "school_name": "Indie School Parramatta",
    "website": "https://www.awcc.edu.au/",
@@ -16050,6 +21041,24 @@
    "parent_name": "Reddam House",
    "website_source": "parent_school"
   },
+  "53421": {
+   "school_name": "Chrysalis School for Rudolf Steiner Education Stage 5 Campus",
+   "website": "http://www.chrysalis.nsw.edu.au",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 43832,
+   "parent_name": "Chrysalis School for Rudolf Steiner Education",
+   "website_source": "parent_school"
+  },
+  "53422": {
+   "school_name": "Newington College - Eungai Creek Campus",
+   "website": "https://www.newington.nsw.edu.au/",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 43877,
+   "parent_name": "Newington College",
+   "website_source": "parent_school"
+  },
   "53423": {
    "school_name": "International Maarif Schools of Australia - Auburn Campus",
    "website": "https://www.maarif.nsw.edu.au/",
@@ -16057,6 +21066,33 @@
    "checked": "2026-11-12",
    "parent_acara_sml_id": 52730,
    "parent_name": "International Maarif Schools of Australia - Gallipoli Campus",
+   "website_source": "parent_school"
+  },
+  "53432": {
+   "school_name": "Indie School Gosford - Watt",
+   "website": "https://www.awcc.edu.au/",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 40847,
+   "parent_name": "Indie School Albury",
+   "website_source": "parent_school"
+  },
+  "53433": {
+   "school_name": "Indie School Gosford - Faunce",
+   "website": "https://www.awcc.edu.au/",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 40847,
+   "parent_name": "Indie School Albury",
+   "website_source": "parent_school"
+  },
+  "53449": {
+   "school_name": "Living Academy - Southern Cross University - Z Block",
+   "website": "https://living.school",
+   "status": "campus",
+   "checked": "2026-11-12",
+   "parent_acara_sml_id": 52825,
+   "parent_name": "Living School",
    "website_source": "parent_school"
   }
  }
