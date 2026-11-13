@@ -74,7 +74,9 @@ for (const [id, entry] of entries) {
       .filter(page => !/international|overseas/i.test(page.url))
       .map(page => {
         const flat = flatten(page.text.split('\n').slice(3).join('\n'));
-        const hits = [...flat.matchAll(/\$\s?\d{1,2},\d{3}/g)].map(match => match.index);
+        // "$1770.00" and a header-only "$" over bare "1,770" cells both count:
+        // requiring "$1,770" once hid 179 readable schedules as "no figures".
+        const hits = [...flat.matchAll(/\$\s?\d{1,2},?\d{3}(?!\d)|(?<![\d$.,])\d{1,2},\d{3}(?![\d,])/g)].map(match => match.index);
         let best = { start: 0, count: 0 };
         for (const start of hits) {
           const count = hits.filter(index => index >= start && index < start + options.chars).length;
