@@ -88,6 +88,9 @@ export const SCOPES = {
   'nsw-secondary': school =>
     school.state === 'NSW' && school.sector !== 'Government'
     && school.school_type !== 'Primary' && school.school_type !== 'Special',
+  // Every non-government NSW school, primary and special included: the state
+  // is finished school by school before the next one starts.
+  'nsw-all': school => school.state === 'NSW' && school.sector !== 'Government',
 };
 
 export function loadSchools() {

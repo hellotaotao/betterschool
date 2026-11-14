@@ -45,6 +45,14 @@ const sameSite = (a, b) => {
   }
 };
 
+// Wollongong diocese schools, among others, link their fee schedule as a
+// Google Drive file; the viewer page holds no text, the download URL the PDF.
+function driveDownload(href) {
+  const id = href.match(/^https:\/\/drive\.google\.com\/file\/d\/([\w-]+)/)?.[1];
+  return id ? `https://drive.google.com/uc?export=download&id=${id}` : null;
+}
+const isDrive = href => href.startsWith('https://drive.google.com/uc?export=download&id=');
+
 async function crawl(school) {
   const dir = path.join(RAW_DIR, String(school.acara_sml_id));
   fs.rmSync(dir, { recursive: true, force: true });
@@ -92,8 +100,9 @@ async function crawl(school) {
     log.push({ url: page.url, link: text, file, pdf, chars: body.length });
     if (!pdf && depth < 2) {
       const links = htmlLinks(page.url, page.body)
+        .map(link => ({ ...link, href: driveDownload(link.href) ?? link.href }))
         .filter(link => RELEVANT.test(link.href) || RELEVANT.test(link.text))
-        .filter(link => sameSite(link.href, home) || /\.pdf($|\?)/i.test(link.href))
+        .filter(link => sameSite(link.href, home) || /\.pdf($|\?)/i.test(link.href) || (isDrive(link.href) && FEE.test(link.text)))
         .sort((a, b) => Number(!FEE.test(a.href + a.text)) - Number(!FEE.test(b.href + b.text)));
       for (const link of links) {
         if (tried.has(link.href)) continue;

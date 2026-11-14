@@ -15,6 +15,7 @@ const schools = new Map(loadSchools().map(school => [String(school.acara_sml_id)
 const ledger = loadLedger();
 let traced = 0;
 let untraceable = 0;
+let rechecked = 0;
 
 function sourceDigits(id) {
   const scs = path.join(RAW_DIR, '_scs', `${id}.json`);
@@ -87,10 +88,16 @@ for (const [id, entry] of Object.entries(ledger.schools)) {
     if (row.tuition == null && row.total == null && row.per_term == null) fail(id, `row ${row.years} has no figure`);
     if (row.per_term != null && !Number.isInteger(row.terms)) fail(id, `row ${row.years} per_term without terms`);
   }
+  // An image-only schedule is read by the model and checked against local OCR.
+  // OCR misreads small or low-contrast scans, so an amount it cannot confirm
+  // passes only when the reading lists it as re-checked against the image.
+  const recheckedByEye = new Set(fees.read_via ? fees.ocr_unconfirmed ?? [] : []);
+  if (fees.ocr_unconfirmed && !fees.read_via) fail(id, 'ocr_unconfirmed without read_via');
   for (const value of amounts) {
     if (!Number.isFinite(value) || value <= 0 || value > 100000) fail(id, `implausible amount ${value}`);
     if (source === null) untraceable += 1;
     else if (inSource(source, value)) traced += 1;
+    else if (recheckedByEye.has(value)) rechecked += 1;
     else fail(id, `amount ${value} not in the source text`);
   }
 }
@@ -103,7 +110,7 @@ for (const [id, entry] of Object.entries(ledger.schools)) {
 }
 console.log(`${Object.keys(ledger.schools).length} schools attempted`);
 for (const [sector, counts] of Object.entries(bySector)) console.log(`  ${sector}:`, counts);
-console.log(`amounts traced to source text: ${traced}; without raw text to check: ${untraceable}`);
+console.log(`amounts traced to source text: ${traced}; re-checked by eye where OCR failed: ${rechecked}; without raw text to check: ${untraceable}`);
 
 if (errors.length > 0) {
   console.error(`\n${errors.length} problems:\n${errors.slice(0, 40).join('\n')}`);

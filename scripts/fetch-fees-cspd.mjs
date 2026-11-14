@@ -11,11 +11,15 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { RAW_DIR, applyReading, fetchPage, flatten, htmlToText, loadLedger, loadSchools, saveLedger, today } from './fees-common.mjs';
 
-const BLOCK = /\|((?:Year \d{1,2})|Kindergarten|Kinder)\|\1 1st Child 2nd Child 3rd Child 4th\+ Child\|(.*?)\|Total\|\$([\d,]+)\|/g;
+// Two layouts of the same template: "Year 7|Year 7 1st Child 2nd Child …" and
+// "Year 7|Fee components Child 1 Child 2 …". In the second, a level can carry a
+// second block with an introductory discount applied; only the first, the
+// full-rate block, follows the level label, so the match takes that one.
+const BLOCK = /\|((?:Year \d{1,2})|Kindergarten|Kinder)\|(?:\1 1st Child 2nd Child 3rd Child 4th\+ Child|Fee components Child\s1 Child\s2 Child\s3 Child\s4\+)\|(.*?)\|Total\|\$([\d,]+(?:\.\d\d)?)\|/g;
 const amount = text => Number(text.replace(/,/g, ''));
 
 export function parseTemplate(flat) {
-  const year = flat.match(/Fees Payable at .{3,120}? for (\d{4})\|/)?.[1];
+  const year = flat.match(/Fees Payable at .{3,120}? for (\d{4}) ?\|/)?.[1];
   if (!year || !flat.includes('Diocesan Building Levy')) return null;
   const rows = [];
   for (const [, level, body, total] of flat.matchAll(BLOCK)) {

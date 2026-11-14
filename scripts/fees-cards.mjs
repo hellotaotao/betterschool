@@ -8,7 +8,8 @@
 import fs from 'node:fs';
 import { flatten, loadLedger, readRawPages } from './fees-common.mjs';
 
-const ROW = /(?:Year|Years|Yr|YR|Kindergarten|Kindy|Stage|Prep)\b[^$|]{0,40}\|?\s?\$\s?\d{1,2},?\d{3}/g;
+// Anglican Schools Corporation schedules space their thousands: "$ 7 460".
+const ROW = /(?:Year|Years|Yr|YR|Kindergarten|Kindy|Stage|Prep)\b[^$|]{0,40}\|?\s?\$\s?\d{1,2}[, ]?\d{3}/g;
 const PROVIDERS = [
   ['AAS', /Academic Assessment Services|\bAAS\b/],
   ['ACER', /\bACER\b|Cooperative Scholarship/],
@@ -76,7 +77,7 @@ for (const [id, entry] of entries) {
         const flat = flatten(page.text.split('\n').slice(3).join('\n'));
         // "$1770.00" and a header-only "$" over bare "1,770" cells both count:
         // requiring "$1,770" once hid 179 readable schedules as "no figures".
-        const hits = [...flat.matchAll(/\$\s?\d{1,2},?\d{3}(?!\d)|(?<![\d$.,])\d{1,2},\d{3}(?![\d,])/g)].map(match => match.index);
+        const hits = [...flat.matchAll(/\$\s?\d{1,2}[, ]?\d{3}(?!\d)|(?<![\d$.,])\d{1,2},\d{3}(?![\d,])/g)].map(match => match.index);
         let best = { start: 0, count: 0 };
         for (const start of hits) {
           const count = hits.filter(index => index >= start && index < start + options.chars).length;
@@ -86,8 +87,25 @@ for (const [id, entry] of entries) {
       })
       .filter(entry => entry.count >= 3)
       .sort((a, b) => b.count - a.count)[0];
+    // A primary school often charges one education fee for K-6, so its schedule
+    // has a single four-digit amount and no year rows: show any fee page that
+    // names a dollar amount at all.
+    const single = dense ? [] : pages
+      .filter(page => /fee|tuition|schedule|charges/i.test(page.url + page.text.split('\n')[1]) && !/international|overseas|oosh/i.test(page.url))
+      .map(page => {
+        const flat = flatten(page.text.split('\n').slice(3).join('\n'));
+        // Some schedules print "Education Fee 4690" under an "Amount ($)" header.
+        const first = flat.search(/\$\s?\d|fee[^|$]{0,30}?\b\d,?\d{3}\b/i);
+        return first < 0 ? null : { url: page.url, text: flat.slice(Math.max(0, first - 400), first + options.chars) };
+      })
+      .filter(Boolean)
+      .slice(0, 2);
     if (dense) console.log(`  [no rows; ${dense.count} amounts] ${dense.url}\n  ${dense.text}`);
+    else if (single.length > 0) for (const entry of single) console.log(`  [fee page, few amounts] ${entry.url}\n  ${entry.text}`);
     else {
+      // A fee PDF with next to no text is a scanned image: the model reads it directly.
+      const scans = pages.filter(page => page.url.match(/\.pdf/i) && /fee|tuition|schedule/i.test(page.url + page.text.split('\n')[1]) && page.text.split('\n').slice(3).join('').trim().length < 200);
+      if (scans.length > 0) console.log(`  [image PDF] ${scans.map(page => page.url).join(' ')}`);
       const candidates = pages.filter(page => /fee|tuition/i.test(page.url)).map(page => page.url);
       console.log(`  no fee figures; fee-like pages: ${candidates.slice(0, 4).join(' ') || 'none'}`);
     }
