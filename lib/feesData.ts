@@ -26,6 +26,12 @@ export interface PublishedFees {
   source_url: string;
 }
 
+/** A school that says in its own words that it charges no tuition. */
+export interface FeeFree {
+  statement: string;
+  source_url: string;
+}
+
 /**
  * What the ledger knows about one school. `missing` is a school never
  * attempted; every other status is an attempt with a recorded outcome, and the
@@ -34,6 +40,7 @@ export interface PublishedFees {
  */
 export type FeeRecord = (
   | { status: 'found'; checked: string; fees: PublishedFees }
+  | { status: 'fee_free'; checked: string; free: FeeFree }
   | { status: 'not_published'; checked: string }
   | { status: 'unavailable'; checked: string }
   | { status: 'missing' }
@@ -46,6 +53,7 @@ type LedgerEntry = {
   status: string;
   checked: string;
   fees?: PublishedFees;
+  free?: FeeFree;
   parent_acara_sml_id?: number;
   parent_name?: string;
 };
@@ -63,6 +71,7 @@ export function getFeeRecord(acaraId: number): FeeRecord {
     return { ...record, campusOf: entry.parent_name };
   }
   if (entry.status === 'found' && entry.fees) return { status: 'found', checked: entry.checked, fees: entry.fees };
+  if (entry.status === 'fee_free' && entry.free) return { status: 'fee_free', checked: entry.checked, free: entry.free };
   if (entry.status === 'not_published') return { status: 'not_published', checked: entry.checked };
   return { status: 'unavailable', checked: entry.checked };
 }

@@ -44,6 +44,21 @@ function FeesPanel({ t, locale, school, record }: { t: Copy; locale: Locale; sch
   const campusLine = record.campusOf
     ? <p className="mt-1 text-[13px] text-muted">{formatMessage(t.feesCampusOf, { school: record.campusOf })}</p>
     : null;
+  if (record.status === 'fee_free') {
+    return (
+      <Panel title={t.feesHeading}>
+        {campusLine}
+        <p className="mt-2 text-2xl font-bold text-ink">{t.feesFree}</p>
+        <p className="mt-1 text-[13px] text-muted">
+          {t.feesFreeStated}
+          {locale === 'en' ? ` “${record.free.statement}”` : ''}
+        </p>
+        <a href={record.free.source_url} target="_blank" rel="nofollow noopener noreferrer" className="bs-link mt-1 inline-block text-[13px]">
+          {t.feesSourceSchoolPage} →
+        </a>
+      </Panel>
+    );
+  }
   if (record.status !== 'found') {
     return (
       <Panel title={t.feesHeading}>

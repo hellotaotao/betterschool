@@ -326,6 +326,8 @@
       "feesSourceSystem": "Source: the Catholic school system’s fee schedule",
       "feesFree": "No tuition fees",
       "feesFreeNote": "Government school. Voluntary contributions may still apply.",
+      "feesFreeStated": "The school states it charges no tuition fees.",
+      "feesSourceSchoolPage": "Source: the school’s website",
       "feesNotPublished": "The school does not publish its fees online.",
       "feesCampusOf": "This is a campus of {school}; the fees shown are that school’s.",
       "feesNotCollected": "We have not collected this school’s fees yet.",

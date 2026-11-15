@@ -28,6 +28,7 @@
 |---|---|---|
 | `found` | 从学校或其教育系统公布的来源读到了金额 | 每年重抓 |
 | `fetched` | 页面已抓回，还没读数（中间状态） | 读数 |
+| `fee_free` | 学校原话说不收学费；`free.statement` 照抄这句话，`free.source_url` 是出处，校验时必须能在原文里找到 | 每年重抓 |
 | `not_published` | 网站写明学费需另行索取，或只列出申请费 | 基本不能 |
 | `not_found` | 抓到的页面里没有学费 | 换入口再试 |
 | `not_extracted` | 有学费，但读不出来（脚本渲染的表、图片 PDF、只给每学期金额且没写学期数、年份无法对应） | 用浏览器渲染或 OCR |
@@ -35,6 +36,8 @@
 | `unreachable` | 网站连不上；`crawl.home_error` 记录原因 | 多半是 ACARA 里的网址过期，补网址 |
 | `no_website` | ACARA 没有网址，人工也没查到 | 再查 |
 | `campus` | 分校区：ACARA 单列成一条（`campus_type` 为 School Sub-Campus），但没有自己的网址和在校人数；`parent_acara_sml_id` 是 ACARA 的 `rolled_school_id`，网址和学费都是主校的 | 随主校 |
+
+“免费”是一个答案，不是缺数据：学校页对 `fee_free` 显示“不收学费”，并附原话和来源链接，和“学校没公布”“我们还没查到”分开。只有学校自己的话才算，社区目录里的“Service Fees: No”之类不算。不收学费但另有按学期收的必缴费用、又没写学期数的（例如 Ngaruki Gulgul），不记 `fee_free`，按每学期金额的规则记为读不出来。
 
 ACARA 漏登网址、由人查到的，记 `website_source: "lookup"`，并在 `website_note` 写明怎么核实的（例如首页标题写着校名）；抓取脚本优先用它。学校页遇到 `campus` 时显示主校的学费，并注明“本校区隶属某校”。
 
@@ -46,6 +49,7 @@ ACARA 漏登网址、由人查到的，记 `website_source: "lookup"`，并在 `
 - **年份必须有原文依据。** `fee_year` 取页面或文件标题上的年份。页面上有当期金额却没写年份时，`fee_year` 记为 `null`，并在 `year_note` 里写上“页面未写年份”和查看日期。只有更早年份（例如 2022）的学校不收录。
 - **只公布每学期金额的学校，**只有写明了一年几个学期才记 `per_term` 和 `terms`，年费留给页面计算。没写学期数的记为 `not_extracted`，原数放在备注里。
 - **图片格式的学费表**（扫描 PDF、网页上的 JPG）由模型直接读原件，`fees.read_via` 记明。本地 OCR 只用来交叉核对：OCR 文本存进原文目录，校验脚本照常追溯每个金额。小图或深底白字的表 OCR 会读错，这时对着原图复查（例如每学期金额 × 学期数是否等于年费），复查过的金额逐个列进 `fees.ocr_unconfirmed`；没列出的不一致仍然报错。
+- **金额带分的**（例如 John Berne 的 $5,538.47）照原样记，校验按印出来的两位小数匹配。
 - **本地生和国际生分两张表的，只记本地生那张；**分档收费的（例如 Lycée Condorcet），记澳洲居民那一档，并在 `basis` 里写明。
 - `source`：`school_website`、`scs_endpoint`（悉尼天主教教区）、`diocese_schedule`（帕拉马塔等教区的统一页面或文件）。
 - **换年与更正**（`applyReading`，`scripts/fees-common.mjs`）：年份不同的新读数把旧的移进 `fees_history`；同一年重读视为更正，直接替换；新读数没有金额（学校撤了学费表）时，旧金额移进历史，不丢弃。
@@ -64,6 +68,7 @@ npm run fees:validate                            # 状态合法、年份合理�
 
 - **悉尼天主教教区**：`<代码>.syd.catholic.edu.au` 的学费页从 `/wp-content/plugins/scs-school-fees/json.show-one.php?schoolCode=<代码>` 取数，返回第一到第四个孩子的全年合计。学费年份取自学校自己的学费页；页面上没写年份的，不导入。
 - **帕拉马塔教区**：每个年级一块，含 “Diocesan Tuition Fee” 和 “Total”，页首写着 “Fees Payable at … for <年份>”。同一模板有两种排版（“Year 7 1st Child 2nd Child …” 和 “Fee components Child 1 Child 2 …”，后者用不换行空格），都能解析；后者每个年级还跟着一块“首年优惠后”的金额，只取前面的全价块。不符合模板的页面不处理，状态保持原样。
+- **换了域名的学校**：ACARA 登记的旧网址常常跳到新域名（tsc.nsw.edu.au → scots.college）。爬虫把跳转后的域名也当作本站，否则新首页上的链接全会被当成外站丢掉（新州曾因此有 32 所只抓到首页）。首页报 5xx 或域名解析失败时，再试一次去掉 `www.` 的地址（Cloudflare 对没有证书的 www 名返回 525）。
 - **Google Drive 上的学费表**：Wollongong 教区的学校把学费表放在 Drive 链接里。爬虫把 `drive.google.com/file/d/<id>` 改写成直接下载地址，链接文字带 fee 时跟进。
 - **其余学校**：先抓，再由人读证据片段，用 `fees:merge` 写进状态表。抓取时链接文字或网址里带 fee/tuition/scholarship/schedule 的优先，免得 16 页的预算用在菜单和新闻上、轮不到学费 PDF。读数的结果要过校验：每个金额都必须能在该校原文里找到（允许 PDF 把数字拆碎，也允许只在表头写一次 “$”）。
 
@@ -92,7 +97,17 @@ npm run fees:validate                            # 状态合法、年份合理�
 
 另外补回了几所之前漏读的学校：圣公会学校（Anglican Schools Corporation）的学费表用空格分千位（“$ 7 460”），证据卡片原来不认，例如 Wollondilly、Orange Anglican、Mamre；Sydney Grammar 的 7–12 年级学费（2026 年 $52,410）原先也没读出。
 
-全澳 3,794 条私校记录里：955 所拿到了学费，183 个分校区显示主校的学费，1,087 条查过但没拿到，1,569 条还没查。
+### 特殊学校和青少年学校的核实（2026-11-15）
+
+新州 63 所特殊学校、灵活学习学校和青少年再教育学校逐校核实：
+
+- **学校原话说免费的 12 所**，记 `fee_free`：Youth Off The Streets 的 5 所（FAQ：“There are no fees to attend any Youth Off The Streets school.”）、WAYS Secondary、Blacktown Youth College、Giant Steps、St Laurence Flexible、Novo、Odyssey College，以及 St Canice's Katoomba（帕拉马塔教区的减免计划，2026–2027 年学费、杂费、建筑费全免）。
+- **其实收费、读出了学费的 11 所**：Aspect 的 8 所学校共用一份全机构收费表（小学 $7,467、中学 $8,148，一次付清的年费；文件名写 2027，正文没写年份），连带 60 多个卫星校区显示主校学费；St Peter's Heart、The John Berne School、Hunter Trade College（学费表是网页截图，模型读图、OCR 核对）。
+- **其余约 40 所**网站上既没有学费也没有免费的说法，照旧记为没找到。
+
+核实后新州有答案的记录从 700 条升到 787 条（622 所有学费、12 所免费、153 个分校区随主校），没答案的 420 条里 65 个是主校也没答案的分校区。
+
+全澳 3,794 条私校记录里：966 所拿到了学费，12 所学校声明免费，247 个分校区显示主校的学费或免费，其余查过但没拿到的和 1,569 条没查的不变。
 
 ### 中学（2026-11-14）
 

@@ -332,14 +332,17 @@
   "40383": {
    "school_name": "Odyssey College",
    "website": "http://www.odysseyhouse.com.au",
-   "status": "not_found",
-   "checked": "2026-11-14",
+   "status": "fee_free",
+   "checked": "2026-11-15",
    "fee_pages": [],
    "crawl": {
     "pages": 2,
     "errors": 0
    },
-   "note": "No fee page among the pages fetched."
+   "free": {
+    "statement": "Odyssey College is a one-of-a-kind free education service for all residents at our residential centres.",
+    "source_url": "https://odysseyhouse.com.au/find-support/residential-program/odyssey-college/"
+   }
   },
   "40384": {
    "school_name": "Coffs Harbour Christian Community School",
@@ -626,14 +629,17 @@
   "40644": {
    "school_name": "Blacktown Youth College Incorporated",
    "website": "http://www.blacktownyouthcollege.nsw.edu.au",
-   "status": "not_found",
-   "checked": "2026-11-14",
+   "status": "fee_free",
+   "checked": "2026-11-15",
    "fee_pages": [],
    "crawl": {
     "pages": 2,
     "errors": 0
    },
-   "note": "No fee page among the pages fetched."
+   "free": {
+    "statement": "BYC is fee free, with no uniform requirements or other additional costs which might otherwise restrict students who wish to enrol",
+    "source_url": "https://www.blacktownyouthcollege.nsw.edu.au/enrolment-enquiries/"
+   }
   },
   "40672": {
    "school_name": "Calrossy Anglican School",
@@ -816,7 +822,7 @@
    "school_name": "Alesco Secondary College",
    "website": "https://atwea.edu.au/high-school-at-alesco/",
    "status": "not_found",
-   "checked": "2026-11-14",
+   "checked": "2026-11-15",
    "fee_pages": [],
    "crawl": {
     "pages": 5,
@@ -868,7 +874,7 @@
    "school_name": "Warakirri College",
    "website": "http://www.warakirricollege.nsw.edu.au",
    "status": "blocked",
-   "checked": "2026-11-14",
+   "checked": "2026-11-15",
    "fee_pages": [],
    "crawl": {
     "pages": 0,
@@ -905,16 +911,29 @@
   "40790": {
    "school_name": "Hunter Trade College",
    "website": "https://htc.nsw.edu.au/",
-   "status": "not_extracted",
-   "checked": "2026-11-12",
+   "status": "found",
+   "checked": "2026-11-15",
    "crawl": {
     "pages": 5,
     "errors": 0
    },
-   "note": "Fees page text holds no figures.",
    "fee_pages": [
     "https://htc.nsw.edu.au/fees"
-   ]
+   ],
+   "fees": {
+    "fee_year": 2027,
+    "basis": "annual college fee, per student",
+    "by_year": [
+     {
+      "years": "11-12",
+      "tuition": 2750
+     }
+    ],
+    "other_compulsory": "Application fee $90; acceptance fee $350, refunded on completing Year 12; first aid, white card and working-at-heights courses where needed",
+    "source": "school_website",
+    "source_url": "https://htc.nsw.edu.au/fees",
+    "read_via": "model read of the fee table published as an image; amounts cross-checked against local OCR"
+   }
   },
   "40792": {
    "school_name": "Newman Senior Technical College",
@@ -1172,7 +1191,7 @@
    "school_name": "Indie School Albury",
    "website": "https://www.awcc.edu.au/",
    "status": "not_found",
-   "checked": "2026-11-14",
+   "checked": "2026-11-15",
    "fee_pages": [],
    "crawl": {
     "pages": 1,
@@ -3388,8 +3407,8 @@
   "43175": {
    "school_name": "St Canice's Primary School",
    "website": "http://www.stcaniceskatoomba.catholic.edu.au",
-   "status": "not_found",
-   "checked": "2026-11-14",
+   "status": "fee_free",
+   "checked": "2026-11-15",
    "fee_pages": [
     "https://www.stcaniceskatoomba.catholic.edu.au/enrolment/school-fees",
     "https://www.stcaniceskatoomba.catholic.edu.au/enrolment/school-fee-discount-initiative"
@@ -3398,7 +3417,10 @@
     "pages": 9,
     "errors": 0
    },
-   "note": "The school advertises itself as fee free, subject to terms; no fee figures are published."
+   "free": {
+    "statement": "From 2026, St Canice’s Primary will be school fee-free for new and existing families. This initiative will continue until the end of the 2027 academic year after which it will be reviewed for extension.",
+    "source_url": "https://www.stcaniceskatoomba.catholic.edu.au/enrolment/school-fee-discount-initiative"
+   }
   },
   "43176": {
    "school_name": "Our Lady of The Rosary Primary School",
@@ -7951,7 +7973,7 @@
    "school_name": "St Dominic's Catholic College",
    "website": "http://mayfieldsd.catholic.edu.au",
    "status": "not_found",
-   "checked": "2026-11-14",
+   "checked": "2026-11-15",
    "fee_pages": [],
    "crawl": {
     "pages": 4,
@@ -17555,7 +17577,7 @@
    "school_name": "Mater Dei Primary School",
    "website": "http://web.mdpww.catholic.edu.au/",
    "status": "not_found",
-   "checked": "2026-11-14",
+   "checked": "2026-11-15",
    "fee_pages": [],
    "crawl": {
     "pages": 2,
@@ -19118,7 +19140,7 @@
    "school_name": "Dunlea Centre, Australia's Original Boys' Town",
    "website": "http://www.dunleacentre.org.au",
    "status": "not_found",
-   "checked": "2026-11-14",
+   "checked": "2026-11-15",
    "fee_pages": [],
    "crawl": {
     "pages": 5,
@@ -19129,8 +19151,8 @@
   "43688": {
    "school_name": "The John Berne School",
    "website": "http://www.thejohnberneschool.org",
-   "status": "not_found",
-   "checked": "2026-11-14",
+   "status": "found",
+   "checked": "2026-11-15",
    "fee_pages": [
     "https://www.thejohnberneschool.org/enrolment/fees/"
    ],
@@ -19138,7 +19160,25 @@
     "pages": 5,
     "errors": 0
    },
-   "note": "No fee figures on the fees page."
+   "fees": {
+    "fee_year": 2026,
+    "basis": "per student, annual: tuition plus materials, levies and (Years 7-8) work experience insurance; camps and activities ($600) invoiced separately",
+    "by_year": [
+     {
+      "years": "7-8",
+      "tuition": 5538.47,
+      "total": 5781.67
+     },
+     {
+      "years": "9-10",
+      "tuition": 5538.47,
+      "total": 5831.5
+     }
+    ],
+    "other_compulsory": "Camps and activities $600 a year, invoiced separately",
+    "source": "school_website",
+    "source_url": "https://www.thejohnberneschool.org/enrolment/fees/"
+   }
   },
   "43689": {
    "school_name": "St Stanislaus' College",
@@ -19418,7 +19458,7 @@
    "school_name": "Mater Dei School",
    "website": "http://www.materdei.org.au",
    "status": "not_found",
-   "checked": "2026-11-14",
+   "checked": "2026-11-15",
    "fee_pages": [],
    "crawl": {
     "pages": 1,
@@ -19525,7 +19565,7 @@
    "school_name": "St Philip's Christian College Dynamic Learning",
    "website": "https://www.spcc.nsw.edu.au/",
    "status": "not_found",
-   "checked": "2026-11-14",
+   "checked": "2026-11-15",
    "fee_pages": [],
    "crawl": {
     "pages": 1,
@@ -19800,7 +19840,7 @@
    "school_name": "Macleay Vocational College",
    "website": "http://www.mvwlc.nsw.edu.au",
    "status": "not_found",
-   "checked": "2026-11-14",
+   "checked": "2026-11-15",
    "fee_pages": [],
    "crawl": {
     "pages": 1,
@@ -19869,8 +19909,8 @@
   "43722": {
    "school_name": "WAYS Secondary",
    "website": "http://www.ways.org.au",
-   "status": "not_found",
-   "checked": "2026-11-14",
+   "status": "fee_free",
+   "checked": "2026-11-15",
    "fee_pages": [
     "https://ways.org.au/impact-stories/when-school-didnt-feel-possible-anymore/"
    ],
@@ -19878,7 +19918,10 @@
     "pages": 2,
     "errors": 0
    },
-   "note": "No fee page among the pages fetched."
+   "free": {
+    "statement": "WAYS Secondary is a fee-free NESA accredited independent high school for students in Years 9–12.",
+    "source_url": "https://ways.org.au/secondary-school/"
+   }
   },
   "43724": {
    "school_name": "OneSchool Global NSW - Sydney",
@@ -19964,7 +20007,7 @@
    "school_name": "Biala Special School",
    "website": "http://www.biala.org.au",
    "status": "not_found",
-   "checked": "2026-11-14",
+   "checked": "2026-11-15",
    "fee_pages": [],
    "crawl": {
     "pages": 2,
@@ -20013,14 +20056,17 @@
   "43740": {
    "school_name": "Giant Steps Sydney",
    "website": "http://www.giantsteps.net.au",
-   "status": "not_found",
-   "checked": "2026-11-14",
+   "status": "fee_free",
+   "checked": "2026-11-15",
    "fee_pages": [],
    "crawl": {
     "pages": 1,
     "errors": 0
    },
-   "note": "Only the home page could be fetched."
+   "free": {
+    "statement": "Giant Steps does not charge fees for our School Programs",
+    "source_url": "https://www.giantsteps.net.au/"
+   }
   },
   "43741": {
    "school_name": "Al Sadiq College",
@@ -20064,7 +20110,7 @@
    "school_name": "Elouera Special School",
    "website": "http://www.elouera-association.com",
    "status": "not_found",
-   "checked": "2026-11-14",
+   "checked": "2026-11-15",
    "fee_pages": [],
    "crawl": {
     "pages": 3,
@@ -20076,7 +20122,7 @@
    "school_name": "Woodbury",
    "website": "http://www.woodbury.org.au",
    "status": "not_found",
-   "checked": "2026-11-14",
+   "checked": "2026-11-15",
    "fee_pages": [],
    "crawl": {
     "pages": 2,
@@ -20088,7 +20134,7 @@
    "school_name": "Margaret Jurd College",
    "website": "http://www.mjc.nsw.edu.au/",
    "status": "not_found",
-   "checked": "2026-11-14",
+   "checked": "2026-11-15",
    "fee_pages": [],
    "crawl": {
     "pages": 2,
@@ -20112,7 +20158,7 @@
    "school_name": "The Joseph Varga School",
    "website": "http://www.josephvargaschool.nsw.edu.au",
    "status": "not_found",
-   "checked": "2026-11-14",
+   "checked": "2026-11-15",
    "fee_pages": [],
    "crawl": {
     "pages": 1,
@@ -20522,26 +20568,64 @@
   "43768": {
    "school_name": "Aspect Hunter School",
    "website": "http://www.autismspectrum.org.au/",
-   "status": "not_found",
-   "checked": "2026-11-14",
-   "fee_pages": [],
+   "status": "found",
+   "checked": "2026-11-15",
+   "fee_pages": [
+    "https://www.aspect.org.au/about-aspect/pay-invoice-fees"
+   ],
    "crawl": {
-    "pages": 1,
+    "pages": 5,
     "errors": 0
    },
-   "note": "Only the home page could be fetched."
+   "fees": {
+    "fee_year": null,
+    "year_note": "The schedule file is named 2027 but its text does not state the year.",
+    "basis": "first child, annual fee paid in one payment, the same at every Aspect school; a $1,500 enrolment fee is credited to the first year; 10% sibling discount; 12% regional discount for some students",
+    "by_year": [
+     {
+      "years": "Primary",
+      "tuition": 7467
+     },
+     {
+      "years": "Secondary",
+      "tuition": 8148
+     }
+    ],
+    "other_compulsory": null,
+    "source": "school_website",
+    "source_url": "https://www.aspect.org.au/uploads/documents/Education/Enrolment/Aspect-Schedule-of-Fees-2027.pdf?v=1791248519"
+   }
   },
   "43769": {
    "school_name": "Aspect Vern Barnett School",
    "website": "http://www.autismspectrum.org.au",
-   "status": "not_found",
-   "checked": "2026-11-14",
-   "fee_pages": [],
+   "status": "found",
+   "checked": "2026-11-15",
+   "fee_pages": [
+    "https://www.aspect.org.au/about-aspect/pay-invoice-fees"
+   ],
    "crawl": {
-    "pages": 1,
+    "pages": 5,
     "errors": 0
    },
-   "note": "Only the home page could be fetched."
+   "fees": {
+    "fee_year": null,
+    "year_note": "The schedule file is named 2027 but its text does not state the year.",
+    "basis": "first child, annual fee paid in one payment, the same at every Aspect school; a $1,500 enrolment fee is credited to the first year; 10% sibling discount; 12% regional discount for some students",
+    "by_year": [
+     {
+      "years": "Primary",
+      "tuition": 7467
+     },
+     {
+      "years": "Secondary",
+      "tuition": 8148
+     }
+    ],
+    "other_compulsory": null,
+    "source": "school_website",
+    "source_url": "https://www.aspect.org.au/uploads/documents/Education/Enrolment/Aspect-Schedule-of-Fees-2027.pdf?v=1791248519"
+   }
   },
   "43770": {
    "school_name": "Calderwood Christian School",
@@ -20640,14 +20724,14 @@
   "43776": {
    "school_name": "NextSense School",
    "website": "http://www.ridbc.org.au",
-   "status": "unreachable",
-   "checked": "2026-11-14",
+   "status": "not_found",
+   "checked": "2026-11-15",
    "fee_pages": [],
    "crawl": {
-    "pages": 0,
-    "errors": 2,
-    "home_error": "ENOTFOUND"
-   }
+    "pages": 3,
+    "errors": 2
+   },
+   "note": "The school site (nextsenseschool.edu.au) shows no fee page or fee statement."
   },
   "43777": {
    "school_name": "Moama Anglican Grammar School",
@@ -20811,14 +20895,17 @@
   "43784": {
    "school_name": "Key College",
    "website": "http://www.youthoffthestreets.com.au/education/w1/i1001886/",
-   "status": "not_found",
-   "checked": "2026-11-14",
+   "status": "fee_free",
+   "checked": "2026-11-15",
    "fee_pages": [],
    "crawl": {
     "pages": 6,
     "errors": 0
    },
-   "note": "Only a scholarship guide was found; no school fee schedule."
+   "free": {
+    "statement": "There are no fees to attend any Youth Off The Streets school.",
+    "source_url": "https://youthoffthestreets.com.au/alternative-high-schools/schools-frequently-asked-questions/"
+   }
   },
   "43785": {
    "school_name": "Sydney Grammar School",
@@ -21113,14 +21200,33 @@
   "43796": {
    "school_name": "Aspect Central Coast School",
    "website": "http://www.autismspectrum.org.au",
-   "status": "not_found",
-   "checked": "2026-11-14",
-   "fee_pages": [],
+   "status": "found",
+   "checked": "2026-11-15",
+   "fee_pages": [
+    "https://www.aspect.org.au/about-aspect/pay-invoice-fees"
+   ],
    "crawl": {
-    "pages": 1,
+    "pages": 5,
     "errors": 0
    },
-   "note": "Only the home page could be fetched."
+   "fees": {
+    "fee_year": null,
+    "year_note": "The schedule file is named 2027 but its text does not state the year.",
+    "basis": "first child, annual fee paid in one payment, the same at every Aspect school; a $1,500 enrolment fee is credited to the first year; 10% sibling discount; 12% regional discount for some students",
+    "by_year": [
+     {
+      "years": "Primary",
+      "tuition": 7467
+     },
+     {
+      "years": "Secondary",
+      "tuition": 8148
+     }
+    ],
+    "other_compulsory": null,
+    "source": "school_website",
+    "source_url": "https://www.aspect.org.au/uploads/documents/Education/Enrolment/Aspect-Schedule-of-Fees-2027.pdf?v=1791248519"
+   }
   },
   "43797": {
    "school_name": "The Riverina Anglican College",
@@ -21630,14 +21736,33 @@
   "43813": {
    "school_name": "Aspect South Coast School",
    "website": "http://www.autismspectrum.org.au",
-   "status": "not_found",
-   "checked": "2026-11-14",
-   "fee_pages": [],
+   "status": "found",
+   "checked": "2026-11-15",
+   "fee_pages": [
+    "https://www.aspect.org.au/about-aspect/pay-invoice-fees"
+   ],
    "crawl": {
-    "pages": 1,
+    "pages": 5,
     "errors": 0
    },
-   "note": "Only the home page could be fetched."
+   "fees": {
+    "fee_year": null,
+    "year_note": "The schedule file is named 2027 but its text does not state the year.",
+    "basis": "first child, annual fee paid in one payment, the same at every Aspect school; a $1,500 enrolment fee is credited to the first year; 10% sibling discount; 12% regional discount for some students",
+    "by_year": [
+     {
+      "years": "Primary",
+      "tuition": 7467
+     },
+     {
+      "years": "Secondary",
+      "tuition": 8148
+     }
+    ],
+    "other_compulsory": null,
+    "source": "school_website",
+    "source_url": "https://www.aspect.org.au/uploads/documents/Education/Enrolment/Aspect-Schedule-of-Fees-2027.pdf?v=1791248519"
+   }
   },
   "43814": {
    "school_name": "Penrith Christian School",
@@ -21845,14 +21970,33 @@
   "43823": {
    "school_name": "Aspect Western Sydney School",
    "website": "http://www.autismspectrum.org.au",
-   "status": "not_found",
-   "checked": "2026-11-14",
-   "fee_pages": [],
+   "status": "found",
+   "checked": "2026-11-15",
+   "fee_pages": [
+    "https://www.aspect.org.au/about-aspect/pay-invoice-fees"
+   ],
    "crawl": {
-    "pages": 1,
+    "pages": 5,
     "errors": 0
    },
-   "note": "Only the home page could be fetched."
+   "fees": {
+    "fee_year": null,
+    "year_note": "The schedule file is named 2027 but its text does not state the year.",
+    "basis": "first child, annual fee paid in one payment, the same at every Aspect school; a $1,500 enrolment fee is credited to the first year; 10% sibling discount; 12% regional discount for some students",
+    "by_year": [
+     {
+      "years": "Primary",
+      "tuition": 7467
+     },
+     {
+      "years": "Secondary",
+      "tuition": 8148
+     }
+    ],
+    "other_compulsory": null,
+    "source": "school_website",
+    "source_url": "https://www.aspect.org.au/uploads/documents/Education/Enrolment/Aspect-Schedule-of-Fees-2027.pdf?v=1791248519"
+   }
   },
   "43824": {
    "school_name": "Norwest Christian College",
@@ -24601,14 +24745,33 @@
   "43927": {
    "school_name": "Aspect South East Sydney School",
    "website": "http://www.autismspectrum.org.au",
-   "status": "not_found",
-   "checked": "2026-11-14",
-   "fee_pages": [],
+   "status": "found",
+   "checked": "2026-11-15",
+   "fee_pages": [
+    "https://www.aspect.org.au/about-aspect/pay-invoice-fees"
+   ],
    "crawl": {
-    "pages": 1,
+    "pages": 5,
     "errors": 0
    },
-   "note": "Only the home page could be fetched."
+   "fees": {
+    "fee_year": null,
+    "year_note": "The schedule file is named 2027 but its text does not state the year.",
+    "basis": "first child, annual fee paid in one payment, the same at every Aspect school; a $1,500 enrolment fee is credited to the first year; 10% sibling discount; 12% regional discount for some students",
+    "by_year": [
+     {
+      "years": "Primary",
+      "tuition": 7467
+     },
+     {
+      "years": "Secondary",
+      "tuition": 8148
+     }
+    ],
+    "other_compulsory": null,
+    "source": "school_website",
+    "source_url": "https://www.aspect.org.au/uploads/documents/Education/Enrolment/Aspect-Schedule-of-Fees-2027.pdf?v=1791248519"
+   }
   },
   "43928": {
    "school_name": "St George Christian School",
@@ -25444,14 +25607,14 @@
   "43955": {
    "school_name": "NextSense School - Spoken Language Program",
    "website": "http://www.ridbc.org.au",
-   "status": "unreachable",
-   "checked": "2026-11-14",
+   "status": "not_found",
+   "checked": "2026-11-15",
    "fee_pages": [],
    "crawl": {
-    "pages": 0,
-    "errors": 2,
-    "home_error": "ENOTFOUND"
-   }
+    "pages": 3,
+    "errors": 2
+   },
+   "note": "The school site (nextsenseschool.edu.au) shows no fee page or fee statement."
   },
   "43956": {
    "school_name": "Elonera Montessori School",
@@ -26369,7 +26532,7 @@
    "school_name": "Macquarie University Special Education Centre",
    "website": "https://www.mq.edu.au/research/research-centres-groups-and-facilities/healthy-people/centres/musec-school",
    "status": "blocked",
-   "checked": "2026-11-14",
+   "checked": "2026-11-15",
    "fee_pages": [],
    "crawl": {
     "pages": 0,
@@ -26576,14 +26739,14 @@
   "44004": {
    "school_name": "NextSense School - Sign Bilingual Program",
    "website": "http://www.ridbc.org.au",
-   "status": "unreachable",
-   "checked": "2026-11-14",
+   "status": "not_found",
+   "checked": "2026-11-15",
    "fee_pages": [],
    "crawl": {
-    "pages": 0,
-    "errors": 2,
-    "home_error": "ENOTFOUND"
-   }
+    "pages": 3,
+    "errors": 2
+   },
+   "note": "The school site (nextsenseschool.edu.au) shows no fee page or fee statement."
   },
   "44005": {
    "school_name": "The King's School, Tudor House",
@@ -42580,7 +42743,7 @@
    "school_name": "TLK Youth College",
    "website": "https://www.tlkyc.nsw.edu.au/",
    "status": "not_found",
-   "checked": "2026-11-14",
+   "checked": "2026-11-15",
    "fee_pages": [],
    "crawl": {
     "pages": 3,
@@ -42591,26 +42754,67 @@
   "50249": {
    "school_name": "Aspect Riverina School",
    "website": "https://www.autismspectrum.org.au/school/aspect-riverina-school-0",
-   "status": "not_found",
-   "checked": "2026-11-14",
-   "fee_pages": [],
+   "status": "found",
+   "checked": "2026-11-15",
+   "fee_pages": [
+    "https://www.aspect.org.au/about-aspect/pay-invoice-fees",
+    "https://www.aspect.org.au/our-services/going-to-school/aspect-schools/enrolment-fees",
+    "https://www.aspect.org.au/our-services/going-to-school/aspect-schools/enrolment-fees/aspect-education-faqs",
+    "https://www.aspect.org.au/uploads/documents/Education/Enrolment/Aspect-Schedule-of-Fees-2027.pdf?v=1791248519"
+   ],
    "crawl": {
-    "pages": 1,
+    "pages": 10,
     "errors": 0
    },
-   "note": "Only the home page could be fetched."
+   "fees": {
+    "fee_year": null,
+    "year_note": "The schedule file is named 2027 but its text does not state the year.",
+    "basis": "first child, annual fee paid in one payment, the same at every Aspect school; a $1,500 enrolment fee is credited to the first year; 10% sibling discount; 12% regional discount for some students",
+    "by_year": [
+     {
+      "years": "Primary",
+      "tuition": 7467
+     },
+     {
+      "years": "Secondary",
+      "tuition": 8148
+     }
+    ],
+    "other_compulsory": null,
+    "source": "school_website",
+    "source_url": "https://www.aspect.org.au/uploads/documents/Education/Enrolment/Aspect-Schedule-of-Fees-2027.pdf?v=1791248519"
+   }
   },
   "50250": {
    "school_name": "Aspect Macarthur School",
    "website": "http://www.autismspectrum.org.au",
-   "status": "not_found",
-   "checked": "2026-11-14",
-   "fee_pages": [],
+   "status": "found",
+   "checked": "2026-11-15",
+   "fee_pages": [
+    "https://www.aspect.org.au/about-aspect/pay-invoice-fees"
+   ],
    "crawl": {
-    "pages": 1,
+    "pages": 5,
     "errors": 0
    },
-   "note": "Only the home page could be fetched."
+   "fees": {
+    "fee_year": null,
+    "year_note": "The schedule file is named 2027 but its text does not state the year.",
+    "basis": "first child, annual fee paid in one payment, the same at every Aspect school; a $1,500 enrolment fee is credited to the first year; 10% sibling discount; 12% regional discount for some students",
+    "by_year": [
+     {
+      "years": "Primary",
+      "tuition": 7467
+     },
+     {
+      "years": "Secondary",
+      "tuition": 8148
+     }
+    ],
+    "other_compulsory": null,
+    "source": "school_website",
+    "source_url": "https://www.aspect.org.au/uploads/documents/Education/Enrolment/Aspect-Schedule-of-Fees-2027.pdf?v=1791248519"
+   }
   },
   "50251": {
    "school_name": "St Andrew's Cathedral Gawura School",
@@ -42714,14 +42918,17 @@
   "50379": {
    "school_name": "Novo Education Space",
    "website": "http://www.alescoillawarra.nsw.edu.au",
-   "status": "not_found",
-   "checked": "2026-11-14",
+   "status": "fee_free",
+   "checked": "2026-11-15",
    "fee_pages": [],
    "crawl": {
-    "pages": 1,
+    "pages": 3,
     "errors": 0
    },
-   "note": "Only the home page could be fetched."
+   "free": {
+    "statement": "While there’s no cost to attend, if families are in a position to make a tax deductible donation or support Novo in other ways, we’d never say no!",
+    "source_url": "https://novo.nsw.edu.au/enrolment/"
+   }
   },
   "50380": {
    "school_name": "Alpha Omega Senior College",
@@ -43194,14 +43401,17 @@
   "50501": {
    "school_name": "EDEN College",
    "website": "https://youthoffthestreets.com.au/programs/eden-college/",
-   "status": "not_found",
-   "checked": "2026-11-14",
+   "status": "fee_free",
+   "checked": "2026-11-15",
    "fee_pages": [],
    "crawl": {
     "pages": 6,
     "errors": 0
    },
-   "note": "Only a scholarship guide was found; no school fee schedule."
+   "free": {
+    "statement": "There are no fees to attend any Youth Off The Streets school.",
+    "source_url": "https://youthoffthestreets.com.au/alternative-high-schools/schools-frequently-asked-questions/"
+   }
   },
   "50503": {
    "school_name": "Glenroy Private",
@@ -43487,14 +43697,17 @@
   "50579": {
    "school_name": "Craig Davis College",
    "website": "https://youthoffthestreets.com.au/programs/craig-davis-college/",
-   "status": "not_found",
-   "checked": "2026-11-14",
+   "status": "fee_free",
+   "checked": "2026-11-15",
    "fee_pages": [],
    "crawl": {
     "pages": 6,
     "errors": 0
    },
-   "note": "Only a scholarship guide was found; no school fee schedule."
+   "free": {
+    "statement": "There are no fees to attend any Youth Off The Streets school.",
+    "source_url": "https://youthoffthestreets.com.au/alternative-high-schools/schools-frequently-asked-questions/"
+   }
   },
   "50583": {
    "school_name": "St Benedict's College",
@@ -43633,7 +43846,7 @@
    "school_name": "Redfern Jarjum College",
    "website": "http://www.rjc.nsw.edu.au/",
    "status": "not_found",
-   "checked": "2026-11-14",
+   "checked": "2026-11-15",
    "fee_pages": [],
    "crawl": {
     "pages": 3,
@@ -43791,7 +44004,7 @@
    "school_name": "Wollongong Flexible School",
    "website": "https://wollongong.flexi.edu.au/",
    "status": "not_found",
-   "checked": "2026-11-14",
+   "checked": "2026-11-15",
    "fee_pages": [],
    "crawl": {
     "pages": 2,
@@ -43840,14 +44053,14 @@
   "50710": {
    "school_name": "Ngaruki Gulgul",
    "website": "http://www.ngc.nsw.edu.au",
-   "status": "not_found",
-   "checked": "2026-11-14",
+   "status": "not_extracted",
+   "checked": "2026-11-15",
    "fee_pages": [],
    "crawl": {
     "pages": 3,
     "errors": 0
    },
-   "note": "No fee page among the pages fetched."
+   "note": "No school fees, but compulsory charges are published per term only ($300 a term Years 9-10, $435 Years 11-12), without the number of terms."
   },
   "50713": {
    "school_name": "Redeemer Baptist School, Castle Hill campus",
@@ -44032,7 +44245,7 @@
    "school_name": "Mackillop Education Waranara School",
    "website": "http://www.goodshep.org.au/find-a-service/educational-pathways/",
    "status": "not_found",
-   "checked": "2026-11-14",
+   "checked": "2026-11-15",
    "fee_pages": [],
    "crawl": {
     "pages": 3,
@@ -44187,7 +44400,7 @@
    "school_name": "St Mary's Flexible School",
    "website": "https://stmarys.flexi.edu.au/",
    "status": "not_found",
-   "checked": "2026-11-14",
+   "checked": "2026-11-15",
    "fee_pages": [],
    "crawl": {
     "pages": 2,
@@ -44363,7 +44576,7 @@
    "school_name": "Skillset Senior College",
    "website": "https://www.skillsetseniorcollege.nsw.edu.au/",
    "status": "not_found",
-   "checked": "2026-11-14",
+   "checked": "2026-11-15",
    "fee_pages": [],
    "crawl": {
     "pages": 3,
@@ -44895,7 +45108,7 @@
    "school_name": "St Philip's Christian College Young Parents",
    "website": "https://www.spcc.nsw.edu.au/",
    "status": "not_found",
-   "checked": "2026-11-14",
+   "checked": "2026-11-15",
    "fee_pages": [],
    "crawl": {
     "pages": 1,
@@ -46002,20 +46215,23 @@
   "52435": {
    "school_name": "The Lakes College",
    "website": "https://youthoffthestreets.com.au/programs/the-lakes-college/",
-   "status": "not_found",
-   "checked": "2026-11-14",
+   "status": "fee_free",
+   "checked": "2026-11-15",
    "fee_pages": [],
    "crawl": {
     "pages": 6,
     "errors": 0
    },
-   "note": "Only a scholarship guide was found; no school fee schedule."
+   "free": {
+    "statement": "There are no fees to attend any Youth Off The Streets school.",
+    "source_url": "https://youthoffthestreets.com.au/alternative-high-schools/schools-frequently-asked-questions/"
+   }
   },
   "52436": {
    "school_name": "Nautilus Senior College",
    "website": "https://www.nsc.edu.au/",
    "status": "not_found",
-   "checked": "2026-11-14",
+   "checked": "2026-11-15",
    "fee_pages": [
     "https://c544e224-6b5d-4972-895b-a5190ec54606.filesusr.com/ugd/eed448_ec8b67eefeed438cba1f8378d8d8fb4d.pdf"
    ],
@@ -46029,7 +46245,7 @@
    "school_name": "Allegra School Coffs Harbour",
    "website": "https://allegra.nsw.edu.au/",
    "status": "not_found",
-   "checked": "2026-11-14",
+   "checked": "2026-11-15",
    "fee_pages": [],
    "crawl": {
     "pages": 3,
@@ -46731,14 +46947,17 @@
   "52614": {
    "school_name": "The Bowen College",
    "website": "https://youthoffthestreets.com.au",
-   "status": "not_found",
-   "checked": "2026-11-14",
+   "status": "fee_free",
+   "checked": "2026-11-15",
    "fee_pages": [],
    "crawl": {
     "pages": 4,
     "errors": 0
    },
-   "note": "No fee page among the pages fetched."
+   "free": {
+    "statement": "There are no fees to attend any Youth Off The Streets school.",
+    "source_url": "https://youthoffthestreets.com.au/alternative-high-schools/schools-frequently-asked-questions/"
+   }
   },
   "52615": {
    "school_name": "Port Macquarie Steiner School",
@@ -46798,7 +47017,7 @@
    "school_name": "Oasis College Surry Hills",
    "website": null,
    "status": "no_website",
-   "checked": "2026-11-12",
+   "checked": "2026-11-15",
    "note": "Special assistance school with no website in ACARA; domain guesses and web search on 2026-11-12 found none."
   },
   "52618": {
@@ -46861,7 +47080,7 @@
    "school_name": "Western Riverina Community School",
    "website": "https://www.wrcs.nsw.edu.au/",
    "status": "not_found",
-   "checked": "2026-11-14",
+   "checked": "2026-11-15",
    "fee_pages": [],
    "crawl": {
     "pages": 1,
@@ -47010,14 +47229,17 @@
   "52641": {
    "school_name": "St Laurence Flexible Learning Centre",
    "website": "https://stlaurence.flexi.edu.au/",
-   "status": "not_found",
-   "checked": "2026-11-14",
+   "status": "fee_free",
+   "checked": "2026-11-15",
    "fee_pages": [],
    "crawl": {
     "pages": 3,
     "errors": 0
    },
-   "note": "No fee page among the pages fetched."
+   "free": {
+    "statement": "No fees",
+    "source_url": "https://stlaurence.flexi.edu.au/enrolment/enrolment/"
+   }
   },
   "52666": {
    "school_name": "Birali Steiner School",
@@ -47112,7 +47334,7 @@
    "school_name": "Shoalhaven River College",
    "website": "https://shoalhavenrivercollege.org.au/",
    "status": "not_found",
-   "checked": "2026-11-14",
+   "checked": "2026-11-15",
    "fee_pages": [],
    "crawl": {
     "pages": 1,
@@ -47800,7 +48022,7 @@
    "school_name": "Pambula Beach Flexible School",
    "website": "https://pambulabeach.flexi.edu.au/",
    "status": "not_found",
-   "checked": "2026-11-14",
+   "checked": "2026-11-15",
    "fee_pages": [],
    "crawl": {
     "pages": 2,
@@ -48242,7 +48464,7 @@
    "school_name": "Gateway Community High",
    "website": "https://www.gatewaycommunityhigh.nsw.edu.au",
    "status": "not_found",
-   "checked": "2026-11-14",
+   "checked": "2026-11-15",
    "fee_pages": [],
    "crawl": {
     "pages": 4,
@@ -49057,7 +49279,7 @@
    "school_name": "Pacific Gulgangali Jarjums Christian School",
    "website": "https://www.pacificgulgangalijarjums.nsw.edu.au",
    "status": "not_found",
-   "checked": "2026-11-14",
+   "checked": "2026-11-15",
    "fee_pages": [
     "https://www.pacificgulgangalijarjums.nsw.edu.au/enrol/fees",
     "https://www.pacificgulgangalijarjums.nsw.edu.au/images/pages/fees/PGOCS-Insurance-24-7-Parents-Factsheet.pdf",
@@ -49073,14 +49295,33 @@
   "53044": {
    "school_name": "St Peter's Heart",
    "website": "https://www.stpeters.nsw.edu.au/learning/heart",
-   "status": "not_found",
-   "checked": "2026-11-14",
-   "fee_pages": [],
+   "status": "found",
+   "checked": "2026-11-15",
+   "fee_pages": [
+    "https://stpetersheart.nsw.edu.au/enrolment/fees/",
+    "https://stpetersheart.nsw.edu.au/wp-content/uploads/2026/05/Fee-Schedule-2026.2.pdf"
+   ],
    "crawl": {
-    "pages": 2,
+    "pages": 7,
     "errors": 0
    },
-   "note": "No fee page among the pages fetched."
+   "fees": {
+    "fee_year": 2026,
+    "basis": "first child, annual all-inclusive fee",
+    "by_year": [
+     {
+      "years": "K-2",
+      "total": 10280
+     },
+     {
+      "years": "3-6",
+      "total": 10490
+     }
+    ],
+    "other_compulsory": null,
+    "source": "school_website",
+    "source_url": "https://stpetersheart.nsw.edu.au/wp-content/uploads/2026/05/Fee-Schedule-2026.2.pdf"
+   }
   },
   "53045": {
    "school_name": "Preston Reservoir Adult Community Education - Mernda Campus",
@@ -49619,7 +49860,7 @@
    "school_name": "North Academy",
    "website": "https://northacademy.nsw.edu.au/about-us/location",
    "status": "not_extracted",
-   "checked": "2026-11-14",
+   "checked": "2026-11-15",
    "fee_pages": [
     "https://northacademy.nsw.edu.au/new-students/school-fees"
    ],
@@ -49753,7 +49994,7 @@
    "school_name": "Ngarra Christian College",
    "website": "https://www.norwest.nsw.edu.au/ngarra-christian-college",
    "status": "not_extracted",
-   "checked": "2026-11-14",
+   "checked": "2026-11-15",
    "fee_pages": [
     "https://www.norwest.nsw.edu.au/enrolment/fees-scholarships",
     "https://www.norwest.nsw.edu.au/news/helping-your-child-feel-like-they-belong-at-school",
@@ -50277,7 +50518,7 @@
    "school_name": "Cedars Christian College - Aspire",
    "website": "https://aspire.nsw.edu.au/",
    "status": "not_found",
-   "checked": "2026-11-14",
+   "checked": "2026-11-15",
    "fee_pages": [],
    "crawl": {
     "pages": 1,
@@ -50347,7 +50588,7 @@
    "school_name": "EOC Broken Bay",
    "website": "https://csbb.catholic.edu.au/our-strategy/eileenoconnor/",
    "status": "not_found",
-   "checked": "2026-11-14",
+   "checked": "2026-11-15",
    "fee_pages": [
     "https://csbb.catholic.edu.au/enrol/school-fees"
    ],
@@ -50693,7 +50934,7 @@
    "school_name": "Marri Mittigar School",
    "website": "https://www.barker.college/about-barker/marri-mittigar/",
    "status": "not_found",
-   "checked": "2026-11-14",
+   "checked": "2026-11-15",
    "fee_pages": [
     "https://www.barker.college/enrolments/fee-schedule/"
    ],
@@ -51006,7 +51247,7 @@
    "school_name": "North Coast Pathway",
    "website": "https://ncpathway.edu.au/",
    "status": "not_found",
-   "checked": "2026-11-14",
+   "checked": "2026-11-15",
    "fee_pages": [],
    "crawl": {
     "pages": 2,

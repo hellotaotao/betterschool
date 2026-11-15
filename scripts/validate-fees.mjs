@@ -16,6 +16,7 @@ const ledger = loadLedger();
 let traced = 0;
 let untraceable = 0;
 let rechecked = 0;
+let freeTraced = 0;
 
 function sourceDigits(id) {
   const scs = path.join(RAW_DIR, '_scs', `${id}.json`);
@@ -36,6 +37,8 @@ function sourceDigits(id) {
 // Some schedules print "$" once in the column header and bare "40,600" in the
 // cells, so a bare figure counts when it appears whole, with its thousands comma.
 function inSource(source, value) {
+  // A few schedules print cents ("5831.50"); match the figure as printed.
+  if (!Number.isInteger(value)) return new RegExp(`(^|[^0-9,.])\\$?\\s?${value.toFixed(2).replace('.', '\\.')}(?![0-9])`).test(source.text.replace(/(\d),(\d{3})/g, '$1$2'));
   if (source.digits.includes(`$${value}`) || source.digits.includes(`$${value}00`)) return true;
   const formatted = value.toLocaleString('en-AU');
   if (new RegExp(`(^|[^0-9,.])${formatted.replace(/,/g, ',\\s?')}(?![0-9])`).test(source.text)) return true;
@@ -62,6 +65,17 @@ for (const [id, entry] of Object.entries(ledger.schools)) {
     if (!Array.isArray(past.by_year) || past.by_year.length === 0) fail(id, 'history entry without by_year');
     if (!past.source_url) fail(id, 'history entry without source_url');
     if (!/^\d{4}-\d{2}-\d{2}$/.test(past.superseded ?? '')) fail(id, 'history entry without superseded date');
+  }
+  if (entry.status === 'fee_free') {
+    const free = entry.free ?? {};
+    if (!free.statement || !free.source_url) fail(id, 'fee_free without statement and source_url');
+    else {
+      const source = sourceDigits(id);
+      const squash = text => text.replace(/[\u2018\u2019]/g, "'").replace(/\s+/g, ' ').toLowerCase();
+      if (source === null) untraceable += 1;
+      else if (squash(source.text).includes(squash(free.statement))) freeTraced += 1;
+      else fail(id, 'fee_free statement not in the source text');
+    }
   }
   if (entry.status !== 'found') {
     if (entry.fees?.by_year) fail(id, `status ${entry.status} but carries figures`);
@@ -110,7 +124,7 @@ for (const [id, entry] of Object.entries(ledger.schools)) {
 }
 console.log(`${Object.keys(ledger.schools).length} schools attempted`);
 for (const [sector, counts] of Object.entries(bySector)) console.log(`  ${sector}:`, counts);
-console.log(`amounts traced to source text: ${traced}; re-checked by eye where OCR failed: ${rechecked}; without raw text to check: ${untraceable}`);
+console.log(`amounts traced to source text: ${traced}; re-checked by eye where OCR failed: ${rechecked}; fee-free statements traced: ${freeTraced}; without raw text to check: ${untraceable}`);
 
 if (errors.length > 0) {
   console.error(`\n${errors.length} problems:\n${errors.slice(0, 40).join('\n')}`);

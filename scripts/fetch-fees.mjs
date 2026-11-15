@@ -58,6 +58,10 @@ async function crawl(school) {
   fs.rmSync(dir, { recursive: true, force: true });
   fs.mkdirSync(dir, { recursive: true });
   const home = school.school_url.replace(/^http:/, 'https:');
+  // Sites the crawl may follow links within. A school that moved domain
+  // redirects its listed home to the new one (tsc.nsw.edu.au to scots.college),
+  // and judging links by the listed host alone dropped every link on 32 NSW sites.
+  const sites = [home];
   const queue = [{ url: home, text: 'home', depth: 0 }];
   // Fee and scholarship links jump the queue: the page budget once ran out on
   // menus and news before reaching a fee schedule PDF linked from the fees page.
@@ -80,15 +84,25 @@ async function crawl(school) {
         queue.unshift({ url: school.school_url, text: 'home (as listed)', depth: 0 });
         continue;
       }
+      const bare = url.replace('://www.', '://');
+      if (depth === 0 && bare !== url && !tried.has(bare)) {
+        queue.unshift({ url: bare, text: 'home (without www)', depth: 0 });
+        continue;
+      }
       if (depth === 0) homeStatus = 'unreachable';
       continue;
     }
     if (depth === 0) homeStatus = page.status;
+    if (depth === 0 && page.status < 400 && !sameSite(page.url, home)) sites.push(page.url);
     if (page.status >= 400) {
       log.push({ url, error: `HTTP ${page.status}` });
       // ACARA lists some sites by a deep path that no longer exists; the root may.
       const root = `${new URL(url).origin}/`;
       if (depth === 0 && page.status === 404 && url !== root && !tried.has(root)) queue.unshift({ url: root, text: 'home (site root)', depth: 0 });
+      // Cloudflare answers 525 when the www name has no certificate behind it;
+      // the bare domain often serves the site (hills.adventist.edu.au).
+      const bare = url.replace('://www.', '://');
+      if (depth === 0 && page.status >= 500 && bare !== url && !tried.has(bare)) queue.unshift({ url: bare, text: 'home (without www)', depth: 0 });
       continue;
     }
     if (saved.has(page.url)) continue;
@@ -102,7 +116,7 @@ async function crawl(school) {
       const links = htmlLinks(page.url, page.body)
         .map(link => ({ ...link, href: driveDownload(link.href) ?? link.href }))
         .filter(link => RELEVANT.test(link.href) || RELEVANT.test(link.text))
-        .filter(link => sameSite(link.href, home) || /\.pdf($|\?)/i.test(link.href) || (isDrive(link.href) && FEE.test(link.text)))
+        .filter(link => sites.some(site => sameSite(link.href, site)) || /\.pdf($|\?)/i.test(link.href) || (isDrive(link.href) && FEE.test(link.text)))
         .sort((a, b) => Number(!FEE.test(a.href + a.text)) - Number(!FEE.test(b.href + b.text)));
       for (const link of links) {
         if (tried.has(link.href)) continue;

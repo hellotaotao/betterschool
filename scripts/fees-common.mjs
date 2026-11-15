@@ -23,6 +23,9 @@ const CANONICAL_PATH = path.resolve('public/data/schools.canonical.json');
 export const STATUSES = {
   found: 'fee figures read from a source the school or its system publishes',
   fetched: 'pages fetched, figures not yet read',
+  // "Free" is an answer, not an absence: the school's own words say so, and
+  // free.statement is that sentence, traced to the fetched page like a figure.
+  fee_free: 'the school states it charges no tuition fees; free.statement quotes it',
   not_published: 'the website says fees are given on request, or shows enrolment charges only',
   not_found: 'website crawled, no fee figures on any page reached',
   not_extracted: 'figures exist but could not be read (script-rendered table, image)',
@@ -135,6 +138,7 @@ export function applyReading(entry, reading) {
   delete next.note;
   if (incoming) next.fees = incoming;
   if (rest.note) next.note = rest.note;
+  if (next.status !== 'fee_free') delete next.free;
   if (history.length > 0) next.fees_history = history;
   return next;
 }
