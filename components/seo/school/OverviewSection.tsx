@@ -101,6 +101,9 @@ function FeesPanel({ t, locale, school, record }: { t: Copy; locale: Locale; sch
         {/* The ledger's notes are written in English; a Chinese page keeps the localised line only. */}
         {locale === 'en' && fees.other_compulsory ? ` ${fees.other_compulsory}.` : ''}
       </p>
+      {fees.discount ? (
+        <p className="mt-1 text-[13px] text-ink-2">{locale === 'en' ? fees.discount : t.feesDiscount}</p>
+      ) : null}
       {/* nofollow: the source is cited for the reader, not endorsed for ranking. */}
       <a href={fees.source_url} target="_blank" rel="nofollow noopener noreferrer" className="bs-link mt-1 inline-block text-[13px]">
         {fees.source === 'school_website' ? t.feesSourceSchool : t.feesSourceSystem} →

@@ -89,6 +89,7 @@ for (const [id, entry] of Object.entries(ledger.schools)) {
   } else if (!Number.isInteger(fees.fee_year) || fees.fee_year < 2025 || fees.fee_year > 2028) fail(id, `fee_year ${fees.fee_year}`);
   if (!SOURCES.has(fees.source)) fail(id, `source ${fees.source}`);
   if (!fees.source_url) fail(id, 'no source_url');
+  if (fees.discount != null && (typeof fees.discount !== 'string' || fees.discount.length < 20)) fail(id, 'discount must be a sentence');
   if (!Array.isArray(fees.by_year) || fees.by_year.length === 0) fail(id, 'found without by_year');
   const source = sourceDigits(id);
   const amounts = [

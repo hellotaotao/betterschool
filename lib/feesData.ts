@@ -22,6 +22,11 @@ export interface PublishedFees {
   basis: string;
   by_year: FeeRow[];
   other_compulsory?: string | null;
+  /**
+   * A time-limited discount the school applies to everyone eligible. The
+   * figures stay at the published full price; this line says what comes off.
+   */
+  discount?: string;
   source: 'school_website' | 'scs_endpoint' | 'diocese_schedule';
   source_url: string;
 }

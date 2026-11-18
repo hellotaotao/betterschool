@@ -3677,7 +3677,8 @@
     "basis": "first child, annual, diocesan published total (tuition, building levy, school charges)",
     "sibling": "diocesan tuition reduced for 2nd and 3rd child, free from the 4th",
     "source": "diocese_schedule",
-    "source_url": "https://www.olnlawson.catholic.edu.au/enrolment/school-fees"
+    "source_url": "https://www.olnlawson.catholic.edu.au/enrolment/school-fees",
+    "discount": "2026-27 Catholic Schools Parramatta Diocese fee discount: the Diocesan Tuition Fee and Building Levy are halved for eligible new and existing families; the school fee page lists the amounts payable after the discount."
    }
   },
   "43181": {
@@ -4635,7 +4636,8 @@
     "basis": "first child, annual, diocesan published total (tuition, building levy, school charges)",
     "sibling": "diocesan tuition reduced for 2nd and 3rd child, free from the 4th",
     "source": "diocese_schedule",
-    "source_url": "https://www.staspringwood.catholic.edu.au/enrolment/school-fees"
+    "source_url": "https://www.staspringwood.catholic.edu.au/enrolment/school-fees",
+    "discount": "2026-27 Catholic Schools Parramatta Diocese fee discount: the Diocesan Tuition Fee and Building Levy are halved for eligible new and existing families; the school fee page lists the amounts payable after the discount."
    }
   },
   "43200": {

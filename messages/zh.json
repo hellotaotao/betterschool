@@ -328,6 +328,7 @@
       "feesFreeNote": "公立学校。仍可能有自愿性质的捐款。",
       "feesFreeStated": "学校在官网上声明不收学费。",
       "feesSourceSchoolPage": "来源：学校官网",
+      "feesDiscount": "学校对上述学费另有折扣，实付金额以学校学费页为准。",
       "feesNotPublished": "学校没有在官网公开学费。",
       "feesCampusOf": "本校区隶属 {school}，以下为该校的学费。",
       "feesNotCollected": "我们还没有收录这所学校的学费。",
