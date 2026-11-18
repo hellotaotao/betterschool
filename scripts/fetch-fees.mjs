@@ -153,9 +153,10 @@ async function main() {
       const school = work.shift();
       const id = school.acara_sml_id;
       const previous = ledger.schools[id] ?? {};
-      // ACARA leaves some websites blank; one found and verified by hand is kept
-      // in the ledger as website_source "lookup" and stands in for it.
-      const website = school.school_url ?? (previous.website_source === 'lookup' ? previous.website : null);
+      // ACARA leaves some websites blank and lists others that have moved (the
+      // Wilcannia-Forbes schools now live under <town>.wf.catholic.edu.au); one
+      // found and verified by hand is kept as website_source "lookup" and wins.
+      const website = previous.website_source === 'lookup' ? previous.website : school.school_url ?? null;
       const base = { school_name: school.school_name, website };
       const parent = parentSchoolId({ ...school, school_url: website }, byId);
       if (parent && byId.has(parent)) {
