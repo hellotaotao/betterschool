@@ -238,14 +238,26 @@
   "40374": {
    "school_name": "Holy Spirit Infants School",
    "website": "http://www.abermain.catholic.edu.au",
-   "status": "not_found",
+   "status": "found",
    "checked": "2026-11-14",
    "fee_pages": [],
    "crawl": {
     "pages": 10,
     "errors": 1
    },
-   "note": "No fee page among the pages fetched."
+   "fees": {
+    "fee_year": 2026,
+    "basis": "first child (full rate), annual diocesan tuition only (Catholic Schools Maitland-Newcastle sets one rate for its schools; the school's own fee link points to the diocesan fee page); the school resource and service fee per child and the family building levy are extra",
+    "by_year": [
+     {
+      "years": "K-2",
+      "tuition": 1768
+     }
+    ],
+    "other_compulsory": "Diocesan Family School Building Levy $1,964 per family; school resource and service fee set by each school",
+    "source": "diocese_schedule",
+    "source_url": "https://www.mn.catholic.edu.au/enrolment/school-fees/"
+   }
   },
   "40375": {
    "school_name": "St Joseph's Catholic Primary School Como - Oyster Bay",
@@ -619,13 +631,29 @@
   "40618": {
    "school_name": "All Saints College",
    "website": "http://www.maitlandasc.catholic.edu.au/",
-   "status": "not_found",
+   "status": "found",
    "checked": "2026-11-12",
    "crawl": {
     "pages": 4,
     "errors": 0
    },
-   "note": "No fee page among the pages fetched."
+   "fees": {
+    "fee_year": 2026,
+    "basis": "first child (full rate), annual diocesan tuition only (Catholic Schools Maitland-Newcastle sets one rate for its schools; the school is listed among the diocese's schools); the school resource and service fee per child and the family building levy are extra",
+    "by_year": [
+     {
+      "years": "7-10",
+      "tuition": 2353
+     },
+     {
+      "years": "11-12",
+      "tuition": 3488
+     }
+    ],
+    "other_compulsory": "Diocesan Family School Building Levy $1,964 per family; school resource and service fee set by each school",
+    "source": "diocese_schedule",
+    "source_url": "https://www.mn.catholic.edu.au/enrolment/school-fees/"
+   }
   },
   "40621": {
    "school_name": "St Francis Xavier College",
@@ -7451,37 +7479,74 @@
   "43274": {
    "school_name": "St Joseph's Primary School",
    "website": "http://bulahdelah.catholic.edu.au",
-   "status": "not_found",
+   "status": "found",
    "checked": "2026-11-14",
    "fee_pages": [],
    "crawl": {
     "pages": 3,
     "errors": 1
    },
-   "note": "No fee page among the pages fetched."
+   "fees": {
+    "fee_year": 2026,
+    "basis": "first child (full rate), annual diocesan tuition only (Catholic Schools Maitland-Newcastle sets one rate for its schools; the school's own fee link points to the diocesan fee page); the school resource and service fee per child and the family building levy are extra",
+    "by_year": [
+     {
+      "years": "K-6",
+      "tuition": 1768
+     }
+    ],
+    "other_compulsory": "Diocesan Family School Building Levy $1,964 per family; school resource and service fee set by each school",
+    "source": "diocese_schedule",
+    "source_url": "https://www.mn.catholic.edu.au/enrolment/school-fees/"
+   }
   },
   "43275": {
    "school_name": "St Joseph's Primary School",
    "website": "http://denman.catholic.edu.au",
-   "status": "not_found",
+   "status": "found",
    "checked": "2026-11-14",
    "fee_pages": [],
    "crawl": {
     "pages": 3,
     "errors": 0
    },
-   "note": "No fee page among the pages fetched."
+   "fees": {
+    "fee_year": 2026,
+    "basis": "first child (full rate), annual diocesan tuition only (Catholic Schools Maitland-Newcastle sets one rate for its schools; the school's own fee link points to the diocesan fee page); the school resource and service fee per child and the family building levy are extra",
+    "by_year": [
+     {
+      "years": "K-6",
+      "tuition": 1768
+     }
+    ],
+    "other_compulsory": "Diocesan Family School Building Levy $1,964 per family; school resource and service fee set by each school",
+    "source": "diocese_schedule",
+    "source_url": "https://www.mn.catholic.edu.au/enrolment/school-fees/"
+   }
   },
   "43276": {
    "school_name": "St Joseph's Primary School",
    "website": "http://dungog.catholic.edu.au",
-   "status": "unreachable",
+   "status": "found",
    "checked": "2026-11-18",
    "fee_pages": [],
    "crawl": {
     "pages": 0,
     "errors": 2,
     "home_error": "ERR_SSL_SSL/TLS_ALERT_HANDSHAKE_FAILURE"
+   },
+   "fees": {
+    "fee_year": 2026,
+    "basis": "first child (full rate), annual diocesan tuition only (Catholic Schools Maitland-Newcastle sets one rate for its schools; the school is listed among the diocese's schools); the school resource and service fee per child and the family building levy are extra",
+    "by_year": [
+     {
+      "years": "K-6",
+      "tuition": 1768
+     }
+    ],
+    "other_compulsory": "Diocesan Family School Building Levy $1,964 per family; school resource and service fee set by each school",
+    "source": "diocese_schedule",
+    "source_url": "https://www.mn.catholic.edu.au/enrolment/school-fees/"
    }
   },
   "43277": {
@@ -7513,50 +7578,98 @@
   "43278": {
    "school_name": "Holy Spirit Primary School",
    "website": "http://kurri.catholic.edu.au",
-   "status": "not_found",
+   "status": "found",
    "checked": "2026-11-14",
    "fee_pages": [],
    "crawl": {
     "pages": 3,
     "errors": 1
    },
-   "note": "No fee page among the pages fetched."
+   "fees": {
+    "fee_year": 2026,
+    "basis": "first child (full rate), annual diocesan tuition only (Catholic Schools Maitland-Newcastle sets one rate for its schools; the school's own fee link points to the diocesan fee page); the school resource and service fee per child and the family building levy are extra",
+    "by_year": [
+     {
+      "years": "3-6",
+      "tuition": 1768
+     }
+    ],
+    "other_compulsory": "Diocesan Family School Building Levy $1,964 per family; school resource and service fee set by each school",
+    "source": "diocese_schedule",
+    "source_url": "https://www.mn.catholic.edu.au/enrolment/school-fees/"
+   }
   },
   "43279": {
    "school_name": "St John's Primary School",
    "website": "http://lambton.catholic.edu.au",
-   "status": "not_found",
+   "status": "found",
    "checked": "2026-11-14",
    "fee_pages": [],
    "crawl": {
     "pages": 5,
     "errors": 1
    },
-   "note": "No fee page among the pages fetched."
+   "fees": {
+    "fee_year": 2026,
+    "basis": "first child (full rate), annual diocesan tuition only (Catholic Schools Maitland-Newcastle sets one rate for its schools; the school's own fee link points to the diocesan fee page); the school resource and service fee per child and the family building levy are extra",
+    "by_year": [
+     {
+      "years": "K-6",
+      "tuition": 1768
+     }
+    ],
+    "other_compulsory": "Diocesan Family School Building Levy $1,964 per family; school resource and service fee set by each school",
+    "source": "diocese_schedule",
+    "source_url": "https://www.mn.catholic.edu.au/enrolment/school-fees/"
+   }
   },
   "43280": {
    "school_name": "St Columban's Primary School",
    "website": "http://mayfieldsc.catholic.edu.au",
-   "status": "not_extracted",
+   "status": "found",
    "checked": "2026-11-14",
    "fee_pages": [],
    "crawl": {
     "pages": 3,
     "errors": 0
    },
-   "note": "Only the school resource fee ($576 a year) is published; the diocesan tuition is not stated on the school site."
+   "fees": {
+    "fee_year": 2026,
+    "basis": "first child (full rate), annual diocesan tuition only (Catholic Schools Maitland-Newcastle sets one rate for its schools; the school's own fee link points to the diocesan fee page); the school resource and service fee per child and the family building levy are extra",
+    "by_year": [
+     {
+      "years": "K-6",
+      "tuition": 1768
+     }
+    ],
+    "other_compulsory": "Diocesan Family School Building Levy $1,964 per family; school resource fee $576 a year",
+    "source": "diocese_schedule",
+    "source_url": "https://www.mn.catholic.edu.au/enrolment/school-fees/"
+   }
   },
   "43281": {
    "school_name": "St Joseph's Primary School",
    "website": "http://merriwa.catholic.edu.au",
-   "status": "not_found",
+   "status": "found",
    "checked": "2026-11-14",
    "fee_pages": [],
    "crawl": {
     "pages": 3,
     "errors": 0
    },
-   "note": "No fee page among the pages fetched."
+   "fees": {
+    "fee_year": 2026,
+    "basis": "first child (full rate), annual diocesan tuition only (Catholic Schools Maitland-Newcastle sets one rate for its schools; the school's own fee link points to the diocesan fee page); the school resource and service fee per child and the family building levy are extra",
+    "by_year": [
+     {
+      "years": "K-6",
+      "tuition": 1768
+     }
+    ],
+    "other_compulsory": "Diocesan Family School Building Levy $1,964 per family; school resource and service fee set by each school",
+    "source": "diocese_schedule",
+    "source_url": "https://www.mn.catholic.edu.au/enrolment/school-fees/"
+   }
   },
   "43282": {
    "school_name": "St Therese's Primary School",
@@ -7587,19 +7700,31 @@
   "43283": {
    "school_name": "St Peter's Primary School",
    "website": "http://stockton.catholic.edu.au",
-   "status": "not_found",
+   "status": "found",
    "checked": "2026-11-14",
    "fee_pages": [],
    "crawl": {
     "pages": 5,
     "errors": 0
    },
-   "note": "No fee page among the pages fetched."
+   "fees": {
+    "fee_year": 2026,
+    "basis": "first child (full rate), annual diocesan tuition only (Catholic Schools Maitland-Newcastle sets one rate for its schools; the school's own fee link points to the diocesan fee page); the school resource and service fee per child and the family building levy are extra",
+    "by_year": [
+     {
+      "years": "K-6",
+      "tuition": 1768
+     }
+    ],
+    "other_compulsory": "Diocesan Family School Building Levy $1,964 per family; school resource and service fee set by each school",
+    "source": "diocese_schedule",
+    "source_url": "https://www.mn.catholic.edu.au/enrolment/school-fees/"
+   }
   },
   "43284": {
    "school_name": "St Pius X Primary School",
    "website": "http://windale.catholic.edu.au",
-   "status": "not_extracted",
+   "status": "fee_free",
    "checked": "2026-11-14",
    "fee_pages": [
     "https://www.windale.catholic.edu.au/enrolment/school-fees/"
@@ -7608,7 +7733,10 @@
     "pages": 8,
     "errors": 0
    },
-   "note": "Fees are published per term only, without the number of terms."
+   "free": {
+    "statement": "Tuition Fee: $0 School Building Levy: $0 Resource Fee: $100 per term",
+    "source_url": "https://www.windale.catholic.edu.au/enrolment/school-fees/"
+   }
   },
   "43285": {
    "school_name": "St Joseph's Primary School",
@@ -7639,26 +7767,50 @@
   "43286": {
    "school_name": "St Joseph's Primary School",
    "website": "https://wingham.catholic.edu.au",
-   "status": "not_found",
+   "status": "found",
    "checked": "2026-11-14",
    "fee_pages": [],
    "crawl": {
     "pages": 3,
     "errors": 2
    },
-   "note": "No fee page among the pages fetched."
+   "fees": {
+    "fee_year": 2026,
+    "basis": "first child (full rate), annual diocesan tuition only (Catholic Schools Maitland-Newcastle sets one rate for its schools; the school's own fee link points to the diocesan fee page); the school resource and service fee per child and the family building levy are extra",
+    "by_year": [
+     {
+      "years": "K-6",
+      "tuition": 1768
+     }
+    ],
+    "other_compulsory": "Diocesan Family School Building Levy $1,964 per family; school resource and service fee set by each school",
+    "source": "diocese_schedule",
+    "source_url": "https://www.mn.catholic.edu.au/enrolment/school-fees/"
+   }
   },
   "43287": {
    "school_name": "St Michael's Primary School",
    "website": "http://nelsonbay.catholic.edu.au",
-   "status": "not_found",
+   "status": "found",
    "checked": "2026-11-14",
    "fee_pages": [],
    "crawl": {
     "pages": 5,
     "errors": 0
    },
-   "note": "No fee page among the pages fetched."
+   "fees": {
+    "fee_year": 2026,
+    "basis": "first child (full rate), annual diocesan tuition only (Catholic Schools Maitland-Newcastle sets one rate for its schools; the school's own fee link points to the diocesan fee page); the school resource and service fee per child and the family building levy are extra",
+    "by_year": [
+     {
+      "years": "K-6",
+      "tuition": 1768
+     }
+    ],
+    "other_compulsory": "Diocesan Family School Building Levy $1,964 per family; school resource and service fee set by each school",
+    "source": "diocese_schedule",
+    "source_url": "https://www.mn.catholic.edu.au/enrolment/school-fees/"
+   }
   },
   "43288": {
    "school_name": "St Columba's Primary School",
@@ -7689,26 +7841,50 @@
   "43289": {
    "school_name": "St Patrick's Primary School",
    "website": "http://cessnock.catholic.edu.au",
-   "status": "not_found",
+   "status": "found",
    "checked": "2026-11-14",
    "fee_pages": [],
    "crawl": {
     "pages": 5,
     "errors": 0
    },
-   "note": "No fee page among the pages fetched."
+   "fees": {
+    "fee_year": 2026,
+    "basis": "first child (full rate), annual diocesan tuition only (Catholic Schools Maitland-Newcastle sets one rate for its schools; the school's own fee link points to the diocesan fee page); the school resource and service fee per child and the family building levy are extra",
+    "by_year": [
+     {
+      "years": "K-6",
+      "tuition": 1768
+     }
+    ],
+    "other_compulsory": "Diocesan Family School Building Levy $1,964 per family; school resource and service fee set by each school",
+    "source": "diocese_schedule",
+    "source_url": "https://www.mn.catholic.edu.au/enrolment/school-fees/"
+   }
   },
   "43290": {
    "school_name": "St Benedict's Primary School",
    "website": "http://edgeworth.catholic.edu.au/",
-   "status": "not_found",
+   "status": "found",
    "checked": "2026-11-14",
    "fee_pages": [],
    "crawl": {
     "pages": 4,
     "errors": 1
    },
-   "note": "No fee page among the pages fetched."
+   "fees": {
+    "fee_year": 2026,
+    "basis": "first child (full rate), annual diocesan tuition only (Catholic Schools Maitland-Newcastle sets one rate for its schools; the school's own fee link points to the diocesan fee page); the school resource and service fee per child and the family building levy are extra",
+    "by_year": [
+     {
+      "years": "K-6",
+      "tuition": 1768
+     }
+    ],
+    "other_compulsory": "Diocesan Family School Building Levy $1,964 per family; school resource and service fee set by each school",
+    "source": "diocese_schedule",
+    "source_url": "https://www.mn.catholic.edu.au/enrolment/school-fees/"
+   }
   },
   "43291": {
    "school_name": "Holy Name Primary School",
@@ -7739,14 +7915,26 @@
   "43292": {
    "school_name": "St Paul's Primary School",
    "website": "http://gatesheadsp.catholic.edu.au",
-   "status": "not_found",
+   "status": "found",
    "checked": "2026-11-14",
    "fee_pages": [],
    "crawl": {
     "pages": 6,
     "errors": 2
    },
-   "note": "No fee page among the pages fetched."
+   "fees": {
+    "fee_year": 2026,
+    "basis": "first child (full rate), annual diocesan tuition only (Catholic Schools Maitland-Newcastle sets one rate for its schools; the school's own fee link points to the diocesan fee page); the school resource and service fee per child and the family building levy are extra",
+    "by_year": [
+     {
+      "years": "K-6",
+      "tuition": 1768
+     }
+    ],
+    "other_compulsory": "Diocesan Family School Building Levy $1,964 per family; school resource and service fee set by each school",
+    "source": "diocese_schedule",
+    "source_url": "https://www.mn.catholic.edu.au/enrolment/school-fees/"
+   }
   },
   "43293": {
    "school_name": "Holy Cross Primary School",
@@ -7777,14 +7965,26 @@
   "43294": {
    "school_name": "St John the Baptist Primary School",
    "website": "http://maitlandsj.catholic.edu.au",
-   "status": "not_found",
+   "status": "found",
    "checked": "2026-11-14",
    "fee_pages": [],
    "crawl": {
     "pages": 3,
     "errors": 1
    },
-   "note": "No fee page among the pages fetched."
+   "fees": {
+    "fee_year": 2026,
+    "basis": "first child (full rate), annual diocesan tuition only (Catholic Schools Maitland-Newcastle sets one rate for its schools; the school's own fee link points to the diocesan fee page); the school resource and service fee per child and the family building levy are extra",
+    "by_year": [
+     {
+      "years": "K-6",
+      "tuition": 1768
+     }
+    ],
+    "other_compulsory": "Diocesan Family School Building Levy $1,964 per family; school resource and service fee set by each school",
+    "source": "diocese_schedule",
+    "source_url": "https://www.mn.catholic.edu.au/enrolment/school-fees/"
+   }
   },
   "43295": {
    "school_name": "St John Vianney Primary School",
@@ -7815,31 +8015,55 @@
   "43296": {
    "school_name": "St James' Primary School",
    "website": "http://muswellbrook.catholic.edu.au",
-   "status": "not_found",
+   "status": "found",
    "checked": "2026-11-14",
    "fee_pages": [],
    "crawl": {
     "pages": 3,
     "errors": 0
    },
-   "note": "No fee page among the pages fetched."
+   "fees": {
+    "fee_year": 2026,
+    "basis": "first child (full rate), annual diocesan tuition only (Catholic Schools Maitland-Newcastle sets one rate for its schools; the school's own fee link points to the diocesan fee page); the school resource and service fee per child and the family building levy are extra",
+    "by_year": [
+     {
+      "years": "K-6",
+      "tuition": 1768
+     }
+    ],
+    "other_compulsory": "Diocesan Family School Building Levy $1,964 per family; school resource and service fee set by each school",
+    "source": "diocese_schedule",
+    "source_url": "https://www.mn.catholic.edu.au/enrolment/school-fees/"
+   }
   },
   "43297": {
    "school_name": "St Mary's Primary School",
    "website": "http://scone.catholic.edu.au",
-   "status": "not_found",
+   "status": "found",
    "checked": "2026-11-14",
    "fee_pages": [],
    "crawl": {
     "pages": 5,
     "errors": 0
    },
-   "note": "No fee page among the pages fetched."
+   "fees": {
+    "fee_year": 2026,
+    "basis": "first child (full rate), annual diocesan tuition only (Catholic Schools Maitland-Newcastle sets one rate for its schools; the school's own fee link points to the diocesan fee page); the school resource and service fee per child and the family building levy are extra",
+    "by_year": [
+     {
+      "years": "K-6",
+      "tuition": 1768
+     }
+    ],
+    "other_compulsory": "Diocesan Family School Building Levy $1,964 per family; school resource and service fee set by each school",
+    "source": "diocese_schedule",
+    "source_url": "https://www.mn.catholic.edu.au/enrolment/school-fees/"
+   }
   },
   "43298": {
    "school_name": "Our Lady of Victories Primary School",
    "website": "http://shortland.catholic.edu.au",
-   "status": "not_found",
+   "status": "found",
    "checked": "2026-11-14",
    "fee_pages": [
     "https://shortland.catholic.edu.au/edm/feed/129",
@@ -7850,30 +8074,74 @@
     "pages": 6,
     "errors": 0
    },
-   "note": "No fee page among the pages fetched."
+   "fees": {
+    "fee_year": 2026,
+    "basis": "first child (full rate), annual diocesan tuition only (Catholic Schools Maitland-Newcastle sets one rate for its schools; the school's own fee link points to the diocesan fee page); the school resource and service fee per child and the family building levy are extra",
+    "by_year": [
+     {
+      "years": "K-6",
+      "tuition": 1768
+     }
+    ],
+    "other_compulsory": "Diocesan Family School Building Levy $1,964 per family; school resource and service fee set by each school",
+    "source": "diocese_schedule",
+    "source_url": "https://www.mn.catholic.edu.au/enrolment/school-fees/"
+   }
   },
   "43299": {
    "school_name": "St Catherine's Catholic College",
    "website": "http://singleton.catholic.edu.au",
-   "status": "not_found",
+   "status": "found",
    "checked": "2026-11-12",
    "crawl": {
     "pages": 7,
     "errors": 2
    },
-   "note": "No fee page among the pages fetched."
+   "fees": {
+    "fee_year": 2026,
+    "basis": "first child (full rate), annual diocesan tuition only (Catholic Schools Maitland-Newcastle sets one rate for its schools; the school's own fee link points to the diocesan fee page); the school resource and service fee per child and the family building levy are extra",
+    "by_year": [
+     {
+      "years": "K-6",
+      "tuition": 1768
+     },
+     {
+      "years": "7-10",
+      "tuition": 2353
+     },
+     {
+      "years": "11-12",
+      "tuition": 3488
+     }
+    ],
+    "other_compulsory": "Diocesan Family School Building Levy $1,964 per family; school resource and service fee set by each school",
+    "source": "diocese_schedule",
+    "source_url": "https://www.mn.catholic.edu.au/enrolment/school-fees/"
+   }
   },
   "43300": {
    "school_name": "St Patrick's Primary School",
    "website": "http://www.swansea.catholic.edu.au",
-   "status": "not_found",
+   "status": "found",
    "checked": "2026-11-14",
    "fee_pages": [],
    "crawl": {
     "pages": 7,
     "errors": 0
    },
-   "note": "No fee page among the pages fetched."
+   "fees": {
+    "fee_year": 2026,
+    "basis": "first child (full rate), annual diocesan tuition only (Catholic Schools Maitland-Newcastle sets one rate for its schools; the school's own fee link points to the diocesan fee page); the school resource and service fee per child and the family building levy are extra",
+    "by_year": [
+     {
+      "years": "K-6",
+      "tuition": 1768
+     }
+    ],
+    "other_compulsory": "Diocesan Family School Building Levy $1,964 per family; school resource and service fee set by each school",
+    "source": "diocese_schedule",
+    "source_url": "https://www.mn.catholic.edu.au/enrolment/school-fees/"
+   }
   },
   "43301": {
    "school_name": "Our Lady of Lourdes Primary School",
@@ -7904,38 +8172,74 @@
   "43302": {
    "school_name": "Corpus Christi Primary School",
    "website": "http://waratah.catholic.edu.au",
-   "status": "not_found",
+   "status": "found",
    "checked": "2026-11-14",
    "fee_pages": [],
    "crawl": {
     "pages": 5,
     "errors": 1
    },
-   "note": "No fee page among the pages fetched."
+   "fees": {
+    "fee_year": 2026,
+    "basis": "first child (full rate), annual diocesan tuition only (Catholic Schools Maitland-Newcastle sets one rate for its schools; the school's own fee link points to the diocesan fee page); the school resource and service fee per child and the family building levy are extra",
+    "by_year": [
+     {
+      "years": "K-6",
+      "tuition": 1768
+     }
+    ],
+    "other_compulsory": "Diocesan Family School Building Levy $1,964 per family; school resource and service fee set by each school",
+    "source": "diocese_schedule",
+    "source_url": "https://www.mn.catholic.edu.au/enrolment/school-fees/"
+   }
   },
   "43303": {
    "school_name": "St Francis Xavier's Primary School",
    "website": "http://www.belmont.catholic.edu.au",
-   "status": "not_found",
+   "status": "found",
    "checked": "2026-11-14",
    "fee_pages": [],
    "crawl": {
     "pages": 3,
     "errors": 0
    },
-   "note": "No fee page among the pages fetched."
+   "fees": {
+    "fee_year": 2026,
+    "basis": "first child (full rate), annual diocesan tuition only (Catholic Schools Maitland-Newcastle sets one rate for its schools; the school's own fee link points to the diocesan fee page); the school resource and service fee per child and the family building levy are extra",
+    "by_year": [
+     {
+      "years": "K-6",
+      "tuition": 1768
+     }
+    ],
+    "other_compulsory": "Diocesan Family School Building Levy $1,964 per family; school resource and service fee set by each school",
+    "source": "diocese_schedule",
+    "source_url": "https://www.mn.catholic.edu.au/enrolment/school-fees/"
+   }
   },
   "43304": {
    "school_name": "St Kevin's Primary School",
    "website": "http://cardiff.catholic.edu.au",
-   "status": "not_found",
+   "status": "found",
    "checked": "2026-11-14",
    "fee_pages": [],
    "crawl": {
     "pages": 4,
     "errors": 0
    },
-   "note": "No fee page among the pages fetched."
+   "fees": {
+    "fee_year": 2026,
+    "basis": "first child (full rate), annual diocesan tuition only (Catholic Schools Maitland-Newcastle sets one rate for its schools; the school's own fee link points to the diocesan fee page); the school resource and service fee per child and the family building levy are extra",
+    "by_year": [
+     {
+      "years": "K-6",
+      "tuition": 1768
+     }
+    ],
+    "other_compulsory": "Diocesan Family School Building Levy $1,964 per family; school resource and service fee set by each school",
+    "source": "diocese_schedule",
+    "source_url": "https://www.mn.catholic.edu.au/enrolment/school-fees/"
+   }
   },
   "43305": {
    "school_name": "St Joseph's Primary School",
@@ -7966,50 +8270,98 @@
   "43306": {
    "school_name": "St Joseph's Primary School",
    "website": "http://www.eastmaitland.catholic.edu.au/",
-   "status": "not_found",
+   "status": "found",
    "checked": "2026-11-14",
    "fee_pages": [],
    "crawl": {
     "pages": 5,
     "errors": 1
    },
-   "note": "No fee page among the pages fetched."
+   "fees": {
+    "fee_year": 2026,
+    "basis": "first child (full rate), annual diocesan tuition only (Catholic Schools Maitland-Newcastle sets one rate for its schools; the school's own fee link points to the diocesan fee page); the school resource and service fee per child and the family building levy are extra",
+    "by_year": [
+     {
+      "years": "K-6",
+      "tuition": 1768
+     }
+    ],
+    "other_compulsory": "Diocesan Family School Building Levy $1,964 per family; school resource and service fee set by each school",
+    "source": "diocese_schedule",
+    "source_url": "https://www.mn.catholic.edu.au/enrolment/school-fees/"
+   }
   },
   "43307": {
    "school_name": "St James' Primary School",
    "website": "http://kotarasouth.catholic.edu.au",
-   "status": "not_found",
+   "status": "found",
    "checked": "2026-11-14",
    "fee_pages": [],
    "crawl": {
     "pages": 3,
     "errors": 1
    },
-   "note": "No fee page among the pages fetched."
+   "fees": {
+    "fee_year": 2026,
+    "basis": "first child (full rate), annual diocesan tuition only (Catholic Schools Maitland-Newcastle sets one rate for its schools; the school's own fee link points to the diocesan fee page); the school resource and service fee per child and the family building levy are extra",
+    "by_year": [
+     {
+      "years": "K-6",
+      "tuition": 1768
+     }
+    ],
+    "other_compulsory": "Diocesan Family School Building Levy $1,964 per family; school resource and service fee set by each school",
+    "source": "diocese_schedule",
+    "source_url": "https://www.mn.catholic.edu.au/enrolment/school-fees/"
+   }
   },
   "43308": {
    "school_name": "St Joseph's Primary School",
    "website": "http://kilabenbay.catholic.edu.au",
-   "status": "not_found",
+   "status": "found",
    "checked": "2026-11-14",
    "fee_pages": [],
    "crawl": {
     "pages": 3,
     "errors": 1
    },
-   "note": "No fee page among the pages fetched."
+   "fees": {
+    "fee_year": 2026,
+    "basis": "first child (full rate), annual diocesan tuition only (Catholic Schools Maitland-Newcastle sets one rate for its schools; the school's own fee link points to the diocesan fee page); the school resource and service fee per child and the family building levy are extra",
+    "by_year": [
+     {
+      "years": "K-6",
+      "tuition": 1768
+     }
+    ],
+    "other_compulsory": "Diocesan Family School Building Levy $1,964 per family; school resource and service fee set by each school",
+    "source": "diocese_schedule",
+    "source_url": "https://www.mn.catholic.edu.au/enrolment/school-fees/"
+   }
   },
   "43309": {
    "school_name": "St Patrick's Primary School",
    "website": "http://lochinvarsp.catholic.edu.au",
-   "status": "not_found",
+   "status": "found",
    "checked": "2026-11-14",
    "fee_pages": [],
    "crawl": {
     "pages": 3,
     "errors": 1
    },
-   "note": "No fee page among the pages fetched."
+   "fees": {
+    "fee_year": 2026,
+    "basis": "first child (full rate), annual diocesan tuition only (Catholic Schools Maitland-Newcastle sets one rate for its schools; the school's own fee link points to the diocesan fee page); the school resource and service fee per child and the family building levy are extra",
+    "by_year": [
+     {
+      "years": "K-6",
+      "tuition": 1768
+     }
+    ],
+    "other_compulsory": "Diocesan Family School Building Levy $1,964 per family; school resource and service fee set by each school",
+    "source": "diocese_schedule",
+    "source_url": "https://www.mn.catholic.edu.au/enrolment/school-fees/"
+   }
   },
   "43310": {
    "school_name": "St Dominic's Catholic College",
@@ -8052,50 +8404,98 @@
   "43312": {
    "school_name": "Holy Family Primary School",
    "website": "http://merewetherbeach.catholic.edu.au",
-   "status": "not_found",
+   "status": "found",
    "checked": "2026-11-14",
    "fee_pages": [],
    "crawl": {
     "pages": 5,
     "errors": 0
    },
-   "note": "No fee page among the pages fetched."
+   "fees": {
+    "fee_year": 2026,
+    "basis": "first child (full rate), annual diocesan tuition only (Catholic Schools Maitland-Newcastle sets one rate for its schools; the school's own fee link points to the diocesan fee page); the school resource and service fee per child and the family building levy are extra",
+    "by_year": [
+     {
+      "years": "K-6",
+      "tuition": 1768
+     }
+    ],
+    "other_compulsory": "Diocesan Family School Building Levy $1,964 per family; school resource and service fee set by each school",
+    "source": "diocese_schedule",
+    "source_url": "https://www.mn.catholic.edu.au/enrolment/school-fees/"
+   }
   },
   "43313": {
    "school_name": "St Brigid's Primary School",
    "website": "http://raymondterrace.catholic.edu.au",
-   "status": "not_found",
+   "status": "found",
    "checked": "2026-11-14",
    "fee_pages": [],
    "crawl": {
     "pages": 3,
     "errors": 1
    },
-   "note": "No fee page among the pages fetched."
+   "fees": {
+    "fee_year": 2026,
+    "basis": "first child (full rate), annual diocesan tuition only (Catholic Schools Maitland-Newcastle sets one rate for its schools; the school's own fee link points to the diocesan fee page); the school resource and service fee per child and the family building levy are extra",
+    "by_year": [
+     {
+      "years": "K-6",
+      "tuition": 1768
+     }
+    ],
+    "other_compulsory": "Diocesan Family School Building Levy $1,964 per family; school resource and service fee set by each school",
+    "source": "diocese_schedule",
+    "source_url": "https://www.mn.catholic.edu.au/enrolment/school-fees/"
+   }
   },
   "43314": {
    "school_name": "St Paul's Primary School",
    "website": "http://rutherford.catholic.edu.au/",
-   "status": "not_found",
+   "status": "found",
    "checked": "2026-11-14",
    "fee_pages": [],
    "crawl": {
     "pages": 5,
     "errors": 0
    },
-   "note": "No fee page among the pages fetched."
+   "fees": {
+    "fee_year": 2026,
+    "basis": "first child (full rate), annual diocesan tuition only (Catholic Schools Maitland-Newcastle sets one rate for its schools; the school's own fee link points to the diocesan fee page); the school resource and service fee per child and the family building levy are extra",
+    "by_year": [
+     {
+      "years": "K-6",
+      "tuition": 1768
+     }
+    ],
+    "other_compulsory": "Diocesan Family School Building Levy $1,964 per family; school resource and service fee set by each school",
+    "source": "diocese_schedule",
+    "source_url": "https://www.mn.catholic.edu.au/enrolment/school-fees/"
+   }
   },
   "43315": {
    "school_name": "St Patrick's Primary School",
    "website": "http://wallsend.catholic.edu.au",
-   "status": "not_found",
+   "status": "found",
    "checked": "2026-11-14",
    "fee_pages": [],
    "crawl": {
     "pages": 3,
     "errors": 1
    },
-   "note": "No fee page among the pages fetched."
+   "fees": {
+    "fee_year": 2026,
+    "basis": "first child (full rate), annual diocesan tuition only (Catholic Schools Maitland-Newcastle sets one rate for its schools; the school's own fee link points to the diocesan fee page); the school resource and service fee per child and the family building levy are extra",
+    "by_year": [
+     {
+      "years": "K-6",
+      "tuition": 1768
+     }
+    ],
+    "other_compulsory": "Diocesan Family School Building Levy $1,964 per family; school resource and service fee set by each school",
+    "source": "diocese_schedule",
+    "source_url": "https://www.mn.catholic.edu.au/enrolment/school-fees/"
+   }
   },
   "43316": {
    "school_name": "St Mary's Primary School",
@@ -8126,13 +8526,29 @@
   "43317": {
    "school_name": "St Joseph's College",
    "website": "http://www.lochinvarsj.catholic.edu.au/",
-   "status": "not_found",
+   "status": "found",
    "checked": "2026-11-12",
    "crawl": {
     "pages": 4,
     "errors": 0
    },
-   "note": "No fee page among the pages fetched."
+   "fees": {
+    "fee_year": 2026,
+    "basis": "first child (full rate), annual diocesan tuition only (Catholic Schools Maitland-Newcastle sets one rate for its schools; the school is listed among the diocese's schools); the school resource and service fee per child and the family building levy are extra",
+    "by_year": [
+     {
+      "years": "7-10",
+      "tuition": 2353
+     },
+     {
+      "years": "11-12",
+      "tuition": 3488
+     }
+    ],
+    "other_compulsory": "Diocesan Family School Building Levy $1,964 per family; school resource and service fee set by each school",
+    "source": "diocese_schedule",
+    "source_url": "https://www.mn.catholic.edu.au/enrolment/school-fees/"
+   }
   },
   "43318": {
    "school_name": "All Saints College (St Peter's)",
@@ -8145,7 +8561,7 @@
   },
   "43319": {
    "school_name": "San Clemente Catholic College",
-   "website": "https://www.medowiecmcc.catholic.edu.au/",
+   "website": "https://www.mayfieldsanc.catholic.edu.au/",
    "status": "found",
    "checked": "2026-11-12",
    "crawl": {
@@ -8158,7 +8574,7 @@
    ],
    "fees": {
     "fee_year": 2026,
-    "basis": "diocesan tuition fee per year, full rate (one-child family); school resource fees and building levy extra",
+    "basis": "first child (full rate), annual diocesan tuition only (Catholic Schools Maitland-Newcastle sets one rate for its schools; the school is listed among the diocese's schools); the school resource and service fee per child and the family building levy are extra",
     "by_year": [
      {
       "years": "7-10",
@@ -8169,9 +8585,12 @@
       "tuition": 3488
      }
     ],
-    "source": "school_website",
-    "source_url": "https://www.medowiecmcc.catholic.edu.au/enrolment/fees/"
-   }
+    "other_compulsory": "Diocesan Family School Building Levy $1,964 per family; school resource and service fee set by each school",
+    "source": "diocese_schedule",
+    "source_url": "https://www.mn.catholic.edu.au/enrolment/school-fees/"
+   },
+   "website_source": "lookup",
+   "website_note": "ACARA lists the Medowie college site (medowiecmcc), which belongs to Catherine McAuley Catholic College; the Maitland-Newcastle diocese school list links San Clemente, Mayfield, to this site (checked 2026-11-20)."
   },
   "43320": {
    "school_name": "St Clare's High School",
@@ -8203,47 +8622,111 @@
   "43321": {
    "school_name": "St Joseph's Catholic College",
    "website": "http://www.aberdeen.catholic.edu.au",
-   "status": "not_found",
+   "status": "found",
    "checked": "2026-11-12",
    "crawl": {
     "pages": 4,
     "errors": 1
    },
-   "note": "No fee page among the pages fetched."
+   "fees": {
+    "fee_year": 2026,
+    "basis": "first child (full rate), annual diocesan tuition only (Catholic Schools Maitland-Newcastle sets one rate for its schools; the school is listed among the diocese's schools); the school resource and service fee per child and the family building levy are extra",
+    "by_year": [
+     {
+      "years": "7-10",
+      "tuition": 2353
+     },
+     {
+      "years": "11-12",
+      "tuition": 3488
+     }
+    ],
+    "other_compulsory": "Diocesan Family School Building Levy $1,964 per family; school resource and service fee set by each school",
+    "source": "diocese_schedule",
+    "source_url": "https://www.mn.catholic.edu.au/enrolment/school-fees/"
+   }
   },
   "43322": {
    "school_name": "Trinity Catholic College",
    "website": "http://www.adamstownsp.catholic.edu.au",
-   "status": "not_found",
+   "status": "found",
    "checked": "2026-11-18",
    "crawl": {
     "pages": 9,
     "errors": 1
    },
    "fee_pages": [],
-   "note": "No fee schedule on the pages fetched from the school's current domain."
+   "fees": {
+    "fee_year": 2026,
+    "basis": "first child (full rate), annual diocesan tuition only (Catholic Schools Maitland-Newcastle sets one rate for its schools; the school is listed among the diocese's schools); the school resource and service fee per child and the family building levy are extra",
+    "by_year": [
+     {
+      "years": "7-10",
+      "tuition": 2353
+     },
+     {
+      "years": "11-12",
+      "tuition": 3488
+     }
+    ],
+    "other_compulsory": "Diocesan Family School Building Levy $1,964 per family; school resource and service fee set by each school",
+    "source": "diocese_schedule",
+    "source_url": "https://www.mn.catholic.edu.au/enrolment/school-fees/"
+   }
   },
   "43323": {
    "school_name": "St Mary's Catholic College",
    "website": "http://gatesheadsm.catholic.edu.au",
-   "status": "not_found",
+   "status": "found",
    "checked": "2026-11-12",
    "crawl": {
     "pages": 5,
     "errors": 0
    },
-   "note": "No fee page among the pages fetched."
+   "fees": {
+    "fee_year": 2026,
+    "basis": "first child (full rate), annual diocesan tuition only (Catholic Schools Maitland-Newcastle sets one rate for its schools; the school is listed among the diocese's schools); the school resource and service fee per child and the family building levy are extra",
+    "by_year": [
+     {
+      "years": "7-10",
+      "tuition": 2353
+     },
+     {
+      "years": "11-12",
+      "tuition": 3488
+     }
+    ],
+    "other_compulsory": "Diocesan Family School Building Levy $1,964 per family; school resource and service fee set by each school",
+    "source": "diocese_schedule",
+    "source_url": "https://www.mn.catholic.edu.au/enrolment/school-fees/"
+   }
   },
   "43324": {
    "school_name": "St Paul's Catholic College",
    "website": "http://booragul.catholic.edu.au",
-   "status": "not_found",
+   "status": "found",
    "checked": "2026-11-12",
    "crawl": {
     "pages": 4,
     "errors": 0
    },
-   "note": "No fee page among the pages fetched."
+   "fees": {
+    "fee_year": 2026,
+    "basis": "first child (full rate), annual diocesan tuition only (Catholic Schools Maitland-Newcastle sets one rate for its schools; the school is listed among the diocese's schools); the school resource and service fee per child and the family building levy are extra",
+    "by_year": [
+     {
+      "years": "7-10",
+      "tuition": 2353
+     },
+     {
+      "years": "11-12",
+      "tuition": 3488
+     }
+    ],
+    "other_compulsory": "Diocesan Family School Building Levy $1,964 per family; school resource and service fee set by each school",
+    "source": "diocese_schedule",
+    "source_url": "https://www.mn.catholic.edu.au/enrolment/school-fees/"
+   }
   },
   "43325": {
    "school_name": "Holy Spirit College",
@@ -45398,14 +45881,26 @@
   "50692": {
    "school_name": "St Aloysius Catholic Primary School",
    "website": "https://www.chisholm.catholic.edu.au",
-   "status": "not_found",
+   "status": "found",
    "checked": "2026-11-14",
    "fee_pages": [],
    "crawl": {
     "pages": 2,
     "errors": 0
    },
-   "note": "No fee page among the pages fetched."
+   "fees": {
+    "fee_year": 2026,
+    "basis": "first child (full rate), annual diocesan tuition only (Catholic Schools Maitland-Newcastle sets one rate for its schools; the school's own fee link points to the diocesan fee page); the school resource and service fee per child and the family building levy are extra",
+    "by_year": [
+     {
+      "years": "K-6",
+      "tuition": 1768
+     }
+    ],
+    "other_compulsory": "Diocesan Family School Building Levy $1,964 per family; school resource and service fee set by each school",
+    "source": "diocese_schedule",
+    "source_url": "https://www.mn.catholic.edu.au/enrolment/school-fees/"
+   }
   },
   "50700": {
    "school_name": "St John Bosco College",
@@ -47676,13 +48171,29 @@
   "52439": {
    "school_name": "St Bede's Catholic College",
    "website": "http://www.chisholmsb.catholic.edu.au/",
-   "status": "not_found",
+   "status": "found",
    "checked": "2026-11-12",
    "crawl": {
     "pages": 6,
     "errors": 1
    },
-   "note": "No fee page among the pages fetched."
+   "fees": {
+    "fee_year": 2026,
+    "basis": "first child (full rate), annual diocesan tuition only (Catholic Schools Maitland-Newcastle sets one rate for its schools; the school is listed among the diocese's schools); the school resource and service fee per child and the family building levy are extra",
+    "by_year": [
+     {
+      "years": "7-10",
+      "tuition": 2353
+     },
+     {
+      "years": "11-12",
+      "tuition": 3488
+     }
+    ],
+    "other_compulsory": "Diocesan Family School Building Levy $1,964 per family; school resource and service fee set by each school",
+    "source": "diocese_schedule",
+    "source_url": "https://www.mn.catholic.edu.au/enrolment/school-fees/"
+   }
   },
   "52441": {
    "school_name": "McAuley College",
@@ -50519,14 +51030,32 @@
   },
   "53007": {
    "school_name": "Catherine McAuley Catholic College",
-   "website": "https://www.cmc.vic.edu.au",
-   "status": "not_found",
+   "website": "https://www.medowiecmcc.catholic.edu.au/",
+   "status": "found",
    "checked": "2026-11-12",
    "crawl": {
     "pages": 2,
     "errors": 0
    },
-   "note": "Only two pages reachable; no fee page."
+   "fees": {
+    "fee_year": 2026,
+    "basis": "first child (full rate), annual diocesan tuition only (Catholic Schools Maitland-Newcastle sets one rate for its schools; the school is listed among the diocese's schools); the school resource and service fee per child and the family building levy are extra",
+    "by_year": [
+     {
+      "years": "7-10",
+      "tuition": 2353
+     },
+     {
+      "years": "11-12",
+      "tuition": 3488
+     }
+    ],
+    "other_compulsory": "Diocesan Family School Building Levy $1,964 per family; school resource and service fee set by each school",
+    "source": "diocese_schedule",
+    "source_url": "https://www.mn.catholic.edu.au/enrolment/school-fees/"
+   },
+   "website_source": "lookup",
+   "website_note": "ACARA lists a Victorian address (cmc.vic.edu.au); the Maitland-Newcastle diocese school list links Catherine McAuley Catholic College, Medowie, to this site (checked 2026-11-20)."
   },
   "53008": {
    "school_name": "The Heights Learning Community",

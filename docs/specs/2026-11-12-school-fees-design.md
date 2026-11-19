@@ -94,7 +94,7 @@ npm run fees:validate                            # 状态合法、年份合理�
 - **Wollongong**：每所学校在 Drive 上放一份 “School Fee Information for Families”，记第一个孩子的学费，小学建筑费和学校自定的资源费写进 `other_compulsory`。
 - **Lismore**：学校官网统一模板 “The schedule of fees and levies for 2027”，K–6 年费一行，家庭建筑费另列。
 - **Bathurst**：统一的 “Fee Schedule <年份>”，按年级给全年合计；只有 2024、2025 年表的学校记为没找到。教区页面只给“每天 4–6 元”的估算，并说具体金额要问学校，只链接到这个页面的学校记为 `not_published`。
-- **Maitland-Newcastle**：教区公布全区统一的学费基数（2026 年 K–6 $1,768），学校资源费各校自定、家庭建筑费按家庭收。只给官网明确链接到教区学费页的 11 所小学记录这个基数（`diocese_schedule`），`basis` 写明不含资源费和建筑费。教区里有学校已经免学费（Gloucester、Windale 只收资源费），所以官网没提学费的学校不套用教区数。
+- **Maitland-Newcastle**：教区公布全区统一的教区学费（2026 年 K–6 $1,768、7–10 年级 $2,353、11–12 年级 $3,488），学校资源费各校自定，家庭建筑费按家庭收。凡是在教区学校名单里（`mn.catholic.edu.au/school-sitemap.xml`）的学校都记这个统一价（`diocese_schedule`），`basis` 写明不含资源费和建筑费，并注明依据：学校官网的学费链接直接指向教区学费页，或者学校在教区名单里。自己公布了学费的教区中学（St Clare's、Hamilton、San Clemente）金额正好就是这个统一价。学校自己另有说法的以学校为准：Windale 写明学费和建筑费都是 $0，记 `fee_free`；Gloucester 也免学费，按学校自己的页面记录。St Dominic's Centre 是特殊学校，不套用。
 - **Canberra-Goulburn、Wagga Wagga、Armidale、Wilcannia-Forbes**：没有统一来源，逐校读；只给每学期金额、没写学期数的照旧记为读不出来。
 
 另外补回了几所之前漏读的学校：圣公会学校（Anglican Schools Corporation）的学费表用空格分千位（“$ 7 460”），证据卡片原来不认，例如 Wollondilly、Orange Anglican、Mamre；Sydney Grammar 的 7–12 年级学费（2026 年 $52,410）原先也没读出。
@@ -122,6 +122,8 @@ npm run fees:validate                            # 状态合法、年份合理�
 | 原文有金额但没对上年级、或页面靠脚本渲染 | 人工读、浏览器读 | 9 所（Arndell、Scots Albury、Malek Fahd、Korowal、St Edward's 等） |
 
 Korowal 只公布按季度（Quarterly）分期的金额，记为 `per_term` × 4。Toongabbie 只公布了 2026 年 Kindergarten 的学费，其他年级要用学校的计算器，只记这一行。
+
+之后按教区统一学费补上纽卡斯尔教区 41 所学校，Windale 记为免学费，新州有答案的记录升到 894 条。两所学校在 ACARA 登记的网址有误，已按教区名单改正：San Clemente 原来登记的是 Medowie 另一所学校的网站，Catherine McAuley 原来登记的是维州的网址。
 
 全澳 3,794 条私校记录里：1,026 所拿到了学费，13 所学校声明免费，251 个分校区显示主校的学费或免费，其余查过但没拿到的和 1,569 条没查的不变。
 
