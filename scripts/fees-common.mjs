@@ -94,6 +94,7 @@ export const SCOPES = {
   // Every non-government NSW school, primary and special included: the state
   // is finished school by school before the next one starts.
   'nsw-all': school => school.state === 'NSW' && school.sector !== 'Government',
+  'vic-all': school => school.state === 'VIC' && school.sector !== 'Government',
 };
 
 export function loadSchools() {
