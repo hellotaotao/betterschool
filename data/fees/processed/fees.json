@@ -505,13 +505,14 @@
   "40402": {
    "school_name": "Autism Queensland Education & Therapy Centre",
    "website": "https://autismqld.com.au/services/school-aged/autism-queensland-school/",
-   "status": "fetched",
+   "status": "not_found",
    "checked": "2026-11-20",
    "fee_pages": [],
    "crawl": {
     "pages": 2,
     "errors": 1
-   }
+   },
+   "note": "No fee page among the pages fetched."
   },
   "40406": {
    "school_name": "Catholic Regional College Sydenham",
@@ -938,14 +939,14 @@
   "40674": {
    "school_name": "Hinchinbrook Christian School",
    "website": "http://www.hinchinbrookcs.org.au",
-   "status": "fetched",
+   "status": "not_found",
    "checked": "2026-11-20",
    "crawl": {
     "pages": 1,
     "errors": 0
    },
-   "note": "Only the home page could be fetched.",
-   "fee_pages": []
+   "fee_pages": [],
+   "note": "Only the home page could be fetched."
   },
   "40684": {
    "school_name": "St Patrick's College",
@@ -1179,24 +1180,26 @@
   "40769": {
    "school_name": "Albert Park Flexible School",
    "website": "https://albertpark.flexi.edu.au/",
-   "status": "fetched",
+   "status": "not_found",
    "checked": "2026-11-20",
    "fee_pages": [],
    "crawl": {
     "pages": 2,
     "errors": 0
-   }
+   },
+   "note": "No fee page among the pages fetched."
   },
   "40778": {
    "school_name": "Burnett Youth Learning Centre",
    "website": "https://www.bylc.qld.edu.au/",
-   "status": "fetched",
+   "status": "not_found",
    "checked": "2026-11-20",
    "fee_pages": [],
    "crawl": {
     "pages": 1,
     "errors": 0
-   }
+   },
+   "note": "Only the home page could be fetched."
   },
   "40779": {
    "school_name": "Warakirri College",
@@ -1555,14 +1558,14 @@
   "40842": {
    "school_name": "Music Industry College",
    "website": "http://www.mic.org.au/",
-   "status": "fetched",
+   "status": "not_found",
    "checked": "2026-11-20",
    "crawl": {
     "pages": 2,
     "errors": 0
    },
-   "note": "Only two pages reachable; no fee page.",
-   "fee_pages": []
+   "fee_pages": [],
+   "note": "No fee page among the pages fetched."
   },
   "40843": {
    "school_name": "Staines Memorial College",
@@ -2256,14 +2259,14 @@
   "40949": {
    "school_name": "Mungalla Silver Lining School",
    "website": "https://silverlining.org.au",
-   "status": "fetched",
+   "status": "not_found",
    "checked": "2026-11-20",
    "crawl": {
     "pages": 1,
     "errors": 0
    },
-   "note": "Only the home page could be fetched.",
-   "fee_pages": []
+   "fee_pages": [],
+   "note": "Only the home page could be fetched."
   },
   "40950": {
    "school_name": "Heritage College - Officer Campus",
@@ -47184,7 +47187,7 @@
   "47648": {
    "school_name": "Good Shepherd Catholic School",
    "website": "http://www.gstsv.catholic.edu.au",
-   "status": "fetched",
+   "status": "found",
    "checked": "2026-11-20",
    "fee_pages": [
     "https://www.gstsv.catholic.edu.au/enrolment/fee-schedule/",
@@ -47194,6 +47197,20 @@
    "crawl": {
     "pages": 10,
     "errors": 0
+   },
+   "fees": {
+    "fee_year": 2026,
+    "basis": "one student, annual tuition (Townsville diocesan rate); total adds building, resource and FACE levies",
+    "by_year": [
+     {
+      "years": "P-6",
+      "tuition": 1952,
+      "total": 3392
+     }
+    ],
+    "other_compulsory": "Camps extra",
+    "source": "school_website",
+    "source_url": "https://os-data-2.s3-ap-southeast-2.amazonaws.com/gstsv2/bundle4/2026%20FEES%20(2)%20-%20Copy.pdf"
    }
   },
   "47649": {
@@ -47277,7 +47294,7 @@
   "47652": {
    "school_name": "St Mary MacKillop Primary School",
    "website": "http://www.mackilloppenrith.catholic.edu.au/",
-   "status": "fetched",
+   "status": "not_found",
    "checked": "2026-11-20",
    "fee_pages": [
     "https://www.mackilloppenrith.catholic.edu.au/enrolment/school-fees",
@@ -47286,19 +47303,38 @@
    "crawl": {
     "pages": 8,
     "errors": 0
-   }
+   },
+   "note": "The website ACARA lists belongs to a New South Wales school of the same name; its fees are not this school's."
   },
   "47653": {
    "school_name": "Southern Cross Catholic College",
    "website": "http://www.sctsv.catholic.edu.au",
-   "status": "fetched",
+   "status": "found",
    "checked": "2026-11-20",
    "crawl": {
     "pages": 11,
     "errors": 0
    },
-   "note": "No fee page among the pages fetched.",
-   "fee_pages": []
+   "fee_pages": [],
+   "fees": {
+    "fee_year": 2026,
+    "basis": "one student, annual tuition (Townsville diocesan rate); total adds the resource levy and the family levy",
+    "by_year": [
+     {
+      "years": "P-6",
+      "tuition": 1952,
+      "total": 3567
+     },
+     {
+      "years": "7-12",
+      "tuition": 2928,
+      "total": 5368
+     }
+    ],
+    "other_compulsory": "Camps, some excursions and VET courses extra",
+    "source": "school_website",
+    "source_url": "https://drive.usercontent.google.com/download?id=17h5qaehFLP0AO_0Ex80KbHIa3_s8FREJ&export=download"
+   }
   },
   "47654": {
    "school_name": "Columba Catholic College",
@@ -47329,7 +47365,7 @@
   "47656": {
    "school_name": "Jubilee Primary School",
    "website": "http://www.jubileeprimary.qld.edu.au",
-   "status": "fetched",
+   "status": "found",
    "checked": "2026-11-20",
    "fee_pages": [
     "https://www.jubileeprimary.qld.edu.au/articledocuments/1614/2026%20jubilee%20school%20fees.pdf.aspx",
@@ -47338,6 +47374,20 @@
    "crawl": {
     "pages": 11,
     "errors": 0
+   },
+   "fees": {
+    "fee_year": 2026,
+    "basis": "one-child family, annual tuition (sibling rates are lower); total is the school's stated annual total for one child including its listed levies",
+    "by_year": [
+     {
+      "years": "P-6",
+      "tuition": 1672,
+      "total": 3284
+     }
+    ],
+    "other_compulsory": "Years 5-6 camp levy $500 a year",
+    "source": "school_website",
+    "source_url": "https://www.jubileeprimary.qld.edu.au/articledocuments/1614/2026%20jubilee%20school%20fees.pdf.aspx"
    }
   },
   "47657": {
@@ -47398,7 +47448,7 @@
   "47659": {
    "school_name": "Siena Catholic Primary School",
    "website": "http://www.sienaprimary.qld.edu.au/",
-   "status": "fetched",
+   "status": "found",
    "checked": "2026-11-20",
    "fee_pages": [
     "https://www.sienaprimary.qld.edu.au/enrol/school-fee-schedule",
@@ -47407,23 +47457,37 @@
    "crawl": {
     "pages": 8,
     "errors": 0
+   },
+   "fees": {
+    "fee_year": 2026,
+    "basis": "one-child family, annual tuition (sibling rates are lower)",
+    "by_year": [
+     {
+      "years": "P-6",
+      "tuition": 1924
+     }
+    ],
+    "other_compulsory": "Capital levy $852 and PFG levy $100 per family; resource, activity and IT levy $800-$930 per student",
+    "source": "school_website",
+    "source_url": "https://www.sienaprimary.qld.edu.au/ArticleDocuments/840/2026%20Fee%20Schedule.pdf"
    }
   },
   "47660": {
    "school_name": "Good Samaritan College",
    "website": "https://www.gsctwb.catholic.edu.au/",
-   "status": "fetched",
+   "status": "not_found",
    "checked": "2026-11-20",
    "fee_pages": [],
    "crawl": {
     "pages": 4,
     "errors": 0
-   }
+   },
+   "note": "No fee page among the pages fetched."
   },
   "47661": {
    "school_name": "St Mary's School",
    "website": "https://www.smwarwick.catholic.edu.au/",
-   "status": "fetched",
+   "status": "not_found",
    "checked": "2026-11-20",
    "fee_pages": [
     "https://smpswarwick.schoolzineplus.com/_file/media/10739/school_fees_2025.pdf"
@@ -47431,7 +47495,8 @@
    "crawl": {
     "pages": 3,
     "errors": 0
-   }
+   },
+   "note": "The only fee schedule published is for 2025."
   },
   "47663": {
    "school_name": "Southern Cross Catholic College - Kippa-Ring Campus",
@@ -47560,7 +47625,7 @@
   "47668": {
    "school_name": "St Stephen's School",
    "website": "http://www.ststephens.qld.edu.au",
-   "status": "fetched",
+   "status": "found",
    "checked": "2026-11-20",
    "fee_pages": [
     "https://www.ststephens.qld.edu.au/enrolments/fees-and-finance",
@@ -47570,6 +47635,19 @@
    "crawl": {
     "pages": 13,
     "errors": 1
+   },
+   "fees": {
+    "fee_year": 2026,
+    "basis": "one-child family, annual tuition (sibling rates are lower)",
+    "by_year": [
+     {
+      "years": "P-6",
+      "tuition": 1880
+     }
+    ],
+    "other_compulsory": "Capital levy $672, IT levy $100 and P&F levy $150 per family; activity, resource and device levies per child",
+    "source": "school_website",
+    "source_url": "https://www.ststephens.qld.edu.au/ArticleDocuments/929/Fee%20Schedule.pdf"
    }
   },
   "47669": {
@@ -47620,7 +47698,7 @@
   "47670": {
    "school_name": "St Oliver Plunkett School",
    "website": "http://www.stoliverplunkett.qld.edu.au",
-   "status": "fetched",
+   "status": "found",
    "checked": "2026-11-20",
    "fee_pages": [
     "https://www.stoliverplunkett.qld.edu.au/enrolments/fees",
@@ -47629,6 +47707,19 @@
    "crawl": {
     "pages": 10,
     "errors": 0
+   },
+   "fees": {
+    "fee_year": 2027,
+    "basis": "one-child family, annual total of tuition, capital, PFG and curriculum levies",
+    "by_year": [
+     {
+      "years": "P-6",
+      "total": 3430
+     }
+    ],
+    "other_compulsory": "IT levy $360-$420 per student; camps extra",
+    "source": "school_website",
+    "source_url": "https://www.stoliverplunkett.qld.edu.au/ArticleDocuments/5293/2027%20Fees%20and%20Levies%20Schedule%20-%20FINAL.pdf.aspx"
    }
   },
   "47671": {
@@ -47671,7 +47762,7 @@
   "47672": {
    "school_name": "Christ the King School",
    "website": "http://www.ctk.qld.edu.au",
-   "status": "fetched",
+   "status": "found",
    "checked": "2026-11-20",
    "fee_pages": [
     "https://www.ctk.qld.edu.au/enrol/fees",
@@ -47680,12 +47771,26 @@
    "crawl": {
     "pages": 12,
     "errors": 0
+   },
+   "fees": {
+    "fee_year": 2027,
+    "basis": "one-child family, annual tuition (sibling rates are lower); total is the school's stated annual total for one child including its listed levies",
+    "by_year": [
+     {
+      "years": "P-6",
+      "tuition": 2360,
+      "total": 4301
+     }
+    ],
+    "other_compulsory": null,
+    "source": "school_website",
+    "source_url": "https://www.ctk.qld.edu.au/ArticleDocuments/1095/119%20Graceville%202027%20Fees%20and%20Levies%20Schedule.pdf.aspx"
    }
   },
   "47673": {
    "school_name": "St Edward the Confessor School",
    "website": "http://www.stedwards.qld.edu.au",
-   "status": "fetched",
+   "status": "found",
    "checked": "2026-11-20",
    "fee_pages": [
     "https://www.stedwards.qld.edu.au/enrolments/fees",
@@ -47694,12 +47799,25 @@
    "crawl": {
     "pages": 11,
     "errors": 0
+   },
+   "fees": {
+    "fee_year": 2026,
+    "basis": "one-child family, annual tuition (sibling rates are lower)",
+    "by_year": [
+     {
+      "years": "P-6",
+      "tuition": 1792
+     }
+    ],
+    "other_compulsory": "Capital levy $664 and P&F levy $140 per family; student levies $280-$1,000 by year level",
+    "source": "school_website",
+    "source_url": "https://www.stedwards.qld.edu.au/ArticleDocuments/1176/2026%20Fee%20schedule.pdf"
    }
   },
   "47674": {
    "school_name": "Guardian Angels' Primary School",
    "website": "http://www.guardianangelswynnum.qld.edu.au",
-   "status": "fetched",
+   "status": "found",
    "checked": "2026-11-20",
    "fee_pages": [
     "https://www.guardianangelswynnum.qld.edu.au/enrol/school-fees",
@@ -47710,12 +47828,25 @@
    "crawl": {
     "pages": 12,
     "errors": 0
+   },
+   "fees": {
+    "fee_year": 2026,
+    "basis": "one-child family, annual tuition (sibling rates are lower)",
+    "by_year": [
+     {
+      "years": "P-6",
+      "tuition": 2072
+     }
+    ],
+    "other_compulsory": "Student resource and activity levies extra",
+    "source": "school_website",
+    "source_url": "https://www.guardianangelswynnum.qld.edu.au/ArticleDocuments/955/2026%20Fees%20Schedule.pdf"
    }
   },
   "47675": {
    "school_name": "Holy Cross School",
    "website": "http://www.hcpswooloowin.qld.edu.au",
-   "status": "fetched",
+   "status": "found",
    "checked": "2026-11-20",
    "fee_pages": [
     "https://www.hcpswooloowin.qld.edu.au/enrol/fees",
@@ -47724,12 +47855,25 @@
    "crawl": {
     "pages": 11,
     "errors": 0
+   },
+   "fees": {
+    "fee_year": 2026,
+    "basis": "one-child family, annual tuition (sibling rates are lower)",
+    "by_year": [
+     {
+      "years": "P-6",
+      "tuition": 1652
+     }
+    ],
+    "other_compulsory": "Class levy $800 and IT levy $350 per student; capital levy $1,060 and P&F levy $100 per family",
+    "source": "school_website",
+    "source_url": "https://www.hcpswooloowin.qld.edu.au/ArticleDocuments/800/Holy%20Cross%20School%20Fee%20Schedule%202026.pdf"
    }
   },
   "47676": {
    "school_name": "Holy Family Primary School",
    "website": "http://www.holyfamilyps.qld.edu.au",
-   "status": "fetched",
+   "status": "found",
    "checked": "2026-11-20",
    "fee_pages": [
     "https://www.holyfamilyps.qld.edu.au/enrol/fees"
@@ -47737,6 +47881,20 @@
    "crawl": {
     "pages": 13,
     "errors": 0
+   },
+   "fees": {
+    "fee_year": 2026,
+    "basis": "one-child family, annual tuition (sibling rates are lower); total is the school's stated annual total for one child including its listed levies",
+    "by_year": [
+     {
+      "years": "P-6",
+      "tuition": 2550,
+      "total": 4600
+     }
+    ],
+    "other_compulsory": "Prep levy $300; Year 6 levy $135; camps extra",
+    "source": "school_website",
+    "source_url": "https://www.holyfamilyps.qld.edu.au/enrol/fees"
    }
   },
   "47677": {
@@ -47754,7 +47912,7 @@
   "47678": {
    "school_name": "Holy Spirit School",
    "website": "http://www.holyspiritnewfarm.qld.edu.au",
-   "status": "fetched",
+   "status": "found",
    "checked": "2026-11-20",
    "fee_pages": [
     "https://www.holyspiritnewfarm.qld.edu.au/enrol/school-fees",
@@ -47763,12 +47921,26 @@
    "crawl": {
     "pages": 10,
     "errors": 0
+   },
+   "fees": {
+    "fee_year": 2026,
+    "basis": "one-child family, annual tuition (sibling rates are lower); total is the school's stated annual total for one child including its listed levies",
+    "by_year": [
+     {
+      "years": "P-6",
+      "tuition": 2892,
+      "total": 5320
+     }
+    ],
+    "other_compulsory": null,
+    "source": "school_website",
+    "source_url": "https://www.holyspiritnewfarm.qld.edu.au/ArticleDocuments/800/2026%20Holy%20Spirit%20Fees%20and%20Levies%20for%20Parents.pdf"
    }
   },
   "47679": {
    "school_name": "Holy Spirit School",
    "website": "http://www.holyspiritbraypark.qld.edu.au",
-   "status": "fetched",
+   "status": "found",
    "checked": "2026-11-20",
    "fee_pages": [
     "https://www.holyspiritbraypark.qld.edu.au/enrolment/school-fees"
@@ -47776,12 +47948,26 @@
    "crawl": {
     "pages": 8,
     "errors": 0
+   },
+   "fees": {
+    "fee_year": 2026,
+    "basis": "one-child family, annual tuition (sibling rates are lower); total is the school's stated annual total for one child including its listed levies",
+    "by_year": [
+     {
+      "years": "P-6",
+      "tuition": 1960,
+      "total": 3470
+     }
+    ],
+    "other_compulsory": "Year 6 camp and Year 5 leadership program extra",
+    "source": "school_website",
+    "source_url": "https://www.holyspiritbraypark.qld.edu.au/enrolment/school-fees"
    }
   },
   "47680": {
    "school_name": "Immaculate Heart School",
    "website": "http://www.immac-heart.qld.edu.au",
-   "status": "fetched",
+   "status": "found",
    "checked": "2026-11-20",
    "fee_pages": [
     "https://www.immac-heart.qld.edu.au/enrolments/fee-structure",
@@ -47790,12 +47976,26 @@
    "crawl": {
     "pages": 9,
     "errors": 0
+   },
+   "fees": {
+    "fee_year": 2026,
+    "basis": "one-child family, annual tuition (sibling rates are lower); total is the school's stated annual total for one child including its listed levies",
+    "by_year": [
+     {
+      "years": "P-6",
+      "tuition": 1644,
+      "total": 2864
+     }
+    ],
+    "other_compulsory": "Prep book levy $150",
+    "source": "school_website",
+    "source_url": "https://www.immac-heart.qld.edu.au/ArticleDocuments/1085/2026%20School%20Fees%20-%20Parent%20Copy%20(1).pdf.aspx"
    }
   },
   "47681": {
    "school_name": "Mary Immaculate Primary School",
    "website": "http://www.maryimmaculate.qld.edu.au",
-   "status": "fetched",
+   "status": "found",
    "checked": "2026-11-20",
    "fee_pages": [
     "https://www.maryimmaculate.qld.edu.au/enrol/school-fees",
@@ -47804,12 +48004,25 @@
    "crawl": {
     "pages": 7,
     "errors": 1
+   },
+   "fees": {
+    "fee_year": 2026,
+    "basis": "one-child family, annual fee including all levies",
+    "by_year": [
+     {
+      "years": "P-6",
+      "total": 3040
+     }
+    ],
+    "other_compulsory": "Booklist fee $104; camps in Years 4-6 extra",
+    "source": "school_website",
+    "source_url": "https://www.maryimmaculate.qld.edu.au/enrol/school-fees"
    }
   },
   "47682": {
    "school_name": "Mater Dei Catholic Primary School",
    "website": "http://www.materdei.qld.edu.au",
-   "status": "fetched",
+   "status": "found",
    "checked": "2026-11-20",
    "fee_pages": [
     "https://www.materdei.qld.edu.au/enrol/school-fees",
@@ -47819,12 +48032,26 @@
    "crawl": {
     "pages": 15,
     "errors": 0
+   },
+   "fees": {
+    "fee_year": 2026,
+    "basis": "one-child family, annual tuition (sibling rates are lower); total is the school's stated annual total for one child including its listed levies",
+    "by_year": [
+     {
+      "years": "P-6",
+      "tuition": 2870,
+      "total": 4580
+     }
+    ],
+    "other_compulsory": "Camps in Years 4-6 extra",
+    "source": "school_website",
+    "source_url": "https://www.materdei.qld.edu.au/enrol/school-fees"
    }
   },
   "47683": {
    "school_name": "Our Lady Help of Christians School",
    "website": "http://www.olhchendra.qld.edu.au",
-   "status": "fetched",
+   "status": "found",
    "checked": "2026-11-20",
    "fee_pages": [
     "https://www.olhchendra.qld.edu.au/enrol/fees",
@@ -47833,12 +48060,26 @@
    "crawl": {
     "pages": 14,
     "errors": 0
+   },
+   "fees": {
+    "fee_year": 2026,
+    "basis": "one-child family, annual tuition (sibling rates are lower); total is the school's stated annual total for one child including its listed levies",
+    "by_year": [
+     {
+      "years": "P-6",
+      "tuition": 2300,
+      "total": 3950
+     }
+    ],
+    "other_compulsory": "Prep resource levy $250; IT equipment levy $165-$330; stationery $130",
+    "source": "school_website",
+    "source_url": "https://www.olhchendra.qld.edu.au/ArticleDocuments/846/Fees%20and%20Levies%202026.pdf"
    }
   },
   "47684": {
    "school_name": "Our Lady of Dolours School",
    "website": "http://www.ourladyofdolours.qld.edu.au",
-   "status": "fetched",
+   "status": "found",
    "checked": "2026-11-20",
    "fee_pages": [
     "https://www.ourladyofdolours.qld.edu.au/enrolment/school-fees",
@@ -47847,12 +48088,25 @@
    "crawl": {
     "pages": 14,
     "errors": 0
+   },
+   "fees": {
+    "fee_year": 2027,
+    "basis": "one-child family, annual tuition (sibling rates are lower)",
+    "by_year": [
+     {
+      "years": "P-6",
+      "tuition": 2408
+     }
+    ],
+    "other_compulsory": "Capital levy $824 and P&F levy $10 per family; student levies $815-$2,895 by year level",
+    "source": "school_website",
+    "source_url": "https://www.ourladyofdolours.qld.edu.au/ArticleDocuments/617/2027%20Fee%20Schedule.pdf.aspx"
    }
   },
   "47685": {
    "school_name": "Our Lady of Fatima Primary School",
    "website": "http://www.ourladyoffatima.qld.edu.au",
-   "status": "fetched",
+   "status": "found",
    "checked": "2026-11-20",
    "fee_pages": [
     "https://www.ourladyoffatima.qld.edu.au/ArticleDocuments/1860/2027%20Fee%20Schedule.pdf.aspx"
@@ -47860,12 +48114,26 @@
    "crawl": {
     "pages": 7,
     "errors": 0
+   },
+   "fees": {
+    "fee_year": 2027,
+    "basis": "one-child family, annual tuition (sibling rates are lower); total is the school's stated annual total for one child including its listed levies",
+    "by_year": [
+     {
+      "years": "P-6",
+      "tuition": 1140,
+      "total": 2266
+     }
+    ],
+    "other_compulsory": null,
+    "source": "school_website",
+    "source_url": "https://www.ourladyoffatima.qld.edu.au/ArticleDocuments/1860/2027%20Fee%20Schedule.pdf.aspx"
    }
   },
   "47686": {
    "school_name": "Our Lady of Lourdes Primary School",
    "website": "http://www.ololbhills.catholic.edu.au/",
-   "status": "fetched",
+   "status": "not_found",
    "checked": "2026-11-20",
    "fee_pages": [
     "https://www.ololbhills.catholic.edu.au/enrolment/school-fees",
@@ -47874,12 +48142,13 @@
    "crawl": {
     "pages": 8,
     "errors": 0
-   }
+   },
+   "note": "The website ACARA lists belongs to a New South Wales school of the same name; its fees are not this school's."
   },
   "47687": {
    "school_name": "Our Lady of Mount Carmel School",
    "website": "http://www.mtcarmelcoorparoo.qld.edu.au",
-   "status": "fetched",
+   "status": "not_found",
    "checked": "2026-11-20",
    "fee_pages": [
     "https://www.mtcarmelcoorparoo.qld.edu.au/enrolments/school-fees"
@@ -47887,12 +48156,13 @@
    "crawl": {
     "pages": 6,
     "errors": 0
-   }
+   },
+   "note": "Fee pages were reached but show no figures."
   },
   "47688": {
    "school_name": "Our Lady of the Angels' School",
    "website": "http://www.olawavellheights.qld.edu.au",
-   "status": "fetched",
+   "status": "found",
    "checked": "2026-11-20",
    "fee_pages": [
     "https://www.olawavellheights.qld.edu.au/enrolments/school-fees",
@@ -47902,12 +48172,26 @@
    "crawl": {
     "pages": 12,
     "errors": 0
+   },
+   "fees": {
+    "fee_year": 2026,
+    "basis": "one-child family, annual tuition (sibling rates are lower); total is the school's stated annual total for one child including its listed levies",
+    "by_year": [
+     {
+      "years": "P-6",
+      "tuition": 2136,
+      "total": 3666
+     }
+    ],
+    "other_compulsory": "Resource, sports, device and camp levies by year level",
+    "source": "school_website",
+    "source_url": "https://www.olawavellheights.qld.edu.au/ArticleDocuments/798/OLA%20School%20Fee%20Schedule%202026.pdf"
    }
   },
   "47689": {
    "school_name": "Our Lady of the Assumption School",
    "website": "http://www.olaenoggera.qld.edu.au",
-   "status": "fetched",
+   "status": "found",
    "checked": "2026-11-20",
    "fee_pages": [
     "https://www.olaenoggera.qld.edu.au/enrolments/fees",
@@ -47916,12 +48200,26 @@
    "crawl": {
     "pages": 9,
     "errors": 0
+   },
+   "fees": {
+    "fee_year": 2027,
+    "basis": "one-child family, annual tuition (sibling rates are lower); total is the school's stated annual total for one child including its listed levies",
+    "by_year": [
+     {
+      "years": "P-6",
+      "tuition": 2036,
+      "total": 3603
+     }
+    ],
+    "other_compulsory": "Resources levy $70-$150, IT levy $250-$495, Years 5-6 camp",
+    "source": "school_website",
+    "source_url": "https://www.olaenoggera.qld.edu.au/enrolments/fees"
    }
   },
   "47690": {
    "school_name": "Our Lady of the Rosary School",
    "website": "http://www.olrkenmore.qld.edu.au",
-   "status": "fetched",
+   "status": "found",
    "checked": "2026-11-20",
    "fee_pages": [
     "https://www.olrkenmore.qld.edu.au/enrolments/fees",
@@ -47931,12 +48229,26 @@
    "crawl": {
     "pages": 15,
     "errors": 0
+   },
+   "fees": {
+    "fee_year": 2026,
+    "basis": "one-child family, annual tuition (sibling rates are lower); total is the school's stated annual total for one child including its listed levies",
+    "by_year": [
+     {
+      "years": "P-6",
+      "tuition": 3000,
+      "total": 4225
+     }
+    ],
+    "other_compulsory": "Student levy $380-$680 by year level; camps in Years 5-6",
+    "source": "school_website",
+    "source_url": "https://www.olrkenmore.qld.edu.au/ArticleDocuments/802/2026%20OLR%20Fee%20Schedule.pdf"
    }
   },
   "47691": {
    "school_name": "Our Lady of the Sacred Heart Catholic Primary School",
    "website": "http://www.olshdarra.qld.edu.au",
-   "status": "fetched",
+   "status": "found",
    "checked": "2026-11-20",
    "fee_pages": [
     "https://www.olshdarra.qld.edu.au/ArticleDocuments/1258/2027%20School%20Fees%20and%20Levies%20Schedule.pdf.aspx"
@@ -47944,23 +48256,38 @@
    "crawl": {
     "pages": 10,
     "errors": 0
+   },
+   "fees": {
+    "fee_year": 2027,
+    "basis": "one-child family, annual tuition (sibling rates are lower); total is the school's stated annual total for one child including its listed levies",
+    "by_year": [
+     {
+      "years": "P-6",
+      "tuition": 1948,
+      "total": 2775
+     }
+    ],
+    "other_compulsory": "IT or iPad levy $90-$330; Years 5-6 camps",
+    "source": "school_website",
+    "source_url": "https://www.olshdarra.qld.edu.au/ArticleDocuments/1258/2027%20School%20Fees%20and%20Levies%20Schedule.pdf.aspx"
    }
   },
   "47692": {
    "school_name": "Our Lady of the Way School",
    "website": "http://www.petriecatholic.com/school",
-   "status": "fetched",
+   "status": "not_found",
    "checked": "2026-11-20",
    "fee_pages": [],
    "crawl": {
     "pages": 1,
     "errors": 0
-   }
+   },
+   "note": "Only the home page could be fetched."
   },
   "47693": {
    "school_name": "Queen of Apostles Primary School",
    "website": "http://www.qofa.qld.edu.au",
-   "status": "fetched",
+   "status": "found",
    "checked": "2026-11-20",
    "fee_pages": [
     "https://www.qofa.qld.edu.au/enrolments/pay-school-fees",
@@ -47969,12 +48296,41 @@
    "crawl": {
     "pages": 12,
     "errors": 0
+   },
+   "fees": {
+    "fee_year": 2026,
+    "basis": "one-child family, annual tuition (sibling rates are lower); total is the school's stated annual cost for one child at that year level, before camps",
+    "by_year": [
+     {
+      "years": "P",
+      "tuition": 1952,
+      "total": 3912
+     },
+     {
+      "years": "1",
+      "tuition": 1952,
+      "total": 3862
+     },
+     {
+      "years": "2",
+      "tuition": 1952,
+      "total": 3962
+     },
+     {
+      "years": "3-6",
+      "tuition": 1952,
+      "total": 3992
+     }
+    ],
+    "other_compulsory": null,
+    "source": "school_website",
+    "source_url": "https://www.qofa.qld.edu.au/ArticleDocuments/983/Fee%20Schedule.pdf.pdf"
    }
   },
   "47694": {
    "school_name": "Sacred Heart School",
    "website": "http://www.shbooval.qld.edu.au",
-   "status": "fetched",
+   "status": "found",
    "checked": "2026-11-20",
    "fee_pages": [
     "https://www.shbooval.qld.edu.au/enrol/school-fees",
@@ -47984,12 +48340,41 @@
    "crawl": {
     "pages": 9,
     "errors": 0
+   },
+   "fees": {
+    "fee_year": 2027,
+    "basis": "one-child family, annual tuition (sibling rates are lower); total is the school's stated cost for a first child at that year level, including levies and Years 5-6 camps",
+    "by_year": [
+     {
+      "years": "P",
+      "tuition": 1364,
+      "total": 3388
+     },
+     {
+      "years": "1-4",
+      "tuition": 1364,
+      "total": 3603
+     },
+     {
+      "years": "5",
+      "tuition": 1364,
+      "total": 3983
+     },
+     {
+      "years": "6",
+      "tuition": 1364,
+      "total": 4033
+     }
+    ],
+    "other_compulsory": null,
+    "source": "school_website",
+    "source_url": "https://www.shbooval.qld.edu.au/ArticleDocuments/1102/2027%20Sacred%20Heart%20Annual%20School%20Fee%20Letter.pdf.aspx"
    }
   },
   "47695": {
    "school_name": "Sacred Heart Primary School",
    "website": "http://www.shssandgate.qld.edu.au",
-   "status": "fetched",
+   "status": "found",
    "checked": "2026-11-20",
    "fee_pages": [
     "https://www.shssandgate.qld.edu.au/enrolments/school-fees",
@@ -47999,12 +48384,26 @@
    "crawl": {
     "pages": 15,
     "errors": 0
+   },
+   "fees": {
+    "fee_year": 2026,
+    "basis": "one-child family, annual tuition (sibling rates are lower); total is the school's stated annual total for one child including its listed levies",
+    "by_year": [
+     {
+      "years": "P-6",
+      "tuition": 1668,
+      "total": 3311
+     }
+    ],
+    "other_compulsory": "Year-level fees and camps extra",
+    "source": "school_website",
+    "source_url": "https://www.shssandgate.qld.edu.au/ArticleDocuments/897/2026%20School%20Fees%20Schedule.pdf"
    }
   },
   "47696": {
    "school_name": "St Agatha's Primary School",
    "website": "http://www.stagathasclayfield.qld.edu.au",
-   "status": "fetched",
+   "status": "found",
    "checked": "2026-11-20",
    "fee_pages": [
     "https://www.stagathasclayfield.qld.edu.au/enrolments/fee-structure",
@@ -48014,12 +48413,26 @@
    "crawl": {
     "pages": 15,
     "errors": 0
+   },
+   "fees": {
+    "fee_year": 2026,
+    "basis": "one-child family, tuition per term (four terms a year)",
+    "by_year": [
+     {
+      "years": "P-6",
+      "per_term": 631,
+      "terms": 4
+     }
+    ],
+    "other_compulsory": "Per term: P&F levy $60, student resource levy $381, capital levy $216; total $1,288 a term for one child",
+    "source": "school_website",
+    "source_url": "https://www.stagathasclayfield.qld.edu.au/ArticleDocuments/785/Feescard%202026.pdf"
    }
   },
   "47697": {
    "school_name": "St Agnes School",
    "website": "http://www.stagnes.qld.edu.au",
-   "status": "fetched",
+   "status": "found",
    "checked": "2026-11-20",
    "fee_pages": [
     "https://www.stagnes.qld.edu.au/enrolments/school-fees",
@@ -48028,12 +48441,25 @@
    "crawl": {
     "pages": 12,
     "errors": 0
+   },
+   "fees": {
+    "fee_year": 2026,
+    "basis": "one-child family, compulsory annual fees excluding the one-to-one program levy",
+    "by_year": [
+     {
+      "years": "P-6",
+      "total": 3620
+     }
+    ],
+    "other_compulsory": "One-to-one program levy (Years 3-6) and camps extra",
+    "source": "school_website",
+    "source_url": "https://www.stagnes.qld.edu.au/ArticleDocuments/927/2026%20Schedule%20of%20Fees.pdf"
    }
   },
   "47698": {
    "school_name": "St Ambrose's Primary School",
    "website": "http://www.stambrosesschool.qld.edu.au",
-   "status": "fetched",
+   "status": "found",
    "checked": "2026-11-20",
    "fee_pages": [
     "https://www.stambrosesschool.qld.edu.au/enrolments/fees-and-levies",
@@ -48042,12 +48468,26 @@
    "crawl": {
     "pages": 11,
     "errors": 0
+   },
+   "fees": {
+    "fee_year": 2027,
+    "basis": "one-child family, annual tuition (sibling rates are lower); total is the school's stated annual total for one child including its listed levies",
+    "by_year": [
+     {
+      "years": "P-6",
+      "tuition": 4316,
+      "total": 5509
+     }
+    ],
+    "other_compulsory": null,
+    "source": "school_website",
+    "source_url": "https://www.stambrosesschool.qld.edu.au/ArticleDocuments/664/2027%20Fee%20and%20Levies%20Schedule_Final.pdf.aspx"
    }
   },
   "47699": {
    "school_name": "St Anthony's School",
    "website": "http://www.stanthonyskedron.qld.edu.au",
-   "status": "fetched",
+   "status": "found",
    "checked": "2026-11-20",
    "fee_pages": [
     "https://www.stanthonyskedron.qld.edu.au/enrolments/fees",
@@ -48056,12 +48496,26 @@
    "crawl": {
     "pages": 11,
     "errors": 0
+   },
+   "fees": {
+    "fee_year": 2027,
+    "basis": "one-child family, annual tuition (sibling rates are lower); total is the school's stated annual total for one child including its listed levies",
+    "by_year": [
+     {
+      "years": "P-6",
+      "tuition": 2016,
+      "total": 4160
+     }
+    ],
+    "other_compulsory": "Year-level levies $110-$660 and camps",
+    "source": "school_website",
+    "source_url": "https://www.stanthonyskedron.qld.edu.au/ArticleDocuments/775/School%20Fee%20Schedule%202027.pdf.aspx"
    }
   },
   "47700": {
    "school_name": "St Bernard's School",
    "website": "http://www.stbernards.qld.edu.au",
-   "status": "fetched",
+   "status": "found",
    "checked": "2026-11-20",
    "fee_pages": [
     "https://www.stbernards.qld.edu.au/Enrol/fees-and-levies",
@@ -48070,12 +48524,25 @@
    "crawl": {
     "pages": 13,
     "errors": 0
+   },
+   "fees": {
+    "fee_year": 2026,
+    "basis": "one-child family, annual school fee including tuition, student levies, book packs, excursions, capital and P&F levies",
+    "by_year": [
+     {
+      "years": "P-6",
+      "total": 3060
+     }
+    ],
+    "other_compulsory": "IT levy $460 (Prep-Year 4) or IT levy and camp $900 (Years 5-6)",
+    "source": "school_website",
+    "source_url": "https://www.stbernards.qld.edu.au/Enrol/fees-and-levies"
    }
   },
   "47701": {
    "school_name": "St Brendan's Primary School",
    "website": "http://www.stbrendansmoorooka.qld.edu.au",
-   "status": "fetched",
+   "status": "found",
    "checked": "2026-11-20",
    "fee_pages": [
     "https://www.stbrendansmoorooka.qld.edu.au/enrolments/fees-and-levies",
@@ -48084,12 +48551,26 @@
    "crawl": {
     "pages": 5,
     "errors": 0
+   },
+   "fees": {
+    "fee_year": 2026,
+    "basis": "one-child family, annual tuition (sibling rates are lower); total is the school's stated annual total for one child including its listed levies",
+    "by_year": [
+     {
+      "years": "P-6",
+      "tuition": 1348,
+      "total": 2840
+     }
+    ],
+    "other_compulsory": "Years 5-6 camps extra",
+    "source": "school_website",
+    "source_url": "https://www.stbrendansmoorooka.qld.edu.au/enrolments/fees-and-levies"
    }
   },
   "47702": {
    "school_name": "St Catherine's Catholic Primary School",
    "website": "http://www.stcatherinescps.qld.edu.au",
-   "status": "fetched",
+   "status": "found",
    "checked": "2026-11-20",
    "fee_pages": [
     "https://www.stcatherinescps.qld.edu.au/about-us/secondary-feeder-schools",
@@ -48099,12 +48580,25 @@
    "crawl": {
     "pages": 14,
     "errors": 1
+   },
+   "fees": {
+    "fee_year": 2027,
+    "basis": "one-child family, annual tuition (sibling rates are lower)",
+    "by_year": [
+     {
+      "years": "P-6",
+      "tuition": 1490
+     }
+    ],
+    "other_compulsory": "Capital levy $865 and P&F levy $90 per family; student levy $885-$2,070 by year level",
+    "source": "school_website",
+    "source_url": "https://www.stcatherinescps.qld.edu.au/ArticleDocuments/991/2027%20School%20Fees.pdf"
    }
   },
   "47703": {
    "school_name": "St Columba's Primary School",
    "website": "http://www.stcolumbaswilston.qld.edu.au",
-   "status": "fetched",
+   "status": "found",
    "checked": "2026-11-20",
    "fee_pages": [
     "https://www.stcolumbaswilston.qld.edu.au/enrol/school-fees",
@@ -48114,12 +48608,26 @@
    "crawl": {
     "pages": 13,
     "errors": 0
+   },
+   "fees": {
+    "fee_year": 2026,
+    "basis": "one-child family, annual tuition (sibling rates are lower); total is the school's stated annual total for one child including its listed levies",
+    "by_year": [
+     {
+      "years": "P-6",
+      "tuition": 2870,
+      "total": 4830
+     }
+    ],
+    "other_compulsory": "Prep, device and camp levies by year level",
+    "source": "school_website",
+    "source_url": "https://www.stcolumbaswilston.qld.edu.au/ArticleDocuments/674/2026%20St%20Columbas%20Fee%20Schedule.pdf.aspx"
    }
   },
   "47704": {
    "school_name": "St Bernardine's School",
    "website": "http://www.stbernardines.qld.edu.au",
-   "status": "fetched",
+   "status": "found",
    "checked": "2026-11-20",
    "fee_pages": [
     "https://www.stbernardines.qld.edu.au/enrolments/school-fees-information",
@@ -48128,12 +48636,25 @@
    "crawl": {
     "pages": 8,
     "errors": 0
+   },
+   "fees": {
+    "fee_year": 2026,
+    "basis": "one-child family, annual tuition (sibling rates are lower)",
+    "by_year": [
+     {
+      "years": "P-6",
+      "tuition": 1232
+     }
+    ],
+    "other_compulsory": "Capital levy $660 and P&F levy $120 per family; student levies $407-$750 by year level",
+    "source": "school_website",
+    "source_url": "https://www.stbernardines.qld.edu.au/ArticleDocuments/927/2026%20School%20Fees%20Schedule.pdf"
    }
   },
   "47705": {
    "school_name": "St Dympna's Parish School",
    "website": "http://www.stdympnas.qld.edu.au",
-   "status": "fetched",
+   "status": "found",
    "checked": "2026-11-20",
    "fee_pages": [
     "https://www.stdympnas.qld.edu.au/enrol/school-fees"
@@ -48141,12 +48662,25 @@
    "crawl": {
     "pages": 8,
     "errors": 1
+   },
+   "fees": {
+    "fee_year": 2026,
+    "basis": "one-child family, annual total",
+    "by_year": [
+     {
+      "years": "P-6",
+      "total": 4058
+     }
+    ],
+    "other_compulsory": "Years 5-6 camps extra",
+    "source": "school_website",
+    "source_url": "https://www.stdympnas.qld.edu.au/enrol/school-fees"
    }
   },
   "47706": {
    "school_name": "St Elizabeth's School",
    "website": "http://www.stelizabeths.qld.edu.au",
-   "status": "fetched",
+   "status": "found",
    "checked": "2026-11-20",
    "fee_pages": [
     "https://www.stelizabeths.qld.edu.au/enrolments/school-fees",
@@ -48157,12 +48691,25 @@
    "crawl": {
     "pages": 12,
     "errors": 0
+   },
+   "fees": {
+    "fee_year": 2027,
+    "basis": "one-child family, annual tuition (sibling rates are lower)",
+    "by_year": [
+     {
+      "years": "P-6",
+      "tuition": 2370
+     }
+    ],
+    "other_compulsory": "Capital levy $775 per family; ICLT and year-level levies per child",
+    "source": "school_website",
+    "source_url": "https://www.stelizabeths.qld.edu.au/ArticleDocuments/1332/2027%20School%20Fee%20Schedule.pdf.aspx"
    }
   },
   "47707": {
    "school_name": "St Finbarr's School",
    "website": "http://www.stfinbarrsashgrove.qld.edu.au",
-   "status": "fetched",
+   "status": "found",
    "checked": "2026-11-20",
    "fee_pages": [
     "https://www.stfinbarrsashgrove.qld.edu.au/enrolments/school-fees",
@@ -48172,12 +48719,26 @@
    "crawl": {
     "pages": 11,
     "errors": 0
+   },
+   "fees": {
+    "fee_year": 2026,
+    "basis": "one-child family, annual tuition (sibling rates are lower); total is the school's stated annual total for one child including its listed levies",
+    "by_year": [
+     {
+      "years": "P-6",
+      "tuition": 1760,
+      "total": 4460
+     }
+    ],
+    "other_compulsory": "Device levy $272-$548 by year level",
+    "source": "school_website",
+    "source_url": "https://www.stfinbarrsashgrove.qld.edu.au/ArticleDocuments/1487/2026%20Fee%20and%20Levies%20Schedule.pdf"
    }
   },
   "47708": {
    "school_name": "St Flannan's School",
    "website": "http://www.stflannans.qld.edu.au",
-   "status": "fetched",
+   "status": "found",
    "checked": "2026-11-20",
    "fee_pages": [
     "https://www.stflannans.qld.edu.au/enrol/school-fees",
@@ -48187,12 +48748,26 @@
    "crawl": {
     "pages": 13,
     "errors": 0
+   },
+   "fees": {
+    "fee_year": 2026,
+    "basis": "one-child family, annual tuition (sibling rates are lower); total is the school's stated annual total for one child including its listed levies",
+    "by_year": [
+     {
+      "years": "P-6",
+      "tuition": 1604,
+      "total": 2909
+     }
+    ],
+    "other_compulsory": "Resource levy $200 per student; iPad program Years 4-6",
+    "source": "school_website",
+    "source_url": "https://www.stflannans.qld.edu.au/ArticleDocuments/685/Schedule%20of%20Fees%20and%20Levies%202026.pdf"
    }
   },
   "47709": {
    "school_name": "St Francis Xavier School",
    "website": "http://www.stfrancisxavier.qld.edu.au",
-   "status": "fetched",
+   "status": "not_found",
    "checked": "2026-11-20",
    "fee_pages": [
     "https://www.stfrancisxavier.qld.edu.au/enrol/fees-levies",
@@ -48204,12 +48779,13 @@
    "crawl": {
     "pages": 14,
     "errors": 0
-   }
+   },
+   "note": "Fee pages were reached but show no figures."
   },
   "47710": {
    "school_name": "St Gerard Majella Primary School",
    "website": "http://www.sgmcairns.qld.edu.au",
-   "status": "fetched",
+   "status": "not_found",
    "checked": "2026-11-20",
    "fee_pages": [
     "https://www.sgmcairns.qld.edu.au/enrolling/fees-levies/"
@@ -48217,12 +48793,13 @@
    "crawl": {
     "pages": 10,
     "errors": 0
-   }
+   },
+   "note": "Fee pages were reached but show no figures."
   },
   "47711": {
    "school_name": "St Ignatius School",
    "website": "http://www.stignatiustoowong.qld.edu.au",
-   "status": "fetched",
+   "status": "found",
    "checked": "2026-11-20",
    "fee_pages": [
     "https://www.stignatiustoowong.qld.edu.au/enrol/school-fees-and-levies",
@@ -48232,12 +48809,25 @@
    "crawl": {
     "pages": 12,
     "errors": 0
+   },
+   "fees": {
+    "fee_year": 2026,
+    "basis": "one-child family, annual tuition (sibling rates are lower)",
+    "by_year": [
+     {
+      "years": "P-6",
+      "tuition": 3220
+     }
+    ],
+    "other_compulsory": "Year-level levies $885-$2,265; P&F levy $75 and building and education levy $1,000 per family",
+    "source": "school_website",
+    "source_url": "https://www.stignatiustoowong.qld.edu.au/enrol/school-fees-and-levies"
    }
   },
   "47712": {
    "school_name": "St Ita's Regional Primary School",
    "website": "http://www.stitasduttonpark.qld.edu.au",
-   "status": "fetched",
+   "status": "found",
    "checked": "2026-11-20",
    "fee_pages": [
     "https://www.stitasduttonpark.qld.edu.au/enrol/school-fees",
@@ -48246,12 +48836,26 @@
    "crawl": {
     "pages": 12,
     "errors": 0
+   },
+   "fees": {
+    "fee_year": 2026,
+    "basis": "one-child family, annual tuition (sibling rates are lower); total is the school's stated annual total for one child including its listed levies",
+    "by_year": [
+     {
+      "years": "P-6",
+      "tuition": 2560,
+      "total": 3345
+     }
+    ],
+    "other_compulsory": "Per student: excursion $165, resource $280-$355, technology $200, device $220",
+    "source": "school_website",
+    "source_url": "https://www.stitasduttonpark.qld.edu.au/ArticleDocuments/1078/Dutton%20Park%20-%202026%20Fees%20and%20Levies%20Schedule.pdf"
    }
   },
   "47713": {
    "school_name": "St James Primary School",
    "website": "http://www.stjames.qld.edu.au",
-   "status": "fetched",
+   "status": "found",
    "checked": "2026-11-20",
    "fee_pages": [
     "https://www.stjames.qld.edu.au/enrol/fees",
@@ -48260,12 +48864,25 @@
    "crawl": {
     "pages": 9,
     "errors": 0
+   },
+   "fees": {
+    "fee_year": 2026,
+    "basis": "one-child family, annual total of tuition, capital, P&F, resource and device levies",
+    "by_year": [
+     {
+      "years": "P-6",
+      "total": 3606
+     }
+    ],
+    "other_compulsory": "Camps, booklists and instrumental music extra",
+    "source": "school_website",
+    "source_url": "https://www.stjames.qld.edu.au/enrol/fees"
    }
   },
   "47714": {
    "school_name": "St Joachim's School",
    "website": "http://www.stjoachimscps.qld.edu.au",
-   "status": "fetched",
+   "status": "not_found",
    "checked": "2026-11-20",
    "fee_pages": [
     "https://www.stjoachimscps.qld.edu.au/enrolments/school-fees-2013",
@@ -48274,12 +48891,13 @@
    "crawl": {
     "pages": 12,
     "errors": 0
-   }
+   },
+   "note": "Fee pages were reached but show no figures."
   },
   "47715": {
    "school_name": "St John Vianney's Primary School",
    "website": "http://www.sjv.qld.edu.au",
-   "status": "fetched",
+   "status": "found",
    "checked": "2026-11-20",
    "fee_pages": [
     "https://www.sjv.qld.edu.au/enrolments/school-fees-and-levies",
@@ -48289,12 +48907,25 @@
    "crawl": {
     "pages": 12,
     "errors": 0
+   },
+   "fees": {
+    "fee_year": 2026,
+    "basis": "one-child family, annual tuition (sibling rates are lower)",
+    "by_year": [
+     {
+      "years": "P-6",
+      "tuition": 2528
+     }
+    ],
+    "other_compulsory": "P&F $150, capital $744 and ICT $220 per family; resource and activity levies per child",
+    "source": "school_website",
+    "source_url": "https://www.sjv.qld.edu.au/ArticleDocuments/957/Fee%20Schedule.pdf"
    }
   },
   "47716": {
    "school_name": "St Joseph's School",
    "website": "http://www.stjosephsbardon.qld.edu.au",
-   "status": "fetched",
+   "status": "not_found",
    "checked": "2026-11-20",
    "fee_pages": [
     "https://www.stjosephsbardon.qld.edu.au/enrolments/school-fees"
@@ -48302,12 +48933,13 @@
    "crawl": {
     "pages": 11,
     "errors": 0
-   }
+   },
+   "note": "Fee pages were reached but show no figures."
   },
   "47717": {
    "school_name": "St Joseph's Primary School",
    "website": "http://www.stjoseph.qld.edu.au",
-   "status": "fetched",
+   "status": "found",
    "checked": "2026-11-20",
    "fee_pages": [
     "https://www.stjoseph.qld.edu.au/enrol/fee-information",
@@ -48316,12 +48948,26 @@
    "crawl": {
     "pages": 9,
     "errors": 0
+   },
+   "fees": {
+    "fee_year": 2027,
+    "basis": "one-child family, annual tuition (sibling rates are lower); total is the school's stated annual total for one child including its listed levies",
+    "by_year": [
+     {
+      "years": "P-6",
+      "tuition": 1800,
+      "total": 3471
+     }
+    ],
+    "other_compulsory": null,
+    "source": "school_website",
+    "source_url": "https://www.stjoseph.qld.edu.au/ArticleDocuments/898/2027%20School%20Fees%20and%20Levies%20Schedule.pdf.aspx"
    }
   },
   "47718": {
    "school_name": "St Joseph's Primary School",
    "website": "http://www.stjosephskpt.qld.edu.au",
-   "status": "fetched",
+   "status": "not_found",
    "checked": "2026-11-20",
    "fee_pages": [
     "https://www.stjosephskpt.qld.edu.au/enrolments/school-fees",
@@ -48330,12 +48976,13 @@
    "crawl": {
     "pages": 11,
     "errors": 0
-   }
+   },
+   "note": "Fee pages were reached but show no figures."
   },
   "47719": {
    "school_name": "St Joseph's School",
    "website": "http://www.stjosephsnorthipswich.qld.edu.au",
-   "status": "fetched",
+   "status": "not_found",
    "checked": "2026-11-20",
    "fee_pages": [
     "https://www.stjosephsnorthipswich.qld.edu.au/enrolments/school-fees",
@@ -48344,7 +48991,8 @@
    "crawl": {
     "pages": 10,
     "errors": 0
-   }
+   },
+   "note": "Fee pages were reached but show no figures."
   },
   "47720": {
    "school_name": "Ambrose Treacy College",
@@ -48375,7 +49023,7 @@
   "47721": {
    "school_name": "St Joseph's School",
    "website": "http://www.stjosnundah.qld.edu.au",
-   "status": "fetched",
+   "status": "found",
    "checked": "2026-11-20",
    "fee_pages": [
     "https://www.stjosnundah.qld.edu.au/enrolments/fees",
@@ -48384,12 +49032,26 @@
    "crawl": {
     "pages": 11,
     "errors": 0
+   },
+   "fees": {
+    "fee_year": 2026,
+    "basis": "one-child family, annual tuition (sibling rates are lower); total is the school's stated annual total for one child including its listed levies",
+    "by_year": [
+     {
+      "years": "P-6",
+      "tuition": 1512,
+      "total": 3023
+     }
+    ],
+    "other_compulsory": "Year-level student, book and camp levies",
+    "source": "school_website",
+    "source_url": "https://www.stjosnundah.qld.edu.au/ArticleDocuments/867/2026%20Fee%20Schedule.pdf"
    }
   },
   "47722": {
    "school_name": "St Joseph's Tobruk Memorial School",
    "website": "http://www.stjosephsbeenleigh.qld.edu.au/Pages/default.aspx",
-   "status": "fetched",
+   "status": "found",
    "checked": "2026-11-20",
    "fee_pages": [
     "https://www.stjosephsbeenleigh.qld.edu.au/enrol/fees",
@@ -48398,12 +49060,26 @@
    "crawl": {
     "pages": 15,
     "errors": 0
+   },
+   "fees": {
+    "fee_year": 2027,
+    "basis": "one-child family, annual tuition (sibling rates are lower); total is the school's stated annual total for one child including its listed levies",
+    "by_year": [
+     {
+      "years": "P-6",
+      "tuition": 1512,
+      "total": 2804
+     }
+    ],
+    "other_compulsory": "Camps: Year 5 $290, Year 6 $470",
+    "source": "school_website",
+    "source_url": "https://www.stjosephsbeenleigh.qld.edu.au/ArticleDocuments/299/2027%20Fees%20and%20Levies.pdf.aspx"
    }
   },
   "47723": {
    "school_name": "St Joseph's Catholic Primary School",
    "website": "http://www.stjosephsbrackenridge.qld.edu.au",
-   "status": "fetched",
+   "status": "found",
    "checked": "2026-11-20",
    "fee_pages": [
     "https://www.stjosephsbrackenridge.qld.edu.au/our-school/care-feed-forward",
@@ -48413,12 +49089,25 @@
    "crawl": {
     "pages": 12,
     "errors": 0
+   },
+   "fees": {
+    "fee_year": 2026,
+    "basis": "one-child family, annual fees including the building fund levy",
+    "by_year": [
+     {
+      "years": "P-6",
+      "total": 2877
+     }
+    ],
+    "other_compulsory": "Prep levy $182; technology levy $313-$347 (Years 3-6); camps",
+    "source": "school_website",
+    "source_url": "https://www.stjosephsbrackenridge.qld.edu.au/ArticleDocuments/513/Fee-Schedule-2026-v2.pdf.aspx"
    }
   },
   "47724": {
    "school_name": "St Kevin's School",
    "website": "http://www.stkevinsgeebung.qld.edu.au",
-   "status": "fetched",
+   "status": "found",
    "checked": "2026-11-20",
    "fee_pages": [
     "https://www.stkevinsgeebung.qld.edu.au/enrolments/fee-structure",
@@ -48428,12 +49117,26 @@
    "crawl": {
     "pages": 14,
     "errors": 0
+   },
+   "fees": {
+    "fee_year": 2026,
+    "basis": "one-child family, annual tuition (sibling rates are lower); total is the school's stated annual total for one child including its listed levies",
+    "by_year": [
+     {
+      "years": "P-6",
+      "tuition": 1368,
+      "total": 3036
+     }
+    ],
+    "other_compulsory": "Prep, technology, book list, camp and senior levies by year level",
+    "source": "school_website",
+    "source_url": "https://www.stkevinsgeebung.qld.edu.au/ArticleDocuments/1393/2026%20Detailed%20School%20Fee%20Schedule.pdf.aspx"
    }
   },
   "47725": {
    "school_name": "St Kieran's School",
    "website": "http://www.stkieranbrighton.qld.edu.au",
-   "status": "fetched",
+   "status": "not_found",
    "checked": "2026-11-20",
    "fee_pages": [
     "https://www.stkieranbrighton.qld.edu.au/enrolments/fees",
@@ -48442,12 +49145,13 @@
    "crawl": {
     "pages": 8,
     "errors": 0
-   }
+   },
+   "note": "Fee pages were reached but show no figures."
   },
   "47726": {
    "school_name": "St Mark's School",
    "website": "http://www.stmarksinala.qld.edu.au",
-   "status": "fetched",
+   "status": "found",
    "checked": "2026-11-20",
    "fee_pages": [
     "https://www.stmarksinala.qld.edu.au/enrolment/fees",
@@ -48458,12 +49162,31 @@
    "crawl": {
     "pages": 15,
     "errors": 0
+   },
+   "fees": {
+    "fee_year": 2026,
+    "basis": "one-child family, annual tuition (sibling rates are lower); total is the school's stated annual total for one child including its listed levies",
+    "by_year": [
+     {
+      "years": "P-4",
+      "tuition": 1084,
+      "total": 2104
+     },
+     {
+      "years": "5-6",
+      "tuition": 1084,
+      "total": 2404
+     }
+    ],
+    "other_compulsory": null,
+    "source": "school_website",
+    "source_url": "https://www.stmarksinala.qld.edu.au/ArticleDocuments/1017/Fees%202026.pdf"
    }
   },
   "47727": {
    "school_name": "St Martin's School",
    "website": "http://www.stmartinscarina.qld.edu.au",
-   "status": "fetched",
+   "status": "found",
    "checked": "2026-11-20",
    "fee_pages": [
     "https://www.stmartinscarina.qld.edu.au/enrolments/school-fees",
@@ -48472,12 +49195,25 @@
    "crawl": {
     "pages": 9,
     "errors": 1
+   },
+   "fees": {
+    "fee_year": 2026,
+    "basis": "one-child family, annual tuition (sibling rates are lower)",
+    "by_year": [
+     {
+      "years": "P-6",
+      "tuition": 1896
+     }
+    ],
+    "other_compulsory": "Capital levy $736 and P&F levy $100 per family; school and IT levies $1,074-$1,308 per student; camps extra",
+    "source": "school_website",
+    "source_url": "https://www.stmartinscarina.qld.edu.au/ArticleDocuments/882/SCHOOL%20FEES%20AND%20LEVIES%20FOR%202026.pdf"
    }
   },
   "47728": {
    "school_name": "St Mary's Primary School",
    "website": "http://www.stmarysipswich.qld.edu.au",
-   "status": "fetched",
+   "status": "found",
    "checked": "2026-11-20",
    "fee_pages": [
     "https://www.stmarysipswich.qld.edu.au/enrol/school-fees",
@@ -48486,12 +49222,26 @@
    "crawl": {
     "pages": 10,
     "errors": 0
+   },
+   "fees": {
+    "fee_year": 2026,
+    "basis": "one-child family, annual tuition (sibling rates are lower); total is the school's stated annual total for one child including its listed levies",
+    "by_year": [
+     {
+      "years": "P-6",
+      "tuition": 2472,
+      "total": 3232
+     }
+    ],
+    "other_compulsory": "IT device program $55-$455; camps Years 5-6",
+    "source": "school_website",
+    "source_url": "https://www.stmarysipswich.qld.edu.au/ArticleDocuments/1121/2026%20Fees%20and%20Levies%20Schedule.pdf"
    }
   },
   "47729": {
    "school_name": "St Paul's School",
    "website": "http://www.stpaulswoodridge.qld.edu.au",
-   "status": "fetched",
+   "status": "not_found",
    "checked": "2026-11-20",
    "fee_pages": [
     "https://www.stpaulswoodridge.qld.edu.au/enrolments/school-fees",
@@ -48503,12 +49253,13 @@
    "crawl": {
     "pages": 15,
     "errors": 0
-   }
+   },
+   "note": "Fee pages were reached but show no figures."
   },
   "47730": {
    "school_name": "St Peter Chanel Primary School",
    "website": "http://www.spcthegap.qld.edu.au",
-   "status": "fetched",
+   "status": "not_found",
    "checked": "2026-11-20",
    "fee_pages": [
     "https://www.spcthegap.qld.edu.au/enrolment/fees"
@@ -48516,12 +49267,13 @@
    "crawl": {
     "pages": 10,
     "errors": 0
-   }
+   },
+   "note": "Fee pages were reached but show no figures."
   },
   "47731": {
    "school_name": "St Peter's Catholic Primary School",
    "website": "http://www.stpeterscaboolture.qld.edu.au",
-   "status": "fetched",
+   "status": "not_found",
    "checked": "2026-11-20",
    "fee_pages": [
     "https://www.stpeterscaboolture.qld.edu.au/enrolments/fee-information",
@@ -48531,12 +49283,13 @@
    "crawl": {
     "pages": 11,
     "errors": 1
-   }
+   },
+   "note": "Fee pages were reached but show no figures."
   },
   "47732": {
    "school_name": "Sts Peter and Paul's School",
    "website": "http://www.stspp.qld.edu.au",
-   "status": "fetched",
+   "status": "found",
    "checked": "2026-11-20",
    "fee_pages": [
     "https://www.stspp.qld.edu.au/enrolment/fee-information",
@@ -48547,12 +49300,25 @@
    "crawl": {
     "pages": 14,
     "errors": 0
+   },
+   "fees": {
+    "fee_year": 2026,
+    "basis": "one-child family, annual tuition (sibling rates are lower)",
+    "by_year": [
+     {
+      "years": "P-6",
+      "tuition": 2564
+     }
+    ],
+    "other_compulsory": "Student levy $810 and technology levy $130-$440 per student; capital levy $800 and P&F levy $200 per family",
+    "source": "school_website",
+    "source_url": "https://www.stspp.qld.edu.au/ArticleDocuments/1805/2026%20School%20Fees%20and%20Levies%20Schedule%20(1).pdf"
    }
   },
   "47733": {
    "school_name": "St Peter's Primary School",
    "website": "http://www.stpetersrochedale.qld.edu.au",
-   "status": "fetched",
+   "status": "found",
    "checked": "2026-11-20",
    "fee_pages": [
     "https://www.stpetersrochedale.qld.edu.au/enrolments/fee-information",
@@ -48562,12 +49328,25 @@
    "crawl": {
     "pages": 12,
     "errors": 0
+   },
+   "fees": {
+    "fee_year": 2027,
+    "basis": "one-child family, annual tuition (sibling rates are lower)",
+    "by_year": [
+     {
+      "years": "P-6",
+      "tuition": 1728
+     }
+    ],
+    "other_compulsory": "Capital levy $724 and P&F levy $120 per family; student levy $860 per child plus camps",
+    "source": "school_website",
+    "source_url": "https://www.stpetersrochedale.qld.edu.au/ArticleDocuments/883/2027%20Schedule%20of%20Fees%20and%20Levies.pdf.aspx"
    }
   },
   "47734": {
    "school_name": "St Pius' Primary School",
    "website": "http://www.stpiusbanyo.qld.edu.au",
-   "status": "fetched",
+   "status": "found",
    "checked": "2026-11-20",
    "fee_pages": [
     "https://www.stpiusbanyo.qld.edu.au/enrol/school-fees",
@@ -48577,12 +49356,26 @@
    "crawl": {
     "pages": 10,
     "errors": 0
+   },
+   "fees": {
+    "fee_year": 2027,
+    "basis": "one-child family, annual tuition (sibling rates are lower); total is the school's stated annual total for one child including its listed levies",
+    "by_year": [
+     {
+      "years": "P-6",
+      "tuition": 2052,
+      "total": 3982
+     }
+    ],
+    "other_compulsory": "Years 3-6 iPad program $300",
+    "source": "school_website",
+    "source_url": "https://www.stpiusbanyo.qld.edu.au/ArticleDocuments/685/2027%20Statement%20of%20Fees%20%20Levies.pdf.aspx"
    }
   },
   "47735": {
    "school_name": "St Pius X School",
    "website": "http://www.stpiusxsalisbury.qld.edu.au/Pages/default.aspx",
-   "status": "fetched",
+   "status": "not_found",
    "checked": "2026-11-20",
    "fee_pages": [
     "https://www.stpiusxsalisbury.qld.edu.au/enrol/fees-levies",
@@ -48591,12 +49384,13 @@
    "crawl": {
     "pages": 10,
     "errors": 0
-   }
+   },
+   "note": "Fee pages were reached but show no figures."
   },
   "47736": {
    "school_name": "St Sebastian's Primary School",
    "website": "http://www.stsebastiansyeronga.qld.edu.au",
-   "status": "fetched",
+   "status": "found",
    "checked": "2026-11-20",
    "fee_pages": [
     "https://www.stsebastiansyeronga.qld.edu.au/enrol/fees-and-levies",
@@ -48605,12 +49399,26 @@
    "crawl": {
     "pages": 8,
     "errors": 0
+   },
+   "fees": {
+    "fee_year": 2027,
+    "basis": "one-child family, annual tuition (sibling rates are lower); total is the school's stated annual total for one child including its listed levies",
+    "by_year": [
+     {
+      "years": "P-6",
+      "tuition": 2132,
+      "total": 4329
+     }
+    ],
+    "other_compulsory": "Early years levy $305 or book pack $100; camps Years 4-6",
+    "source": "school_website",
+    "source_url": "https://www.stsebastiansyeronga.qld.edu.au/ArticleDocuments/674/2027%20School%20Fees%20Schedule.pdf.aspx"
    }
   },
   "47737": {
    "school_name": "St Thomas' School",
    "website": "http://www.stthomascamphill.qld.edu.au",
-   "status": "fetched",
+   "status": "found",
    "checked": "2026-11-20",
    "fee_pages": [
     "https://www.stthomascamphill.qld.edu.au/enrolments/fee-information",
@@ -48619,12 +49427,25 @@
    "crawl": {
     "pages": 13,
     "errors": 0
+   },
+   "fees": {
+    "fee_year": 2026,
+    "basis": "one-child family, annual fees and levies including the P&F levy (student levy $972 and capital levy $1,116 included)",
+    "by_year": [
+     {
+      "years": "P-6",
+      "total": 4289
+     }
+    ],
+    "other_compulsory": "Swimming, day camp and Year 5 camp extra",
+    "source": "school_website",
+    "source_url": "https://www.stthomascamphill.qld.edu.au/ArticleDocuments/5334/Fee%20Schedule.pdf"
    }
   },
   "47738": {
    "school_name": "St Matthew's School",
    "website": "http://www.stmatthews.qld.edu.au",
-   "status": "fetched",
+   "status": "found",
    "checked": "2026-11-20",
    "fee_pages": [
     "https://www.stmatthews.qld.edu.au/enrol/school-fees-schedule",
@@ -48636,12 +49457,26 @@
    "crawl": {
     "pages": 15,
     "errors": 0
+   },
+   "fees": {
+    "fee_year": 2027,
+    "basis": "one-child family, annual tuition (sibling rates are lower); total is the school's stated annual total for one child including its listed levies",
+    "by_year": [
+     {
+      "years": "P-6",
+      "tuition": 1548,
+      "total": 2980
+     }
+    ],
+    "other_compulsory": "Year-level levies $275-$960",
+    "source": "school_website",
+    "source_url": "https://www.stmatthews.qld.edu.au/ArticleDocuments/566/2027%20School%20Fees%20and%20Levies%20Schedule.pdf.aspx"
    }
   },
   "47739": {
    "school_name": "St William's Primary School",
    "website": "http://www.stwilliamsgrovely.qld.edu.au",
-   "status": "fetched",
+   "status": "found",
    "checked": "2026-11-20",
    "fee_pages": [
     "https://www.stwilliamsgrovely.qld.edu.au/enrolments/fees",
@@ -48650,12 +49485,26 @@
    "crawl": {
     "pages": 12,
     "errors": 1
+   },
+   "fees": {
+    "fee_year": 2027,
+    "basis": "one-child family, annual tuition (sibling rates are lower); total is the school's stated annual total for one child including its listed levies",
+    "by_year": [
+     {
+      "years": "P-6",
+      "tuition": 2280,
+      "total": 3188
+     }
+    ],
+    "other_compulsory": "Student, booklist, IT and camp levies $1,054-$1,871 by year level",
+    "source": "school_website",
+    "source_url": "https://www.stwilliamsgrovely.qld.edu.au/ArticleDocuments/909/2027%20Fee%20Schedule.pdf.aspx"
    }
   },
   "47740": {
    "school_name": "Christ the King Catholic Primary School",
    "website": "http://www.christthekingdbay.qld.edu.au",
-   "status": "fetched",
+   "status": "found",
    "checked": "2026-11-20",
    "fee_pages": [
     "https://www.christthekingdbay.qld.edu.au/enrolments/fees-levies",
@@ -48666,12 +49515,26 @@
    "crawl": {
     "pages": 12,
     "errors": 0
+   },
+   "fees": {
+    "fee_year": 2026,
+    "basis": "one-child family, annual tuition (sibling rates are lower); total is the school's stated annual total for one child including its listed levies",
+    "by_year": [
+     {
+      "years": "P-6",
+      "tuition": 1920,
+      "total": 2910
+     }
+    ],
+    "other_compulsory": null,
+    "source": "school_website",
+    "source_url": "https://www.christthekingdbay.qld.edu.au/ArticleDocuments/887/Fee%20Schedule%202026.pdf"
    }
   },
   "47741": {
    "school_name": "St Anthony's School",
    "website": "http://www.stanthonysalexhills.qld.edu.au",
-   "status": "fetched",
+   "status": "found",
    "checked": "2026-11-20",
    "fee_pages": [
     "https://www.stanthonysalexhills.qld.edu.au/enrolments/schoolfees",
@@ -48680,12 +49543,25 @@
    "crawl": {
     "pages": 10,
     "errors": 0
+   },
+   "fees": {
+    "fee_year": 2027,
+    "basis": "one-child family, annual tuition (sibling rates are lower)",
+    "by_year": [
+     {
+      "years": "P-6",
+      "tuition": 2256
+     }
+    ],
+    "other_compulsory": "Capital levy $864 and P&F levy $100 per family; school levy $220-$256 per child; iPad and camps by year",
+    "source": "school_website",
+    "source_url": "https://www.stanthonysalexhills.qld.edu.au/ArticleDocuments/299/2027%20School%20Fee%20Schedule.pdf.aspx"
    }
   },
   "47742": {
    "school_name": "St Andrew's Catholic School",
    "website": "http://www.standrewsfg.qld.edu.au/Pages/default.aspx",
-   "status": "fetched",
+   "status": "found",
    "checked": "2026-11-20",
    "fee_pages": [
     "https://www.standrewsfg.qld.edu.au/enrol/school-fees",
@@ -48694,12 +49570,26 @@
    "crawl": {
     "pages": 14,
     "errors": 0
+   },
+   "fees": {
+    "fee_year": 2026,
+    "basis": "one-child family, annual tuition (sibling rates are lower); total is the school's stated annual total for one child including its listed levies",
+    "by_year": [
+     {
+      "years": "P-6",
+      "tuition": 2728,
+      "total": 3755
+     }
+    ],
+    "other_compulsory": "Device and year-level levies extra",
+    "source": "school_website",
+    "source_url": "https://www.standrewsfg.qld.edu.au/ArticleDocuments/878/2026%20Fee%20Schedule.pdf.aspx"
    }
   },
   "47743": {
    "school_name": "All Saints' School",
    "website": "http://www.allsaintsboonah.qld.edu.au",
-   "status": "fetched",
+   "status": "found",
    "checked": "2026-11-20",
    "fee_pages": [
     "https://www.allsaintsboonah.qld.edu.au/enrolments/fees"
@@ -48707,12 +49597,26 @@
    "crawl": {
     "pages": 11,
     "errors": 1
+   },
+   "fees": {
+    "fee_year": 2026,
+    "basis": "one-child family, annual tuition (sibling rates are lower); total is the school's stated annual total for one child including its listed levies",
+    "by_year": [
+     {
+      "years": "P-6",
+      "tuition": 1212,
+      "total": 2632
+     }
+    ],
+    "other_compulsory": "Prep levy $55",
+    "source": "school_website",
+    "source_url": "https://www.allsaintsboonah.qld.edu.au/enrolments/fees"
    }
   },
   "47744": {
    "school_name": "Guardian Angels' Catholic Primary School",
    "website": "http://www.gaps.qld.edu.au",
-   "status": "fetched",
+   "status": "found",
    "checked": "2026-11-20",
    "fee_pages": [
     "https://www.gaps.qld.edu.au/enrolments/fee-structure"
@@ -48720,6 +49624,19 @@
    "crawl": {
     "pages": 8,
     "errors": 0
+   },
+   "fees": {
+    "fee_year": 2027,
+    "basis": "one-child family, annual tuition (sibling rates are lower)",
+    "by_year": [
+     {
+      "years": "P-6",
+      "tuition": 2192
+     }
+    ],
+    "other_compulsory": "Capital levy $756 per family; student levy $1,535 and device levy $165-$275 per student",
+    "source": "school_website",
+    "source_url": "https://www.gaps.qld.edu.au/enrolments/fee-structure"
    }
   },
   "47745": {
@@ -48737,7 +49654,7 @@
   "47746": {
    "school_name": "Our Lady of Good Counsel School",
    "website": "http://www.olgcgatton.qld.edu.au",
-   "status": "fetched",
+   "status": "found",
    "checked": "2026-11-20",
    "fee_pages": [
     "https://www.olgcgatton.qld.edu.au/enrol/school-fees",
@@ -48747,12 +49664,26 @@
    "crawl": {
     "pages": 10,
     "errors": 0
+   },
+   "fees": {
+    "fee_year": 2027,
+    "basis": "one-child family, annual tuition (sibling rates are lower); total is the school's stated annual total for one child including its listed levies",
+    "by_year": [
+     {
+      "years": "P-6",
+      "tuition": 1296,
+      "total": 2571
+     }
+    ],
+    "other_compulsory": null,
+    "source": "school_website",
+    "source_url": "https://www.olgcgatton.qld.edu.au/ArticleDocuments/1300/OLGC%20Fee%20Schedule.pdf.aspx"
    }
   },
   "47747": {
    "school_name": "St Augustine's Parish Primary School",
    "website": "http://www.sa.qld.edu.au/Pages/default.aspx",
-   "status": "fetched",
+   "status": "found",
    "checked": "2026-11-20",
    "fee_pages": [
     "https://www.sa.qld.edu.au/enrolments/school-enrolment-fees",
@@ -48762,12 +49693,26 @@
    "crawl": {
     "pages": 13,
     "errors": 0
+   },
+   "fees": {
+    "fee_year": 2026,
+    "basis": "one-child family, annual tuition (sibling rates are lower); total is the school's stated annual total for one child including its listed levies",
+    "by_year": [
+     {
+      "years": "P-6",
+      "tuition": 1872,
+      "total": 3362
+     }
+    ],
+    "other_compulsory": "Camps extra",
+    "source": "school_website",
+    "source_url": "https://www.sa.qld.edu.au/ArticleDocuments/1013/St%20Augustine's%202026%20School%20Fee%20Structure.pdf.aspx"
    }
   },
   "47748": {
    "school_name": "St Brigid's Primary School",
    "website": "http://www.stbrigidsrosewood.qld.edu.au",
-   "status": "fetched",
+   "status": "found",
    "checked": "2026-11-20",
    "fee_pages": [
     "https://www.stbrigidsrosewood.qld.edu.au/enrolment/school-fees",
@@ -48776,12 +49721,31 @@
    "crawl": {
     "pages": 6,
     "errors": 0
+   },
+   "fees": {
+    "fee_year": 2026,
+    "basis": "one-child family, annual tuition (sibling rates are lower); total is the school's stated cost for a first child at that year level",
+    "by_year": [
+     {
+      "years": "P-3",
+      "tuition": 1340,
+      "total": 2508
+     },
+     {
+      "years": "4-6",
+      "tuition": 1340,
+      "total": 2718
+     }
+    ],
+    "other_compulsory": null,
+    "source": "school_website",
+    "source_url": "https://www.stbrigidsrosewood.qld.edu.au/ArticleDocuments/1007/2026%20School%20Fee%20Schedule.pdf"
    }
   },
   "47749": {
    "school_name": "St Francis Xavier School",
    "website": "http://www.sfx.qld.edu.au",
-   "status": "fetched",
+   "status": "found",
    "checked": "2026-11-20",
    "fee_pages": [
     "https://www.sfx.qld.edu.au/enrolments/school-fees"
@@ -48789,12 +49753,31 @@
    "crawl": {
     "pages": 9,
     "errors": 0
+   },
+   "fees": {
+    "fee_year": 2027,
+    "basis": "one-child family, annual tuition (sibling rates are lower); total is the school's stated annual total for one child including its listed levies",
+    "by_year": [
+     {
+      "years": "P-3",
+      "tuition": 3125,
+      "total": 4490
+     },
+     {
+      "years": "4-6",
+      "tuition": 3125,
+      "total": 5410
+     }
+    ],
+    "other_compulsory": null,
+    "source": "school_website",
+    "source_url": "https://www.sfx.qld.edu.au/enrolments/school-fees"
    }
   },
   "47750": {
    "school_name": "St Joseph's School",
    "website": "http://www.stjosephschilders.qld.edu.au",
-   "status": "fetched",
+   "status": "not_found",
    "checked": "2026-11-20",
    "fee_pages": [
     "https://www.stjosephschilders.qld.edu.au/articledocuments/570/2026%20st%20joseph's%20school%20fees.pdf.aspx",
@@ -48803,12 +49786,13 @@
    "crawl": {
     "pages": 13,
     "errors": 0
-   }
+   },
+   "note": "Fee pages were reached but show no figures."
   },
   "47751": {
    "school_name": "St Joseph's School",
    "website": "http://www.stjosephsgayndah.qld.edu.au",
-   "status": "fetched",
+   "status": "found",
    "checked": "2026-11-20",
    "fee_pages": [
     "https://www.stjosephsgayndah.qld.edu.au/enrolments/fee-schedule-2026",
@@ -48817,12 +49801,26 @@
    "crawl": {
     "pages": 9,
     "errors": 0
+   },
+   "fees": {
+    "fee_year": 2026,
+    "basis": "one-child family, annual tuition (sibling rates are lower); total is the school's stated annual total for one child including its listed levies",
+    "by_year": [
+     {
+      "years": "P-6",
+      "tuition": 1080,
+      "total": 2356
+     }
+    ],
+    "other_compulsory": "Year 6 levy $100; camps extra",
+    "source": "school_website",
+    "source_url": "https://www.stjosephsgayndah.qld.edu.au/ArticleDocuments/1246/2026%20School%20Fees.pdf"
    }
   },
   "47752": {
    "school_name": "St Joseph's School",
    "website": "http://www.stjosephsmurgon.qld.edu.au",
-   "status": "fetched",
+   "status": "found",
    "checked": "2026-11-20",
    "fee_pages": [
     "https://www.stjosephsmurgon.qld.edu.au/enrolments/fees",
@@ -48831,6 +49829,20 @@
    "crawl": {
     "pages": 9,
     "errors": 0
+   },
+   "fees": {
+    "fee_year": 2027,
+    "basis": "one-child family, annual tuition (sibling rates are lower); total is the school's stated annual total for one child including its listed levies",
+    "by_year": [
+     {
+      "years": "P-6",
+      "tuition": 1232,
+      "total": 2264
+     }
+    ],
+    "other_compulsory": null,
+    "source": "school_website",
+    "source_url": "https://www.stjosephsmurgon.qld.edu.au/ArticleDocuments/707/School%20Fees%202027.pdf.aspx"
    }
   },
   "47753": {
@@ -48869,7 +49881,7 @@
   "47754": {
    "school_name": "St Mary's School",
    "website": "http://www.stmarysbeaudesert.qld.edu.au",
-   "status": "fetched",
+   "status": "not_found",
    "checked": "2026-11-20",
    "fee_pages": [
     "https://www.stmarysbeaudesert.qld.edu.au/enrolments-fees/enrolment-enquiry",
@@ -48881,12 +49893,13 @@
    "crawl": {
     "pages": 11,
     "errors": 1
-   }
+   },
+   "note": "Fee pages were reached but show no figures."
   },
   "47755": {
    "school_name": "St Mary's School",
    "website": "http://www.stmaryslaidley.qld.edu.au",
-   "status": "fetched",
+   "status": "found",
    "checked": "2026-11-20",
    "fee_pages": [
     "https://www.stmaryslaidley.qld.edu.au/enrol/fees-for-2014",
@@ -48895,12 +49908,26 @@
    "crawl": {
     "pages": 11,
     "errors": 0
+   },
+   "fees": {
+    "fee_year": 2026,
+    "basis": "one-child family, annual tuition (sibling rates are lower); total is the school's stated annual total for one child including its listed levies",
+    "by_year": [
+     {
+      "years": "P-6",
+      "tuition": 1384,
+      "total": 2294
+     }
+    ],
+    "other_compulsory": "Prep resource levy $190; Year 1 classroom levy $60; camps",
+    "source": "school_website",
+    "source_url": "https://www.stmaryslaidley.qld.edu.au/ArticleDocuments/1011/School%20Fees%20and%20Levies%20Schedule%202026.pdf.aspx"
    }
   },
   "47756": {
    "school_name": "St Mary's Primary School",
    "website": "http://www.smpmaryborough.qld.edu.au",
-   "status": "fetched",
+   "status": "found",
    "checked": "2026-11-20",
    "fee_pages": [
     "https://www.smpmaryborough.qld.edu.au/enrolments/fees-and-levies",
@@ -48909,12 +49936,25 @@
    "crawl": {
     "pages": 11,
     "errors": 0
+   },
+   "fees": {
+    "fee_year": 2026,
+    "basis": "one-child family, annual tuition (sibling rates are lower)",
+    "by_year": [
+     {
+      "years": "P-6",
+      "tuition": 1212
+     }
+    ],
+    "other_compulsory": "Capital $660 and P&F $100 per family; technology levy $425 and general year levy $575-$925 per child",
+    "source": "school_website",
+    "source_url": "https://www.smpmaryborough.qld.edu.au/ArticleDocuments/734/Fees%20and%20Levies%202026.pdf"
    }
   },
   "47757": {
    "school_name": "St Patrick's Primary School",
    "website": "http://www.stpatrickspsgympie.qld.edu.au",
-   "status": "fetched",
+   "status": "found",
    "checked": "2026-11-20",
    "fee_pages": [
     "https://www.stpatrickspsgympie.qld.edu.au/parent-info/school-fees",
@@ -48923,12 +49963,26 @@
    "crawl": {
     "pages": 9,
     "errors": 0
+   },
+   "fees": {
+    "fee_year": 2026,
+    "basis": "one-child family, annual tuition (sibling rates are lower); total is the school's stated annual total for one child including its listed levies",
+    "by_year": [
+     {
+      "years": "P-6",
+      "tuition": 2060,
+      "total": 3100
+     }
+    ],
+    "other_compulsory": "Prep and book pack levies; camps Years 4-6",
+    "source": "school_website",
+    "source_url": "https://www.stpatrickspsgympie.qld.edu.au/ArticleDocuments/1453/2026%20School%20Fees%20Schedule%20and%20Policy.pdf.aspx"
    }
   },
   "47758": {
    "school_name": "St Patrick's Primary School",
    "website": "http://www.stpatsnanango.qld.edu.au",
-   "status": "fetched",
+   "status": "found",
    "checked": "2026-11-20",
    "fee_pages": [
     "https://www.stpatsnanango.qld.edu.au/enrolments/school-fees",
@@ -48937,12 +49991,25 @@
    "crawl": {
     "pages": 15,
     "errors": 0
+   },
+   "fees": {
+    "fee_year": 2026,
+    "basis": "one-child family, annual total of tuition and levies (scaled fee, general purpose, community and capital levies)",
+    "by_year": [
+     {
+      "years": "P-6",
+      "total": 1880
+     }
+    ],
+    "other_compulsory": null,
+    "source": "school_website",
+    "source_url": "https://www.stpatsnanango.qld.edu.au/enrolments/school-fees"
    }
   },
   "47759": {
    "school_name": "Star of the Sea Catholic School",
    "website": "http://www.starofthesea.qld.edu.au",
-   "status": "fetched",
+   "status": "found",
    "checked": "2026-11-20",
    "fee_pages": [
     "https://www.starofthesea.qld.edu.au/enrolments/fees",
@@ -48952,12 +50019,49 @@
    "crawl": {
     "pages": 9,
     "errors": 0
+   },
+   "fees": {
+    "fee_year": 2027,
+    "basis": "eldest child, total annual cost at that year level as the school states it",
+    "by_year": [
+     {
+      "years": "P",
+      "total": 3043
+     },
+     {
+      "years": "1",
+      "total": 3003
+     },
+     {
+      "years": "2",
+      "total": 3028
+     },
+     {
+      "years": "3",
+      "total": 3038
+     },
+     {
+      "years": "4",
+      "total": 3258
+     },
+     {
+      "years": "5",
+      "total": 3383
+     },
+     {
+      "years": "6",
+      "total": 5373
+     }
+    ],
+    "other_compulsory": null,
+    "source": "school_website",
+    "source_url": "https://www.starofthesea.qld.edu.au/ArticleDocuments/741/2027%20School%20Fee%20Spreadsheet.pdf.aspx"
    }
   },
   "47760": {
    "school_name": "St Vincent's Primary School",
    "website": "http://www.stvincentsps.qld.edu.au/Pages/default.aspx",
-   "status": "fetched",
+   "status": "found",
    "checked": "2026-11-20",
    "fee_pages": [
     "https://www.stvincentsps.qld.edu.au/enrol/school-fees"
@@ -48965,12 +50069,26 @@
    "crawl": {
     "pages": 11,
     "errors": 0
+   },
+   "fees": {
+    "fee_year": 2026,
+    "basis": "one-child family, annual tuition (sibling rates are lower); total is the school's stated annual total for one child including its listed levies",
+    "by_year": [
+     {
+      "years": "P-6",
+      "tuition": 2780,
+      "total": 4012
+     }
+    ],
+    "other_compulsory": "IT levy or computer hire $200-$400; Year 6 camp $500",
+    "source": "school_website",
+    "source_url": "https://www.stvincentsps.qld.edu.au/enrol/school-fees"
    }
   },
   "47761": {
    "school_name": "St Kevin's School",
    "website": "http://www.sk.qld.edu.au",
-   "status": "fetched",
+   "status": "found",
    "checked": "2026-11-20",
    "fee_pages": [
     "https://www.sk.qld.edu.au/enrol/fees",
@@ -48979,12 +50097,25 @@
    "crawl": {
     "pages": 12,
     "errors": 0
+   },
+   "fees": {
+    "fee_year": 2027,
+    "basis": "one-child family, annual tuition (sibling rates are lower)",
+    "by_year": [
+     {
+      "years": "P-6",
+      "tuition": 3364
+     }
+    ],
+    "other_compulsory": "Capital levy $712 and P&F levy $100 per family; resource levy $325 and IT levy $80-$285 per student; camps",
+    "source": "school_website",
+    "source_url": "https://www.sk.qld.edu.au/ArticleDocuments/1008/2027%20Fee%20Schedule%20St%20Kevins.pdf.aspx"
    }
   },
   "47762": {
    "school_name": "Our Lady of the Rosary School",
    "website": "http://www.olr.qld.edu.au",
-   "status": "fetched",
+   "status": "found",
    "checked": "2026-11-20",
    "fee_pages": [
     "https://www.olr.qld.edu.au/enrol/fees",
@@ -48993,12 +50124,25 @@
    "crawl": {
     "pages": 12,
     "errors": 0
+   },
+   "fees": {
+    "fee_year": 2026,
+    "basis": "one-child family, annual tuition (sibling rates are lower)",
+    "by_year": [
+     {
+      "years": "P-6",
+      "tuition": 1980
+     }
+    ],
+    "other_compulsory": "Capital levy $740 and community levy $50 per family; resource and technology levy $984 per student",
+    "source": "school_website",
+    "source_url": "https://www.olr.qld.edu.au/ArticleDocuments/4991/2026%20OLR%20School%20Fees.pdf"
    }
   },
   "47763": {
    "school_name": "Stella Maris School",
    "website": "http://www.stellamaris.qld.edu.au",
-   "status": "fetched",
+   "status": "found",
    "checked": "2026-11-20",
    "fee_pages": [
     "https://www.stellamaris.qld.edu.au/enrolment/school-fees",
@@ -49007,12 +50151,26 @@
    "crawl": {
     "pages": 12,
     "errors": 0
+   },
+   "fees": {
+    "fee_year": 2026,
+    "basis": "one-child family, annual tuition (sibling rates are lower); total is the school's stated annual total for one child including its listed levies",
+    "by_year": [
+     {
+      "years": "P-6",
+      "tuition": 1535,
+      "total": 3385
+     }
+    ],
+    "other_compulsory": null,
+    "source": "school_website",
+    "source_url": "https://www.stellamaris.qld.edu.au/ArticleDocuments/771/Fees%20and%20Levies%20for%202026.pdf"
    }
   },
   "47764": {
    "school_name": "Marian Catholic School",
    "website": "http://www.marian.catholic.edu.au",
-   "status": "fetched",
+   "status": "found",
    "checked": "2026-11-20",
    "fee_pages": [
     "https://www.marian.catholic.edu.au/enrolment/school-fees/",
@@ -49024,6 +50182,20 @@
    "crawl": {
     "pages": 13,
     "errors": 0
+   },
+   "fees": {
+    "fee_year": 2026,
+    "basis": "one student, annual Townsville diocesan tuition; total adds the school's levies",
+    "by_year": [
+     {
+      "years": "P-6",
+      "tuition": 1952,
+      "total": 3847
+     }
+    ],
+    "other_compulsory": "Instrumental music and camps extra",
+    "source": "school_website",
+    "source_url": "https://os-data-2.s3-ap-southeast-2.amazonaws.com/marian2/bundle10/Marian%20-%202026%20School%20Fees.pdf"
    }
   },
   "47765": {
@@ -49045,7 +50217,7 @@
   "47766": {
    "school_name": "Holy Name Primary School",
    "website": "http://www.hntwb.catholic.edu.au/",
-   "status": "fetched",
+   "status": "found",
    "checked": "2026-11-20",
    "fee_pages": [
     "https://holynametwb.schoolzineplus.com/_file/media/2850/2026_schedule_of_fees_toowhnps.pdf"
@@ -49053,12 +50225,25 @@
    "crawl": {
     "pages": 3,
     "errors": 0
+   },
+   "fees": {
+    "fee_year": 2026,
+    "basis": "one-child family, annual total of tuition and levies",
+    "by_year": [
+     {
+      "years": "P-6",
+      "total": 2584
+     }
+    ],
+    "other_compulsory": "Camps extra",
+    "source": "school_website",
+    "source_url": "https://holynametwb.schoolzineplus.com/_file/media/2850/2026_schedule_of_fees_toowhnps.pdf"
    }
   },
   "47767": {
    "school_name": "Mater Dei Primary School",
    "website": "http://www.mdpstwb.catholic.edu.au",
-   "status": "fetched",
+   "status": "found",
    "checked": "2026-11-20",
    "fee_pages": [
     "https://www.mdpstwb.catholic.edu.au/school-fees",
@@ -49069,12 +50254,25 @@
    "crawl": {
     "pages": 7,
     "errors": 0
+   },
+   "fees": {
+    "fee_year": 2027,
+    "basis": "one-child family, annual total of tuition and levies (school fees, building, PEN and consumables levies)",
+    "by_year": [
+     {
+      "years": "P-6",
+      "total": 4080
+     }
+    ],
+    "other_compulsory": "Camps and excursions invoiced separately",
+    "source": "school_website",
+    "source_url": "https://mdpstwb.schoolzineplus.com/_file/media/3513/fees_levies_2027.pdf"
    }
   },
   "47768": {
    "school_name": "Our Lady of Lourdes Primary School",
    "website": "https://ollourdesps.schoolzineplus.com/",
-   "status": "fetched",
+   "status": "found",
    "checked": "2026-11-20",
    "fee_pages": [
     "https://ollourdesps.schoolzineplus.com/_file/media/11337/2026_school_fee_schedule.pdf"
@@ -49082,23 +50280,51 @@
    "crawl": {
     "pages": 4,
     "errors": 0
+   },
+   "fees": {
+    "fee_year": 2026,
+    "basis": "one-child family, annual tuition (sibling rates are lower); total is the school's stated annual total for one child including its listed P&F levy and building fund",
+    "by_year": [
+     {
+      "years": "P-6",
+      "tuition": 2073,
+      "total": 2780
+     }
+    ],
+    "other_compulsory": "Tech, general and resource levies per child; camps",
+    "source": "school_website",
+    "source_url": "https://ollourdesps.schoolzineplus.com/_file/media/11337/2026_school_fee_schedule.pdf"
    }
   },
   "47769": {
    "school_name": "Sacred Heart Primary School",
    "website": "http://www.cunnamulla.catholic.edu.au/",
-   "status": "fetched",
+   "status": "found",
    "checked": "2026-11-20",
    "fee_pages": [],
    "crawl": {
     "pages": 2,
     "errors": 0
+   },
+   "fees": {
+    "fee_year": 2026,
+    "basis": "one-child family, annual tuition (sibling rates are lower); total is the school's stated annual total for one child including its listed levies",
+    "by_year": [
+     {
+      "years": "P-6",
+      "tuition": 780,
+      "total": 980
+     }
+    ],
+    "other_compulsory": null,
+    "source": "school_website",
+    "source_url": "https://www.cunnamulla.catholic.edu.au/enrol"
    }
   },
   "47770": {
    "school_name": "Sacred Heart Primary School",
    "website": "http://www.sacredhearttwb.catholic.edu.au/",
-   "status": "fetched",
+   "status": "found",
    "checked": "2026-11-20",
    "fee_pages": [
     "https://sacredhearttwb.schoolzineplus.com/_file/media/5066/2027_fee_structure.pdf"
@@ -49106,12 +50332,25 @@
    "crawl": {
     "pages": 4,
     "errors": 0
+   },
+   "fees": {
+    "fee_year": 2027,
+    "basis": "one-child family, annual total of tuition and levies (tuition and building levy, excluding Prep and ICT levies)",
+    "by_year": [
+     {
+      "years": "P-6",
+      "total": 2415
+     }
+    ],
+    "other_compulsory": null,
+    "source": "school_website",
+    "source_url": "https://sacredhearttwb.schoolzineplus.com/_file/media/5066/2027_fee_structure.pdf"
    }
   },
   "47771": {
    "school_name": "St Anthony's School",
    "website": "https://www.sastwb.catholic.edu.au/",
-   "status": "fetched",
+   "status": "not_found",
    "checked": "2026-11-20",
    "fee_pages": [
     "https://sastwbqld.schoolzineplus.com/_file/media/2493/2026_st_anthony_s_schedule_of_fees.pdf"
@@ -49119,7 +50358,8 @@
    "crawl": {
     "pages": 3,
     "errors": 0
-   }
+   },
+   "note": "Fee pages were reached but show no figures."
   },
   "47772": {
    "school_name": "St Francis College",
@@ -49185,18 +50425,19 @@
   "47773": {
    "school_name": "St Finbarr's School",
    "website": "https://www.twb.catholic.edu.au/our-schools/primary-schools/quilpie/st-finbarrs-primary-school/",
-   "status": "fetched",
+   "status": "not_found",
    "checked": "2026-11-20",
    "fee_pages": [],
    "crawl": {
     "pages": 4,
     "errors": 0
-   }
+   },
+   "note": "No fee page among the pages fetched."
   },
   "47774": {
    "school_name": "St Francis De Sales School",
    "website": "http://www.clifton.catholic.edu.au/",
-   "status": "fetched",
+   "status": "found",
    "checked": "2026-11-20",
    "fee_pages": [
     "https://sfdssclifton.schoolzineplus.com/_file/media/1748/2026_term_fees.pdf",
@@ -49205,12 +50446,26 @@
    "crawl": {
     "pages": 4,
     "errors": 0
+   },
+   "fees": {
+    "fee_year": 2026,
+    "basis": "one-child family, annual tuition (sibling rates are lower); total is the school's stated annual total for one child including its listed levies",
+    "by_year": [
+     {
+      "years": "P-6",
+      "tuition": 1100,
+      "total": 1620
+     }
+    ],
+    "other_compulsory": null,
+    "source": "school_website",
+    "source_url": "https://sfdssclifton.schoolzineplus.com/_file/media/1748/2026_term_fees.pdf"
    }
   },
   "47775": {
    "school_name": "St Joseph's School",
    "website": "http://www.chinchilla.catholic.edu.au",
-   "status": "fetched",
+   "status": "found",
    "checked": "2026-11-20",
    "fee_pages": [
     "https://sjpschinchilla.schoolzineplus.com/_file/media/3777/2026_fee_schedule.pdf"
@@ -49218,12 +50473,25 @@
    "crawl": {
     "pages": 3,
     "errors": 0
+   },
+   "fees": {
+    "fee_year": 2026,
+    "basis": "one-child family, annual total of tuition and levies",
+    "by_year": [
+     {
+      "years": "P-6",
+      "total": 2024
+     }
+    ],
+    "other_compulsory": "Resource levy $67-$157 per child; camps extra",
+    "source": "school_website",
+    "source_url": "https://sjpschinchilla.schoolzineplus.com/_file/media/3777/2026_fee_schedule.pdf"
    }
   },
   "47776": {
    "school_name": "St Joseph's School",
    "website": "http://www.millmerran.catholic.edu.au",
-   "status": "fetched",
+   "status": "not_found",
    "checked": "2026-11-20",
    "fee_pages": [
     "https://sjcsmillmerran.schoolzineplus.com/_file/media/4042/st_joseph_s_fee_structure.pdf"
@@ -49231,29 +50499,32 @@
    "crawl": {
     "pages": 3,
     "errors": 0
-   }
+   },
+   "note": "Fee pages were reached but show no figures."
   },
   "47777": {
    "school_name": "St Joseph's School",
    "website": "https://www.twb.catholic.edu.au/our-schools/primary-schools/tara/st-josephs-primary-school/",
-   "status": "fetched",
+   "status": "not_found",
    "checked": "2026-11-20",
    "fee_pages": [],
    "crawl": {
     "pages": 3,
     "errors": 0
-   }
+   },
+   "note": "No fee page among the pages fetched."
   },
   "47778": {
    "school_name": "St Maria Goretti School",
    "website": "https://www.twb.catholic.edu.au/our-schools/primary-schools/inglewood/st-maria-goretti-primary-school/",
-   "status": "fetched",
+   "status": "not_found",
    "checked": "2026-11-20",
    "fee_pages": [],
    "crawl": {
     "pages": 3,
     "errors": 0
-   }
+   },
+   "note": "No fee page among the pages fetched."
   },
   "47779": {
    "school_name": "St Mary's School",
@@ -49281,7 +50552,7 @@
   "47782": {
    "school_name": "St Monica's School",
    "website": "https://www.oakey.catholic.edu.au/",
-   "status": "fetched",
+   "status": "found",
    "checked": "2026-11-20",
    "fee_pages": [
     "https://stmonicasoakey.schoolzineplus.com/_file/media/1611/school_fees_2026_.pdf"
@@ -49289,23 +50560,37 @@
    "crawl": {
     "pages": 3,
     "errors": 0
+   },
+   "fees": {
+    "fee_year": 2026,
+    "basis": "one-child family, annual fees",
+    "by_year": [
+     {
+      "years": "P-6",
+      "total": 1980
+     }
+    ],
+    "other_compulsory": "Device levy $219 (Years 4-6)",
+    "source": "school_website",
+    "source_url": "https://stmonicasoakey.schoolzineplus.com/_file/media/1611/school_fees_2026_.pdf"
    }
   },
   "47783": {
    "school_name": "St Mary's School",
    "website": "https://www.twb.catholic.edu.au/our-schools/primary-schools/charleville/st-marys-primary-school/",
-   "status": "fetched",
+   "status": "not_found",
    "checked": "2026-11-20",
    "fee_pages": [],
    "crawl": {
     "pages": 3,
     "errors": 0
-   }
+   },
+   "note": "No fee page among the pages fetched."
   },
   "47784": {
    "school_name": "St Patrick's School",
    "website": "http://www.allora.catholic.edu.au",
-   "status": "fetched",
+   "status": "not_found",
    "checked": "2026-11-20",
    "fee_pages": [
     "https://stpatallora.schoolzineplus.com/_file/media/1124/2026_school_fee_schedule.pdf"
@@ -49313,12 +50598,13 @@
    "crawl": {
     "pages": 3,
     "errors": 0
-   }
+   },
+   "note": "Fee pages were reached but show no figures."
   },
   "47785": {
    "school_name": "St Patrick's School",
    "website": "http://stgeorge.catholic.edu.au/",
-   "status": "fetched",
+   "status": "found",
    "checked": "2026-11-20",
    "fee_pages": [
     "https://stgeorge.catholic.edu.au/enrolment-information/fees-payments",
@@ -49328,12 +50614,25 @@
    "crawl": {
     "pages": 11,
     "errors": 1
+   },
+   "fees": {
+    "fee_year": 2027,
+    "basis": "one student, annual tuition and ICT levy",
+    "by_year": [
+     {
+      "years": "P-6",
+      "total": 2240
+     }
+    ],
+    "other_compulsory": "Camp levy $200 a year (Years 3-6); PEN levy and one-off charges",
+    "source": "school_website",
+    "source_url": "https://spsstgeorge.schoolzineplus.com/_file/media/2247/2027_fee_schedule.pdf"
    }
   },
   "47786": {
    "school_name": "St Patrick's Primary School",
    "website": "https://www.mitchell.catholic.edu.au",
-   "status": "fetched",
+   "status": "found",
    "checked": "2026-11-20",
    "fee_pages": [
     "https://spsmitchell.schoolzineplus.com/_file/media/1189/school_fees_2026.pdf"
@@ -49341,12 +50640,25 @@
    "crawl": {
     "pages": 3,
     "errors": 0
+   },
+   "fees": {
+    "fee_year": 2026,
+    "basis": "one student, annual tuition, capital and resource levies",
+    "by_year": [
+     {
+      "years": "P-5",
+      "total": 1388
+     }
+    ],
+    "other_compulsory": null,
+    "source": "school_website",
+    "source_url": "https://spsmitchell.schoolzineplus.com/_file/media/1189/school_fees_2026.pdf"
    }
   },
   "47787": {
    "school_name": "St Saviour's Primary School",
    "website": "http://www.sspstwb.catholic.edu.au",
-   "status": "fetched",
+   "status": "found",
    "checked": "2026-11-20",
    "fee_pages": [
     "https://sspstwb.catholic.edu.au/enrolments/fees-levies",
@@ -49357,12 +50669,26 @@
    "crawl": {
     "pages": 7,
     "errors": 0
+   },
+   "fees": {
+    "fee_year": 2027,
+    "basis": "one-child family, annual tuition (sibling rates are lower); total is the school's stated annual total for one child including its listed levies",
+    "by_year": [
+     {
+      "years": "P-6",
+      "tuition": 3096,
+      "total": 3678
+     }
+    ],
+    "other_compulsory": "Device levy $507 (Years 4-6); camps",
+    "source": "school_website",
+    "source_url": "https://sspstwb.schoolzineplus.com/_file/media/9853/schedule_of_fees_2027.pdf"
    }
   },
   "47788": {
    "school_name": "St Stephen's School",
    "website": "http://www.pittsworth.catholic.edu.au",
-   "status": "fetched",
+   "status": "not_found",
    "checked": "2026-11-20",
    "fee_pages": [
     "https://pittsworthtwb.schoolzineplus.com/_file/media/2/fees.pdf",
@@ -49371,12 +50697,13 @@
    "crawl": {
     "pages": 5,
     "errors": 0
-   }
+   },
+   "note": "Fee pages were reached but show no figures."
   },
   "47789": {
    "school_name": "St Thomas More's Primary School",
    "website": "http://www.stmtwb.catholic.edu.au",
-   "status": "fetched",
+   "status": "found",
    "checked": "2026-11-20",
    "fee_pages": [
     "https://www.stmtwb.catholic.edu.au/school-fees",
@@ -49386,6 +50713,19 @@
    "crawl": {
     "pages": 5,
     "errors": 0
+   },
+   "fees": {
+    "fee_year": 2026,
+    "basis": "one student, annual fees (tuition, building fund and P&F levy)",
+    "by_year": [
+     {
+      "years": "P-6",
+      "total": 2796
+     }
+    ],
+    "other_compulsory": "ICT levy $168-$383 and sports levy $147; camps",
+    "source": "school_website",
+    "source_url": "https://stmpstwb.schoolzineplus.com/_file/media/3424/st_thomas_mores_2026_school_fees_schedule.pdf"
    }
   },
   "47790": {
@@ -50056,7 +51396,7 @@
   "47815": {
    "school_name": "St Kieran's Catholic School",
    "website": "http://www.skmtsv.catholic.edu.au",
-   "status": "fetched",
+   "status": "not_found",
    "checked": "2026-11-20",
    "fee_pages": [
     "https://www.skmtsv.catholic.edu.au/enrolment/school-fees/",
@@ -50066,12 +51406,13 @@
    "crawl": {
     "pages": 9,
     "errors": 0
-   }
+   },
+   "note": "The only fee schedule published is for 2025."
   },
   "47817": {
    "school_name": "Holy Spirit Catholic School",
    "website": "http://www.hsstsv.catholic.edu.au",
-   "status": "fetched",
+   "status": "found",
    "checked": "2026-11-20",
    "fee_pages": [
     "https://www.hsstsv.catholic.edu.au/enrolment/school-fees/",
@@ -50081,12 +51422,26 @@
    "crawl": {
     "pages": 9,
     "errors": 1
+   },
+   "fees": {
+    "fee_year": 2027,
+    "basis": "one student, annual Townsville diocesan tuition; total adds the school's levies",
+    "by_year": [
+     {
+      "years": "P-6",
+      "tuition": 2060,
+      "total": 4055
+     }
+    ],
+    "other_compulsory": null,
+    "source": "school_website",
+    "source_url": "https://os-data-2.s3-ap-southeast-2.amazonaws.com/hsstsvv2/bundle9/Copy%20of%20Holy%20Spirit_2027%20School%20Fees%20(1)%20(3).pdf"
    }
   },
   "47818": {
    "school_name": "Our Lady of Lourdes Catholic School",
    "website": "http://www.olltsv.catholic.edu.au",
-   "status": "fetched",
+   "status": "found",
    "checked": "2026-11-20",
    "fee_pages": [
     "https://www.olltsv.catholic.edu.au/enrolment/school-fees/",
@@ -50095,6 +51450,20 @@
    "crawl": {
     "pages": 10,
     "errors": 0
+   },
+   "fees": {
+    "fee_year": 2026,
+    "basis": "one student, annual Townsville diocesan tuition; total adds the school's levies",
+    "by_year": [
+     {
+      "years": "P-6",
+      "tuition": 1952,
+      "total": 3562
+     }
+    ],
+    "other_compulsory": null,
+    "source": "school_website",
+    "source_url": "https://os-data-2.s3-ap-southeast-2.amazonaws.com/olltsv2/bundle6/olol_2026_school_fees.pdf"
    }
   },
   "47819": {
@@ -50130,7 +51499,7 @@
   "47820": {
    "school_name": "St Colman's Catholic School",
    "website": "http://www.scshh.catholic.edu.au",
-   "status": "fetched",
+   "status": "found",
    "checked": "2026-11-20",
    "fee_pages": [
     "https://www.scshh.catholic.edu.au/enrolment/school-fees/",
@@ -50139,12 +51508,26 @@
    "crawl": {
     "pages": 8,
     "errors": 0
+   },
+   "fees": {
+    "fee_year": 2026,
+    "basis": "one student, annual Townsville diocesan tuition; total adds the school's levies",
+    "by_year": [
+     {
+      "years": "P-6",
+      "tuition": 1952,
+      "total": 2772
+     }
+    ],
+    "other_compulsory": null,
+    "source": "school_website",
+    "source_url": "https://os-data-2.s3-ap-southeast-2.amazonaws.com/scshh2/bundle4/St%20Colmans_2026%20School%20Fees%20(1).pdf"
    }
   },
   "47821": {
    "school_name": "St Francis Catholic School",
    "website": "http://www.sfsh.catholic.edu.au",
-   "status": "fetched",
+   "status": "not_found",
    "checked": "2026-11-20",
    "fee_pages": [
     "https://www.sfsh.catholic.edu.au/enrolment/school-fees/",
@@ -50153,12 +51536,13 @@
    "crawl": {
     "pages": 8,
     "errors": 0
-   }
+   },
+   "note": "Fee pages were reached but show no figures."
   },
   "47822": {
    "school_name": "St Francis Catholic School",
    "website": "http://www.sfatsv.catholic.edu.au",
-   "status": "fetched",
+   "status": "found",
    "checked": "2026-11-20",
    "fee_pages": [
     "https://www.sfatsv.catholic.edu.au/enrolment/school-fees/",
@@ -50167,12 +51551,26 @@
    "crawl": {
     "pages": 8,
     "errors": 0
+   },
+   "fees": {
+    "fee_year": 2026,
+    "basis": "one student, annual Townsville diocesan tuition; total adds the school's levies",
+    "by_year": [
+     {
+      "years": "P-6",
+      "tuition": 1952,
+      "total": 3327
+     }
+    ],
+    "other_compulsory": null,
+    "source": "school_website",
+    "source_url": "https://os-data-2.s3-ap-southeast-2.amazonaws.com/sfatsv2/bundle7/st_francis_ayr_2026_school_fees.pdf"
    }
   },
   "47823": {
    "school_name": "St John Bosco Catholic School",
    "website": "http://www.sjbtsv.catholic.edu.au",
-   "status": "fetched",
+   "status": "found",
    "checked": "2026-11-20",
    "fee_pages": [
     "https://www.sjbtsv.catholic.edu.au/enrolment/school-fees/",
@@ -50181,6 +51579,20 @@
    "crawl": {
     "pages": 8,
     "errors": 0
+   },
+   "fees": {
+    "fee_year": 2026,
+    "basis": "one student, annual Townsville diocesan tuition; total adds the school's levies",
+    "by_year": [
+     {
+      "years": "P-6",
+      "tuition": 1952,
+      "total": 2713
+     }
+    ],
+    "other_compulsory": null,
+    "source": "school_website",
+    "source_url": "https://os-data-2.s3-ap-southeast-2.amazonaws.com/sjbtsvv2/bundle11/fee_schedule_2026.pdf"
    }
   },
   "47824": {
@@ -50209,7 +51621,7 @@
   "47825": {
    "school_name": "St Joseph's Catholic School",
    "website": "http://www.sjmbtsv.catholic.edu.au",
-   "status": "fetched",
+   "status": "found",
    "checked": "2026-11-20",
    "fee_pages": [
     "https://www.sjmbtsv.catholic.edu.au/enrolment/fee-schedule/",
@@ -50218,12 +51630,26 @@
    "crawl": {
     "pages": 8,
     "errors": 0
+   },
+   "fees": {
+    "fee_year": 2026,
+    "basis": "one student, annual Townsville diocesan tuition; total adds the school's levies",
+    "by_year": [
+     {
+      "years": "P-6",
+      "tuition": 1952,
+      "total": 3628
+     }
+    ],
+    "other_compulsory": "Prep levy $27 a term; music, swimming, textbooks and camps extra",
+    "source": "school_website",
+    "source_url": "https://os-data-2.s3-ap-southeast-2.amazonaws.com/sjmbtsv2/bundle9/school_fees_2026.pdf"
    }
   },
   "47826": {
    "school_name": "St Joseph's Catholic School",
    "website": "http://www.sjmtsv.catholic.edu.au",
-   "status": "fetched",
+   "status": "found",
    "checked": "2026-11-20",
    "fee_pages": [
     "https://www.sjmtsv.catholic.edu.au/enrolment/fee-schedule/",
@@ -50232,12 +51658,26 @@
    "crawl": {
     "pages": 8,
     "errors": 0
+   },
+   "fees": {
+    "fee_year": 2026,
+    "basis": "one student, annual Townsville diocesan tuition; total adds the school's levies",
+    "by_year": [
+     {
+      "years": "P-6",
+      "tuition": 1952,
+      "total": 4060
+     }
+    ],
+    "other_compulsory": null,
+    "source": "school_website",
+    "source_url": "https://os-data-2.s3-ap-southeast-2.amazonaws.com/sjmtsvv2/bundle22/St%20Joseph's%20Catholic%20School,%20Mount%20Isa%20%202026%20School%20Fees%20(3).pdf"
    }
   },
   "47827": {
    "school_name": "St Joseph's Catholic School, The Strand",
    "website": "http://www.sjnwtsv.catholic.edu.au",
-   "status": "fetched",
+   "status": "found",
    "checked": "2026-11-20",
    "fee_pages": [
     "https://www.sjnwtsv.catholic.edu.au/enrolment/school-fees/",
@@ -50248,23 +51688,38 @@
    "crawl": {
     "pages": 12,
     "errors": 0
+   },
+   "fees": {
+    "fee_year": 2027,
+    "basis": "one student, annual Townsville diocesan tuition; total adds the school's levies",
+    "by_year": [
+     {
+      "years": "P-6",
+      "tuition": 2060,
+      "total": 4690
+     }
+    ],
+    "other_compulsory": null,
+    "source": "school_website",
+    "source_url": "https://os-data-2.s3-ap-southeast-2.amazonaws.com/sjnwtsvv2/bundle8/2027%20Full%20Fees.pdf"
    }
   },
   "47828": {
    "school_name": "St Mary's Catholic School",
    "website": "http://www.smbtsv.catholic.edu.au",
-   "status": "fetched",
+   "status": "not_found",
    "checked": "2026-11-20",
    "fee_pages": [],
    "crawl": {
     "pages": 7,
     "errors": 0
-   }
+   },
+   "note": "No fee page among the pages fetched."
   },
   "47829": {
    "school_name": "St Patrick's Catholic School",
    "website": "http://www.spwtsv.catholic.edu.au",
-   "status": "fetched",
+   "status": "found",
    "checked": "2026-11-20",
    "fee_pages": [
     "https://www.spwtsv.catholic.edu.au/enrolment/school-fees/",
@@ -50273,12 +51728,26 @@
    "crawl": {
     "pages": 8,
     "errors": 0
+   },
+   "fees": {
+    "fee_year": 2026,
+    "basis": "one student, annual Townsville diocesan tuition; total adds the school's levies",
+    "by_year": [
+     {
+      "years": "P-6",
+      "tuition": 1952,
+      "total": 2152
+     }
+    ],
+    "other_compulsory": null,
+    "source": "school_website",
+    "source_url": "https://os-data-2.s3-ap-southeast-2.amazonaws.com/spwtsv2/bundle7/st__patricks_winton_2026_school_fees.pdf"
    }
   },
   "47830": {
    "school_name": "St Peter's Catholic School",
    "website": "http://www.sptsv.catholic.edu.au",
-   "status": "fetched",
+   "status": "found",
    "checked": "2026-11-20",
    "fee_pages": [
     "https://os-data-2.s3-ap-southeast-2.amazonaws.com/sptsvv2/bundle3/202%20School%20Fees%202027%20-%20Halifax.pdf"
@@ -50286,23 +51755,38 @@
    "crawl": {
     "pages": 7,
     "errors": 0
+   },
+   "fees": {
+    "fee_year": 2027,
+    "basis": "one student, annual Townsville diocesan tuition; total adds the school's levies",
+    "by_year": [
+     {
+      "years": "P-6",
+      "tuition": 2060,
+      "total": 2770
+     }
+    ],
+    "other_compulsory": null,
+    "source": "school_website",
+    "source_url": "https://os-data-2.s3-ap-southeast-2.amazonaws.com/sptsvv2/bundle3/202%20School%20Fees%202027%20-%20Halifax.pdf"
    }
   },
   "47831": {
    "school_name": "St Michael's Catholic School",
    "website": "http://www.smptsv.catholic.edu.au",
-   "status": "fetched",
+   "status": "not_found",
    "checked": "2026-11-20",
    "fee_pages": [],
    "crawl": {
     "pages": 4,
     "errors": 0
-   }
+   },
+   "note": "No fee page among the pages fetched."
   },
   "47832": {
    "school_name": "Good Counsel Primary School",
    "website": "http://www.gcps.qld.edu.au",
-   "status": "fetched",
+   "status": "found",
    "checked": "2026-11-20",
    "fee_pages": [
     "https://www.gcps.qld.edu.au/enrolling/fees/",
@@ -50312,12 +51796,25 @@
    "crawl": {
     "pages": 9,
     "errors": 0
+   },
+   "fees": {
+    "fee_year": 2026,
+    "basis": "one child, annual tuition (Cairns diocesan rate with the country discount; lower for second and later children in diocesan schools)",
+    "by_year": [
+     {
+      "years": "P-6",
+      "tuition": 1645
+     }
+    ],
+    "other_compulsory": "Capital $200 and P&F $100 per family; resource $260 and activities $40 per student",
+    "source": "school_website",
+    "source_url": "https://www.gcps.qld.edu.au/wp-content/uploads/2025/08/Good-Counsel-Primary-School-School-Fees-Levy-Schedule-2026.pdf"
    }
   },
   "47833": {
    "school_name": "Mother of Good Counsel School",
    "website": "http://www.mogc.qld.edu.au",
-   "status": "fetched",
+   "status": "not_found",
    "checked": "2026-11-20",
    "fee_pages": [
     "https://www.mogc.qld.edu.au/enrolling/fees-levies/",
@@ -50328,12 +51825,13 @@
    "crawl": {
     "pages": 12,
     "errors": 1
-   }
+   },
+   "note": "The only fee schedule published is for 2024."
   },
   "47834": {
    "school_name": "Our Lady Help of Christians School",
    "website": "http://www.olhoc.qld.edu.au",
-   "status": "fetched",
+   "status": "not_found",
    "checked": "2026-11-20",
    "fee_pages": [
     "https://www.olhoc.qld.edu.au/our-community/enrolment-information/fees-discounts/"
@@ -50341,23 +51839,25 @@
    "crawl": {
     "pages": 5,
     "errors": 0
-   }
+   },
+   "note": "Fee pages were reached but show no figures."
   },
   "47835": {
    "school_name": "Our Lady of the Sacred Heart School Waiben",
    "website": "http://www.olsh.qld.edu.au",
-   "status": "fetched",
+   "status": "not_found",
    "checked": "2026-11-20",
    "fee_pages": [],
    "crawl": {
     "pages": 6,
     "errors": 0
-   }
+   },
+   "note": "No fee page among the pages fetched."
   },
   "47836": {
    "school_name": "St Anthony's School",
    "website": "http://www.sta.qld.edu.au",
-   "status": "fetched",
+   "status": "not_found",
    "checked": "2026-11-20",
    "fee_pages": [
     "https://www.sta.qld.edu.au/enrolling/school-fees-levies/"
@@ -50365,12 +51865,13 @@
    "crawl": {
     "pages": 6,
     "errors": 0
-   }
+   },
+   "note": "Fee pages were reached but show no figures."
   },
   "47837": {
    "school_name": "St Augustine's School",
    "website": "http://www.staugs.qld.edu.au",
-   "status": "fetched",
+   "status": "not_found",
    "checked": "2026-11-20",
    "fee_pages": [
     "https://www.staugs.qld.edu.au/enrolling/fees-levies-discounts/",
@@ -50379,12 +51880,13 @@
    "crawl": {
     "pages": 10,
     "errors": 2
-   }
+   },
+   "note": "Fee pages were reached but show no figures."
   },
   "47838": {
    "school_name": "St Clare's School",
    "website": "http://www.stclares.qld.edu.au",
-   "status": "fetched",
+   "status": "not_found",
    "checked": "2026-11-20",
    "fee_pages": [
     "https://www.stclares.qld.edu.au/enrolling/fees-levies/"
@@ -50392,12 +51894,13 @@
    "crawl": {
     "pages": 6,
     "errors": 0
-   }
+   },
+   "note": "Fee pages were reached but show no figures."
   },
   "47839": {
    "school_name": "St Francis Xavier's School",
    "website": "http://www.xaviercairns.qld.edu.au",
-   "status": "fetched",
+   "status": "found",
    "checked": "2026-11-20",
    "fee_pages": [
     "https://www.xaviercairns.qld.edu.au/enrolling/fees-levies/",
@@ -50407,12 +51910,25 @@
    "crawl": {
     "pages": 10,
     "errors": 0
+   },
+   "fees": {
+    "fee_year": 2027,
+    "basis": "one child, annual tuition (Cairns diocesan rate; lower for second and later children in diocesan schools)",
+    "by_year": [
+     {
+      "years": "P-6",
+      "tuition": 1902
+     }
+    ],
+    "other_compulsory": "Capital $970 and P&F $145 per family; resource and activities levies $495-$771 per student",
+    "source": "school_website",
+    "source_url": "https://www.xaviercairns.qld.edu.au/wp-content/uploads/2026/11/2027-Schedule-of-School-Fees-1.pdf"
    }
   },
   "47840": {
    "school_name": "St John's School",
    "website": "http://www.stjohnssilkwood.qld.edu.au/",
-   "status": "fetched",
+   "status": "not_found",
    "checked": "2026-11-20",
    "fee_pages": [
     "https://www.stjohnssilkwood.qld.edu.au/enrolling/fees-levies-discounts/"
@@ -50420,12 +51936,13 @@
    "crawl": {
     "pages": 8,
     "errors": 0
-   }
+   },
+   "note": "The only fee figures published are 2025 tuition fees."
   },
   "47841": {
    "school_name": "St Joseph's School",
    "website": "http://www.stjoeys.qld.edu.au/",
-   "status": "fetched",
+   "status": "not_found",
    "checked": "2026-11-20",
    "fee_pages": [
     "https://www.stjoeys.qld.edu.au/fees-levies/",
@@ -50434,12 +51951,13 @@
    "crawl": {
     "pages": 7,
     "errors": 1
-   }
+   },
+   "note": "Fee pages were reached but show no figures."
   },
   "47842": {
    "school_name": "St Joseph's School",
    "website": "http://www.stjosephscairns.qld.edu.au",
-   "status": "fetched",
+   "status": "found",
    "checked": "2026-11-20",
    "fee_pages": [
     "https://www.stjosephscairns.qld.edu.au/enrolling/fees-levies-discounts/",
@@ -50448,12 +51966,25 @@
    "crawl": {
     "pages": 8,
     "errors": 3
+   },
+   "fees": {
+    "fee_year": 2027,
+    "basis": "one child, annual tuition (Cairns diocesan rate; lower for second and later children in diocesan schools)",
+    "by_year": [
+     {
+      "years": "P-6",
+      "tuition": 1902
+     }
+    ],
+    "other_compulsory": "Capital $730 and P&F $200 per family; resource and activity levies $715-$1,155 per child",
+    "source": "school_website",
+    "source_url": "https://www.stjosephscairns.qld.edu.au/wp-content/uploads/2026/11/St-Josephs-Fees-Levies-Schedule-2027.pdf"
    }
   },
   "47843": {
    "school_name": "St Michael's School",
    "website": "http://www.stmichael.qld.edu.au",
-   "status": "fetched",
+   "status": "not_found",
    "checked": "2026-11-20",
    "fee_pages": [
     "https://www.stmichael.qld.edu.au/enrolling/fees-and-levies/"
@@ -50461,12 +51992,13 @@
    "crawl": {
     "pages": 9,
     "errors": 0
-   }
+   },
+   "note": "Fee pages were reached but show no figures."
   },
   "47844": {
    "school_name": "St Rita's School",
    "website": "https://www.stritasbabinda.qld.edu.au/",
-   "status": "fetched",
+   "status": "not_found",
    "checked": "2026-11-20",
    "fee_pages": [
     "https://www.stritasbabinda.qld.edu.au/enrolling/fees/",
@@ -50475,12 +52007,13 @@
    "crawl": {
     "pages": 7,
     "errors": 0
-   }
+   },
+   "note": "Fee pages were reached but show no figures."
   },
   "47845": {
    "school_name": "St Rita's School",
    "website": "http://www.stritascps.qld.edu.au",
-   "status": "fetched",
+   "status": "not_found",
    "checked": "2026-11-20",
    "fee_pages": [
     "https://www.stritascps.qld.edu.au/enrolment/fees-levies/",
@@ -50489,12 +52022,13 @@
    "crawl": {
     "pages": 8,
     "errors": 4
-   }
+   },
+   "note": "The only fee schedule published is for 2014."
   },
   "47846": {
    "school_name": "St Teresa's School",
    "website": "http://www.stteresas.qld.edu.au/",
-   "status": "fetched",
+   "status": "not_found",
    "checked": "2026-11-20",
    "fee_pages": [
     "https://stteresas.qld.edu.au/explore/enrolments/enrolment/fee-information/",
@@ -50503,12 +52037,13 @@
    "crawl": {
     "pages": 11,
     "errors": 1
-   }
+   },
+   "note": "Fee pages were reached but show no figures."
   },
   "47847": {
    "school_name": "St Therese's School",
    "website": "http://www.stthereses.qld.edu.au/",
-   "status": "fetched",
+   "status": "found",
    "checked": "2026-11-20",
    "fee_pages": [
     "https://www.stthereses.qld.edu.au/enrolling/fees-levies/",
@@ -50519,12 +52054,25 @@
    "crawl": {
     "pages": 14,
     "errors": 0
+   },
+   "fees": {
+    "fee_year": 2027,
+    "basis": "one child, annual tuition (Cairns diocesan rate; lower for second and later children in diocesan schools)",
+    "by_year": [
+     {
+      "years": "P-6",
+      "tuition": 1902
+     }
+    ],
+    "other_compulsory": "Capital $750 and P&F $90 per family; resource and activities levies $770 per student",
+    "source": "school_website",
+    "source_url": "https://www.stthereses.qld.edu.au/wp-content/uploads/2026/09/2027-Fees-Levies_FINAL.pdf"
    }
   },
   "47848": {
    "school_name": "St Thomas' School",
    "website": "https://www.stthomasmareeba.qld.edu.au/",
-   "status": "fetched",
+   "status": "found",
    "checked": "2026-11-20",
    "fee_pages": [
     "https://www.stthomasmareeba.qld.edu.au/parent-information/school-fees-levies/",
@@ -50536,19 +52084,32 @@
    "crawl": {
     "pages": 9,
     "errors": 0
+   },
+   "fees": {
+    "fee_year": 2026,
+    "basis": "one child, annual tuition (Cairns diocesan rate; lower for second and later children in diocesan schools)",
+    "by_year": [
+     {
+      "years": "P-6",
+      "tuition": 1828
+     }
+    ],
+    "other_compulsory": "Capital $600, technology $80 and fundraising $52 per family; resource and activity levy $525-$680 per student",
+    "source": "school_website",
+    "source_url": "https://www.stthomasmareeba.qld.edu.au/wp-content/uploads/2026/01/2026-Fee-Schedule-for-St-Thomas-of-Villanova-School.pdf"
    }
   },
   "47849": {
    "school_name": "Iona College",
    "website": "https://www.iona.qld.edu.au/",
-   "status": "fetched",
+   "status": "not_found",
    "checked": "2026-11-20",
    "crawl": {
     "pages": 1,
     "errors": 0
    },
-   "note": "Only the home page could be fetched.",
-   "fee_pages": []
+   "fee_pages": [],
+   "note": "Only the home page could be fetched."
   },
   "47851": {
    "school_name": "Padua College",
@@ -50760,18 +52321,18 @@
   "47858": {
    "school_name": "Villanova College",
    "website": "http://www.vnc.qld.edu.au/",
-   "status": "fetched",
+   "status": "not_found",
    "checked": "2026-11-20",
    "crawl": {
     "pages": 15,
     "errors": 0
    },
-   "note": "Only fees for international students were found.",
    "fee_pages": [
     "https://www.vnc.qld.edu.au/fees-schedule/",
     "https://www.vnc.qld.edu.au/wp-content/uploads/2025/11/2026-Fee-Schedule.pdf",
     "https://www.vnc.qld.edu.au/wp-content/uploads/2023/10/School-Fees-Procedures-v2.pdf"
-   ]
+   ],
+   "note": "Only fees for international students were found."
   },
   "47859": {
    "school_name": "Assisi Catholic College",
@@ -50992,18 +52553,46 @@
   "47868": {
    "school_name": "St John Fisher College",
    "website": "http://www.sjfc.qld.edu.au",
-   "status": "fetched",
+   "status": "found",
    "checked": "2026-11-20",
    "crawl": {
     "pages": 12,
     "errors": 1
    },
-   "note": "Only the home page could be fetched.",
    "fee_pages": [
     "https://www.stjohnfishercollege.qld.edu.au/enrolments/fees-and-levies",
     "https://www.stjohnfishercollege.qld.edu.au/ArticleDocuments/1605/2026%20Fees%20Schedule%20-%20St%20John%20Fisher%20College.pdf",
     "https://www.stjohnfishercollege.qld.edu.au/ArticleDocuments/1650/2027%20Fees%20Schedule.pdf.aspx"
-   ]
+   ],
+   "fees": {
+    "fee_year": 2027,
+    "basis": "one student, annual tuition; total adds student and family levies (no voluntary building fund)",
+    "by_year": [
+     {
+      "years": "7",
+      "tuition": 3175,
+      "total": 8095
+     },
+     {
+      "years": "8",
+      "tuition": 3175,
+      "total": 7685
+     },
+     {
+      "years": "9-10",
+      "tuition": 3175,
+      "total": 8135
+     },
+     {
+      "years": "11-12",
+      "tuition": 3175,
+      "total": 8485
+     }
+    ],
+    "other_compulsory": null,
+    "source": "school_website",
+    "source_url": "https://www.stjohnfishercollege.qld.edu.au/ArticleDocuments/1650/2027%20Fees%20Schedule.pdf.aspx"
+   }
   },
   "47869": {
    "school_name": "Mary MacKillop College",
@@ -51229,16 +52818,32 @@
   "47878": {
    "school_name": "St Edmund's College",
    "website": "http://www.sec.qld.edu.au",
-   "status": "fetched",
+   "status": "found",
    "checked": "2026-11-20",
    "crawl": {
     "pages": 7,
     "errors": 0
    },
-   "note": "No fee page among the pages fetched.",
    "fee_pages": [
     "https://www.sec.qld.edu.au/enrolments/college-fees"
-   ]
+   ],
+   "fees": {
+    "fee_year": 2026,
+    "basis": "one student, annual fees",
+    "by_year": [
+     {
+      "years": "5-6",
+      "total": 7332
+     },
+     {
+      "years": "7-12",
+      "total": 11092
+     }
+    ],
+    "other_compulsory": null,
+    "source": "school_website",
+    "source_url": "https://www.sec.qld.edu.au/enrolments/college-fees"
+   }
   },
   "47879": {
    "school_name": "St Joseph's Nudgee College",
@@ -51570,7 +53175,7 @@
   "47890": {
    "school_name": "St Joseph's Primary School",
    "website": "http://www.stjosephsnambour.qld.edu.au",
-   "status": "fetched",
+   "status": "found",
    "checked": "2026-11-20",
    "fee_pages": [
     "https://www.stjosephsnambour.qld.edu.au/enrol/fee-information",
@@ -51579,6 +53184,35 @@
    "crawl": {
     "pages": 14,
     "errors": 0
+   },
+   "fees": {
+    "fee_year": 2026,
+    "basis": "one-child family, annual tuition (sibling rates are lower); total is the school's stated cost for a first child at that year level, including levies, book pack and camps",
+    "by_year": [
+     {
+      "years": "P-2",
+      "tuition": 1460,
+      "total": 2919
+     },
+     {
+      "years": "3",
+      "tuition": 1460,
+      "total": 3023
+     },
+     {
+      "years": "4",
+      "tuition": 1460,
+      "total": 3223
+     },
+     {
+      "years": "5-6",
+      "tuition": 1460,
+      "total": 3423
+     }
+    ],
+    "other_compulsory": null,
+    "source": "school_website",
+    "source_url": "https://www.stjosephsnambour.qld.edu.au/ArticleDocuments/886/2026%20Fee%20Schedule%20UPDATED.pdf.aspx"
    }
   },
   "47891": {
@@ -51961,17 +53595,29 @@
   "47905": {
    "school_name": "St Brendan's College",
    "website": "http://www.sbc.qld.edu.au",
-   "status": "fetched",
+   "status": "found",
    "checked": "2026-11-20",
    "crawl": {
     "pages": 16,
     "errors": 0
    },
-   "note": "Only the home page could be fetched.",
    "fee_pages": [
     "https://www.stbrendans.qld.edu.au/enrolment/fees",
     "https://media.digistormhosting.com.au/sbc-au-qld-222-website-2023/content/Parent-Documents/2026-Schedule-of-Fees.pdf"
-   ]
+   ],
+   "fees": {
+    "fee_year": 2026,
+    "basis": "annual tuition per day student (includes textbooks)",
+    "by_year": [
+     {
+      "years": "7-12",
+      "tuition": 7840
+     }
+    ],
+    "other_compulsory": "Camps in Years 8 and 10 $700; bus and subject levies; boarding $23,810",
+    "source": "school_website",
+    "source_url": "https://media.digistormhosting.com.au/sbc-au-qld-222-website-2023/content/Parent-Documents/2026-Schedule-of-Fees.pdf"
+   }
   },
   "47906": {
    "school_name": "St Ursula's College",
@@ -52027,17 +53673,35 @@
   "47908": {
    "school_name": "Burdekin Catholic High School",
    "website": "http://www.bchs.catholic.edu.au",
-   "status": "fetched",
+   "status": "found",
    "checked": "2026-11-20",
    "crawl": {
     "pages": 11,
     "errors": 0
    },
-   "note": "The newest fee structure published is for 2024.",
    "fee_pages": [
     "https://www.bchs.catholic.edu.au/enrolment/school-fees-direct-debit-information/",
     "https://s3-ap-southeast-2.amazonaws.com/os-schools/bchs-catholic-edu-au/documents/fee_structure_2024.pdf"
-   ]
+   ],
+   "fees": {
+    "fee_year": 2026,
+    "basis": "one student, annual Townsville diocesan tuition; total adds the school's levies",
+    "by_year": [
+     {
+      "years": "7-10",
+      "tuition": 2928,
+      "total": 4420
+     },
+     {
+      "years": "11-12",
+      "tuition": 2928,
+      "total": 4632
+     }
+    ],
+    "other_compulsory": null,
+    "source": "school_website",
+    "source_url": "https://drive.usercontent.google.com/download?id=1MxnLkJNEkHvrBLVRez9gCfjuPJrUlzKA&export=download"
+   }
   },
   "47909": {
    "school_name": "Ignatius Park College",
@@ -52056,7 +53720,7 @@
   "47910": {
    "school_name": "St Thomas More Primary School",
    "website": "http://www.stmsunshine.qld.edu.au",
-   "status": "fetched",
+   "status": "found",
    "checked": "2026-11-20",
    "fee_pages": [
     "https://www.stmsunshine.qld.edu.au/enrol/school-fees",
@@ -52065,6 +53729,19 @@
    "crawl": {
     "pages": 13,
     "errors": 0
+   },
+   "fees": {
+    "fee_year": 2027,
+    "basis": "one-child family, annual tuition with student and capital levies and PFG levy",
+    "by_year": [
+     {
+      "years": "P-6",
+      "total": 2926
+     }
+    ],
+    "other_compulsory": "Resource, technology, activity levies and camps by year level",
+    "source": "school_website",
+    "source_url": "https://www.stmsunshine.qld.edu.au/ArticleDocuments/916/Direct%20Debit%20cover%20letter%202027%20with%20DD%20Bpoint.pdf.aspx"
    }
   },
   "47911": {
@@ -52151,17 +53828,29 @@
   "47914": {
    "school_name": "St Teresa's College",
    "website": "http://www.abergowrie.catholic.edu.au",
-   "status": "fetched",
+   "status": "found",
    "checked": "2026-11-20",
    "crawl": {
     "pages": 8,
     "errors": 0
    },
-   "note": "Only the home page could be fetched.",
    "fee_pages": [
     "https://www.abergowrie.qld.edu.au/enrolment/fees-and-assistance/",
     "https://d3mb1hepqvcfhn.cloudfront.net/abergowrie/documents/school_fees_2027.pdf"
-   ]
+   ],
+   "fees": {
+    "fee_year": 2027,
+    "basis": "annual tuition per student (includes textbooks)",
+    "by_year": [
+     {
+      "years": "7-12",
+      "tuition": 14976
+     }
+    ],
+    "other_compulsory": "Boarding fee $26,004",
+    "source": "school_website",
+    "source_url": "https://d3mb1hepqvcfhn.cloudfront.net/abergowrie/documents/school_fees_2027.pdf"
+   }
   },
   "47915": {
    "school_name": "St Paul's Catholic Primary School",
@@ -52296,16 +53985,32 @@
   "47920": {
    "school_name": "St Monica's College",
    "website": "https://www.stmonicas.qld.edu.au/",
-   "status": "fetched",
+   "status": "found",
    "checked": "2026-11-20",
    "crawl": {
     "pages": 4,
     "errors": 0
    },
-   "note": "Only two pages reachable; no fee page.",
    "fee_pages": [
     "https://www.stmonicas.qld.edu.au/2019/05/22/fees-and-payments/"
-   ]
+   ],
+   "fees": {
+    "fee_year": 2026,
+    "basis": "one student, annual charge the college gives as a guide",
+    "by_year": [
+     {
+      "years": "7-9",
+      "total": 7450
+     },
+     {
+      "years": "10-12",
+      "total": 8500
+     }
+    ],
+    "other_compulsory": null,
+    "source": "school_website",
+    "source_url": "https://drive.usercontent.google.com/download?id=1AKSzVTW2fL3Knn4bhgkQhX91EelqPXHn&export=download"
+   }
   },
   "47921": {
    "school_name": "Unity College",
@@ -52326,7 +54031,7 @@
   "47922": {
    "school_name": "St Brigid's Catholic Primary School",
    "website": "http://www.sb.qld.edu.au",
-   "status": "fetched",
+   "status": "not_found",
    "checked": "2026-11-20",
    "fee_pages": [
     "https://www.sb.qld.edu.au/enrolments/enrolment-fees",
@@ -52335,12 +54040,13 @@
    "crawl": {
     "pages": 9,
     "errors": 0
-   }
+   },
+   "note": "Fee pages were reached but show no figures."
   },
   "47923": {
    "school_name": "St Rita's Primary School",
    "website": "http://www.stritasvp.qld.edu.au",
-   "status": "fetched",
+   "status": "found",
    "checked": "2026-11-20",
    "fee_pages": [
     "https://www.stritasvp.qld.edu.au/enrol/fee-information",
@@ -52351,6 +54057,31 @@
    "crawl": {
     "pages": 13,
     "errors": 0
+   },
+   "fees": {
+    "fee_year": 2027,
+    "basis": "eldest child, annual total including levies (camps in Years 4-6 included)",
+    "by_year": [
+     {
+      "years": "P",
+      "total": 4374
+     },
+     {
+      "years": "1-3",
+      "total": 4016
+     },
+     {
+      "years": "4",
+      "total": 4190
+     },
+     {
+      "years": "5-6",
+      "total": 4378
+     }
+    ],
+    "other_compulsory": null,
+    "source": "school_website",
+    "source_url": "https://www.stritasvp.qld.edu.au/ArticleDocuments/787/School%20Fees%20and%20Levy%20Schedule%202027.pdf.aspx"
    }
   },
   "47924": {
@@ -52388,7 +54119,7 @@
   "47925": {
    "school_name": "All Saints Primary School",
    "website": "http://www.allsaints.qld.edu.au",
-   "status": "fetched",
+   "status": "found",
    "checked": "2026-11-20",
    "fee_pages": [
     "https://www.allsaints.qld.edu.au/enrol/fees-information",
@@ -52398,12 +54129,26 @@
    "crawl": {
     "pages": 12,
     "errors": 0
+   },
+   "fees": {
+    "fee_year": 2026,
+    "basis": "one-child family, annual tuition (sibling rates are lower); total is the school's stated annual total for one child including its listed levies",
+    "by_year": [
+     {
+      "years": "P-6",
+      "tuition": 1904,
+      "total": 3576
+     }
+    ],
+    "other_compulsory": "Technology and camp levies by year level",
+    "source": "school_website",
+    "source_url": "https://www.allsaints.qld.edu.au/ArticleDocuments/5161/2026%20Fees%20and%20Levies%20Schedule.pdf"
    }
   },
   "47926": {
    "school_name": "St Luke's Catholic Parish School",
    "website": "http://www.stlukescapalaba.qld.edu.au",
-   "status": "fetched",
+   "status": "found",
    "checked": "2026-11-20",
    "fee_pages": [
     "https://www.stlukescapalaba.qld.edu.au/enrolments/fees-and-finance",
@@ -52413,6 +54158,20 @@
    "crawl": {
     "pages": 10,
     "errors": 0
+   },
+   "fees": {
+    "fee_year": 2026,
+    "basis": "one-child family, annual tuition (sibling rates are lower); total is the school's stated annual total for one child including its listed capital fee, P&F levy and education levy (stationery, camps, excursions, iPad)",
+    "by_year": [
+     {
+      "years": "P-6",
+      "tuition": 2040,
+      "total": 3604
+     }
+    ],
+    "other_compulsory": null,
+    "source": "school_website",
+    "source_url": "https://www.stlukescapalaba.qld.edu.au/ArticleDocuments/946/2026%20School%20Fee%20Schedule.pdf"
    }
   },
   "47927": {
@@ -52454,7 +54213,7 @@
   "47930": {
    "school_name": "St Benedict's Primary School",
    "website": "http://www.stbenedicts.qld.edu.au",
-   "status": "fetched",
+   "status": "not_found",
    "checked": "2026-11-20",
    "fee_pages": [
     "https://www.stbenedicts.qld.edu.au/ArticleDocuments/566/School%20Fee%20Schedule.pdf.aspx"
@@ -52462,12 +54221,13 @@
    "crawl": {
     "pages": 9,
     "errors": 0
-   }
+   },
+   "note": "Fee pages were reached but show no figures."
   },
   "47931": {
    "school_name": "Star of the Sea Primary School",
    "website": "http://www.staroftheseacleveland.qld.edu.au",
-   "status": "fetched",
+   "status": "found",
    "checked": "2026-11-20",
    "fee_pages": [
     "https://www.staroftheseacleveland.qld.edu.au/enrolments/fees",
@@ -52476,6 +54236,19 @@
    "crawl": {
     "pages": 10,
     "errors": 0
+   },
+   "fees": {
+    "fee_year": 2026,
+    "basis": "one-child family, annual total of tuition, capital, resource and P&C levies",
+    "by_year": [
+     {
+      "years": "P-6",
+      "total": 3512
+     }
+    ],
+    "other_compulsory": "Technology levy extra",
+    "source": "school_website",
+    "source_url": "https://www.staroftheseacleveland.qld.edu.au/ArticleDocuments/941/Star%20of%20the%20Sea%20Catholic%20Primary%20School%20-%202026%20School%20Fees%20and%20Levies%20Schedule.pdf"
    }
   },
   "47932": {
@@ -52508,7 +54281,7 @@
   "47933": {
    "school_name": "Holy Cross School",
    "website": "http://www.holycross.qld.edu.au",
-   "status": "fetched",
+   "status": "found",
    "checked": "2026-11-20",
    "fee_pages": [
     "https://www.holycross.qld.edu.au/fees-levies/",
@@ -52517,18 +54290,32 @@
    "crawl": {
     "pages": 12,
     "errors": 0
+   },
+   "fees": {
+    "fee_year": 2026,
+    "basis": "one child, annual tuition (Cairns diocesan rate; lower for second and later children in diocesan schools)",
+    "by_year": [
+     {
+      "years": "P-6",
+      "tuition": 1828
+     }
+    ],
+    "other_compulsory": "Resource and activity levies $672-$1,113 per child; capital $765, technology $465 and P&F $40 per family",
+    "source": "school_website",
+    "source_url": "https://www.holycross.qld.edu.au/wp-content/uploads/2025/12/2026-Holy-Cross-School-Fee-Schedule-1.pdf"
    }
   },
   "47934": {
    "school_name": "Mount Isa Flexible School",
    "website": "https://mountisa.flexi.edu.au/",
-   "status": "fetched",
+   "status": "not_found",
    "checked": "2026-11-20",
    "fee_pages": [],
    "crawl": {
     "pages": 2,
     "errors": 0
-   }
+   },
+   "note": "No fee page among the pages fetched."
   },
   "47935": {
    "school_name": "Lighthouse Christian School",
@@ -52617,7 +54404,7 @@
   "47939": {
    "school_name": "The River School",
    "website": "https://riverschool.com.au/",
-   "status": "fetched",
+   "status": "found",
    "checked": "2026-11-20",
    "fee_pages": [
     "https://www.riverschool.com.au/enrol/funding-and-fees",
@@ -52626,6 +54413,20 @@
    "crawl": {
     "pages": 6,
     "errors": 0
+   },
+   "fees": {
+    "fee_year": 2026,
+    "basis": "first child, tuition per term (four terms a year)",
+    "by_year": [
+     {
+      "years": "P-6",
+      "per_term": 1470,
+      "terms": 4
+     }
+    ],
+    "other_compulsory": "Building fund levy $30 a term per family; resource levy $100 (Prep-Year 2)",
+    "source": "school_website",
+    "source_url": "https://cdn.prod.website-files.com/696d89494fd39ad2ae19c751/69cf07463bd9bf8665006602_2026-School-Fees.pdf"
    }
   },
   "47940": {
@@ -52743,26 +54544,26 @@
   "47944": {
    "school_name": "Whitsunday Christian College",
    "website": "http://www.whitsunday.qld.edu.au/",
-   "status": "fetched",
+   "status": "not_found",
    "checked": "2026-11-20",
    "crawl": {
     "pages": 4,
     "errors": 0
    },
-   "note": "No fee page among the pages fetched.",
-   "fee_pages": []
+   "fee_pages": [],
+   "note": "No fee page among the pages fetched."
   },
   "47946": {
    "school_name": "Coomera Anglican College",
    "website": "http://www.cac.qld.edu.au",
-   "status": "fetched",
+   "status": "not_found",
    "checked": "2026-11-20",
    "crawl": {
     "pages": 15,
     "errors": 0
    },
-   "note": "No fee page among the pages fetched.",
-   "fee_pages": []
+   "fee_pages": [],
+   "note": "No fee page among the pages fetched."
   },
   "47947": {
    "school_name": "Sheldon College",
@@ -52797,14 +54598,30 @@
   "47948": {
    "school_name": "Sunshine Coast Grammar School",
    "website": "http://www.scgs.qld.edu.au",
-   "status": "fetched",
+   "status": "found",
    "checked": "2026-11-20",
    "crawl": {
     "pages": 9,
     "errors": 0
    },
-   "note": "No fee page among the pages fetched.",
-   "fee_pages": []
+   "fee_pages": [],
+   "fees": {
+    "fee_year": 2027,
+    "basis": "annual tuition per student",
+    "by_year": [
+     {
+      "years": "P-6",
+      "tuition": 11980
+     },
+     {
+      "years": "7-12",
+      "tuition": 16782
+     }
+    ],
+    "other_compulsory": "General levy $960-$3,506 and technology levy $876 a year",
+    "source": "school_website",
+    "source_url": "https://pmsa.csassurance.com/refdoc_atts/897d4690-b1d0-013c-88dd-0a0fa718c8c7"
+   }
   },
   "47949": {
    "school_name": "Faith Baptist Christian School",
@@ -52853,7 +54670,7 @@
   "47951": {
    "school_name": "Glenvale Christian School",
    "website": "http://www.gcs.qld.edu.au",
-   "status": "fetched",
+   "status": "found",
    "checked": "2026-11-20",
    "fee_pages": [
     "https://www.gcs.qld.edu.au/enrolment/fees",
@@ -52862,24 +54679,41 @@
    "crawl": {
     "pages": 10,
     "errors": 0
+   },
+   "fees": {
+    "fee_year": 2027,
+    "basis": "annual tuition per student (the 2027 fee information lists Prep to Year 6 only)",
+    "by_year": [
+     {
+      "years": "P-4",
+      "tuition": 4160
+     },
+     {
+      "years": "5-6",
+      "tuition": 4460
+     }
+    ],
+    "other_compulsory": null,
+    "source": "school_website",
+    "source_url": "https://digistorm-websites.s3-ap-southeast-2.amazonaws.com/gcs-au-qld-605-website/content/2027-Fee-Information.pdf?v=1794886720"
    }
   },
   "47952": {
    "school_name": "Australian Christian College - Moreton",
    "website": "https://www.acc.edu.au/moreton/",
-   "status": "fetched",
+   "status": "not_found",
    "checked": "2026-11-20",
    "crawl": {
     "pages": 1,
     "errors": 0
    },
-   "note": "Only the home page could be fetched.",
-   "fee_pages": []
+   "fee_pages": [],
+   "note": "Only the home page could be fetched."
   },
   "47953": {
    "school_name": "Caboolture Montessori School",
    "website": "http://www.cms.qld.edu.au",
-   "status": "fetched",
+   "status": "found",
    "checked": "2026-11-20",
    "fee_pages": [
     "https://www.cms.qld.edu.au/wp-content/uploads/2026/05/Fee-Schedule-2026.pdf"
@@ -52887,30 +54721,45 @@
    "crawl": {
     "pages": 7,
     "errors": 0
+   },
+   "fees": {
+    "fee_year": 2026,
+    "basis": "first child, tuition per term (four terms a year)",
+    "by_year": [
+     {
+      "years": "P-6",
+      "per_term": 1760,
+      "terms": 4
+     }
+    ],
+    "other_compulsory": "Financial assistance fund levy $500 in the first term of enrolment",
+    "source": "school_website",
+    "source_url": "https://www.cms.qld.edu.au/wp-content/uploads/2026/05/Fee-Schedule-2026.pdf"
    }
   },
   "47954": {
    "school_name": "Toogoolawa School",
    "website": "http://www.toogoolawa.com.au",
-   "status": "fetched",
+   "status": "not_found",
    "checked": "2026-11-20",
    "fee_pages": [],
    "crawl": {
     "pages": 3,
     "errors": 0
-   }
+   },
+   "note": "No fee page among the pages fetched."
   },
   "47956": {
    "school_name": "Groves Christian College",
    "website": "http://www.groves.qld.edu.au",
-   "status": "fetched",
+   "status": "not_found",
    "checked": "2026-11-20",
    "crawl": {
     "pages": 2,
     "errors": 0
    },
-   "note": "Only two pages reachable; no fee page.",
-   "fee_pages": []
+   "fee_pages": [],
+   "note": "No fee page among the pages fetched."
   },
   "47957": {
    "school_name": "Brisbane Adventist College",
@@ -52974,13 +54823,14 @@
   "47959": {
    "school_name": "Carinity Education - Southside",
    "website": "http://www.southside.qld.edu.au",
-   "status": "fetched",
+   "status": "not_found",
    "checked": "2026-11-20",
    "fee_pages": [],
    "crawl": {
     "pages": 2,
     "errors": 0
-   }
+   },
+   "note": "No fee page among the pages fetched."
   },
   "47960": {
    "school_name": "Kimberley College",
@@ -53164,7 +55014,7 @@
   "47965": {
    "school_name": "Living Faith Lutheran Primary School",
    "website": "http://www.livingfaith.qld.edu.au",
-   "status": "fetched",
+   "status": "found",
    "checked": "2026-11-20",
    "fee_pages": [
     "https://www.livingfaith.qld.edu.au/enrol/fees"
@@ -53172,6 +55022,50 @@
    "crawl": {
     "pages": 9,
     "errors": 0
+   },
+   "fees": {
+    "fee_year": 2026,
+    "basis": "annual tuition per student; total adds the resource and activity levy and the capital levy",
+    "by_year": [
+     {
+      "years": "P",
+      "tuition": 5990,
+      "total": 6790
+     },
+     {
+      "years": "1",
+      "tuition": 5990,
+      "total": 6950
+     },
+     {
+      "years": "2",
+      "tuition": 5990,
+      "total": 7200
+     },
+     {
+      "years": "3",
+      "tuition": 5990,
+      "total": 7270
+     },
+     {
+      "years": "4",
+      "tuition": 5990,
+      "total": 7345
+     },
+     {
+      "years": "5",
+      "tuition": 5990,
+      "total": 7450
+     },
+     {
+      "years": "6",
+      "tuition": 5990,
+      "total": 7750
+     }
+    ],
+    "other_compulsory": null,
+    "source": "school_website",
+    "source_url": "https://www.livingfaith.qld.edu.au/enrol/fees"
    }
   },
   "47966": {
@@ -53191,13 +55085,14 @@
   "47967": {
    "school_name": "Carinity Education - Glendyne",
    "website": "http://www.glendyne.qld.edu.au",
-   "status": "fetched",
+   "status": "not_found",
    "checked": "2026-11-20",
    "fee_pages": [],
    "crawl": {
     "pages": 3,
     "errors": 1
-   }
+   },
+   "note": "No fee page among the pages fetched."
   },
   "47968": {
    "school_name": "Livingstone Christian College",
@@ -53580,16 +55475,16 @@
   "47989": {
    "school_name": "Australian International Islamic College",
    "website": "http://www.aiic.qld.edu.au",
-   "status": "fetched",
+   "status": "not_found",
    "checked": "2026-11-20",
    "crawl": {
     "pages": 9,
     "errors": 0
    },
-   "note": "Only fees for international students were found.",
    "fee_pages": [
     "https://aiic.qld.edu.au/college-fees/"
-   ]
+   ],
+   "note": "Only fees for international students were found."
   },
   "47990": {
    "school_name": "The Lakes College",
@@ -53807,20 +55702,36 @@
   "47999": {
    "school_name": "St Paul's School",
    "website": "http://www.stpauls.qld.edu.au",
-   "status": "fetched",
+   "status": "found",
    "checked": "2026-11-20",
    "crawl": {
     "pages": 16,
     "errors": 0
    },
-   "note": "No fee page among the pages fetched.",
    "fee_pages": [
     "https://sps.com.au/enrolment/fees/",
     "https://sps.com.au/wp-content/uploads/SPS-Fees-and-Payments-2027-1.pdf",
     "https://sps.com.au/wp-content/uploads/ELC-Fee-Schedule-2027-1.pdf",
     "https://sps.com.au/wp-content/uploads/SPS-Fee-Schedule-2027-Domestic-1.pdf",
     "https://sps.com.au/wp-content/uploads/FFPOS-Schedule-of-Fees-2026-V2.pdf"
-   ]
+   ],
+   "fees": {
+    "fee_year": 2027,
+    "basis": "annual tuition per student",
+    "by_year": [
+     {
+      "years": "P-6",
+      "tuition": 16286
+     },
+     {
+      "years": "7-12",
+      "tuition": 20623
+     }
+    ],
+    "other_compulsory": "ICT levy $551 (Years 7-12)",
+    "source": "school_website",
+    "source_url": "https://sps.com.au/wp-content/uploads/SPS-Fees-and-Payments-2027-1.pdf"
+   }
   },
   "48000": {
    "school_name": "St Margaret's Anglican Girls School",
@@ -53982,16 +55893,16 @@
   "48006": {
    "school_name": "West Moreton Anglican College",
    "website": "http://www.wmac.com.au",
-   "status": "fetched",
+   "status": "not_found",
    "checked": "2026-11-20",
    "crawl": {
     "pages": 6,
     "errors": 0
    },
-   "note": "No fee page among the pages fetched.",
    "fee_pages": [
     "https://www.wmac.com.au/enrolments/fees"
-   ]
+   ],
+   "note": "Only fees for international students were found."
   },
   "48007": {
    "school_name": "St Hilda's School",
@@ -54034,14 +55945,14 @@
   "48008": {
    "school_name": "St Luke's Anglican School",
    "website": "http://www.stlukes.qld.edu.au/",
-   "status": "fetched",
+   "status": "not_found",
    "checked": "2026-11-20",
    "crawl": {
     "pages": 4,
     "errors": 0
    },
-   "note": "No fee page among the pages fetched.",
-   "fee_pages": []
+   "fee_pages": [],
+   "note": "No fee page among the pages fetched."
   },
   "48009": {
    "school_name": "St John's Anglican College",
@@ -54103,19 +56014,19 @@
   "48011": {
    "school_name": "Brisbane Boys' College",
    "website": "https://www.bbc.qld.edu.au/",
-   "status": "fetched",
+   "status": "not_found",
    "checked": "2026-11-20",
    "crawl": {
     "pages": 16,
     "errors": 0
    },
-   "note": "Only fees for international students were found.",
    "fee_pages": [
     "https://www.bbc.qld.edu.au/school-fee-terms-and-conditions/",
     "https://www.bbc.qld.edu.au/admissions/school-fees/",
     "https://www.bbc.qld.edu.au/efees/",
     "https://www.bbc.qld.edu.au/wp-content/uploads/2026/11/261104-2027-Domestic-School-Fees_final.pdf"
-   ]
+   ],
+   "note": "Only fees for international students were found."
   },
   "48012": {
    "school_name": "Clayfield College",
@@ -54304,19 +56215,19 @@
   "48017": {
    "school_name": "Gold Coast Christian College",
    "website": "http://www.goldcoastchristiancollege.qld.edu.au",
-   "status": "fetched",
+   "status": "not_found",
    "checked": "2026-11-20",
    "crawl": {
     "pages": 1,
     "errors": 0
    },
-   "note": "Only the home page could be fetched.",
-   "fee_pages": []
+   "fee_pages": [],
+   "note": "Only the home page could be fetched."
   },
   "48018": {
    "school_name": "Ipswich Adventist School",
    "website": "https://ias.qld.edu.au/",
-   "status": "fetched",
+   "status": "not_found",
    "checked": "2026-11-20",
    "fee_pages": [
     "https://www.ias.qld.edu.au/general/ias-fees-2020",
@@ -54325,30 +56236,31 @@
    "crawl": {
     "pages": 9,
     "errors": 1
-   }
+   },
+   "note": "Fee pages were reached but show no figures."
   },
   "48019": {
    "school_name": "Darling Downs Adventist College",
    "website": "http://www.ddcs.qld.edu.au",
-   "status": "fetched",
+   "status": "not_found",
    "checked": "2026-11-20",
    "crawl": {
     "pages": 16,
     "errors": 0
    },
-   "note": "Only the home page could be fetched.",
    "fee_pages": [
     "https://ddac.qld.edu.au/enrolment/fees",
     "https://ddac.qld.edu.au/assets/2026---fees-mainstream-primary.pdf",
     "https://ddac.qld.edu.au/assets/kindy-statement-of-fees-2026.pdf",
     "https://ddac.qld.edu.au/assets/2026---fees-mainstream-secondary.pdf",
     "https://ddac.qld.edu.au/assets/fee-payment-agreement-2026.pdf"
-   ]
+   ],
+   "note": "The only fee schedule published is for 2024."
   },
   "48020": {
    "school_name": "Hope Adventist School",
    "website": "http://www.hope.qld.edu.au/",
-   "status": "fetched",
+   "status": "not_found",
    "checked": "2026-11-20",
    "fee_pages": [
     "https://www.hope.qld.edu.au/wp-content/uploads/2025/09/Fee-schedule-2025.pdf",
@@ -54358,7 +56270,8 @@
    "crawl": {
     "pages": 6,
     "errors": 0
-   }
+   },
+   "note": "Fee pages were reached but show no figures."
   },
   "48021": {
    "school_name": "Cairns Adventist College",
@@ -54377,7 +56290,7 @@
   "48022": {
    "school_name": "Riverside Adventist School",
    "website": "http://www.riversideadventist.qld.edu.au",
-   "status": "fetched",
+   "status": "found",
    "checked": "2026-11-20",
    "fee_pages": [
     "https://www.riversideadventist.qld.edu.au/enrolment/enrolment-process-fees/",
@@ -54386,6 +56299,20 @@
    "crawl": {
     "pages": 8,
     "errors": 0
+   },
+   "fees": {
+    "fee_year": 2026,
+    "basis": "one child, total fees per term (four terms a year)",
+    "by_year": [
+     {
+      "years": "P-6",
+      "per_term": 1030,
+      "terms": 4
+     }
+    ],
+    "other_compulsory": null,
+    "source": "school_website",
+    "source_url": "https://s3-ap-southeast-2.amazonaws.com/os-data-2/riversideadventist/documents/pack4fees_2026.pdf"
    }
   },
   "48023": {
@@ -54403,7 +56330,7 @@
   "48024": {
    "school_name": "Bethania Lutheran Primary School",
    "website": "http://www.bethania.qld.edu.au/",
-   "status": "fetched",
+   "status": "found",
    "checked": "2026-11-20",
    "fee_pages": [
     "https://www.bethania.qld.edu.au/enrolment/fees",
@@ -54413,6 +56340,25 @@
    "crawl": {
     "pages": 10,
     "errors": 0
+   },
+   "fees": {
+    "fee_year": 2027,
+    "basis": "annual tuition per student; total adds the resource levy",
+    "by_year": [
+     {
+      "years": "P-2",
+      "tuition": 5210,
+      "total": 5440
+     },
+     {
+      "years": "3-6",
+      "tuition": 5210,
+      "total": 5540
+     }
+    ],
+    "other_compulsory": "Camps $110-$1,830 by year; P&F levy $50",
+    "source": "school_website",
+    "source_url": "https://media.digistormhosting.com.au/blps-au-qld-536-website/content/2027-Fee-Schedule.pdf?v=1791869950"
    }
   },
   "48025": {
@@ -54626,7 +56572,7 @@
   "48030": {
    "school_name": "Brisbane Independent School",
    "website": "https://bis.qld.edu.au/",
-   "status": "fetched",
+   "status": "found",
    "checked": "2026-11-20",
    "fee_pages": [
     "https://bis.qld.edu.au/enrol/fees-schedule/",
@@ -54635,6 +56581,20 @@
    "crawl": {
     "pages": 7,
     "errors": 0
+   },
+   "fees": {
+    "fee_year": 2026,
+    "basis": "first child, full-time tuition per term (four terms a year)",
+    "by_year": [
+     {
+      "years": "P-6",
+      "per_term": 2743,
+      "terms": 4
+     }
+    ],
+    "other_compulsory": "Growth and maintenance levy $1,050 a family (or building fund donation $1,500)",
+    "source": "school_website",
+    "source_url": "https://bis.qld.edu.au/wp-content/uploads/2021/08/GL03_2026-Fees-Standard-Enrolment-1.pdf"
    }
   },
   "48031": {
@@ -54877,43 +56837,64 @@
   "48040": {
    "school_name": "Wadja Wadja High School",
    "website": "http://www.wadja.com.au/joomla",
-   "status": "fetched",
+   "status": "not_found",
    "checked": "2026-11-20",
    "crawl": {
     "pages": 1,
     "errors": 1
    },
-   "note": "Only the home page could be fetched.",
-   "fee_pages": []
+   "fee_pages": [],
+   "note": "Only the home page could be fetched."
   },
   "48041": {
    "school_name": "Maridahdi Kindergarten and Primary School",
    "website": "http://www.maridahdi.qld.edu.au",
-   "status": "fetched",
+   "status": "not_found",
    "checked": "2026-11-20",
    "fee_pages": [],
    "crawl": {
     "pages": 2,
     "errors": 0
-   }
+   },
+   "note": "No fee page among the pages fetched."
   },
   "48042": {
    "school_name": "Montessori International College",
    "website": "http://www.montessori.qld.edu.au",
-   "status": "fetched",
+   "status": "found",
    "checked": "2026-11-20",
    "crawl": {
     "pages": 10,
     "errors": 1
    },
-   "note": "Only the home page could be fetched.",
    "fee_pages": [
     "https://www.mic.qld.edu.au/fees/",
     "https://www.mic.qld.edu.au/childrens-house/eraly-years-fees/",
     "https://www.mic.qld.edu.au/wp-content/uploads/2026/10/CH-Enrolment-Fees.pdf",
     "https://www.mic.qld.edu.au/wp-content/uploads/2026/09/College-Fees-2027-%E2%80%93-Prep-to-Year-12.pdf",
     "https://www.mic.qld.edu.au/wp-content/uploads/2026/07/OSHC-Enrolment-Fees-3.pdf"
-   ]
+   ],
+   "fees": {
+    "fee_year": 2027,
+    "basis": "annual tuition per student",
+    "by_year": [
+     {
+      "years": "P-6",
+      "tuition": 11424
+     },
+     {
+      "years": "7-10",
+      "tuition": 14553
+     },
+     {
+      "years": "11-12",
+      "tuition": 15208
+     }
+    ],
+    "other_compulsory": "Capital levy per term; Year 6 Canberra excursion levy $1,000",
+    "source": "school_website",
+    "source_url": "https://www.mic.qld.edu.au/wp-content/uploads/2026/09/College-Fees-2027-%E2%80%93-Prep-to-Year-12.pdf"
+   }
   },
   "48043": {
    "school_name": "Calvary Christian College",
@@ -54971,14 +56952,14 @@
   "48044": {
    "school_name": "Carinity Education - Shalom",
    "website": "https://carinity.qld.edu.au/shalom/",
-   "status": "fetched",
+   "status": "not_found",
    "checked": "2026-11-20",
    "crawl": {
     "pages": 3,
     "errors": 0
    },
-   "note": "No fee page among the pages fetched.",
-   "fee_pages": []
+   "fee_pages": [],
+   "note": "No fee page among the pages fetched."
   },
   "48045": {
    "school_name": "Moreton Bay College",
@@ -55070,14 +57051,14 @@
   "48047": {
    "school_name": "Hillcrest Christian College",
    "website": "http://www.hillcrest.qld.edu.au",
-   "status": "fetched",
+   "status": "not_found",
    "checked": "2026-11-20",
    "crawl": {
     "pages": 12,
     "errors": 0
    },
-   "note": "No fee page among the pages fetched.",
-   "fee_pages": []
+   "fee_pages": [],
+   "note": "No fee page among the pages fetched."
   },
   "48048": {
    "school_name": "Annandale Christian College",
@@ -55096,7 +57077,7 @@
   "48049": {
    "school_name": "St Michael's College",
    "website": "http://www.smccab.qld.edu.au",
-   "status": "fetched",
+   "status": "found",
    "checked": "2026-11-20",
    "fee_pages": [
     "https://www.smccab.qld.edu.au/typography-page/college-fees-and-levies",
@@ -55106,6 +57087,20 @@
    "crawl": {
     "pages": 6,
     "errors": 0
+   },
+   "fees": {
+    "fee_year": 2027,
+    "basis": "annual tuition per student; total adds resource and activity, capital and IT levies",
+    "by_year": [
+     {
+      "years": "P-6",
+      "tuition": 5080,
+      "total": 6500
+     }
+    ],
+    "other_compulsory": null,
+    "source": "school_website",
+    "source_url": "https://media.digistormhosting.com.au/smc-au-qld-338-website/content/College-Fee-Schedule-2027.docx.pdf?v=1791430223"
    }
   },
   "48050": {
@@ -55315,14 +57310,14 @@
   "48056": {
    "school_name": "Dalby Christian College",
    "website": "https://www.dalbycc.qld.edu.au/",
-   "status": "fetched",
+   "status": "not_found",
    "checked": "2026-11-20",
    "crawl": {
     "pages": 4,
     "errors": 0
    },
-   "note": "No fee page among the pages fetched.",
-   "fee_pages": []
+   "fee_pages": [],
+   "note": "No fee page among the pages fetched."
   },
   "48057": {
    "school_name": "Caloundra Christian College",
@@ -55370,7 +57365,7 @@
   "48058": {
    "school_name": "Sinai College",
    "website": "http://www.sinaicollege.qld.edu.au",
-   "status": "fetched",
+   "status": "found",
    "checked": "2026-11-20",
    "fee_pages": [
     "https://sinaicollege.qld.edu.au/enrolments/fee-schedule/",
@@ -55379,6 +57374,19 @@
    "crawl": {
     "pages": 8,
     "errors": 0
+   },
+   "fees": {
+    "fee_year": 2026,
+    "basis": "annual tuition per student",
+    "by_year": [
+     {
+      "years": "P-6",
+      "tuition": 6400
+     }
+    ],
+    "other_compulsory": "Annual levies: resources $500, sports $300, IT $250, excursions $250",
+    "source": "school_website",
+    "source_url": "https://sinaicollege.qld.edu.au/enrolments/fee-schedule/"
    }
   },
   "48059": {
@@ -55399,17 +57407,17 @@
   "48060": {
    "school_name": "John Paul College",
    "website": "http://www.jpc.qld.edu.au",
-   "status": "fetched",
+   "status": "not_found",
    "checked": "2026-11-20",
    "crawl": {
     "pages": 6,
     "errors": 4
    },
-   "note": "Only the home page could be fetched.",
    "fee_pages": [
     "https://www.jpc.qld.edu.au/future-families/Pages/Fees.aspx",
     "https://www.jpc.qld.edu.au/news-and-events/Pages/2020-Schedule-Fees-of-Advice.aspx"
-   ]
+   ],
+   "note": "The only fee schedule published is for 2020."
   },
   "48061": {
    "school_name": "Mueller College",
@@ -55593,7 +57601,7 @@
   "48071": {
    "school_name": "Grace Lutheran Primary School",
    "website": "http://www.graceprimary.qld.edu.au",
-   "status": "fetched",
+   "status": "found",
    "checked": "2026-11-20",
    "fee_pages": [
     "https://graceprimary.qld.edu.au/enrol/school-fees/",
@@ -55604,12 +57612,26 @@
    "crawl": {
     "pages": 15,
     "errors": 0
+   },
+   "fees": {
+    "fee_year": 2026,
+    "basis": "first child, annual tuition; total adds the resource and activity levy",
+    "by_year": [
+     {
+      "years": "P-6",
+      "tuition": 5900,
+      "total": 7050
+     }
+    ],
+    "other_compulsory": "Facilities levy $950 per family",
+    "source": "school_website",
+    "source_url": "https://graceprimary.qld.edu.au/wp-content/uploads/2026-GLPS-Fee-Schedule-1.pdf"
    }
   },
   "48072": {
    "school_name": "Bethany Lutheran Primary School",
    "website": "http://www.bethany.qld.edu.au",
-   "status": "fetched",
+   "status": "found",
    "checked": "2026-11-20",
    "fee_pages": [
     "https://media.digistormhosting.com.au/blps-au-qld-89-website-2024/content/2026_BLPS_Fee_Schedule.pdf?v=1772513583"
@@ -55617,12 +57639,37 @@
    "crawl": {
     "pages": 4,
     "errors": 0
+   },
+   "fees": {
+    "fee_year": 2026,
+    "basis": "annual all-inclusive tuition per student (books, camps in Years 3-4, IT, swimming, excursions)",
+    "by_year": [
+     {
+      "years": "P-2",
+      "tuition": 5174
+     },
+     {
+      "years": "3-4",
+      "tuition": 5489
+     },
+     {
+      "years": "5",
+      "tuition": 6335
+     },
+     {
+      "years": "6",
+      "tuition": 6345
+     }
+    ],
+    "other_compulsory": null,
+    "source": "school_website",
+    "source_url": "https://media.digistormhosting.com.au/blps-au-qld-89-website-2024/content/2026_BLPS_Fee_Schedule.pdf?v=1772513583"
    }
   },
   "48073": {
    "school_name": "Peace Lutheran Primary School",
    "website": "http://www.peacelps.qld.edu.au",
-   "status": "fetched",
+   "status": "found",
    "checked": "2026-11-20",
    "fee_pages": [
     "https://peacelps.qld.edu.au/fees/",
@@ -55631,6 +57678,19 @@
    "crawl": {
     "pages": 7,
     "errors": 0
+   },
+   "fees": {
+    "fee_year": 2026,
+    "basis": "one-child family, annual fees",
+    "by_year": [
+     {
+      "years": "P-6",
+      "total": 4100
+     }
+    ],
+    "other_compulsory": "Technology levy Years 4-6",
+    "source": "school_website",
+    "source_url": "https://peacelps.qld.edu.au/fees/"
    }
   },
   "48074": {
@@ -55689,7 +57749,7 @@
   "48076": {
    "school_name": "St John's Lutheran Primary School",
    "website": "https://stjohnsbundaberg.qld.edu.au/",
-   "status": "fetched",
+   "status": "not_found",
    "checked": "2026-11-20",
    "fee_pages": [
     "https://stjohnsbundaberg.qld.edu.au/fees/",
@@ -55698,7 +57758,8 @@
    "crawl": {
     "pages": 8,
     "errors": 0
-   }
+   },
+   "note": "Fee pages were reached but show no figures."
   },
   "48077": {
    "school_name": "Prince of Peace Lutheran College",
@@ -55718,18 +57779,19 @@
   "48078": {
    "school_name": "Good News Lutheran School",
    "website": "http://www.gnls.qld.edu.au",
-   "status": "fetched",
+   "status": "not_found",
    "checked": "2026-11-20",
    "fee_pages": [],
    "crawl": {
     "pages": 3,
     "errors": 0
-   }
+   },
+   "note": "No fee page among the pages fetched."
   },
   "48079": {
    "school_name": "St Paul's Lutheran Primary School",
    "website": "http://stpaulslps.qld.edu.au/",
-   "status": "fetched",
+   "status": "not_found",
    "checked": "2026-11-20",
    "fee_pages": [
     "https://stpaulslps.qld.edu.au/fees-and-charges/"
@@ -55737,7 +57799,8 @@
    "crawl": {
     "pages": 7,
     "errors": 0
-   }
+   },
+   "note": "Fee pages were reached but show no figures."
   },
   "48080": {
    "school_name": "St John's Lutheran School",
@@ -55848,17 +57911,55 @@
   "48083": {
    "school_name": "Grace Lutheran College",
    "website": "http://www.glc.qld.edu.au",
-   "status": "fetched",
+   "status": "found",
    "checked": "2026-11-20",
    "crawl": {
     "pages": 8,
     "errors": 0
    },
-   "note": "No fee page among the pages fetched.",
    "fee_pages": [
     "https://www.glc.qld.edu.au/enrolments/fee-schedule",
     "https://media.digistormhosting.com.au/glc-au-qld-360-website-2024/content/Fee-Schedule-2026.pdf?v=1764298597"
-   ]
+   ],
+   "fees": {
+    "fee_year": 2026,
+    "basis": "annual tuition per student at the Rothwell campus; total adds camp, technology and capital levies",
+    "by_year": [
+     {
+      "years": "7",
+      "tuition": 8810,
+      "total": 11150
+     },
+     {
+      "years": "8",
+      "tuition": 10250,
+      "total": 12590
+     },
+     {
+      "years": "9",
+      "tuition": 11000,
+      "total": 13185
+     },
+     {
+      "years": "10",
+      "tuition": 11235,
+      "total": 12985
+     },
+     {
+      "years": "11",
+      "tuition": 11785,
+      "total": 12915
+     },
+     {
+      "years": "12",
+      "tuition": 11900,
+      "total": 12550
+     }
+    ],
+    "other_compulsory": null,
+    "source": "school_website",
+    "source_url": "https://media.digistormhosting.com.au/glc-au-qld-360-website-2024/content/Fee-Schedule-2026.pdf?v=1764298597"
+   }
   },
   "48084": {
    "school_name": "Redeemer Lutheran College",
@@ -55910,40 +58011,61 @@
   "48086": {
    "school_name": "Chinchilla Christian College",
    "website": "http://www.chinchillacc.qld.edu.au",
-   "status": "fetched",
+   "status": "not_found",
    "checked": "2026-11-20",
    "crawl": {
     "pages": 3,
     "errors": 0
    },
-   "note": "No fee page among the pages fetched.",
-   "fee_pages": []
+   "fee_pages": [],
+   "note": "No fee page among the pages fetched."
   },
   "48087": {
    "school_name": "Pine Community School",
    "website": "http://www.pinecommunityschool.org/",
-   "status": "fetched",
+   "status": "not_found",
    "checked": "2026-11-20",
    "fee_pages": [],
    "crawl": {
     "pages": 2,
     "errors": 0
-   }
+   },
+   "note": "No fee page among the pages fetched."
   },
   "48088": {
    "school_name": "Ormiston College",
    "website": "http://www.ormiston.qld.edu.au/",
-   "status": "fetched",
+   "status": "found",
    "checked": "2026-11-20",
    "crawl": {
     "pages": 14,
     "errors": 0
    },
-   "note": "Only the home page could be fetched.",
    "fee_pages": [
     "https://www.ormistoncollege.com.au/enrol/enrolment-process/schools-fees",
     "https://media.digistormhosting.com.au/oc-au-qld-46-website/content/Fees/Ormiston-College-Schedule-of-Fees-2026.pdf?v=1764647311"
-   ]
+   ],
+   "fees": {
+    "fee_year": 2026,
+    "basis": "annual tuition per student",
+    "by_year": [
+     {
+      "years": "P-4",
+      "tuition": 13420
+     },
+     {
+      "years": "5-6",
+      "tuition": 15208
+     },
+     {
+      "years": "7-12",
+      "tuition": 18212
+     }
+    ],
+    "other_compulsory": "Capital levy $300 a term; camps extra",
+    "source": "school_website",
+    "source_url": "https://media.digistormhosting.com.au/oc-au-qld-46-website/content/Fees/Ormiston-College-Schedule-of-Fees-2026.pdf?v=1764647311"
+   }
   },
   "48089": {
    "school_name": "Cannon Hill Anglican College",
@@ -55983,19 +58105,72 @@
   "48090": {
    "school_name": "Hills International College",
    "website": "http://www.hills.qld.edu.au/",
-   "status": "fetched",
+   "status": "found",
    "checked": "2026-11-20",
    "crawl": {
     "pages": 11,
     "errors": 0
    },
-   "note": "No fee page among the pages fetched.",
    "fee_pages": [
     "https://www.hills.qld.edu.au/enrolment/fees-scholarships",
     "https://media.digistormhosting.com.au/hc-au-qld-272-website-2025/documents/Domestic-Fees-Scholarships-Information/Hills-2026-Domestic-Fees.pdf?v=1779930933",
     "https://media.digistormhosting.com.au/hc-au-qld-272-website-2025/documents/Domestic-Fees-Scholarships-Information/Hills-Domestic-Fee-Schedule-2027.pdf?v=1791947249",
     "https://media.digistormhosting.com.au/hc-au-qld-272-website-2025/documents/Domestic-Fees-Scholarships-Information/Hills-Scholarship-Application-Form.pdf?v=1791770469"
-   ]
+   ],
+   "fees": {
+    "fee_year": 2027,
+    "basis": "annual tuition per student; total adds resources and ICT resource fees",
+    "by_year": [
+     {
+      "years": "P",
+      "tuition": 5300,
+      "total": 6496
+     },
+     {
+      "years": "1",
+      "tuition": 6300,
+      "total": 7496
+     },
+     {
+      "years": "2",
+      "total": 7661
+     },
+     {
+      "years": "3",
+      "total": 7296
+     },
+     {
+      "years": "4",
+      "total": 7740
+     },
+     {
+      "years": "5",
+      "total": 8190
+     },
+     {
+      "years": "6",
+      "total": 7740
+     },
+     {
+      "years": "7-9",
+      "tuition": 7620,
+      "total": 9200
+     },
+     {
+      "years": "10",
+      "tuition": 8040,
+      "total": 9620
+     },
+     {
+      "years": "11-12",
+      "tuition": 9060,
+      "total": 10880
+     }
+    ],
+    "other_compulsory": "Capital fund levy $600",
+    "source": "school_website",
+    "source_url": "https://media.digistormhosting.com.au/hc-au-qld-272-website-2025/documents/Domestic-Fees-Scholarships-Information/Hills-Domestic-Fee-Schedule-2027.pdf?v=1791947249"
+   }
   },
   "48091": {
    "school_name": "Blackheath and Thornburgh College",
@@ -56097,39 +58272,55 @@
   "48095": {
    "school_name": "Samford Valley Steiner School",
    "website": "http://www.samfordsteiner.qld.edu.au",
-   "status": "fetched",
+   "status": "not_found",
    "checked": "2026-11-20",
    "crawl": {
     "pages": 13,
     "errors": 0
    },
-   "note": "Only fees for international students were found.",
    "fee_pages": [
     "https://www.samfordsteiner.qld.edu.au/enrolments/fees/",
     "https://www.samfordsteiner.qld.edu.au/wp-content/uploads/2026-Parent-Fee-Schedule.pdf"
-   ]
+   ],
+   "note": "Only fees for international students were found."
   },
   "48096": {
    "school_name": "A B Paterson College",
    "website": "https://www.abpat.qld.edu.au",
-   "status": "fetched",
+   "status": "found",
    "checked": "2026-11-20",
    "crawl": {
     "pages": 12,
     "errors": 0
    },
-   "note": "No fee page among the pages fetched.",
    "fee_pages": [
     "https://www.abpat.qld.edu.au/admissions/college-fees",
     "https://www.abpat.qld.edu.au/admissions/college-fees/performing-arts-tuition-information",
     "https://media.digistormhosting.com.au/abpc-au-qld-3-website-2025/documents/2027-Fee-Schedule.pdf?v=1793923323",
     "https://media.digistormhosting.com.au/abpc-au-qld-3-website-2025/documents/Application-for-Performing-Arts-Tuition.pdf?v=1793146399"
-   ]
+   ],
+   "fees": {
+    "fee_year": 2027,
+    "basis": "annual tuition per student (compulsory camps and excursions included)",
+    "by_year": [
+     {
+      "years": "P-6",
+      "tuition": 15092
+     },
+     {
+      "years": "7-12",
+      "tuition": 18532
+     }
+    ],
+    "other_compulsory": "Building levy $125 a term per student; FAB levy $10 a term per family",
+    "source": "school_website",
+    "source_url": "https://media.digistormhosting.com.au/abpc-au-qld-3-website-2025/documents/2027-Fee-Schedule.pdf?v=1793923323"
+   }
   },
   "48097": {
    "school_name": "Cooloola Christian College",
    "website": "http://www.cccgympie.qld.edu.au",
-   "status": "fetched",
+   "status": "not_found",
    "checked": "2026-11-20",
    "crawl": {
     "pages": 14,
@@ -56138,12 +58329,13 @@
    "fee_pages": [
     "https://www.ccc.qld.edu.au/enrol/fees-edstart",
     "https://media.digistormhosting.com.au/ccc-au-qld-687-website/content/Fee-Schedule-2026.pdf?v=1766350739"
-   ]
+   ],
+   "note": "Fee pages were reached but show no figures."
   },
   "48098": {
    "school_name": "Mancel College",
    "website": "https://mancelcollege.qld.edu.au/",
-   "status": "fetched",
+   "status": "found",
    "checked": "2026-11-20",
    "fee_pages": [
     "https://mancelcollege.qld.edu.au/wp-content/uploads/2025/10/Mancel_College_2026_Fee_Schedule.pdf"
@@ -56151,6 +58343,23 @@
    "crawl": {
     "pages": 6,
     "errors": 0
+   },
+   "fees": {
+    "fee_year": 2026,
+    "basis": "annual fee per student",
+    "by_year": [
+     {
+      "years": "P",
+      "tuition": 14628
+     },
+     {
+      "years": "1-12",
+      "tuition": 13320
+     }
+    ],
+    "other_compulsory": "IT device levy $387 (Years 5-12); pathways levy $1,760 for VET students; excursions, camps and booklists extra",
+    "source": "school_website",
+    "source_url": "https://mancelcollege.qld.edu.au/wp-content/uploads/2025/10/Mancel_College_2026_Fee_Schedule.pdf"
    }
   },
   "48099": {
@@ -56243,17 +58452,45 @@
   "48101": {
    "school_name": "Victory College",
    "website": "http://www.victorycollege.com",
-   "status": "fetched",
+   "status": "found",
    "checked": "2026-11-20",
    "crawl": {
     "pages": 16,
     "errors": 0
    },
-   "note": "Only the home page could be fetched.",
    "fee_pages": [
     "https://www.victorycollege.com.au/enrolments/fees/",
     "https://www.victorycollege.com.au/wp-content/uploads/Fee-Schedule-2027.pdf"
-   ]
+   ],
+   "fees": {
+    "fee_year": 2027,
+    "basis": "annual all-inclusive fees per student (academic stream for Years 9-12)",
+    "by_year": [
+     {
+      "years": "P-3",
+      "tuition": 6005.18
+     },
+     {
+      "years": "4-6",
+      "tuition": 6128.59
+     },
+     {
+      "years": "7-8",
+      "tuition": 6819.91
+     },
+     {
+      "years": "9-10",
+      "tuition": 7084.7
+     },
+     {
+      "years": "11-12",
+      "tuition": 7308.86
+     }
+    ],
+    "other_compulsory": "Vocational stream $7,325.70 (Years 9-10) and $7,567.86 (Years 11-12); bus fees extra",
+    "source": "school_website",
+    "source_url": "https://www.victorycollege.com.au/wp-content/uploads/Fee-Schedule-2027.pdf"
+   }
   },
   "48102": {
    "school_name": "Citipointe Christian College",
@@ -56270,28 +58507,28 @@
   "48103": {
    "school_name": "Burdekin Christian College",
    "website": "http://www.burdekincc.qld.edu.au/",
-   "status": "fetched",
+   "status": "not_found",
    "checked": "2026-11-20",
    "crawl": {
     "pages": 2,
     "errors": 0
    },
-   "note": "No fee page among the pages fetched.",
-   "fee_pages": []
+   "fee_pages": [],
+   "note": "No fee page among the pages fetched."
   },
   "48104": {
    "school_name": "Jubilee Christian College",
    "website": "https://www.jubileecc.qld.edu.au/",
-   "status": "fetched",
+   "status": "not_found",
    "checked": "2026-11-20",
    "crawl": {
     "pages": 5,
     "errors": 0
    },
-   "note": "Only the home page could be fetched.",
    "fee_pages": [
     "https://www.jubileecc.qld.edu.au/test-oc-fee-calculator/"
-   ]
+   ],
+   "note": "Fee pages were reached but show no figures."
   },
   "48105": {
    "school_name": "Brisbane Christian College",
@@ -56531,13 +58768,14 @@
   "48115": {
    "school_name": "Arethusa College",
    "website": "http://arethusa.qld.edu.au/",
-   "status": "fetched",
+   "status": "not_found",
    "checked": "2026-11-20",
    "fee_pages": [],
    "crawl": {
     "pages": 3,
     "errors": 0
-   }
+   },
+   "note": "No fee page among the pages fetched."
   },
   "48860": {
    "school_name": "St Joseph's College",
@@ -60434,21 +62672,21 @@
   "50374": {
    "school_name": "Hymba Yumba Independent School",
    "website": "http://www.hyis.qld.edu.au",
-   "status": "fetched",
+   "status": "not_found",
    "checked": "2026-11-20",
    "crawl": {
     "pages": 5,
     "errors": 0
    },
-   "note": "No fee page among the pages fetched.",
    "fee_pages": [
     "https://hyis.qld.edu.au/fees/"
-   ]
+   ],
+   "note": "Fee pages were reached but show no figures."
   },
   "50375": {
    "school_name": "St Clare's Catholic School",
    "website": "http://www.stclarestsv.catholic.edu.au",
-   "status": "fetched",
+   "status": "found",
    "checked": "2026-11-20",
    "fee_pages": [
     "https://www.stclarestsv.catholic.edu.au/enrolment/school-fees/",
@@ -60458,6 +62696,20 @@
    "crawl": {
     "pages": 10,
     "errors": 0
+   },
+   "fees": {
+    "fee_year": 2027,
+    "basis": "one student, annual Townsville diocesan tuition; total adds the school's levies",
+    "by_year": [
+     {
+      "years": "P-6",
+      "tuition": 2060,
+      "total": 3883
+     }
+    ],
+    "other_compulsory": null,
+    "source": "school_website",
+    "source_url": "https://os-data-2.s3-ap-southeast-2.amazonaws.com/stclarestsv2/bundle16/2027_school_fees.pdf"
    }
   },
   "50379": {
@@ -60579,7 +62831,7 @@
   "50391": {
    "school_name": "Mother Teresa Primary School",
    "website": "http://www.motherteresa.qld.edu.au/Pages/default.aspx",
-   "status": "fetched",
+   "status": "found",
    "checked": "2026-11-20",
    "fee_pages": [
     "https://www.motherteresa.qld.edu.au/enrol/fees-and-finance"
@@ -60587,6 +62839,20 @@
    "crawl": {
     "pages": 12,
     "errors": 0
+   },
+   "fees": {
+    "fee_year": 2027,
+    "basis": "one-child family, annual tuition (sibling rates are lower); total is the school's stated annual total for one child including its listed levies",
+    "by_year": [
+     {
+      "years": "P-6",
+      "tuition": 1372,
+      "total": 3373
+     }
+    ],
+    "other_compulsory": null,
+    "source": "school_website",
+    "source_url": "https://www.motherteresa.qld.edu.au/enrol/fees-and-finance"
    }
   },
   "50392": {
@@ -61590,7 +63856,7 @@
   "50581": {
    "school_name": "Good Shepherd Catholic Primary School",
    "website": "http://www.goodshepherd.qld.edu.au/Pages/default.aspx",
-   "status": "fetched",
+   "status": "found",
    "checked": "2026-11-20",
    "fee_pages": [
     "https://www.goodshepherd.qld.edu.au/enrolments/fees",
@@ -61599,6 +63865,20 @@
    "crawl": {
     "pages": 7,
     "errors": 0
+   },
+   "fees": {
+    "fee_year": 2026,
+    "basis": "one-child family, annual tuition (sibling rates are lower); total is the school's stated annual total for one child including its listed levies",
+    "by_year": [
+     {
+      "years": "P-6",
+      "tuition": 1920,
+      "total": 3828
+     }
+    ],
+    "other_compulsory": null,
+    "source": "school_website",
+    "source_url": "https://www.goodshepherd.qld.edu.au/ArticleDocuments/1157/2026%20Schedule%20of%20Fees%20and%20Levies.pdf"
    }
   },
   "50583": {
@@ -62164,14 +64444,14 @@
   "50702": {
    "school_name": "Radiant Life College",
    "website": "http://radiantlife.qld.edu.au",
-   "status": "fetched",
+   "status": "not_found",
    "checked": "2026-11-20",
    "crawl": {
     "pages": 3,
     "errors": 0
    },
-   "note": "No fee page among the pages fetched.",
-   "fee_pages": []
+   "fee_pages": [],
+   "note": "No fee page among the pages fetched."
   },
   "50707": {
    "school_name": "St Brigid's Catholic Primary School",
@@ -62287,13 +64567,14 @@
   "50728": {
    "school_name": "Horizons College of Learning and Enrichment",
    "website": "http://horizonscollege.qld.edu.au/",
-   "status": "fetched",
+   "status": "not_found",
    "checked": "2026-11-20",
    "fee_pages": [],
    "crawl": {
     "pages": 3,
     "errors": 0
-   }
+   },
+   "note": "No fee page among the pages fetched."
   },
   "50729": {
    "school_name": "Australian International Academy, Kellyville Campus",
@@ -62827,12 +65108,25 @@
   "51490": {
    "school_name": "Yarranlea Primary School",
    "website": "http://www.yarranlea.qld.edu.au/",
-   "status": "fetched",
+   "status": "found",
    "checked": "2026-11-20",
    "fee_pages": [],
    "crawl": {
     "pages": 4,
     "errors": 0
+   },
+   "fees": {
+    "fee_year": 2027,
+    "basis": "annual tuition per student (curriculum activities, textbooks and excursions included)",
+    "by_year": [
+     {
+      "years": "P-6",
+      "tuition": 7800
+     }
+    ],
+    "other_compulsory": null,
+    "source": "school_website",
+    "source_url": "https://12794098-a94a-4a89-a5bd-b9d97f1aa8b1.filesusr.com/ugd/1d1603_8331d20c8b374274a29099dff4554b45.pdf"
    }
   },
   "51491": {
@@ -62847,13 +65141,14 @@
   "51496": {
    "school_name": "Kairos Community College",
    "website": "http://kairoscc.org.au/",
-   "status": "fetched",
+   "status": "not_found",
    "checked": "2026-11-20",
    "fee_pages": [],
    "crawl": {
     "pages": 3,
     "errors": 0
-   }
+   },
+   "note": "No fee page among the pages fetched."
   },
   "51499": {
    "school_name": "Discovery Christian College",
@@ -62893,13 +65188,14 @@
   "51500": {
    "school_name": "Rockhampton Flexible School",
    "website": "https://rockhampton.flexi.edu.au/",
-   "status": "fetched",
+   "status": "not_found",
    "checked": "2026-11-20",
    "fee_pages": [],
    "crawl": {
     "pages": 2,
     "errors": 0
-   }
+   },
+   "note": "No fee page among the pages fetched."
   },
   "51501": {
    "school_name": "MacKillop Catholic College, Mount Peter",
@@ -62928,7 +65224,7 @@
   "51503": {
    "school_name": "St Joseph's Parish School",
    "website": "https://www.stjosephsweipa.qld.edu.au/",
-   "status": "fetched",
+   "status": "not_found",
    "checked": "2026-11-20",
    "fee_pages": [
     "https://www.stjosephsweipa.qld.edu.au/enrolling/fees-and-levies/"
@@ -62936,18 +65232,20 @@
    "crawl": {
     "pages": 11,
     "errors": 0
-   }
+   },
+   "note": "Fee pages were reached but show no figures."
   },
   "51504": {
    "school_name": "Holy Spirit College",
    "website": "http://www.holyspiritcollege.qld.edu.au/",
-   "status": "fetched",
+   "status": "not_found",
    "checked": "2026-11-20",
    "fee_pages": [],
    "crawl": {
     "pages": 2,
     "errors": 0
-   }
+   },
+   "note": "No fee page among the pages fetched."
   },
   "51509": {
    "school_name": "St James' Anglican School",
@@ -63140,13 +65438,14 @@
   "51531": {
    "school_name": "YOS Lawnton",
    "website": "https://www.tsaschools.org/",
-   "status": "fetched",
+   "status": "not_found",
    "checked": "2026-11-20",
    "fee_pages": [],
    "crawl": {
     "pages": 6,
     "errors": 0
-   }
+   },
+   "note": "No fee page among the pages fetched."
   },
   "52040": {
    "school_name": "St Andrew's Cathedral School - Bishop Barry Senior College",
@@ -63600,7 +65899,7 @@
   "52248": {
    "school_name": "Carinity Education - Rockhampton",
    "website": "https://www.carinity.org.au/",
-   "status": "fetched",
+   "status": "not_found",
    "checked": "2026-11-20",
    "fee_pages": [
     "https://carinity.org.au/our-services/retirement-living/retirement-living-fees-charges-explained/"
@@ -63608,7 +65907,8 @@
    "crawl": {
     "pages": 7,
     "errors": 0
-   }
+   },
+   "note": "Fee pages were reached but show no figures."
   },
   "52249": {
    "school_name": "Townsville Christian College",
@@ -64557,7 +66857,7 @@
   "52397": {
    "school_name": "St Benedict's Catholic School",
    "website": "https://www.stbenedicts.catholic.edu.au/",
-   "status": "fetched",
+   "status": "found",
    "checked": "2026-11-20",
    "fee_pages": [
     "https://www.stbenedicts.catholic.edu.au/enrolment/school-fees/",
@@ -64568,6 +66868,20 @@
    "crawl": {
     "pages": 13,
     "errors": 0
+   },
+   "fees": {
+    "fee_year": 2026,
+    "basis": "one student, annual Townsville diocesan tuition; total adds the school's levies",
+    "by_year": [
+     {
+      "years": "P-6",
+      "tuition": 1952,
+      "total": 3578
+     }
+    ],
+    "other_compulsory": null,
+    "source": "school_website",
+    "source_url": "https://os-data-2.s3-ap-southeast-2.amazonaws.com/stbenedicts2/bundle5/st_benedicts_catholic_school_fees_2026.pdf"
    }
   },
   "52398": {
@@ -64870,7 +67184,7 @@
   "52442": {
    "school_name": "St Clare's Primary School",
    "website": "http://www.stclare.qld.edu.au/Pages/default.aspx",
-   "status": "fetched",
+   "status": "found",
    "checked": "2026-11-20",
    "fee_pages": [
     "https://www.stclare.qld.edu.au/enrolments/school-fees",
@@ -64881,6 +67195,19 @@
    "crawl": {
     "pages": 11,
     "errors": 0
+   },
+   "fees": {
+    "fee_year": 2027,
+    "basis": "one-child family, annual tuition (sibling rates are lower)",
+    "by_year": [
+     {
+      "years": "P-6",
+      "tuition": 1164
+     }
+    ],
+    "other_compulsory": "Capital levy $712 per family; student, IT and camp levies $720-$1,394 by year level",
+    "source": "school_website",
+    "source_url": "https://www.stclare.qld.edu.au/ArticleDocuments/1091/School%20Fees%20and%20Levies%20Schedule%202027.pdf.aspx"
    }
   },
   "52443": {
@@ -64911,13 +67238,14 @@
   "52444": {
    "school_name": "Montessori Noosa",
    "website": "https://montessori.org.au/schools-centres/montessori-noosa",
-   "status": "fetched",
+   "status": "not_found",
    "checked": "2026-11-20",
    "fee_pages": [],
    "crawl": {
     "pages": 1,
     "errors": 0
-   }
+   },
+   "note": "Only the home page could be fetched."
   },
   "52445": {
    "school_name": "Arethusa College - Windsor Campus",
@@ -64931,16 +67259,16 @@
   "52446": {
    "school_name": "Angelorum College",
    "website": "http://www.angelorum.qld.edu.au/",
-   "status": "fetched",
+   "status": "not_found",
    "checked": "2026-11-20",
    "crawl": {
     "pages": 2,
     "errors": 0
    },
-   "note": "Only the home page could be fetched.",
    "fee_pages": [
     "https://www.angelorum.qld.edu.au/fees"
-   ]
+   ],
+   "note": "Fee pages were reached but show no figures."
   },
   "52447": {
    "school_name": "Tec-NQ - Rosslea Campus",
@@ -64963,7 +67291,7 @@
   "52452": {
    "school_name": "The Sycamore School",
    "website": "https://www.thesycamoreschool.qld.edu.au/",
-   "status": "fetched",
+   "status": "found",
    "checked": "2026-11-20",
    "fee_pages": [
     "https://www.sycamore.qld.edu.au/our-school/tuition-and-fees"
@@ -64971,6 +67299,19 @@
    "crawl": {
     "pages": 7,
     "errors": 0
+   },
+   "fees": {
+    "fee_year": 2026,
+    "basis": "annual tuition per student (excursions, resources and stationery included)",
+    "by_year": [
+     {
+      "years": "U",
+      "tuition": 10330
+     }
+    ],
+    "other_compulsory": "IT levy $200 (junior) or $400 (high school)",
+    "source": "school_website",
+    "source_url": "https://www.sycamore.qld.edu.au/our-school/tuition-and-fees"
    }
   },
   "52453": {
@@ -64985,25 +67326,26 @@
   "52454": {
    "school_name": "Australian Technology and Agricultural College",
    "website": "https://atac.qld.edu.au/",
-   "status": "fetched",
+   "status": "not_found",
    "checked": "2026-11-20",
    "crawl": {
     "pages": 1,
     "errors": 0
    },
-   "note": "Only the home page could be fetched.",
-   "fee_pages": []
+   "fee_pages": [],
+   "note": "Only the home page could be fetched."
   },
   "52456": {
    "school_name": "Southport Flexible School",
    "website": "https://southport.flexi.edu.au/",
-   "status": "fetched",
+   "status": "not_found",
    "checked": "2026-11-20",
    "fee_pages": [],
    "crawl": {
     "pages": 2,
     "errors": 0
-   }
+   },
+   "note": "No fee page among the pages fetched."
   },
   "52463": {
    "school_name": "Redwood College",
@@ -65638,7 +67980,7 @@
   "52604": {
    "school_name": "Josiah College",
    "website": "https://www.josiah.qld.edu.au/",
-   "status": "fetched",
+   "status": "found",
    "checked": "2026-11-20",
    "fee_pages": [
     "https://www.josiah.qld.edu.au/payments/fees",
@@ -65647,6 +67989,23 @@
    "crawl": {
     "pages": 5,
     "errors": 0
+   },
+   "fees": {
+    "fee_year": 2027,
+    "basis": "first student, annual fees",
+    "by_year": [
+     {
+      "years": "P-6",
+      "total": 11828
+     },
+     {
+      "years": "7-12",
+      "total": 13440
+     }
+    ],
+    "other_compulsory": null,
+    "source": "school_website",
+    "source_url": "https://media.digistormhosting.com.au/jc-au-qld-286-website/content/JC-Fee-Schedule-2027.pdf?v=1794535700"
    }
   },
   "52612": {
@@ -66149,23 +68508,37 @@
   "52667": {
    "school_name": "The Rainforest School",
    "website": "http://www.trs.qld.edu.au",
-   "status": "fetched",
+   "status": "not_found",
    "checked": "2026-11-20",
    "fee_pages": [],
    "crawl": {
     "pages": 2,
     "errors": 0
-   }
+   },
+   "note": "No fee page among the pages fetched."
   },
   "52668": {
    "school_name": "Goora Gan Steiner School",
    "website": "https://www.gooragansteiner.qld.edu.au/",
-   "status": "fetched",
+   "status": "found",
    "checked": "2026-11-20",
    "fee_pages": [],
    "crawl": {
     "pages": 5,
     "errors": 0
+   },
+   "fees": {
+    "fee_year": 2026,
+    "basis": "first child, annual tuition (classes are year levels)",
+    "by_year": [
+     {
+      "years": "P-6",
+      "tuition": 2652
+     }
+    ],
+    "other_compulsory": "Excursion and camp levy $125-$180 (Classes 3-6)",
+    "source": "school_website",
+    "source_url": "https://www.gooragansteiner.qld.edu.au/_files/ugd/3c169a_497e4f3b35ba45db861e6de7cff57dbd.pdf"
    }
   },
   "52669": {
@@ -66304,19 +68677,19 @@
   "52688": {
    "school_name": "Jabiru Community College",
    "website": "https://www.jcc.qld.edu.au/",
-   "status": "fetched",
+   "status": "not_found",
    "checked": "2026-11-20",
    "crawl": {
     "pages": 6,
     "errors": 0
    },
-   "note": "No fee page among the pages fetched.",
-   "fee_pages": []
+   "fee_pages": [],
+   "note": "No fee page among the pages fetched."
   },
   "52689": {
    "school_name": "St Ann's School",
    "website": "https://www.stanns.qld.edu.au/",
-   "status": "fetched",
+   "status": "found",
    "checked": "2026-11-20",
    "fee_pages": [
     "https://www.stanns.qld.edu.au/enrol/fees"
@@ -66324,6 +68697,20 @@
    "crawl": {
     "pages": 9,
     "errors": 0
+   },
+   "fees": {
+    "fee_year": 2026,
+    "basis": "one-child family, annual tuition (sibling rates are lower); total is the school's stated annual total for one child including its listed levies",
+    "by_year": [
+     {
+      "years": "P-6",
+      "tuition": 1204,
+      "total": 2764
+     }
+    ],
+    "other_compulsory": null,
+    "source": "school_website",
+    "source_url": "https://www.stanns.qld.edu.au/enrol/fees"
    }
   },
   "52710": {
@@ -66570,13 +68957,14 @@
   "52737": {
    "school_name": "Enkindle Village School",
    "website": "https://enkindleschool.qld.edu.au/",
-   "status": "fetched",
+   "status": "not_found",
    "checked": "2026-11-20",
    "fee_pages": [],
    "crawl": {
     "pages": 3,
     "errors": 0
-   }
+   },
+   "note": "No fee page among the pages fetched."
   },
   "52738": {
    "school_name": "Warwick Christian College - Glengallan Road Campus",
@@ -66599,14 +68987,14 @@
   "52743": {
    "school_name": "IES College",
    "website": "https://iescollege.com/",
-   "status": "fetched",
+   "status": "not_found",
    "checked": "2026-11-20",
    "crawl": {
     "pages": 1,
     "errors": 0
    },
-   "note": "No fee page among the pages fetched.",
-   "fee_pages": []
+   "fee_pages": [],
+   "note": "Only the home page could be fetched."
   },
   "52744": {
    "school_name": "Sophia College",
@@ -66638,14 +69026,14 @@
   "52745": {
    "school_name": "Carbrook Animal Assisted Learning Centre",
    "website": "https://www.carbrookcentre.qld.edu.au/",
-   "status": "fetched",
+   "status": "not_found",
    "checked": "2026-11-20",
    "crawl": {
     "pages": 1,
     "errors": 0
    },
-   "note": "No fee page among the pages fetched.",
-   "fee_pages": []
+   "fee_pages": [],
+   "note": "Only the home page could be fetched."
   },
   "52749": {
    "school_name": "Alta-1 College - Albany Marine VET Campus",
@@ -67114,13 +69502,14 @@
   "52826": {
    "school_name": "Silver Lining School",
    "website": "https://silverlining.org.au",
-   "status": "fetched",
+   "status": "not_found",
    "checked": "2026-11-20",
    "fee_pages": [],
    "crawl": {
     "pages": 1,
     "errors": 0
-   }
+   },
+   "note": "Only the home page could be fetched."
   },
   "52833": {
    "school_name": "Fairbridge College - Kalgoorlie Campus",
@@ -67172,13 +69561,14 @@
   "52838": {
    "school_name": "Kutta Mulla Gorinna Special Assistance School",
    "website": "https://www.kmg.qld.edu.au/",
-   "status": "fetched",
+   "status": "not_found",
    "checked": "2026-11-20",
    "fee_pages": [],
    "crawl": {
     "pages": 2,
     "errors": 0
-   }
+   },
+   "note": "No fee page among the pages fetched."
   },
   "52841": {
    "school_name": "Newman Catholic College",
@@ -67398,24 +69788,26 @@
   "52866": {
    "school_name": "Men of Business Academy",
    "website": "https://menofbusiness.com.au",
-   "status": "fetched",
+   "status": "not_found",
    "checked": "2026-11-20",
    "fee_pages": [],
    "crawl": {
     "pages": 5,
     "errors": 1
-   }
+   },
+   "note": "No fee page among the pages fetched."
   },
   "52867": {
    "school_name": "Y Schools Queensland - Logan",
    "website": "https://www.ymcabrisbane.org/services/vocational-school",
-   "status": "fetched",
+   "status": "not_found",
    "checked": "2026-11-20",
    "fee_pages": [],
    "crawl": {
     "pages": 5,
     "errors": 0
-   }
+   },
+   "note": "No fee page among the pages fetched."
   },
   "52868": {
    "school_name": "Y Schools Queensland - Logan (Kingston Campus)",
@@ -67429,13 +69821,14 @@
   "52870": {
    "school_name": "Y Schools Queensland - Moreton Bay",
    "website": "https://www.ymcabrisbane.org/services/vocational-school",
-   "status": "fetched",
+   "status": "not_found",
    "checked": "2026-11-20",
    "fee_pages": [],
    "crawl": {
     "pages": 5,
     "errors": 0
-   }
+   },
+   "note": "No fee page among the pages fetched."
   },
   "52871": {
    "school_name": "Y Schools Queensland - Moreton Bay (Mango Hill Campus)",
@@ -67449,13 +69842,14 @@
   "52872": {
    "school_name": "Y Schools Queensland - Ipswich",
    "website": "https://www.ymcabrisbane.org/services/vocational-school",
-   "status": "fetched",
+   "status": "not_found",
    "checked": "2026-11-20",
    "fee_pages": [],
    "crawl": {
     "pages": 5,
     "errors": 0
-   }
+   },
+   "note": "No fee page among the pages fetched."
   },
   "52873": {
    "school_name": "Y Schools Queensland - Ipswich (Limestone St Campus)",
@@ -67469,13 +69863,14 @@
   "52874": {
    "school_name": "Y Schools Queensland - Brisbane South",
    "website": "https://www.ymcabrisbane.org/services/vocational-school",
-   "status": "fetched",
+   "status": "not_found",
    "checked": "2026-11-20",
    "fee_pages": [],
    "crawl": {
     "pages": 5,
     "errors": 0
-   }
+   },
+   "note": "No fee page among the pages fetched."
   },
   "52875": {
    "school_name": "Arise Christian College",
@@ -67611,14 +70006,14 @@
   "52896": {
    "school_name": "The BUSY School",
    "website": "https://busyschools.qld.edu.au/",
-   "status": "fetched",
+   "status": "not_found",
    "checked": "2026-11-20",
    "crawl": {
     "pages": 6,
     "errors": 0
    },
-   "note": "No fee page among the pages fetched.",
-   "fee_pages": []
+   "fee_pages": [],
+   "note": "No fee page among the pages fetched."
   },
   "52897": {
    "school_name": "Mawarra Independent School",
@@ -67649,7 +70044,7 @@
   "52898": {
    "school_name": "Pinnacle Academic College",
    "website": "https://www.pinnacleacademiccollege.com.au",
-   "status": "fetched",
+   "status": "found",
    "checked": "2026-11-20",
    "fee_pages": [
     "https://pinnacleacademiccollege.com.au/fees/",
@@ -67659,19 +70054,32 @@
    "crawl": {
     "pages": 9,
     "errors": 0
+   },
+   "fees": {
+    "fee_year": 2026,
+    "basis": "first child, annual on-campus fees (distance education options cost less)",
+    "by_year": [
+     {
+      "years": "1-6",
+      "total": 3300
+     }
+    ],
+    "other_compulsory": null,
+    "source": "school_website",
+    "source_url": "https://pinnacleacademiccollege.com.au/wp-content/uploads/2025/11/Enrolment-Fee-Schedule-2026.pdf"
    }
   },
   "52899": {
    "school_name": "Kluthuthu Christian College",
    "website": "https://kluthuthu.qld.edu.au/",
-   "status": "fetched",
+   "status": "not_found",
    "checked": "2026-11-20",
    "crawl": {
     "pages": 1,
     "errors": 0
    },
-   "note": "No fee page among the pages fetched.",
-   "fee_pages": []
+   "fee_pages": [],
+   "note": "Only the home page could be fetched."
   },
   "52911": {
    "school_name": "Alta-1 College - Sub Campus",
@@ -67703,7 +70111,7 @@
   "52939": {
    "school_name": "Star of the Sea School",
    "website": "https://www.staroftheseamerrimac.qld.edu.au",
-   "status": "fetched",
+   "status": "found",
    "checked": "2026-11-20",
    "fee_pages": [
     "https://www.staroftheseamerrimac.qld.edu.au/enrol/fees-and-levies",
@@ -67713,12 +70121,26 @@
    "crawl": {
     "pages": 9,
     "errors": 0
+   },
+   "fees": {
+    "fee_year": 2027,
+    "basis": "first child, annual tuition; total adds the resources and IT levy and family levies",
+    "by_year": [
+     {
+      "years": "P-6",
+      "tuition": 1640,
+      "total": 3735
+     }
+    ],
+    "other_compulsory": "Years 5-6 camps $520",
+    "source": "school_website",
+    "source_url": "https://www.staroftheseamerrimac.qld.edu.au/ArticleDocuments/995/2027%20Fee%20Schedule.pdf.aspx"
    }
   },
   "52940": {
    "school_name": "Ontrack College Emerald",
    "website": "http://www.ontrack.qld.edu.au/",
-   "status": "fetched",
+   "status": "not_found",
    "checked": "2026-11-20",
    "fee_pages": [
     "https://www.ontrack.qld.edu.au/fees-funding",
@@ -67727,7 +70149,8 @@
    "crawl": {
     "pages": 7,
     "errors": 0
-   }
+   },
+   "note": "Fee pages were reached but show no figures."
   },
   "52941": {
    "school_name": "Y Schools Queensland - Moreton Bay (Kepnock Campus)",
@@ -68090,7 +70513,7 @@
   "52972": {
    "school_name": "Eaton College",
    "website": "https://www.eatoncollege.qld.edu.au",
-   "status": "fetched",
+   "status": "found",
    "checked": "2026-11-20",
    "fee_pages": [
     "https://www.eatoncollege.qld.edu.au/enrol/fee-schedule",
@@ -68099,6 +70522,25 @@
    "crawl": {
     "pages": 9,
     "errors": 0
+   },
+   "fees": {
+    "fee_year": 2027,
+    "basis": "annual tuition per student; total adds the technology fee",
+    "by_year": [
+     {
+      "years": "P-6",
+      "tuition": 9265,
+      "total": 9515
+     },
+     {
+      "years": "7",
+      "tuition": 10315,
+      "total": 10665
+     }
+    ],
+    "other_compulsory": null,
+    "source": "school_website",
+    "source_url": "https://media.digistormhosting.com.au/ec-au-qld-791-website/content/Eaton-2027-School-Fee-Schedule-5.pdf?v=1795142064"
    }
   },
   "52974": {
@@ -68641,14 +71083,14 @@
   "53022": {
    "school_name": "The Younity School",
    "website": "https://www.younityschools.qld.edu.au/",
-   "status": "fetched",
+   "status": "not_found",
    "checked": "2026-11-20",
    "crawl": {
     "pages": 9,
     "errors": 0
    },
-   "note": "No fee page among the pages fetched.",
-   "fee_pages": []
+   "fee_pages": [],
+   "note": "No fee page among the pages fetched."
   },
   "53025": {
    "school_name": "Humanitas High School - Initial Campus",
@@ -68818,7 +71260,7 @@
   "53050": {
    "school_name": "The Village School Gold Coast",
    "website": "http://www.thevillageschoolgoldcoast.com.au",
-   "status": "fetched",
+   "status": "not_found",
    "checked": "2026-11-20",
    "fee_pages": [
     "http://www.thevillageschoolgoldcoast.com.au/feestructure.html"
@@ -68826,7 +71268,8 @@
    "crawl": {
     "pages": 3,
     "errors": 1
-   }
+   },
+   "note": "The only fee schedule published is for 2025."
   },
   "53076": {
    "school_name": "Faith Christian School of Distance Education",
@@ -69183,14 +71626,14 @@
   "53104": {
    "school_name": "Challenge Trade and Business College",
    "website": "https://ctbc.qld.edu.au/",
-   "status": "fetched",
+   "status": "not_found",
    "checked": "2026-11-20",
    "crawl": {
     "pages": 3,
     "errors": 0
    },
-   "note": "No fee page among the pages fetched.",
-   "fee_pages": []
+   "fee_pages": [],
+   "note": "No fee page among the pages fetched."
   },
   "53106": {
    "school_name": "St Philip's Christian College Dynamic Learning - Port Stephens",
@@ -69321,13 +71764,14 @@
   "53141": {
    "school_name": "South East Brisbane Steiner School",
    "website": "https://www.sebsteinerschool.org/",
-   "status": "fetched",
+   "status": "not_found",
    "checked": "2026-11-20",
    "fee_pages": [],
    "crawl": {
     "pages": 2,
     "errors": 0
-   }
+   },
+   "note": "No fee page among the pages fetched."
   },
   "53142": {
    "school_name": "Sophia Waldorf School",
@@ -69533,14 +71977,14 @@
   "53169": {
    "school_name": "Clearview Christian College",
    "website": "https://www.clearview.qld.edu.au/",
-   "status": "fetched",
+   "status": "not_found",
    "checked": "2026-11-20",
    "crawl": {
     "pages": 7,
     "errors": 0
    },
-   "note": "No fee page among the pages fetched.",
-   "fee_pages": []
+   "fee_pages": [],
+   "note": "No fee page among the pages fetched."
   },
   "53195": {
    "school_name": "Esslemont College",
@@ -69595,14 +72039,14 @@
   "53200": {
    "school_name": "Mastery Schools Australia - Springfield Central Campus",
    "website": "https://msa.qld.edu.au/",
-   "status": "fetched",
+   "status": "not_found",
    "checked": "2026-11-20",
    "crawl": {
     "pages": 2,
     "errors": 0
    },
-   "note": "No fee page among the pages fetched.",
-   "fee_pages": []
+   "fee_pages": [],
+   "note": "No fee page among the pages fetched."
   },
   "53201": {
    "school_name": "St Bonaventure's College",
@@ -70091,14 +72535,14 @@
   "53272": {
    "school_name": "Humanitas High School",
    "website": "https://www.humanitashighschool.org.au/",
-   "status": "fetched",
+   "status": "not_found",
    "checked": "2026-11-20",
    "crawl": {
     "pages": 2,
     "errors": 0
    },
-   "note": "No fee page among the pages fetched.",
-   "fee_pages": []
+   "fee_pages": [],
+   "note": "No fee page among the pages fetched."
   },
   "53273": {
    "school_name": "Y Schools Queensland - Logan (Victoria Point Campus)",
@@ -70656,7 +73100,7 @@
   "53346": {
    "school_name": "St John of Kronstadt Academy",
    "website": "https://www.stjohnacademy.com.au/",
-   "status": "fetched",
+   "status": "found",
    "checked": "2026-11-20",
    "fee_pages": [
     "https://www.stjohnacademy.com.au/tuition"
@@ -70664,6 +73108,23 @@
    "crawl": {
     "pages": 7,
     "errors": 0
+   },
+   "fees": {
+    "fee_year": 2026,
+    "basis": "annual fee per student",
+    "by_year": [
+     {
+      "years": "P-3",
+      "tuition": 5500
+     },
+     {
+      "years": "4-5",
+      "tuition": 6500
+     }
+    ],
+    "other_compulsory": null,
+    "source": "school_website",
+    "source_url": "https://www.stjohnacademy.com.au/tuition"
    }
   },
   "53347": {
@@ -71000,14 +73461,14 @@
   "53407": {
    "school_name": "Impact Community ACADEMY",
    "website": "https://impactcommunityacademy.qld.edu.au/",
-   "status": "fetched",
+   "status": "not_found",
    "checked": "2026-11-20",
    "crawl": {
     "pages": 3,
     "errors": 0
    },
-   "note": "No fee page among the pages fetched.",
-   "fee_pages": []
+   "fee_pages": [],
+   "note": "No fee page among the pages fetched."
   },
   "53408": {
    "school_name": "Carinity Education - Glendyne - Tinana Campus",
@@ -71615,26 +74076,26 @@
   "53477": {
    "school_name": "Hubbard's School",
    "website": "https://hubbards.qld.edu.au/",
-   "status": "fetched",
+   "status": "not_found",
    "checked": "2026-11-20",
    "crawl": {
     "pages": 3,
     "errors": 0
    },
-   "note": "No fee page among the pages fetched.",
-   "fee_pages": []
+   "fee_pages": [],
+   "note": "No fee page among the pages fetched."
   },
   "53478": {
    "school_name": "Indie School, Logan",
    "website": "https://indieschool.edu.au/campus/logan/",
-   "status": "fetched",
+   "status": "not_found",
    "checked": "2026-11-20",
    "crawl": {
     "pages": 2,
     "errors": 0
    },
-   "note": "No fee page among the pages fetched.",
-   "fee_pages": []
+   "fee_pages": [],
+   "note": "No fee page among the pages fetched."
   },
   "53479": {
    "school_name": "Indie School, Logan - Parramatta Park Campus",
