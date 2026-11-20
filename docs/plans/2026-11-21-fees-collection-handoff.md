@@ -24,7 +24,7 @@
 | NSW | 1,207 | 894（74%） |
 | VIC | 1,001 | 521（52%） |
 | QLD | 691 | 382（55%） |
-| WA | 420 | 87（21%，只做过中学试点） |
+| WA | 420 | 87（21%，只试做过中学和一贯制学校，小学和特殊学校还没开始） |
 | SA | 257 | 0 |
 | TAS | 96 | 0 |
 | ACT | 55 | 0 |
@@ -105,9 +105,9 @@ npm run fees:fetch -- --scope wa-all --concurrency 5
 #    Re-crawl specific schools: node scripts/fetch-fees.mjs --ids 1,2,3 --force --concurrency 2
 # 3) Status overview
 node scripts/fees-tools/gap-report.mjs WA
-# 4) Print excerpts from the pages that contain amounts (evidence cards)
-npm run fees:cards -- --ids <comma-separated ids> --limit 400 --chars 1100 > /tmp/cards.txt
-# 5) Read them and write a readings script (see section 4); its output goes to readings.json
+# 4) Print excerpts from every school still in status "fetched" (evidence cards)
+npm run fees:cards -- --status fetched --limit 400 --chars 1100 > /tmp/cards.txt
+# 5) Read them and write a readings script (see section 6); its output goes to a readings JSON file
 # 6) Merge (one or more files)
 npm run fees:merge -- /tmp/read0.json /tmp/read1.json
 # 7) Validate (must end with "fees ledger OK")
@@ -117,7 +117,7 @@ npm test
 
 **操作要点**
 
-- 先挑出原文里同时出现“年份”和“$金额”的学校，再给它们生成证据片段（cards）。片段多时，每 25 所一批读。
+- 证据片段（cards）里，写着 `no fee figures` 的学校是原文里一个金额都没有，跳过不读，最后统一记 `not_found`。其余的每 25 所一批读。片段只截了一段原文，信息不全时用第 5 节的 grep-raw 查原文。
 - 每批读完就合并、校验一次，别攒到最后。
 - 抓取结束后，还是 `fetched` 的学校按页数记 `not_found`，note 用这三种统一说法：
   - `Only the home page could be fetched.`（只抓到首页）
@@ -134,7 +134,8 @@ npm test
   - basis 写 `one-child family, annual tuition (sibling rates are lower)`；
   - 按家庭收的写 `charged per family, not per child`。
 - 学校列出了“一个孩子的全年合计（含杂费）”，就同时记 tuition 和 total，并在 basis 里说明 total 包含哪些项。
-- 只有一个全包价、分不出学费的（例如 Rockhampton 的 all-inclusive fee、Mercy College 的全包费），记在 total 里，basis 说明包含什么。
+- 只有一个全包价、分不出学费的（例如墨尔本 Mercy College 2027 年 $7,160，包含学费、营地、杂费和笔记本电脑），只记 total，不记 tuition，basis 说明包含什么。
+- 学校的表里既有全包价、又另列一项费用时，全包价记 tuition，加上那项费用后的合计记 total。例如罗克汉普顿教区：all-inclusive education fee 记 tuition，加上每生的 building levy 后的合计记 total。
 - 学校只给每学期金额：用 `per_term` 和 `terms`。原文写了一年几个学期才填 `terms`；有的学校一年按 3 次收费。
 
 **年份和年级**
@@ -152,14 +153,14 @@ npm test
 
 **不算学费的**：报名费、注册费、押金、校车费、学前班（ELC/Kindy/OSHC）费用，都不算学费。
 
-**免学费**：只有学校原话说明 no tuition fees / free 时，才记 `fee_free`。特殊学校、青少年学校查一次即可，查不到就记 `not_found`，不必深挖。
+**免学费**：只有学校原话说明 no tuition fees / free 时，才记 `fee_free`。特殊学校（为残障学生办的学校）和为辍学青少年办的学校，查一遍网站即可，查不到就记 `not_found`，不必深挖。
 
 ## 5. 证据：每个金额都要能追溯
 
 - 爬虫抓到的页面会自动成为证据。
 - 爬虫漏掉的文件用 `node scripts/fees-tools/save-page.mjs <id> <url> "label"` 手动存一份，支持 PDF、docx、HTML。
 - Google Drive 文件：把 `drive.google.com/file/d/<ID>/view` 改成 `https://drive.google.com/uc?export=download&id=<ID>` 再存。
-- **图片或没有文字层的 PDF：**
+- **图片或没有文字层的 PDF**（下面的渲染工具只能在 macOS 上编译；其他系统可用 poppler 的 pdftoppm 代替）：
   1. `swiftc -O scripts/fees-tools/pdf-to-png.swift -o /tmp/pdf-to-png`
   2. `/tmp/pdf-to-png in.pdf /tmp/p 1.4` 渲染成图片，你看图读数。
   3. 再用 `/tmp/pdf-to-png in.pdf /tmp/hi 3` 渲染一份高清图，跑 `sh scripts/fees-tools/save-ocr.sh <id> <url> /tmp/hi-1.png` 把 OCR 文字存进证据（这一步要装 tesseract）。
@@ -196,10 +197,10 @@ save('/tmp/read0.json', {
 | Maitland-Newcastle（NSW） | 教区统一学费：K-6 $1,768，7-10 $2,353，11-12 $3,488（2026） |
 | Sandhurst（VIC） | 学费计算器读同一个公开 Excel：`ceosand.catholic.edu.au/feecalculator/fee-estimator-V_*.xlsx`，Fee model 表里有每校数据 |
 | Rockhampton（QLD） | 教区网站每校页面挂着 `<school>_-_2026_schedule_of_fees.pdf`，格式统一 |
-| 汤斯维尔（QLD） | 学费教区统一：2026 年小学 $1,952、中学 $2,928；2027 年小学 $2,060。杂费各校不同 |
-| 凯恩斯（QLD） | 学费教区统一：2026 年 $1,828，2027 年 $1,902 |
+| 汤斯维尔（QLD） | 学费由教区统一定（Ignatius Park College 和 St Patrick's College 除外）。一个孩子的全年学费：2026 年小学 $1,952、中学 $2,928；2027 年小学 $2,060（2027 年中学价还没见到）。杂费各校不同 |
+| 凯恩斯（QLD） | 学费由教区统一定。一个孩子的全年小学学费：2026 年 $1,828，2027 年 $1,902；第二个孩子起按比例减。部分乡村学校另有折扣（如 Good Counsel 2026 年 $1,645）。中学价还没整理 |
 
-**各校自定、只能逐校读的**：墨尔本、Ballarat、Sale、布里斯班、图文巴等教区。墨尔本教区只统一了低收入家庭优惠价（$810），那不是学费。
+**各校自定、只能逐校读的**：墨尔本、Ballarat、Sale、布里斯班、图文巴等教区。墨尔本教区只统一了低收入家庭的优惠价（2026 年一孩家庭 $810，凭优惠卡申请），那不是学费。
 
 用教区统一价补那些自己没公布学费的学校之前，先问用户；用户在 Maitland-Newcastle 一例上同意过。
 
@@ -221,11 +222,7 @@ save('/tmp/read0.json', {
 
 ## 9. 交付和汇报
 
-每做完一批就提交，提交说明用英文，结尾加：
-
-```
-Co-Authored-By: <你的模型名> <noreply@anthropic.com>
-```
+每做完一批就提交，提交说明用英文。署名行按用户或你所在工具的规定加；没有规定就不加。
 
 一个州做完后：
 1. 在 `docs/specs/2026-11-12-school-fees-design.md` 的“结果”一节加一个小节：总数、有答案的数量、来源构成、各教区规律、没拿到的主要原因。
@@ -233,13 +230,13 @@ Co-Authored-By: <你的模型名> <noreply@anthropic.com>
 
 ## 10. 待办（按优先级）
 
-1. **西澳（WA）、南澳（SA）、塔州（TAS）、首都领地（ACT）、北领地（NT）**：按第 3 节完整做一遍。WA 先加 `wa-all` scope。
-2. **昆州补抓：**
+1. **西澳（WA）、南澳（SA）、塔州（TAS）、首都领地（ACT）、北领地（NT）**：按第 3 节完整做一遍。每个州开始前，先在 `scripts/fees-common.mjs` 的 SCOPES 里给这个州加一条抓取范围，例如 `'wa-all'`。
+2. **昆州：对第一轮没拿到学费的学校，重新抓取或在浏览器里补读：**
    - 39 所学费页上没数字（多半是图片或嵌入文档）；
    - 60 所早期记为 not_extracted；
    - 21 所打不开或被拦截；
    - 汤斯维尔、凯恩斯教区的学校是否按教区统一价补，先问用户。
-3. **维州补抓：**
+3. **维州：对剩下没拿到学费的学校继续补读：**
    - SEDA College 按体育项目收费，38 个分校区跟着空着；可以考虑记一个区间，先问用户；
    - 9 所因证书问题打不开，用浏览器读。
 4. 每年 10–12 月学校陆续公布下一年学费，可以按状态表重抓，合并时会把旧年份自动移到 `fees_history`。
