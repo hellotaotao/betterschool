@@ -96,6 +96,7 @@ export const SCOPES = {
   // is finished school by school before the next one starts.
   'nsw-all': school => school.state === 'NSW' && school.sector !== 'Government',
   'vic-all': school => school.state === 'VIC' && school.sector !== 'Government',
+  'qld-all': school => school.state === 'QLD' && school.sector !== 'Government',
 };
 
 export function loadSchools() {

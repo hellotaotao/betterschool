@@ -502,6 +502,17 @@
    },
    "note": "No fee page among the pages fetched."
   },
+  "40402": {
+   "school_name": "Autism Queensland Education & Therapy Centre",
+   "website": "https://autismqld.com.au/services/school-aged/autism-queensland-school/",
+   "status": "fetched",
+   "checked": "2026-11-20",
+   "fee_pages": [],
+   "crawl": {
+    "pages": 2,
+    "errors": 1
+   }
+  },
   "40406": {
    "school_name": "Catholic Regional College Sydenham",
    "website": "http://www.crcsydenham.net",
@@ -927,27 +938,41 @@
   "40674": {
    "school_name": "Hinchinbrook Christian School",
    "website": "http://www.hinchinbrookcs.org.au",
-   "status": "not_found",
-   "checked": "2026-11-12",
+   "status": "fetched",
+   "checked": "2026-11-20",
    "crawl": {
     "pages": 1,
     "errors": 0
    },
-   "note": "Only the home page could be fetched."
+   "note": "Only the home page could be fetched.",
+   "fee_pages": []
   },
   "40684": {
    "school_name": "St Patrick's College",
    "website": "http://www.stpats.qld.edu.au",
-   "status": "not_extracted",
+   "status": "found",
    "checked": "2026-11-12",
    "crawl": {
     "pages": 3,
     "errors": 0
    },
-   "note": "Fees and assistance page text holds no figures.",
    "fee_pages": [
     "https://www.stpats.qld.edu.au/our-college/fees-and-assistance/"
-   ]
+   ],
+   "fees": {
+    "fee_year": 2026,
+    "basis": "one student, annual all-inclusive education fee (tuition, resources, device, excursions and whole-year-level camps); total adds the building levy per student",
+    "by_year": [
+     {
+      "years": "7-12",
+      "tuition": 6461,
+      "total": 6934
+     }
+    ],
+    "other_compulsory": null,
+    "source": "diocese_schedule",
+    "source_url": "https://s3-ap-southeast-2.amazonaws.com/os-data-2/rok-catholic-edu-au/listingforms/page58/st_patricks_college_-_2026_schedule_of_fees.pdf"
+   }
   },
   "40685": {
    "school_name": "OneSchool Global WA",
@@ -1151,6 +1176,28 @@
    "status": "no_website",
    "checked": "2026-11-12"
   },
+  "40769": {
+   "school_name": "Albert Park Flexible School",
+   "website": "https://albertpark.flexi.edu.au/",
+   "status": "fetched",
+   "checked": "2026-11-20",
+   "fee_pages": [],
+   "crawl": {
+    "pages": 2,
+    "errors": 0
+   }
+  },
+  "40778": {
+   "school_name": "Burnett Youth Learning Centre",
+   "website": "https://www.bylc.qld.edu.au/",
+   "status": "fetched",
+   "checked": "2026-11-20",
+   "fee_pages": [],
+   "crawl": {
+    "pages": 1,
+    "errors": 0
+   }
+  },
   "40779": {
    "school_name": "Warakirri College",
    "website": "http://www.warakirricollege.nsw.edu.au",
@@ -1243,12 +1290,13 @@
    "school_name": "Australian Trade College North Brisbane",
    "website": "https://tradecollege.com.au/",
    "status": "blocked",
-   "checked": "2026-11-12",
+   "checked": "2026-11-20",
    "crawl": {
     "pages": 0,
     "errors": 1,
     "home_error": "HTTP 403"
-   }
+   },
+   "fee_pages": []
   },
   "40814": {
    "school_name": "Holy Cross College",
@@ -1507,13 +1555,14 @@
   "40842": {
    "school_name": "Music Industry College",
    "website": "http://www.mic.org.au/",
-   "status": "not_found",
-   "checked": "2026-11-12",
+   "status": "fetched",
+   "checked": "2026-11-20",
    "crawl": {
     "pages": 2,
     "errors": 0
    },
-   "note": "Only two pages reachable; no fee page."
+   "note": "Only two pages reachable; no fee page.",
+   "fee_pages": []
   },
   "40843": {
    "school_name": "Staines Memorial College",
@@ -1901,6 +1950,15 @@
    "parent_name": "Lindisfarne Anglican Grammar School",
    "website_source": "parent_school"
   },
+  "40896": {
+   "school_name": "Our Lady of the Sacred Heart School Waiben - Hammond Island Campus",
+   "website": "http://www.olsh.qld.edu.au",
+   "status": "campus",
+   "checked": "2026-11-20",
+   "parent_acara_sml_id": 47835,
+   "parent_name": "Our Lady of the Sacred Heart School Waiben",
+   "website_source": "parent_school"
+  },
   "40897": {
    "school_name": "Aspect South East Sydney School, Marrickville",
    "website": "http://www.autismspectrum.org.au",
@@ -1971,6 +2029,24 @@
    "checked": "2026-11-12",
    "parent_acara_sml_id": 49070,
    "parent_name": "Rawa Community School",
+   "website_source": "parent_school"
+  },
+  "40912": {
+   "school_name": "Columba Catholic College - St Mary's Campus",
+   "website": "http://www.columba.catholic.edu.au",
+   "status": "campus",
+   "checked": "2026-11-20",
+   "parent_acara_sml_id": 47654,
+   "parent_name": "Columba Catholic College",
+   "website_source": "parent_school"
+  },
+  "40917": {
+   "school_name": "Queen of Apostles Primary School - Chuter Street Campus",
+   "website": "http://www.qofa.qld.edu.au",
+   "status": "campus",
+   "checked": "2026-11-20",
+   "parent_acara_sml_id": 47693,
+   "parent_name": "Queen of Apostles Primary School",
    "website_source": "parent_school"
   },
   "40919": {
@@ -2180,13 +2256,14 @@
   "40949": {
    "school_name": "Mungalla Silver Lining School",
    "website": "https://silverlining.org.au",
-   "status": "not_found",
-   "checked": "2026-11-12",
+   "status": "fetched",
+   "checked": "2026-11-20",
    "crawl": {
     "pages": 1,
     "errors": 0
    },
-   "note": "Only the home page could be fetched."
+   "note": "Only the home page could be fetched.",
+   "fee_pages": []
   },
   "40950": {
    "school_name": "Heritage College - Officer Campus",
@@ -47053,6 +47130,33 @@
     "source_url": "https://www.sccc.qld.edu.au/ArticleDocuments/867/2027%20School%20Fees.pdf.aspx"
    }
   },
+  "47646": {
+   "school_name": "MacKillop Catholic Primary School",
+   "website": "http://www.mnmrok.catholic.edu.au",
+   "status": "found",
+   "checked": "2026-11-20",
+   "fee_pages": [
+    "https://www.mnmrok.catholic.edu.au/school-fees-and-assistance"
+   ],
+   "crawl": {
+    "pages": 4,
+    "errors": 0
+   },
+   "fees": {
+    "fee_year": 2026,
+    "basis": "one student, annual all-inclusive education fee (tuition, resources, device, excursions and whole-year-level camps); total adds the building levy per student",
+    "by_year": [
+     {
+      "years": "P-6",
+      "tuition": 2774,
+      "total": 3122
+     }
+    ],
+    "other_compulsory": null,
+    "source": "diocese_schedule",
+    "source_url": "https://s3-ap-southeast-2.amazonaws.com/os-data-2/rok-catholic-edu-au/listingforms/page51/mackillop_catholic_primary_school_-_2026_schedule_of_fees.pdf"
+   }
+  },
   "47647": {
    "school_name": "Marist College",
    "website": "http://www.maristcollegeemerald.com.au",
@@ -47064,16 +47168,63 @@
    },
    "fees": {
     "fee_year": 2026,
-    "basis": "total annual fees per student, one student in Catholic schools (education fee plus building levy)",
+    "basis": "one student, annual all-inclusive education fee (tuition, resources, device, excursions and whole-year-level camps); total adds the building levy per student",
     "by_year": [
      {
-      "years": "all years",
+      "years": "7-12",
       "tuition": 6435,
       "total": 6908
      }
     ],
-    "source": "school_website",
-    "source_url": "https://maristcollegeemerald.com.au/wp-content/uploads/Marist-College-2026-Schedule-of-Fees.pdf"
+    "other_compulsory": null,
+    "source": "diocese_schedule",
+    "source_url": "https://s3-ap-southeast-2.amazonaws.com/os-data-2/rok-catholic-edu-au/listingforms/page122/marist_college_-_2026_schedule_of_fees.pdf"
+   }
+  },
+  "47648": {
+   "school_name": "Good Shepherd Catholic School",
+   "website": "http://www.gstsv.catholic.edu.au",
+   "status": "fetched",
+   "checked": "2026-11-20",
+   "fee_pages": [
+    "https://www.gstsv.catholic.edu.au/enrolment/fee-schedule/",
+    "https://os-data-2.s3-ap-southeast-2.amazonaws.com/gstsv2/bundle4/catholic_school_fee_discounts.pdf",
+    "https://os-data-2.s3-ap-southeast-2.amazonaws.com/gstsv2/bundle4/2026%20FEES%20(2)%20-%20Copy.pdf"
+   ],
+   "crawl": {
+    "pages": 10,
+    "errors": 0
+   }
+  },
+  "47649": {
+   "school_name": "Emmanuel Catholic Primary School",
+   "website": "http://www.ecps.qld.edu.au/",
+   "status": "found",
+   "checked": "2026-11-20",
+   "fee_pages": [
+    "http://www.ecps.qld.edu.au/school-fees.html",
+    "http://www.ecps.qld.edu.au/fees-forms--downloads.html",
+    "https://www.ecps.qld.edu.au/school-fees.html",
+    "https://www.ecps.qld.edu.au/fees-forms--downloads.html",
+    "http://www.ecps.qld.edu.au/uploads/9/6/2/2/96226354/2027_schedule_of_fees_-_emmanuel_catholic_primary_school_mackay.pdf"
+   ],
+   "crawl": {
+    "pages": 12,
+    "errors": 0
+   },
+   "fees": {
+    "fee_year": 2026,
+    "basis": "one student, annual all-inclusive education fee (tuition, resources, device, excursions and whole-year-level camps); total adds the building levy per student",
+    "by_year": [
+     {
+      "years": "P-6",
+      "tuition": 3221,
+      "total": 3569
+     }
+    ],
+    "other_compulsory": null,
+    "source": "diocese_schedule",
+    "source_url": "https://s3-ap-southeast-2.amazonaws.com/os-data-2/rok-catholic-edu-au/listingforms/page50/emmanuel_catholic_primary_school_-_2026_schedule_of_fees.pdf"
    }
   },
   "47650": {
@@ -47087,16 +47238,17 @@
    },
    "fees": {
     "fee_year": 2026,
-    "basis": "total annual fees per student, one student in Catholic schools (education fee plus building levy)",
+    "basis": "one student, annual all-inclusive education fee (tuition, resources, device, excursions and whole-year-level camps); total adds the building levy per student",
     "by_year": [
      {
-      "years": "all years",
+      "years": "7-12",
       "tuition": 6461,
       "total": 6934
      }
     ],
-    "source": "school_website",
-    "source_url": "https://s3-ap-southeast-2.amazonaws.com/os-data-2/hsc-qld-edu-au/documents/holy_spirit_college_-_2026_schedule_of_fees.pdf"
+    "other_compulsory": null,
+    "source": "diocese_schedule",
+    "source_url": "https://s3-ap-southeast-2.amazonaws.com/os-data-2/rok-catholic-edu-au/listingforms/page56/holy_spirit_college_-_2026_schedule_of_fees.pdf"
    }
   },
   "47651": {
@@ -47122,16 +47274,31 @@
     "source_url": "https://www.siena.qld.edu.au/ArticleDocuments/990/College%20Fee%20Schedule%20-%202026.pdf"
    }
   },
+  "47652": {
+   "school_name": "St Mary MacKillop Primary School",
+   "website": "http://www.mackilloppenrith.catholic.edu.au/",
+   "status": "fetched",
+   "checked": "2026-11-20",
+   "fee_pages": [
+    "https://www.mackilloppenrith.catholic.edu.au/enrolment/school-fees",
+    "https://www.mackilloppenrith.catholic.edu.au/enrolment/fee-estimator"
+   ],
+   "crawl": {
+    "pages": 8,
+    "errors": 0
+   }
+  },
   "47653": {
    "school_name": "Southern Cross Catholic College",
    "website": "http://www.sctsv.catholic.edu.au",
-   "status": "not_found",
-   "checked": "2026-11-12",
+   "status": "fetched",
+   "checked": "2026-11-20",
    "crawl": {
-    "pages": 10,
+    "pages": 11,
     "errors": 0
    },
-   "note": "No fee page among the pages fetched."
+   "note": "No fee page among the pages fetched.",
+   "fee_pages": []
   },
   "47654": {
    "school_name": "Columba Catholic College",
@@ -47146,6 +47313,32 @@
    "fee_pages": [
     "https://www.columba.catholic.edu.au/enrolment/fees/"
    ]
+  },
+  "47655": {
+   "school_name": "The Centre Education Programme",
+   "website": "http://www.youthplus.edu.au/centre-education-programme-flc/",
+   "status": "unreachable",
+   "checked": "2026-11-20",
+   "fee_pages": [],
+   "crawl": {
+    "pages": 0,
+    "errors": 3,
+    "home_error": "CERT_HAS_EXPIRED"
+   }
+  },
+  "47656": {
+   "school_name": "Jubilee Primary School",
+   "website": "http://www.jubileeprimary.qld.edu.au",
+   "status": "fetched",
+   "checked": "2026-11-20",
+   "fee_pages": [
+    "https://www.jubileeprimary.qld.edu.au/articledocuments/1614/2026%20jubilee%20school%20fees.pdf.aspx",
+    "https://www.jubileeprimary.qld.edu.au/articledocuments/1614/2026%20jubilee%20school%20fees.pdf.aspx?Embed=Y"
+   ],
+   "crawl": {
+    "pages": 11,
+    "errors": 0
+   }
   },
   "47657": {
    "school_name": "St Andrew's Catholic College Redlynch Valley",
@@ -47201,6 +47394,62 @@
     "source": "school_website",
     "source_url": "https://www.emmausjimboomba.qld.edu.au/ArticleDocuments/1120/College%20Fees%20Schedule%202026.pdf"
    }
+  },
+  "47659": {
+   "school_name": "Siena Catholic Primary School",
+   "website": "http://www.sienaprimary.qld.edu.au/",
+   "status": "fetched",
+   "checked": "2026-11-20",
+   "fee_pages": [
+    "https://www.sienaprimary.qld.edu.au/enrol/school-fee-schedule",
+    "https://www.sienaprimary.qld.edu.au/ArticleDocuments/840/2026%20Fee%20Schedule.pdf"
+   ],
+   "crawl": {
+    "pages": 8,
+    "errors": 0
+   }
+  },
+  "47660": {
+   "school_name": "Good Samaritan College",
+   "website": "https://www.gsctwb.catholic.edu.au/",
+   "status": "fetched",
+   "checked": "2026-11-20",
+   "fee_pages": [],
+   "crawl": {
+    "pages": 4,
+    "errors": 0
+   }
+  },
+  "47661": {
+   "school_name": "St Mary's School",
+   "website": "https://www.smwarwick.catholic.edu.au/",
+   "status": "fetched",
+   "checked": "2026-11-20",
+   "fee_pages": [
+    "https://smpswarwick.schoolzineplus.com/_file/media/10739/school_fees_2025.pdf"
+   ],
+   "crawl": {
+    "pages": 3,
+    "errors": 0
+   }
+  },
+  "47663": {
+   "school_name": "Southern Cross Catholic College - Kippa-Ring Campus",
+   "website": "http://www.sccc.qld.edu.au/",
+   "status": "campus",
+   "checked": "2026-11-20",
+   "parent_acara_sml_id": 47645,
+   "parent_name": "Southern Cross Catholic College",
+   "website_source": "parent_school"
+  },
+  "47664": {
+   "school_name": "Southern Cross Catholic College - Woody Point Campus",
+   "website": "http://www.sccc.qld.edu.au/",
+   "status": "campus",
+   "checked": "2026-11-20",
+   "parent_acara_sml_id": 47645,
+   "parent_name": "Southern Cross Catholic College",
+   "website_source": "parent_school"
   },
   "47665": {
    "school_name": "Xavier Catholic College",
@@ -47308,6 +47557,21 @@
     "source_url": "https://www.stteresa.qld.edu.au/ArticleDocuments/795/Schedule%20of%20Annual%20Fees%202026.pdf"
    }
   },
+  "47668": {
+   "school_name": "St Stephen's School",
+   "website": "http://www.ststephens.qld.edu.au",
+   "status": "fetched",
+   "checked": "2026-11-20",
+   "fee_pages": [
+    "https://www.ststephens.qld.edu.au/enrolments/fees-and-finance",
+    "https://www.ststephens.qld.edu.au/ArticleDocuments/929/Fee%20Schedule.pdf",
+    "https://www.ststephens.qld.edu.au/enrolments/fee-and-finance/fees-finance"
+   ],
+   "crawl": {
+    "pages": 13,
+    "errors": 1
+   }
+  },
   "47669": {
    "school_name": "St Augustine's College",
    "website": "http://www.stac.qld.edu.au",
@@ -47353,6 +47617,20 @@
     "source_url": "https://www.stac.qld.edu.au/ArticleDocuments/1136/2026%20Annual%20College%20Fees%20and%20Levies.pdf"
    }
   },
+  "47670": {
+   "school_name": "St Oliver Plunkett School",
+   "website": "http://www.stoliverplunkett.qld.edu.au",
+   "status": "fetched",
+   "checked": "2026-11-20",
+   "fee_pages": [
+    "https://www.stoliverplunkett.qld.edu.au/enrolments/fees",
+    "https://www.stoliverplunkett.qld.edu.au/ArticleDocuments/5293/2027%20Fees%20and%20Levies%20Schedule%20-%20FINAL.pdf.aspx"
+   ],
+   "crawl": {
+    "pages": 10,
+    "errors": 0
+   }
+  },
   "47671": {
    "school_name": "Mt Maria College - Petrie",
    "website": "http://www.mmcp.qld.edu.au",
@@ -47390,6 +47668,684 @@
     "source_url": "https://www.mmcp.qld.edu.au/ArticleDocuments/904/2026%20Schedule%20of%20Fees%20and%20Levies.pdf"
    }
   },
+  "47672": {
+   "school_name": "Christ the King School",
+   "website": "http://www.ctk.qld.edu.au",
+   "status": "fetched",
+   "checked": "2026-11-20",
+   "fee_pages": [
+    "https://www.ctk.qld.edu.au/enrol/fees",
+    "https://www.ctk.qld.edu.au/ArticleDocuments/1095/119%20Graceville%202027%20Fees%20and%20Levies%20Schedule.pdf.aspx"
+   ],
+   "crawl": {
+    "pages": 12,
+    "errors": 0
+   }
+  },
+  "47673": {
+   "school_name": "St Edward the Confessor School",
+   "website": "http://www.stedwards.qld.edu.au",
+   "status": "fetched",
+   "checked": "2026-11-20",
+   "fee_pages": [
+    "https://www.stedwards.qld.edu.au/enrolments/fees",
+    "https://www.stedwards.qld.edu.au/ArticleDocuments/1176/2026%20Fee%20schedule.pdf"
+   ],
+   "crawl": {
+    "pages": 11,
+    "errors": 0
+   }
+  },
+  "47674": {
+   "school_name": "Guardian Angels' Primary School",
+   "website": "http://www.guardianangelswynnum.qld.edu.au",
+   "status": "fetched",
+   "checked": "2026-11-20",
+   "fee_pages": [
+    "https://www.guardianangelswynnum.qld.edu.au/enrol/school-fees",
+    "https://www.guardianangelswynnum.qld.edu.au/ArticleDocuments/955/2026%20Fees%20Schedule.pdf",
+    "https://www.guardianangelswynnum.qld.edu.au/ArticleDocuments/955/2026%20School%20Fee%20Letter.pdf",
+    "https://www.guardianangelswynnum.qld.edu.au/ArticleDocuments/955/2026%20Fees%20and%20Levies%20Calculation%20Spreadsheet.xlsx"
+   ],
+   "crawl": {
+    "pages": 12,
+    "errors": 0
+   }
+  },
+  "47675": {
+   "school_name": "Holy Cross School",
+   "website": "http://www.hcpswooloowin.qld.edu.au",
+   "status": "fetched",
+   "checked": "2026-11-20",
+   "fee_pages": [
+    "https://www.hcpswooloowin.qld.edu.au/enrol/fees",
+    "https://www.hcpswooloowin.qld.edu.au/ArticleDocuments/800/Holy%20Cross%20School%20Fee%20Schedule%202026.pdf"
+   ],
+   "crawl": {
+    "pages": 11,
+    "errors": 0
+   }
+  },
+  "47676": {
+   "school_name": "Holy Family Primary School",
+   "website": "http://www.holyfamilyps.qld.edu.au",
+   "status": "fetched",
+   "checked": "2026-11-20",
+   "fee_pages": [
+    "https://www.holyfamilyps.qld.edu.au/enrol/fees"
+   ],
+   "crawl": {
+    "pages": 13,
+    "errors": 0
+   }
+  },
+  "47677": {
+   "school_name": "St Mary of the Cross School",
+   "website": "http://www.stmaryofthecross.qld.edu.au",
+   "status": "unreachable",
+   "checked": "2026-11-20",
+   "fee_pages": [],
+   "crawl": {
+    "pages": 0,
+    "errors": 3,
+    "home_error": "ENETUNREACH"
+   }
+  },
+  "47678": {
+   "school_name": "Holy Spirit School",
+   "website": "http://www.holyspiritnewfarm.qld.edu.au",
+   "status": "fetched",
+   "checked": "2026-11-20",
+   "fee_pages": [
+    "https://www.holyspiritnewfarm.qld.edu.au/enrol/school-fees",
+    "https://www.holyspiritnewfarm.qld.edu.au/ArticleDocuments/800/2026%20Holy%20Spirit%20Fees%20and%20Levies%20for%20Parents.pdf"
+   ],
+   "crawl": {
+    "pages": 10,
+    "errors": 0
+   }
+  },
+  "47679": {
+   "school_name": "Holy Spirit School",
+   "website": "http://www.holyspiritbraypark.qld.edu.au",
+   "status": "fetched",
+   "checked": "2026-11-20",
+   "fee_pages": [
+    "https://www.holyspiritbraypark.qld.edu.au/enrolment/school-fees"
+   ],
+   "crawl": {
+    "pages": 8,
+    "errors": 0
+   }
+  },
+  "47680": {
+   "school_name": "Immaculate Heart School",
+   "website": "http://www.immac-heart.qld.edu.au",
+   "status": "fetched",
+   "checked": "2026-11-20",
+   "fee_pages": [
+    "https://www.immac-heart.qld.edu.au/enrolments/fee-structure",
+    "https://www.immac-heart.qld.edu.au/ArticleDocuments/1085/2026%20School%20Fees%20-%20Parent%20Copy%20(1).pdf.aspx"
+   ],
+   "crawl": {
+    "pages": 9,
+    "errors": 0
+   }
+  },
+  "47681": {
+   "school_name": "Mary Immaculate Primary School",
+   "website": "http://www.maryimmaculate.qld.edu.au",
+   "status": "fetched",
+   "checked": "2026-11-20",
+   "fee_pages": [
+    "https://www.maryimmaculate.qld.edu.au/enrol/school-fees",
+    "https://www.maryimmaculate.qld.edu.au/ArticleDocuments/1287/Application%20for%20Concession%20on%20Fees.pdf"
+   ],
+   "crawl": {
+    "pages": 7,
+    "errors": 1
+   }
+  },
+  "47682": {
+   "school_name": "Mater Dei Catholic Primary School",
+   "website": "http://www.materdei.qld.edu.au",
+   "status": "fetched",
+   "checked": "2026-11-20",
+   "fee_pages": [
+    "https://www.materdei.qld.edu.au/enrol/school-fees",
+    "https://www.materdei.qld.edu.au/ArticleDocuments/744/MD%20Fees%20and%20Levies%20Schedule%202026.pdf",
+    "https://www.materdei.qld.edu.au/ArticleDocuments/744/2021%20OSHC%20Fee%20Schedule.pdf"
+   ],
+   "crawl": {
+    "pages": 15,
+    "errors": 0
+   }
+  },
+  "47683": {
+   "school_name": "Our Lady Help of Christians School",
+   "website": "http://www.olhchendra.qld.edu.au",
+   "status": "fetched",
+   "checked": "2026-11-20",
+   "fee_pages": [
+    "https://www.olhchendra.qld.edu.au/enrol/fees",
+    "https://www.olhchendra.qld.edu.au/ArticleDocuments/846/Fees%20and%20Levies%202026.pdf"
+   ],
+   "crawl": {
+    "pages": 14,
+    "errors": 0
+   }
+  },
+  "47684": {
+   "school_name": "Our Lady of Dolours School",
+   "website": "http://www.ourladyofdolours.qld.edu.au",
+   "status": "fetched",
+   "checked": "2026-11-20",
+   "fee_pages": [
+    "https://www.ourladyofdolours.qld.edu.au/enrolment/school-fees",
+    "https://www.ourladyofdolours.qld.edu.au/ArticleDocuments/617/2027%20Fee%20Schedule.pdf.aspx"
+   ],
+   "crawl": {
+    "pages": 14,
+    "errors": 0
+   }
+  },
+  "47685": {
+   "school_name": "Our Lady of Fatima Primary School",
+   "website": "http://www.ourladyoffatima.qld.edu.au",
+   "status": "fetched",
+   "checked": "2026-11-20",
+   "fee_pages": [
+    "https://www.ourladyoffatima.qld.edu.au/ArticleDocuments/1860/2027%20Fee%20Schedule.pdf.aspx"
+   ],
+   "crawl": {
+    "pages": 7,
+    "errors": 0
+   }
+  },
+  "47686": {
+   "school_name": "Our Lady of Lourdes Primary School",
+   "website": "http://www.ololbhills.catholic.edu.au/",
+   "status": "fetched",
+   "checked": "2026-11-20",
+   "fee_pages": [
+    "https://www.ololbhills.catholic.edu.au/enrolment/school-fees",
+    "https://www.ololbhills.catholic.edu.au/enrolment/fee-estimator"
+   ],
+   "crawl": {
+    "pages": 8,
+    "errors": 0
+   }
+  },
+  "47687": {
+   "school_name": "Our Lady of Mount Carmel School",
+   "website": "http://www.mtcarmelcoorparoo.qld.edu.au",
+   "status": "fetched",
+   "checked": "2026-11-20",
+   "fee_pages": [
+    "https://www.mtcarmelcoorparoo.qld.edu.au/enrolments/school-fees"
+   ],
+   "crawl": {
+    "pages": 6,
+    "errors": 0
+   }
+  },
+  "47688": {
+   "school_name": "Our Lady of the Angels' School",
+   "website": "http://www.olawavellheights.qld.edu.au",
+   "status": "fetched",
+   "checked": "2026-11-20",
+   "fee_pages": [
+    "https://www.olawavellheights.qld.edu.au/enrolments/school-fees",
+    "https://www.olawavellheights.qld.edu.au/ArticleDocuments/798/OLA%20School%20Fee%20Schedule%202026.pdf?Embed=Y",
+    "https://www.olawavellheights.qld.edu.au/ArticleDocuments/798/OLA%20School%20Fee%20Schedule%202026.pdf"
+   ],
+   "crawl": {
+    "pages": 12,
+    "errors": 0
+   }
+  },
+  "47689": {
+   "school_name": "Our Lady of the Assumption School",
+   "website": "http://www.olaenoggera.qld.edu.au",
+   "status": "fetched",
+   "checked": "2026-11-20",
+   "fee_pages": [
+    "https://www.olaenoggera.qld.edu.au/enrolments/fees",
+    "https://www.olaenoggera.qld.edu.au/ArticleDocuments/1008/Fee-Schedule.pdf.aspx"
+   ],
+   "crawl": {
+    "pages": 9,
+    "errors": 0
+   }
+  },
+  "47690": {
+   "school_name": "Our Lady of the Rosary School",
+   "website": "http://www.olrkenmore.qld.edu.au",
+   "status": "fetched",
+   "checked": "2026-11-20",
+   "fee_pages": [
+    "https://www.olrkenmore.qld.edu.au/enrolments/fees",
+    "https://www.olrkenmore.qld.edu.au/ArticleDocuments/802/2026%20OLR%20Fee%20Schedule.pdf",
+    "https://www.olrkenmore.qld.edu.au/enrolments/fees-levies/fees"
+   ],
+   "crawl": {
+    "pages": 15,
+    "errors": 0
+   }
+  },
+  "47691": {
+   "school_name": "Our Lady of the Sacred Heart Catholic Primary School",
+   "website": "http://www.olshdarra.qld.edu.au",
+   "status": "fetched",
+   "checked": "2026-11-20",
+   "fee_pages": [
+    "https://www.olshdarra.qld.edu.au/ArticleDocuments/1258/2027%20School%20Fees%20and%20Levies%20Schedule.pdf.aspx"
+   ],
+   "crawl": {
+    "pages": 10,
+    "errors": 0
+   }
+  },
+  "47692": {
+   "school_name": "Our Lady of the Way School",
+   "website": "http://www.petriecatholic.com/school",
+   "status": "fetched",
+   "checked": "2026-11-20",
+   "fee_pages": [],
+   "crawl": {
+    "pages": 1,
+    "errors": 0
+   }
+  },
+  "47693": {
+   "school_name": "Queen of Apostles Primary School",
+   "website": "http://www.qofa.qld.edu.au",
+   "status": "fetched",
+   "checked": "2026-11-20",
+   "fee_pages": [
+    "https://www.qofa.qld.edu.au/enrolments/pay-school-fees",
+    "https://www.qofa.qld.edu.au/ArticleDocuments/983/Fee%20Schedule.pdf.pdf"
+   ],
+   "crawl": {
+    "pages": 12,
+    "errors": 0
+   }
+  },
+  "47694": {
+   "school_name": "Sacred Heart School",
+   "website": "http://www.shbooval.qld.edu.au",
+   "status": "fetched",
+   "checked": "2026-11-20",
+   "fee_pages": [
+    "https://www.shbooval.qld.edu.au/enrol/school-fees",
+    "https://www.shbooval.qld.edu.au/ArticleDocuments/1102/2026%20Sacred%20Heart%20Annual%20School%20Fee%20Letter.pdf.aspx",
+    "https://www.shbooval.qld.edu.au/ArticleDocuments/1102/2027%20Sacred%20Heart%20Annual%20School%20Fee%20Letter.pdf.aspx"
+   ],
+   "crawl": {
+    "pages": 9,
+    "errors": 0
+   }
+  },
+  "47695": {
+   "school_name": "Sacred Heart Primary School",
+   "website": "http://www.shssandgate.qld.edu.au",
+   "status": "fetched",
+   "checked": "2026-11-20",
+   "fee_pages": [
+    "https://www.shssandgate.qld.edu.au/enrolments/school-fees",
+    "https://www.shssandgate.qld.edu.au/ArticleDocuments/897/2026%20School%20Fees%20Letter.pdf",
+    "https://www.shssandgate.qld.edu.au/ArticleDocuments/897/2026%20School%20Fees%20Schedule.pdf"
+   ],
+   "crawl": {
+    "pages": 15,
+    "errors": 0
+   }
+  },
+  "47696": {
+   "school_name": "St Agatha's Primary School",
+   "website": "http://www.stagathasclayfield.qld.edu.au",
+   "status": "fetched",
+   "checked": "2026-11-20",
+   "fee_pages": [
+    "https://www.stagathasclayfield.qld.edu.au/enrolments/fee-structure",
+    "https://www.stagathasclayfield.qld.edu.au/ArticleDocuments/785/Feescard%202026.pdf",
+    "https://www.stagathasclayfield.qld.edu.au/ArticleDocuments/785/Enrolment%20Application%20Fee%20Upadate.pdf"
+   ],
+   "crawl": {
+    "pages": 15,
+    "errors": 0
+   }
+  },
+  "47697": {
+   "school_name": "St Agnes School",
+   "website": "http://www.stagnes.qld.edu.au",
+   "status": "fetched",
+   "checked": "2026-11-20",
+   "fee_pages": [
+    "https://www.stagnes.qld.edu.au/enrolments/school-fees",
+    "https://www.stagnes.qld.edu.au/ArticleDocuments/927/2026%20Schedule%20of%20Fees.pdf"
+   ],
+   "crawl": {
+    "pages": 12,
+    "errors": 0
+   }
+  },
+  "47698": {
+   "school_name": "St Ambrose's Primary School",
+   "website": "http://www.stambrosesschool.qld.edu.au",
+   "status": "fetched",
+   "checked": "2026-11-20",
+   "fee_pages": [
+    "https://www.stambrosesschool.qld.edu.au/enrolments/fees-and-levies",
+    "https://www.stambrosesschool.qld.edu.au/ArticleDocuments/664/2027%20Fee%20and%20Levies%20Schedule_Final.pdf.aspx"
+   ],
+   "crawl": {
+    "pages": 11,
+    "errors": 0
+   }
+  },
+  "47699": {
+   "school_name": "St Anthony's School",
+   "website": "http://www.stanthonyskedron.qld.edu.au",
+   "status": "fetched",
+   "checked": "2026-11-20",
+   "fee_pages": [
+    "https://www.stanthonyskedron.qld.edu.au/enrolments/fees",
+    "https://www.stanthonyskedron.qld.edu.au/ArticleDocuments/775/School%20Fee%20Schedule%202027.pdf.aspx"
+   ],
+   "crawl": {
+    "pages": 11,
+    "errors": 0
+   }
+  },
+  "47700": {
+   "school_name": "St Bernard's School",
+   "website": "http://www.stbernards.qld.edu.au",
+   "status": "fetched",
+   "checked": "2026-11-20",
+   "fee_pages": [
+    "https://www.stbernards.qld.edu.au/Enrol/fees-and-levies",
+    "https://www.stbernards.qld.edu.au/enrol/fees-levies-2026/fees-and-levies"
+   ],
+   "crawl": {
+    "pages": 13,
+    "errors": 0
+   }
+  },
+  "47701": {
+   "school_name": "St Brendan's Primary School",
+   "website": "http://www.stbrendansmoorooka.qld.edu.au",
+   "status": "fetched",
+   "checked": "2026-11-20",
+   "fee_pages": [
+    "https://www.stbrendansmoorooka.qld.edu.au/enrolments/fees-and-levies",
+    "https://www.stbrendansmoorooka.qld.edu.au/ArticleDocuments/1034/St%20Brendan's%20School%20Fees%202026.pdf"
+   ],
+   "crawl": {
+    "pages": 5,
+    "errors": 0
+   }
+  },
+  "47702": {
+   "school_name": "St Catherine's Catholic Primary School",
+   "website": "http://www.stcatherinescps.qld.edu.au",
+   "status": "fetched",
+   "checked": "2026-11-20",
+   "fee_pages": [
+    "https://www.stcatherinescps.qld.edu.au/about-us/secondary-feeder-schools",
+    "https://www.stcatherinescps.qld.edu.au/enrolment/school-fees",
+    "https://www.stcatherinescps.qld.edu.au/ArticleDocuments/991/2027%20School%20Fees.pdf"
+   ],
+   "crawl": {
+    "pages": 14,
+    "errors": 1
+   }
+  },
+  "47703": {
+   "school_name": "St Columba's Primary School",
+   "website": "http://www.stcolumbaswilston.qld.edu.au",
+   "status": "fetched",
+   "checked": "2026-11-20",
+   "fee_pages": [
+    "https://www.stcolumbaswilston.qld.edu.au/enrol/school-fees",
+    "https://www.stcolumbaswilston.qld.edu.au/beyond-the-classroom/piano-and-theory-tuition",
+    "https://www.stcolumbaswilston.qld.edu.au/ArticleDocuments/674/2026%20St%20Columbas%20Fee%20Schedule.pdf.aspx"
+   ],
+   "crawl": {
+    "pages": 13,
+    "errors": 0
+   }
+  },
+  "47704": {
+   "school_name": "St Bernardine's School",
+   "website": "http://www.stbernardines.qld.edu.au",
+   "status": "fetched",
+   "checked": "2026-11-20",
+   "fee_pages": [
+    "https://www.stbernardines.qld.edu.au/enrolments/school-fees-information",
+    "https://www.stbernardines.qld.edu.au/ArticleDocuments/927/2026%20School%20Fees%20Schedule.pdf"
+   ],
+   "crawl": {
+    "pages": 8,
+    "errors": 0
+   }
+  },
+  "47705": {
+   "school_name": "St Dympna's Parish School",
+   "website": "http://www.stdympnas.qld.edu.au",
+   "status": "fetched",
+   "checked": "2026-11-20",
+   "fee_pages": [
+    "https://www.stdympnas.qld.edu.au/enrol/school-fees"
+   ],
+   "crawl": {
+    "pages": 8,
+    "errors": 1
+   }
+  },
+  "47706": {
+   "school_name": "St Elizabeth's School",
+   "website": "http://www.stelizabeths.qld.edu.au",
+   "status": "fetched",
+   "checked": "2026-11-20",
+   "fee_pages": [
+    "https://www.stelizabeths.qld.edu.au/enrolments/school-fees",
+    "https://www.stelizabeths.qld.edu.au/ArticleDocuments/1332/2027%20School%20Fee%20Schedule.pdf.aspx",
+    "https://www.stelizabeths.qld.edu.au/ArticleDocuments/1324/FeeConcessions.pdf",
+    "https://www.stelizabeths.qld.edu.au/enrolments/school-fees/school-fees"
+   ],
+   "crawl": {
+    "pages": 12,
+    "errors": 0
+   }
+  },
+  "47707": {
+   "school_name": "St Finbarr's School",
+   "website": "http://www.stfinbarrsashgrove.qld.edu.au",
+   "status": "fetched",
+   "checked": "2026-11-20",
+   "fee_pages": [
+    "https://www.stfinbarrsashgrove.qld.edu.au/enrolments/school-fees",
+    "https://www.stfinbarrsashgrove.qld.edu.au/enrolments/online-fee-payments",
+    "https://www.stfinbarrsashgrove.qld.edu.au/ArticleDocuments/1487/2026%20Fee%20and%20Levies%20Schedule.pdf"
+   ],
+   "crawl": {
+    "pages": 11,
+    "errors": 0
+   }
+  },
+  "47708": {
+   "school_name": "St Flannan's School",
+   "website": "http://www.stflannans.qld.edu.au",
+   "status": "fetched",
+   "checked": "2026-11-20",
+   "fee_pages": [
+    "https://www.stflannans.qld.edu.au/enrol/school-fees",
+    "https://www.stflannans.qld.edu.au/ArticleDocuments/685/Schedule%20of%20Fees%20and%20Levies%202026.pdf",
+    "https://www.stflannans.qld.edu.au/ArticleDocuments/685/Schedule%20of%20Fees%20and%20Levies%202026.pdf?Embed=Y"
+   ],
+   "crawl": {
+    "pages": 13,
+    "errors": 0
+   }
+  },
+  "47709": {
+   "school_name": "St Francis Xavier School",
+   "website": "http://www.stfrancisxavier.qld.edu.au",
+   "status": "fetched",
+   "checked": "2026-11-20",
+   "fee_pages": [
+    "https://www.stfrancisxavier.qld.edu.au/enrol/fees-levies",
+    "https://www.stfrancisxavier.qld.edu.au/ArticleDocuments/1675/2026%20School%20Fees.pdf",
+    "https://www.stfrancisxavier.qld.edu.au/ArticleDocuments/1675/FeeDirectDebitForm.pdf",
+    "https://www.stfrancisxavier.qld.edu.au/ArticleDocuments/1675/FeeCreditCardForm.pdf",
+    "https://www.stfrancisxavier.qld.edu.au/ArticleDocuments/1675/FeeCentrepayDeduction.pdf"
+   ],
+   "crawl": {
+    "pages": 14,
+    "errors": 0
+   }
+  },
+  "47710": {
+   "school_name": "St Gerard Majella Primary School",
+   "website": "http://www.sgmcairns.qld.edu.au",
+   "status": "fetched",
+   "checked": "2026-11-20",
+   "fee_pages": [
+    "https://www.sgmcairns.qld.edu.au/enrolling/fees-levies/"
+   ],
+   "crawl": {
+    "pages": 10,
+    "errors": 0
+   }
+  },
+  "47711": {
+   "school_name": "St Ignatius School",
+   "website": "http://www.stignatiustoowong.qld.edu.au",
+   "status": "fetched",
+   "checked": "2026-11-20",
+   "fee_pages": [
+    "https://www.stignatiustoowong.qld.edu.au/enrol/school-fees-and-levies",
+    "https://www.stignatiustoowong.qld.edu.au/ArticleDocuments/973/2022%20Concession%20on%20Fees%20(1).pdf",
+    "https://www.stignatiustoowong.qld.edu.au/enrol/school-fees-levies/school-fees-and-levies"
+   ],
+   "crawl": {
+    "pages": 12,
+    "errors": 0
+   }
+  },
+  "47712": {
+   "school_name": "St Ita's Regional Primary School",
+   "website": "http://www.stitasduttonpark.qld.edu.au",
+   "status": "fetched",
+   "checked": "2026-11-20",
+   "fee_pages": [
+    "https://www.stitasduttonpark.qld.edu.au/enrol/school-fees",
+    "https://www.stitasduttonpark.qld.edu.au/ArticleDocuments/1078/Dutton%20Park%20-%202026%20Fees%20and%20Levies%20Schedule.pdf"
+   ],
+   "crawl": {
+    "pages": 12,
+    "errors": 0
+   }
+  },
+  "47713": {
+   "school_name": "St James Primary School",
+   "website": "http://www.stjames.qld.edu.au",
+   "status": "fetched",
+   "checked": "2026-11-20",
+   "fee_pages": [
+    "https://www.stjames.qld.edu.au/enrol/fees",
+    "https://www.stjames.qld.edu.au/ArticleDocuments/818/St%20James%20Schedule%20of%20Fees%202026.pdf"
+   ],
+   "crawl": {
+    "pages": 9,
+    "errors": 0
+   }
+  },
+  "47714": {
+   "school_name": "St Joachim's School",
+   "website": "http://www.stjoachimscps.qld.edu.au",
+   "status": "fetched",
+   "checked": "2026-11-20",
+   "fee_pages": [
+    "https://www.stjoachimscps.qld.edu.au/enrolments/school-fees-2013",
+    "https://www.stjoachimscps.qld.edu.au/enrolments/school-fees-procedures"
+   ],
+   "crawl": {
+    "pages": 12,
+    "errors": 0
+   }
+  },
+  "47715": {
+   "school_name": "St John Vianney's Primary School",
+   "website": "http://www.sjv.qld.edu.au",
+   "status": "fetched",
+   "checked": "2026-11-20",
+   "fee_pages": [
+    "https://www.sjv.qld.edu.au/enrolments/school-fees-and-levies",
+    "https://www.sjv.qld.edu.au/ArticleDocuments/957/Fee%20Schedule.pdf",
+    "https://www.sjv.qld.edu.au/ArticleDocuments/957/Fee%20Calculation%20Spreadsheet.xlsx"
+   ],
+   "crawl": {
+    "pages": 12,
+    "errors": 0
+   }
+  },
+  "47716": {
+   "school_name": "St Joseph's School",
+   "website": "http://www.stjosephsbardon.qld.edu.au",
+   "status": "fetched",
+   "checked": "2026-11-20",
+   "fee_pages": [
+    "https://www.stjosephsbardon.qld.edu.au/enrolments/school-fees"
+   ],
+   "crawl": {
+    "pages": 11,
+    "errors": 0
+   }
+  },
+  "47717": {
+   "school_name": "St Joseph's Primary School",
+   "website": "http://www.stjoseph.qld.edu.au",
+   "status": "fetched",
+   "checked": "2026-11-20",
+   "fee_pages": [
+    "https://www.stjoseph.qld.edu.au/enrol/fee-information",
+    "https://www.stjoseph.qld.edu.au/ArticleDocuments/898/2027%20School%20Fees%20and%20Levies%20Schedule.pdf.aspx"
+   ],
+   "crawl": {
+    "pages": 9,
+    "errors": 0
+   }
+  },
+  "47718": {
+   "school_name": "St Joseph's Primary School",
+   "website": "http://www.stjosephskpt.qld.edu.au",
+   "status": "fetched",
+   "checked": "2026-11-20",
+   "fee_pages": [
+    "https://www.stjosephskpt.qld.edu.au/enrolments/school-fees",
+    "https://www.stjosephskpt.qld.edu.au/enrolments/enrolment-application-and-school-fee-information"
+   ],
+   "crawl": {
+    "pages": 11,
+    "errors": 0
+   }
+  },
+  "47719": {
+   "school_name": "St Joseph's School",
+   "website": "http://www.stjosephsnorthipswich.qld.edu.au",
+   "status": "fetched",
+   "checked": "2026-11-20",
+   "fee_pages": [
+    "https://www.stjosephsnorthipswich.qld.edu.au/enrolments/school-fees",
+    "https://www.stjosephsnorthipswich.qld.edu.au/ArticleDocuments/980/Fees%20Schedule%202026.pdf"
+   ],
+   "crawl": {
+    "pages": 10,
+    "errors": 0
+   }
+  },
   "47720": {
    "school_name": "Ambrose Treacy College",
    "website": "http://www.atc.qld.edu.au/",
@@ -47414,6 +48370,467 @@
     ],
     "source": "school_website",
     "source_url": "https://files.atc.au/p/policy/Schedule%20of%20Fees.pdf"
+   }
+  },
+  "47721": {
+   "school_name": "St Joseph's School",
+   "website": "http://www.stjosnundah.qld.edu.au",
+   "status": "fetched",
+   "checked": "2026-11-20",
+   "fee_pages": [
+    "https://www.stjosnundah.qld.edu.au/enrolments/fees",
+    "https://www.stjosnundah.qld.edu.au/ArticleDocuments/867/2026%20Fee%20Schedule.pdf"
+   ],
+   "crawl": {
+    "pages": 11,
+    "errors": 0
+   }
+  },
+  "47722": {
+   "school_name": "St Joseph's Tobruk Memorial School",
+   "website": "http://www.stjosephsbeenleigh.qld.edu.au/Pages/default.aspx",
+   "status": "fetched",
+   "checked": "2026-11-20",
+   "fee_pages": [
+    "https://www.stjosephsbeenleigh.qld.edu.au/enrol/fees",
+    "https://www.stjosephsbeenleigh.qld.edu.au/ArticleDocuments/299/2027%20Fees%20and%20Levies.pdf.aspx"
+   ],
+   "crawl": {
+    "pages": 15,
+    "errors": 0
+   }
+  },
+  "47723": {
+   "school_name": "St Joseph's Catholic Primary School",
+   "website": "http://www.stjosephsbrackenridge.qld.edu.au",
+   "status": "fetched",
+   "checked": "2026-11-20",
+   "fee_pages": [
+    "https://www.stjosephsbrackenridge.qld.edu.au/our-school/care-feed-forward",
+    "https://www.stjosephsbrackenridge.qld.edu.au/enrolments/fee-information",
+    "https://www.stjosephsbrackenridge.qld.edu.au/ArticleDocuments/513/Fee-Schedule-2026-v2.pdf.aspx"
+   ],
+   "crawl": {
+    "pages": 12,
+    "errors": 0
+   }
+  },
+  "47724": {
+   "school_name": "St Kevin's School",
+   "website": "http://www.stkevinsgeebung.qld.edu.au",
+   "status": "fetched",
+   "checked": "2026-11-20",
+   "fee_pages": [
+    "https://www.stkevinsgeebung.qld.edu.au/enrolments/fee-structure",
+    "https://www.stkevinsgeebung.qld.edu.au/ArticleDocuments/1393/2026%20Detailed%20School%20Fee%20Schedule.pdf.aspx",
+    "https://www.stkevinsgeebung.qld.edu.au/ArticleDocuments/1378/2026%20School%20Fee%20Calculation%20Sheet.pdf.aspx"
+   ],
+   "crawl": {
+    "pages": 14,
+    "errors": 0
+   }
+  },
+  "47725": {
+   "school_name": "St Kieran's School",
+   "website": "http://www.stkieranbrighton.qld.edu.au",
+   "status": "fetched",
+   "checked": "2026-11-20",
+   "fee_pages": [
+    "https://www.stkieranbrighton.qld.edu.au/enrolments/fees",
+    "https://www.stkieranbrighton.qld.edu.au/ArticleDocuments/1730/2026%20School%20Fees%20Schedule%20FINAL.pdf"
+   ],
+   "crawl": {
+    "pages": 8,
+    "errors": 0
+   }
+  },
+  "47726": {
+   "school_name": "St Mark's School",
+   "website": "http://www.stmarksinala.qld.edu.au",
+   "status": "fetched",
+   "checked": "2026-11-20",
+   "fee_pages": [
+    "https://www.stmarksinala.qld.edu.au/enrolment/fees",
+    "https://www.stmarksinala.qld.edu.au/ArticleDocuments/1017/Fees%202026.pdf",
+    "https://www.stmarksinala.qld.edu.au/ArticleDocuments/1017/Fees%202026-%20Vietnamese.pdf",
+    "https://www.stmarksinala.qld.edu.au/enrolment/school-fees-levies/ufees"
+   ],
+   "crawl": {
+    "pages": 15,
+    "errors": 0
+   }
+  },
+  "47727": {
+   "school_name": "St Martin's School",
+   "website": "http://www.stmartinscarina.qld.edu.au",
+   "status": "fetched",
+   "checked": "2026-11-20",
+   "fee_pages": [
+    "https://www.stmartinscarina.qld.edu.au/enrolments/school-fees",
+    "https://www.stmartinscarina.qld.edu.au/ArticleDocuments/882/SCHOOL%20FEES%20AND%20LEVIES%20FOR%202026.pdf"
+   ],
+   "crawl": {
+    "pages": 9,
+    "errors": 1
+   }
+  },
+  "47728": {
+   "school_name": "St Mary's Primary School",
+   "website": "http://www.stmarysipswich.qld.edu.au",
+   "status": "fetched",
+   "checked": "2026-11-20",
+   "fee_pages": [
+    "https://www.stmarysipswich.qld.edu.au/enrol/school-fees",
+    "https://www.stmarysipswich.qld.edu.au/ArticleDocuments/1121/2026%20Fees%20and%20Levies%20Schedule.pdf"
+   ],
+   "crawl": {
+    "pages": 10,
+    "errors": 0
+   }
+  },
+  "47729": {
+   "school_name": "St Paul's School",
+   "website": "http://www.stpaulswoodridge.qld.edu.au",
+   "status": "fetched",
+   "checked": "2026-11-20",
+   "fee_pages": [
+    "https://www.stpaulswoodridge.qld.edu.au/enrolments/school-fees",
+    "https://www.stpaulswoodridge.qld.edu.au/ArticleDocuments/1013/School%20fee%20Schedule%202026.pdf.aspx",
+    "https://www.stpaulswoodridge.qld.edu.au/ArticleDocuments/1013/Fee%20Concessions.pdf.aspx",
+    "https://www.stpaulswoodridge.qld.edu.au/ArticleDocuments/1013/Fee%20Centrepay%20Deduction.pdf.aspx",
+    "https://www.stpaulswoodridge.qld.edu.au/ArticleDocuments/1013/Fee%20Direct%20Debit.pdf.aspx"
+   ],
+   "crawl": {
+    "pages": 15,
+    "errors": 0
+   }
+  },
+  "47730": {
+   "school_name": "St Peter Chanel Primary School",
+   "website": "http://www.spcthegap.qld.edu.au",
+   "status": "fetched",
+   "checked": "2026-11-20",
+   "fee_pages": [
+    "https://www.spcthegap.qld.edu.au/enrolment/fees"
+   ],
+   "crawl": {
+    "pages": 10,
+    "errors": 0
+   }
+  },
+  "47731": {
+   "school_name": "St Peter's Catholic Primary School",
+   "website": "http://www.stpeterscaboolture.qld.edu.au",
+   "status": "fetched",
+   "checked": "2026-11-20",
+   "fee_pages": [
+    "https://www.stpeterscaboolture.qld.edu.au/enrolments/fee-information",
+    "https://www.stpeterscaboolture.qld.edu.au/ArticleDocuments/678/2027%20School%20Fees.pdf.aspx",
+    "https://www.stpeterscaboolture.qld.edu.au/ArticleDocuments/627/Enrolments-2026%20School%20Fees%20and%20Levies.pdf?Embed=Y"
+   ],
+   "crawl": {
+    "pages": 11,
+    "errors": 1
+   }
+  },
+  "47732": {
+   "school_name": "Sts Peter and Paul's School",
+   "website": "http://www.stspp.qld.edu.au",
+   "status": "fetched",
+   "checked": "2026-11-20",
+   "fee_pages": [
+    "https://www.stspp.qld.edu.au/enrolment/fee-information",
+    "https://www.stspp.qld.edu.au/enrolment/fee-finance-information/fee-information",
+    "https://www.stspp.qld.edu.au/ArticleDocuments/1805/2026%20School%20Fees%20and%20Levies%20Schedule%20(1).pdf",
+    "https://www.stspp.qld.edu.au/ArticleDocuments/1817/209%20Bulimba%202027%20School%20Fees%20and%20Levies%20Schedule.pdf.aspx"
+   ],
+   "crawl": {
+    "pages": 14,
+    "errors": 0
+   }
+  },
+  "47733": {
+   "school_name": "St Peter's Primary School",
+   "website": "http://www.stpetersrochedale.qld.edu.au",
+   "status": "fetched",
+   "checked": "2026-11-20",
+   "fee_pages": [
+    "https://www.stpetersrochedale.qld.edu.au/enrolments/fee-information",
+    "https://www.stpetersrochedale.qld.edu.au/ArticleDocuments/883/2027%20Schedule%20of%20Fees%20and%20Levies.pdf.aspx",
+    "https://www.stpetersrochedale.qld.edu.au/ArticleDocuments/883/Fee%20letter%202027.pdf.aspx"
+   ],
+   "crawl": {
+    "pages": 12,
+    "errors": 0
+   }
+  },
+  "47734": {
+   "school_name": "St Pius' Primary School",
+   "website": "http://www.stpiusbanyo.qld.edu.au",
+   "status": "fetched",
+   "checked": "2026-11-20",
+   "fee_pages": [
+    "https://www.stpiusbanyo.qld.edu.au/enrol/school-fees",
+    "https://www.stpiusbanyo.qld.edu.au/ArticleDocuments/685/2027%20Statement%20of%20Fees%20%20Levies.pdf.aspx",
+    "https://www.stpiusbanyo.qld.edu.au/ArticleDocuments/685/School%20Fees%20Guidelines%20and%20Procedures.pdf"
+   ],
+   "crawl": {
+    "pages": 10,
+    "errors": 0
+   }
+  },
+  "47735": {
+   "school_name": "St Pius X School",
+   "website": "http://www.stpiusxsalisbury.qld.edu.au/Pages/default.aspx",
+   "status": "fetched",
+   "checked": "2026-11-20",
+   "fee_pages": [
+    "https://www.stpiusxsalisbury.qld.edu.au/enrol/fees-levies",
+    "https://www.stpiusxsalisbury.qld.edu.au/ArticleDocuments/1222/2027%20Fees%20Schedule.pdf.aspx"
+   ],
+   "crawl": {
+    "pages": 10,
+    "errors": 0
+   }
+  },
+  "47736": {
+   "school_name": "St Sebastian's Primary School",
+   "website": "http://www.stsebastiansyeronga.qld.edu.au",
+   "status": "fetched",
+   "checked": "2026-11-20",
+   "fee_pages": [
+    "https://www.stsebastiansyeronga.qld.edu.au/enrol/fees-and-levies",
+    "https://www.stsebastiansyeronga.qld.edu.au/ArticleDocuments/674/2027%20School%20Fees%20Schedule.pdf.aspx"
+   ],
+   "crawl": {
+    "pages": 8,
+    "errors": 0
+   }
+  },
+  "47737": {
+   "school_name": "St Thomas' School",
+   "website": "http://www.stthomascamphill.qld.edu.au",
+   "status": "fetched",
+   "checked": "2026-11-20",
+   "fee_pages": [
+    "https://www.stthomascamphill.qld.edu.au/enrolments/fee-information",
+    "https://www.stthomascamphill.qld.edu.au/ArticleDocuments/5334/Fee%20Schedule.pdf"
+   ],
+   "crawl": {
+    "pages": 13,
+    "errors": 0
+   }
+  },
+  "47738": {
+   "school_name": "St Matthew's School",
+   "website": "http://www.stmatthews.qld.edu.au",
+   "status": "fetched",
+   "checked": "2026-11-20",
+   "fee_pages": [
+    "https://www.stmatthews.qld.edu.au/enrol/school-fees-schedule",
+    "https://www.stmatthews.qld.edu.au/ArticleDocuments/566/2027%20DOCUMENT%20-%20School%20Fees%20and%20Levies%20Structure.pdf.aspx",
+    "https://www.stmatthews.qld.edu.au/ArticleDocuments/566/2027%20School%20Fees%20and%20Levies%20Schedule.pdf.aspx",
+    "https://www.stmatthews.qld.edu.au/ArticleDocuments/566/2027%20Fees%20and%20Levies%20Calculation%20Sheet.xlsx.aspx",
+    "https://www.stmatthews.qld.edu.au/enrol/fees-finance/school-fees-schedule"
+   ],
+   "crawl": {
+    "pages": 15,
+    "errors": 0
+   }
+  },
+  "47739": {
+   "school_name": "St William's Primary School",
+   "website": "http://www.stwilliamsgrovely.qld.edu.au",
+   "status": "fetched",
+   "checked": "2026-11-20",
+   "fee_pages": [
+    "https://www.stwilliamsgrovely.qld.edu.au/enrolments/fees",
+    "https://www.stwilliamsgrovely.qld.edu.au/ArticleDocuments/909/2027%20Fee%20Schedule.pdf.aspx"
+   ],
+   "crawl": {
+    "pages": 12,
+    "errors": 1
+   }
+  },
+  "47740": {
+   "school_name": "Christ the King Catholic Primary School",
+   "website": "http://www.christthekingdbay.qld.edu.au",
+   "status": "fetched",
+   "checked": "2026-11-20",
+   "fee_pages": [
+    "https://www.christthekingdbay.qld.edu.au/enrolments/fees-levies",
+    "https://www.christthekingdbay.qld.edu.au/ArticleDocuments/887/Fee%20Schedule%202026.pdf",
+    "https://www.christthekingdbay.qld.edu.au/ArticleDocuments/887/Fees%20Letter%202026.pdf",
+    "https://www.christthekingdbay.qld.edu.au/enrolments/fees-levies/fees-and-finance"
+   ],
+   "crawl": {
+    "pages": 12,
+    "errors": 0
+   }
+  },
+  "47741": {
+   "school_name": "St Anthony's School",
+   "website": "http://www.stanthonysalexhills.qld.edu.au",
+   "status": "fetched",
+   "checked": "2026-11-20",
+   "fee_pages": [
+    "https://www.stanthonysalexhills.qld.edu.au/enrolments/schoolfees",
+    "https://www.stanthonysalexhills.qld.edu.au/ArticleDocuments/299/2027%20School%20Fee%20Schedule.pdf.aspx"
+   ],
+   "crawl": {
+    "pages": 10,
+    "errors": 0
+   }
+  },
+  "47742": {
+   "school_name": "St Andrew's Catholic School",
+   "website": "http://www.standrewsfg.qld.edu.au/Pages/default.aspx",
+   "status": "fetched",
+   "checked": "2026-11-20",
+   "fee_pages": [
+    "https://www.standrewsfg.qld.edu.au/enrol/school-fees",
+    "https://www.standrewsfg.qld.edu.au/ArticleDocuments/878/2026%20Fee%20Schedule.pdf.aspx"
+   ],
+   "crawl": {
+    "pages": 14,
+    "errors": 0
+   }
+  },
+  "47743": {
+   "school_name": "All Saints' School",
+   "website": "http://www.allsaintsboonah.qld.edu.au",
+   "status": "fetched",
+   "checked": "2026-11-20",
+   "fee_pages": [
+    "https://www.allsaintsboonah.qld.edu.au/enrolments/fees"
+   ],
+   "crawl": {
+    "pages": 11,
+    "errors": 1
+   }
+  },
+  "47744": {
+   "school_name": "Guardian Angels' Catholic Primary School",
+   "website": "http://www.gaps.qld.edu.au",
+   "status": "fetched",
+   "checked": "2026-11-20",
+   "fee_pages": [
+    "https://www.gaps.qld.edu.au/enrolments/fee-structure"
+   ],
+   "crawl": {
+    "pages": 8,
+    "errors": 0
+   }
+  },
+  "47745": {
+   "school_name": "Marymount Primary School",
+   "website": "http://www.mps.qld.edu.au",
+   "status": "unreachable",
+   "checked": "2026-11-20",
+   "fee_pages": [],
+   "crawl": {
+    "pages": 0,
+    "errors": 3,
+    "home_error": "UND_ERR_CONNECT_TIMEOUT"
+   }
+  },
+  "47746": {
+   "school_name": "Our Lady of Good Counsel School",
+   "website": "http://www.olgcgatton.qld.edu.au",
+   "status": "fetched",
+   "checked": "2026-11-20",
+   "fee_pages": [
+    "https://www.olgcgatton.qld.edu.au/enrol/school-fees",
+    "https://www.olgcgatton.qld.edu.au/ArticleDocuments/1300/OLGC%20Fee%20Schedule.pdf.aspx",
+    "https://www.olgcgatton.qld.edu.au/enrol/school-fees-levies/school-fees"
+   ],
+   "crawl": {
+    "pages": 10,
+    "errors": 0
+   }
+  },
+  "47747": {
+   "school_name": "St Augustine's Parish Primary School",
+   "website": "http://www.sa.qld.edu.au/Pages/default.aspx",
+   "status": "fetched",
+   "checked": "2026-11-20",
+   "fee_pages": [
+    "https://www.sa.qld.edu.au/enrolments/school-enrolment-fees",
+    "https://www.sa.qld.edu.au/ArticleDocuments/1013/St%20Augustine's%202026%20School%20Fee%20Structure.pdf.aspx",
+    "https://www.sa.qld.edu.au/enrolments/school-enrolment-fees/school-enrolment-fees"
+   ],
+   "crawl": {
+    "pages": 13,
+    "errors": 0
+   }
+  },
+  "47748": {
+   "school_name": "St Brigid's Primary School",
+   "website": "http://www.stbrigidsrosewood.qld.edu.au",
+   "status": "fetched",
+   "checked": "2026-11-20",
+   "fee_pages": [
+    "https://www.stbrigidsrosewood.qld.edu.au/enrolment/school-fees",
+    "https://www.stbrigidsrosewood.qld.edu.au/ArticleDocuments/1007/2026%20School%20Fee%20Schedule.pdf"
+   ],
+   "crawl": {
+    "pages": 6,
+    "errors": 0
+   }
+  },
+  "47749": {
+   "school_name": "St Francis Xavier School",
+   "website": "http://www.sfx.qld.edu.au",
+   "status": "fetched",
+   "checked": "2026-11-20",
+   "fee_pages": [
+    "https://www.sfx.qld.edu.au/enrolments/school-fees"
+   ],
+   "crawl": {
+    "pages": 9,
+    "errors": 0
+   }
+  },
+  "47750": {
+   "school_name": "St Joseph's School",
+   "website": "http://www.stjosephschilders.qld.edu.au",
+   "status": "fetched",
+   "checked": "2026-11-20",
+   "fee_pages": [
+    "https://www.stjosephschilders.qld.edu.au/articledocuments/570/2026%20st%20joseph's%20school%20fees.pdf.aspx",
+    "https://www.stjosephschilders.qld.edu.au/articledocuments/570/2026%20st%20joseph's%20school%20fees.pdf.aspx?Embed=Y"
+   ],
+   "crawl": {
+    "pages": 13,
+    "errors": 0
+   }
+  },
+  "47751": {
+   "school_name": "St Joseph's School",
+   "website": "http://www.stjosephsgayndah.qld.edu.au",
+   "status": "fetched",
+   "checked": "2026-11-20",
+   "fee_pages": [
+    "https://www.stjosephsgayndah.qld.edu.au/enrolments/fee-schedule-2026",
+    "https://www.stjosephsgayndah.qld.edu.au/ArticleDocuments/1246/2026%20School%20Fees.pdf"
+   ],
+   "crawl": {
+    "pages": 9,
+    "errors": 0
+   }
+  },
+  "47752": {
+   "school_name": "St Joseph's School",
+   "website": "http://www.stjosephsmurgon.qld.edu.au",
+   "status": "fetched",
+   "checked": "2026-11-20",
+   "fee_pages": [
+    "https://www.stjosephsmurgon.qld.edu.au/enrolments/fees",
+    "https://www.stjosephsmurgon.qld.edu.au/ArticleDocuments/707/School%20Fees%202027.pdf.aspx"
+   ],
+   "crawl": {
+    "pages": 9,
+    "errors": 0
    }
   },
   "47753": {
@@ -47449,6 +48866,166 @@
     "source_url": "https://www.stjohns.qld.edu.au/ArticleDocuments/988/1.%202026%20St%20John's%20College%20Fee%20Schedule.pdf"
    }
   },
+  "47754": {
+   "school_name": "St Mary's School",
+   "website": "http://www.stmarysbeaudesert.qld.edu.au",
+   "status": "fetched",
+   "checked": "2026-11-20",
+   "fee_pages": [
+    "https://www.stmarysbeaudesert.qld.edu.au/enrolments-fees/enrolment-enquiry",
+    "https://www.stmarysbeaudesert.qld.edu.au/enrolments-fees/where-our-students-come-from",
+    "https://www.stmarysbeaudesert.qld.edu.au/enrolments-fees/fees-and-levies",
+    "https://www.stmarysbeaudesert.qld.edu.au/enrolments-fees/school-uniform",
+    "https://www.stmarysbeaudesert.qld.edu.au/enrolments-fees/attendance-matters"
+   ],
+   "crawl": {
+    "pages": 11,
+    "errors": 1
+   }
+  },
+  "47755": {
+   "school_name": "St Mary's School",
+   "website": "http://www.stmaryslaidley.qld.edu.au",
+   "status": "fetched",
+   "checked": "2026-11-20",
+   "fee_pages": [
+    "https://www.stmaryslaidley.qld.edu.au/enrol/fees-for-2014",
+    "https://www.stmaryslaidley.qld.edu.au/ArticleDocuments/1011/School%20Fees%20and%20Levies%20Schedule%202026.pdf.aspx"
+   ],
+   "crawl": {
+    "pages": 11,
+    "errors": 0
+   }
+  },
+  "47756": {
+   "school_name": "St Mary's Primary School",
+   "website": "http://www.smpmaryborough.qld.edu.au",
+   "status": "fetched",
+   "checked": "2026-11-20",
+   "fee_pages": [
+    "https://www.smpmaryborough.qld.edu.au/enrolments/fees-and-levies",
+    "https://www.smpmaryborough.qld.edu.au/ArticleDocuments/734/Fees%20and%20Levies%202026.pdf"
+   ],
+   "crawl": {
+    "pages": 11,
+    "errors": 0
+   }
+  },
+  "47757": {
+   "school_name": "St Patrick's Primary School",
+   "website": "http://www.stpatrickspsgympie.qld.edu.au",
+   "status": "fetched",
+   "checked": "2026-11-20",
+   "fee_pages": [
+    "https://www.stpatrickspsgympie.qld.edu.au/parent-info/school-fees",
+    "https://www.stpatrickspsgympie.qld.edu.au/ArticleDocuments/1453/Application%20for%20concession%20on%20fees.pdf"
+   ],
+   "crawl": {
+    "pages": 9,
+    "errors": 0
+   }
+  },
+  "47758": {
+   "school_name": "St Patrick's Primary School",
+   "website": "http://www.stpatsnanango.qld.edu.au",
+   "status": "fetched",
+   "checked": "2026-11-20",
+   "fee_pages": [
+    "https://www.stpatsnanango.qld.edu.au/enrolments/school-fees",
+    "https://www.stpatsnanango.qld.edu.au/news-events/news/sealifeexcursion2024"
+   ],
+   "crawl": {
+    "pages": 15,
+    "errors": 0
+   }
+  },
+  "47759": {
+   "school_name": "Star of the Sea Catholic School",
+   "website": "http://www.starofthesea.qld.edu.au",
+   "status": "fetched",
+   "checked": "2026-11-20",
+   "fee_pages": [
+    "https://www.starofthesea.qld.edu.au/enrolments/fees",
+    "https://www.starofthesea.qld.edu.au/ArticleDocuments/741/2027%20School%20Fee%20Schedule.pdf.aspx",
+    "https://www.starofthesea.qld.edu.au/ArticleDocuments/741/2027%20School%20Fee%20Spreadsheet.pdf.aspx"
+   ],
+   "crawl": {
+    "pages": 9,
+    "errors": 0
+   }
+  },
+  "47760": {
+   "school_name": "St Vincent's Primary School",
+   "website": "http://www.stvincentsps.qld.edu.au/Pages/default.aspx",
+   "status": "fetched",
+   "checked": "2026-11-20",
+   "fee_pages": [
+    "https://www.stvincentsps.qld.edu.au/enrol/school-fees"
+   ],
+   "crawl": {
+    "pages": 11,
+    "errors": 0
+   }
+  },
+  "47761": {
+   "school_name": "St Kevin's School",
+   "website": "http://www.sk.qld.edu.au",
+   "status": "fetched",
+   "checked": "2026-11-20",
+   "fee_pages": [
+    "https://www.sk.qld.edu.au/enrol/fees",
+    "https://www.sk.qld.edu.au/ArticleDocuments/1008/2027%20Fee%20Schedule%20St%20Kevins.pdf.aspx"
+   ],
+   "crawl": {
+    "pages": 12,
+    "errors": 0
+   }
+  },
+  "47762": {
+   "school_name": "Our Lady of the Rosary School",
+   "website": "http://www.olr.qld.edu.au",
+   "status": "fetched",
+   "checked": "2026-11-20",
+   "fee_pages": [
+    "https://www.olr.qld.edu.au/enrol/fees",
+    "https://www.olr.qld.edu.au/ArticleDocuments/4991/2026%20OLR%20School%20Fees.pdf"
+   ],
+   "crawl": {
+    "pages": 12,
+    "errors": 0
+   }
+  },
+  "47763": {
+   "school_name": "Stella Maris School",
+   "website": "http://www.stellamaris.qld.edu.au",
+   "status": "fetched",
+   "checked": "2026-11-20",
+   "fee_pages": [
+    "https://www.stellamaris.qld.edu.au/enrolment/school-fees",
+    "https://www.stellamaris.qld.edu.au/ArticleDocuments/771/Fees%20and%20Levies%20for%202026.pdf"
+   ],
+   "crawl": {
+    "pages": 12,
+    "errors": 0
+   }
+  },
+  "47764": {
+   "school_name": "Marian Catholic School",
+   "website": "http://www.marian.catholic.edu.au",
+   "status": "fetched",
+   "checked": "2026-11-20",
+   "fee_pages": [
+    "https://www.marian.catholic.edu.au/enrolment/school-fees/",
+    "https://os-data-2.s3-ap-southeast-2.amazonaws.com/marian2/bundle10/marian_2027_school_fees_full_rate.pdf",
+    "https://os-data-2.s3-ap-southeast-2.amazonaws.com/marian2/bundle10/marian_2027_school_fees_hcc.pdf",
+    "https://os-data-2.s3-ap-southeast-2.amazonaws.com/marian2/bundle10/Marian%20-%202026%20School%20Fees.pdf",
+    "https://os-data-2.s3-ap-southeast-2.amazonaws.com/marian2/bundle10/School%20Fee%20Payment%20Options%202026.pdf"
+   ],
+   "crawl": {
+    "pages": 13,
+    "errors": 0
+   }
+  },
   "47765": {
    "school_name": "St Stephen's Catholic College",
    "website": "http://www.sscc.qld.edu.au",
@@ -47464,6 +49041,85 @@
     "https://www.sscc.qld.edu.au/wp-content/uploads/2026/02/2026-Tuition-Fees-CEDC.pdf",
     "https://www.sscc.qld.edu.au/wp-content/uploads/2024/10/Fee-Discounts.pdf"
    ]
+  },
+  "47766": {
+   "school_name": "Holy Name Primary School",
+   "website": "http://www.hntwb.catholic.edu.au/",
+   "status": "fetched",
+   "checked": "2026-11-20",
+   "fee_pages": [
+    "https://holynametwb.schoolzineplus.com/_file/media/2850/2026_schedule_of_fees_toowhnps.pdf"
+   ],
+   "crawl": {
+    "pages": 3,
+    "errors": 0
+   }
+  },
+  "47767": {
+   "school_name": "Mater Dei Primary School",
+   "website": "http://www.mdpstwb.catholic.edu.au",
+   "status": "fetched",
+   "checked": "2026-11-20",
+   "fee_pages": [
+    "https://www.mdpstwb.catholic.edu.au/school-fees",
+    "https://www.mdpstwb.catholic.edu.au/school-fees/payment-options",
+    "https://mdpstwb.schoolzineplus.com/_file/media/3513/fees_levies_2027.pdf",
+    "https://www.mdpstwb.catholic.edu.au/_file/media/3513/fees_levies_2027.pdf"
+   ],
+   "crawl": {
+    "pages": 7,
+    "errors": 0
+   }
+  },
+  "47768": {
+   "school_name": "Our Lady of Lourdes Primary School",
+   "website": "https://ollourdesps.schoolzineplus.com/",
+   "status": "fetched",
+   "checked": "2026-11-20",
+   "fee_pages": [
+    "https://ollourdesps.schoolzineplus.com/_file/media/11337/2026_school_fee_schedule.pdf"
+   ],
+   "crawl": {
+    "pages": 4,
+    "errors": 0
+   }
+  },
+  "47769": {
+   "school_name": "Sacred Heart Primary School",
+   "website": "http://www.cunnamulla.catholic.edu.au/",
+   "status": "fetched",
+   "checked": "2026-11-20",
+   "fee_pages": [],
+   "crawl": {
+    "pages": 2,
+    "errors": 0
+   }
+  },
+  "47770": {
+   "school_name": "Sacred Heart Primary School",
+   "website": "http://www.sacredhearttwb.catholic.edu.au/",
+   "status": "fetched",
+   "checked": "2026-11-20",
+   "fee_pages": [
+    "https://sacredhearttwb.schoolzineplus.com/_file/media/5066/2027_fee_structure.pdf"
+   ],
+   "crawl": {
+    "pages": 4,
+    "errors": 0
+   }
+  },
+  "47771": {
+   "school_name": "St Anthony's School",
+   "website": "https://www.sastwb.catholic.edu.au/",
+   "status": "fetched",
+   "checked": "2026-11-20",
+   "fee_pages": [
+    "https://sastwbqld.schoolzineplus.com/_file/media/2493/2026_st_anthony_s_schedule_of_fees.pdf"
+   ],
+   "crawl": {
+    "pages": 3,
+    "errors": 0
+   }
   },
   "47772": {
    "school_name": "St Francis College",
@@ -47526,6 +49182,79 @@
     "source_url": "https://www.sfcc.qld.edu.au/ArticleDocuments/928/2026%20Fees%20and%20Levies%20Policy.pdf"
    }
   },
+  "47773": {
+   "school_name": "St Finbarr's School",
+   "website": "https://www.twb.catholic.edu.au/our-schools/primary-schools/quilpie/st-finbarrs-primary-school/",
+   "status": "fetched",
+   "checked": "2026-11-20",
+   "fee_pages": [],
+   "crawl": {
+    "pages": 4,
+    "errors": 0
+   }
+  },
+  "47774": {
+   "school_name": "St Francis De Sales School",
+   "website": "http://www.clifton.catholic.edu.au/",
+   "status": "fetched",
+   "checked": "2026-11-20",
+   "fee_pages": [
+    "https://sfdssclifton.schoolzineplus.com/_file/media/1748/2026_term_fees.pdf",
+    "https://www.clifton.catholic.edu.au/_file/media/1748/2026_term_fees.pdf"
+   ],
+   "crawl": {
+    "pages": 4,
+    "errors": 0
+   }
+  },
+  "47775": {
+   "school_name": "St Joseph's School",
+   "website": "http://www.chinchilla.catholic.edu.au",
+   "status": "fetched",
+   "checked": "2026-11-20",
+   "fee_pages": [
+    "https://sjpschinchilla.schoolzineplus.com/_file/media/3777/2026_fee_schedule.pdf"
+   ],
+   "crawl": {
+    "pages": 3,
+    "errors": 0
+   }
+  },
+  "47776": {
+   "school_name": "St Joseph's School",
+   "website": "http://www.millmerran.catholic.edu.au",
+   "status": "fetched",
+   "checked": "2026-11-20",
+   "fee_pages": [
+    "https://sjcsmillmerran.schoolzineplus.com/_file/media/4042/st_joseph_s_fee_structure.pdf"
+   ],
+   "crawl": {
+    "pages": 3,
+    "errors": 0
+   }
+  },
+  "47777": {
+   "school_name": "St Joseph's School",
+   "website": "https://www.twb.catholic.edu.au/our-schools/primary-schools/tara/st-josephs-primary-school/",
+   "status": "fetched",
+   "checked": "2026-11-20",
+   "fee_pages": [],
+   "crawl": {
+    "pages": 3,
+    "errors": 0
+   }
+  },
+  "47778": {
+   "school_name": "St Maria Goretti School",
+   "website": "https://www.twb.catholic.edu.au/our-schools/primary-schools/inglewood/st-maria-goretti-primary-school/",
+   "status": "fetched",
+   "checked": "2026-11-20",
+   "fee_pages": [],
+   "crawl": {
+    "pages": 3,
+    "errors": 0
+   }
+  },
   "47779": {
    "school_name": "St Mary's School",
    "website": "http://www.goondiwindi.catholic.edu.au",
@@ -47549,6 +49278,116 @@
     "source_url": "https://goondiwinditwb.schoolzineplus.com/_file/media/1953/2026_st_mary_s_school_fees.pdf"
    }
   },
+  "47782": {
+   "school_name": "St Monica's School",
+   "website": "https://www.oakey.catholic.edu.au/",
+   "status": "fetched",
+   "checked": "2026-11-20",
+   "fee_pages": [
+    "https://stmonicasoakey.schoolzineplus.com/_file/media/1611/school_fees_2026_.pdf"
+   ],
+   "crawl": {
+    "pages": 3,
+    "errors": 0
+   }
+  },
+  "47783": {
+   "school_name": "St Mary's School",
+   "website": "https://www.twb.catholic.edu.au/our-schools/primary-schools/charleville/st-marys-primary-school/",
+   "status": "fetched",
+   "checked": "2026-11-20",
+   "fee_pages": [],
+   "crawl": {
+    "pages": 3,
+    "errors": 0
+   }
+  },
+  "47784": {
+   "school_name": "St Patrick's School",
+   "website": "http://www.allora.catholic.edu.au",
+   "status": "fetched",
+   "checked": "2026-11-20",
+   "fee_pages": [
+    "https://stpatallora.schoolzineplus.com/_file/media/1124/2026_school_fee_schedule.pdf"
+   ],
+   "crawl": {
+    "pages": 3,
+    "errors": 0
+   }
+  },
+  "47785": {
+   "school_name": "St Patrick's School",
+   "website": "http://stgeorge.catholic.edu.au/",
+   "status": "fetched",
+   "checked": "2026-11-20",
+   "fee_pages": [
+    "https://stgeorge.catholic.edu.au/enrolment-information/fees-payments",
+    "https://spsstgeorge.schoolzineplus.com/_file/media/2247/2027_fee_schedule.pdf",
+    "https://stgeorge.catholic.edu.au/_file/media/2247/2027_fee_schedule.pdf"
+   ],
+   "crawl": {
+    "pages": 11,
+    "errors": 1
+   }
+  },
+  "47786": {
+   "school_name": "St Patrick's Primary School",
+   "website": "https://www.mitchell.catholic.edu.au",
+   "status": "fetched",
+   "checked": "2026-11-20",
+   "fee_pages": [
+    "https://spsmitchell.schoolzineplus.com/_file/media/1189/school_fees_2026.pdf"
+   ],
+   "crawl": {
+    "pages": 3,
+    "errors": 0
+   }
+  },
+  "47787": {
+   "school_name": "St Saviour's Primary School",
+   "website": "http://www.sspstwb.catholic.edu.au",
+   "status": "fetched",
+   "checked": "2026-11-20",
+   "fee_pages": [
+    "https://sspstwb.catholic.edu.au/enrolments/fees-levies",
+    "https://www.sspstwb.catholic.edu.au/fees-levies",
+    "https://sspstwb.catholic.edu.au/fees-levies",
+    "https://sspstwb.schoolzineplus.com/_file/media/9853/schedule_of_fees_2027.pdf"
+   ],
+   "crawl": {
+    "pages": 7,
+    "errors": 0
+   }
+  },
+  "47788": {
+   "school_name": "St Stephen's School",
+   "website": "http://www.pittsworth.catholic.edu.au",
+   "status": "fetched",
+   "checked": "2026-11-20",
+   "fee_pages": [
+    "https://pittsworthtwb.schoolzineplus.com/_file/media/2/fees.pdf",
+    "https://pittsworthtwb.schoolzineplus.com/_file/media/1044/pittssps_fee_schedule_2026.pdf"
+   ],
+   "crawl": {
+    "pages": 5,
+    "errors": 0
+   }
+  },
+  "47789": {
+   "school_name": "St Thomas More's Primary School",
+   "website": "http://www.stmtwb.catholic.edu.au",
+   "status": "fetched",
+   "checked": "2026-11-20",
+   "fee_pages": [
+    "https://www.stmtwb.catholic.edu.au/school-fees",
+    "https://stmpstwb.schoolzineplus.com/_file/media/3424/st_thomas_mores_2026_school_fees_schedule.pdf",
+    "https://www.stmtwb.catholic.edu.au/_file/media/3424/st_thomas_mores_2026_school_fees_schedule.pdf"
+   ],
+   "crawl": {
+    "pages": 5,
+    "errors": 0
+   }
+  },
   "47790": {
    "school_name": "Our Lady of the Southern Cross College",
    "website": "http://www.dalby.catholic.edu.au",
@@ -47563,6 +49402,700 @@
     "https://www.dalby.catholic.edu.au/college-fees",
     "https://oloscdalby.schoolzineplus.com/_file/media/12537/2026_college_fee_schedule.pdf"
    ]
+  },
+  "47791": {
+   "school_name": "Our Lady of the Sacred Heart Catholic Primary School",
+   "website": "http://www.olshsrok.catholic.edu.au/",
+   "status": "found",
+   "checked": "2026-11-20",
+   "fee_pages": [
+    "https://www.olshsrok.catholic.edu.au/fee-information"
+   ],
+   "crawl": {
+    "pages": 5,
+    "errors": 0
+   },
+   "fees": {
+    "fee_year": 2026,
+    "basis": "one student, annual all-inclusive education fee (tuition, resources, device, excursions and whole-year-level camps); total adds the building levy per student",
+    "by_year": [
+     {
+      "years": "P-6",
+      "tuition": 2361,
+      "total": 2709
+     }
+    ],
+    "other_compulsory": null,
+    "source": "diocese_schedule",
+    "source_url": "https://s3-ap-southeast-2.amazonaws.com/os-data-2/rok-catholic-edu-au/listingforms/page136/our_lady_of_the_sacred_heart_-_2026_schedule_of_fees.pdf"
+   }
+  },
+  "47792": {
+   "school_name": "Sacred Heart Catholic Primary School",
+   "website": "http://www.shyrok.catholic.edu.au",
+   "status": "found",
+   "checked": "2026-11-20",
+   "fee_pages": [
+    "https://www.shyrok.catholic.edu.au/school-fees-and-assistance"
+   ],
+   "crawl": {
+    "pages": 6,
+    "errors": 0
+   },
+   "fees": {
+    "fee_year": 2026,
+    "basis": "one student, annual all-inclusive education fee (tuition, resources, device, excursions and whole-year-level camps); total adds the building levy per student",
+    "by_year": [
+     {
+      "years": "P-6",
+      "tuition": 3014,
+      "total": 3362
+     }
+    ],
+    "other_compulsory": null,
+    "source": "diocese_schedule",
+    "source_url": "https://s3-ap-southeast-2.amazonaws.com/os-data-2/rok-catholic-edu-au/listingforms/page139/sacred_heart_catholic_primary_school_-_2026_schedule_of_fees.pdf"
+   }
+  },
+  "47793": {
+   "school_name": "Star of the Sea Catholic Primary School",
+   "website": "http://www.staroftheseagladstone.qld.edu.au",
+   "status": "found",
+   "checked": "2026-11-20",
+   "fee_pages": [
+    "https://www.staroftheseagladstone.qld.edu.au/enrolment/school-fees-and-assistance.html",
+    "https://www.staroftheseagladstone.qld.edu.au/enrolment/2027Schedule_Of_Fees_Star_of_the_Sea_Catholic_Primary_School_Gladstone.pdf"
+   ],
+   "crawl": {
+    "pages": 5,
+    "errors": 1
+   },
+   "fees": {
+    "fee_year": 2026,
+    "basis": "one student, annual all-inclusive education fee (tuition, resources, device, excursions and whole-year-level camps); total adds the building levy per student",
+    "by_year": [
+     {
+      "years": "P-6",
+      "tuition": 3163,
+      "total": 3511
+     }
+    ],
+    "other_compulsory": null,
+    "source": "diocese_schedule",
+    "source_url": "https://s3-ap-southeast-2.amazonaws.com/os-data-2/rok-catholic-edu-au/listingforms/page124/star_of_the_sea_catholic_primary_school_-_2026_schedule_of_fees.pdf"
+   }
+  },
+  "47794": {
+   "school_name": "St Anne's Catholic Primary School",
+   "website": "http://sasrok.catholic.edu.au/",
+   "status": "found",
+   "checked": "2026-11-20",
+   "fee_pages": [],
+   "crawl": {
+    "pages": 0,
+    "errors": 1,
+    "home_error": "HTTP 404"
+   },
+   "fees": {
+    "fee_year": 2026,
+    "basis": "one student, annual all-inclusive education fee (tuition, resources, device, excursions and whole-year-level camps); total adds the building levy per student",
+    "by_year": [
+     {
+      "years": "P-6",
+      "tuition": 2521,
+      "total": 2869
+     }
+    ],
+    "other_compulsory": null,
+    "source": "diocese_schedule",
+    "source_url": "https://s3-ap-southeast-2.amazonaws.com/os-data-2/rok-catholic-edu-au/listingforms/page135/st_annes_catholic_primary_school_-_2026_schedule_of_fees.pdf"
+   }
+  },
+  "47795": {
+   "school_name": "St Anthony's Catholic Primary School",
+   "website": "http://sanrrok.catholic.edu.au",
+   "status": "found",
+   "checked": "2026-11-20",
+   "fee_pages": [
+    "https://sanrrok.catholic.edu.au/school_fees_and_assistance.html",
+    "https://sanrrok.catholic.edu.au/files/Schedule_of_Fees_2027.pdf"
+   ],
+   "crawl": {
+    "pages": 6,
+    "errors": 0
+   },
+   "fees": {
+    "fee_year": 2026,
+    "basis": "one student, annual all-inclusive education fee (tuition, resources, device, excursions and whole-year-level camps); total adds the building levy per student",
+    "by_year": [
+     {
+      "years": "P-6",
+      "tuition": 2621,
+      "total": 2969
+     }
+    ],
+    "other_compulsory": null,
+    "source": "diocese_schedule",
+    "source_url": "https://s3-ap-southeast-2.amazonaws.com/os-data-2/rok-catholic-edu-au/listingforms/page129/st_anthonys_catholic_primary_school_-_2026_schedule_of_fees.pdf"
+   }
+  },
+  "47796": {
+   "school_name": "St Francis Xavier Catholic Primary School",
+   "website": "http://www.sfxmrok.catholic.edu.au",
+   "status": "found",
+   "checked": "2026-11-20",
+   "fee_pages": [
+    "https://www.sfxmrok.catholic.edu.au/old---fees-and-finance.html",
+    "https://www.sfxmrok.catholic.edu.au/school-fees.html",
+    "https://www.sfxmrok.catholic.edu.au/uploads/1/2/3/7/123752075/2024_fees__levies.pdf",
+    "https://www.sfxmrok.catholic.edu.au/uploads/1/2/3/7/123752075/school_fees_collection_guidelines.pdf",
+    "https://www.sfxmrok.catholic.edu.au/uploads/1/2/3/7/123752075/circular_2024-086_att_1_-_school_fee_advice_1.pdf"
+   ],
+   "crawl": {
+    "pages": 14,
+    "errors": 0
+   },
+   "fees": {
+    "fee_year": 2026,
+    "basis": "one student, annual all-inclusive education fee (tuition, resources, device, excursions and whole-year-level camps); total adds the building levy per student",
+    "by_year": [
+     {
+      "years": "P-6",
+      "tuition": 3221,
+      "total": 3569
+     }
+    ],
+    "other_compulsory": null,
+    "source": "diocese_schedule",
+    "source_url": "https://s3-ap-southeast-2.amazonaws.com/os-data-2/rok-catholic-edu-au/listingforms/page53/st_francis_xavier_catholic_primary_school_-_2026_schedule_of_fees.pdf"
+   }
+  },
+  "47797": {
+   "school_name": "St John's Catholic Primary School",
+   "website": "http://www.sjwarok.catholic.edu.au",
+   "status": "found",
+   "checked": "2026-11-20",
+   "fee_pages": [
+    "https://sjwarok.catholic.edu.au/enrolments/fees-funding/",
+    "https://sjwarok.catholic.edu.au/wp-content/uploads/2026/02/St-Johns-Catholic-Primary-School-Walkeston-2026-Schedule-of-Fees.pdf",
+    "https://sjwarok.catholic.edu.au/wp-content/uploads/2026/07/2027-Schedule-of-Fees-St-Johns-Catholic-Primary-School-Walkeston.pdf"
+   ],
+   "crawl": {
+    "pages": 7,
+    "errors": 0
+   },
+   "fees": {
+    "fee_year": 2026,
+    "basis": "one student, annual all-inclusive education fee (tuition, resources, device, excursions and whole-year-level camps); total adds the building levy per student",
+    "by_year": [
+     {
+      "years": "P-6",
+      "tuition": 3221,
+      "total": 3569
+     }
+    ],
+    "other_compulsory": null,
+    "source": "diocese_schedule",
+    "source_url": "https://s3-ap-southeast-2.amazonaws.com/os-data-2/rok-catholic-edu-au/listingforms/page138/st_johns_catholic_primary_school_walkeston_-_2026_schedule_of_fees.pdf"
+   }
+  },
+  "47798": {
+   "school_name": "St John the Baptist Catholic Primary School",
+   "website": "http://www.sjgrok.catholic.edu.au",
+   "status": "found",
+   "checked": "2026-11-20",
+   "fee_pages": [
+    "https://www.sjgrok.catholic.edu.au/2025-schedule-of-fees",
+    "https://irp.cdn-website.com/c4b28609/files/uploaded/2026+school+fees.pdf"
+   ],
+   "crawl": {
+    "pages": 4,
+    "errors": 0
+   },
+   "fees": {
+    "fee_year": 2026,
+    "basis": "one student, annual all-inclusive education fee (tuition, resources, device, excursions and whole-year-level camps); total adds the building levy per student",
+    "by_year": [
+     {
+      "years": "P-6",
+      "tuition": 3163,
+      "total": 3511
+     }
+    ],
+    "other_compulsory": null,
+    "source": "diocese_schedule",
+    "source_url": "https://s3-ap-southeast-2.amazonaws.com/os-data-2/rok-catholic-edu-au/listingforms/page123/st_johns_the_baptist_catholic_primary_school_-_2026_schedule_of_fees.pdf"
+   }
+  },
+  "47799": {
+   "school_name": "St Joseph's Catholic Primary School",
+   "website": "http://www.sjbarok.catholic.edu.au",
+   "status": "found",
+   "checked": "2026-11-20",
+   "fee_pages": [
+    "https://www.sjbarok.catholic.edu.au/fees-and-levies"
+   ],
+   "crawl": {
+    "pages": 5,
+    "errors": 0
+   },
+   "fees": {
+    "fee_year": 2026,
+    "basis": "one student, annual all-inclusive education fee (tuition, resources, device, excursions and whole-year-level camps); total adds the building levy per student",
+    "by_year": [
+     {
+      "years": "P-6",
+      "tuition": 2291,
+      "total": 2639
+     }
+    ],
+    "other_compulsory": null,
+    "source": "diocese_schedule",
+    "source_url": "https://s3-ap-southeast-2.amazonaws.com/os-data-2/rok-catholic-edu-au/listingforms/page112/st_josephs_catholic_primary_school_barcaldine_-_2026_schedule_of_fees.pdf"
+   }
+  },
+  "47800": {
+   "school_name": "St Joseph's Catholic Primary School",
+   "website": "https://www.sjbirok.catholic.edu.au/",
+   "status": "found",
+   "checked": "2026-11-20",
+   "fee_pages": [
+    "https://www.sjbirok.catholic.edu.au/school-fees-and-assistance",
+    "https://4e903d51-fdee-40f0-a4c9-79b0823cca37.filesusr.com/ugd/1cadd1_e75be05feec44e4680c13cc80c2e3d2e.pdf"
+   ],
+   "crawl": {
+    "pages": 5,
+    "errors": 0
+   },
+   "fees": {
+    "fee_year": 2026,
+    "basis": "one student, annual all-inclusive education fee (tuition, resources, device, excursions and whole-year-level camps); total adds the building levy per student",
+    "by_year": [
+     {
+      "years": "P-6",
+      "tuition": 2682,
+      "total": 3030
+     }
+    ],
+    "other_compulsory": null,
+    "source": "diocese_schedule",
+    "source_url": "https://s3-ap-southeast-2.amazonaws.com/os-data-2/rok-catholic-edu-au/listingforms/page113/st_josephs_catholic_primary_school_biloela_-_2026_schedule_of_fees.pdf"
+   }
+  },
+  "47801": {
+   "school_name": "St Joseph's Catholic Primary School",
+   "website": "http://sjblrok.catholic.edu.au/",
+   "status": "found",
+   "checked": "2026-11-20",
+   "fee_pages": [
+    "https://www.sjblrok.catholic.edu.au/fee-information"
+   ],
+   "crawl": {
+    "pages": 4,
+    "errors": 0
+   },
+   "fees": {
+    "fee_year": 2026,
+    "basis": "one student, annual all-inclusive education fee (tuition, resources, device, excursions and whole-year-level camps); total adds the building levy per student",
+    "by_year": [
+     {
+      "years": "P-6",
+      "tuition": 1951,
+      "total": 2299
+     }
+    ],
+    "other_compulsory": null,
+    "source": "diocese_schedule",
+    "source_url": "https://s3-ap-southeast-2.amazonaws.com/os-data-2/rok-catholic-edu-au/listingforms/page114/st_josephs_catholic_primary_school_blackall_-_2026_schedule_of_fees.pdf"
+   }
+  },
+  "47802": {
+   "school_name": "St Joseph's Catholic Primary School",
+   "website": "http://www.sjbgrok.catholic.edu.au/",
+   "status": "found",
+   "checked": "2026-11-20",
+   "fee_pages": [
+    "https://sjbgrok.catholic.edu.au/~joseph/fees-charges/",
+    "https://sjbgrok.catholic.edu.au/~joseph/cmsb/uploads/2027-schedule-of-fees-st-joseph-s-catholic-primary-school-bundaberg.pdf"
+   ],
+   "crawl": {
+    "pages": 5,
+    "errors": 0
+   },
+   "fees": {
+    "fee_year": 2026,
+    "basis": "one student, annual all-inclusive education fee (tuition, resources, device, excursions and whole-year-level camps); total adds the building levy per student",
+    "by_year": [
+     {
+      "years": "P-6",
+      "tuition": 2552,
+      "total": 2900
+     }
+    ],
+    "other_compulsory": null,
+    "source": "diocese_schedule",
+    "source_url": "https://s3-ap-southeast-2.amazonaws.com/os-data-2/rok-catholic-edu-au/listingforms/page115/st_josephs_catholic_primary_school_bundaberg_-_2026_schedule_of_fees.pdf"
+   }
+  },
+  "47803": {
+   "school_name": "St Joseph's Catholic Primary School",
+   "website": "http://www.stjosephsclermont.catholic.edu.au/",
+   "status": "found",
+   "checked": "2026-11-20",
+   "fee_pages": [
+    "https://www.stjosephsclermont.catholic.edu.au/schoolfees"
+   ],
+   "crawl": {
+    "pages": 5,
+    "errors": 0
+   },
+   "fees": {
+    "fee_year": 2026,
+    "basis": "one student, annual all-inclusive education fee (tuition, resources, device, excursions and whole-year-level camps); total adds the building levy per student",
+    "by_year": [
+     {
+      "years": "P-6",
+      "tuition": 2910,
+      "total": 3258
+     }
+    ],
+    "other_compulsory": null,
+    "source": "diocese_schedule",
+    "source_url": "https://s3-ap-southeast-2.amazonaws.com/os-data-2/rok-catholic-edu-au/listingforms/page119/st_josephs_catholic_primary_school_clermont_-_2026_schedule_of_fees.pdf"
+   }
+  },
+  "47804": {
+   "school_name": "St Joseph's Catholic Primary School",
+   "website": "http://www.sjnmrok.catholic.edu.au",
+   "status": "found",
+   "checked": "2026-11-20",
+   "fee_pages": [
+    "https://www.sjnmrok.catholic.edu.au/fees-levies"
+   ],
+   "crawl": {
+    "pages": 6,
+    "errors": 0
+   },
+   "fees": {
+    "fee_year": 2026,
+    "basis": "one student, annual all-inclusive education fee (tuition, resources, device, excursions and whole-year-level camps); total adds the building levy per student",
+    "by_year": [
+     {
+      "years": "P-6",
+      "tuition": 3221,
+      "total": 3569
+     }
+    ],
+    "other_compulsory": null,
+    "source": "diocese_schedule",
+    "source_url": "https://s3-ap-southeast-2.amazonaws.com/os-data-2/rok-catholic-edu-au/listingforms/page54/st_josephs_catholic_primary_school_north_mackay_-_2026_schedule_of_fees.pdf"
+   }
+  },
+  "47805": {
+   "school_name": "St Joseph's Catholic Primary School",
+   "website": "http://www.sjparok.catholic.edu.au",
+   "status": "found",
+   "checked": "2026-11-20",
+   "fee_pages": [
+    "https://sjparok.catholic.edu.au/parents/school-fees-and-assistance/",
+    "http://sjparok.catholic.edu.au/wp-content/uploads/2026/07/2027-Schedule-of-Fees-St-Josephs-Catholic-Primary-School-Park-Avenue.pdf",
+    "https://sjparok.catholic.edu.au/wp-content/uploads/2026/07/2027-Schedule-of-Fees-St-Josephs-Catholic-Primary-School-Park-Avenue.pdf"
+   ],
+   "crawl": {
+    "pages": 7,
+    "errors": 0
+   },
+   "fees": {
+    "fee_year": 2026,
+    "basis": "one student, annual all-inclusive education fee (tuition, resources, device, excursions and whole-year-level camps); total adds the building levy per student",
+    "by_year": [
+     {
+      "years": "P-6",
+      "tuition": 2621,
+      "total": 2969
+     }
+    ],
+    "other_compulsory": null,
+    "source": "diocese_schedule",
+    "source_url": "https://s3-ap-southeast-2.amazonaws.com/os-data-2/rok-catholic-edu-au/listingforms/page172/st_josephs_catholic_primary_school_park_avenue_-_2026_schedule_of_fees.pdf"
+   }
+  },
+  "47806": {
+   "school_name": "St Joseph's Catholic Primary School",
+   "website": "http://www.sjwlrok.catholic.edu.au/",
+   "status": "found",
+   "checked": "2026-11-20",
+   "fee_pages": [
+    "https://www.sjwlrok.catholic.edu.au/fees-levies"
+   ],
+   "crawl": {
+    "pages": 5,
+    "errors": 0
+   },
+   "fees": {
+    "fee_year": 2026,
+    "basis": "one student, annual all-inclusive education fee (tuition, resources, device, excursions and whole-year-level camps); total adds the building levy per student",
+    "by_year": [
+     {
+      "years": "P-6",
+      "tuition": 2621,
+      "total": 2969
+     }
+    ],
+    "other_compulsory": null,
+    "source": "diocese_schedule",
+    "source_url": "https://s3-ap-southeast-2.amazonaws.com/os-data-2/rok-catholic-edu-au/listingforms/page130/st_josephs_catholic_primary_school_wandal_-_2026_schedule_of_fees.pdf"
+   }
+  },
+  "47807": {
+   "school_name": "St Mary's Catholic Primary School",
+   "website": "http://www.stmarysbundaberg.qld.edu.au",
+   "status": "found",
+   "checked": "2026-11-20",
+   "fee_pages": [
+    "https://www.stmarysbundaberg.qld.edu.au/enrolment/fees/",
+    "https://www.stmarysbundaberg.qld.edu.au/cmsb/uploads/school-fees-explained.pdf",
+    "https://www.stmarysbundaberg.qld.edu.au/cmsb/uploads/2026-st-mary-s-catholic-primary-school-bundaberg-2026-schedule-of-fees.pdf",
+    "https://www.stmarysbundaberg.qld.edu.au/cmsb/uploads/2027-schedule-of-fees-st-mary-s-catholic-primary-school-bundaberg.pdf"
+   ],
+   "crawl": {
+    "pages": 8,
+    "errors": 0
+   },
+   "fees": {
+    "fee_year": 2026,
+    "basis": "one student, annual all-inclusive education fee (tuition, resources, device, excursions and whole-year-level camps); total adds the building levy per student",
+    "by_year": [
+     {
+      "years": "P-6",
+      "tuition": 2552,
+      "total": 2900
+     }
+    ],
+    "other_compulsory": null,
+    "source": "diocese_schedule",
+    "source_url": "https://s3-ap-southeast-2.amazonaws.com/os-data-2/rok-catholic-edu-au/listingforms/page116/st_marys_catholic_primary_school_bundaberg_-_2026_schedule_of_fees.pdf"
+   }
+  },
+  "47808": {
+   "school_name": "St Mary's Catholic Primary School",
+   "website": "http://www.smnrrok.catholic.edu.au/",
+   "status": "found",
+   "checked": "2026-11-20",
+   "fee_pages": [
+    "http://smnrrok.catholic.edu.au/enrolments/school-fees-and-assistance/",
+    "https://smnrrok.catholic.edu.au/enrolments/school-fees-and-assistance/",
+    "https://smnrrok.catholic.edu.au/wp-content/uploads/2026/07/2027-Schedule-of-Fees-St-Marys-Catholic-Primary-School-North-Rockhampton.pdf"
+   ],
+   "crawl": {
+    "pages": 8,
+    "errors": 0
+   },
+   "fees": {
+    "fee_year": 2026,
+    "basis": "one student, annual all-inclusive education fee (tuition, resources, device, excursions and whole-year-level camps); total adds the building levy per student",
+    "by_year": [
+     {
+      "years": "P-6",
+      "tuition": 2621,
+      "total": 2969
+     }
+    ],
+    "other_compulsory": null,
+    "source": "diocese_schedule",
+    "source_url": "https://s3-ap-southeast-2.amazonaws.com/os-data-2/rok-catholic-edu-au/listingforms/page131/st_marys_catholic_primary_school_north_rockhampton_-_2026_schedule_of_fees.pdf"
+   }
+  },
+  "47809": {
+   "school_name": "St Mary's Catholic Primary School",
+   "website": "http://www.smmrok.catholic.edu.au",
+   "status": "found",
+   "checked": "2026-11-20",
+   "fee_pages": [
+    "https://www.smmrok.catholic.edu.au/school-fees-assistance",
+    "https://smcpssm.schoolzineplus.com/_file/media/6752/st_mary_s_catholic_primary_school_south_mackay_2026_schedule_of_fees.pdf",
+    "https://smcpssm.schoolzineplus.com/_file/media/4317/st_mary_s_mackay_2024_fee_and_levy_schedule.pdf",
+    "https://smmrok.catholic.edu.au/school-fees-assistance"
+   ],
+   "crawl": {
+    "pages": 7,
+    "errors": 0
+   },
+   "fees": {
+    "fee_year": 2026,
+    "basis": "one student, annual all-inclusive education fee (tuition, resources, device, excursions and whole-year-level camps); total adds the building levy per student",
+    "by_year": [
+     {
+      "years": "P-6",
+      "tuition": 3221,
+      "total": 3569
+     }
+    ],
+    "other_compulsory": null,
+    "source": "diocese_schedule",
+    "source_url": "https://s3-ap-southeast-2.amazonaws.com/os-data-2/rok-catholic-edu-au/listingforms/page55/st_marys_catholic_primary_school_south_mackay_-_2026_schedule_of_fees.pdf"
+   }
+  },
+  "47810": {
+   "school_name": "St Patrick's Catholic Primary School",
+   "website": "http://www.stpatricksemerald.com.au",
+   "status": "found",
+   "checked": "2026-11-20",
+   "fee_pages": [
+    "https://www.stpatricksemerald.com.au/schoolfees"
+   ],
+   "crawl": {
+    "pages": 8,
+    "errors": 0
+   },
+   "fees": {
+    "fee_year": 2026,
+    "basis": "one student, annual all-inclusive education fee (tuition, resources, device, excursions and whole-year-level camps); total adds the building levy per student",
+    "by_year": [
+     {
+      "years": "P-6",
+      "tuition": 2826,
+      "total": 3174
+     }
+    ],
+    "other_compulsory": null,
+    "source": "diocese_schedule",
+    "source_url": "https://s3-ap-southeast-2.amazonaws.com/os-data-2/rok-catholic-edu-au/listingforms/page121/st_patricks_catholic_primary_school_emerald_-_2026_schedule_of_fees.pdf"
+   }
+  },
+  "47811": {
+   "school_name": "St Patrick's Catholic Primary School",
+   "website": "https://saintpatricks.qld.edu.au/",
+   "status": "found",
+   "checked": "2026-11-20",
+   "fee_pages": [
+    "https://saintpatricks.qld.edu.au/enrolment/fees-charges/",
+    "https://saintpatricks.qld.edu.au/cmsb/uploads/2027-schedule-of-fees-st-patricks-catholic-primary-school-bundaberg.pdf",
+    "https://saintpatricks.qld.edu.au/cmsb/uploads/st-patrick-s-catholic-primary-school-bundaberg-2026-schedule-of-fees.pdf"
+   ],
+   "crawl": {
+    "pages": 7,
+    "errors": 0
+   },
+   "fees": {
+    "fee_year": 2026,
+    "basis": "one student, annual all-inclusive education fee (tuition, resources, device, excursions and whole-year-level camps); total adds the building levy per student",
+    "by_year": [
+     {
+      "years": "P-6",
+      "tuition": 2552,
+      "total": 2900
+     }
+    ],
+    "other_compulsory": null,
+    "source": "diocese_schedule",
+    "source_url": "https://s3-ap-southeast-2.amazonaws.com/os-data-2/rok-catholic-edu-au/listingforms/page117/st_patricks_catholic_primary_school_bundaberg_-_2026_schedule_of_fees.pdf"
+   }
+  },
+  "47812": {
+   "school_name": "St Peter's Catholic Primary School",
+   "website": "http://www.stpetersrockhampton.catholic.edu.au",
+   "status": "found",
+   "checked": "2026-11-20",
+   "fee_pages": [],
+   "crawl": {
+    "pages": 5,
+    "errors": 0
+   },
+   "fees": {
+    "fee_year": 2026,
+    "basis": "one student, annual all-inclusive education fee (tuition, resources, device, excursions and whole-year-level camps); total adds the building levy per student",
+    "by_year": [
+     {
+      "years": "P-6",
+      "tuition": 2621,
+      "total": 2969
+     }
+    ],
+    "other_compulsory": null,
+    "source": "diocese_schedule",
+    "source_url": "https://s3-ap-southeast-2.amazonaws.com/os-data-2/rok-catholic-edu-au/listingforms/page132/st_peters_catholic_primary_school_-_2026_schedule_of_fees.pdf"
+   }
+  },
+  "47813": {
+   "school_name": "St Therese's Catholic Primary School",
+   "website": "http://stmrok.catholic.edu.au/",
+   "status": "found",
+   "checked": "2026-11-20",
+   "fee_pages": [
+    "https://www.stmrok.catholic.edu.au/fee-information"
+   ],
+   "crawl": {
+    "pages": 5,
+    "errors": 0
+   },
+   "fees": {
+    "fee_year": 2026,
+    "basis": "one student, annual all-inclusive education fee (tuition, resources, device, excursions and whole-year-level camps); total adds the building levy per student",
+    "by_year": [
+     {
+      "years": "P-6",
+      "tuition": 2395,
+      "total": 2743
+     }
+    ],
+    "other_compulsory": null,
+    "source": "diocese_schedule",
+    "source_url": "https://s3-ap-southeast-2.amazonaws.com/os-data-2/rok-catholic-edu-au/listingforms/page128/st_thereses_catholic_primary_school_-_2026_schedule_of_fees.pdf"
+   }
+  },
+  "47814": {
+   "school_name": "St Anthony's Catholic College - Primary Campus",
+   "website": "http://www.sacc.catholic.edu.au",
+   "status": "campus",
+   "checked": "2026-11-20",
+   "parent_acara_sml_id": 40931,
+   "parent_name": "St Anthony's Catholic College - Secondary Campus",
+   "website_source": "parent_school"
+  },
+  "47815": {
+   "school_name": "St Kieran's Catholic School",
+   "website": "http://www.skmtsv.catholic.edu.au",
+   "status": "fetched",
+   "checked": "2026-11-20",
+   "fee_pages": [
+    "https://www.skmtsv.catholic.edu.au/enrolment/school-fees/",
+    "https://os-data-2.s3-ap-southeast-2.amazonaws.com/skmtsv2/bundle11/school_fees_2025.pdf",
+    "https://os-data-2.s3-ap-southeast-2.amazonaws.com/skmtsv2/bundle11/school_fees_2026.pdf"
+   ],
+   "crawl": {
+    "pages": 9,
+    "errors": 0
+   }
+  },
+  "47817": {
+   "school_name": "Holy Spirit Catholic School",
+   "website": "http://www.hsstsv.catholic.edu.au",
+   "status": "fetched",
+   "checked": "2026-11-20",
+   "fee_pages": [
+    "https://www.hsstsv.catholic.edu.au/enrolment/school-fees/",
+    "https://os-data-2.s3-ap-southeast-2.amazonaws.com/hsstsvv2/bundle9/Copy%20of%20Holy%20Spirit_2027%20School%20Fees%20(1)%20(3).pdf",
+    "https://os-data-2.s3-ap-southeast-2.amazonaws.com/hsstsvv2/bundle9/holy_spirit_school_fees_payment_options_1.pdf"
+   ],
+   "crawl": {
+    "pages": 9,
+    "errors": 1
+   }
+  },
+  "47818": {
+   "school_name": "Our Lady of Lourdes Catholic School",
+   "website": "http://www.olltsv.catholic.edu.au",
+   "status": "fetched",
+   "checked": "2026-11-20",
+   "fee_pages": [
+    "https://www.olltsv.catholic.edu.au/enrolment/school-fees/",
+    "https://os-data-2.s3-ap-southeast-2.amazonaws.com/olltsv2/bundle6/olol_2026_school_fees.pdf"
+   ],
+   "crawl": {
+    "pages": 10,
+    "errors": 0
+   }
   },
   "47819": {
    "school_name": "St Catherine's Catholic College The Whitsundays",
@@ -47594,6 +50127,62 @@
     "source_url": "https://os-schools.s3-ap-southeast-2.amazonaws.com/prspne/bundle45/2026%20FEE%20SCHEDULE.pdf"
    }
   },
+  "47820": {
+   "school_name": "St Colman's Catholic School",
+   "website": "http://www.scshh.catholic.edu.au",
+   "status": "fetched",
+   "checked": "2026-11-20",
+   "fee_pages": [
+    "https://www.scshh.catholic.edu.au/enrolment/school-fees/",
+    "https://os-data-2.s3-ap-southeast-2.amazonaws.com/scshh2/bundle4/St%20Colmans_2026%20School%20Fees%20(1).pdf"
+   ],
+   "crawl": {
+    "pages": 8,
+    "errors": 0
+   }
+  },
+  "47821": {
+   "school_name": "St Francis Catholic School",
+   "website": "http://www.sfsh.catholic.edu.au",
+   "status": "fetched",
+   "checked": "2026-11-20",
+   "fee_pages": [
+    "https://www.sfsh.catholic.edu.au/enrolment/school-fees/",
+    "https://os-data-2.s3-ap-southeast-2.amazonaws.com/sfshv2/bundle5/2023_school_fees.pdf"
+   ],
+   "crawl": {
+    "pages": 8,
+    "errors": 0
+   }
+  },
+  "47822": {
+   "school_name": "St Francis Catholic School",
+   "website": "http://www.sfatsv.catholic.edu.au",
+   "status": "fetched",
+   "checked": "2026-11-20",
+   "fee_pages": [
+    "https://www.sfatsv.catholic.edu.au/enrolment/school-fees/",
+    "https://os-data-2.s3-ap-southeast-2.amazonaws.com/sfatsv2/bundle7/st_francis_ayr_2026_school_fees.pdf"
+   ],
+   "crawl": {
+    "pages": 8,
+    "errors": 0
+   }
+  },
+  "47823": {
+   "school_name": "St John Bosco Catholic School",
+   "website": "http://www.sjbtsv.catholic.edu.au",
+   "status": "fetched",
+   "checked": "2026-11-20",
+   "fee_pages": [
+    "https://www.sjbtsv.catholic.edu.au/enrolment/school-fees/",
+    "https://os-data-2.s3-ap-southeast-2.amazonaws.com/sjbtsvv2/bundle11/fee_schedule_2026.pdf"
+   ],
+   "crawl": {
+    "pages": 8,
+    "errors": 0
+   }
+  },
   "47824": {
    "school_name": "St Joseph's Catholic School",
    "website": "http://www.sjctsv.catholic.edu.au",
@@ -47617,16 +50206,349 @@
     "source_url": "https://os-data-2.s3-ap-southeast-2.amazonaws.com/sjctsvv2/bundle11/schedule_of_fees_of_charges_-_2025.pdf"
    }
   },
+  "47825": {
+   "school_name": "St Joseph's Catholic School",
+   "website": "http://www.sjmbtsv.catholic.edu.au",
+   "status": "fetched",
+   "checked": "2026-11-20",
+   "fee_pages": [
+    "https://www.sjmbtsv.catholic.edu.au/enrolment/fee-schedule/",
+    "https://os-data-2.s3-ap-southeast-2.amazonaws.com/sjmbtsv2/bundle9/school_fees_2026.pdf"
+   ],
+   "crawl": {
+    "pages": 8,
+    "errors": 0
+   }
+  },
+  "47826": {
+   "school_name": "St Joseph's Catholic School",
+   "website": "http://www.sjmtsv.catholic.edu.au",
+   "status": "fetched",
+   "checked": "2026-11-20",
+   "fee_pages": [
+    "https://www.sjmtsv.catholic.edu.au/enrolment/fee-schedule/",
+    "https://os-data-2.s3-ap-southeast-2.amazonaws.com/sjmtsvv2/bundle22/St%20Joseph's%20Catholic%20School,%20Mount%20Isa%20%202026%20School%20Fees%20(3).pdf"
+   ],
+   "crawl": {
+    "pages": 8,
+    "errors": 0
+   }
+  },
+  "47827": {
+   "school_name": "St Joseph's Catholic School, The Strand",
+   "website": "http://www.sjnwtsv.catholic.edu.au",
+   "status": "fetched",
+   "checked": "2026-11-20",
+   "fee_pages": [
+    "https://www.sjnwtsv.catholic.edu.au/enrolment/school-fees/",
+    "https://os-data-2.s3-ap-southeast-2.amazonaws.com/sjnwtsvv2/bundle8/school_fee_payment_options_2026.pdf",
+    "https://os-data-2.s3-ap-southeast-2.amazonaws.com/sjnwtsvv2/bundle8/2027%20Full%20Fees.pdf",
+    "https://os-data-2.s3-ap-southeast-2.amazonaws.com/sjnwtsvv2/bundle8/St%20Joseph's%20The%20Strand_Health%20Care%20Card%20School%20Fees.pdf"
+   ],
+   "crawl": {
+    "pages": 12,
+    "errors": 0
+   }
+  },
+  "47828": {
+   "school_name": "St Mary's Catholic School",
+   "website": "http://www.smbtsv.catholic.edu.au",
+   "status": "fetched",
+   "checked": "2026-11-20",
+   "fee_pages": [],
+   "crawl": {
+    "pages": 7,
+    "errors": 0
+   }
+  },
+  "47829": {
+   "school_name": "St Patrick's Catholic School",
+   "website": "http://www.spwtsv.catholic.edu.au",
+   "status": "fetched",
+   "checked": "2026-11-20",
+   "fee_pages": [
+    "https://www.spwtsv.catholic.edu.au/enrolment/school-fees/",
+    "https://os-data-2.s3-ap-southeast-2.amazonaws.com/spwtsv2/bundle7/st__patricks_winton_2026_school_fees.pdf"
+   ],
+   "crawl": {
+    "pages": 8,
+    "errors": 0
+   }
+  },
+  "47830": {
+   "school_name": "St Peter's Catholic School",
+   "website": "http://www.sptsv.catholic.edu.au",
+   "status": "fetched",
+   "checked": "2026-11-20",
+   "fee_pages": [
+    "https://os-data-2.s3-ap-southeast-2.amazonaws.com/sptsvv2/bundle3/202%20School%20Fees%202027%20-%20Halifax.pdf"
+   ],
+   "crawl": {
+    "pages": 7,
+    "errors": 0
+   }
+  },
+  "47831": {
+   "school_name": "St Michael's Catholic School",
+   "website": "http://www.smptsv.catholic.edu.au",
+   "status": "fetched",
+   "checked": "2026-11-20",
+   "fee_pages": [],
+   "crawl": {
+    "pages": 4,
+    "errors": 0
+   }
+  },
+  "47832": {
+   "school_name": "Good Counsel Primary School",
+   "website": "http://www.gcps.qld.edu.au",
+   "status": "fetched",
+   "checked": "2026-11-20",
+   "fee_pages": [
+    "https://www.gcps.qld.edu.au/enrolling/fees/",
+    "https://www.gcps.qld.edu.au/wp-content/uploads/2025/08/Good-Counsel-Primary-School-School-Fees-Levy-Schedule-2026.pdf",
+    "https://www.gcps.qld.edu.au/wp-content/uploads/2026/08/Good-Counsel-Primary-School-School-Fees-Levy-Schedule-2027.pdf"
+   ],
+   "crawl": {
+    "pages": 9,
+    "errors": 0
+   }
+  },
+  "47833": {
+   "school_name": "Mother of Good Counsel School",
+   "website": "http://www.mogc.qld.edu.au",
+   "status": "fetched",
+   "checked": "2026-11-20",
+   "fee_pages": [
+    "https://www.mogc.qld.edu.au/enrolling/fees-levies/",
+    "https://www.mogc.qld.edu.au/wp-content/uploads/2025/04/CEDC-HCC-Tuition-Fee-Discount-Scheme-Form.pdf",
+    "https://www.mogc.qld.edu.au/wp-content/uploads/2024/05/2024-MOGC-School-Fees-Levies-Schedule.pdf",
+    "https://www.mogc.qld.edu.au/wp-content/uploads/2024/05/2024-Catholic-School-Fee-Discounts.pdf"
+   ],
+   "crawl": {
+    "pages": 12,
+    "errors": 1
+   }
+  },
+  "47834": {
+   "school_name": "Our Lady Help of Christians School",
+   "website": "http://www.olhoc.qld.edu.au",
+   "status": "fetched",
+   "checked": "2026-11-20",
+   "fee_pages": [
+    "https://www.olhoc.qld.edu.au/our-community/enrolment-information/fees-discounts/"
+   ],
+   "crawl": {
+    "pages": 5,
+    "errors": 0
+   }
+  },
+  "47835": {
+   "school_name": "Our Lady of the Sacred Heart School Waiben",
+   "website": "http://www.olsh.qld.edu.au",
+   "status": "fetched",
+   "checked": "2026-11-20",
+   "fee_pages": [],
+   "crawl": {
+    "pages": 6,
+    "errors": 0
+   }
+  },
+  "47836": {
+   "school_name": "St Anthony's School",
+   "website": "http://www.sta.qld.edu.au",
+   "status": "fetched",
+   "checked": "2026-11-20",
+   "fee_pages": [
+    "https://www.sta.qld.edu.au/enrolling/school-fees-levies/"
+   ],
+   "crawl": {
+    "pages": 6,
+    "errors": 0
+   }
+  },
+  "47837": {
+   "school_name": "St Augustine's School",
+   "website": "http://www.staugs.qld.edu.au",
+   "status": "fetched",
+   "checked": "2026-11-20",
+   "fee_pages": [
+    "https://www.staugs.qld.edu.au/enrolling/fees-levies-discounts/",
+    "https://www.staugs.qld.edu.au/wp-content/uploads/2018/07/fees-cartoon.jpg"
+   ],
+   "crawl": {
+    "pages": 10,
+    "errors": 2
+   }
+  },
+  "47838": {
+   "school_name": "St Clare's School",
+   "website": "http://www.stclares.qld.edu.au",
+   "status": "fetched",
+   "checked": "2026-11-20",
+   "fee_pages": [
+    "https://www.stclares.qld.edu.au/enrolling/fees-levies/"
+   ],
+   "crawl": {
+    "pages": 6,
+    "errors": 0
+   }
+  },
+  "47839": {
+   "school_name": "St Francis Xavier's School",
+   "website": "http://www.xaviercairns.qld.edu.au",
+   "status": "fetched",
+   "checked": "2026-11-20",
+   "fee_pages": [
+    "https://www.xaviercairns.qld.edu.au/enrolling/fees-levies/",
+    "https://www.xaviercairns.qld.edu.au/wp-content/uploads/2025/11/HCC-Tuition-Fee-Discount-Scheme-Form.pdf",
+    "https://www.xaviercairns.qld.edu.au/wp-content/uploads/2026/11/2027-Schedule-of-School-Fees-1.pdf"
+   ],
+   "crawl": {
+    "pages": 10,
+    "errors": 0
+   }
+  },
+  "47840": {
+   "school_name": "St John's School",
+   "website": "http://www.stjohnssilkwood.qld.edu.au/",
+   "status": "fetched",
+   "checked": "2026-11-20",
+   "fee_pages": [
+    "https://www.stjohnssilkwood.qld.edu.au/enrolling/fees-levies-discounts/"
+   ],
+   "crawl": {
+    "pages": 8,
+    "errors": 0
+   }
+  },
+  "47841": {
+   "school_name": "St Joseph's School",
+   "website": "http://www.stjoeys.qld.edu.au/",
+   "status": "fetched",
+   "checked": "2026-11-20",
+   "fee_pages": [
+    "https://www.stjoeys.qld.edu.au/fees-levies/",
+    "https://www.cns.catholic.edu.au/wp-content/uploads/2023/04/Fees-and-Levies-Hardship-Concession-Form.pdf"
+   ],
+   "crawl": {
+    "pages": 7,
+    "errors": 1
+   }
+  },
+  "47842": {
+   "school_name": "St Joseph's School",
+   "website": "http://www.stjosephscairns.qld.edu.au",
+   "status": "fetched",
+   "checked": "2026-11-20",
+   "fee_pages": [
+    "https://www.stjosephscairns.qld.edu.au/enrolling/fees-levies-discounts/",
+    "https://www.stjosephscairns.qld.edu.au/wp-content/uploads/2026/11/St-Josephs-Fees-Levies-Schedule-2027.pdf"
+   ],
+   "crawl": {
+    "pages": 8,
+    "errors": 3
+   }
+  },
+  "47843": {
+   "school_name": "St Michael's School",
+   "website": "http://www.stmichael.qld.edu.au",
+   "status": "fetched",
+   "checked": "2026-11-20",
+   "fee_pages": [
+    "https://www.stmichael.qld.edu.au/enrolling/fees-and-levies/"
+   ],
+   "crawl": {
+    "pages": 9,
+    "errors": 0
+   }
+  },
+  "47844": {
+   "school_name": "St Rita's School",
+   "website": "https://www.stritasbabinda.qld.edu.au/",
+   "status": "fetched",
+   "checked": "2026-11-20",
+   "fee_pages": [
+    "https://www.stritasbabinda.qld.edu.au/enrolling/fees/",
+    "https://www.stritasbabinda.qld.edu.au/wp-content/uploads/2021/11/St-Ritas-Babinda-fees-reduction-flyer-2022.pdf"
+   ],
+   "crawl": {
+    "pages": 7,
+    "errors": 0
+   }
+  },
+  "47845": {
+   "school_name": "St Rita's School",
+   "website": "http://www.stritascps.qld.edu.au",
+   "status": "fetched",
+   "checked": "2026-11-20",
+   "fee_pages": [
+    "https://www.stritascps.qld.edu.au/enrolment/fees-levies/",
+    "https://www.stritascps.qld.edu.au/wp-content/uploads/2013/11/St-Ritas-Parent-Information-Handbook-with-Fees.pdf"
+   ],
+   "crawl": {
+    "pages": 8,
+    "errors": 4
+   }
+  },
+  "47846": {
+   "school_name": "St Teresa's School",
+   "website": "http://www.stteresas.qld.edu.au/",
+   "status": "fetched",
+   "checked": "2026-11-20",
+   "fee_pages": [
+    "https://stteresas.qld.edu.au/explore/enrolments/enrolment/fee-information/",
+    "https://stteresas.qld.edu.au/wp-content/uploads/2026/01/St-Teresas-Fee-Reduction-Flyer_4pdf.pdf"
+   ],
+   "crawl": {
+    "pages": 11,
+    "errors": 1
+   }
+  },
+  "47847": {
+   "school_name": "St Therese's School",
+   "website": "http://www.stthereses.qld.edu.au/",
+   "status": "fetched",
+   "checked": "2026-11-20",
+   "fee_pages": [
+    "https://www.stthereses.qld.edu.au/enrolling/fees-levies/",
+    "https://www.stthereses.qld.edu.au/wp-content/uploads/2026/09/2027-Fees-Levies_FINAL.pdf",
+    "https://www.cns.catholic.edu.au/wp-content/uploads/2026/07/Catholic-School-Fee-Discounts-general.pdf",
+    "https://www.cns.catholic.edu.au/wp-content/uploads/2026/03/HCC-Tuition-Fee-Discount-Scheme-Form-1.pdf"
+   ],
+   "crawl": {
+    "pages": 14,
+    "errors": 0
+   }
+  },
+  "47848": {
+   "school_name": "St Thomas' School",
+   "website": "https://www.stthomasmareeba.qld.edu.au/",
+   "status": "fetched",
+   "checked": "2026-11-20",
+   "fee_pages": [
+    "https://www.stthomasmareeba.qld.edu.au/parent-information/school-fees-levies/",
+    "https://www.stthomasmareeba.qld.edu.au/wp-content/uploads/2026/01/2026-Fee-Schedule-for-St-Thomas-of-Villanova-School.pdf",
+    "https://www.stthomasmareeba.qld.edu.au/wp-content/uploads/2021/02/Discount-Fees-Information.pdf",
+    "https://www.stthomasmareeba.qld.edu.au/wp-content/uploads/2020/05/HCC-Tuition-Fee-Discount-Scheme-Form.pdf",
+    "https://www.stthomasmareeba.qld.edu.au/wp-content/uploads/2020/05/Fees-and-Levies-Hardship-Concession-Form.pdf"
+   ],
+   "crawl": {
+    "pages": 9,
+    "errors": 0
+   }
+  },
   "47849": {
    "school_name": "Iona College",
    "website": "https://www.iona.qld.edu.au/",
-   "status": "not_found",
-   "checked": "2026-11-12",
+   "status": "fetched",
+   "checked": "2026-11-20",
    "crawl": {
     "pages": 1,
     "errors": 0
    },
-   "note": "Only the home page could be fetched."
+   "note": "Only the home page could be fetched.",
+   "fee_pages": []
   },
   "47851": {
    "school_name": "Padua College",
@@ -47838,8 +50760,8 @@
   "47858": {
    "school_name": "Villanova College",
    "website": "http://www.vnc.qld.edu.au/",
-   "status": "not_found",
-   "checked": "2026-11-12",
+   "status": "fetched",
+   "checked": "2026-11-20",
    "crawl": {
     "pages": 15,
     "errors": 0
@@ -48070,13 +50992,18 @@
   "47868": {
    "school_name": "St John Fisher College",
    "website": "http://www.sjfc.qld.edu.au",
-   "status": "not_found",
-   "checked": "2026-11-12",
+   "status": "fetched",
+   "checked": "2026-11-20",
    "crawl": {
-    "pages": 1,
-    "errors": 0
+    "pages": 12,
+    "errors": 1
    },
-   "note": "Only the home page could be fetched."
+   "note": "Only the home page could be fetched.",
+   "fee_pages": [
+    "https://www.stjohnfishercollege.qld.edu.au/enrolments/fees-and-levies",
+    "https://www.stjohnfishercollege.qld.edu.au/ArticleDocuments/1605/2026%20Fees%20Schedule%20-%20St%20John%20Fisher%20College.pdf",
+    "https://www.stjohnfishercollege.qld.edu.au/ArticleDocuments/1650/2027%20Fees%20Schedule.pdf.aspx"
+   ]
   },
   "47869": {
    "school_name": "Mary MacKillop College",
@@ -48302,13 +51229,16 @@
   "47878": {
    "school_name": "St Edmund's College",
    "website": "http://www.sec.qld.edu.au",
-   "status": "not_found",
-   "checked": "2026-11-12",
+   "status": "fetched",
+   "checked": "2026-11-20",
    "crawl": {
-    "pages": 6,
+    "pages": 7,
     "errors": 0
    },
-   "note": "No fee page among the pages fetched."
+   "note": "No fee page among the pages fetched.",
+   "fee_pages": [
+    "https://www.sec.qld.edu.au/enrolments/college-fees"
+   ]
   },
   "47879": {
    "school_name": "St Joseph's Nudgee College",
@@ -48637,6 +51567,20 @@
     "source_url": "https://www.marymount.qld.edu.au/ArticleDocuments/1878/2027%20Schedule%20of%20Fees%20Levies%20and%20Charges.pdf.aspx"
    }
   },
+  "47890": {
+   "school_name": "St Joseph's Primary School",
+   "website": "http://www.stjosephsnambour.qld.edu.au",
+   "status": "fetched",
+   "checked": "2026-11-20",
+   "fee_pages": [
+    "https://www.stjosephsnambour.qld.edu.au/enrol/fee-information",
+    "https://www.stjosephsnambour.qld.edu.au/ArticleDocuments/886/2026%20Fee%20Schedule%20UPDATED.pdf.aspx"
+   ],
+   "crawl": {
+    "pages": 14,
+    "errors": 0
+   }
+  },
   "47891": {
    "school_name": "St Mary's College",
    "website": "http://www.smcm.qld.edu.au",
@@ -48752,12 +51696,13 @@
    "school_name": "Downlands College",
    "website": "http://www.downlands.qld.edu.au/",
    "status": "blocked",
-   "checked": "2026-11-12",
+   "checked": "2026-11-20",
    "crawl": {
     "pages": 0,
     "errors": 1,
     "home_error": "HTTP 403"
-   }
+   },
+   "fee_pages": []
   },
   "47896": {
    "school_name": "St Joseph's School",
@@ -48792,6 +51737,31 @@
     ],
     "source": "school_website",
     "source_url": "https://stjostanthorpe.schoolzineplus.com/_file/media/14896/st_joseph_s_school_schedule_of_fees_2026.pdf"
+   }
+  },
+  "47897": {
+   "school_name": "St Francis Catholic Primary School",
+   "website": "http://www.stfrancis.qld.edu.au/",
+   "status": "found",
+   "checked": "2026-11-20",
+   "fee_pages": [],
+   "crawl": {
+    "pages": 4,
+    "errors": 0
+   },
+   "fees": {
+    "fee_year": 2026,
+    "basis": "one student, annual all-inclusive education fee (tuition, resources, device, excursions and whole-year-level camps); total adds the building levy per student",
+    "by_year": [
+     {
+      "years": "P-6",
+      "tuition": 2629,
+      "total": 2977
+     }
+    ],
+    "other_compulsory": null,
+    "source": "diocese_schedule",
+    "source_url": "https://s3-ap-southeast-2.amazonaws.com/os-data-2/rok-catholic-edu-au/listingforms/page137/st_francis_catholic_primary_school_-_2026_schedule_of_fees.pdf"
    }
   },
   "47898": {
@@ -48855,16 +51825,17 @@
    },
    "fees": {
     "fee_year": 2026,
-    "basis": "total annual fees per student, one student in Catholic schools (education fee plus building levy)",
+    "basis": "one student, annual all-inclusive education fee (tuition, resources, device, excursions and whole-year-level camps); total adds the building levy per student",
     "by_year": [
      {
-      "years": "all years",
+      "years": "7-12",
       "tuition": 5593,
       "total": 6066
      }
     ],
-    "source": "school_website",
-    "source_url": "https://www.shalomcollege.com/cmsb/uploads/shalom-college-bundaberg-2026-schedule-of-fees.pdf"
+    "other_compulsory": null,
+    "source": "diocese_schedule",
+    "source_url": "https://s3-ap-southeast-2.amazonaws.com/os-data-2/rok-catholic-edu-au/listingforms/page118/shalom_college_bundaberg_-_2026_schedule_of_fees.pdf"
    }
   },
   "47901": {
@@ -48877,18 +51848,35 @@
     "errors": 0
    },
    "fees": {
-    "fee_year": 2027,
-    "basis": "total annual fees per student (all-inclusive education fee plus building levy)",
+    "fee_year": 2026,
+    "basis": "one student, annual all-inclusive education fee (tuition, resources, device, excursions and whole-year-level camps); total adds the building levy per student",
     "by_year": [
      {
-      "years": "all years",
-      "tuition": 6327,
-      "total": 6824
+      "years": "7-12",
+      "tuition": 5847,
+      "total": 6320
      }
     ],
-    "source": "school_website",
-    "source_url": "https://emmaus.qld.edu.au/wp-content/uploads/2027-Schedule-of-Fees-Emmaus-College-North-Rockhampton.pdf"
-   }
+    "other_compulsory": null,
+    "source": "diocese_schedule",
+    "source_url": "https://s3-ap-southeast-2.amazonaws.com/os-data-2/rok-catholic-edu-au/listingforms/page133/emmaus_college_-_2026_schedule_of_fees.pdf"
+   },
+   "fees_history": [
+    {
+     "fee_year": 2027,
+     "basis": "total annual fees per student (all-inclusive education fee plus building levy)",
+     "by_year": [
+      {
+       "years": "all years",
+       "tuition": 6327,
+       "total": 6824
+      }
+     ],
+     "source": "school_website",
+     "source_url": "https://emmaus.qld.edu.au/wp-content/uploads/2027-Schedule-of-Fees-Emmaus-College-North-Rockhampton.pdf",
+     "superseded": "2026-11-20"
+    }
+   ]
   },
   "47902": {
    "school_name": "Chanel College",
@@ -48900,18 +51888,35 @@
     "errors": 1
    },
    "fees": {
-    "fee_year": 2027,
-    "basis": "total annual fees per student (all-inclusive education fee plus building levy)",
+    "fee_year": 2026,
+    "basis": "one student, annual all-inclusive education fee (tuition, resources, device, excursions and whole-year-level camps); total adds the building levy per student",
     "by_year": [
      {
-      "years": "all years",
-      "tuition": 7904,
-      "total": 8401
+      "years": "7-12",
+      "tuition": 7273,
+      "total": 7746
      }
     ],
-    "source": "school_website",
-    "source_url": "https://chanelcollege.qld.edu.au/wp-content/uploads/2026/07/2027-Schedule-of-Fees-Chanel-College-Gladstone.pdf"
-   }
+    "other_compulsory": null,
+    "source": "diocese_schedule",
+    "source_url": "https://s3-ap-southeast-2.amazonaws.com/os-data-2/rok-catholic-edu-au/listingforms/page125/chanel_college_gladstone_-_2026_schedule_of_fees.pdf"
+   },
+   "fees_history": [
+    {
+     "fee_year": 2027,
+     "basis": "total annual fees per student (all-inclusive education fee plus building levy)",
+     "by_year": [
+      {
+       "years": "all years",
+       "tuition": 7904,
+       "total": 8401
+      }
+     ],
+     "source": "school_website",
+     "source_url": "https://chanelcollege.qld.edu.au/wp-content/uploads/2026/07/2027-Schedule-of-Fees-Chanel-College-Gladstone.pdf",
+     "superseded": "2026-11-20"
+    }
+   ]
   },
   "47903": {
    "school_name": "St Patrick's College - Mercy Campus",
@@ -48922,16 +51927,51 @@
    "parent_name": "St Patrick's College",
    "website_source": "parent_school"
   },
+  "47904": {
+   "school_name": "Our Lady's Catholic Primary School",
+   "website": "http://ollrok.catholic.edu.au/",
+   "status": "found",
+   "checked": "2026-11-20",
+   "fee_pages": [
+    "https://ollrok.catholic.edu.au/fee-information",
+    "https://ollrok.schoolzineplus.com/_file/media/2554/school_fees_explained_flyer.pdf",
+    "https://ollrok.catholic.edu.au/_file/media/2554/school_fees_explained_flyer.pdf",
+    "https://ollrok.schoolzineplus.com/_file/media/2553/school_fee_accounts_flyer.pdf",
+    "https://ollrok.catholic.edu.au/_file/media/2553/school_fee_accounts_flyer.pdf"
+   ],
+   "crawl": {
+    "pages": 10,
+    "errors": 0
+   },
+   "fees": {
+    "fee_year": 2026,
+    "basis": "one student, annual all-inclusive education fee (tuition, resources, device, excursions and whole-year-level camps); total adds the building levy per student",
+    "by_year": [
+     {
+      "years": "P-6",
+      "tuition": 2238,
+      "total": 2586
+     }
+    ],
+    "other_compulsory": null,
+    "source": "diocese_schedule",
+    "source_url": "https://s3-ap-southeast-2.amazonaws.com/os-data-2/rok-catholic-edu-au/listingforms/page126/our_ladys_catholic_primary_school_longreach_-_2026_schedule_of_fees.pdf"
+   }
+  },
   "47905": {
    "school_name": "St Brendan's College",
    "website": "http://www.sbc.qld.edu.au",
-   "status": "not_found",
-   "checked": "2026-11-12",
+   "status": "fetched",
+   "checked": "2026-11-20",
    "crawl": {
-    "pages": 1,
+    "pages": 16,
     "errors": 0
    },
-   "note": "Only the home page could be fetched."
+   "note": "Only the home page could be fetched.",
+   "fee_pages": [
+    "https://www.stbrendans.qld.edu.au/enrolment/fees",
+    "https://media.digistormhosting.com.au/sbc-au-qld-222-website-2023/content/Parent-Documents/2026-Schedule-of-Fees.pdf"
+   ]
   },
   "47906": {
    "school_name": "St Ursula's College",
@@ -48987,10 +52027,10 @@
   "47908": {
    "school_name": "Burdekin Catholic High School",
    "website": "http://www.bchs.catholic.edu.au",
-   "status": "not_found",
-   "checked": "2026-11-12",
+   "status": "fetched",
+   "checked": "2026-11-20",
    "crawl": {
-    "pages": 10,
+    "pages": 11,
     "errors": 0
    },
    "note": "The newest fee structure published is for 2024.",
@@ -49012,6 +52052,20 @@
    "fee_pages": [
     "https://www.ipc.qld.edu.au/enrol/fees/"
    ]
+  },
+  "47910": {
+   "school_name": "St Thomas More Primary School",
+   "website": "http://www.stmsunshine.qld.edu.au",
+   "status": "fetched",
+   "checked": "2026-11-20",
+   "fee_pages": [
+    "https://www.stmsunshine.qld.edu.au/enrol/school-fees",
+    "https://www.stmsunshine.qld.edu.au/ArticleDocuments/916/Schedule%20of%20fees%202026.pdf"
+   ],
+   "crawl": {
+    "pages": 13,
+    "errors": 0
+   }
   },
   "47911": {
    "school_name": "St Margaret Mary's College",
@@ -49097,27 +52151,71 @@
   "47914": {
    "school_name": "St Teresa's College",
    "website": "http://www.abergowrie.catholic.edu.au",
-   "status": "not_found",
-   "checked": "2026-11-12",
+   "status": "fetched",
+   "checked": "2026-11-20",
    "crawl": {
-    "pages": 1,
+    "pages": 8,
     "errors": 0
    },
-   "note": "Only the home page could be fetched."
+   "note": "Only the home page could be fetched.",
+   "fee_pages": [
+    "https://www.abergowrie.qld.edu.au/enrolment/fees-and-assistance/",
+    "https://d3mb1hepqvcfhn.cloudfront.net/abergowrie/documents/school_fees_2027.pdf"
+   ]
+  },
+  "47915": {
+   "school_name": "St Paul's Catholic Primary School",
+   "website": "http://spgrrok.catholic.edu.au/",
+   "status": "found",
+   "checked": "2026-11-20",
+   "fee_pages": [
+    "https://www.spgrrok.catholic.edu.au/school-fees-assistance"
+   ],
+   "crawl": {
+    "pages": 4,
+    "errors": 0
+   },
+   "fees": {
+    "fee_year": 2026,
+    "basis": "one student, annual all-inclusive education fee (tuition, resources, device, excursions and whole-year-level camps); total adds the building levy per student",
+    "by_year": [
+     {
+      "years": "P-6",
+      "tuition": 2621,
+      "total": 2969
+     }
+    ],
+    "other_compulsory": null,
+    "source": "diocese_schedule",
+    "source_url": "https://s3-ap-southeast-2.amazonaws.com/os-data-2/rok-catholic-edu-au/listingforms/page127/st_pauls_catholic_primary_school_-_2026_schedule_of_fees.pdf"
+   }
   },
   "47916": {
    "school_name": "The Cathedral College",
    "website": "http://www.tccr.com.au/",
-   "status": "not_extracted",
+   "status": "found",
    "checked": "2026-11-12",
    "crawl": {
     "pages": 5,
     "errors": 0
    },
-   "note": "School fees and assistance page text holds no figures.",
    "fee_pages": [
     "https://www.tccr.com.au/school-fees-and-assistance"
-   ]
+   ],
+   "fees": {
+    "fee_year": 2026,
+    "basis": "one student, annual all-inclusive education fee (tuition, resources, device, excursions and whole-year-level camps); total adds the building levy per student",
+    "by_year": [
+     {
+      "years": "7-12",
+      "tuition": 5847,
+      "total": 6320
+     }
+    ],
+    "other_compulsory": null,
+    "source": "diocese_schedule",
+    "source_url": "https://s3-ap-southeast-2.amazonaws.com/os-data-2/rok-catholic-edu-au/listingforms/page134/the_cathedral_college_-_2026_schedule_of_fees.pdf"
+   }
   },
   "47917": {
    "school_name": "Good Counsel College",
@@ -49198,13 +52296,16 @@
   "47920": {
    "school_name": "St Monica's College",
    "website": "https://www.stmonicas.qld.edu.au/",
-   "status": "not_found",
-   "checked": "2026-11-12",
+   "status": "fetched",
+   "checked": "2026-11-20",
    "crawl": {
-    "pages": 2,
+    "pages": 4,
     "errors": 0
    },
-   "note": "Only two pages reachable; no fee page."
+   "note": "Only two pages reachable; no fee page.",
+   "fee_pages": [
+    "https://www.stmonicas.qld.edu.au/2019/05/22/fees-and-payments/"
+   ]
   },
   "47921": {
    "school_name": "Unity College",
@@ -49221,6 +52322,36 @@
     "https://www.uc.qld.edu.au/enrolments/fees-and-payments",
     "https://www.uc.qld.edu.au/ArticleDocuments/562/2027%20College%20Fee%20Schedule%20PDF%20final.pdf.aspx"
    ]
+  },
+  "47922": {
+   "school_name": "St Brigid's Catholic Primary School",
+   "website": "http://www.sb.qld.edu.au",
+   "status": "fetched",
+   "checked": "2026-11-20",
+   "fee_pages": [
+    "https://www.sb.qld.edu.au/enrolments/enrolment-fees",
+    "https://www.sb.qld.edu.au/ArticleDocuments/932/Fee%20Schedule%202026%20(1).pdf"
+   ],
+   "crawl": {
+    "pages": 9,
+    "errors": 0
+   }
+  },
+  "47923": {
+   "school_name": "St Rita's Primary School",
+   "website": "http://www.stritasvp.qld.edu.au",
+   "status": "fetched",
+   "checked": "2026-11-20",
+   "fee_pages": [
+    "https://www.stritasvp.qld.edu.au/enrol/fee-information",
+    "https://www.stritasvp.qld.edu.au/ArticleDocuments/971/2027%20Fees%20and%20Levies%20Calculation%20Spreadsheet%20(1).xlsx.aspx",
+    "https://www.stritasvp.qld.edu.au/ArticleDocuments/787/Letter%20for%202027%20School%20Fee%20Charges%20-%20Draft.docx.pdf.aspx",
+    "https://www.stritasvp.qld.edu.au/ArticleDocuments/787/School%20Fees%20and%20Levy%20Schedule%202027.pdf.aspx"
+   ],
+   "crawl": {
+    "pages": 13,
+    "errors": 0
+   }
   },
   "47924": {
    "school_name": "Carmel College",
@@ -49254,16 +52385,162 @@
     "source_url": "https://www.carmelcollege.qld.edu.au/ArticleDocuments/796/2027%20Carmel%20College%20Fees%20and%20Levies.pdf.aspx"
    }
   },
+  "47925": {
+   "school_name": "All Saints Primary School",
+   "website": "http://www.allsaints.qld.edu.au",
+   "status": "fetched",
+   "checked": "2026-11-20",
+   "fee_pages": [
+    "https://www.allsaints.qld.edu.au/enrol/fees-information",
+    "https://www.allsaints.qld.edu.au/ArticleDocuments/5161/2026%20Fees%20and%20Levies%20Schedule.pdf",
+    "https://www.allsaints.qld.edu.au/enrol/fees-information/school-fees"
+   ],
+   "crawl": {
+    "pages": 12,
+    "errors": 0
+   }
+  },
+  "47926": {
+   "school_name": "St Luke's Catholic Parish School",
+   "website": "http://www.stlukescapalaba.qld.edu.au",
+   "status": "fetched",
+   "checked": "2026-11-20",
+   "fee_pages": [
+    "https://www.stlukescapalaba.qld.edu.au/enrolments/fees-and-finance",
+    "https://www.stlukescapalaba.qld.edu.au/ArticleDocuments/946/2026%20School%20Fee%20Schedule.pdf",
+    "https://www.stlukescapalaba.qld.edu.au/enrolments/school-fees-levies/fees-and-finance"
+   ],
+   "crawl": {
+    "pages": 10,
+    "errors": 0
+   }
+  },
+  "47927": {
+   "school_name": "Deception Bay Flexible School",
+   "website": "http://www.youthplus.edu.au/deception-bay-flc/",
+   "status": "unreachable",
+   "checked": "2026-11-20",
+   "fee_pages": [],
+   "crawl": {
+    "pages": 0,
+    "errors": 3,
+    "home_error": "CERT_HAS_EXPIRED"
+   }
+  },
+  "47928": {
+   "school_name": "Noosa Flexible School",
+   "website": "http://www.youthplus.edu.au/noosa-flc/",
+   "status": "unreachable",
+   "checked": "2026-11-20",
+   "fee_pages": [],
+   "crawl": {
+    "pages": 0,
+    "errors": 3,
+    "home_error": "CERT_HAS_EXPIRED"
+   }
+  },
+  "47929": {
+   "school_name": "Townsville Flexible School",
+   "website": "http://www.youthplus.edu.au/townsville-flc/",
+   "status": "unreachable",
+   "checked": "2026-11-20",
+   "fee_pages": [],
+   "crawl": {
+    "pages": 0,
+    "errors": 3,
+    "home_error": "CERT_HAS_EXPIRED"
+   }
+  },
+  "47930": {
+   "school_name": "St Benedict's Primary School",
+   "website": "http://www.stbenedicts.qld.edu.au",
+   "status": "fetched",
+   "checked": "2026-11-20",
+   "fee_pages": [
+    "https://www.stbenedicts.qld.edu.au/ArticleDocuments/566/School%20Fee%20Schedule.pdf.aspx"
+   ],
+   "crawl": {
+    "pages": 9,
+    "errors": 0
+   }
+  },
+  "47931": {
+   "school_name": "Star of the Sea Primary School",
+   "website": "http://www.staroftheseacleveland.qld.edu.au",
+   "status": "fetched",
+   "checked": "2026-11-20",
+   "fee_pages": [
+    "https://www.staroftheseacleveland.qld.edu.au/enrolments/fees",
+    "https://www.staroftheseacleveland.qld.edu.au/ArticleDocuments/941/Star%20of%20the%20Sea%20Catholic%20Primary%20School%20-%202026%20School%20Fees%20and%20Levies%20Schedule.pdf"
+   ],
+   "crawl": {
+    "pages": 10,
+    "errors": 0
+   }
+  },
+  "47932": {
+   "school_name": "St Benedict's Catholic Primary School",
+   "website": "http://www.sbyrok.catholic.edu.au",
+   "status": "found",
+   "checked": "2026-11-20",
+   "fee_pages": [
+    "https://www.sbyrok.catholic.edu.au/school-fees-and-assistance"
+   ],
+   "crawl": {
+    "pages": 4,
+    "errors": 0
+   },
+   "fees": {
+    "fee_year": 2026,
+    "basis": "one student, annual all-inclusive education fee (tuition, resources, device, excursions and whole-year-level camps); total adds the building levy per student",
+    "by_year": [
+     {
+      "years": "P-6",
+      "tuition": 3014,
+      "total": 3362
+     }
+    ],
+    "other_compulsory": null,
+    "source": "diocese_schedule",
+    "source_url": "https://s3-ap-southeast-2.amazonaws.com/os-data-2/rok-catholic-edu-au/listingforms/page140/st_benedicts_catholic_primary_school_-_2026_schedule_of_fees.pdf"
+   }
+  },
+  "47933": {
+   "school_name": "Holy Cross School",
+   "website": "http://www.holycross.qld.edu.au",
+   "status": "fetched",
+   "checked": "2026-11-20",
+   "fee_pages": [
+    "https://www.holycross.qld.edu.au/fees-levies/",
+    "https://www.holycross.qld.edu.au/wp-content/uploads/2025/12/2026-Holy-Cross-School-Fee-Schedule-1.pdf"
+   ],
+   "crawl": {
+    "pages": 12,
+    "errors": 0
+   }
+  },
+  "47934": {
+   "school_name": "Mount Isa Flexible School",
+   "website": "https://mountisa.flexi.edu.au/",
+   "status": "fetched",
+   "checked": "2026-11-20",
+   "fee_pages": [],
+   "crawl": {
+    "pages": 2,
+    "errors": 0
+   }
+  },
   "47935": {
    "school_name": "Lighthouse Christian School",
    "website": "http://www.lighthousebaptist.com.au",
    "status": "unreachable",
-   "checked": "2026-11-12",
+   "checked": "2026-11-20",
    "crawl": {
     "pages": 0,
-    "errors": 1,
+    "errors": 2,
     "home_error": "HTTP 526"
-   }
+   },
+   "fee_pages": []
   },
   "47936": {
    "school_name": "Fraser Coast Anglican College",
@@ -49336,6 +52613,20 @@
     "https://icb.qld.edu.au/fees-levies/",
     "https://icb.qld.edu.au/wp-content/uploads/2026/11/Student-Fees-Schedule-K1.pdf"
    ]
+  },
+  "47939": {
+   "school_name": "The River School",
+   "website": "https://riverschool.com.au/",
+   "status": "fetched",
+   "checked": "2026-11-20",
+   "fee_pages": [
+    "https://www.riverschool.com.au/enrol/funding-and-fees",
+    "https://cdn.prod.website-files.com/696d89494fd39ad2ae19c751/69cf07463bd9bf8665006602_2026-School-Fees.pdf"
+   ],
+   "crawl": {
+    "pages": 6,
+    "errors": 0
+   }
   },
   "47940": {
    "school_name": "Saint Stephen's College",
@@ -49452,24 +52743,26 @@
   "47944": {
    "school_name": "Whitsunday Christian College",
    "website": "http://www.whitsunday.qld.edu.au/",
-   "status": "not_found",
-   "checked": "2026-11-12",
+   "status": "fetched",
+   "checked": "2026-11-20",
    "crawl": {
     "pages": 4,
     "errors": 0
    },
-   "note": "No fee page among the pages fetched."
+   "note": "No fee page among the pages fetched.",
+   "fee_pages": []
   },
   "47946": {
    "school_name": "Coomera Anglican College",
    "website": "http://www.cac.qld.edu.au",
-   "status": "not_found",
-   "checked": "2026-11-12",
+   "status": "fetched",
+   "checked": "2026-11-20",
    "crawl": {
     "pages": 15,
     "errors": 0
    },
-   "note": "No fee page among the pages fetched."
+   "note": "No fee page among the pages fetched.",
+   "fee_pages": []
   },
   "47947": {
    "school_name": "Sheldon College",
@@ -49504,13 +52797,14 @@
   "47948": {
    "school_name": "Sunshine Coast Grammar School",
    "website": "http://www.scgs.qld.edu.au",
-   "status": "not_found",
-   "checked": "2026-11-12",
+   "status": "fetched",
+   "checked": "2026-11-20",
    "crawl": {
-    "pages": 8,
+    "pages": 9,
     "errors": 0
    },
-   "note": "No fee page among the pages fetched."
+   "note": "No fee page among the pages fetched.",
+   "fee_pages": []
   },
   "47949": {
    "school_name": "Faith Baptist Christian School",
@@ -49556,27 +52850,67 @@
     "source_url": "https://www.silkwood.qld.edu.au/enrol/fees"
    }
   },
+  "47951": {
+   "school_name": "Glenvale Christian School",
+   "website": "http://www.gcs.qld.edu.au",
+   "status": "fetched",
+   "checked": "2026-11-20",
+   "fee_pages": [
+    "https://www.gcs.qld.edu.au/enrolment/fees",
+    "https://digistorm-websites.s3-ap-southeast-2.amazonaws.com/gcs-au-qld-605-website/content/2027-Fee-Information.pdf?v=1794886720"
+   ],
+   "crawl": {
+    "pages": 10,
+    "errors": 0
+   }
+  },
   "47952": {
    "school_name": "Australian Christian College - Moreton",
    "website": "https://www.acc.edu.au/moreton/",
-   "status": "not_found",
-   "checked": "2026-11-12",
+   "status": "fetched",
+   "checked": "2026-11-20",
    "crawl": {
     "pages": 1,
     "errors": 0
    },
-   "note": "Only the home page could be fetched."
+   "note": "Only the home page could be fetched.",
+   "fee_pages": []
+  },
+  "47953": {
+   "school_name": "Caboolture Montessori School",
+   "website": "http://www.cms.qld.edu.au",
+   "status": "fetched",
+   "checked": "2026-11-20",
+   "fee_pages": [
+    "https://www.cms.qld.edu.au/wp-content/uploads/2026/05/Fee-Schedule-2026.pdf"
+   ],
+   "crawl": {
+    "pages": 7,
+    "errors": 0
+   }
+  },
+  "47954": {
+   "school_name": "Toogoolawa School",
+   "website": "http://www.toogoolawa.com.au",
+   "status": "fetched",
+   "checked": "2026-11-20",
+   "fee_pages": [],
+   "crawl": {
+    "pages": 3,
+    "errors": 0
+   }
   },
   "47956": {
    "school_name": "Groves Christian College",
    "website": "http://www.groves.qld.edu.au",
-   "status": "not_found",
-   "checked": "2026-11-12",
+   "status": "fetched",
+   "checked": "2026-11-20",
    "crawl": {
     "pages": 2,
     "errors": 0
    },
-   "note": "Only two pages reachable; no fee page."
+   "note": "Only two pages reachable; no fee page.",
+   "fee_pages": []
   },
   "47957": {
    "school_name": "Brisbane Adventist College",
@@ -49636,6 +52970,17 @@
     "https://media.digistormhosting.com.au/flc-au-qld-891-website-2023/documents/Primary-School-Fee-sheet-for-2027.pdf?v=1773705617",
     "https://media.digistormhosting.com.au/flc-au-qld-891-website-2023/documents/Fees-and-Financial-Information-2026.pdf?v=1763007699"
    ]
+  },
+  "47959": {
+   "school_name": "Carinity Education - Southside",
+   "website": "http://www.southside.qld.edu.au",
+   "status": "fetched",
+   "checked": "2026-11-20",
+   "fee_pages": [],
+   "crawl": {
+    "pages": 2,
+    "errors": 0
+   }
   },
   "47960": {
    "school_name": "Kimberley College",
@@ -49816,6 +53161,19 @@
     "source_url": "https://media.digistormhosting.com.au/plc-au-qld-20-website-2023/documents/2026-PLC-FEE-SCHEDULE.pdf"
    }
   },
+  "47965": {
+   "school_name": "Living Faith Lutheran Primary School",
+   "website": "http://www.livingfaith.qld.edu.au",
+   "status": "fetched",
+   "checked": "2026-11-20",
+   "fee_pages": [
+    "https://www.livingfaith.qld.edu.au/enrol/fees"
+   ],
+   "crawl": {
+    "pages": 9,
+    "errors": 0
+   }
+  },
   "47966": {
    "school_name": "Peregian Beach College",
    "website": "http://www.pbc.qld.edu.au",
@@ -49829,6 +53187,17 @@
    "fee_pages": [
     "https://www.pbc.qld.edu.au/wp-content/uploads/2025/11/Fee-Schedule-2026-1.pdf"
    ]
+  },
+  "47967": {
+   "school_name": "Carinity Education - Glendyne",
+   "website": "http://www.glendyne.qld.edu.au",
+   "status": "fetched",
+   "checked": "2026-11-20",
+   "fee_pages": [],
+   "crawl": {
+    "pages": 3,
+    "errors": 1
+   }
   },
   "47968": {
    "school_name": "Livingstone Christian College",
@@ -49915,12 +53284,13 @@
    "school_name": "OneSchool Global QLD - Wakerley",
    "website": "https://www.oneschoolglobal.com/regions/australia/queensland/",
    "status": "blocked",
-   "checked": "2026-11-12",
+   "checked": "2026-11-20",
    "crawl": {
     "pages": 0,
     "errors": 1,
     "home_error": "HTTP 403"
-   }
+   },
+   "fee_pages": []
   },
   "47972": {
    "school_name": "OneSchool Global QLD - Maryborough",
@@ -49949,6 +53319,15 @@
    "parent_name": "OneSchool Global QLD - Wakerley",
    "website_source": "parent_school"
   },
+  "47976": {
+   "school_name": "Trinity Lutheran College (Cotlew Street Campus)",
+   "website": "http://www.tlc.qld.edu.au",
+   "status": "campus",
+   "checked": "2026-11-20",
+   "parent_acara_sml_id": 47977,
+   "parent_name": "Trinity Lutheran College",
+   "website_source": "parent_school"
+  },
   "47977": {
    "school_name": "Trinity Lutheran College",
    "website": "http://www.tlc.qld.edu.au",
@@ -49962,6 +53341,15 @@
    "fee_pages": [
     "https://tlc.qld.edu.au/fees/"
    ]
+  },
+  "47978": {
+   "school_name": "Westside Christian College - Alice St Campus",
+   "website": "http://www.wcc.qld.edu.au",
+   "status": "campus",
+   "checked": "2026-11-20",
+   "parent_acara_sml_id": 48053,
+   "parent_name": "Westside Christian College",
+   "website_source": "parent_school"
   },
   "47979": {
    "school_name": "Moreton Bay Boys' College",
@@ -50052,6 +53440,24 @@
     "source": "school_website",
     "source_url": "https://os-data-2.s3-ap-southeast-2.amazonaws.com/tgs-qld-edu-au/bundle482/fees_prep_-_year_12_day__boarding_2027.pdf"
    }
+  },
+  "47982": {
+   "school_name": "Trinity Anglican School - Marlin Coast Campus",
+   "website": "http://www.tas.qld.edu.au",
+   "status": "campus",
+   "checked": "2026-11-20",
+   "parent_acara_sml_id": 47997,
+   "parent_name": "Trinity Anglican School",
+   "website_source": "parent_school"
+  },
+  "47983": {
+   "school_name": "St John's Anglican College - Alpine Place Campus",
+   "website": "http://www.stjohnsanglicancollege.com.au/",
+   "status": "campus",
+   "checked": "2026-11-20",
+   "parent_acara_sml_id": 48009,
+   "parent_name": "St John's Anglican College",
+   "website_source": "parent_school"
   },
   "47984": {
    "school_name": "Good Shepherd Christian School",
@@ -50174,8 +53580,8 @@
   "47989": {
    "school_name": "Australian International Islamic College",
    "website": "http://www.aiic.qld.edu.au",
-   "status": "not_found",
-   "checked": "2026-11-12",
+   "status": "fetched",
+   "checked": "2026-11-20",
    "crawl": {
     "pages": 9,
     "errors": 0
@@ -50401,13 +53807,20 @@
   "47999": {
    "school_name": "St Paul's School",
    "website": "http://www.stpauls.qld.edu.au",
-   "status": "not_found",
-   "checked": "2026-11-12",
+   "status": "fetched",
+   "checked": "2026-11-20",
    "crawl": {
-    "pages": 3,
+    "pages": 16,
     "errors": 0
    },
-   "note": "No fee page among the pages fetched."
+   "note": "No fee page among the pages fetched.",
+   "fee_pages": [
+    "https://sps.com.au/enrolment/fees/",
+    "https://sps.com.au/wp-content/uploads/SPS-Fees-and-Payments-2027-1.pdf",
+    "https://sps.com.au/wp-content/uploads/ELC-Fee-Schedule-2027-1.pdf",
+    "https://sps.com.au/wp-content/uploads/SPS-Fee-Schedule-2027-Domestic-1.pdf",
+    "https://sps.com.au/wp-content/uploads/FFPOS-Schedule-of-Fees-2026-V2.pdf"
+   ]
   },
   "48000": {
    "school_name": "St Margaret's Anglican Girls School",
@@ -50569,13 +53982,16 @@
   "48006": {
    "school_name": "West Moreton Anglican College",
    "website": "http://www.wmac.com.au",
-   "status": "not_found",
-   "checked": "2026-11-12",
+   "status": "fetched",
+   "checked": "2026-11-20",
    "crawl": {
-    "pages": 5,
+    "pages": 6,
     "errors": 0
    },
-   "note": "No fee page among the pages fetched."
+   "note": "No fee page among the pages fetched.",
+   "fee_pages": [
+    "https://www.wmac.com.au/enrolments/fees"
+   ]
   },
   "48007": {
    "school_name": "St Hilda's School",
@@ -50618,13 +54034,14 @@
   "48008": {
    "school_name": "St Luke's Anglican School",
    "website": "http://www.stlukes.qld.edu.au/",
-   "status": "not_found",
-   "checked": "2026-11-12",
+   "status": "fetched",
+   "checked": "2026-11-20",
    "crawl": {
     "pages": 4,
     "errors": 0
    },
-   "note": "No fee page among the pages fetched."
+   "note": "No fee page among the pages fetched.",
+   "fee_pages": []
   },
   "48009": {
    "school_name": "St John's Anglican College",
@@ -50686,14 +54103,15 @@
   "48011": {
    "school_name": "Brisbane Boys' College",
    "website": "https://www.bbc.qld.edu.au/",
-   "status": "not_found",
-   "checked": "2026-11-12",
+   "status": "fetched",
+   "checked": "2026-11-20",
    "crawl": {
     "pages": 16,
     "errors": 0
    },
    "note": "Only fees for international students were found.",
    "fee_pages": [
+    "https://www.bbc.qld.edu.au/school-fee-terms-and-conditions/",
     "https://www.bbc.qld.edu.au/admissions/school-fees/",
     "https://www.bbc.qld.edu.au/efees/",
     "https://www.bbc.qld.edu.au/wp-content/uploads/2026/11/261104-2027-Domestic-School-Fees_final.pdf"
@@ -50886,24 +54304,61 @@
   "48017": {
    "school_name": "Gold Coast Christian College",
    "website": "http://www.goldcoastchristiancollege.qld.edu.au",
-   "status": "not_found",
-   "checked": "2026-11-12",
+   "status": "fetched",
+   "checked": "2026-11-20",
    "crawl": {
     "pages": 1,
     "errors": 0
    },
-   "note": "Only the home page could be fetched."
+   "note": "Only the home page could be fetched.",
+   "fee_pages": []
+  },
+  "48018": {
+   "school_name": "Ipswich Adventist School",
+   "website": "https://ias.qld.edu.au/",
+   "status": "fetched",
+   "checked": "2026-11-20",
+   "fee_pages": [
+    "https://www.ias.qld.edu.au/general/ias-fees-2020",
+    "https://media.digistormhosting.com.au/ias-au-qld-479-website/content/2026-Fees-IAS-Kindy-to-Year-6.pdf?v=1789555267"
+   ],
+   "crawl": {
+    "pages": 9,
+    "errors": 1
+   }
   },
   "48019": {
    "school_name": "Darling Downs Adventist College",
    "website": "http://www.ddcs.qld.edu.au",
-   "status": "not_found",
-   "checked": "2026-11-12",
+   "status": "fetched",
+   "checked": "2026-11-20",
    "crawl": {
-    "pages": 1,
+    "pages": 16,
     "errors": 0
    },
-   "note": "Only the home page could be fetched."
+   "note": "Only the home page could be fetched.",
+   "fee_pages": [
+    "https://ddac.qld.edu.au/enrolment/fees",
+    "https://ddac.qld.edu.au/assets/2026---fees-mainstream-primary.pdf",
+    "https://ddac.qld.edu.au/assets/kindy-statement-of-fees-2026.pdf",
+    "https://ddac.qld.edu.au/assets/2026---fees-mainstream-secondary.pdf",
+    "https://ddac.qld.edu.au/assets/fee-payment-agreement-2026.pdf"
+   ]
+  },
+  "48020": {
+   "school_name": "Hope Adventist School",
+   "website": "http://www.hope.qld.edu.au/",
+   "status": "fetched",
+   "checked": "2026-11-20",
+   "fee_pages": [
+    "https://www.hope.qld.edu.au/wp-content/uploads/2025/09/Fee-schedule-2025.pdf",
+    "https://www.hope.qld.edu.au/wp-content/uploads/2025/09/Fee-Assistance-Application-Form.pdf",
+    "https://www.hope.qld.edu.au/wp-content/uploads/2025/09/Fee-Assistance-Overview.pdf"
+   ],
+   "crawl": {
+    "pages": 6,
+    "errors": 0
+   }
   },
   "48021": {
    "school_name": "Cairns Adventist College",
@@ -50919,15 +54374,45 @@
     "https://www.cas.qld.edu.au/enrolment/fees/"
    ]
   },
+  "48022": {
+   "school_name": "Riverside Adventist School",
+   "website": "http://www.riversideadventist.qld.edu.au",
+   "status": "fetched",
+   "checked": "2026-11-20",
+   "fee_pages": [
+    "https://www.riversideadventist.qld.edu.au/enrolment/enrolment-process-fees/",
+    "https://s3-ap-southeast-2.amazonaws.com/os-data-2/riversideadventist/documents/pack4fees_2026.pdf"
+   ],
+   "crawl": {
+    "pages": 8,
+    "errors": 0
+   }
+  },
   "48023": {
    "school_name": "Carlisle Adventist College",
    "website": "http://carlisle.adventist.edu.au",
    "status": "unreachable",
-   "checked": "2026-11-12",
+   "checked": "2026-11-20",
    "crawl": {
     "pages": 0,
     "errors": 1,
     "home_error": "HTTP 526"
+   },
+   "fee_pages": []
+  },
+  "48024": {
+   "school_name": "Bethania Lutheran Primary School",
+   "website": "http://www.bethania.qld.edu.au/",
+   "status": "fetched",
+   "checked": "2026-11-20",
+   "fee_pages": [
+    "https://www.bethania.qld.edu.au/enrolment/fees",
+    "https://media.digistormhosting.com.au/blps-au-qld-536-website/content/2026-Fee-Schedule.pdf?v=1762209490",
+    "https://media.digistormhosting.com.au/blps-au-qld-536-website/content/2027-Fee-Schedule.pdf?v=1791869950"
+   ],
+   "crawl": {
+    "pages": 10,
+    "errors": 0
    }
   },
   "48025": {
@@ -51138,6 +54623,20 @@
     "source_url": "https://www.sote.qld.edu.au/wp-content/uploads/2026/01/2026-SOTE-Fees.pdf"
    }
   },
+  "48030": {
+   "school_name": "Brisbane Independent School",
+   "website": "https://bis.qld.edu.au/",
+   "status": "fetched",
+   "checked": "2026-11-20",
+   "fee_pages": [
+    "https://bis.qld.edu.au/enrol/fees-schedule/",
+    "https://bis.qld.edu.au/wp-content/uploads/2021/08/GL03_2026-Fees-Standard-Enrolment-1.pdf"
+   ],
+   "crawl": {
+    "pages": 7,
+    "errors": 0
+   }
+  },
   "48031": {
    "school_name": "Rockhampton Girls Grammar School",
    "website": "http://www.rggs.qld.edu.au",
@@ -51167,6 +54666,15 @@
     "source": "school_website",
     "source_url": "https://www.rggs.qld.edu.au/fees"
    }
+  },
+  "48032": {
+   "school_name": "Townsville Grammar School - Annandale Campus",
+   "website": "http://www.tgs.qld.edu.au",
+   "status": "campus",
+   "checked": "2026-11-20",
+   "parent_acara_sml_id": 47981,
+   "parent_name": "Townsville Grammar School",
+   "website_source": "parent_school"
   },
   "48033": {
    "school_name": "Brisbane Grammar School",
@@ -51369,24 +54877,43 @@
   "48040": {
    "school_name": "Wadja Wadja High School",
    "website": "http://www.wadja.com.au/joomla",
-   "status": "not_found",
-   "checked": "2026-11-12",
+   "status": "fetched",
+   "checked": "2026-11-20",
    "crawl": {
     "pages": 1,
     "errors": 1
    },
-   "note": "Only the home page could be fetched."
+   "note": "Only the home page could be fetched.",
+   "fee_pages": []
+  },
+  "48041": {
+   "school_name": "Maridahdi Kindergarten and Primary School",
+   "website": "http://www.maridahdi.qld.edu.au",
+   "status": "fetched",
+   "checked": "2026-11-20",
+   "fee_pages": [],
+   "crawl": {
+    "pages": 2,
+    "errors": 0
+   }
   },
   "48042": {
    "school_name": "Montessori International College",
    "website": "http://www.montessori.qld.edu.au",
-   "status": "not_found",
-   "checked": "2026-11-12",
+   "status": "fetched",
+   "checked": "2026-11-20",
    "crawl": {
-    "pages": 1,
-    "errors": 0
+    "pages": 10,
+    "errors": 1
    },
-   "note": "Only the home page could be fetched."
+   "note": "Only the home page could be fetched.",
+   "fee_pages": [
+    "https://www.mic.qld.edu.au/fees/",
+    "https://www.mic.qld.edu.au/childrens-house/eraly-years-fees/",
+    "https://www.mic.qld.edu.au/wp-content/uploads/2026/10/CH-Enrolment-Fees.pdf",
+    "https://www.mic.qld.edu.au/wp-content/uploads/2026/09/College-Fees-2027-%E2%80%93-Prep-to-Year-12.pdf",
+    "https://www.mic.qld.edu.au/wp-content/uploads/2026/07/OSHC-Enrolment-Fees-3.pdf"
+   ]
   },
   "48043": {
    "school_name": "Calvary Christian College",
@@ -51444,13 +54971,14 @@
   "48044": {
    "school_name": "Carinity Education - Shalom",
    "website": "https://carinity.qld.edu.au/shalom/",
-   "status": "not_found",
-   "checked": "2026-11-12",
+   "status": "fetched",
+   "checked": "2026-11-20",
    "crawl": {
     "pages": 3,
     "errors": 0
    },
-   "note": "No fee page among the pages fetched."
+   "note": "No fee page among the pages fetched.",
+   "fee_pages": []
   },
   "48045": {
    "school_name": "Moreton Bay College",
@@ -51542,13 +55070,14 @@
   "48047": {
    "school_name": "Hillcrest Christian College",
    "website": "http://www.hillcrest.qld.edu.au",
-   "status": "not_found",
-   "checked": "2026-11-12",
+   "status": "fetched",
+   "checked": "2026-11-20",
    "crawl": {
     "pages": 12,
     "errors": 0
    },
-   "note": "No fee page among the pages fetched."
+   "note": "No fee page among the pages fetched.",
+   "fee_pages": []
   },
   "48048": {
    "school_name": "Annandale Christian College",
@@ -51563,6 +55092,21 @@
    "fee_pages": [
     "https://www.acc.qld.edu.au/enrolment/college-fees/"
    ]
+  },
+  "48049": {
+   "school_name": "St Michael's College",
+   "website": "http://www.smccab.qld.edu.au",
+   "status": "fetched",
+   "checked": "2026-11-20",
+   "fee_pages": [
+    "https://www.smccab.qld.edu.au/typography-page/college-fees-and-levies",
+    "https://media.digistormhosting.com.au/smc-au-qld-338-website/content/Fees-and-Levies-2027.docx-1.pdf?v=1791425706",
+    "https://media.digistormhosting.com.au/smc-au-qld-338-website/content/College-Fee-Schedule-2027.docx.pdf?v=1791430223"
+   ],
+   "crawl": {
+    "pages": 6,
+    "errors": 0
+   }
   },
   "48050": {
    "school_name": "Trinity College",
@@ -51771,13 +55315,14 @@
   "48056": {
    "school_name": "Dalby Christian College",
    "website": "https://www.dalbycc.qld.edu.au/",
-   "status": "not_found",
-   "checked": "2026-11-12",
+   "status": "fetched",
+   "checked": "2026-11-20",
    "crawl": {
     "pages": 4,
     "errors": 0
    },
-   "note": "No fee page among the pages fetched."
+   "note": "No fee page among the pages fetched.",
+   "fee_pages": []
   },
   "48057": {
    "school_name": "Caloundra Christian College",
@@ -51822,6 +55367,20 @@
     "source_url": "https://calcc.qld.edu.au/wp-content/uploads/2025/10/Primary-Fees-2026.pdf"
    }
   },
+  "48058": {
+   "school_name": "Sinai College",
+   "website": "http://www.sinaicollege.qld.edu.au",
+   "status": "fetched",
+   "checked": "2026-11-20",
+   "fee_pages": [
+    "https://sinaicollege.qld.edu.au/enrolments/fee-schedule/",
+    "https://sinaicollege.qld.edu.au/wp-content/uploads/2026/01/2025-Fee-Schedule.pdf"
+   ],
+   "crawl": {
+    "pages": 8,
+    "errors": 0
+   }
+  },
   "48059": {
    "school_name": "Aboriginal & Islander Independent Community School",
    "website": "http://www.murrischool.qld.edu.au/",
@@ -51840,24 +55399,30 @@
   "48060": {
    "school_name": "John Paul College",
    "website": "http://www.jpc.qld.edu.au",
-   "status": "not_found",
-   "checked": "2026-11-12",
+   "status": "fetched",
+   "checked": "2026-11-20",
    "crawl": {
-    "pages": 1,
-    "errors": 0
+    "pages": 6,
+    "errors": 4
    },
-   "note": "Only the home page could be fetched."
+   "note": "Only the home page could be fetched.",
+   "fee_pages": [
+    "https://www.jpc.qld.edu.au/future-families/Pages/Fees.aspx",
+    "https://www.jpc.qld.edu.au/news-and-events/Pages/2020-Schedule-Fees-of-Advice.aspx"
+   ]
   },
   "48061": {
    "school_name": "Mueller College",
    "website": "http://www.mueller.qld.edu.au",
-   "status": "not_found",
-   "checked": "2026-11-12",
+   "status": "blocked",
+   "checked": "2026-11-20",
    "crawl": {
-    "pages": 2,
-    "errors": 0
+    "pages": 0,
+    "errors": 1,
+    "home_error": "HTTP 403"
    },
-   "note": "Only two pages reachable; no fee page."
+   "note": "Only two pages reachable; no fee page.",
+   "fee_pages": []
   },
   "48062": {
    "school_name": "Genesis Christian College",
@@ -51992,6 +55557,24 @@
     "source_url": "https://riverside.qld.edu.au/wp-content/uploads/2025/11/DAY-SCHOOL-2026-Fee-Schedule-Master.pdf"
    }
   },
+  "48068": {
+   "school_name": "Concordia Lutheran College - Concordia Primary Campus",
+   "website": "http://www.concordia.qld.edu.au",
+   "status": "campus",
+   "checked": "2026-11-20",
+   "parent_acara_sml_id": 48026,
+   "parent_name": "Concordia Lutheran College",
+   "website_source": "parent_school"
+  },
+  "48069": {
+   "school_name": "Concordia Lutheran College - Martin Luther Primary Campus",
+   "website": "http://www.concordia.qld.edu.au",
+   "status": "campus",
+   "checked": "2026-11-20",
+   "parent_acara_sml_id": 48026,
+   "parent_name": "Concordia Lutheran College",
+   "website_source": "parent_school"
+  },
   "48070": {
    "school_name": "St Peters Lutheran College Springfield",
    "website": "http://www.stpeters.qld.edu.au",
@@ -52006,6 +55589,49 @@
     "https://www.stpeters.qld.edu.au/indooroopilly/admissions/fees-and-payments",
     "https://www.stpeters.qld.edu.au/indooroopilly/boarding/fees-schedule"
    ]
+  },
+  "48071": {
+   "school_name": "Grace Lutheran Primary School",
+   "website": "http://www.graceprimary.qld.edu.au",
+   "status": "fetched",
+   "checked": "2026-11-20",
+   "fee_pages": [
+    "https://graceprimary.qld.edu.au/enrol/school-fees/",
+    "https://graceprimary.qld.edu.au/enrol/school-fees/ced-family-loyalty-discount-grace-primary-2024/",
+    "https://graceprimary.qld.edu.au/community/saecoffee/",
+    "https://graceprimary.qld.edu.au/wp-content/uploads/2026-GLPS-Fee-Schedule-1.pdf"
+   ],
+   "crawl": {
+    "pages": 15,
+    "errors": 0
+   }
+  },
+  "48072": {
+   "school_name": "Bethany Lutheran Primary School",
+   "website": "http://www.bethany.qld.edu.au",
+   "status": "fetched",
+   "checked": "2026-11-20",
+   "fee_pages": [
+    "https://media.digistormhosting.com.au/blps-au-qld-89-website-2024/content/2026_BLPS_Fee_Schedule.pdf?v=1772513583"
+   ],
+   "crawl": {
+    "pages": 4,
+    "errors": 0
+   }
+  },
+  "48073": {
+   "school_name": "Peace Lutheran Primary School",
+   "website": "http://www.peacelps.qld.edu.au",
+   "status": "fetched",
+   "checked": "2026-11-20",
+   "fee_pages": [
+    "https://peacelps.qld.edu.au/fees/",
+    "https://peacelps.qld.edu.au/wp-content/uploads/PLPS-2027-Schedule-of-Fees.pdf"
+   ],
+   "crawl": {
+    "pages": 7,
+    "errors": 0
+   }
   },
   "48074": {
    "school_name": "Faith Lutheran College - Redlands",
@@ -52060,6 +55686,20 @@
     "https://media.digistormhosting.com.au/rlcb-au-qld-1026-website-2023/content/2027-FEES.pdf?v=1792990458"
    ]
   },
+  "48076": {
+   "school_name": "St John's Lutheran Primary School",
+   "website": "https://stjohnsbundaberg.qld.edu.au/",
+   "status": "fetched",
+   "checked": "2026-11-20",
+   "fee_pages": [
+    "https://stjohnsbundaberg.qld.edu.au/fees/",
+    "https://stjohnsbundaberg.qld.edu.au/wp-content/uploads/2027-Schedule-of-Fees.pdf"
+   ],
+   "crawl": {
+    "pages": 8,
+    "errors": 0
+   }
+  },
   "48077": {
    "school_name": "Prince of Peace Lutheran College",
    "website": "http://www.princeofpeace.qld.edu.au",
@@ -52074,6 +55714,30 @@
     "https://www.princeofpeace.qld.edu.au/enrolments/fees/",
     "https://www.princeofpeace.qld.edu.au/wp-content/uploads/2020/02/2026-Fee-Schedule.pdf"
    ]
+  },
+  "48078": {
+   "school_name": "Good News Lutheran School",
+   "website": "http://www.gnls.qld.edu.au",
+   "status": "fetched",
+   "checked": "2026-11-20",
+   "fee_pages": [],
+   "crawl": {
+    "pages": 3,
+    "errors": 0
+   }
+  },
+  "48079": {
+   "school_name": "St Paul's Lutheran Primary School",
+   "website": "http://stpaulslps.qld.edu.au/",
+   "status": "fetched",
+   "checked": "2026-11-20",
+   "fee_pages": [
+    "https://stpaulslps.qld.edu.au/fees-and-charges/"
+   ],
+   "crawl": {
+    "pages": 7,
+    "errors": 0
+   }
   },
   "48080": {
    "school_name": "St John's Lutheran School",
@@ -52184,13 +55848,17 @@
   "48083": {
    "school_name": "Grace Lutheran College",
    "website": "http://www.glc.qld.edu.au",
-   "status": "not_found",
-   "checked": "2026-11-12",
+   "status": "fetched",
+   "checked": "2026-11-20",
    "crawl": {
-    "pages": 6,
+    "pages": 8,
     "errors": 0
    },
-   "note": "No fee page among the pages fetched."
+   "note": "No fee page among the pages fetched.",
+   "fee_pages": [
+    "https://www.glc.qld.edu.au/enrolments/fee-schedule",
+    "https://media.digistormhosting.com.au/glc-au-qld-360-website-2024/content/Fee-Schedule-2026.pdf?v=1764298597"
+   ]
   },
   "48084": {
    "school_name": "Redeemer Lutheran College",
@@ -52242,24 +55910,40 @@
   "48086": {
    "school_name": "Chinchilla Christian College",
    "website": "http://www.chinchillacc.qld.edu.au",
-   "status": "not_found",
-   "checked": "2026-11-12",
+   "status": "fetched",
+   "checked": "2026-11-20",
    "crawl": {
     "pages": 3,
     "errors": 0
    },
-   "note": "No fee page among the pages fetched."
+   "note": "No fee page among the pages fetched.",
+   "fee_pages": []
+  },
+  "48087": {
+   "school_name": "Pine Community School",
+   "website": "http://www.pinecommunityschool.org/",
+   "status": "fetched",
+   "checked": "2026-11-20",
+   "fee_pages": [],
+   "crawl": {
+    "pages": 2,
+    "errors": 0
+   }
   },
   "48088": {
    "school_name": "Ormiston College",
    "website": "http://www.ormiston.qld.edu.au/",
-   "status": "not_found",
-   "checked": "2026-11-12",
+   "status": "fetched",
+   "checked": "2026-11-20",
    "crawl": {
-    "pages": 1,
+    "pages": 14,
     "errors": 0
    },
-   "note": "Only the home page could be fetched."
+   "note": "Only the home page could be fetched.",
+   "fee_pages": [
+    "https://www.ormistoncollege.com.au/enrol/enrolment-process/schools-fees",
+    "https://media.digistormhosting.com.au/oc-au-qld-46-website/content/Fees/Ormiston-College-Schedule-of-Fees-2026.pdf?v=1764647311"
+   ]
   },
   "48089": {
    "school_name": "Cannon Hill Anglican College",
@@ -52299,13 +55983,19 @@
   "48090": {
    "school_name": "Hills International College",
    "website": "http://www.hills.qld.edu.au/",
-   "status": "not_found",
-   "checked": "2026-11-12",
+   "status": "fetched",
+   "checked": "2026-11-20",
    "crawl": {
-    "pages": 4,
+    "pages": 11,
     "errors": 0
    },
-   "note": "No fee page among the pages fetched."
+   "note": "No fee page among the pages fetched.",
+   "fee_pages": [
+    "https://www.hills.qld.edu.au/enrolment/fees-scholarships",
+    "https://media.digistormhosting.com.au/hc-au-qld-272-website-2025/documents/Domestic-Fees-Scholarships-Information/Hills-2026-Domestic-Fees.pdf?v=1779930933",
+    "https://media.digistormhosting.com.au/hc-au-qld-272-website-2025/documents/Domestic-Fees-Scholarships-Information/Hills-Domestic-Fee-Schedule-2027.pdf?v=1791947249",
+    "https://media.digistormhosting.com.au/hc-au-qld-272-website-2025/documents/Domestic-Fees-Scholarships-Information/Hills-Scholarship-Application-Form.pdf?v=1791770469"
+   ]
   },
   "48091": {
    "school_name": "Blackheath and Thornburgh College",
@@ -52407,8 +56097,8 @@
   "48095": {
    "school_name": "Samford Valley Steiner School",
    "website": "http://www.samfordsteiner.qld.edu.au",
-   "status": "not_found",
-   "checked": "2026-11-12",
+   "status": "fetched",
+   "checked": "2026-11-20",
    "crawl": {
     "pages": 13,
     "errors": 0
@@ -52422,23 +56112,45 @@
   "48096": {
    "school_name": "A B Paterson College",
    "website": "https://www.abpat.qld.edu.au",
-   "status": "not_found",
-   "checked": "2026-11-12",
+   "status": "fetched",
+   "checked": "2026-11-20",
    "crawl": {
-    "pages": 6,
+    "pages": 12,
     "errors": 0
    },
-   "note": "No fee page among the pages fetched."
+   "note": "No fee page among the pages fetched.",
+   "fee_pages": [
+    "https://www.abpat.qld.edu.au/admissions/college-fees",
+    "https://www.abpat.qld.edu.au/admissions/college-fees/performing-arts-tuition-information",
+    "https://media.digistormhosting.com.au/abpc-au-qld-3-website-2025/documents/2027-Fee-Schedule.pdf?v=1793923323",
+    "https://media.digistormhosting.com.au/abpc-au-qld-3-website-2025/documents/Application-for-Performing-Arts-Tuition.pdf?v=1793146399"
+   ]
   },
   "48097": {
    "school_name": "Cooloola Christian College",
    "website": "http://www.cccgympie.qld.edu.au",
-   "status": "unreachable",
-   "checked": "2026-11-12",
+   "status": "fetched",
+   "checked": "2026-11-20",
    "crawl": {
-    "pages": 0,
-    "errors": 2,
-    "home_error": "ENOTFOUND"
+    "pages": 14,
+    "errors": 2
+   },
+   "fee_pages": [
+    "https://www.ccc.qld.edu.au/enrol/fees-edstart",
+    "https://media.digistormhosting.com.au/ccc-au-qld-687-website/content/Fee-Schedule-2026.pdf?v=1766350739"
+   ]
+  },
+  "48098": {
+   "school_name": "Mancel College",
+   "website": "https://mancelcollege.qld.edu.au/",
+   "status": "fetched",
+   "checked": "2026-11-20",
+   "fee_pages": [
+    "https://mancelcollege.qld.edu.au/wp-content/uploads/2025/10/Mancel_College_2026_Fee_Schedule.pdf"
+   ],
+   "crawl": {
+    "pages": 6,
+    "errors": 0
    }
   },
   "48099": {
@@ -52531,46 +56243,55 @@
   "48101": {
    "school_name": "Victory College",
    "website": "http://www.victorycollege.com",
-   "status": "not_found",
-   "checked": "2026-11-12",
+   "status": "fetched",
+   "checked": "2026-11-20",
    "crawl": {
-    "pages": 1,
+    "pages": 16,
     "errors": 0
    },
-   "note": "Only the home page could be fetched."
+   "note": "Only the home page could be fetched.",
+   "fee_pages": [
+    "https://www.victorycollege.com.au/enrolments/fees/",
+    "https://www.victorycollege.com.au/wp-content/uploads/Fee-Schedule-2027.pdf"
+   ]
   },
   "48102": {
    "school_name": "Citipointe Christian College",
    "website": "http://www.citipointe.qld.edu.au/",
    "status": "unreachable",
-   "checked": "2026-11-12",
+   "checked": "2026-11-20",
    "crawl": {
     "pages": 0,
-    "errors": 2,
+    "errors": 3,
     "home_error": "UNABLE_TO_VERIFY_LEAF_SIGNATURE"
-   }
+   },
+   "fee_pages": []
   },
   "48103": {
    "school_name": "Burdekin Christian College",
    "website": "http://www.burdekincc.qld.edu.au/",
-   "status": "not_found",
-   "checked": "2026-11-12",
+   "status": "fetched",
+   "checked": "2026-11-20",
    "crawl": {
     "pages": 2,
     "errors": 0
    },
-   "note": "No fee page among the pages fetched."
+   "note": "No fee page among the pages fetched.",
+   "fee_pages": []
   },
   "48104": {
    "school_name": "Jubilee Christian College",
    "website": "https://www.jubileecc.qld.edu.au/",
-   "status": "not_found",
-   "checked": "2026-11-12",
+   "status": "fetched",
+   "checked": "2026-11-20",
    "crawl": {
-    "pages": 1,
+    "pages": 5,
     "errors": 0
    },
-   "note": "Only the home page could be fetched."
+   "note": "Only the home page could be fetched.",
+   "fee_pages": [
+    "https://www.jubileecc.qld.edu.au/test-oc-fee-calculator/"
+   ]
   },
   "48105": {
    "school_name": "Brisbane Christian College",
@@ -52785,12 +56506,13 @@
    "school_name": "Gulf Christian College",
    "website": "http://www.gulfcc.qld.edu.au/",
    "status": "blocked",
-   "checked": "2026-11-12",
+   "checked": "2026-11-20",
    "crawl": {
     "pages": 0,
     "errors": 1,
     "home_error": "HTTP 403"
-   }
+   },
+   "fee_pages": []
   },
   "48113": {
    "school_name": "Heights College",
@@ -52805,6 +56527,17 @@
    "fee_pages": [
     "https://heights.qld.edu.au/enrol/school-fees-2/"
    ]
+  },
+  "48115": {
+   "school_name": "Arethusa College",
+   "website": "http://arethusa.qld.edu.au/",
+   "status": "fetched",
+   "checked": "2026-11-20",
+   "fee_pages": [],
+   "crawl": {
+    "pages": 3,
+    "errors": 0
+   }
   },
   "48860": {
    "school_name": "St Joseph's College",
@@ -56689,16 +60422,43 @@
     "source_url": "https://www.alkimosbc.wa.edu.au/index.php/about/fees"
    }
   },
+  "50373": {
+   "school_name": "The Springfield Anglican College - Primary Campus",
+   "website": "https://tsac.qld.edu.au/",
+   "status": "campus",
+   "checked": "2026-11-20",
+   "parent_acara_sml_id": 40961,
+   "parent_name": "The Springfield Anglican College",
+   "website_source": "parent_school"
+  },
   "50374": {
    "school_name": "Hymba Yumba Independent School",
    "website": "http://www.hyis.qld.edu.au",
-   "status": "not_found",
-   "checked": "2026-11-12",
+   "status": "fetched",
+   "checked": "2026-11-20",
    "crawl": {
-    "pages": 4,
+    "pages": 5,
     "errors": 0
    },
-   "note": "No fee page among the pages fetched."
+   "note": "No fee page among the pages fetched.",
+   "fee_pages": [
+    "https://hyis.qld.edu.au/fees/"
+   ]
+  },
+  "50375": {
+   "school_name": "St Clare's Catholic School",
+   "website": "http://www.stclarestsv.catholic.edu.au",
+   "status": "fetched",
+   "checked": "2026-11-20",
+   "fee_pages": [
+    "https://www.stclarestsv.catholic.edu.au/enrolment/school-fees/",
+    "https://os-data-2.s3-ap-southeast-2.amazonaws.com/stclarestsv2/bundle16/2027_school_fees.pdf",
+    "https://os-data-2.s3-ap-southeast-2.amazonaws.com/stclarestsv2/bundle16/school_fees_payment_options_2027.pdf"
+   ],
+   "crawl": {
+    "pages": 10,
+    "errors": 0
+   }
   },
   "50379": {
    "school_name": "Novo Education Space",
@@ -56814,6 +60574,19 @@
     ],
     "source": "school_website",
     "source_url": "https://media.digistormhosting.com.au/lords-au-qld-824-website/documents/LORDS-School-Fees-2027.pdf"
+   }
+  },
+  "50391": {
+   "school_name": "Mother Teresa Primary School",
+   "website": "http://www.motherteresa.qld.edu.au/Pages/default.aspx",
+   "status": "fetched",
+   "checked": "2026-11-20",
+   "fee_pages": [
+    "https://www.motherteresa.qld.edu.au/enrol/fees-and-finance"
+   ],
+   "crawl": {
+    "pages": 12,
+    "errors": 0
    }
   },
   "50392": {
@@ -57079,6 +60852,15 @@
    "parent_name": "Chrysalis School for Rudolf Steiner Education",
    "website_source": "parent_school"
   },
+  "50422": {
+   "school_name": "Mackay Christian College - Providence Junior Campus",
+   "website": "http://mcc.qld.edu.au",
+   "status": "campus",
+   "checked": "2026-11-20",
+   "parent_acara_sml_id": 48109,
+   "parent_name": "Mackay Christian College",
+   "website_source": "parent_school"
+  },
   "50423": {
    "school_name": "Malek Fahd Islamic School Beaumont Hills",
    "website": "https://www.mfis.nsw.edu.au/",
@@ -57209,6 +60991,30 @@
    "parent_acara_sml_id": 45717,
    "parent_name": "Sacred Heart College",
    "website_source": "parent_school"
+  },
+  "50478": {
+   "school_name": "Gympie Flexible School",
+   "website": "http://www.youthplus.edu.au/gympie-flc/",
+   "status": "unreachable",
+   "checked": "2026-11-20",
+   "fee_pages": [],
+   "crawl": {
+    "pages": 0,
+    "errors": 3,
+    "home_error": "CERT_HAS_EXPIRED"
+   }
+  },
+  "50479": {
+   "school_name": "Ipswich Flexible School",
+   "website": "http://www.youthplus.edu.au/ipswich-flc/",
+   "status": "unreachable",
+   "checked": "2026-11-20",
+   "fee_pages": [],
+   "crawl": {
+    "pages": 0,
+    "errors": 3,
+    "home_error": "CERT_HAS_EXPIRED"
+   }
   },
   "50494": {
    "school_name": "Oran Park Anglican College",
@@ -57572,6 +61378,18 @@
    "parent_name": "Ilim College",
    "website_source": "parent_school"
   },
+  "50553": {
+   "school_name": "Hemmant Flexible School",
+   "website": "http://www.youthplus.edu.au/hemmant-flc/",
+   "status": "unreachable",
+   "checked": "2026-11-20",
+   "fee_pages": [],
+   "crawl": {
+    "pages": 0,
+    "errors": 3,
+    "home_error": "CERT_HAS_EXPIRED"
+   }
+  },
   "50554": {
    "school_name": "Carey Baptist College Forrestdale",
    "website": "https://carey.wa.edu.au/",
@@ -57755,6 +61573,32 @@
    "free": {
     "statement": "There are no fees to attend any Youth Off The Streets school.",
     "source_url": "https://youthoffthestreets.com.au/alternative-high-schools/schools-frequently-asked-questions/"
+   }
+  },
+  "50580": {
+   "school_name": "Inala Flexible School",
+   "website": "http://www.youthplus.edu.au/inala-flc/",
+   "status": "unreachable",
+   "checked": "2026-11-20",
+   "fee_pages": [],
+   "crawl": {
+    "pages": 0,
+    "errors": 3,
+    "home_error": "CERT_HAS_EXPIRED"
+   }
+  },
+  "50581": {
+   "school_name": "Good Shepherd Catholic Primary School",
+   "website": "http://www.goodshepherd.qld.edu.au/Pages/default.aspx",
+   "status": "fetched",
+   "checked": "2026-11-20",
+   "fee_pages": [
+    "https://www.goodshepherd.qld.edu.au/enrolments/fees",
+    "https://www.goodshepherd.qld.edu.au/ArticleDocuments/1157/2026%20Schedule%20of%20Fees%20and%20Levies.pdf"
+   ],
+   "crawl": {
+    "pages": 7,
+    "errors": 0
    }
   },
   "50583": {
@@ -58271,6 +62115,37 @@
    },
    "note": "Fee pages were reached but show no figures."
   },
+  "50699": {
+   "school_name": "St Brendan's Catholic Primary School",
+   "website": "http://www.sbnmrok.catholic.edu.au/",
+   "status": "found",
+   "checked": "2026-11-20",
+   "fee_pages": [
+    "https://www.sbnmrok.catholic.edu.au/enrolments/school-fees-and-assistance",
+    "https://www.sbnmrok.catholic.edu.au/_rimage/media/1849/1600x0/webp/fee_advice_for_website.png",
+    "https://www.sbnmrok.catholic.edu.au/_rimage/media/1848/1600x0/webp/fee_advice_for_website.png",
+    "https://sbcpsmackay.schoolzineplus.com/_file/media/1873/2026_school_fees.pdf",
+    "https://sbcpsmackay.schoolzineplus.com/_file/media/1894/2027_school_fees.pdf"
+   ],
+   "crawl": {
+    "pages": 13,
+    "errors": 0
+   },
+   "fees": {
+    "fee_year": 2026,
+    "basis": "one student, annual all-inclusive education fee (tuition, resources, device, excursions and whole-year-level camps); total adds the building levy per student",
+    "by_year": [
+     {
+      "years": "P-6",
+      "tuition": 3221,
+      "total": 3569
+     }
+    ],
+    "other_compulsory": null,
+    "source": "diocese_schedule",
+    "source_url": "https://s3-ap-southeast-2.amazonaws.com/os-data-2/rok-catholic-edu-au/listingforms/page52/st_brendans_catholic_primary_school_-_2026_schedule_of_fees.pdf"
+   }
+  },
   "50700": {
    "school_name": "St John Bosco College",
    "website": "http://web.stjohnbosco.wa.edu.au",
@@ -58289,13 +62164,41 @@
   "50702": {
    "school_name": "Radiant Life College",
    "website": "http://radiantlife.qld.edu.au",
-   "status": "not_found",
-   "checked": "2026-11-12",
+   "status": "fetched",
+   "checked": "2026-11-20",
    "crawl": {
     "pages": 3,
     "errors": 0
    },
-   "note": "No fee page among the pages fetched."
+   "note": "No fee page among the pages fetched.",
+   "fee_pages": []
+  },
+  "50707": {
+   "school_name": "St Brigid's Catholic Primary School",
+   "website": "http://www.sberok.catholic.edu.au/",
+   "status": "found",
+   "checked": "2026-11-20",
+   "fee_pages": [
+    "https://www.sberok.catholic.edu.au/schoolfees"
+   ],
+   "crawl": {
+    "pages": 8,
+    "errors": 0
+   },
+   "fees": {
+    "fee_year": 2026,
+    "basis": "one student, annual all-inclusive education fee (tuition, resources, device, excursions and whole-year-level camps); total adds the building levy per student",
+    "by_year": [
+     {
+      "years": "P-6",
+      "tuition": 2826,
+      "total": 3174
+     }
+    ],
+    "other_compulsory": null,
+    "source": "diocese_schedule",
+    "source_url": "https://s3-ap-southeast-2.amazonaws.com/os-data-2/rok-catholic-edu-au/listingforms/page120/st_brigids_catholic_primary_school_-_2026_schedule_of_fees.pdf"
+   }
   },
   "50710": {
    "school_name": "Ngaruki Gulgul",
@@ -58380,6 +62283,17 @@
    "parent_acara_sml_id": 45853,
    "parent_name": "St Joseph's College Geelong",
    "website_source": "parent_school"
+  },
+  "50728": {
+   "school_name": "Horizons College of Learning and Enrichment",
+   "website": "http://horizonscollege.qld.edu.au/",
+   "status": "fetched",
+   "checked": "2026-11-20",
+   "fee_pages": [],
+   "crawl": {
+    "pages": 3,
+    "errors": 0
+   }
   },
   "50729": {
    "school_name": "Australian International Academy, Kellyville Campus",
@@ -58910,6 +62824,17 @@
    "parent_name": "Arethusa College",
    "website_source": "parent_school"
   },
+  "51490": {
+   "school_name": "Yarranlea Primary School",
+   "website": "http://www.yarranlea.qld.edu.au/",
+   "status": "fetched",
+   "checked": "2026-11-20",
+   "fee_pages": [],
+   "crawl": {
+    "pages": 4,
+    "errors": 0
+   }
+  },
   "51491": {
    "school_name": "King's Christian College - Pimpama Campus",
    "website": "http://www.kingscollege.qld.edu.au",
@@ -58918,6 +62843,17 @@
    "parent_acara_sml_id": 48055,
    "parent_name": "King's Christian College",
    "website_source": "parent_school"
+  },
+  "51496": {
+   "school_name": "Kairos Community College",
+   "website": "http://kairoscc.org.au/",
+   "status": "fetched",
+   "checked": "2026-11-20",
+   "fee_pages": [],
+   "crawl": {
+    "pages": 3,
+    "errors": 0
+   }
   },
   "51499": {
    "school_name": "Discovery Christian College",
@@ -58954,6 +62890,17 @@
     "year_note": "fee document names no year; checked 2026-11-14"
    }
   },
+  "51500": {
+   "school_name": "Rockhampton Flexible School",
+   "website": "https://rockhampton.flexi.edu.au/",
+   "status": "fetched",
+   "checked": "2026-11-20",
+   "fee_pages": [],
+   "crawl": {
+    "pages": 2,
+    "errors": 0
+   }
+  },
   "51501": {
    "school_name": "MacKillop Catholic College, Mount Peter",
    "website": "http://www.mackillopcatholiccollege.qld.edu.au/",
@@ -58977,6 +62924,30 @@
    "parent_acara_sml_id": 51504,
    "parent_name": "Holy Spirit College",
    "website_source": "parent_school"
+  },
+  "51503": {
+   "school_name": "St Joseph's Parish School",
+   "website": "https://www.stjosephsweipa.qld.edu.au/",
+   "status": "fetched",
+   "checked": "2026-11-20",
+   "fee_pages": [
+    "https://www.stjosephsweipa.qld.edu.au/enrolling/fees-and-levies/"
+   ],
+   "crawl": {
+    "pages": 11,
+    "errors": 0
+   }
+  },
+  "51504": {
+   "school_name": "Holy Spirit College",
+   "website": "http://www.holyspiritcollege.qld.edu.au/",
+   "status": "fetched",
+   "checked": "2026-11-20",
+   "fee_pages": [],
+   "crawl": {
+    "pages": 2,
+    "errors": 0
+   }
   },
   "51509": {
    "school_name": "St James' Anglican School",
@@ -59104,12 +63075,13 @@
    "school_name": "Alta-1 College",
    "website": "http://www.alta-1.qld.edu.au/about-us",
    "status": "blocked",
-   "checked": "2026-11-12",
+   "checked": "2026-11-20",
    "crawl": {
     "pages": 0,
     "errors": 3,
     "home_error": "ERR_TLS_CERT_ALTNAME_INVALID"
-   }
+   },
+   "fee_pages": []
   },
   "51523": {
    "school_name": "Alta-1 College - ConnectEd Campus",
@@ -59164,6 +63136,17 @@
    "parent_acara_sml_id": 46335,
    "parent_name": "Sirius College",
    "website_source": "parent_school"
+  },
+  "51531": {
+   "school_name": "YOS Lawnton",
+   "website": "https://www.tsaschools.org/",
+   "status": "fetched",
+   "checked": "2026-11-20",
+   "fee_pages": [],
+   "crawl": {
+    "pages": 6,
+    "errors": 0
+   }
   },
   "52040": {
    "school_name": "St Andrew's Cathedral School - Bishop Barry Senior College",
@@ -59613,6 +63596,19 @@
    "parent_acara_sml_id": 48038,
    "parent_name": "The Rockhampton Grammar School",
    "website_source": "parent_school"
+  },
+  "52248": {
+   "school_name": "Carinity Education - Rockhampton",
+   "website": "https://www.carinity.org.au/",
+   "status": "fetched",
+   "checked": "2026-11-20",
+   "fee_pages": [
+    "https://carinity.org.au/our-services/retirement-living/retirement-living-fees-charges-explained/"
+   ],
+   "crawl": {
+    "pages": 7,
+    "errors": 0
+   }
   },
   "52249": {
    "school_name": "Townsville Christian College",
@@ -60558,6 +64554,22 @@
     "source_url": "https://stapaustral.syd.catholic.edu.au/enrolment/school-fees-and-assistance"
    }
   },
+  "52397": {
+   "school_name": "St Benedict's Catholic School",
+   "website": "https://www.stbenedicts.catholic.edu.au/",
+   "status": "fetched",
+   "checked": "2026-11-20",
+   "fee_pages": [
+    "https://www.stbenedicts.catholic.edu.au/enrolment/school-fees/",
+    "https://os-data-2.s3-ap-southeast-2.amazonaws.com/stbenedicts2/bundle5/st_benedicts_catholic_school_fees_2026.pdf",
+    "https://os-data-2.s3-ap-southeast-2.amazonaws.com/stbenedicts2/bundle5/st_benedicts_catholic_school_fees_2027.pdf",
+    "https://os-data-2.s3-ap-southeast-2.amazonaws.com/stbenedicts2/bundle5/school_fee_payment_options.pdf"
+   ],
+   "crawl": {
+    "pages": 13,
+    "errors": 0
+   }
+  },
   "52398": {
    "school_name": "Lisieux Catholic Primary School",
    "website": "https://lisieux.catholic.edu.au/",
@@ -60855,6 +64867,22 @@
     "source_url": "https://www.mcauley.qld.edu.au/ArticleDocuments/1006/2026%20School%20Fees%20and%20Levies.pdf"
    }
   },
+  "52442": {
+   "school_name": "St Clare's Primary School",
+   "website": "http://www.stclare.qld.edu.au/Pages/default.aspx",
+   "status": "fetched",
+   "checked": "2026-11-20",
+   "fee_pages": [
+    "https://www.stclare.qld.edu.au/enrolments/school-fees",
+    "https://www.stclare.qld.edu.au/school-policies/school-fees-procedures",
+    "https://www.stclare.qld.edu.au/ArticleDocuments/1091/School%20Fees%20and%20Levies%20Schedule%202027.pdf.aspx",
+    "https://www.stclare.qld.edu.au/images/UserUploadedImages/1068/School%20Fees%20and%20Levies%20Schedule%202026_Page_2.jpg"
+   ],
+   "crawl": {
+    "pages": 11,
+    "errors": 0
+   }
+  },
   "52443": {
    "school_name": "Border Rivers Christian College",
    "website": "http://brcc.qld.edu.au/",
@@ -60880,6 +64908,17 @@
     "source_url": "https://irp.cdn-website.com/d0de3d63/files/uploaded/BRCC+-+2026+Fee+Schedule+-+updated+.pdf"
    }
   },
+  "52444": {
+   "school_name": "Montessori Noosa",
+   "website": "https://montessori.org.au/schools-centres/montessori-noosa",
+   "status": "fetched",
+   "checked": "2026-11-20",
+   "fee_pages": [],
+   "crawl": {
+    "pages": 1,
+    "errors": 0
+   }
+  },
   "52445": {
    "school_name": "Arethusa College - Windsor Campus",
    "website": "http://arethusa.qld.edu.au/",
@@ -60892,13 +64931,16 @@
   "52446": {
    "school_name": "Angelorum College",
    "website": "http://www.angelorum.qld.edu.au/",
-   "status": "not_found",
-   "checked": "2026-11-12",
+   "status": "fetched",
+   "checked": "2026-11-20",
    "crawl": {
-    "pages": 1,
+    "pages": 2,
     "errors": 0
    },
-   "note": "Only the home page could be fetched."
+   "note": "Only the home page could be fetched.",
+   "fee_pages": [
+    "https://www.angelorum.qld.edu.au/fees"
+   ]
   },
   "52447": {
    "school_name": "Tec-NQ - Rosslea Campus",
@@ -60918,16 +64960,50 @@
    "parent_name": "Gulf Christian College",
    "website_source": "parent_school"
   },
+  "52452": {
+   "school_name": "The Sycamore School",
+   "website": "https://www.thesycamoreschool.qld.edu.au/",
+   "status": "fetched",
+   "checked": "2026-11-20",
+   "fee_pages": [
+    "https://www.sycamore.qld.edu.au/our-school/tuition-and-fees"
+   ],
+   "crawl": {
+    "pages": 7,
+    "errors": 0
+   }
+  },
+  "52453": {
+   "school_name": "Townsville Grammar School - Burdell Campus",
+   "website": "http://www.tgs.qld.edu.au",
+   "status": "campus",
+   "checked": "2026-11-20",
+   "parent_acara_sml_id": 47981,
+   "parent_name": "Townsville Grammar School",
+   "website_source": "parent_school"
+  },
   "52454": {
    "school_name": "Australian Technology and Agricultural College",
    "website": "https://atac.qld.edu.au/",
-   "status": "not_found",
-   "checked": "2026-11-12",
+   "status": "fetched",
+   "checked": "2026-11-20",
    "crawl": {
     "pages": 1,
     "errors": 0
    },
-   "note": "Only the home page could be fetched."
+   "note": "Only the home page could be fetched.",
+   "fee_pages": []
+  },
+  "52456": {
+   "school_name": "Southport Flexible School",
+   "website": "https://southport.flexi.edu.au/",
+   "status": "fetched",
+   "checked": "2026-11-20",
+   "fee_pages": [],
+   "crawl": {
+    "pages": 2,
+    "errors": 0
+   }
   },
   "52463": {
    "school_name": "Redwood College",
@@ -61037,6 +65113,18 @@
    "website": null,
    "status": "no_website",
    "checked": "2026-11-12"
+  },
+  "52493": {
+   "school_name": "Arcadia College",
+   "website": "https://www.arcadia.qld.edu.au/",
+   "status": "blocked",
+   "checked": "2026-11-20",
+   "fee_pages": [],
+   "crawl": {
+    "pages": 0,
+    "errors": 1,
+    "home_error": "HTTP 403"
+   }
   },
   "52497": {
    "school_name": "My Independent School",
@@ -61547,6 +65635,20 @@
    "parent_name": "St Mary's School",
    "website_source": "parent_school"
   },
+  "52604": {
+   "school_name": "Josiah College",
+   "website": "https://www.josiah.qld.edu.au/",
+   "status": "fetched",
+   "checked": "2026-11-20",
+   "fee_pages": [
+    "https://www.josiah.qld.edu.au/payments/fees",
+    "https://media.digistormhosting.com.au/jc-au-qld-286-website/content/JC-Fee-Schedule-2027.pdf?v=1794535700"
+   ],
+   "crawl": {
+    "pages": 5,
+    "errors": 0
+   }
+  },
   "52612": {
    "school_name": "Alesco Secondary College - Tomaree Campus",
    "website": "https://atwea.edu.au/high-school-at-alesco/",
@@ -62044,6 +66146,28 @@
     "source_url": "https://biralisteiner.qld.edu.au/wp-content/uploads/2025/11/Schedule-of-Fees-2026-20251110.pdf"
    }
   },
+  "52667": {
+   "school_name": "The Rainforest School",
+   "website": "http://www.trs.qld.edu.au",
+   "status": "fetched",
+   "checked": "2026-11-20",
+   "fee_pages": [],
+   "crawl": {
+    "pages": 2,
+    "errors": 0
+   }
+  },
+  "52668": {
+   "school_name": "Goora Gan Steiner School",
+   "website": "https://www.gooragansteiner.qld.edu.au/",
+   "status": "fetched",
+   "checked": "2026-11-20",
+   "fee_pages": [],
+   "crawl": {
+    "pages": 5,
+    "errors": 0
+   }
+  },
   "52669": {
    "school_name": "The SCOTS PGC College - Lock Street Campus",
    "website": "http://scotspgc.com.au/",
@@ -62180,13 +66304,27 @@
   "52688": {
    "school_name": "Jabiru Community College",
    "website": "https://www.jcc.qld.edu.au/",
-   "status": "not_found",
-   "checked": "2026-11-12",
+   "status": "fetched",
+   "checked": "2026-11-20",
    "crawl": {
-    "pages": 4,
+    "pages": 6,
     "errors": 0
    },
-   "note": "No fee page among the pages fetched."
+   "note": "No fee page among the pages fetched.",
+   "fee_pages": []
+  },
+  "52689": {
+   "school_name": "St Ann's School",
+   "website": "https://www.stanns.qld.edu.au/",
+   "status": "fetched",
+   "checked": "2026-11-20",
+   "fee_pages": [
+    "https://www.stanns.qld.edu.au/enrol/fees"
+   ],
+   "crawl": {
+    "pages": 9,
+    "errors": 0
+   }
   },
   "52710": {
    "school_name": "Braemar College - Woodend Campus",
@@ -62429,6 +66567,17 @@
    "parent_name": "Ivanhoe Grammar School",
    "website_source": "parent_school"
   },
+  "52737": {
+   "school_name": "Enkindle Village School",
+   "website": "https://enkindleschool.qld.edu.au/",
+   "status": "fetched",
+   "checked": "2026-11-20",
+   "fee_pages": [],
+   "crawl": {
+    "pages": 3,
+    "errors": 0
+   }
+  },
   "52738": {
    "school_name": "Warwick Christian College - Glengallan Road Campus",
    "website": "http://www.warwickcc.qld.edu.au/",
@@ -62438,16 +66587,26 @@
    "parent_name": "Warwick Christian College",
    "website_source": "parent_school"
   },
+  "52740": {
+   "school_name": "Autism Queensland Education & Therapy Centre - Edmonton Campus",
+   "website": "https://autismqld.com.au/services/school-aged/autism-queensland-school/",
+   "status": "campus",
+   "checked": "2026-11-20",
+   "parent_acara_sml_id": 40402,
+   "parent_name": "Autism Queensland Education & Therapy Centre",
+   "website_source": "parent_school"
+  },
   "52743": {
    "school_name": "IES College",
    "website": "https://iescollege.com/",
-   "status": "not_found",
-   "checked": "2026-11-12",
+   "status": "fetched",
+   "checked": "2026-11-20",
    "crawl": {
     "pages": 1,
     "errors": 0
    },
-   "note": "No fee page among the pages fetched."
+   "note": "No fee page among the pages fetched.",
+   "fee_pages": []
   },
   "52744": {
    "school_name": "Sophia College",
@@ -62479,13 +66638,14 @@
   "52745": {
    "school_name": "Carbrook Animal Assisted Learning Centre",
    "website": "https://www.carbrookcentre.qld.edu.au/",
-   "status": "not_found",
-   "checked": "2026-11-12",
+   "status": "fetched",
+   "checked": "2026-11-20",
    "crawl": {
     "pages": 1,
     "errors": 0
    },
-   "note": "No fee page among the pages fetched."
+   "note": "No fee page among the pages fetched.",
+   "fee_pages": []
   },
   "52749": {
    "school_name": "Alta-1 College - Albany Marine VET Campus",
@@ -62951,6 +67111,17 @@
     "source_url": "https://living.school/fees/"
    }
   },
+  "52826": {
+   "school_name": "Silver Lining School",
+   "website": "https://silverlining.org.au",
+   "status": "fetched",
+   "checked": "2026-11-20",
+   "fee_pages": [],
+   "crawl": {
+    "pages": 1,
+    "errors": 0
+   }
+  },
   "52833": {
    "school_name": "Fairbridge College - Kalgoorlie Campus",
    "website": "https://www.fairbridge.wa.edu.au/",
@@ -62998,6 +67169,17 @@
    "parent_name": "Faith Christian School of Distance Education - Daisy Hill Campus",
    "website_source": "parent_school"
   },
+  "52838": {
+   "school_name": "Kutta Mulla Gorinna Special Assistance School",
+   "website": "https://www.kmg.qld.edu.au/",
+   "status": "fetched",
+   "checked": "2026-11-20",
+   "fee_pages": [],
+   "crawl": {
+    "pages": 2,
+    "errors": 0
+   }
+  },
   "52841": {
    "school_name": "Newman Catholic College",
    "website": "https://www.newman.qld.edu.au",
@@ -63042,15 +67224,17 @@
    },
    "fees": {
     "fee_year": 2026,
-    "basis": "all-inclusive education fee per student; building levy extra",
+    "basis": "one student, annual all-inclusive education fee (tuition, resources, device, excursions and whole-year-level camps); total adds the building levy per student",
     "by_year": [
      {
-      "years": "all years",
-      "tuition": 6461
+      "years": "7-10",
+      "tuition": 6461,
+      "total": 6934
      }
     ],
-    "source": "school_website",
-    "source_url": "https://cmcmrok.catholic.edu.au/wp-content/uploads/2025/07/Catherine-McAuley-College-2026-Schedule-of-Fees.pdf"
+    "other_compulsory": null,
+    "source": "diocese_schedule",
+    "source_url": "https://s3-ap-southeast-2.amazonaws.com/os-data-2/rok-catholic-edu-au/listingforms/page528/catherine_mcauley_college_-_2026_schedule_of_fees.pdf"
    }
   },
   "52844": {
@@ -63211,6 +67395,28 @@
     "source_url": "https://www.villagehighschool.org/enrolment"
    }
   },
+  "52866": {
+   "school_name": "Men of Business Academy",
+   "website": "https://menofbusiness.com.au",
+   "status": "fetched",
+   "checked": "2026-11-20",
+   "fee_pages": [],
+   "crawl": {
+    "pages": 5,
+    "errors": 1
+   }
+  },
+  "52867": {
+   "school_name": "Y Schools Queensland - Logan",
+   "website": "https://www.ymcabrisbane.org/services/vocational-school",
+   "status": "fetched",
+   "checked": "2026-11-20",
+   "fee_pages": [],
+   "crawl": {
+    "pages": 5,
+    "errors": 0
+   }
+  },
   "52868": {
    "school_name": "Y Schools Queensland - Logan (Kingston Campus)",
    "website": "https://www.ymcabrisbane.org/services/vocational-school",
@@ -63219,6 +67425,17 @@
    "parent_acara_sml_id": 52867,
    "parent_name": "Y Schools Queensland - Logan",
    "website_source": "parent_school"
+  },
+  "52870": {
+   "school_name": "Y Schools Queensland - Moreton Bay",
+   "website": "https://www.ymcabrisbane.org/services/vocational-school",
+   "status": "fetched",
+   "checked": "2026-11-20",
+   "fee_pages": [],
+   "crawl": {
+    "pages": 5,
+    "errors": 0
+   }
   },
   "52871": {
    "school_name": "Y Schools Queensland - Moreton Bay (Mango Hill Campus)",
@@ -63229,6 +67446,17 @@
    "parent_name": "Y Schools Queensland - Moreton Bay",
    "website_source": "parent_school"
   },
+  "52872": {
+   "school_name": "Y Schools Queensland - Ipswich",
+   "website": "https://www.ymcabrisbane.org/services/vocational-school",
+   "status": "fetched",
+   "checked": "2026-11-20",
+   "fee_pages": [],
+   "crawl": {
+    "pages": 5,
+    "errors": 0
+   }
+  },
   "52873": {
    "school_name": "Y Schools Queensland - Ipswich (Limestone St Campus)",
    "website": "https://www.ymcabrisbane.org/services/vocational-school",
@@ -63237,6 +67465,17 @@
    "parent_acara_sml_id": 52872,
    "parent_name": "Y Schools Queensland - Ipswich",
    "website_source": "parent_school"
+  },
+  "52874": {
+   "school_name": "Y Schools Queensland - Brisbane South",
+   "website": "https://www.ymcabrisbane.org/services/vocational-school",
+   "status": "fetched",
+   "checked": "2026-11-20",
+   "fee_pages": [],
+   "crawl": {
+    "pages": 5,
+    "errors": 0
+   }
   },
   "52875": {
    "school_name": "Arise Christian College",
@@ -63357,16 +67596,29 @@
    "parent_name": "Christian College Geelong - Middle School – Highton",
    "website_source": "parent_school"
   },
+  "52894": {
+   "school_name": "Darlingia Forest School",
+   "website": null,
+   "status": "no_website",
+   "checked": "2026-11-20"
+  },
+  "52895": {
+   "school_name": "Maridahdi Brisbane Primary School",
+   "website": null,
+   "status": "no_website",
+   "checked": "2026-11-20"
+  },
   "52896": {
    "school_name": "The BUSY School",
    "website": "https://busyschools.qld.edu.au/",
-   "status": "not_found",
-   "checked": "2026-11-12",
+   "status": "fetched",
+   "checked": "2026-11-20",
    "crawl": {
     "pages": 6,
     "errors": 0
    },
-   "note": "No fee page among the pages fetched."
+   "note": "No fee page among the pages fetched.",
+   "fee_pages": []
   },
   "52897": {
    "school_name": "Mawarra Independent School",
@@ -63394,16 +67646,32 @@
     "source_url": "https://www.mawarraindependentschool.org.au/fees"
    }
   },
+  "52898": {
+   "school_name": "Pinnacle Academic College",
+   "website": "https://www.pinnacleacademiccollege.com.au",
+   "status": "fetched",
+   "checked": "2026-11-20",
+   "fee_pages": [
+    "https://pinnacleacademiccollege.com.au/fees/",
+    "https://pinnacleacademiccollege.com.au/wp-content/uploads/2025/11/Enrolment-Fee-Schedule-2026.pdf",
+    "https://pinnacleacademiccollege.com.au/wp-content/uploads/2025/11/Family-Establishment-Fee-2026.pdf"
+   ],
+   "crawl": {
+    "pages": 9,
+    "errors": 0
+   }
+  },
   "52899": {
    "school_name": "Kluthuthu Christian College",
    "website": "https://kluthuthu.qld.edu.au/",
-   "status": "not_found",
-   "checked": "2026-11-12",
+   "status": "fetched",
+   "checked": "2026-11-20",
    "crawl": {
     "pages": 1,
     "errors": 0
    },
-   "note": "No fee page among the pages fetched."
+   "note": "No fee page among the pages fetched.",
+   "fee_pages": []
   },
   "52911": {
    "school_name": "Alta-1 College - Sub Campus",
@@ -63431,6 +67699,35 @@
    "parent_acara_sml_id": 50398,
    "parent_name": "SMYL Community College",
    "website_source": "parent_school"
+  },
+  "52939": {
+   "school_name": "Star of the Sea School",
+   "website": "https://www.staroftheseamerrimac.qld.edu.au",
+   "status": "fetched",
+   "checked": "2026-11-20",
+   "fee_pages": [
+    "https://www.staroftheseamerrimac.qld.edu.au/enrol/fees-and-levies",
+    "https://www.staroftheseamerrimac.qld.edu.au/ArticleDocuments/995/2027%20Fee%20Schedule.pdf.aspx",
+    "https://www.staroftheseamerrimac.qld.edu.au/enrol/fees-levies/fees-and-levies"
+   ],
+   "crawl": {
+    "pages": 9,
+    "errors": 0
+   }
+  },
+  "52940": {
+   "school_name": "Ontrack College Emerald",
+   "website": "http://www.ontrack.qld.edu.au/",
+   "status": "fetched",
+   "checked": "2026-11-20",
+   "fee_pages": [
+    "https://www.ontrack.qld.edu.au/fees-funding",
+    "https://www.ontrack.qld.edu.au/copy-of-fees-funding"
+   ],
+   "crawl": {
+    "pages": 7,
+    "errors": 0
+   }
   },
   "52941": {
    "school_name": "Y Schools Queensland - Moreton Bay (Kepnock Campus)",
@@ -63789,6 +68086,20 @@
    "parent_acara_sml_id": 52896,
    "parent_name": "The BUSY School",
    "website_source": "parent_school"
+  },
+  "52972": {
+   "school_name": "Eaton College",
+   "website": "https://www.eatoncollege.qld.edu.au",
+   "status": "fetched",
+   "checked": "2026-11-20",
+   "fee_pages": [
+    "https://www.eatoncollege.qld.edu.au/enrol/fee-schedule",
+    "https://media.digistormhosting.com.au/ec-au-qld-791-website/content/Eaton-2027-School-Fee-Schedule-5.pdf?v=1795142064"
+   ],
+   "crawl": {
+    "pages": 9,
+    "errors": 0
+   }
   },
   "52974": {
    "school_name": "YOS Lawnton - Riverview Campus",
@@ -64330,13 +68641,14 @@
   "53022": {
    "school_name": "The Younity School",
    "website": "https://www.younityschools.qld.edu.au/",
-   "status": "not_found",
-   "checked": "2026-11-12",
+   "status": "fetched",
+   "checked": "2026-11-20",
    "crawl": {
     "pages": 9,
     "errors": 0
    },
-   "note": "No fee page among the pages fetched."
+   "note": "No fee page among the pages fetched.",
+   "fee_pages": []
   },
   "53025": {
    "school_name": "Humanitas High School - Initial Campus",
@@ -64502,6 +68814,19 @@
     "https://www.ming-de.qld.edu.au/enrol/local-tuition-fees",
     "https://www.ming-de.qld.edu.au/cn/enrol/local-tuition-fees"
    ]
+  },
+  "53050": {
+   "school_name": "The Village School Gold Coast",
+   "website": "http://www.thevillageschoolgoldcoast.com.au",
+   "status": "fetched",
+   "checked": "2026-11-20",
+   "fee_pages": [
+    "http://www.thevillageschoolgoldcoast.com.au/feestructure.html"
+   ],
+   "crawl": {
+    "pages": 3,
+    "errors": 1
+   }
   },
   "53076": {
    "school_name": "Faith Christian School of Distance Education",
@@ -64821,12 +69146,13 @@
    "school_name": "Ohana College",
    "website": "https://ohanacollege.qld.edu.au/",
    "status": "blocked",
-   "checked": "2026-11-12",
+   "checked": "2026-11-20",
    "crawl": {
     "pages": 0,
     "errors": 1,
     "home_error": "HTTP 403"
-   }
+   },
+   "fee_pages": []
   },
   "53103": {
    "school_name": "The Industry School - Brisbane",
@@ -64857,13 +69183,14 @@
   "53104": {
    "school_name": "Challenge Trade and Business College",
    "website": "https://ctbc.qld.edu.au/",
-   "status": "not_found",
-   "checked": "2026-11-12",
+   "status": "fetched",
+   "checked": "2026-11-20",
    "crawl": {
     "pages": 3,
     "errors": 0
    },
-   "note": "No fee page among the pages fetched."
+   "note": "No fee page among the pages fetched.",
+   "fee_pages": []
   },
   "53106": {
    "school_name": "St Philip's Christian College Dynamic Learning - Port Stephens",
@@ -64991,6 +69318,23 @@
    "parent_name": "Indie School, Logan",
    "website_source": "parent_school"
   },
+  "53141": {
+   "school_name": "South East Brisbane Steiner School",
+   "website": "https://www.sebsteinerschool.org/",
+   "status": "fetched",
+   "checked": "2026-11-20",
+   "fee_pages": [],
+   "crawl": {
+    "pages": 2,
+    "errors": 0
+   }
+  },
+  "53142": {
+   "school_name": "Sophia Waldorf School",
+   "website": null,
+   "status": "no_website",
+   "checked": "2026-11-20"
+  },
   "53143": {
    "school_name": "The BUSY School - Coolangatta Campus",
    "website": "https://busyschools.qld.edu.au/",
@@ -65019,6 +69363,12 @@
     "errors": 0
    },
    "note": "No fee page among the pages fetched."
+  },
+  "53152": {
+   "school_name": "Northern Beaches Catholic Primary School",
+   "website": null,
+   "status": "no_website",
+   "checked": "2026-11-20"
   },
   "53153": {
    "school_name": "Notre Dame College",
@@ -65168,6 +69518,12 @@
     "source_url": "https://www.lac.nsw.edu.au/documents/96/LAC_Fee_Schedule_2026.pdf"
    }
   },
+  "53167": {
+   "school_name": "St George College",
+   "website": null,
+   "status": "no_website",
+   "checked": "2026-11-20"
+  },
   "53168": {
    "school_name": "Mooroobool Silver Lining School",
    "website": null,
@@ -65177,13 +69533,14 @@
   "53169": {
    "school_name": "Clearview Christian College",
    "website": "https://www.clearview.qld.edu.au/",
-   "status": "not_found",
-   "checked": "2026-11-12",
+   "status": "fetched",
+   "checked": "2026-11-20",
    "crawl": {
-    "pages": 6,
+    "pages": 7,
     "errors": 0
    },
-   "note": "No fee page among the pages fetched."
+   "note": "No fee page among the pages fetched.",
+   "fee_pages": []
   },
   "53195": {
    "school_name": "Esslemont College",
@@ -65238,13 +69595,14 @@
   "53200": {
    "school_name": "Mastery Schools Australia - Springfield Central Campus",
    "website": "https://msa.qld.edu.au/",
-   "status": "not_found",
-   "checked": "2026-11-12",
+   "status": "fetched",
+   "checked": "2026-11-20",
    "crawl": {
     "pages": 2,
     "errors": 0
    },
-   "note": "No fee page among the pages fetched."
+   "note": "No fee page among the pages fetched.",
+   "fee_pages": []
   },
   "53201": {
    "school_name": "St Bonaventure's College",
@@ -65715,16 +70073,32 @@
    "status": "no_website",
    "checked": "2026-11-12"
   },
+  "53270": {
+   "school_name": "St John of Kronstadt Academy",
+   "website": null,
+   "status": "no_website",
+   "checked": "2026-11-20"
+  },
+  "53271": {
+   "school_name": "Goora Gan Steiner School - Primary Campus",
+   "website": "https://www.gooragansteiner.qld.edu.au/",
+   "status": "campus",
+   "checked": "2026-11-20",
+   "parent_acara_sml_id": 52668,
+   "parent_name": "Goora Gan Steiner School",
+   "website_source": "parent_school"
+  },
   "53272": {
    "school_name": "Humanitas High School",
    "website": "https://www.humanitashighschool.org.au/",
-   "status": "not_found",
-   "checked": "2026-11-12",
+   "status": "fetched",
+   "checked": "2026-11-20",
    "crawl": {
     "pages": 2,
     "errors": 0
    },
-   "note": "No fee page among the pages fetched."
+   "note": "No fee page among the pages fetched.",
+   "fee_pages": []
   },
   "53273": {
    "school_name": "Y Schools Queensland - Logan (Victoria Point Campus)",
@@ -65848,6 +70222,15 @@
    "checked": "2026-11-12",
    "parent_acara_sml_id": 53200,
    "parent_name": "Mastery Schools Australia - Springfield Central Campus",
+   "website_source": "parent_school"
+  },
+  "53284": {
+   "school_name": "Enkindle Village School - Wulguru Campus",
+   "website": "https://enkindleschool.qld.edu.au/",
+   "status": "campus",
+   "checked": "2026-11-20",
+   "parent_acara_sml_id": 52737,
+   "parent_name": "Enkindle Village School",
    "website_source": "parent_school"
   },
   "53285": {
@@ -66270,6 +70653,19 @@
    "parent_name": "Indie School, Logan",
    "website_source": "parent_school"
   },
+  "53346": {
+   "school_name": "St John of Kronstadt Academy",
+   "website": "https://www.stjohnacademy.com.au/",
+   "status": "fetched",
+   "checked": "2026-11-20",
+   "fee_pages": [
+    "https://www.stjohnacademy.com.au/tuition"
+   ],
+   "crawl": {
+    "pages": 7,
+    "errors": 0
+   }
+  },
   "53347": {
    "school_name": "Townsville Flexible School - Bowen Campus",
    "website": "http://www.youthplus.edu.au/townsville-flc/",
@@ -66428,6 +70824,21 @@
    "parent_name": "Julia Gillard Community College - 20 Synnot Street",
    "website_source": "parent_school"
   },
+  "53375": {
+   "school_name": "The Rainforest School - South Mission Beach Campus",
+   "website": "http://www.trs.qld.edu.au",
+   "status": "campus",
+   "checked": "2026-11-20",
+   "parent_acara_sml_id": 52667,
+   "parent_name": "The Rainforest School",
+   "website_source": "parent_school"
+  },
+  "53376": {
+   "school_name": "St John Henry Newman College",
+   "website": null,
+   "status": "no_website",
+   "checked": "2026-11-20"
+  },
   "53379": {
    "school_name": "Novoschool",
    "website": "https://www.novoschool.nsw.edu.au/",
@@ -66511,6 +70922,15 @@
     "https://stmarcellin.wa.edu.au/wp-content/uploads/2026/02/Fee-Schedule-2026.pdf"
    ]
   },
+  "53391": {
+   "school_name": "Brisbane Girls Grammar School - Primary Campus",
+   "website": "http://www.bggs.qld.edu.au",
+   "status": "campus",
+   "checked": "2026-11-20",
+   "parent_acara_sml_id": 48034,
+   "parent_name": "Brisbane Girls Grammar School",
+   "website_source": "parent_school"
+  },
   "53392": {
    "school_name": "The Industry School - Redlands (Cleveland)",
    "website": "https://theindustryschool.com.au/redlands-school/",
@@ -66559,16 +70979,35 @@
    "parent_name": "Autism Queensland Education & Therapy Centre",
    "website_source": "parent_school"
   },
+  "53405": {
+   "school_name": "Autism Queensland Education & Therapy Centre - Koongal Campus",
+   "website": "https://autismqld.com.au/services/school-aged/autism-queensland-school/",
+   "status": "campus",
+   "checked": "2026-11-20",
+   "parent_acara_sml_id": 40402,
+   "parent_name": "Autism Queensland Education & Therapy Centre",
+   "website_source": "parent_school"
+  },
+  "53406": {
+   "school_name": "Autism Queensland Education & Therapy Centre - East Mackay Campus",
+   "website": "https://autismqld.com.au/services/school-aged/autism-queensland-school/",
+   "status": "campus",
+   "checked": "2026-11-20",
+   "parent_acara_sml_id": 40402,
+   "parent_name": "Autism Queensland Education & Therapy Centre",
+   "website_source": "parent_school"
+  },
   "53407": {
    "school_name": "Impact Community ACADEMY",
    "website": "https://impactcommunityacademy.qld.edu.au/",
-   "status": "not_found",
-   "checked": "2026-11-12",
+   "status": "fetched",
+   "checked": "2026-11-20",
    "crawl": {
     "pages": 3,
     "errors": 0
    },
-   "note": "No fee page among the pages fetched."
+   "note": "No fee page among the pages fetched.",
+   "fee_pages": []
   },
   "53408": {
    "school_name": "Carinity Education - Glendyne - Tinana Campus",
@@ -66577,6 +71016,15 @@
    "checked": "2026-11-12",
    "parent_acara_sml_id": 47967,
    "parent_name": "Carinity Education - Glendyne",
+   "website_source": "parent_school"
+  },
+  "53409": {
+   "school_name": "Sacred Heart Primary School - Jane Street Campus",
+   "website": "http://www.cunnamulla.catholic.edu.au/",
+   "status": "campus",
+   "checked": "2026-11-20",
+   "parent_acara_sml_id": 47769,
+   "parent_name": "Sacred Heart Primary School",
    "website_source": "parent_school"
   },
   "53410": {
@@ -66593,11 +71041,29 @@
     "https://www.faith.qld.edu.au/enrolments/fees"
    ]
   },
+  "53411": {
+   "school_name": "Mastery Schools Australia - Taigum Primary Temporary Facility",
+   "website": "https://msa.qld.edu.au/",
+   "status": "campus",
+   "checked": "2026-11-20",
+   "parent_acara_sml_id": 53200,
+   "parent_name": "Mastery Schools Australia - Springfield Central Campus",
+   "website_source": "parent_school"
+  },
   "53412": {
    "school_name": "Mastery Schools Australia - Taigum Secondary Temporary Facility",
    "website": "https://msa.qld.edu.au/",
    "status": "campus",
    "checked": "2026-11-12",
+   "parent_acara_sml_id": 53200,
+   "parent_name": "Mastery Schools Australia - Springfield Central Campus",
+   "website_source": "parent_school"
+  },
+  "53413": {
+   "school_name": "Mastery Schools Australia - Vincent Primary Temporary Facility",
+   "website": "https://msa.qld.edu.au/",
+   "status": "campus",
+   "checked": "2026-11-20",
    "parent_acara_sml_id": 53200,
    "parent_name": "Mastery Schools Australia - Springfield Central Campus",
    "website_source": "parent_school"
@@ -66694,6 +71160,12 @@
     "errors": 0
    },
    "note": "No fee page among the pages fetched."
+  },
+  "53427": {
+   "school_name": "High Trees Primary",
+   "website": null,
+   "status": "no_website",
+   "checked": "2026-11-20"
   },
   "53428": {
    "school_name": "Omni Academies of Learning",
@@ -67143,24 +71615,26 @@
   "53477": {
    "school_name": "Hubbard's School",
    "website": "https://hubbards.qld.edu.au/",
-   "status": "not_found",
-   "checked": "2026-11-12",
+   "status": "fetched",
+   "checked": "2026-11-20",
    "crawl": {
     "pages": 3,
     "errors": 0
    },
-   "note": "No fee page among the pages fetched."
+   "note": "No fee page among the pages fetched.",
+   "fee_pages": []
   },
   "53478": {
    "school_name": "Indie School, Logan",
    "website": "https://indieschool.edu.au/campus/logan/",
-   "status": "not_found",
-   "checked": "2026-11-12",
+   "status": "fetched",
+   "checked": "2026-11-20",
    "crawl": {
     "pages": 2,
     "errors": 0
    },
-   "note": "No fee page among the pages fetched."
+   "note": "No fee page among the pages fetched.",
+   "fee_pages": []
   },
   "53479": {
    "school_name": "Indie School, Logan - Parramatta Park Campus",
@@ -67179,6 +71653,12 @@
    "parent_acara_sml_id": 53275,
    "parent_name": "The Industry School - Sunshine Coast",
    "website_source": "parent_school"
+  },
+  "53481": {
+   "school_name": "Two Rivers Community School",
+   "website": null,
+   "status": "no_website",
+   "checked": "2026-11-20"
   },
   "53482": {
    "school_name": "King's Christian College - Walloon Campus",
