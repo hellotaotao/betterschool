@@ -11,7 +11,7 @@ import crypto from 'node:crypto';
 import fs from 'node:fs';
 import path from 'node:path';
 import {
-  RAW_DIR, SCOPES, fetchPage, htmlLinks, htmlToText, isPdf, loadLedger, feePageUrls, loadSchools, parentSchoolId, pdfToText, saveLedger, today,
+  RAW_DIR, SCOPES, docxToText, fetchPage, htmlLinks, htmlToText, isDocx, isPdf, loadLedger, feePageUrls, loadSchools, parentSchoolId, pdfToText, saveLedger, today,
 } from './fees-common.mjs';
 
 const MAX_PAGES = 16;
@@ -53,6 +53,45 @@ function driveDownload(href) {
 }
 const isDrive = href => href.startsWith('https://drive.google.com/uc?export=download&id=');
 
+// Many Melbourne Catholic primaries keep the fee page out of their menus, so
+// no link from the home page reaches it; the sitemap still lists it. Word
+// boundaries keep out "feedback" and "coffee"; concession and overseas-student
+// pages go last, since they rarely carry the general schedule.
+const SITEMAP_FEE = /\bfees?\b|tuition/i;
+const SITEMAP_SIDE = /concession|overseas|international|policy|polic|news|blog|event/i;
+const MAX_SITEMAP_SEEDS = 6;
+const MAX_CHILD_SITEMAPS = 6;
+const SITEMAP_SKIP = /image|video|author|tag|categor|product|event|news|blog|gallery/i;
+const locs = xml => [...xml.matchAll(/<loc>\s*([^<\s]+)\s*<\/loc>/g)].map(match => match[1].replace(/&amp;/g, '&'));
+
+async function sitemapFeeUrls(origin) {
+  const read = async url => {
+    try {
+      const page = await fetchPage(url, { timeoutMs: 20000 });
+      return page.status < 400 ? String(page.body) : '';
+    } catch {
+      return '';
+    }
+  };
+  const urls = [];
+  for (const index of [`${origin}/sitemap.xml`, `${origin}/sitemap_index.xml`, `${origin}/wp-sitemap.xml`]) {
+    const top = locs(await read(index));
+    // A sitemap index can list dozens of children; reading them all in a burst
+    // got Catholic school hosts answering 429 to the crawl that followed.
+    const children = top.filter(url => /\.xml(\?|$)/i.test(url) && !SITEMAP_SKIP.test(url)).slice(0, MAX_CHILD_SITEMAPS);
+    urls.push(...top.filter(url => !/\.xml(\?|$)/i.test(url)));
+    for (const url of children) {
+      await new Promise(resolve => setTimeout(resolve, 500));
+      urls.push(...locs(await read(url)));
+    }
+    if (urls.length > 0) break;
+  }
+  return [...new Set(urls)]
+    .filter(url => { try { return SITEMAP_FEE.test(decodeURIComponent(new URL(url).pathname)); } catch { return false; } })
+    .sort((a, b) => Number(SITEMAP_SIDE.test(a)) - Number(SITEMAP_SIDE.test(b)))
+    .slice(0, MAX_SITEMAP_SEEDS);
+}
+
 async function crawl(school) {
   const dir = path.join(RAW_DIR, String(school.acara_sml_id));
   fs.rmSync(dir, { recursive: true, force: true });
@@ -70,6 +109,7 @@ async function crawl(school) {
   const saved = new Set();
   const log = [];
   let homeStatus = null;
+  let sitemapRead = false;
   while ((priority.length > 0 || queue.length > 0) && tried.size < MAX_PAGES) {
     const { url, text, depth } = priority.shift() ?? queue.shift();
     if (tried.has(url)) continue;
@@ -94,6 +134,12 @@ async function crawl(school) {
     }
     if (depth === 0) homeStatus = page.status;
     if (depth === 0 && page.status < 400 && !sameSite(page.url, home)) sites.push(page.url);
+    if (depth === 0 && page.status < 400 && !sitemapRead) {
+      sitemapRead = true;
+      for (const url of await sitemapFeeUrls(new URL(page.url).origin)) {
+        if (!tried.has(url)) priority.push({ url, text: 'sitemap', depth: 1 });
+      }
+    }
     if (page.status >= 400) {
       log.push({ url, error: `HTTP ${page.status}` });
       // ACARA lists some sites by a deep path that no longer exists; the root may.
@@ -108,11 +154,12 @@ async function crawl(school) {
     if (saved.has(page.url)) continue;
     saved.add(page.url);
     const pdf = isPdf(page.type, page.body);
-    const body = pdf ? await pdfToText(page.body) : htmlToText(page.body);
+    const docx = !pdf && isDocx(page.type, page.body);
+    const body = pdf ? await pdfToText(page.body) : docx ? docxToText(page.body) : htmlToText(page.body);
     const file = crypto.createHash('sha1').update(page.url).digest('hex').slice(0, 10);
     fs.writeFileSync(path.join(dir, `${file}.txt`), `URL: ${page.url}\nLINK: ${text}\n\n${body}`);
-    log.push({ url: page.url, link: text, file, pdf, chars: body.length });
-    if (!pdf && depth < 2) {
+    log.push({ url: page.url, link: text, file, pdf, ...(docx ? { docx } : {}), chars: body.length });
+    if (!pdf && !docx && depth < 2) {
       const links = htmlLinks(page.url, page.body)
         .map(link => ({ ...link, href: driveDownload(link.href) ?? link.href }))
         .filter(link => RELEVANT.test(link.href) || RELEVANT.test(link.text))

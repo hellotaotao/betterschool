@@ -9,6 +9,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { parse as parseHtml } from 'node-html-parser';
 import { extractText, getDocumentProxy } from 'unpdf';
+import XLSX from 'xlsx';
 
 export const FEES_DIR = path.resolve('data/fees');
 export const RAW_DIR = path.join(FEES_DIR, 'raw');
@@ -159,6 +160,29 @@ export async function fetchPage(url, { timeoutMs = 25000 } = {}) {
 
 export function isPdf(type, body) {
   return type.includes('pdf') || body.subarray(0, 4).toString() === '%PDF';
+}
+
+// Some schools publish the schedule as a Word file (St Paul's Sunshine West).
+// A .docx is a zip; SheetJS already reads zips, so no new dependency.
+export function isDocx(type, body) {
+  return type.includes('wordprocessingml') || (body.subarray(0, 2).toString() === 'PK' && type.includes('octet-stream'));
+}
+
+export function docxToText(body) {
+  try {
+    const zip = XLSX.CFB.read(body, { type: 'buffer' });
+    const index = zip.FullPaths.findIndex(name => /\/word\/document\.xml$/.test(name));
+    if (index < 0) return '[docx error: no word/document.xml]';
+    return Buffer.from(zip.FileIndex[index].content).toString('utf8')
+      .replace(/<\/w:p>/g, '\n')
+      .replace(/<\/w:tc>/g, ' | ')
+      .replace(/<w:tab\/>/g, '\t')
+      .replace(/<[^>]+>/g, '')
+      .replace(/&amp;/g, '&').replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&quot;/g, '"').replace(/&apos;/g, "'")
+      .replace(/\n\s*\n+/g, '\n');
+  } catch (error) {
+    return `[docx error: ${error.message}]`;
+  }
 }
 
 export async function pdfToText(body) {

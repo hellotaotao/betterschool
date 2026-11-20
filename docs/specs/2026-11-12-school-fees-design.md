@@ -74,6 +74,11 @@ npm run fees:validate                            # 状态合法、年份合理�
 - **帕拉马塔教区**：每个年级一块，含 “Diocesan Tuition Fee” 和 “Total”，页首写着 “Fees Payable at … for <年份>”。同一模板有两种排版（“Year 7 1st Child 2nd Child …” 和 “Fee components Child 1 Child 2 …”，后者用不换行空格），都能解析；后者每个年级还跟着一块“首年优惠后”的金额，只取前面的全价块。不符合模板的页面不处理，状态保持原样。
 - **换了域名的学校**：ACARA 登记的旧网址常常跳到新域名（tsc.nsw.edu.au → scots.college）。爬虫把跳转后的域名也当作本站，否则新首页上的链接全会被当成外站丢掉（新州曾因此有 32 所只抓到首页）。首页报 5xx 或域名解析失败时，再试一次去掉 `www.` 的地址（Cloudflare 对没有证书的 www 名返回 525）。
 - **Google Drive 上的学费表**：Wollongong 教区的学校把学费表放在 Drive 链接里。爬虫把 `drive.google.com/file/d/<id>` 改写成直接下载地址，链接文字带 fee 时跟进。
+- **站点地图**：不少墨尔本天主教小学的学费页不在菜单里，从首页点不到，但 `sitemap.xml` 里有。爬虫读首页后再读站点地图（最多 6 个子地图，间隔 0.5 秒；一口气读几十个子地图曾让学校主机回 429），把路径里带 fee/tuition 的网址排进优先队列，优惠和政策类页面排在后面。
+- **Word 文档**：`.docx` 是 zip，用已有依赖 SheetJS 解出 `word/document.xml` 转成文字，和 PDF 一样进原文。
+- **Sandhurst 教区学费计算器**：教区网站和各校的 fee estimator 都读同一个公开的 Excel（`ceosand.catholic.edu.au/feecalculator/fee-estimator-V_*.xlsx`），计算器自述 “Estimates based on 2026 school fees”。表里有每校一孩家庭各年级的合计、按家庭收的学费、资本费和各年级杂费。和学校自己网页上已读到的 13 所小学比，11 所的家庭学费完全一致，另两所只是口径不同，所以没答案的学校用它补，来源记 `diocese_schedule`，原文存一份工作表的文字版。全为 0 的行（DOXA）不当作免费。
+- **图片学费表**：PDF 页面用 PDFKit 渲染成图片后由模型读，本地 OCR 的文字另存一份做核对（日志里的网址加 `#ocr`，否则和 PDF 本身同一网址会被去重掉）；OCR 认错的数字列进 `ocr_unconfirmed`。
+- **拦爬虫的网站**：在浏览器里读，学费段落原文存进原文目录（网址加 `#browser`），`read_via` 写明。
 - **其余学校**：先抓，再由人读证据片段，用 `fees:merge` 写进状态表。抓取时链接文字或网址里带 fee/tuition/scholarship/schedule 的优先，免得 16 页的预算用在菜单和新闻上、轮不到学费 PDF。读数的结果要过校验：每个金额都必须能在该校原文里找到（允许 PDF 把数字拆碎，也允许只在表头写一次 “$”）。
 
 ## 6. 结果
@@ -143,6 +148,12 @@ Korowal 只公布按季度（Quarterly）分期的金额，记为 `per_term` × 
 | 特殊学校 | 31 | 2 |
 
 “有答案”含沿用主校学费的分校区（102 个）。没拿到的主要是：页面上没有学费页（约 190 所）、主校没答案的分校区（157 个）、只有学费计算器（约 25 所，多为 Sandhurst 教区）、只公布了旧年份、学费表是 Word 文档或图片。142 所记为按家庭收费。
+
+### 维州补抓（2026-11-20）
+
+在上一轮基础上补了四类：用加了站点地图和 Word 支持的爬虫重抓 272 所（没找到学费页、只抓到首页、打不开或被拦）；Sandhurst 教区的计算器表补 33 所；图片和渲染后才能读的学费表 20 来所；拦爬虫的大校（Scotch、Wesley、Brighton Grammar、St Leonard's 等）在浏览器里读。拿到学费的学校从 326 所到 399 所，加上沿用主校学费的分校区，有答案的从 428 条到 521 条。
+
+剩下的大多是网站上确实没有学费：约 155 所的学费页找不到（多是墨尔本天主教小学，学费只在通讯或入学资料里），25 所左右只放了墨尔本教区的优惠价或政策。另有 9 所证书过期等原因打不开，Firbank、Kingswood、Lighthouse 的学费表只在 Flipsnack、Issuu、OneDrive 阅读器里，没存下原文，记为 not_extracted。
 
 ### 中学（2026-11-14）
 
