@@ -21,6 +21,7 @@
     "fees:cards": "node scripts/fees-cards.mjs",
     "fees:merge": "node scripts/merge-fees.mjs",
     "fees:validate": "node scripts/validate-fees.mjs",
+    "fees:audit": "node scripts/fees-tools/audit-omissions.mjs",
     "canonical:build": "node scripts/build-canonical-schools.mjs && node scripts/build-client-schools.mjs",
     "client:build": "node scripts/build-client-schools.mjs",
     "canonical:validate": "node scripts/validate-canonical-schools.mjs",

@@ -18,6 +18,36 @@ const PROVIDERS = [
   ['entrance exam', /entrance (exam|test)/i],
 ];
 
+const EXTRA_SIGNALS = [
+  ['levy', /(?:building|capital|resource|student|technology|ict|curriculum|composite)\s+(?:levy|fee)/i],
+  ['sibling', /2nd child|second child|sibling discount|family discount/i],
+  ['concession', /concession(?:al)?\s+fee|health care card|csef/i],
+  ['boarding/one-off', /boarding\s+fee|boarder|application\s+fee|enrolment\s+fee|confirmation\s+fee/i],
+];
+
+function extraDetailSnippets(pages, alreadyPrinted) {
+  const snippets = [];
+  const seenKinds = new Set();
+  const nonOverseas = pages.filter(page => !/international|overseas|oosh/i.test(page.url));
+  for (const page of nonOverseas) {
+    const flat = flatten(page.text.split('\n').slice(3).join('\n'));
+    for (const [label, pattern] of EXTRA_SIGNALS) {
+      if (seenKinds.has(label)) continue;
+      const match = flat.match(pattern);
+      if (!match) continue;
+      const idx = match.index ?? 0;
+      const snippet = flat.slice(Math.max(0, idx - 80), idx + 170).trim();
+      if (alreadyPrinted.some(text => text.includes(match[0]) && text.includes(snippet.slice(0, 60)))) {
+        seenKinds.add(label);
+        continue;
+      }
+      seenKinds.add(label);
+      snippets.push(`${label} (${page.url}): ${snippet}`);
+    }
+  }
+  return snippets;
+}
+
 function args() {
   const out = { status: 'fetched', ids: null, limit: 20, offset: 0, chars: 900, exclude: new Set() };
   const argv = process.argv.slice(2);
@@ -67,7 +97,11 @@ for (const [id, entry] of entries) {
     .filter(excerpt => excerpt.rows)
     .sort((a, b) => b.rows - a.rows)
     .slice(0, 2);
-  for (const excerpt of excerpts) console.log(`  [${excerpt.rows} rows; fee years named: ${excerpt.years.join(',') || 'none'}] ${excerpt.url}\n  ${excerpt.text}`);
+  const printedTexts = [];
+  for (const excerpt of excerpts) {
+    console.log(`  [${excerpt.rows} rows; fee years named: ${excerpt.years.join(',') || 'none'}] ${excerpt.url}\n  ${excerpt.text}`);
+    printedTexts.push(excerpt.text);
+  }
   if (excerpts.length === 0) {
     // Column-laid PDFs put the year labels and the amounts in separate runs;
     // show the densest run of amounts instead and read the labels around it.
@@ -100,15 +134,26 @@ for (const [id, entry] of entries) {
       })
       .filter(Boolean)
       .slice(0, 2);
-    if (dense) console.log(`  [no rows; ${dense.count} amounts] ${dense.url}\n  ${dense.text}`);
-    else if (single.length > 0) for (const entry of single) console.log(`  [fee page, few amounts] ${entry.url}\n  ${entry.text}`);
-    else {
+    if (dense) {
+      console.log(`  [no rows; ${dense.count} amounts] ${dense.url}\n  ${dense.text}`);
+      printedTexts.push(dense.text);
+    } else if (single.length > 0) {
+      for (const entry of single) {
+        console.log(`  [fee page, few amounts] ${entry.url}\n  ${entry.text}`);
+        printedTexts.push(entry.text);
+      }
+    } else {
       // A fee PDF with next to no text is a scanned image: the model reads it directly.
       const scans = pages.filter(page => page.url.match(/\.pdf/i) && /fee|tuition|schedule/i.test(page.url + page.text.split('\n')[1]) && page.text.split('\n').slice(3).join('').trim().length < 200);
       if (scans.length > 0) console.log(`  [image PDF] ${scans.map(page => page.url).join(' ')}`);
       const candidates = pages.filter(page => /fee|tuition/i.test(page.url)).map(page => page.url);
       console.log(`  no fee figures; fee-like pages: ${candidates.slice(0, 4).join(' ') || 'none'}`);
     }
+  }
+  const extras = extraDetailSnippets(pages, printedTexts);
+  if (extras.length > 0) {
+    console.log('  [extra details noticed]');
+    for (const line of extras) console.log(`    - ${line}`);
   }
   const named = PROVIDERS.filter(([, pattern]) => pages.some(page => pattern.test(page.text))).map(([name]) => name);
   if (named.length > 0) console.log(`  tests named: ${named.join(', ')}`);

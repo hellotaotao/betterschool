@@ -14,19 +14,61 @@ export interface FeeRow {
   total?: number;
   per_term?: number;
   terms?: number;
+  child_2?: number;
+  child_3?: number;
+  child_4?: number;
+}
+
+export interface FeeComponent {
+  name: string;
+  unit: 'per_student' | 'per_family';
+  period?: 'annual' | 'per_term' | 'per_semester';
+  terms?: number;
+  amount?: number;
+  by_year?: { years: string; amount: number }[];
+  note?: string;
+}
+
+export interface OneOffFee {
+  item: string;
+  aud: number;
 }
 
 export interface PublishedFees {
   fee_year: number | null;
   year_note?: string;
+  billing_unit?: 'per_student' | 'per_family';
   basis: string;
   by_year: FeeRow[];
+  components?: FeeComponent[];
   other_compulsory?: string | null;
+  sibling?: string;
+  sibling_amounts_basis?: 'per_child' | 'family_total';
+  one_off?: OneOffFee[];
+  concession?: string;
+  boarding?: string;
   /**
    * A time-limited discount the school applies to everyone eligible. The
    * figures stay at the published full price; this line says what comes off.
    */
   discount?: string;
+  notes?: string;
+  source: 'school_website' | 'scs_endpoint' | 'diocese_schedule';
+  source_url: string;
+}
+
+/** A school whose published fee structure does not fit an annual table. */
+export interface DescribedFees {
+  fee_year: number | null;
+  year_note?: string;
+  pricing_model:
+    | 'per_term_unspecified'
+    | 'by_program'
+    | 'income_tiered'
+    | 'family_combination'
+    | 'estimator_only'
+    | 'custom';
+  summary: string;
   source: 'school_website' | 'scs_endpoint' | 'diocese_schedule';
   source_url: string;
 }
@@ -45,6 +87,7 @@ export interface FeeFree {
  */
 export type FeeRecord = (
   | { status: 'found'; checked: string; fees: PublishedFees }
+  | { status: 'described'; checked: string; described: DescribedFees }
   | { status: 'fee_free'; checked: string; free: FeeFree }
   | { status: 'not_published'; checked: string }
   | { status: 'unavailable'; checked: string }
@@ -58,6 +101,7 @@ type LedgerEntry = {
   status: string;
   checked: string;
   fees?: PublishedFees;
+  fees_description?: DescribedFees;
   free?: FeeFree;
   parent_acara_sml_id?: number;
   parent_name?: string;
@@ -76,9 +120,31 @@ export function getFeeRecord(acaraId: number): FeeRecord {
     return { ...record, campusOf: entry.parent_name };
   }
   if (entry.status === 'found' && entry.fees) return { status: 'found', checked: entry.checked, fees: entry.fees };
+  if (entry.status === 'described' && entry.fees_description) {
+    return { status: 'described', checked: entry.checked, described: entry.fees_description };
+  }
   if (entry.status === 'fee_free' && entry.free) return { status: 'fee_free', checked: entry.checked, free: entry.free };
   if (entry.status === 'not_published') return { status: 'not_published', checked: entry.checked };
   return { status: 'unavailable', checked: entry.checked };
+}
+
+/** Whether the primary schedule figure is charged per household rather than per student. */
+export function isPerFamilyFee(fees: PublishedFees): boolean {
+  return fees.billing_unit === 'per_family'
+    || (!fees.billing_unit && /charged per family, not per child/i.test(fees.basis));
+}
+
+/** Whether the schedule includes explicit multi-child columns (2nd/3rd/4th+ child). */
+export function hasSiblingRows(fees: PublishedFees): boolean {
+  return fees.by_year.some(row => row.child_2 != null || row.child_3 != null || row.child_4 != null);
+}
+
+/** What figure type a row carries as its primary amount. */
+export function rowFigureKind(row: FeeRow): 'total' | 'tuition' | 'per_term' | null {
+  if (row.total != null) return 'total';
+  if (row.tuition != null) return 'tuition';
+  if (row.per_term != null && row.terms != null) return 'per_term';
+  return null;
 }
 
 /** The row covering Year 7, else the first secondary row, else the first row. */

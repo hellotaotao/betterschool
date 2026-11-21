@@ -10,7 +10,7 @@ const state = (process.argv[2] ?? '').toUpperCase();
 if (!state) throw new Error('Usage: gap-report.mjs <STATE>');
 const ledger = loadLedger().schools;
 const schools = JSON.parse(fs.readFileSync('public/data/schools.canonical.json', 'utf8'));
-const answered = r => r && ['found', 'fee_free'].includes(r.status);
+const answered = r => r && ['found', 'fee_free', 'described'].includes(r.status);
 const status = {};
 const reasons = {};
 let total = 0;

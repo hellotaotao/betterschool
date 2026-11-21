@@ -11,7 +11,7 @@ import {
   getVceStateRank,
   latestYear12,
 } from '@/lib/schoolsData';
-import { annualFigure, getFeeRecord, leadFeeRow } from '@/lib/feesData';
+import { annualFigure, getFeeRecord, isPerFamilyFee, leadFeeRow } from '@/lib/feesData';
 import OverviewSection from '@/components/seo/school/OverviewSection';
 import {
   percentBelow,
@@ -165,14 +165,25 @@ export default function SchoolBody({ locale, state, slug }: { locale: Locale; st
   const leadFee = feeRecord.status === 'found' ? leadFeeRow(feeRecord.fees) : null;
   const leadFeeValue = leadFee ? annualFigure(leadFee) : null;
   if (feeRecord.status === 'found' && leadFee && leadFeeValue !== null) {
+    const perFamily = isPerFamilyFee(feeRecord.fees);
+    const leadIsTotal = leadFee.total != null;
+    const years = leadFee.years.replace('-', '–');
+    const statLabel = perFamily
+      ? (leadIsTotal ? t.feesStatFamilyTotal : t.feesStatFamily)
+      : t.statFees;
+    const yearLabel = perFamily
+      ? (leadIsTotal
+        ? (feeRecord.fees.fee_year ? t.feesFamilyTotalYearLabel : t.feesFamilyTotalNoYear)
+        : (feeRecord.fees.fee_year ? t.feesFamilyYearLabel : t.feesFamilyNoYear))
+      : (feeRecord.fees.fee_year ? t.feesYearLabel : t.feesNoYear);
     stats.push({
-      label: formatMessage(t.statFees, { years: leadFee.years.replace('-', '–') }),
+      label: formatMessage(statLabel, { years }),
       value: `$${leadFeeValue.toLocaleString('en-AU')}`,
       extra: (
         <span className="mt-1 block text-[13px] text-muted">
           {feeRecord.fees.fee_year
-            ? formatMessage(t.feesYearLabel, { year: feeRecord.fees.fee_year })
-            : formatMessage(t.feesNoYear, { date: feeRecord.checked })}
+            ? formatMessage(yearLabel, { year: feeRecord.fees.fee_year })
+            : formatMessage(yearLabel, { date: feeRecord.checked })}
         </span>
       ),
     });

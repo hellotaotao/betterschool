@@ -1,5 +1,13 @@
 import type { School } from '@/types/school';
-import { annualFigure, type FeeRecord, type FeeRow } from '@/lib/feesData';
+import {
+  annualFigure,
+  hasSiblingRows,
+  isPerFamilyFee,
+  rowFigureKind,
+  type FeeComponent,
+  type FeeRecord,
+  type FeeRow,
+} from '@/lib/feesData';
 import { gradeCohorts, gradeShortLabel, studentsPerTeacher } from '@/lib/schoolInsights';
 import { formatMessage, getMessages, getReligionLabel, ordinalNumber } from '@/lib/i18n';
 import { getSeo, type Locale } from '@/lib/seoLocale';
@@ -32,6 +40,19 @@ function yearsLabel(t: Copy, years: string): string {
   return /^\d/.test(years) ? formatMessage(t.feesYear, { years: pretty }) : pretty;
 }
 
+function formatComponentAmount(t: Copy, comp: FeeComponent): string {
+  if (comp.amount != null) {
+    if (comp.period === 'per_term' && comp.terms != null) {
+      return formatMessage(t.feesPerTerm, { amount: money(comp.amount), terms: comp.terms });
+    }
+    return money(comp.amount);
+  }
+  if (comp.by_year && comp.by_year.length > 0) {
+    return comp.by_year.map(row => `${row.years.replace('-', '–')} ${money(row.amount)}`).join(' · ');
+  }
+  return '';
+}
+
 function FeesPanel({ t, locale, school, record }: { t: Copy; locale: Locale; school: School; record: FeeRecord }) {
   if (school.sector === 'Government') {
     return (
@@ -51,10 +72,31 @@ function FeesPanel({ t, locale, school, record }: { t: Copy; locale: Locale; sch
         <p className="mt-2 text-2xl font-bold text-ink">{t.feesFree}</p>
         <p className="mt-1 text-[13px] text-muted">
           {t.feesFreeStated}
+          {/* Ledger notes and verbatim quotes are in English; Chinese pages keep the localised line only. */}
           {locale === 'en' ? ` “${record.free.statement}”` : ''}
         </p>
         <a href={record.free.source_url} target="_blank" rel="nofollow noopener noreferrer" className="bs-link mt-1 inline-block text-[13px]">
           {t.feesSourceSchoolPage} →
+        </a>
+      </Panel>
+    );
+  }
+  if (record.status === 'described') {
+    const { described } = record;
+    return (
+      <Panel title={t.feesHeading}>
+        {campusLine}
+        <p className="mt-1 text-[13px] text-muted">
+          {described.fee_year
+            ? formatMessage(t.feesDescribedYearLabel, { year: described.fee_year })
+            : formatMessage(t.feesDescribedNoYear, { date: record.checked })}
+        </p>
+        <p className="mt-2 text-[14px] leading-relaxed text-ink">
+          {locale === 'en' ? described.summary : t.feesDescribedFallback}
+        </p>
+        {/* nofollow: the source is cited for the reader, not endorsed for ranking. */}
+        <a href={described.source_url} target="_blank" rel="nofollow noopener noreferrer" className="bs-link mt-2 inline-block text-[13px]">
+          {described.source === 'school_website' ? t.feesSourceSchool : t.feesSourceSystem} →
         </a>
       </Panel>
     );
@@ -71,41 +113,161 @@ function FeesPanel({ t, locale, school, record }: { t: Copy; locale: Locale; sch
   }
 
   const { fees } = record;
+  const perFamily = isPerFamilyFee(fees);
+  const showSiblingTable = hasSiblingRows(fees);
   const max = Math.max(...fees.by_year.map(row => annualFigure(row) ?? 0));
   const shown = (row: FeeRow) => (row.per_term != null && row.terms != null && row.total == null && row.tuition == null
     ? formatMessage(t.feesPerTerm, { amount: money(row.per_term), terms: row.terms })
     : money(annualFigure(row) ?? 0));
-  const hasTotal = fees.by_year.some(row => row.total != null);
+  const someTotal = fees.by_year.some(row => row.total != null);
+  const allTotal = fees.by_year.every(row => row.total != null);
+  const mixedKind = someTotal && !allTotal;
+  const showChild2 = fees.by_year.some(row => row.child_2 != null);
+  const showChild3 = fees.by_year.some(row => row.child_3 != null);
+  const showChild4 = fees.by_year.some(row => row.child_4 != null);
+  const familyCols = fees.sibling_amounts_basis === 'family_total';
+  const subtitleTemplate = perFamily
+    ? (someTotal
+      ? (fees.fee_year ? t.feesFamilyTotalYearLabel : t.feesFamilyTotalNoYear)
+      : (fees.fee_year ? t.feesFamilyYearLabel : t.feesFamilyNoYear))
+    : (fees.fee_year ? t.feesYearLabel : t.feesNoYear);
+
+  // Ledger detail fields (other_compulsory, sibling, concession, boarding, discount, notes)
+  // are English audit prose; fees.basis is an internal provenance note and stays hidden.
+  const detailRows = locale === 'en' ? [
+    fees.other_compulsory ? { label: t.feesDetailOther, value: fees.other_compulsory } : null,
+    fees.sibling ? { label: t.feesDetailSibling, value: fees.sibling } : null,
+    fees.one_off && fees.one_off.length > 0
+      ? { label: t.feesDetailOneOff, value: fees.one_off.map(item => `${item.item} ${money(item.aud)}`).join('; ') }
+      : null,
+    fees.concession ? { label: t.feesDetailConcession, value: fees.concession } : null,
+    fees.boarding ? { label: t.feesDetailBoarding, value: fees.boarding } : null,
+    fees.discount ? { label: t.feesDetailDiscount, value: fees.discount } : null,
+    fees.notes ? { label: t.feesDetailNotes, value: fees.notes } : null,
+  ].filter((item): item is { label: string; value: string } => item !== null) : [];
 
   return (
     <Panel title={t.feesHeading}>
       {campusLine}
       <p className="mt-1 text-[13px] text-muted">
         {fees.fee_year
-          ? formatMessage(t.feesYearLabel, { year: fees.fee_year })
-          : formatMessage(t.feesNoYear, { date: record.checked })}
+          ? formatMessage(subtitleTemplate, { year: fees.fee_year })
+          : formatMessage(subtitleTemplate, { date: record.checked })}
       </p>
-      <ul className="mt-3 space-y-2">
-        {fees.by_year.map(row => (
-          <li key={row.years} className="grid grid-cols-[5.5rem_1fr_auto] items-center gap-3">
-            <span className="text-[13px] font-semibold text-ink-2">{yearsLabel(t, row.years)}</span>
-            <span className="h-2.5 overflow-hidden rounded-full bg-line" aria-hidden="true">
-              <span className="block h-full rounded-full bg-brand" style={{ width: pct(annualFigure(row) ?? 0, max) }} />
-            </span>
-            <span className="text-right text-[15px] font-semibold tabular-nums text-ink">{shown(row)}</span>
-          </li>
-        ))}
-      </ul>
+
+      {showSiblingTable ? (
+        <div className="mt-3 overflow-x-auto">
+          <table className="w-full text-sm">
+            <thead>
+              <tr className="border-b border-line-strong text-left text-[12px] text-muted">
+                <th scope="col" className="py-1.5 pr-3 font-medium">{t.feesColYear}</th>
+                <th scope="col" className="py-1.5 pr-3 text-right font-medium">{familyCols ? t.feesColFamily1 : t.feesColChild1}</th>
+                {showChild2 && <th scope="col" className="py-1.5 pr-3 text-right font-medium">{familyCols ? t.feesColFamily2 : t.feesColChild2}</th>}
+                {showChild3 && <th scope="col" className="py-1.5 pr-3 text-right font-medium">{familyCols ? t.feesColFamily3 : t.feesColChild3}</th>}
+                {showChild4 && <th scope="col" className="py-1.5 text-right font-medium">{familyCols ? t.feesColFamily4 : t.feesColChild4}</th>}
+              </tr>
+            </thead>
+            <tbody>
+              {fees.by_year.map(row => {
+                const kind = rowFigureKind(row);
+                return (
+                  <tr key={row.years} className="border-b border-line">
+                    <th scope="row" className="py-1.5 pr-3 text-left text-[13px] font-semibold text-ink-2">
+                      {yearsLabel(t, row.years)}
+                      {mixedKind && kind && kind !== 'per_term' && (
+                        <span className="ml-1.5 text-[11px] font-normal text-muted">
+                          ({kind === 'total' ? t.feesTagTotal : t.feesTagTuition})
+                        </span>
+                      )}
+                    </th>
+                    <td className="py-1.5 pr-3 text-right font-semibold tabular-nums text-ink">{shown(row)}</td>
+                    {showChild2 && (
+                      <td className="py-1.5 pr-3 text-right tabular-nums text-ink-2">
+                        {row.child_2 != null ? money(row.child_2) : '—'}
+                      </td>
+                    )}
+                    {showChild3 && (
+                      <td className="py-1.5 pr-3 text-right tabular-nums text-ink-2">
+                        {row.child_3 != null ? money(row.child_3) : '—'}
+                      </td>
+                    )}
+                    {showChild4 && (
+                      <td className="py-1.5 text-right tabular-nums text-ink-2">
+                        {row.child_4 != null ? money(row.child_4) : '—'}
+                      </td>
+                    )}
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
+        </div>
+      ) : (
+        <ul className="mt-3 space-y-2">
+          {fees.by_year.map(row => {
+            const kind = rowFigureKind(row);
+            return (
+              <li key={row.years} className="grid grid-cols-[5.5rem_1fr_auto] items-center gap-3">
+                <span className="text-[13px] font-semibold text-ink-2">{yearsLabel(t, row.years)}</span>
+                <span className="h-2.5 overflow-hidden rounded-full bg-line" aria-hidden="true">
+                  <span className="block h-full rounded-full bg-brand" style={{ width: pct(annualFigure(row) ?? 0, max) }} />
+                </span>
+                <span className="text-right text-[15px] font-semibold tabular-nums text-ink">
+                  {shown(row)}
+                  {mixedKind && kind && kind !== 'per_term' && (
+                    <span className="ml-1.5 text-[11px] font-normal text-muted">
+                      ({kind === 'total' ? t.feesTagTotal : t.feesTagTuition})
+                    </span>
+                  )}
+                </span>
+              </li>
+            );
+          })}
+        </ul>
+      )}
+
       <p className="mt-3 text-[13px] text-muted">
-        {hasTotal ? t.feesBasisTotal : t.feesBasisTuition}
-        {/* The ledger's notes are written in English; a Chinese page keeps the localised line only. */}
-        {locale === 'en' && fees.other_compulsory ? ` ${fees.other_compulsory}.` : ''}
+        {allTotal ? t.feesBasisTotal : someTotal ? t.feesBasisMixed : t.feesBasisTuition}
       </p>
-      {fees.discount ? (
-        <p className="mt-1 text-[13px] text-ink-2">{locale === 'en' ? fees.discount : t.feesDiscount}</p>
-      ) : null}
+
+      {fees.components && fees.components.length > 0 && locale === 'en' && (
+        <div className="mt-3 border-t border-line pt-3">
+          <h4 className="text-[13px] font-semibold text-ink-2">{t.feesComponentsHeading}</h4>
+          <ul className="mt-1.5 space-y-1 text-[13px]">
+            {fees.components.map(comp => {
+              const amountLabel = formatComponentAmount(t, comp);
+              const unitLabel = comp.unit === 'per_family' ? t.feesUnitPerFamily : t.feesUnitPerStudent;
+              return (
+                <li key={`${comp.name}-${comp.unit}`} className="flex flex-wrap items-baseline justify-between gap-x-3 gap-y-0.5">
+                  <span className="text-ink-2">
+                    {comp.name}
+                    <span className="text-muted"> ({unitLabel}{comp.note ? `, ${comp.note}` : ''})</span>
+                  </span>
+                  <span className="font-medium tabular-nums text-ink">{amountLabel}</span>
+                </li>
+              );
+            })}
+          </ul>
+        </div>
+      )}
+
+      {locale === 'zh' && fees.discount && (
+        <p className="mt-1 text-[13px] text-ink-2">{t.feesDiscount}</p>
+      )}
+
+      {detailRows.length > 0 && (
+        <dl className="mt-3 space-y-1.5 border-t border-line pt-3 text-[13px]">
+          {detailRows.map(item => (
+            <div key={item.label} className="flex flex-col gap-0.5 sm:flex-row sm:gap-2">
+              <dt className="shrink-0 font-medium text-muted">{item.label}:</dt>
+              <dd className="text-ink-2">{item.value}</dd>
+            </div>
+          ))}
+        </dl>
+      )}
+
       {/* nofollow: the source is cited for the reader, not endorsed for ranking. */}
-      <a href={fees.source_url} target="_blank" rel="nofollow noopener noreferrer" className="bs-link mt-1 inline-block text-[13px]">
+      <a href={fees.source_url} target="_blank" rel="nofollow noopener noreferrer" className="bs-link mt-2 inline-block text-[13px]">
         {fees.source === 'school_website' ? t.feesSourceSchool : t.feesSourceSystem} →
       </a>
     </Panel>

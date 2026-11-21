@@ -48,6 +48,33 @@ describe('applyReading', () => {
     entry = applyReading(entry, { status: 'found', fees: fees(2027, 20000) });
     expect(entry.fees_history.map(item => item.fee_year)).toEqual([2026, 2025]);
   });
+
+  it('retires existing fees into history when moving to described, and clears stale description on found', () => {
+    const describedEntry = applyReading(
+      { status: 'found', checked: '2026-11-12', fees: fees(2026, 15000) },
+      {
+        status: 'described',
+        checked: '2026-11-21',
+        fees_description: {
+          fee_year: 2027,
+          pricing_model: 'by_program',
+          summary: 'Fees vary by program ($5,000 to $9,000 per year).',
+          source: 'school_website',
+          source_url: 'https://school.example/fees',
+        },
+      },
+    );
+    expect(describedEntry.status).toBe('described');
+    expect(describedEntry.fees).toBeUndefined();
+    expect(describedEntry.fees_history).toHaveLength(1);
+    expect(describedEntry.fees_history[0].fee_year).toBe(2026);
+    expect(describedEntry.fees_description.pricing_model).toBe('by_program');
+
+    const backToFound = applyReading(describedEntry, { status: 'found', checked: '2026-11-22', fees: fees(2027, 16000) });
+    expect(backToFound.status).toBe('found');
+    expect(backToFound.fees_description).toBeUndefined();
+    expect(backToFound.fees.fee_year).toBe(2027);
+  });
 });
 
 describe('parentSchoolId', () => {

@@ -23,6 +23,7 @@ const CANONICAL_PATH = path.resolve('public/data/schools.canonical.json');
  */
 export const STATUSES = {
   found: 'fee figures read from a source the school or its system publishes',
+  described: 'the school publishes its fee rules or rates, but they do not fit a standard annual year-level table; fees_description records the verified summary and source',
   fetched: 'pages fetched, figures not yet read',
   // "Free" is an answer, not an absence: the school's own words say so, and
   // free.statement is that sentence, traced to the fetched page like a figure.
@@ -38,6 +39,18 @@ export const STATUSES = {
   // rolled_school_id, which carries the website and the fee schedule.
   campus: 'a sub-campus; its website and fees are those of parent_acara_sml_id',
 };
+
+export const BILLING_UNITS = new Set(['per_student', 'per_family']);
+export const COMPONENT_PERIODS = new Set(['annual', 'per_term', 'per_semester']);
+export const SIBLING_BASES = new Set(['per_child', 'family_total']);
+export const PRICING_MODELS = new Set([
+  'per_term_unspecified',
+  'by_program',
+  'income_tiered',
+  'family_combination',
+  'estimator_only',
+  'custom',
+]);
 
 const siteOf = url => {
   try {
@@ -142,6 +155,7 @@ export function applyReading(entry, reading) {
   if (incoming) next.fees = incoming;
   if (rest.note) next.note = rest.note;
   if (next.status !== 'fee_free') delete next.free;
+  if (next.status !== 'described') delete next.fees_description;
   if (history.length > 0) next.fees_history = history;
   return next;
 }

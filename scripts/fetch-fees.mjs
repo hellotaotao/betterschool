@@ -222,8 +222,10 @@ async function main() {
         ledger.schools[id] = { ...previous, ...base, status: 'no_website', checked: today() };
       } else {
         const result = await crawl({ ...school, school_url: website });
-        // Figures already read stay until the extraction step replaces them.
-        const status = previous.status === 'found' && result.status === 'fetched' ? 'found' : result.status;
+        // Figures or verified descriptions already read stay until the extraction step replaces them.
+        const status = ['found', 'described', 'fee_free'].includes(previous.status) && result.status === 'fetched'
+          ? previous.status
+          : result.status;
         ledger.schools[id] = {
           ...previous, ...base, status, checked: today(),
           fee_pages: feePageUrls(id),

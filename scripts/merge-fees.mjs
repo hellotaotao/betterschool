@@ -20,6 +20,8 @@ for (const file of files) {
     if (!entry) throw new Error(`${id} has not been crawled; run fees:fetch first`);
     if (!STATUSES[reading.status]) throw new Error(`${id}: unknown status ${reading.status}`);
     if (reading.status === 'found' && !reading.fees) throw new Error(`${id}: found without fees`);
+    if (reading.status === 'described' && !reading.fees_description) throw new Error(`${id}: described without fees_description`);
+    if (reading.status === 'fee_free' && !reading.free) throw new Error(`${id}: fee_free without free`);
     ledger.schools[id] = applyReading(entry, reading);
     merged += 1;
   }
