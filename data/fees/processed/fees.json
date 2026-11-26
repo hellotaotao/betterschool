@@ -59625,7 +59625,7 @@
   "47710": {
    "school_name": "St Gerard Majella Primary School",
    "website": "http://www.sgmcairns.qld.edu.au",
-   "status": "not_found",
+   "status": "found",
    "checked": "2026-11-20",
    "fee_pages": [
     "https://www.sgmcairns.qld.edu.au/enrolling/fees-levies/"
@@ -59634,7 +59634,23 @@
     "pages": 10,
     "errors": 0
    },
-   "note": "Fee pages were reached but show no figures."
+   "fees": {
+    "fee_year": 2027,
+    "basis": "one-child family, annual tuition (sibling rates are lower); Catholic Diocese of Cairns 2027 Tuition Fee Schedule (per-student tuition across 1-4 siblings in Parish/Diocesan schools); school-specific levies are additional",
+    "by_year": [
+     {
+      "years": "P-6",
+      "tuition": 1902,
+      "child_2": 1617,
+      "child_3": 1331,
+      "child_4": 999
+     }
+    ],
+    "sibling_amounts_basis": "per_child",
+    "other_compulsory": "Listed on official 2027 Cairns Diocesan Tuition Fee Schedule. School-specific levies (resource, building, P&F) apply in addition.",
+    "source": "diocese_schedule",
+    "source_url": "https://www.cns.catholic.edu.au/wp-content/uploads/2026/07/2027-Tuition-Fees-Schedule.pdf"
+   }
   },
   "47711": {
    "school_name": "St Ignatius School",
@@ -63068,7 +63084,7 @@
   "47821": {
    "school_name": "St Francis Catholic School",
    "website": "http://www.sfsh.catholic.edu.au",
-   "status": "not_found",
+   "status": "found",
    "checked": "2026-11-20",
    "fee_pages": [
     "https://www.sfsh.catholic.edu.au/enrolment/school-fees/",
@@ -63078,7 +63094,19 @@
     "pages": 8,
     "errors": 0
    },
-   "note": "Fee pages were reached but show no figures."
+   "fees": {
+    "fee_year": 2027,
+    "basis": "one-child family, annual tuition (sibling rates are lower); Townsville Catholic Education 2027 systemic primary tuition fee ($2,060 Prep-6); school-specific local levies are additional",
+    "by_year": [
+     {
+      "years": "P-6",
+      "tuition": 2060
+     }
+    ],
+    "other_compulsory": "St Francis Catholic School Hughenden is listed among Townsville Catholic Education systemic Primary Schools; school-specific levies vary by school and apply in addition. 70% Tuition concession for eligible concession cardholders.",
+    "source": "diocese_schedule",
+    "source_url": "https://www.tsv.catholic.edu.au/schools/enrolments-fee/"
+   }
   },
   "47822": {
    "school_name": "St Francis Catholic School",
@@ -63146,18 +63174,65 @@
     "errors": 0
    },
    "fees": {
-    "fee_year": 2025,
-    "basis": "one secondary student in the family (tuition, school levy, building fund); the schedule is headed 2025",
+    "fee_year": 2026,
+    "basis": "one-child family, annual tuition (sibling rates are lower); annual total combines Tuition Fee (Townsville Diocesan rate), Building & Maintenance Levy ($620/family) and Resource Levy ($310/student)",
     "by_year": [
      {
-      "years": "secondary",
-      "tuition": 2778,
-      "total": 3688
+      "years": "P-6",
+      "tuition": 1952,
+      "total": 2882
+     },
+     {
+      "years": "7-9",
+      "tuition": 2928,
+      "total": 3858
      }
     ],
+    "other_compulsory": "Year 5 Excursion Levy $500/yr; Year 7 (and new Y8-9) Chromebook Fee $570. Combined Primary/Secondary multi-child family totals and 70% Health Care Card concession table published on schedule.",
     "source": "school_website",
-    "source_url": "https://os-data-2.s3-ap-southeast-2.amazonaws.com/sjctsvv2/bundle11/schedule_of_fees_of_charges_-_2025.pdf"
-   }
+    "source_url": "https://os-data-2.s3-ap-southeast-2.amazonaws.com/sjctsvv2/bundle11/schedule_of_fees_of_charges_-_2026_1.pdf",
+    "components": [
+     {
+      "name": "Building & Maintenance Levy",
+      "unit": "per_family",
+      "amount": 620,
+      "period": "annual"
+     },
+     {
+      "name": "Resource Levy",
+      "unit": "per_student",
+      "amount": 310,
+      "period": "annual"
+     },
+     {
+      "name": "Excursion Levy",
+      "unit": "per_student",
+      "by_year": [
+       {
+        "years": "5",
+        "amount": 500
+       }
+      ],
+      "period": "annual"
+     }
+    ]
+   },
+   "fees_history": [
+    {
+     "fee_year": 2025,
+     "basis": "one secondary student in the family (tuition, school levy, building fund); the schedule is headed 2025",
+     "by_year": [
+      {
+       "years": "secondary",
+       "tuition": 2778,
+       "total": 3688
+      }
+     ],
+     "source": "school_website",
+     "source_url": "https://os-data-2.s3-ap-southeast-2.amazonaws.com/sjctsvv2/bundle11/schedule_of_fees_of_charges_-_2025.pdf",
+     "superseded": "2026-11-26"
+    }
+   ]
   },
   "47825": {
    "school_name": "St Joseph's Catholic School",
@@ -63248,14 +63323,31 @@
   "47828": {
    "school_name": "St Mary's Catholic School",
    "website": "http://www.smbtsv.catholic.edu.au",
-   "status": "not_found",
+   "status": "found",
    "checked": "2026-11-20",
    "fee_pages": [],
    "crawl": {
     "pages": 7,
     "errors": 0
    },
-   "note": "No fee page among the pages fetched."
+   "fees": {
+    "fee_year": 2026,
+    "basis": "one-child family, annual tuition (sibling rates are lower); cumulative family Annual Total combining Tuition Fee (Townsville Diocesan rate) and Annual Levies ($1,128 for 1 child)",
+    "by_year": [
+     {
+      "years": "P-6",
+      "tuition": 1952,
+      "total": 3080,
+      "child_2": 4701,
+      "child_3": 5736,
+      "child_4": 6381
+     }
+    ],
+    "sibling_amounts_basis": "family_total",
+    "other_compulsory": "Excludes camps, private instrumental music and representative sport trials. 70% Tuition Fee concession for eligible Health Care/DVA TPI Card holders.",
+    "source": "school_website",
+    "source_url": "https://drive.usercontent.google.com/download?id=1utKdQ6yGsHX_rraVOwPtcjiK91YLdg93&export=download"
+   }
   },
   "47829": {
    "school_name": "St Patrick's Catholic School",
@@ -63322,7 +63414,7 @@
     "pages": 4,
     "errors": 0
    },
-   "note": "No fee page among the pages fetched."
+   "note": "Audit decision: listed under TCE systemic Primary Schools on tsv.catholic.edu.au, but smptsv.catholic.edu.au publishes no School Fees page and remote Palm Island community fee schedule cannot be verified online — excluded from diocese_schedule backfill"
   },
   "47832": {
    "school_name": "Good Counsel Primary School",
@@ -63355,7 +63447,7 @@
   "47833": {
    "school_name": "Mother of Good Counsel School",
    "website": "http://www.mogc.qld.edu.au",
-   "status": "not_found",
+   "status": "found",
    "checked": "2026-11-20",
    "fee_pages": [
     "https://www.mogc.qld.edu.au/enrolling/fees-levies/",
@@ -63367,12 +63459,28 @@
     "pages": 12,
     "errors": 1
    },
-   "note": "The only fee schedule published is for 2024."
+   "fees": {
+    "fee_year": 2027,
+    "basis": "one-child family, annual tuition (sibling rates are lower); Catholic Diocese of Cairns 2027 Tuition Fee Schedule (per-student tuition across 1-4 siblings in Parish/Diocesan schools); school-specific levies are additional",
+    "by_year": [
+     {
+      "years": "P-6",
+      "tuition": 1902,
+      "child_2": 1617,
+      "child_3": 1331,
+      "child_4": 999
+     }
+    ],
+    "sibling_amounts_basis": "per_child",
+    "other_compulsory": "Listed on official 2027 Cairns Diocesan Tuition Fee Schedule. School-specific levies (resource, building, P&F) apply in addition.",
+    "source": "diocese_schedule",
+    "source_url": "https://www.cns.catholic.edu.au/wp-content/uploads/2026/07/2027-Tuition-Fees-Schedule.pdf"
+   }
   },
   "47834": {
    "school_name": "Our Lady Help of Christians School",
    "website": "http://www.olhoc.qld.edu.au",
-   "status": "not_found",
+   "status": "found",
    "checked": "2026-11-20",
    "fee_pages": [
     "https://www.olhoc.qld.edu.au/our-community/enrolment-information/fees-discounts/"
@@ -63381,24 +63489,43 @@
     "pages": 5,
     "errors": 0
    },
-   "note": "Fee pages were reached but show no figures."
+   "fees": {
+    "fee_year": 2027,
+    "basis": "one-child family, annual tuition (sibling rates are lower); Catholic Diocese of Cairns 2027 Tuition Fee Schedule (per-student tuition across 1-4 siblings in Parish/Diocesan schools); school-specific levies are additional",
+    "by_year": [
+     {
+      "years": "P-6",
+      "tuition": 1902,
+      "child_2": 1617,
+      "child_3": 1331,
+      "child_4": 999
+     }
+    ],
+    "sibling_amounts_basis": "per_child",
+    "other_compulsory": "Listed on official 2027 Cairns Diocesan Tuition Fee Schedule. School-specific levies (resource, building, P&F) apply in addition.",
+    "source": "diocese_schedule",
+    "source_url": "https://www.cns.catholic.edu.au/wp-content/uploads/2026/07/2027-Tuition-Fees-Schedule.pdf"
+   }
   },
   "47835": {
    "school_name": "Our Lady of the Sacred Heart School Waiben",
    "website": "http://www.olsh.qld.edu.au",
-   "status": "not_found",
+   "status": "fee_free",
    "checked": "2026-11-20",
    "fee_pages": [],
    "crawl": {
     "pages": 6,
     "errors": 0
    },
-   "note": "No fee page among the pages fetched."
+   "free": {
+    "statement": "Tuition (School) fees will be removed for all families.",
+    "source_url": "https://www.olsh.qld.edu.au/enrolments/access-for-all/"
+   }
   },
   "47836": {
    "school_name": "St Anthony's School",
    "website": "http://www.sta.qld.edu.au",
-   "status": "not_found",
+   "status": "found",
    "checked": "2026-11-20",
    "fee_pages": [
     "https://www.sta.qld.edu.au/enrolling/school-fees-levies/"
@@ -63407,7 +63534,29 @@
     "pages": 6,
     "errors": 0
    },
-   "note": "Fee pages were reached but show no figures."
+   "fees": {
+    "fee_year": null,
+    "year_note": "Community fee reduction ($400/yr cap) plus $100/term Fundraising levy (since 2023) published on 2026 School Fees & Levies page",
+    "basis": "one-child family, annual tuition (sibling rates are lower); reduced community fee cap ($400/yr maximum all-inclusive for Tuition Fees and School Levies); Fundraising levy $100/term per family (4 terms per year) is additional",
+    "by_year": [
+     {
+      "years": "P-6",
+      "total": 400
+     }
+    ],
+    "other_compulsory": "Fundraising levy of $100 per term per family introduced from 2023 (2026 term dates page confirms 4 terms).",
+    "source": "school_website",
+    "source_url": "https://www.sta.qld.edu.au/enrolling/school-fees-levies/",
+    "components": [
+     {
+      "name": "Fundraising Levy",
+      "unit": "per_family",
+      "amount": 100,
+      "period": "per_term",
+      "terms": 4
+     }
+    ]
+   }
   },
   "47837": {
    "school_name": "St Augustine's School",
@@ -63427,7 +63576,7 @@
   "47838": {
    "school_name": "St Clare's School",
    "website": "http://www.stclares.qld.edu.au",
-   "status": "not_found",
+   "status": "found",
    "checked": "2026-11-20",
    "fee_pages": [
     "https://www.stclares.qld.edu.au/enrolling/fees-levies/"
@@ -63436,7 +63585,23 @@
     "pages": 6,
     "errors": 0
    },
-   "note": "Fee pages were reached but show no figures."
+   "fees": {
+    "fee_year": 2027,
+    "basis": "one-child family, annual tuition (sibling rates are lower); Catholic Diocese of Cairns 2027 Tuition Fee Schedule with 10% Country Discount (per-student tuition across 1-4 siblings in Parish/Diocesan schools); school-specific levies are additional",
+    "by_year": [
+     {
+      "years": "P-6",
+      "tuition": 1712,
+      "child_2": 1455,
+      "child_3": 1198,
+      "child_4": 899
+     }
+    ],
+    "sibling_amounts_basis": "per_child",
+    "other_compulsory": "Listed on official 2027 Cairns Diocesan Tuition Fee Schedule under Country Discount schools. School-specific levies (resource, building, P&F) apply in addition.",
+    "source": "diocese_schedule",
+    "source_url": "https://www.cns.catholic.edu.au/wp-content/uploads/2026/07/2027-Tuition-Fees-Schedule.pdf"
+   }
   },
   "47839": {
    "school_name": "St Francis Xavier's School",
@@ -63469,7 +63634,7 @@
   "47840": {
    "school_name": "St John's School",
    "website": "http://www.stjohnssilkwood.qld.edu.au/",
-   "status": "not_found",
+   "status": "found",
    "checked": "2026-11-20",
    "fee_pages": [
     "https://www.stjohnssilkwood.qld.edu.au/enrolling/fees-levies-discounts/"
@@ -63478,12 +63643,28 @@
     "pages": 8,
     "errors": 0
    },
-   "note": "The only fee figures published are 2025 tuition fees."
+   "fees": {
+    "fee_year": 2025,
+    "basis": "one-child family, annual tuition (sibling rates are lower); 2025 affordability tuition structure shown on cumulative family scale (1-4 students); excursions and camps are billed separately",
+    "by_year": [
+     {
+      "years": "P-6",
+      "tuition": 600,
+      "child_2": 1020,
+      "child_3": 1260,
+      "child_4": 1680
+     }
+    ],
+    "sibling_amounts_basis": "family_total",
+    "other_compulsory": "Excursions and camps billed separately. No additional Health Care/Pension concession discounting applies.",
+    "source": "school_website",
+    "source_url": "https://www.stjohnssilkwood.qld.edu.au/wp-content/uploads/2025/01/St-Johns-Silkwood-Affordability-Flyer-Sept-2024-01.pdf"
+   }
   },
   "47841": {
    "school_name": "St Joseph's School",
    "website": "http://www.stjoeys.qld.edu.au/",
-   "status": "not_found",
+   "status": "found",
    "checked": "2026-11-20",
    "fee_pages": [
     "https://www.stjoeys.qld.edu.au/fees-levies/",
@@ -63493,7 +63674,23 @@
     "pages": 7,
     "errors": 1
    },
-   "note": "Fee pages were reached but show no figures."
+   "fees": {
+    "fee_year": 2027,
+    "basis": "one-child family, annual tuition (sibling rates are lower); Catholic Diocese of Cairns 2027 Tuition Fee Schedule with 10% Country Discount (per-student tuition across 1-4 siblings in Parish/Diocesan schools); school-specific levies are additional",
+    "by_year": [
+     {
+      "years": "P-6",
+      "tuition": 1712,
+      "child_2": 1455,
+      "child_3": 1198,
+      "child_4": 899
+     }
+    ],
+    "sibling_amounts_basis": "per_child",
+    "other_compulsory": "Listed on official 2027 Cairns Diocesan Tuition Fee Schedule under Country Discount schools. School-specific levies (resource, building, P&F) apply in addition.",
+    "source": "diocese_schedule",
+    "source_url": "https://www.cns.catholic.edu.au/wp-content/uploads/2026/07/2027-Tuition-Fees-Schedule.pdf"
+   }
   },
   "47842": {
    "school_name": "St Joseph's School",
@@ -63525,7 +63722,7 @@
   "47843": {
    "school_name": "St Michael's School",
    "website": "http://www.stmichael.qld.edu.au",
-   "status": "not_found",
+   "status": "found",
    "checked": "2026-11-20",
    "fee_pages": [
     "https://www.stmichael.qld.edu.au/enrolling/fees-and-levies/"
@@ -63534,12 +63731,28 @@
     "pages": 9,
     "errors": 0
    },
-   "note": "Fee pages were reached but show no figures."
+   "fees": {
+    "fee_year": 2027,
+    "basis": "one-child family, annual tuition (sibling rates are lower); Catholic Diocese of Cairns 2027 Tuition Fee Schedule with 10% Country Discount (per-student tuition across 1-4 siblings in Parish/Diocesan schools); school-specific levies are additional",
+    "by_year": [
+     {
+      "years": "P-6",
+      "tuition": 1712,
+      "child_2": 1455,
+      "child_3": 1198,
+      "child_4": 899
+     }
+    ],
+    "sibling_amounts_basis": "per_child",
+    "other_compulsory": "Listed on official 2027 Cairns Diocesan Tuition Fee Schedule under Country Discount schools. School-specific levies (resource, building, P&F) apply in addition.",
+    "source": "diocese_schedule",
+    "source_url": "https://www.cns.catholic.edu.au/wp-content/uploads/2026/07/2027-Tuition-Fees-Schedule.pdf"
+   }
   },
   "47844": {
    "school_name": "St Rita's School",
    "website": "https://www.stritasbabinda.qld.edu.au/",
-   "status": "not_found",
+   "status": "found",
    "checked": "2026-11-20",
    "fee_pages": [
     "https://www.stritasbabinda.qld.edu.au/enrolling/fees/",
@@ -63549,12 +63762,25 @@
     "pages": 7,
     "errors": 0
    },
-   "note": "Fee pages were reached but show no figures."
+   "fees": {
+    "fee_year": null,
+    "year_note": "Community fee reduction initiated from 2019 and published on live 2026 Fees & Levies page",
+    "basis": "one-child family, annual tuition (sibling rates are lower); reduced community fee cap ($480/yr maximum all-inclusive for Tuition Fees and School Levies, from 2019, published on live 2026 site)",
+    "by_year": [
+     {
+      "years": "P-6",
+      "total": 480
+     }
+    ],
+    "other_compulsory": "Fee reduction flyer notes $400/yr fees & levies + $80/yr textbooks & stationery.",
+    "source": "school_website",
+    "source_url": "https://www.stritasbabinda.qld.edu.au/enrolling/fees/"
+   }
   },
   "47845": {
    "school_name": "St Rita's School",
    "website": "http://www.stritascps.qld.edu.au",
-   "status": "not_found",
+   "status": "found",
    "checked": "2026-11-20",
    "fee_pages": [
     "https://www.stritascps.qld.edu.au/enrolment/fees-levies/",
@@ -63564,12 +63790,28 @@
     "pages": 8,
     "errors": 4
    },
-   "note": "The only fee schedule published is for 2014."
+   "fees": {
+    "fee_year": null,
+    "year_note": "Reduced fee structure initiated from 2021 and published on live 2026 Fees & Levies page",
+    "basis": "one-child family, annual tuition (sibling rates are lower); reduced fee structure combining Tuition Fees and School Levies (published totals for 1, 2, or 3+ student families, from 2021, still live on 2026 site)",
+    "by_year": [
+     {
+      "years": "P-6",
+      "total": 600,
+      "child_2": 1020,
+      "child_3": 1260
+     }
+    ],
+    "sibling_amounts_basis": "family_total",
+    "other_compulsory": "Sibling scale caps total family fees & levies at $1,260 for 3+ students.",
+    "source": "school_website",
+    "source_url": "https://www.stritascps.qld.edu.au/enrolment/fees-levies/"
+   }
   },
   "47846": {
    "school_name": "St Teresa's School",
    "website": "http://www.stteresas.qld.edu.au/",
-   "status": "not_found",
+   "status": "found",
    "checked": "2026-11-20",
    "fee_pages": [
     "https://stteresas.qld.edu.au/explore/enrolments/enrolment/fee-information/",
@@ -63579,7 +63821,19 @@
     "pages": 11,
     "errors": 1
    },
-   "note": "Fee pages were reached but show no figures."
+   "fees": {
+    "fee_year": 2026,
+    "basis": "one-child family, annual tuition (sibling rates are lower); 2026 Fee Reduction flyer caps Tuition Fees at maximum $400 per student per year (excludes School Levies)",
+    "by_year": [
+     {
+      "years": "P-6",
+      "tuition": 400
+     }
+    ],
+    "other_compulsory": "School Levies are excluded from the $400/yr tuition fee cap.",
+    "source": "school_website",
+    "source_url": "https://stteresas.qld.edu.au/wp-content/uploads/2026/01/St-Teresas-Fee-Reduction-Flyer_4pdf.pdf"
+   }
   },
   "47847": {
    "school_name": "St Therese's School",
@@ -64253,7 +64507,7 @@
   "47865": {
    "school_name": "Ryan Catholic College",
    "website": "http://www.ryan.catholic.edu.au",
-   "status": "not_found",
+   "status": "found",
    "checked": "2026-11-26",
    "crawl": {
     "pages": 10,
@@ -64263,7 +64517,23 @@
     "https://www.ryan.catholic.edu.au/parents/schedule-of-fees/",
     "https://www.ryan.catholic.edu.au/parents/schedule-of-fees/2027-schedule-of-fees/"
    ],
-   "note": "2026 and 2027 fee pages state tuition aligns with Townsville Catholic Diocese schools without listing dollar amounts; to be covered via Townsville diocese_schedule"
+   "fees": {
+    "fee_year": 2027,
+    "basis": "one-child family, annual tuition (sibling rates are lower); Ryan Catholic College 2027 Schedule of Fees page states tuition rates align with all systemic Catholic schools in the Townsville Diocese ($2,060 P-6; $3,090 Y7-12); school-specific Family and Resource Levies are additional",
+    "by_year": [
+     {
+      "years": "P-6",
+      "tuition": 2060
+     },
+     {
+      "years": "7-12",
+      "tuition": 3090
+     }
+    ],
+    "other_compulsory": "Confirmed on Ryan Catholic College 2027 Schedule of Fees page (https://www.ryan.catholic.edu.au/parents/schedule-of-fees/2027-schedule-of-fees/) and TCE 2027 systemic schedules. School Family Levy and Primary/Secondary Resource Levies are set locally and apply in addition. 70% Tuition concession for eligible Health Care/DVA Gold Card holders.",
+    "source": "diocese_schedule",
+    "source_url": "https://www.tsv.catholic.edu.au/schools/enrolments-fee/"
+   }
   },
   "47866": {
    "school_name": "St Augustine's College",
@@ -81375,7 +81645,7 @@
   "51503": {
    "school_name": "St Joseph's Parish School",
    "website": "https://www.stjosephsweipa.qld.edu.au/",
-   "status": "not_found",
+   "status": "found",
    "checked": "2026-11-20",
    "fee_pages": [
     "https://www.stjosephsweipa.qld.edu.au/enrolling/fees-and-levies/"
@@ -81384,7 +81654,23 @@
     "pages": 11,
     "errors": 0
    },
-   "note": "Fee pages were reached but show no figures."
+   "fees": {
+    "fee_year": 2027,
+    "basis": "one-child family, annual tuition (sibling rates are lower); Catholic Diocese of Cairns 2027 Tuition Fee Schedule with 10% Country Discount (per-student tuition across 1-4 siblings in Parish/Diocesan schools); school-specific levies are additional",
+    "by_year": [
+     {
+      "years": "P-6",
+      "tuition": 1712,
+      "child_2": 1455,
+      "child_3": 1198,
+      "child_4": 899
+     }
+    ],
+    "sibling_amounts_basis": "per_child",
+    "other_compulsory": "Listed on official 2027 Cairns Diocesan Tuition Fee Schedule under Country Discount schools. School-specific levies (resource, building, P&F) apply in addition.",
+    "source": "diocese_schedule",
+    "source_url": "https://www.cns.catholic.edu.au/wp-content/uploads/2026/07/2027-Tuition-Fees-Schedule.pdf"
+   }
   },
   "51504": {
    "school_name": "Holy Spirit College",
