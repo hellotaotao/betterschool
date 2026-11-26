@@ -263,6 +263,21 @@ Korowal 只公布按季度（Quarterly）分期的金额，记为 `per_term` × 
 
 没拿到的主要是：网站没有学费页或学费页上没有数字（约 107 所）、早先记为"没提取"的 60 所、只公布了旧年份或只有海外生学费的学校，以及打不开或被拦截的 21 所。
 
+### 昆州补抓（2026-11-26）
+
+在上一轮基础上按无损 schema 集中补抓昆州未出数私校，**691 条私校记录里有答案的从 382 条（55.3%）升至 563 条（81.5%，+181 条）**，其中拿到学费（`found`）447 所（+102）、文字说明规则（`described`）8 所（+8）、声明免学费（`fee_free`）14 所（+14）、沿用主校的分校区（`campus`）94 个（+57，另有 28 个主校未公布的卫星校区）。全州私校**在校生人数覆盖率从 67.0% 升至 94.9%（308,316 / 324,789）**；**800 人以上大校从 101 / 151（66.9%）升至 147 / 151（97.4%）**，其余 4 所均已在浏览器逐校核实官网确未公开发布现行学费表（Mt St Michael's、Ignatius Park、Trinity Lutheran 下载区为空、Brisbane Christian 表单含 reCAPTCHA）。
+
+| 批次 | 处理对象与方法 | 主要结果 |
+|---|---|---|
+| Batch 1（21 所） | `not_found` 中已带 2026/2027 学费 PDF 链接的学校；图片 PDF 渲染并加 OCR | 20 所读出学费、1 所 `described`（Ipswich Adventist）；全部可追溯（`86b8a14`） |
+| Batch 2a（35 所） | `not_extracted`（有文本或可重抓）；浏览器取回 Genesis、Ipswich Girls' 等新表，补齐多孩与分项 | 29 所 `found`、5 所 `described`（仅给每学期金额且未写学期数）、Ryan Catholic 转 Batch 5（`aaa279d`） |
+| Batch 2b（25 所） | `not_extracted` 重抓后用浏览器打开动态网关/Issuu/SharePoint（St Peters 两校区、TSS、St Aidan's、Glennie、TAS Cairns 等） | 20 所读出学费、5 所核实未公开或仅留 2025 版（`not_published`，`4714498`） |
+| Batch 3（22 所） | 此前 `blocked`（Downlands、Mueller、ATC、Arcadia、Ohana 等）、失联改域名（Citipointe、Marymount Primary、Lighthouse、Carlisle）及 800+ 大校（Iona、Coomera Anglican、ACC Moreton、Groves、AIIC、WMAC、St Luke's、Hillcrest、JPC、Jubilee） | 16 所 `found`、1 所 `described`、2 所 `fee_free`（Arcadia、Ohana 免学费仅收 $260/学期杂费）、3 所核实未公开或将于 2026 年底关校（St Mary of the Cross Windsor）（`549e753`） |
+| Batch 4（31 所） | 多校区特殊教育/弹性学校网与 12 所 EREA 弹性学校（替换失效的 `youthplus.edu.au` 为 `*.flexi.edu.au`） | 11 所确认免学费记 `fee_free`（BUSY School、Mastery Schools、Carinity 四校、Indie Logan、Jabiru、Holy Spirit College、Inala Flexi、Noosa Flexi — 含 BUSY 与 Mastery 的连带分校区）、Arethusa（$1,200/年资源费 `found`）、Horizons（按周收费 `described`），其余 18 所无收费或免学费公开表述（含 Y Schools 4 校、Alta-1 改名 Aviva、其余 10 所 Flexi 等）（`a6d1f82`） |
+| Batch 5（18 所） | 汤斯维尔与凯恩斯教区经逐校审计后回补 | 凯恩斯 2027 教区表（`diocese_schedule`）按乡村 9 折/标准两档补回 7 所；剔除另有减免或免学费政策的 6 所乡村小校改从各校官网直采（Waiben `Access for All` 免学费 `fee_free`、Babinda/Dimbulah/Ravenshoe/South Johnstone/Silkwood 各自低额封顶）；汤斯维尔升级 Cloncurry 2026、补入 Bowen 2026，按教区统一价补入 Ryan（2,019 人）与 Hughenden，并**明确排除**无收费页的 Palm Island（`e305bc9`） |
+
+全州现存 48 所 `source: 'diocese_schedule'` 记录（Rockhampton 39 所、Cairns 7 所、Townsville 2 所），所有 `fetched` 临时状态均已清零，校验（`npm run fees:validate`：14,525 个金额可追溯至原文、37 个经人眼复核图片、28 条 `fee_free` 原文匹配、0 条无原文可查）与 293 项测试全部通过。
+
 ### 中学试点记录（2026-11-14）
 
 ACARA 把分校区单列成记录（多数不是独立招生的学校，例如 MLC 的音乐中心、Ravenswood 的寄宿楼），下表把它们并入主校后计数：
@@ -287,13 +302,13 @@ ACARA 把分校区单列成记录（多数不是独立招生的学校，例如 M
 
 ## 7. 进度、维护与待办
 
-### 各州当前进度（2026-11-21）
+### 各州当前进度（2026-11-26）
 
 | 州 | 私校记录 | 有答案 | 说明 |
 |---|---|---|---|
 | NSW | 1,207 | 894（74%） | 全州首轮完成；SCS（140 所）与 CSPD（80 所）已按无损 schema 回补 |
 | VIC | 1,001 | 521（52%） | 全州首轮完成 |
-| QLD | 691 | 382（55%） | 全州首轮完成 |
+| QLD | 691 | 563（81.5%） | 补抓完成（447 所 `found`、8 所 `described`、14 所 `fee_free`、94 个主校有答案的分校区）；在校生覆盖 94.9%，≥800 人大校 147 / 151（97.4%）；Townsville（2 所）与 Cairns（7 所）经逐校审计后回补 `diocese_schedule` |
 | WA | 420 | 87（21%） | 只试做过中学和一贯制学校，小学和特殊学校还没开始 |
 | SA | 257 | 0 | 未开始 |
 | TAS | 96 | 0 | 未开始 |
@@ -305,8 +320,8 @@ ACARA 把分校区单列成记录（多数不是独立招生的学校，例如 M
 ### 维护与待办（按优先级）
 
 1. **完成其余 5 个空白州（WA、SA、TAS、ACT、NT）**：按第 5 节流程完整做一遍（先在 `SCOPES` 中补全对应州范围），首次录入即一步到位按无损 schema 记好分项、计费对象和 `described`。
-2. **昆州与维州未读项补录**：
-   - 昆州：39 所学费页上无数字（图片或嵌入文档）、60 所早期 `not_extracted`、21 所打不开/被拦、多校区特殊学校核实，以及汤斯维尔/凯恩斯教区统一价按审计口径补录。
+2. **维州未读项补录与已有记录分项回补**：
    - 维州：9 所因证书打不开用浏览器读取；SEDA College 及其 38 个分校区改记 `described`。
+   - 已有学校：按年例行重抓时顺带补齐早期录数未拆出的 `components` 分项、寄宿费与低收入优惠；其中 `fees:audit --state QLD` 仍提示 56 所早先录入学校存在杂费关键词尚未拆出分项、17 所有寄宿费关键词未录 `boarding`，可在年度更新时处理。
 3. **年度重抓与杂费分项回补**：学校一般在 9–12 月公布下一年学费，每年 11 月至次年 1 月按 `fee_year` 重抓：`fees:fetch` 用 `--stale-days` 控制范围，SCS/CSPD 教区脚本整体重跑，旧年份自动退入 `fees_history`。同时结合 `npm run fees:audit` 顺带补齐已采学校漏录的杂费分项（避免仅因关键词命中而低效全量返工）。
 4. **招生和考试信息**：目前只有试点 31 所，结构见 `fees.json` 里的 `admissions` 字段。
