@@ -527,15 +527,17 @@
   },
   "40402": {
    "school_name": "Autism Queensland Education & Therapy Centre",
-   "website": "https://autismqld.com.au/services/school-aged/autism-queensland-school/",
-   "status": "not_found",
+   "website": "https://autismqld.com.au/aq-school/",
+   "status": "not_published",
    "checked": "2026-11-20",
    "fee_pages": [],
    "crawl": {
     "pages": 2,
     "errors": 1
    },
-   "note": "No fee page among the pages fetched."
+   "website_source": "lookup",
+   "website_note": "Legacy /services/school-aged/ URL returns 404; active page is /aq-school/",
+   "note": "School Fees Policy (Nov 2026) confirms termly tuition fees and an annual IT & resource levy apply (3.5% early payment and 10% sibling discounts), plus $200 Administration Fee and $1,000 refundable Enrolment Deposit, but exact annual tuition figures are only provided in the handbook/upon enrolment interview"
   },
   "40406": {
    "school_name": "Catholic Regional College Sydenham",
@@ -1266,14 +1268,14 @@
   "40769": {
    "school_name": "Albert Park Flexible School",
    "website": "https://albertpark.flexi.edu.au/",
-   "status": "not_found",
+   "status": "not_published",
    "checked": "2026-11-20",
    "fee_pages": [],
    "crawl": {
     "pages": 2,
     "errors": 0
    },
-   "note": "No fee page among the pages fetched."
+   "note": "Verified *.flexi.edu.au site and EREA Flexible Schools national policies in browser; no fee or fee-free statement is published publicly on this campus site"
   },
   "40778": {
    "school_name": "Burnett Youth Learning Centre",
@@ -2479,14 +2481,14 @@
   "40949": {
    "school_name": "Mungalla Silver Lining School",
    "website": "https://silverlining.org.au",
-   "status": "not_found",
+   "status": "not_published",
    "checked": "2026-11-20",
    "crawl": {
     "pages": 1,
     "errors": 0
    },
    "fee_pages": [],
-   "note": "Only the home page could be fetched."
+   "note": "Checked silverlining.org.au in browser; no enrolment fees, levies, or fee-free statement published on site"
   },
   "40950": {
    "school_name": "Heritage College - Officer Campus",
@@ -58116,15 +58118,18 @@
   },
   "47655": {
    "school_name": "The Centre Education Programme",
-   "website": "http://www.youthplus.edu.au/centre-education-programme-flc/",
-   "status": "unreachable",
+   "website": "https://cep.flexi.edu.au/",
+   "status": "not_published",
    "checked": "2026-11-20",
    "fee_pages": [],
    "crawl": {
     "pages": 0,
     "errors": 3,
     "home_error": "CERT_HAS_EXPIRED"
-   }
+   },
+   "website_source": "lookup",
+   "website_note": "Replaced dead youthplus.edu.au URL from EREA Flexible Schools directory",
+   "note": "Verified *.flexi.edu.au site and EREA Flexible Schools national policies in browser; no fee or fee-free statement is published publicly on this campus site"
   },
   "47656": {
    "school_name": "Jubilee Primary School",
@@ -66716,39 +66721,51 @@
   },
   "47927": {
    "school_name": "Deception Bay Flexible School",
-   "website": "http://www.youthplus.edu.au/deception-bay-flc/",
-   "status": "unreachable",
+   "website": "https://deceptionbay.flexi.edu.au/",
+   "status": "not_published",
    "checked": "2026-11-20",
    "fee_pages": [],
    "crawl": {
     "pages": 0,
     "errors": 3,
     "home_error": "CERT_HAS_EXPIRED"
-   }
+   },
+   "website_source": "lookup",
+   "website_note": "Replaced dead youthplus.edu.au URL from EREA Flexible Schools directory",
+   "note": "Verified *.flexi.edu.au site and EREA Flexible Schools national policies in browser; no fee or fee-free statement is published publicly on this campus site"
   },
   "47928": {
    "school_name": "Noosa Flexible School",
-   "website": "http://www.youthplus.edu.au/noosa-flc/",
-   "status": "unreachable",
+   "website": "https://noosa.flexi.edu.au/",
+   "status": "fee_free",
    "checked": "2026-11-20",
    "fee_pages": [],
    "crawl": {
     "pages": 0,
     "errors": 3,
     "home_error": "CERT_HAS_EXPIRED"
-   }
+   },
+   "free": {
+    "statement": "No compulsory fees. Money is never a reason you can't be here.",
+    "source_url": "https://noosa.flexi.edu.au/wp-content/uploads/2026/07/Printable-PDF-Community-Handbook-2026-v2.pdf"
+   },
+   "website_source": "lookup",
+   "website_note": "Replaced dead youthplus.edu.au URL from EREA Flexible Schools directory"
   },
   "47929": {
    "school_name": "Townsville Flexible School",
-   "website": "http://www.youthplus.edu.au/townsville-flc/",
-   "status": "unreachable",
+   "website": "https://townsville.flexi.edu.au/",
+   "status": "not_published",
    "checked": "2026-11-20",
    "fee_pages": [],
    "crawl": {
     "pages": 0,
     "errors": 3,
     "home_error": "CERT_HAS_EXPIRED"
-   }
+   },
+   "website_source": "lookup",
+   "website_note": "Replaced dead youthplus.edu.au URL from EREA Flexible Schools directory",
+   "note": "Verified *.flexi.edu.au site and EREA Flexible Schools national policies in browser; no fee or fee-free statement is published publicly on this campus site"
   },
   "47930": {
    "school_name": "St Benedict's Primary School",
@@ -66952,14 +66969,14 @@
   "47934": {
    "school_name": "Mount Isa Flexible School",
    "website": "https://mountisa.flexi.edu.au/",
-   "status": "not_found",
+   "status": "not_published",
    "checked": "2026-11-20",
    "fee_pages": [],
    "crawl": {
     "pages": 2,
     "errors": 0
    },
-   "note": "No fee page among the pages fetched."
+   "note": "Verified *.flexi.edu.au site and EREA Flexible Schools national policies in browser; no fee or fee-free statement is published publicly on this campus site"
   },
   "47935": {
    "school_name": "Lighthouse Christian School",
@@ -67833,14 +67850,17 @@
   "47959": {
    "school_name": "Carinity Education - Southside",
    "website": "http://www.southside.qld.edu.au",
-   "status": "not_found",
+   "status": "fee_free",
    "checked": "2026-11-20",
    "fee_pages": [],
    "crawl": {
     "pages": 2,
     "errors": 0
    },
-   "note": "No fee page among the pages fetched."
+   "free": {
+    "statement": "Southside is an non-fee charging school. We do however charge a termly resource fee of $150, invoiced at the end of the term.",
+    "source_url": "https://carinity.qld.edu.au/southside/faq/"
+   }
   },
   "47960": {
    "school_name": "Kimberley College",
@@ -68230,14 +68250,17 @@
   "47967": {
    "school_name": "Carinity Education - Glendyne",
    "website": "http://www.glendyne.qld.edu.au",
-   "status": "not_found",
+   "status": "fee_free",
    "checked": "2026-11-20",
    "fee_pages": [],
    "crawl": {
     "pages": 3,
     "errors": 1
    },
-   "note": "No fee page among the pages fetched."
+   "free": {
+    "statement": "There are no school fees. However, we do charge each term a resource levy.",
+    "source_url": "https://carinity.qld.edu.au/glendyne/faq/"
+   }
   },
   "47968": {
    "school_name": "Livingstone Christian College",
@@ -71393,14 +71416,17 @@
   "48044": {
    "school_name": "Carinity Education - Shalom",
    "website": "https://carinity.qld.edu.au/shalom/",
-   "status": "not_found",
+   "status": "fee_free",
    "checked": "2026-11-20",
    "crawl": {
     "pages": 3,
     "errors": 0
    },
    "fee_pages": [],
-   "note": "No fee page among the pages fetched."
+   "free": {
+    "statement": "Shalom is an non-fee charging school. We do however charge a termly resource fee of $150, invoiced at the end of the term.",
+    "source_url": "https://carinity.qld.edu.au/shalom/faq/"
+   }
   },
   "48045": {
    "school_name": "Moreton Bay College",
@@ -74358,14 +74384,34 @@
   "48115": {
    "school_name": "Arethusa College",
    "website": "http://arethusa.qld.edu.au/",
-   "status": "not_found",
+   "status": "found",
    "checked": "2026-11-20",
    "fee_pages": [],
    "crawl": {
     "pages": 3,
     "errors": 0
    },
-   "note": "No fee page among the pages fetched."
+   "fees": {
+    "fee_year": 2026,
+    "basis": "one-child family, annual tuition (sibling rates are lower); Special Assistance School charging compulsory School Resource Levy ($300/term = $1,200/yr; Sports & Adventure Academy +$500/term); classroom resources and stationery provided",
+    "by_year": [
+     {
+      "years": "7-12",
+      "total": 1200
+     }
+    ],
+    "other_compulsory": "Compulsory School Resource Levy $300/term ($1,200/yr); 10% upfront annual discount. Sports and Adventure Academy +$500/term. Non-payment may bar attendance.",
+    "source": "school_website",
+    "source_url": "https://www.arethusa.qld.edu.au/wp-content/uploads/2026/07/Student-and-Parent-Handbook_2026v2-1.pdf",
+    "components": [
+     {
+      "name": "School Resource Levy",
+      "unit": "per_student",
+      "amount": 1200,
+      "period": "annual"
+     }
+    ]
+   }
   },
   "48860": {
    "school_name": "St Joseph's College",
@@ -78926,27 +78972,33 @@
   },
   "50478": {
    "school_name": "Gympie Flexible School",
-   "website": "http://www.youthplus.edu.au/gympie-flc/",
-   "status": "unreachable",
+   "website": "https://gympie.flexi.edu.au/",
+   "status": "not_published",
    "checked": "2026-11-20",
    "fee_pages": [],
    "crawl": {
     "pages": 0,
     "errors": 3,
     "home_error": "CERT_HAS_EXPIRED"
-   }
+   },
+   "website_source": "lookup",
+   "website_note": "Replaced dead youthplus.edu.au URL from EREA Flexible Schools directory",
+   "note": "Verified *.flexi.edu.au site and EREA Flexible Schools national policies in browser; no fee or fee-free statement is published publicly on this campus site"
   },
   "50479": {
    "school_name": "Ipswich Flexible School",
-   "website": "http://www.youthplus.edu.au/ipswich-flc/",
-   "status": "unreachable",
+   "website": "https://ipswich.flexi.edu.au/",
+   "status": "not_published",
    "checked": "2026-11-20",
    "fee_pages": [],
    "crawl": {
     "pages": 0,
     "errors": 3,
     "home_error": "CERT_HAS_EXPIRED"
-   }
+   },
+   "website_source": "lookup",
+   "website_note": "Replaced dead youthplus.edu.au URL from EREA Flexible Schools directory",
+   "note": "Verified *.flexi.edu.au site and EREA Flexible Schools national policies in browser; no fee or fee-free statement is published publicly on this campus site"
   },
   "50494": {
    "school_name": "Oran Park Anglican College",
@@ -79336,15 +79388,18 @@
   },
   "50553": {
    "school_name": "Hemmant Flexible School",
-   "website": "http://www.youthplus.edu.au/hemmant-flc/",
-   "status": "unreachable",
+   "website": "https://hemmant.flexi.edu.au/",
+   "status": "not_published",
    "checked": "2026-11-20",
    "fee_pages": [],
    "crawl": {
     "pages": 0,
     "errors": 3,
     "home_error": "CERT_HAS_EXPIRED"
-   }
+   },
+   "website_source": "lookup",
+   "website_note": "Replaced dead youthplus.edu.au URL from EREA Flexible Schools directory",
+   "note": "Verified *.flexi.edu.au site and EREA Flexible Schools national policies in browser; no fee or fee-free statement is published publicly on this campus site"
   },
   "50554": {
    "school_name": "Carey Baptist College Forrestdale",
@@ -79533,15 +79588,21 @@
   },
   "50580": {
    "school_name": "Inala Flexible School",
-   "website": "http://www.youthplus.edu.au/inala-flc/",
-   "status": "unreachable",
+   "website": "https://inala.flexi.edu.au/",
+   "status": "fee_free",
    "checked": "2026-11-20",
    "fee_pages": [],
    "crawl": {
     "pages": 0,
     "errors": 3,
     "home_error": "CERT_HAS_EXPIRED"
-   }
+   },
+   "free": {
+    "statement": "Inala FLC is a non-fee paying Catholic school in the Edmund Rice tradition.",
+    "source_url": "https://inala.flexi.edu.au/our-school/our-history/"
+   },
+   "website_source": "lookup",
+   "website_note": "Replaced dead youthplus.edu.au URL from EREA Flexible Schools directory"
   },
   "50581": {
    "school_name": "Good Shepherd Catholic Primary School",
@@ -80263,14 +80324,20 @@
   "50728": {
    "school_name": "Horizons College of Learning and Enrichment",
    "website": "http://horizonscollege.qld.edu.au/",
-   "status": "not_found",
+   "status": "described",
    "checked": "2026-11-20",
    "fee_pages": [],
    "crawl": {
     "pages": 3,
     "errors": 0
    },
-   "note": "No fee page among the pages fetched."
+   "fees_description": {
+    "fee_year": 2027,
+    "pricing_model": "custom",
+    "summary": "2027 Enrolment Form (updated September 2026) sets a once-off non-refundable Registration Levy of $200 (covering shirt, ID card and locker padlock) and a $40 per week Resource Levy (covering stationery, textbooks, excursions and morning refreshments) without specifying an annual total or number of weeks.",
+    "source": "school_website",
+    "source_url": "https://horizonscollege.qld.edu.au/wp-content/uploads/2025/07/2.-Horizons-College-of-Learning-and-Enrichment-Enrolment-Form-2027.pdf"
+   }
   },
   "50729": {
    "school_name": "Australian International Academy, Kellyville Campus",
@@ -81187,14 +81254,14 @@
   "51500": {
    "school_name": "Rockhampton Flexible School",
    "website": "https://rockhampton.flexi.edu.au/",
-   "status": "not_found",
+   "status": "not_published",
    "checked": "2026-11-20",
    "fee_pages": [],
    "crawl": {
     "pages": 2,
     "errors": 0
    },
-   "note": "No fee page among the pages fetched."
+   "note": "Verified *.flexi.edu.au site and EREA Flexible Schools national policies in browser; no fee or fee-free statement is published publicly on this campus site"
   },
   "51501": {
    "school_name": "MacKillop Catholic College, Mount Peter",
@@ -81322,14 +81389,17 @@
   "51504": {
    "school_name": "Holy Spirit College",
    "website": "http://www.holyspiritcollege.qld.edu.au/",
-   "status": "not_found",
+   "status": "fee_free",
    "checked": "2026-11-20",
    "fee_pages": [],
    "crawl": {
     "pages": 2,
     "errors": 0
    },
-   "note": "No fee page among the pages fetched."
+   "free": {
+    "statement": "We are a fee free Catholic College that provides all meals whilst the young people are on site, starting with breakfast.",
+    "source_url": "https://www.holyspiritcollege.qld.edu.au/principals-welcome/"
+   }
   },
   "51509": {
    "school_name": "St James' Anglican School",
@@ -81455,15 +81525,18 @@
   },
   "51521": {
    "school_name": "Alta-1 College",
-   "website": "http://www.alta-1.qld.edu.au/about-us",
-   "status": "blocked",
+   "website": "https://www.avivacollege.com.au/",
+   "status": "not_published",
    "checked": "2026-11-20",
    "crawl": {
     "pages": 0,
     "errors": 3,
     "home_error": "ERR_TLS_CERT_ALTNAME_INVALID"
    },
-   "fee_pages": []
+   "fee_pages": [],
+   "website_source": "lookup",
+   "website_note": "Alta-1 QLD rebranded to avivacollege.com.au; legacy alta-1.qld.edu.au fails SSL",
+   "note": "Alta-1 QLD rebranded as Aviva College (avivacollege.com.au); enrolment referral portal is login-gated and no fee schedule or fee-free statement is published publicly"
   },
   "51523": {
    "school_name": "Alta-1 College - ConnectEd Campus",
@@ -82023,8 +82096,8 @@
   },
   "52248": {
    "school_name": "Carinity Education - Rockhampton",
-   "website": "https://www.carinity.org.au/",
-   "status": "not_found",
+   "website": "https://carinity.qld.edu.au/rockhampton/",
+   "status": "fee_free",
    "checked": "2026-11-20",
    "fee_pages": [
     "https://carinity.org.au/our-services/retirement-living/retirement-living-fees-charges-explained/"
@@ -82033,7 +82106,12 @@
     "pages": 7,
     "errors": 0
    },
-   "note": "Fee pages were reached but show no figures."
+   "free": {
+    "statement": "Carinity Education Rockhampton is an non-fee charging school. We do however charge a termly resource fee of $200 invoiced at the end of the term.",
+    "source_url": "https://carinity.qld.edu.au/rockhampton/faq/"
+   },
+   "website_source": "lookup",
+   "website_note": "School website uses carinity.qld.edu.au/rockhampton/ instead of parent carinity.org.au"
   },
   "52249": {
    "school_name": "Townsville Christian College",
@@ -83529,14 +83607,14 @@
   "52456": {
    "school_name": "Southport Flexible School",
    "website": "https://southport.flexi.edu.au/",
-   "status": "not_found",
+   "status": "not_published",
    "checked": "2026-11-20",
    "fee_pages": [],
    "crawl": {
     "pages": 2,
     "errors": 0
    },
-   "note": "No fee page among the pages fetched."
+   "note": "Verified *.flexi.edu.au site and EREA Flexible Schools national policies in browser; no fee or fee-free statement is published publicly on this campus site"
   },
   "52463": {
    "school_name": "Redwood College",
@@ -85027,14 +85105,17 @@
   "52688": {
    "school_name": "Jabiru Community College",
    "website": "https://www.jcc.qld.edu.au/",
-   "status": "not_found",
+   "status": "fee_free",
    "checked": "2026-11-20",
    "crawl": {
     "pages": 6,
     "errors": 0
    },
    "fee_pages": [],
-   "note": "No fee page among the pages fetched."
+   "free": {
+    "statement": "We’re also 100% fee free, including all meals and materials.",
+    "source_url": "https://www.jcc.qld.edu.au/enrol-at-jabiru"
+   }
   },
   "52689": {
    "school_name": "St Ann's School",
@@ -86077,14 +86158,14 @@
   "52826": {
    "school_name": "Silver Lining School",
    "website": "https://silverlining.org.au",
-   "status": "not_found",
+   "status": "not_published",
    "checked": "2026-11-20",
    "fee_pages": [],
    "crawl": {
     "pages": 1,
     "errors": 0
    },
-   "note": "Only the home page could be fetched."
+   "note": "Checked silverlining.org.au in browser; no enrolment fees, levies, or fee-free statement published on site"
   },
   "52833": {
    "school_name": "Fairbridge College - Kalgoorlie Campus",
@@ -86374,15 +86455,17 @@
   },
   "52867": {
    "school_name": "Y Schools Queensland - Logan",
-   "website": "https://www.ymcabrisbane.org/services/vocational-school",
-   "status": "not_found",
+   "website": "https://yschools.qld.edu.au/",
+   "status": "not_published",
    "checked": "2026-11-20",
    "fee_pages": [],
    "crawl": {
     "pages": 5,
     "errors": 0
    },
-   "note": "No fee page among the pages fetched."
+   "website_source": "lookup",
+   "website_note": "YMCA Vocational School / Y Schools QLD uses official domain yschools.qld.edu.au",
+   "note": "Verified https://yschools.qld.edu.au/ in browser; no tuition fees, levies, or fee-free statements are published for operating physical campuses (only proposed 2027 Online campus mentions an optional $675 family contribution)"
   },
   "52868": {
    "school_name": "Y Schools Queensland - Logan (Kingston Campus)",
@@ -86395,15 +86478,17 @@
   },
   "52870": {
    "school_name": "Y Schools Queensland - Moreton Bay",
-   "website": "https://www.ymcabrisbane.org/services/vocational-school",
-   "status": "not_found",
+   "website": "https://yschools.qld.edu.au/",
+   "status": "not_published",
    "checked": "2026-11-20",
    "fee_pages": [],
    "crawl": {
     "pages": 5,
     "errors": 0
    },
-   "note": "No fee page among the pages fetched."
+   "website_source": "lookup",
+   "website_note": "YMCA Vocational School / Y Schools QLD uses official domain yschools.qld.edu.au",
+   "note": "Verified https://yschools.qld.edu.au/ in browser; no tuition fees, levies, or fee-free statements are published for operating physical campuses (only proposed 2027 Online campus mentions an optional $675 family contribution)"
   },
   "52871": {
    "school_name": "Y Schools Queensland - Moreton Bay (Mango Hill Campus)",
@@ -86416,15 +86501,17 @@
   },
   "52872": {
    "school_name": "Y Schools Queensland - Ipswich",
-   "website": "https://www.ymcabrisbane.org/services/vocational-school",
-   "status": "not_found",
+   "website": "https://yschools.qld.edu.au/",
+   "status": "not_published",
    "checked": "2026-11-20",
    "fee_pages": [],
    "crawl": {
     "pages": 5,
     "errors": 0
    },
-   "note": "No fee page among the pages fetched."
+   "website_source": "lookup",
+   "website_note": "YMCA Vocational School / Y Schools QLD uses official domain yschools.qld.edu.au",
+   "note": "Verified https://yschools.qld.edu.au/ in browser; no tuition fees, levies, or fee-free statements are published for operating physical campuses (only proposed 2027 Online campus mentions an optional $675 family contribution)"
   },
   "52873": {
    "school_name": "Y Schools Queensland - Ipswich (Limestone St Campus)",
@@ -86437,15 +86524,17 @@
   },
   "52874": {
    "school_name": "Y Schools Queensland - Brisbane South",
-   "website": "https://www.ymcabrisbane.org/services/vocational-school",
-   "status": "not_found",
+   "website": "https://yschools.qld.edu.au/",
+   "status": "not_published",
    "checked": "2026-11-20",
    "fee_pages": [],
    "crawl": {
     "pages": 5,
     "errors": 0
    },
-   "note": "No fee page among the pages fetched."
+   "website_source": "lookup",
+   "website_note": "YMCA Vocational School / Y Schools QLD uses official domain yschools.qld.edu.au",
+   "note": "Verified https://yschools.qld.edu.au/ in browser; no tuition fees, levies, or fee-free statements are published for operating physical campuses (only proposed 2027 Online campus mentions an optional $675 family contribution)"
   },
   "52875": {
    "school_name": "Arise Christian College",
@@ -86581,14 +86670,17 @@
   "52896": {
    "school_name": "The BUSY School",
    "website": "https://busyschools.qld.edu.au/",
-   "status": "not_found",
+   "status": "fee_free",
    "checked": "2026-11-20",
    "crawl": {
     "pages": 6,
     "errors": 0
    },
    "fee_pages": [],
-   "note": "No fee page among the pages fetched."
+   "free": {
+    "statement": "There are no fees to attend.",
+    "source_url": "https://busyschools.qld.edu.au/admissions/"
+   }
   },
   "52897": {
    "school_name": "Mawarra Independent School",
@@ -88759,14 +88851,17 @@
   "53200": {
    "school_name": "Mastery Schools Australia - Springfield Central Campus",
    "website": "https://msa.qld.edu.au/",
-   "status": "not_found",
+   "status": "fee_free",
    "checked": "2026-11-20",
    "crawl": {
     "pages": 2,
     "errors": 0
    },
    "fee_pages": [],
-   "note": "No fee page among the pages fetched."
+   "free": {
+    "statement": "MSA does not charge Tuition Fees. A Term Levy is charged to contribute towards additional costs and services associated with the Student's enrolment.",
+    "source_url": "https://msa.qld.edu.au/wp-content/uploads/2026/08/MSA0047-Enrolment-Terms-and-Conditions.pdf"
+   }
   },
   "53201": {
    "school_name": "St Bonaventure's College",
@@ -90901,14 +90996,17 @@
   "53478": {
    "school_name": "Indie School, Logan",
    "website": "https://indieschool.edu.au/campus/logan/",
-   "status": "not_found",
+   "status": "fee_free",
    "checked": "2026-11-20",
    "crawl": {
     "pages": 2,
     "errors": 0
    },
    "fee_pages": [],
-   "note": "No fee page among the pages fetched."
+   "free": {
+    "statement": "offering student education at ‘no cost’.",
+    "source_url": "https://indieschool.edu.au/wp-content/uploads/2021/10/ISAR25_QLD-Logan-Web.pdf"
+   }
   },
   "53479": {
    "school_name": "Indie School, Logan - Parramatta Park Campus",
