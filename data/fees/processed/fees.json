@@ -1378,14 +1378,27 @@
   "40797": {
    "school_name": "Australian Trade College North Brisbane",
    "website": "https://tradecollege.com.au/",
-   "status": "blocked",
+   "status": "found",
    "checked": "2026-11-20",
    "crawl": {
     "pages": 0,
     "errors": 1,
     "home_error": "HTTP 403"
    },
-   "fee_pages": []
+   "fee_pages": [],
+   "fees": {
+    "fee_year": 2027,
+    "basis": "one-child family, annual tuition (sibling rates are lower); standard inclusive annual fee (covers tuition, resources, work experience and IT access); 15% family discount on tuition for 2nd and subsequent children",
+    "by_year": [
+     {
+      "years": "11-12",
+      "total": 7000
+     }
+    ],
+    "other_compulsory": "Non-refundable enrolment application fee $95.00. Senior formal, First Aid and non-essential excursions extra.",
+    "source": "school_website",
+    "source_url": "https://tradecollege.com.au/enrolment/fees-payments/"
+   }
   },
   "40814": {
    "school_name": "Holy Cross College",
@@ -58661,15 +58674,18 @@
   },
   "47677": {
    "school_name": "St Mary of the Cross School",
-   "website": "http://www.stmaryofthecross.qld.edu.au",
-   "status": "unreachable",
+   "website": "https://www.hrwindsor.qld.edu.au/",
+   "status": "not_published",
    "checked": "2026-11-20",
    "fee_pages": [],
    "crawl": {
     "pages": 0,
     "errors": 3,
     "home_error": "ENETUNREACH"
-   }
+   },
+   "website_source": "lookup",
+   "website_note": "Legacy hrwindsor.qld.edu.au also offline; school closing end of 2026 per BCE",
+   "note": "School confirmed closing permanently at end of 2026 and removed from Brisbane Catholic Education directory; legacy websites stmaryofthecross.qld.edu.au / hrwindsor.qld.edu.au are offline with no 2026/2027 fee schedule published"
   },
   "47678": {
    "school_name": "Holy Spirit School",
@@ -60754,14 +60770,95 @@
   },
   "47745": {
    "school_name": "Marymount Primary School",
-   "website": "http://www.mps.qld.edu.au",
-   "status": "unreachable",
+   "website": "https://www.marymountprimary.qld.edu.au/",
+   "status": "found",
    "checked": "2026-11-20",
    "fee_pages": [],
    "crawl": {
     "pages": 0,
     "errors": 3,
     "home_error": "UND_ERR_CONNECT_TIMEOUT"
+   },
+   "website_source": "lookup",
+   "website_note": "Moved from legacy mps.qld.edu.au to marymountprimary.qld.edu.au",
+   "fees": {
+    "fee_year": 2027,
+    "basis": "one-child family, annual tuition (sibling rates are lower); Tuition Fee shown on cumulative family scale (1-4 children); per-student Student, iPad and Camp levies plus family Capital ($1,136) and P&F ($196) levies are additional",
+    "by_year": [
+     {
+      "years": "P-6",
+      "tuition": 2116,
+      "child_2": 3384,
+      "child_3": 4232,
+      "child_4": 4656
+     }
+    ],
+    "sibling_amounts_basis": "family_total",
+    "other_compulsory": "Per-student Student Levy $624/yr, Year 3-6 iPad Levy ($220-$490), Year 4-6 Camp ($104-$450 est.), Family Capital Levy $1,136/yr and P&F Levy $196/yr apply (50% off Capital & P&F for combined Marymount College families). Application $50, Deposit $250.",
+    "source": "school_website",
+    "source_url": "https://www.marymountprimary.qld.edu.au/ArticleDocuments/5423/2027%20Fee%20Schedule.pdf.aspx?Embed=Y",
+    "components": [
+     {
+      "name": "Student Levy",
+      "unit": "per_student",
+      "amount": 624,
+      "period": "annual"
+     },
+     {
+      "name": "iPad Levy",
+      "unit": "per_student",
+      "by_year": [
+       {
+        "years": "3",
+        "amount": 220
+       },
+       {
+        "years": "4",
+        "amount": 490
+       },
+       {
+        "years": "5",
+        "amount": 400
+       },
+       {
+        "years": "6",
+        "amount": 396
+       }
+      ],
+      "period": "annual"
+     },
+     {
+      "name": "Camp Levy (est.)",
+      "unit": "per_student",
+      "by_year": [
+       {
+        "years": "4",
+        "amount": 104
+       },
+       {
+        "years": "5",
+        "amount": 450
+       },
+       {
+        "years": "6",
+        "amount": 410
+       }
+      ],
+      "period": "annual"
+     },
+     {
+      "name": "Capital Levy",
+      "unit": "per_family",
+      "amount": 1136,
+      "period": "annual"
+     },
+     {
+      "name": "Parents & Friends Levy",
+      "unit": "per_family",
+      "amount": 196,
+      "period": "annual"
+     }
+    ]
    }
   },
   "47746": {
@@ -63540,15 +63637,41 @@
   },
   "47849": {
    "school_name": "Iona College",
-   "website": "https://www.iona.qld.edu.au/",
-   "status": "not_found",
+   "website": "https://www.ionacollege.com.au/",
+   "status": "found",
    "checked": "2026-11-20",
    "crawl": {
     "pages": 1,
     "errors": 0
    },
    "fee_pages": [],
-   "note": "Only the home page could be fetched."
+   "website_source": "lookup",
+   "website_note": "Primary site domain moved from iona.qld.edu.au to ionacollege.com.au",
+   "fees": {
+    "fee_year": 2027,
+    "basis": "one-child family, annual tuition (sibling rates are lower); table prints cumulative family annual fee for 1-4 students (inclusive of tuition, College laptop, camps, retreats, textbooks, formals and capital contribution); $150/family Family Commitment Levy extra in Term 4",
+    "by_year": [
+     {
+      "years": "5-12",
+      "total": 14612,
+      "child_2": 25571,
+      "child_3": 35214.92,
+      "child_4": 36530
+     }
+    ],
+    "sibling_amounts_basis": "family_total",
+    "other_compulsory": "Family Commitment Levy $150 per family applied in Term 4 in lieu of volunteering. Sibling discount on tuition portion: 2nd 25%, 3rd 34%, 4th 91%. Application $300, Acceptance $700.",
+    "source": "school_website",
+    "source_url": "https://media.digistormhosting.com.au/ic-au-qld-1084-website-2023/documents/Policies/Iona-College-2027-Fees-Schedule-Policy.pdf?v=1794443674",
+    "components": [
+     {
+      "name": "Family Commitment Levy (in lieu of volunteering)",
+      "unit": "per_family",
+      "amount": 150,
+      "period": "annual"
+     }
+    ]
+   }
   },
   "47851": {
    "school_name": "Padua College",
@@ -65369,14 +65492,86 @@
   "47895": {
    "school_name": "Downlands College",
    "website": "http://www.downlands.qld.edu.au/",
-   "status": "blocked",
+   "status": "found",
    "checked": "2026-11-20",
    "crawl": {
     "pages": 0,
     "errors": 1,
     "home_error": "HTTP 403"
    },
-   "fee_pages": []
+   "fee_pages": [],
+   "fees": {
+    "fee_year": 2027,
+    "basis": "one-child family, annual tuition (sibling rates are lower); Day Student annual total combines Tuition Fee, General Purpose Levy ($760), Capital Levy ($1,000) and ICT Levy ($600 P-4, $760 Y5-6, $1,720 Y7-12)",
+    "by_year": [
+     {
+      "years": "P-3",
+      "tuition": 4900,
+      "total": 7260
+     },
+     {
+      "years": "4",
+      "tuition": 5100,
+      "total": 7460
+     },
+     {
+      "years": "5-6",
+      "tuition": 7700,
+      "total": 10220
+     },
+     {
+      "years": "7-8",
+      "tuition": 13100,
+      "total": 16580
+     },
+     {
+      "years": "9-10",
+      "tuition": 13400,
+      "total": 16880
+     },
+     {
+      "years": "11-12",
+      "tuition": 14180,
+      "total": 17660
+     }
+    ],
+    "other_compulsory": "Full-time Boarding (excluding tuition/levies): Y7-10 $25,120/yr, Y11-12 $25,160/yr plus Boarder Activities Levy $500/yr. Sibling discount on tuition: 2nd 10%, 3rd+ 35%. 3% year-in-advance discount. Application $100, Acceptance $515.",
+    "source": "school_website",
+    "source_url": "https://irp.cdn-website.com/d7fe9667/files/uploaded/Downlands+College+Fees+2027_Final.pdf",
+    "components": [
+     {
+      "name": "General Purpose Levy",
+      "unit": "per_student",
+      "amount": 760,
+      "period": "annual"
+     },
+     {
+      "name": "Capital Levy",
+      "unit": "per_student",
+      "amount": 1000,
+      "period": "annual"
+     },
+     {
+      "name": "ICT Levy",
+      "unit": "per_student",
+      "by_year": [
+       {
+        "years": "P-4",
+        "amount": 600
+       },
+       {
+        "years": "5-6",
+        "amount": 760
+       },
+       {
+        "years": "7-12",
+        "amount": 1720
+       }
+      ],
+      "period": "annual"
+     }
+    ]
+   }
   },
   "47896": {
    "school_name": "St Joseph's School",
@@ -66768,15 +66963,101 @@
   },
   "47935": {
    "school_name": "Lighthouse Christian School",
-   "website": "http://www.lighthousebaptist.com.au",
-   "status": "unreachable",
+   "website": "https://www.lcs.qld.edu.au/",
+   "status": "found",
    "checked": "2026-11-20",
    "crawl": {
     "pages": 0,
     "errors": 2,
     "home_error": "HTTP 526"
    },
-   "fee_pages": []
+   "fee_pages": [],
+   "website_source": "lookup",
+   "website_note": "Moved from legacy lighthousebaptist.com.au to lcs.qld.edu.au",
+   "fees": {
+    "fee_year": 2026,
+    "basis": "one-child family, annual tuition (sibling rates are lower); annual Tuition Fees (Student 4+ 100% discount); compulsory Building & Maintenance Levy ($295/family), ICT Levy ($92/$130/$205), Y9-12 Resource Levy and Y8/10-12 Camp Levy ($500) are additional",
+    "by_year": [
+     {
+      "years": "P",
+      "tuition": 3090,
+      "child_2": 2472,
+      "child_3": 1854,
+      "child_4": 0
+     },
+     {
+      "years": "1-6",
+      "tuition": 3790,
+      "child_2": 3032,
+      "child_3": 2274,
+      "child_4": 0
+     },
+     {
+      "years": "7-9",
+      "tuition": 4360,
+      "child_2": 3488,
+      "child_3": 2616,
+      "child_4": 0
+     },
+     {
+      "years": "10-12",
+      "tuition": 4590,
+      "child_2": 3672,
+      "child_3": 2754,
+      "child_4": 0
+     }
+    ],
+    "sibling_amounts_basis": "per_child",
+    "other_compulsory": "Building & Maintenance Levy $295/family, ICT Levy ($92 P-4, $130 Y5-6, $205 Y7-12), Y9-12 Resource Levy ($125/$220/$360) and Camp Levy $500 (Y8, Y10, Y11-12 Biology) are additional. 5% upfront discount on tuition. Application $75, Confirmation $50.",
+    "source": "school_website",
+    "source_url": "https://www.lcs.qld.edu.au/s/2026-Schedule-of-Fees.pdf",
+    "components": [
+     {
+      "name": "Building and Maintenance Levy",
+      "unit": "per_family",
+      "amount": 295,
+      "period": "annual"
+     },
+     {
+      "name": "ICT Levy",
+      "unit": "per_student",
+      "by_year": [
+       {
+        "years": "P-4",
+        "amount": 92
+       },
+       {
+        "years": "5-6",
+        "amount": 130
+       },
+       {
+        "years": "7-12",
+        "amount": 205
+       }
+      ],
+      "period": "annual"
+     },
+     {
+      "name": "Resource Levy",
+      "unit": "per_student",
+      "by_year": [
+       {
+        "years": "9",
+        "amount": 125
+       },
+       {
+        "years": "10",
+        "amount": 220
+       },
+       {
+        "years": "11-12",
+        "amount": 360
+       }
+      ],
+      "period": "annual"
+     }
+    ]
+   }
   },
   "47936": {
    "school_name": "Fraser Coast Anglican College",
@@ -67146,14 +67427,58 @@
   "47946": {
    "school_name": "Coomera Anglican College",
    "website": "http://www.cac.qld.edu.au",
-   "status": "not_found",
+   "status": "found",
    "checked": "2026-11-20",
    "crawl": {
     "pages": 15,
     "errors": 0
    },
    "fee_pages": [],
-   "note": "No fee page among the pages fetched."
+   "fees": {
+    "fee_year": 2026,
+    "basis": "one-child family, annual tuition (sibling rates are lower); undiscounted Annual Tuition Fee and Total including Single Resource Levy (3% term due-date discount and 3% annual upfront discount available)",
+    "by_year": [
+     {
+      "years": "P-3",
+      "tuition": 9822,
+      "total": 10682
+     },
+     {
+      "years": "4-6",
+      "tuition": 9822,
+      "total": 10942
+     },
+     {
+      "years": "7-12",
+      "tuition": 13692,
+      "total": 15012
+     }
+    ],
+    "other_compulsory": "Sibling discounts on tuition: 2nd 5%, 3rd 10%, 4th+ 20%. Application $99, Acceptance $500.",
+    "source": "school_website",
+    "source_url": "https://www.cac.qld.edu.au/enrol/domestic-fees",
+    "components": [
+     {
+      "name": "Single Resource Levy",
+      "unit": "per_student",
+      "by_year": [
+       {
+        "years": "P-3",
+        "amount": 860
+       },
+       {
+        "years": "4-6",
+        "amount": 1120
+       },
+       {
+        "years": "7-12",
+        "amount": 1320
+       }
+      ],
+      "period": "annual"
+     }
+    ]
+   }
   },
   "47947": {
    "school_name": "Sheldon College",
@@ -67291,14 +67616,51 @@
   "47952": {
    "school_name": "Australian Christian College - Moreton",
    "website": "https://www.acc.edu.au/moreton/",
-   "status": "not_found",
+   "status": "found",
    "checked": "2026-11-20",
    "crawl": {
     "pages": 1,
     "errors": 0
    },
    "fee_pages": [],
-   "note": "Only the home page could be fetched."
+   "fees": {
+    "fee_year": 2027,
+    "basis": "one-child family, annual tuition (sibling rates are lower); On-Campus all-inclusive annual fees (Sibling 4+ $0); QLD Distance Education also offered ($1,175 P-2; $1,340 Y3-6; $2,070 Y7-9; $2,355/$3,600 Y10-12)",
+    "by_year": [
+     {
+      "years": "P",
+      "total": 3440,
+      "child_2": 3025,
+      "child_3": 2580,
+      "child_4": 0
+     },
+     {
+      "years": "1-6",
+      "total": 4870,
+      "child_2": 4285,
+      "child_3": 3655,
+      "child_4": 0
+     },
+     {
+      "years": "7-9",
+      "total": 6255,
+      "child_2": 5505,
+      "child_3": 4690,
+      "child_4": 0
+     },
+     {
+      "years": "10-12",
+      "total": 6950,
+      "child_2": 6115,
+      "child_3": 5215,
+      "child_4": 0
+     }
+    ],
+    "sibling_amounts_basis": "per_child",
+    "other_compulsory": "BYOD Apple MacBook required. QLD Distance Education 2027 fees: P-2 $1,175, Y3-6 $1,340, Y7-9 $2,070, Y10-12 QCIA $2,355 / QCE $3,600 per yr.",
+    "source": "school_website",
+    "source_url": "https://www.acc.edu.au/moreton/on-campus/fees/"
+   }
   },
   "47953": {
    "school_name": "Caboolture Montessori School",
@@ -67342,14 +67704,48 @@
   "47956": {
    "school_name": "Groves Christian College",
    "website": "http://www.groves.qld.edu.au",
-   "status": "not_found",
+   "status": "found",
    "checked": "2026-11-20",
    "crawl": {
     "pages": 2,
     "errors": 0
    },
    "fee_pages": [],
-   "note": "No fee page among the pages fetched."
+   "fees": {
+    "fee_year": 2027,
+    "basis": "one-child family, annual tuition (sibling rates are lower); Day School inclusive Annual Tuition Fee (covers camps Y3-12, Y7-12 laptop loan, excursions); 3rd+ child No charge; Distance Education also offered ($990/$1,420/$1,720)",
+    "by_year": [
+     {
+      "years": "P-3",
+      "total": 4810,
+      "child_2": 4329
+     },
+     {
+      "years": "4-6",
+      "total": 4860,
+      "child_2": 4374
+     },
+     {
+      "years": "7",
+      "total": 6230,
+      "child_2": 5607
+     },
+     {
+      "years": "8-9",
+      "total": 6580,
+      "child_2": 5922
+     },
+     {
+      "years": "10-12",
+      "total": 6730,
+      "child_2": 6057
+     }
+    ],
+    "sibling_amounts_basis": "per_child",
+    "other_compulsory": "Third and subsequent children incur no tuition fees. 2027 Distance Education annual fees: P-6 $990, Y7-9 $1,420, Y10-12 $1,720. 5% upfront discount. Confirmation deposit $150/student ($300/family cap).",
+    "source": "school_website",
+    "source_url": "https://fees.ccmschools.app/groves/"
+   }
   },
   "47957": {
    "school_name": "Brisbane Adventist College",
@@ -67961,14 +68357,15 @@
   "47970": {
    "school_name": "OneSchool Global QLD - Wakerley",
    "website": "https://www.oneschoolglobal.com/regions/australia/queensland/",
-   "status": "blocked",
+   "status": "not_published",
    "checked": "2026-11-20",
    "crawl": {
     "pages": 0,
     "errors": 1,
     "home_error": "HTTP 403"
    },
-   "fee_pages": []
+   "fee_pages": [],
+   "note": "OneSchool Global Australia website and 2025 Annual Report confirm tuition fees are charged (16% of FY2025 income), but no fee schedule or dollar figures are published publicly online"
   },
   "47972": {
    "school_name": "OneSchool Global QLD - Maryborough",
@@ -68264,7 +68661,7 @@
   "47989": {
    "school_name": "Australian International Islamic College",
    "website": "http://www.aiic.qld.edu.au",
-   "status": "not_found",
+   "status": "found",
    "checked": "2026-11-20",
    "crawl": {
     "pages": 9,
@@ -68273,7 +68670,89 @@
    "fee_pages": [
     "https://aiic.qld.edu.au/college-fees/"
    ],
-   "note": "Only fees for international students were found."
+   "fees": {
+    "fee_year": 2027,
+    "basis": "one-child family, annual tuition (sibling rates are lower); annual Local Students Tuition Fee; compulsory Teaching Resources & Excursions ($165-$285), VET Levy (Y10 $270; Y11 $160), Y12 Graduation ($200) and Building Levy ($200/family) are additional",
+    "by_year": [
+     {
+      "years": "P",
+      "tuition": 2318
+     },
+     {
+      "years": "1-2",
+      "tuition": 2521
+     },
+     {
+      "years": "3-4",
+      "tuition": 2798
+     },
+     {
+      "years": "5-6",
+      "tuition": 3040
+     },
+     {
+      "years": "7-8",
+      "tuition": 3300
+     },
+     {
+      "years": "9-10",
+      "tuition": 3542
+     },
+     {
+      "years": "11-12",
+      "tuition": 3801
+     }
+    ],
+    "other_compulsory": "Sibling discounts on tuition: 2nd 10%, 3rd 30%, 4th+ 40%. 5% early discount on tuition before end of Term 1.",
+    "source": "school_website",
+    "source_url": "https://aiic.qld.edu.au/wp-content/uploads/2026/Forms/2027%20Financial%20Information%20For%20Local%20Students.pdf",
+    "components": [
+     {
+      "name": "Teaching Resources & Excursions",
+      "unit": "per_student",
+      "by_year": [
+       {
+        "years": "P",
+        "amount": 275
+       },
+       {
+        "years": "1-6",
+        "amount": 285
+       },
+       {
+        "years": "7-10",
+        "amount": 240
+       },
+       {
+        "years": "11-12",
+        "amount": 165
+       }
+      ],
+      "period": "annual"
+     },
+     {
+      "name": "VET Levy",
+      "unit": "per_student",
+      "by_year": [
+       {
+        "years": "10",
+        "amount": 270
+       },
+       {
+        "years": "11",
+        "amount": 160
+       }
+      ],
+      "period": "annual"
+     },
+     {
+      "name": "Building Levy",
+      "unit": "per_family",
+      "amount": 200,
+      "period": "annual"
+     }
+    ]
+   }
   },
   "47990": {
    "school_name": "The Lakes College",
@@ -69147,7 +69626,7 @@
   "48006": {
    "school_name": "West Moreton Anglican College",
    "website": "http://www.wmac.com.au",
-   "status": "not_found",
+   "status": "found",
    "checked": "2026-11-20",
    "crawl": {
     "pages": 6,
@@ -69156,7 +69635,51 @@
    "fee_pages": [
     "https://www.wmac.com.au/enrolments/fees"
    ],
-   "note": "Only fees for international students were found."
+   "fees": {
+    "fee_year": 2027,
+    "basis": "one-child family, annual tuition (sibling rates are lower); all-inclusive Annual Tuition Fees (covers textbooks, core subject costs, curriculum camps and excursions)",
+    "by_year": [
+     {
+      "years": "P",
+      "total": 9340
+     },
+     {
+      "years": "1-2",
+      "total": 10144
+     },
+     {
+      "years": "3",
+      "total": 10292
+     },
+     {
+      "years": "4-6",
+      "total": 12192
+     },
+     {
+      "years": "7",
+      "total": 14904
+     },
+     {
+      "years": "8",
+      "total": 15600
+     },
+     {
+      "years": "9",
+      "total": 16316
+     },
+     {
+      "years": "10",
+      "total": 17128
+     },
+     {
+      "years": "11-12",
+      "total": 17904
+     }
+    ],
+    "other_compulsory": "5% annual payment discount by 27 January 2027 (+$50 early bonus). Sibling discount: 2nd 5%, 3rd 10%, 4th 15%, 5th+ 50%. Application $250, Confirmation $750.",
+    "source": "school_website",
+    "source_url": "https://issuu.com/westmoretonanglicancollegeofficial/docs/2027_fees_and_financial_information"
+   }
   },
   "48007": {
    "school_name": "St Hilda's School",
@@ -69199,14 +69722,95 @@
   "48008": {
    "school_name": "St Luke's Anglican School",
    "website": "http://www.stlukes.qld.edu.au/",
-   "status": "not_found",
+   "status": "found",
    "checked": "2026-11-20",
    "crawl": {
     "pages": 4,
     "errors": 0
    },
    "fee_pages": [],
-   "note": "No fee page among the pages fetched."
+   "fees": {
+    "fee_year": 2027,
+    "basis": "one-child family, annual tuition (sibling rates are lower); Total Annual Fee combines Tuition Fee and Capital Levy ($1,250); compulsory Resource Levy ($150-$220) is additional",
+    "by_year": [
+     {
+      "years": "P",
+      "tuition": 6370,
+      "total": 7620
+     },
+     {
+      "years": "1-3",
+      "tuition": 6760,
+      "total": 8010
+     },
+     {
+      "years": "4-5",
+      "tuition": 6845,
+      "total": 8095
+     },
+     {
+      "years": "6",
+      "tuition": 7525,
+      "total": 8775
+     },
+     {
+      "years": "7-9",
+      "tuition": 8995,
+      "total": 10245
+     },
+     {
+      "years": "10-12",
+      "tuition": 9260,
+      "total": 10510
+     }
+    ],
+    "other_compulsory": "Compulsory Resource Levy ($150 P-1/Y5-6, $170 Y2, $185 Y3-4, $200 Y7, $190 Y8-9, $220 Y10-12) is additional. Sibling discount: 2nd 20%, 3rd 40%, 4th 50%, 5th+ 75%. 2.5% annual discount. Application $110, Confirmation $200.",
+    "source": "school_website",
+    "source_url": "https://yourschoollinks.s3.ap-southeast-2.amazonaws.com/uploads/files/4207f01a2789946b8a0d7bd1f167314e.pdf",
+    "components": [
+     {
+      "name": "Capital Levy",
+      "unit": "per_student",
+      "amount": 1250,
+      "period": "annual"
+     },
+     {
+      "name": "Resource Levy",
+      "unit": "per_student",
+      "by_year": [
+       {
+        "years": "P-1",
+        "amount": 150
+       },
+       {
+        "years": "2",
+        "amount": 170
+       },
+       {
+        "years": "3-4",
+        "amount": 185
+       },
+       {
+        "years": "5-6",
+        "amount": 150
+       },
+       {
+        "years": "7",
+        "amount": 200
+       },
+       {
+        "years": "8-9",
+        "amount": 190
+       },
+       {
+        "years": "10-12",
+        "amount": 220
+       }
+      ],
+      "period": "annual"
+     }
+    ]
+   }
   },
   "48009": {
    "school_name": "St John's Anglican College",
@@ -69781,15 +70385,117 @@
   },
   "48023": {
    "school_name": "Carlisle Adventist College",
-   "website": "http://carlisle.adventist.edu.au",
-   "status": "unreachable",
+   "website": "https://carlisle.qld.edu.au/",
+   "status": "found",
    "checked": "2026-11-20",
    "crawl": {
     "pages": 0,
     "errors": 1,
     "home_error": "HTTP 526"
    },
-   "fee_pages": []
+   "fee_pages": [],
+   "website_source": "lookup",
+   "website_note": "Moved from legacy carlisle.adventist.edu.au to carlisle.qld.edu.au",
+   "fees": {
+    "fee_year": 2026,
+    "basis": "one-child family, annual tuition (sibling rates are lower); annual Tuition Fees (4th+ student 100% tuition discount); compulsory Building Levy ($80/family/term), per-term Subject/Sport/ICT/Textbook levies and P-6 Book Packs are additional",
+    "by_year": [
+     {
+      "years": "P",
+      "tuition": 2612,
+      "child_2": 1960,
+      "child_3": 1567
+     },
+     {
+      "years": "1-3",
+      "tuition": 2856,
+      "child_2": 2143,
+      "child_3": 1714
+     },
+     {
+      "years": "4-6",
+      "tuition": 3142,
+      "child_2": 2356,
+      "child_3": 1884
+     },
+     {
+      "years": "7-10",
+      "tuition": 3523,
+      "child_2": 2642,
+      "child_3": 2115
+     },
+     {
+      "years": "11-12",
+      "tuition": 4132,
+      "child_2": 3099,
+      "child_3": 2480
+     }
+    ],
+    "sibling_amounts_basis": "per_child",
+    "other_compulsory": "4th+ child pays levies & book pack/stationery only ($0 tuition). Building Levy $80/family/term; Sport, ICT, Textbook Hire & Elective per-term levies and P-6 Book Packs ($120-$130) are additional. 7.5% annual / 5% term upfront discount on tuition. Processing $100, Application (P/Y7) $300.",
+    "source": "school_website",
+    "source_url": "https://carlisle.qld.edu.au/wp-content/uploads/2026/04/2026-Fee-Schedule.pdf",
+    "components": [
+     {
+      "name": "Building Levy",
+      "unit": "per_family",
+      "amount": 80,
+      "period": "per_term",
+      "terms": 4
+     },
+     {
+      "name": "Sport Levy",
+      "unit": "per_student",
+      "by_year": [
+       {
+        "years": "P-6",
+        "amount": 50
+       },
+       {
+        "years": "7-12",
+        "amount": 35
+       }
+      ],
+      "period": "per_term",
+      "terms": 4
+     },
+     {
+      "name": "ICT Levy",
+      "unit": "per_student",
+      "by_year": [
+       {
+        "years": "P-6",
+        "amount": 90
+       },
+       {
+        "years": "7-9",
+        "amount": 110
+       },
+       {
+        "years": "10",
+        "amount": 135
+       }
+      ],
+      "period": "per_term",
+      "terms": 4
+     },
+     {
+      "name": "Book Pack",
+      "unit": "per_student",
+      "by_year": [
+       {
+        "years": "P",
+        "amount": 130
+       },
+       {
+        "years": "1-6",
+        "amount": 120
+       }
+      ],
+      "period": "annual"
+     }
+    ]
+   }
   },
   "48024": {
    "school_name": "Bethania Lutheran Primary School",
@@ -70786,14 +71492,156 @@
   "48047": {
    "school_name": "Hillcrest Christian College",
    "website": "http://www.hillcrest.qld.edu.au",
-   "status": "not_found",
+   "status": "found",
    "checked": "2026-11-20",
    "crawl": {
     "pages": 12,
     "errors": 0
    },
    "fee_pages": [],
-   "note": "No fee page among the pages fetched."
+   "fees": {
+    "fee_year": 2027,
+    "basis": "one-child family, annual tuition (sibling rates are lower); Reedy Creek Total Annual Fees combines per-term Tuition, Non-Tuition Levies and one2one Device Levy over 4 terms (Virtual Learning Community / DE fees not published)",
+    "by_year": [
+     {
+      "years": "P-3",
+      "total": 9868
+     },
+     {
+      "years": "4",
+      "total": 10892
+     },
+     {
+      "years": "5",
+      "total": 10708
+     },
+     {
+      "years": "6",
+      "total": 10588
+     },
+     {
+      "years": "7",
+      "total": 13924
+     },
+     {
+      "years": "8",
+      "total": 13608
+     },
+     {
+      "years": "9",
+      "total": 13628
+     },
+     {
+      "years": "10",
+      "total": 14664
+     },
+     {
+      "years": "11",
+      "total": 14348
+     },
+     {
+      "years": "12",
+      "total": 14748
+     }
+    ],
+    "other_compulsory": "Per-term Tuition: $2,141 (P-6), $2,624 (7-9), $2,756 (10-12). Sibling discount on tuition: 2nd 10%, 3rd 20%, 4th+ 100%. 4.5% early payment discount. Application $100, Enrolment $600 (1st) / $400 (2nd) / $100 (3rd+).",
+    "source": "school_website",
+    "source_url": "https://issuu.com/hillcrestchristiancollege/docs/2026_hillcrest_christian_college_fee_schedule",
+    "components": [
+     {
+      "name": "Tuition (per term)",
+      "unit": "per_student",
+      "by_year": [
+       {
+        "years": "P-6",
+        "amount": 2141
+       },
+       {
+        "years": "7-9",
+        "amount": 2624
+       },
+       {
+        "years": "10-12",
+        "amount": 2756
+       }
+      ],
+      "period": "per_term",
+      "terms": 4
+     },
+     {
+      "name": "Non-Tuition Levies",
+      "unit": "per_student",
+      "by_year": [
+       {
+        "years": "P-3",
+        "amount": 326
+       },
+       {
+        "years": "4-6",
+        "amount": 406
+       },
+       {
+        "years": "7-9",
+        "amount": 583
+       },
+       {
+        "years": "10-11",
+        "amount": 636
+       },
+       {
+        "years": "12",
+        "amount": 731
+       }
+      ],
+      "period": "per_term",
+      "terms": 4
+     },
+     {
+      "name": "one2one Device Levy",
+      "unit": "per_student",
+      "by_year": [
+       {
+        "years": "4",
+        "amount": 176
+       },
+       {
+        "years": "5",
+        "amount": 130
+       },
+       {
+        "years": "6",
+        "amount": 100
+       },
+       {
+        "years": "7",
+        "amount": 274
+       },
+       {
+        "years": "8",
+        "amount": 195
+       },
+       {
+        "years": "9",
+        "amount": 200
+       },
+       {
+        "years": "10",
+        "amount": 274
+       },
+       {
+        "years": "11",
+        "amount": 195
+       },
+       {
+        "years": "12",
+        "amount": 200
+       }
+      ],
+      "period": "per_term",
+      "terms": 4
+     }
+    ]
+   }
   },
   "48048": {
    "school_name": "Annandale Christian College",
@@ -71300,7 +72148,7 @@
   "48060": {
    "school_name": "John Paul College",
    "website": "http://www.jpc.qld.edu.au",
-   "status": "not_found",
+   "status": "found",
    "checked": "2026-11-20",
    "crawl": {
     "pages": 6,
@@ -71310,20 +72158,101 @@
     "https://www.jpc.qld.edu.au/future-families/Pages/Fees.aspx",
     "https://www.jpc.qld.edu.au/news-and-events/Pages/2020-Schedule-Fees-of-Advice.aspx"
    ],
-   "note": "The only fee schedule published is for 2020."
+   "fees": {
+    "fee_year": 2026,
+    "basis": "one-child family, annual tuition (sibling rates are lower); annual Tuition Fees (Y4-12 mobile device program and subject resources included); compulsory year-level Camps and Retreats ($330-$1,460) are additional",
+    "by_year": [
+     {
+      "years": "P-2",
+      "tuition": 12820
+     },
+     {
+      "years": "3-6",
+      "tuition": 15110
+     },
+     {
+      "years": "7-12",
+      "tuition": 19825
+     }
+    ],
+    "other_compulsory": "Compulsory Camps/Retreats: Yr4 $330, Yr5 $475, Yr6 $1,460, Yr7 $350, Yr9 $400, Yr10 $500, Yr12 Retreat $460. Sibling discount: 3rd & 4th child 40%, 5th+ 100% off tuition. $500 annual discount if paid by 31 Jan 2026. Application $250, Confirmation $750.",
+    "source": "school_website",
+    "source_url": "https://www.jpc.qld.edu.au/future-families/fees",
+    "components": [
+     {
+      "name": "Year-Level Camps & Retreats",
+      "unit": "per_student",
+      "by_year": [
+       {
+        "years": "4",
+        "amount": 330
+       },
+       {
+        "years": "5",
+        "amount": 475
+       },
+       {
+        "years": "6",
+        "amount": 1460
+       },
+       {
+        "years": "7",
+        "amount": 350
+       },
+       {
+        "years": "9",
+        "amount": 400
+       },
+       {
+        "years": "10",
+        "amount": 500
+       },
+       {
+        "years": "12",
+        "amount": 460
+       }
+      ],
+      "period": "annual"
+     }
+    ]
+   }
   },
   "48061": {
    "school_name": "Mueller College",
    "website": "http://www.mueller.qld.edu.au",
-   "status": "blocked",
+   "status": "found",
    "checked": "2026-11-20",
    "crawl": {
     "pages": 0,
     "errors": 1,
     "home_error": "HTTP 403"
    },
-   "note": "Only two pages reachable; no fee page.",
-   "fee_pages": []
+   "fee_pages": [],
+   "fees": {
+    "fee_year": 2027,
+    "basis": "one-child family, annual tuition (sibling rates are lower); annual Tuition Fees include compulsory excursions, camps and activities; family discounts of 10% (2 students) up to 40% (6 students) reduce every student",
+    "by_year": [
+     {
+      "years": "P-3",
+      "total": 6620
+     },
+     {
+      "years": "4-6",
+      "total": 6880
+     },
+     {
+      "years": "7-9",
+      "total": 10480
+     },
+     {
+      "years": "10-12",
+      "total": 10980
+     }
+    ],
+    "other_compulsory": "5% early payment discount if full year tuition paid prior to Term 1 Day 1. Confirmation of enrolment fee $300 (credited to account on commencement).",
+    "source": "school_website",
+    "source_url": "https://www.mueller.qld.edu.au/enrolment-information/"
+   }
   },
   "48062": {
    "school_name": "Genesis Christian College",
@@ -72958,15 +73887,42 @@
   },
   "48102": {
    "school_name": "Citipointe Christian College",
-   "website": "http://www.citipointe.qld.edu.au/",
-   "status": "unreachable",
+   "website": "https://citipointe.qld.edu.au/",
+   "status": "found",
    "checked": "2026-11-20",
    "crawl": {
     "pages": 0,
     "errors": 3,
     "home_error": "UNABLE_TO_VERIFY_LEAF_SIGNATURE"
    },
-   "fee_pages": []
+   "fee_pages": [],
+   "website_source": "lookup",
+   "website_note": "Verified official URL; Node fetch fails TLS intermediate chain on citipointe.qld.edu.au",
+   "fees": {
+    "fee_year": 2027,
+    "basis": "one-child family, annual tuition (sibling rates are lower); all-inclusive Annual Tuition Fee covering day excursions, weekly sport, curriculum camps and Secondary textbook hire; Primary textbooks and stationery separate",
+    "by_year": [
+     {
+      "years": "P-3",
+      "total": 11988
+     },
+     {
+      "years": "4-6",
+      "total": 12216
+     },
+     {
+      "years": "7-9",
+      "total": 15516
+     },
+     {
+      "years": "10-12",
+      "total": 16860
+     }
+    ],
+    "other_compulsory": "Sibling discounts: 2nd child 10%, 3rd 25%, 4th 100%. 5% advance payment discount by 12 February 2027. Application $220, Acceptance $200, Acceptance Bond $500.",
+    "source": "school_website",
+    "source_url": "https://citipointe.qld.edu.au/wp-content/uploads/2024/09/2027-CCC-Citipointe-FS-Fees-scholarships-and-bursaries_.pdf"
+   }
   },
   "48103": {
    "school_name": "Burdekin Christian College",
@@ -72983,7 +73939,7 @@
   "48104": {
    "school_name": "Jubilee Christian College",
    "website": "https://www.jubileecc.qld.edu.au/",
-   "status": "not_found",
+   "status": "described",
    "checked": "2026-11-20",
    "crawl": {
     "pages": 5,
@@ -72992,7 +73948,13 @@
    "fee_pages": [
     "https://www.jubileecc.qld.edu.au/test-oc-fee-calculator/"
    ],
-   "note": "Fee pages were reached but show no figures."
+   "fees_description": {
+    "fee_year": 2027,
+    "pricing_model": "per_term_unspecified",
+    "summary": "2027 On-Campus Fee Schedule publishes All-Inclusive Fees per Term without stating how many terms are billed per year: 1st child is $607.50 (P-6), $797.50 (Y7-9), $852.50 (Y10) and $857.50 (Y11-12) per term; 5th+ child is $87.50/term. 2027 Distance Education is $225.00 (P-6), $235.00 (Y7-9), $260.00 (Y10), $270.00 (Y11-12 QCIA) and $395.00 (Y11-12) per term (5th+ $0).",
+    "source": "school_website",
+    "source_url": "https://drive.usercontent.google.com/download?id=16z4qjlO8IsYszg-bb9BQSIsRyzm77Osb&export=download"
+   }
   },
   "48105": {
    "school_name": "Brisbane Christian College",
@@ -73284,14 +74246,42 @@
   "48112": {
    "school_name": "Gulf Christian College",
    "website": "http://www.gulfcc.qld.edu.au/",
-   "status": "blocked",
+   "status": "found",
    "checked": "2026-11-20",
    "crawl": {
     "pages": 0,
     "errors": 1,
     "home_error": "HTTP 403"
    },
-   "fee_pages": []
+   "fee_pages": [],
+   "fees": {
+    "fee_year": null,
+    "year_note": "Per-term schedule has no year label (page updated Dec 2025; line below table states 2026 Tuition Fee schedule TBA)",
+    "billing_unit": "per_student",
+    "basis": "one-child family, annual tuition (sibling rates are lower), per term tuition; page states there are four school terms in each year (note 2026 Tuition Fee schedule marked TBA)",
+    "sibling_amounts_basis": "per_child",
+    "by_year": [
+     {
+      "years": "P-6",
+      "per_term": 594,
+      "terms": 4,
+      "child_2": 297,
+      "child_3": 149,
+      "child_4": 30
+     },
+     {
+      "years": "7-12",
+      "per_term": 619,
+      "terms": 4,
+      "child_2": 310,
+      "child_3": 155,
+      "child_4": 31
+     }
+    ],
+    "source": "school_website",
+    "source_url": "https://www.gulfcc.qld.edu.au/enrol/fees-and-bursaries/",
+    "other_compulsory": "Tuition fee schedule shows Child 1-4 per-term rates; GCC student bursaries available for families needing financial assistance."
+   }
   },
   "48113": {
    "school_name": "Heights College",
@@ -82660,13 +83650,17 @@
   "52493": {
    "school_name": "Arcadia College",
    "website": "https://www.arcadia.qld.edu.au/",
-   "status": "blocked",
+   "status": "fee_free",
    "checked": "2026-11-20",
    "fee_pages": [],
    "crawl": {
     "pages": 0,
     "errors": 1,
     "home_error": "HTTP 403"
+   },
+   "free": {
+    "statement": "As a Special Assistance School, we do not charge school tuition fees. We charge a levy of $260 per term (starting 2025) to ensure students have access to quality resources and facilities, such as an iPad, stationery, excursions, transport and meals each day.",
+    "source_url": "https://www.arcadia.qld.edu.au/college-levies.html"
    }
   },
   "52497": {
@@ -87310,14 +88304,18 @@
   "53101": {
    "school_name": "Ohana College",
    "website": "https://ohanacollege.qld.edu.au/",
-   "status": "blocked",
+   "status": "fee_free",
    "checked": "2026-11-20",
    "crawl": {
     "pages": 0,
     "errors": 1,
     "home_error": "HTTP 403"
    },
-   "fee_pages": []
+   "fee_pages": [],
+   "free": {
+    "statement": "As a Special Assistance School, we do not charge school tuition fees. We charge a levy of $260 per term to ensure students have access to quality resources and facilities, such as an iPad, stationery, excursions and meals each day.",
+    "source_url": "https://www.ohanacollege.qld.edu.au/college-levies.html"
+   }
   },
   "53103": {
    "school_name": "The Industry School - Brisbane",
